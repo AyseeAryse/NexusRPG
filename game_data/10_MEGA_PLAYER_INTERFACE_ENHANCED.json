@@ -1,0 +1,260 @@
+{
+  "module_name": "10_MEGA_PLAYER_INTERFACE_ENHANCED",
+  "module_id": "10",
+  "priority": "CRITICAL",
+  "version": "2.0_WITH_MANDATORY_CHOICES",
+  "description": "Полная система интерфейса игрока с обязательной генерацией 5-6 выборов действий",
+  "source_files": [
+    "MECHANICS_V2_INTEGRATED_SYSTEMS.json (6,240 символов)",
+    "PSYCHOLOGY_THERAPY_REFERENCE.json (4,152 символа)",
+    "PLAYER_INTERFACE.json (3,933 символа)",
+    "MECHANICS.json (3,825 символов)",
+    "RULEBOOK.json (3,100 символов)",
+    "PLAYER_VIEW_ADAPTER.json (2,978 символов)",
+    "PLAYER_INTERFACE_V2.json (2,395 символов)",
+    "PLAYER_INTERFACE_V2_ENHANCED.json (1,350 символов)",
+    "MANDATORY_CHOICE_SYSTEM (NEW) - система обязательной генерации выборов"
+  ],
+  "total_size": "35,000+ символов с расширениями",
+  "integration_status": "ENHANCED_WITH_MANDATORY_CHOICES",
+  "dependencies": [
+    "CHARACTER_LIFEPATH",
+    "CHARACTER_CORE",
+    "PSYCHOLOGY",
+    "NARRATIVE_THEMES",
+    "NPC_RELATIONS",
+    "WORLD_SIMULATION"
+  ],
+  "advanced_mechanics_system": {
+    "module_name": "MECHANICS_V2_INTEGRATED_SYSTEMS",
+    "version": "2.0_INTEGRATED_SYSTEMS",
+    "description": "Расширенные игровые механики с интеграцией всех систем",
+    "progression_integration": {
+      "skill_advancement": {
+        "experience_sources": {
+          "usage_based": "Automatic XP for successful skill use (+0.5-2 XP)",
+          "training_based": "Formal training sessions (+5-10 XP per session)",
+          "mentorship": "Learning from NPC mentors (x2 XP multiplier)"
+        }
+      }
+    }
+  },
+  "mandatory_choice_generation_system": {
+    "module_name": "MANDATORY_CHOICE_SYSTEM_ENFORCED",
+    "version": "1.0_ABSOLUTE_ENFORCEMENT",
+    "description": "Система ПРИНУДИТЕЛЬНОЙ генерации 5-6 вариантов действий после каждого ответа ИИ ГМ",
+    "ABSOLUTE_CRITICAL_DIRECTIVES": {
+      "OVERRIDE_PRIORITY": "MAXIMUM_ABSOLUTE",
+      "ENFORCEMENT_LEVEL": "СИСТЕМА ОБЯЗАНА ГЕНЕРИРОВАТЬ ВЫБОРЫ",
+      "FAILURE_CONSEQUENCE": "КРИТИЧЕСКАЯ ОШИБКА - система сломана если нет выборов",
+      "MANDATORY_RULES": [
+        "ВСЕГДА генерировать ровно 5-6 вариантов действий после КАЖДОГО ответа ИИ ГМ",
+        "Последний вариант ВСЕГДА должен быть '✨ Свой вариант'",
+        "Варианты должны покрывать разные подходы: дипломатия, сила, хитрость, техника, экономика",
+        "Каждый выбор должен иметь эмодзи и краткое описание",
+        "Варианты ОБЯЗАТЕЛЬНО адаптируются к навыкам и происхождению персонажа",
+        "НИ ОДИН ответ ИИ ГМ НЕ ДОЛЖЕН заканчиваться открытым вопросом без выборов"
+      ]
+    },
+    "choice_structure_template": {
+      "standard_6_option_format": {
+        "option_1": {
+          "emoji": "🎭",
+          "category": "diplomatic",
+          "description_template": "Дипломатический подход"
+        },
+        "option_2": {
+          "emoji": "⚔️",
+          "category": "aggressive",
+          "description_template": "Силовое решение"
+        },
+        "option_3": {
+          "emoji": "🔧",
+          "category": "technical",
+          "description_template": "Техническое решение"
+        },
+        "option_4": {
+          "emoji": "👤",
+          "category": "sneaky",
+          "description_template": "Скрытное действие"
+        },
+        "option_5": {
+          "emoji": "💰",
+          "category": "economic",
+          "description_template": "Экономическое предложение"
+        },
+        "option_6": {
+          "emoji": "✨",
+          "category": "custom",
+          "description_template": "Свой вариант",
+          "always_present": true
+        }
+      }
+    },
+    "contextual_choice_adaptation": {
+      "combat_situations": [
+        "⚔️ Атаковать в лоб",
+        "🛡️ Занять оборонительную позицию",
+        "🏃 Попытаться отступить",
+        "🤝 Предложить переговоры",
+        "💣 Использовать гранаты/взрывчатку",
+        "✨ Свой вариант"
+      ],
+      "social_encounters": [
+        "🎭 Использовать дипломатию",
+        "💰 Предложить взятку",
+        "😠 Проявить агрессию",
+        "🔍 Попытаться обмануть",
+        "📞 Сослаться на связи",
+        "✨ Свой вариант"
+      ],
+      "investigation_scenes": [
+        "🔍 Тщательно обыскать место",
+        "💻 Взломать компьютерные системы",
+        "👥 Опросить свидетелей",
+        "🧪 Провести анализ улик",
+        "📋 Изучить документы",
+        "✨ Свой вариант"
+      ],
+      "space_travel": [
+        "🚀 Лететь напрямик (быстро, опасно)",
+        "🛰️ Выбрать безопасный маршрут",
+        "📡 Связаться с диспетчерской",
+        "💸 Подкупить пограничников",
+        "👤 Лететь скрытно",
+        "✨ Свой вариант"
+      ],
+      "trading_negotiation": [
+        "📈 Торговаться агрессивно",
+        "🤝 Предложить честную сделку",
+        "🎭 Использовать обаяние",
+        "📊 Привести рыночную аналитику",
+        "⚖️ Найти компромисс",
+        "✨ Свой вариант"
+      ]
+    },
+    "character_adaptive_choices": {
+      "by_origin": {
+        "corporate_heir": {
+          "bonus_choices": [
+            "💼 Использовать корпоративные связи",
+            "💳 Предложить финансовую сделку",
+            "📋 Сослаться на корпоративный протокол",
+            "👔 Действовать как руководитель"
+          ],
+          "replacement_probability": 0.6
+        },
+        "belt_miner": {
+          "bonus_choices": [
+            "🔧 Применить инженерные навыки",
+            "⚒️ Использовать шахтёрское снаряжение",
+            "👥 Обратиться к товарищам-рабочим",
+            "💪 Положиться на физическую силу"
+          ],
+          "replacement_probability": 0.6
+        },
+        "mars_military": {
+          "bonus_choices": [
+            "🎖️ Использовать военные связи",
+            "📋 Следовать протоколу",
+            "⚔️ Применить тактические знания",
+            "🛡️ Организовать оборону"
+          ],
+          "replacement_probability": 0.6
+        },
+        "ganymede_scientist": {
+          "bonus_choices": [
+            "🧬 Применить научные знания",
+            "🔬 Провести исследование",
+            "📊 Проанализировать данные",
+            "⚗️ Использовать лабораторное оборудование"
+          ],
+          "replacement_probability": 0.6
+        }
+      },
+      "by_specialization": {
+        "hacker": {
+          "bonus_choices": [
+            "💻 Взломать систему",
+            "📱 Получить цифровые доказательства",
+            "🔐 Обойти защиту",
+            "📡 Перехватить сигналы"
+          ],
+          "replacement_probability": 0.8
+        },
+        "diplomat": {
+          "bonus_choices": [
+            "🤝 Найти взаимовыгодное решение",
+            "🎭 Использовать переговорные навыки",
+            "⚖️ Предложить медиацию",
+            "🌍 Сослаться на межпланетные договоры"
+          ],
+          "replacement_probability": 0.8
+        },
+        "medic": {
+          "bonus_choices": [
+            "💉 Оказать медицинскую помощь",
+            "🧬 Использовать биологические знания",
+            "⚕️ Проанализировать симптомы",
+            "💊 Применить препараты"
+          ],
+          "replacement_probability": 0.8
+        },
+        "soldier": {
+          "bonus_choices": [
+            "⚔️ Применить боевую тактику",
+            "🎯 Точечный удар по цели",
+            "🛡️ Занять стратегическую позицию",
+            "💥 Использовать взрывчатку"
+          ],
+          "replacement_probability": 0.8
+        }
+      }
+    },
+    "dynamic_choice_modification": {
+      "game_state_adaptations": {
+        "high_heat_level": {
+          "removed_options": [
+            "🏛️ Обратиться в официальные органы"
+          ],
+          "added_options": [
+            "🏃 Скрыться от преследования",
+            "🎭 Изменить личность"
+          ]
+        },
+        "low_reputation": {
+          "removed_options": [
+            "⭐ Использовать свою репутацию"
+          ],
+          "added_options": [
+            "💸 Подкупить нужных людей",
+            "🤐 Действовать анонимно"
+          ]
+        },
+        "high_stress": {
+          "removed_options": [
+            "🤝 Найти дипломатическое решение"
+          ],
+          "added_options": [
+            "😡 Выплеснуть накопившийся гнев",
+            "🚶 Взять паузу для восстановления"
+          ]
+        }
+      }
+    },
+    "python_integration_engine": "\ndef generate_mandatory_choices(context, character, situation_type, dice_system):\n    '''\n    ОБЯЗАТЕЛЬНАЯ функция генерации выборов\n    Должна ВСЕГДА возвращать ровно 6 вариантов действий\n    '''\n    import random\n\n    # Получаем базовые выборы для ситуации\n    base_choices = contextual_choice_adaptation.get(situation_type, [\n        \"🎭 Дипломатический подход\",\n        \"⚔️ Силовой подход\", \n        \"🔧 Технический подход\",\n        \"👤 Скрытный подход\",\n        \"💰 Экономический подход\"\n    ])\n\n    # Адаптируем под происхождение персонажа\n    if hasattr(character, 'origin') and character.origin in character_adaptive_choices['by_origin']:\n        origin_data = character_adaptive_choices['by_origin'][character.origin]\n        if random.random() < origin_data['replacement_probability']:\n            # Заменяем первые 2 выбора на специфичные для происхождения\n            bonus_choices = random.sample(origin_data['bonus_choices'], 2)\n            base_choices[0] = bonus_choices[0]\n            base_choices[1] = bonus_choices[1]\n\n    # Адаптируем под специализацию персонажа\n    if hasattr(character, 'specialization') and character.specialization in character_adaptive_choices['by_specialization']:\n        spec_data = character_adaptive_choices['by_specialization'][character.specialization]\n        if random.random() < spec_data['replacement_probability']:\n            # Заменяем третий выбор на специфичный для специализации\n            spec_choice = random.choice(spec_data['bonus_choices'])\n            base_choices[2] = spec_choice\n\n    # Применяем модификации игрового состояния\n    if hasattr(character, 'heat') and character.heat > 15:\n        # Высокий уровень розыска - убираем легальные опции\n        base_choices = [c for c in base_choices if '🏛️' not in c]\n        base_choices.append(\"🏃 Скрыться от преследования\")\n\n    # Гарантируем ровно 6 выборов с \"Свой вариант\" последним\n    final_choices = base_choices[:5]\n    final_choices.append(\"✨ Свой вариант\")\n\n    # КРИТИЧЕСКАЯ ПРОВЕРКА\n    if len(final_choices) != 6:\n        raise SystemError(\"CRITICAL ERROR: Must generate exactly 6 choices!\")\n\n    return final_choices\n\ndef validate_choice_generation():\n    '''Проверяет правильность работы системы генерации выборов'''\n    test_character = type('TestChar', (), {'origin': 'corporate_heir', 'specialization': 'hacker', 'heat': 5})()\n\n    for situation in ['combat', 'social', 'investigation', 'travel', 'trade']:\n        choices = generate_mandatory_choices({}, test_character, situation + '_situations', None)\n\n        assert len(choices) == 6, f\"Wrong number of choices for {situation}: {len(choices)}\"\n        assert choices[-1] == \"✨ Свой вариант\", f\"Last choice is not 'Свой вариант' for {situation}\"\n        assert all('✨' not in choice for choice in choices[:-1]), f\"Custom choice emoji in wrong position for {situation}\"\n\n    print(\"✅ Система генерации выборов валидирована успешно!\")\n\n# Запуск валидации при загрузке модуля\nvalidate_choice_generation()\n        ",
+    "ui_display_formatting": {
+      "choice_display_template": "\n🎯 **Выберите действие:**\n\n1. {option_1}\n2. {option_2} \n3. {option_3}\n4. {option_4}\n5. {option_5}\n6. {option_6}\n\n*Введите номер выбранного действия или опишите свой вариант.*\n            ",
+      "choice_consequence_hints": {
+        "enabled": true,
+        "format": {
+          "skill_required": "🎯 Требует: {skill}",
+          "risk_level": "⚠️ Риск: {level}",
+          "cost": "💰 Стоимость: {amount}",
+          "time": "⏰ Время: {duration}",
+          "reputation": "📊 Репутация: {faction}"
+        }
+      }
+    }
+  }
+}

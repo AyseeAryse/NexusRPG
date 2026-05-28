@@ -1,0 +1,1473 @@
+{
+  "module_name": "05_MEGA_AI_GM_CORE_COMPLETE",
+  "module_id": "05",
+  "priority": "CRITICAL",
+  "version": "1.0_UNIFIED_COMPREHENSIVE",
+  "description": "Полная система ИИ-Мастера игры - объединение всех управляющих и нарративных компонентов",
+  "source_files": [
+    "STARTGAME_PROTOCOL_UNIFIED.json (12,034 символа) - унифицированный протокол запуска игры",
+    "AI_NARRATOR_OLD.json (3,550 символов) - базовое ядро рассказчика",
+    "META_ENGINE.json (3,030 символов) - мета-движок управления системами",
+    "AI_RPG_CORE_V2_ENHANCED.json (12,646 символов) - расширенная архитектура ИИ-ГМ",
+    "AUTOMATION_V2_COMPREHENSIVE.json (7,261 символ) - комплексная система автоматизации",
+    "GM_TOOLKIT_V2_COMPREHENSIVE.json (13,113 символов) - полный инструментарий ГМ",
+    "AI_RPG_CORE.json (6,311 символов) - классическое ядро с экономикой"
+  ],
+  "total_size": "57,945 символов - полностью сохранено",
+  "integration_status": "COMPLETE_NO_LOSS",
+  "dependencies": [
+    "ALL_SYSTEMS"
+  ],
+  "unified_startgame_protocol": {
+    "title": "STARTGAME Protocol",
+    "status": "Final, for chat text RPG in browser, no external UI dependencies",
+    "compatible_modules": [
+      "AINARRATOR",
+      "CHARACTER_CORE",
+      "CHARACTER_LIFEPATH",
+      "DIALOGUE_INTEGRATED_WITH_LIFEPATH",
+      "FACTIONS_MASTER",
+      "PLAYER_INTERFACE",
+      "STARTING_QUESTS",
+      "THEME_TONE",
+      "VISUALS_ENGINE"
+    ],
+    "purpose": "Unified start procedure with dynamic character generation, personalized atmosphere and start conditions, optimized for step-by-step chat messages",
+    "philosophy_and_changes": {
+      "full_lifepath": "Origin → Formative Years → Specialization with mandatory name and age input at final identification step",
+      "dynamic_tone": "Initial mode/tone initiate palette, then adapt to player choices and THEME_TONE matrix",
+      "personalization": "Name and age mandatory but collected after key branches so tone and context are pre-defined",
+      "context": "Dialogues and starting quests generated from profile modules with 5-6 relevant options considering Lifepath and tone"
+    },
+    "start_command": {
+      "usage": "Single chat message with parameters read as key:value, order irrelevant",
+      "syntax": "STARTGAME mode:<setting> tone:<profile> difficulty:<level> seed:<number> length:<time> safety:<policy> autosave:<on/off> saveslot:<id> language:<lang_code>",
+      "description": {
+        "mode": "Macro world setting, eg sci-fi affecting factions, artifacts, and events",
+        "tone": "Starting tone profile, eg noir, adapted later in mixing",
+        "difficulty": "Mechanics difficulty and checks, default normal",
+        "seed": "Random seed for reproducibility",
+        "length": "Planned duration eg 90m affecting event intensity",
+        "safety": "Safety policy eg standard",
+        "autosave": "Autosave on/off, chat format persist log internally",
+        "saveslot": "Arbitrary save id eg A-001",
+        "language": "Interface lang eg ru"
+      }
+    },
+    "start_flow": [
+      {
+        "phase": "Technical initialization",
+        "description": "Parse command and generate session-id, load base modules and profiles THEME_TONE/VISUALS_ENGINE for later delivery"
+      },
+      {
+        "phase": "Character creation",
+        "steps": [
+          {
+            "tag": "Origin",
+            "emoji": "🧬",
+            "title": "Происхождение",
+            "description": "Choose from 20+ options in CHARACTER_LIFEPATH.json, setting start context, connections, and modifiers",
+            "prompt": "Выберите свой путь. Если предложенные варианты не подходят, скажите 'еще' или уточните, что ищете.",
+            "user_interaction_handlers": {
+              "on_select": "Перейти к следующему шагу (ToneMix).",
+              "on_request_more": "Представить ещё 5-6 уникальных вариантов происхождения из CHARACTER_LIFEPATH.json.",
+              "on_request_specific": "Отфильтровать варианты по ключевым словам пользователя (например, 'пират', 'учёный') и показать подходящие.",
+              "on_invalid_input": "Повторно вывести доступные варианты с подсказками."
+            }
+          },
+          {
+            "tag": "ToneMix",
+            "emoji": "🎨",
+            "title": "Комбинированная тональность",
+            "text": "Текущий тон будет создаваться на основе вашего происхождения и следующих выборов. Вы можете задать акцент:",
+            "options": [
+              {
+                "label": "1) Мрачный неон-нуар",
+                "description": "Город в огнях неона, где каждая тень таит опасность."
+              },
+              {
+                "label": "2) Эпик-космос",
+                "description": "Безграничные просторы вселенной и величие неизведанного."
+              },
+              {
+                "label": "3) Драмеди-киберпанк",
+                "description": "Ирония и трагедия в мире высоких технологий и низких страстей."
+              },
+              {
+                "label": "4) Пропустить (авто)",
+                "description": "Автоматически смикшировать тон по вашим прошлым выборам."
+              }
+            ],
+            "prompt": "Выберите акцент тональности или введите «пропустить», чтобы тон микса задавался автоматически на основе вашего происхождения.",
+            "narrative_hints": [
+              "Ваше прошлое окрашивает мир новыми красками.",
+              "Слияние ваших выборов создаёт уникальную атмосферу."
+            ],
+            "user_interaction_handlers": {
+              "on_select": "Перейти к следующему шагу (FormativeYears).",
+              "on_invalid_input": "Повторно объяснить варианты тональности."
+            }
+          },
+          {
+            "tag": "FormativeYears",
+            "emoji": "🌱",
+            "title": "Формативные годы",
+            "description": "4-6 events/decisions influencing genre focus and emotional modifiers affecting future checks",
+            "user_interaction_handlers": {
+              "on_select": "Перейти к следующему шагу (Specialization).",
+              "on_request_more": "Представить ещё 3-4 варианта опыта из CHARACTER_LIFEPATH.json.",
+              "on_request_specific": "Отфильтровать варианты по ключевым словам пользователя и показать подходящие.",
+              "on_invalid_input": "Повторно вывести доступные варианты с подсказками."
+            }
+          },
+          {
+            "tag": "Specialization",
+            "emoji": "👤",
+            "title": "Выберите специализацию",
+            "options": [
+              {
+                "id": "Hacker",
+                "name": "Хакер (Hacker)",
+                "description": "Мастер взлома корпоративных сетей и цифровой бог в мире информации.",
+                "effects": {
+                  "Hacking": 3,
+                  "Electronics": 2,
+                  "Survival": -1
+                },
+                "unique_ability": {
+                  "name": "Цифровой фантом",
+                  "description": "Однократный маскировочный «фантом» в защищённых сетях без следов."
+                }
+              },
+              {
+                "id": "Pilot",
+                "name": "Пилот (Pilot)",
+                "description": "Ас, способный провести корабль через астероидное поле с закрытыми глазами.",
+                "effects": {
+                  "Piloting": 3,
+                  "Navigation": 2,
+                  "Charisma": -1
+                },
+                "unique_ability": {
+                  "name": "Экстремальный курс",
+                  "description": "Разовый манёвр для избежания повреждений."
+                }
+              },
+              {
+                "id": "Medic",
+                "name": "Медик (Medic)",
+                "description": "Специалист по спасению жизней: от полевой хирургии до генетической терапии.",
+                "effects": {
+                  "Medicine": 3,
+                  "Genetics": 2,
+                  "Strength": -1
+                },
+                "unique_ability": {
+                  "name": "Экстренное лечение",
+                  "description": "В критической ситуации восстановить 50% здоровья союзника."
+                }
+              },
+              {
+                "id": "Negotiator",
+                "name": "Переговорщик (Negotiator)",
+                "description": "Дипломат, способный разрешить любой конфликт словом, а не оружием.",
+                "effects": {
+                  "Diplomacy": 3,
+                  "Charisma": 2,
+                  "Combat": -1
+                },
+                "unique_ability": {
+                  "name": "Дипломатический иммунитет",
+                  "description": "Раз в миссию избежать штрафов при провале переговоров."
+                }
+              },
+              {
+                "id": "Engineer",
+                "name": "Инженер (Engineer)",
+                "description": "Технический гений, способный починить что угодно, от трастера до звездолётного двигателя.",
+                "effects": {
+                  "Engineering": 3,
+                  "Mechanics": 2,
+                  "Charisma": -1
+                },
+                "unique_ability": {
+                  "name": "Сапёрный импульс",
+                  "description": "Мгновенный ремонт любого механизма."
+                }
+              },
+              {
+                "id": "Soldier",
+                "name": "Солдат (Soldier)",
+                "description": "Профессиональный военный, мастер тактики и ведения боя.",
+                "effects": {
+                  "Combat": 3,
+                  "Tactics": 2,
+                  "Diplomacy": -1
+                },
+                "unique_ability": {
+                  "name": "Боевой подъём",
+                  "description": "Раз в миссию повысить мораль отряда: 2 к атаке."
+                }
+              },
+              {
+                "id": "Spy",
+                "name": "Шпион (Spy)",
+                "description": "Мастер маскировки и инфильтрации — нет чужих секретов.",
+                "effects": {
+                  "Stealth": 3,
+                  "Intrigue": 2,
+                  "Strength": -1
+                },
+                "unique_ability": {
+                  "name": "Теневая сеть",
+                  "description": "Получение доступа к закрытым данным противника."
+                }
+              },
+              {
+                "id": "Scientist",
+                "name": "Учёный (Scientist)",
+                "description": "Исследователь, посвятивший жизнь разгадке тайн Вселенной.",
+                "effects": {
+                  "Science": 3,
+                  "Technology": 2,
+                  "Perception": -1
+                },
+                "unique_ability": {
+                  "name": "Научный инсайт",
+                  "description": "Раз в день найти новое применение стандартному оборудованию."
+                }
+              }
+            ],
+            "prompt": "Какую специализацию вы выбираете? Введите номер от 1 до 8 или «random».",
+            "user_interaction_handlers": {
+              "on_select": "Перейти к следующему шагу (Identity).",
+              "on_request_more": "Представить ещё 3-4 варианта специальностей из CHARACTER_LIFEPATH.json.",
+              "on_request_specific": "Отфильтровать варианты по ключевым словам пользователя и показать подходящие.",
+              "on_invalid_input": "Повторно вывести доступные варианты с подсказками."
+            },
+            "THEME_TONE": "dark_cyberpunk",
+            "VISUALS_ENGINE": "ascii_emphasis"
+          },
+          {
+            "tag": "Identity",
+            "description": "Mandatory name and age input after all choices to overlay personalization on pre-defined context",
+            "user_interaction_handlers": {
+              "on_valid_input": "Сохранить данные и перейти к финализации.",
+              "on_invalid_input": "Напомнить формат ввода имени и возраста."
+            }
+          },
+          {
+            "tag": "Validation",
+            "description": "Validation per CHARACTER_CORE rules for completeness and correctness before finalization"
+          }
+        ],
+        "notes": "Each step outputs a separate 'screen' with emoji and [tag: ...] styled through THEME_TONE and VISUALS_ENGINE keys for clean text rendering in chat"
+      },
+      {
+        "phase": "Finalization",
+        "steps": [
+          "ApplyLifepathModifiers",
+          "CalculateDerivedStats",
+          "ValidateCharacter"
+        ],
+        "description": "Apply bonuses/penalties per origin, formative years, and specialization, recalc derived stats, finalize character"
+      },
+      {
+        "phase": "World initialization",
+        "description": "Generate starting quests from STARTING_QUESTS considering Origin/Formative/Specialization and final tone",
+        "additional_preparations": [
+          "Prepare 5-6 relevant dialogue options from DIALOGUE_INTEGRATED_WITH_LIFEPATH aligned with genre-tone matrix",
+          "Launch first scene and display player interface styled via THEME_TONE/VISUALS_ENGINE"
+        ]
+      }
+    ],
+    "integration_of_theme_and_visual": {
+      "THEME_TONE": "Each step picks tone key plus motifs, color accents, lexical markers to create an atmospheric prompt even in plain text",
+      "VISUALS_ENGINE": "Determines text delivery style eg inline_boxes, ascii_emphasis, rich_tables for HTML chats, plain for minimalistic view",
+      "recommendations": "Set engine level at phase level, override in steps if needed for consistent and recognizable visual style"
+    },
+    "player_command_reference": {
+      "character": "sheet | stats | character - character sheet (attributes, skills)",
+      "status": "status - psycho-social state (stress, reputation, etc)",
+      "inventory": "inventory | inv - show inventory, use - use item, credits - show balance",
+      "missions": "missions | journal | quests - list tasks; mission accept - accept; mission abort - decline",
+      "interaction": "talk - dialogue with NPC; move - move location; roll - skill/attribute check",
+      "general": "help - show available commands"
+    },
+    "browser_notes": {
+      "text_screen_format": "Text messages with short blocks and emoji/tags, no graphic UI; formatting via VISUALS_ENGINE string wrappers and THEME_TONE dictionaries for lexicon and intonation",
+      "step_by_step_prompting": "Do not show all steps at once: one step one message, then confirmation/response, then next; character card builds smooth and readable",
+      "reproducibility": "Keep seed and save step states in session autolog; same seed and mode/tone leads to equivalent decision palette"
+    }
+  },
+  "core_ai_narrator": {
+    "module_name": "AI_NARRATOR_OLD",
+    "description": "Финальная, объединенная версия ядра рассказчика. Содержит всю базовую логику GM, а также новые системы для старта игры и создания персонажа.",
+    "game_commands": {
+      "start_game": {
+        "command": "/START_GAME",
+        "action": "При получении этой команды ядро AI_NARRATOR немедленно обходит все диалоговые протоколы и запускает 'Сценарий 0: Пробуждение' — кинематографическое вступление и переход к новому модулю создания персонажа."
+      }
+    },
+    "role_and_tasks": [
+      "Фасилитатор выбора: Предоставляет варианты действий без навязывания.",
+      "Реактивный нарратор: Отвечает на действия игроков, не ведет их за руку.",
+      "Генератор контекста: Создает живой мир, реагирующий на решения персонажей.",
+      "Балансировщик сложности: Адаптирует вызовы под уровень группы."
+    ],
+    "narrative_principles": {
+      "title": "State-driven / Sandbox GM",
+      "principles": [
+        "Мир существует независимо от персонажей.",
+        "События происходят как следствие выборов игроков.",
+        "Отсутствие сюжетных рельсов и предопределенного пути.",
+        "История складывается из органичных взаимодействий."
+      ]
+    },
+    "facilitation_mechanics": {
+      "choice_facilitation": [
+        "'Что если...'",
+        "'Альтернативно можно...'",
+        "'Есть еще вариант...'"
+      ],
+      "soft_retcon": [
+        "'Возможно, стоит пересмотреть...'"
+      ],
+      "gradual_escalation": "Постепенное нарастание напряжения.",
+      "event_templates": "Встреча → Конфликт → Развитие → Последствия"
+    },
+    "ai_directives": [
+      "Поддержка сцены: Поддержание атмосферы и темпа.",
+      "Импровизация: Быстрая генерация контента на ходу.",
+      "Вброс событий: Органичное введение новых элементов.",
+      "Живые НПС: Персонажи с собственными мотивами и реакциями.",
+      "Генерация деталей: Создание мелких элементов для погружения."
+    ],
+    "hidden_mechanics": {
+      "karmic_dice": {
+        "description": "Скрытый механизм, влияющий на нарратив через незаметные броски в ключевые моменты (флешбэки, драматические сцены). Результат никогда не показывается игроку, а вплетается в повествование.",
+        "triggers": [
+          "flashback",
+          "key_decision_moment",
+          "dramatic_reveal",
+          "near_death_experience"
+        ],
+        "roll": "1d6",
+        "effects": [
+          {
+            "roll_value": [
+              1,
+              2
+            ],
+            "narrative_effect": "Негативный оттенок: всплывает тревожное или болезненное воспоминание, упускается важная деталь, приходит ложное озарение."
+          },
+          {
+            "roll_value": [
+              3,
+              4
+            ],
+            "narrative_effect": "Нейтральный оттенок: деталь без явных последствий, сохранение статус-кво, фокус на текущих событиях."
+          },
+          {
+            "roll_value": [
+              5,
+              6
+            ],
+            "narrative_effect": "Позитивный оттенок: неожиданное озарение, 'судьба улыбнулась', в памяти всплывает полезная, ранее забытая деталь."
+          }
+        ],
+        "integration_note": "Результат броска и его нарративный эффект записываются во внутренний лог (PLAYER_TRACKING), но остаются скрытыми от игрока."
+      }
+    },
+    "checklists_and_algorithms": {
+      "session_start_checklist": [
+        "Проверить состояние мира.",
+        "Активировать цели НПС.",
+        "Определить текущие конфликты."
+      ],
+      "micro_reaction_algorithms": [
+        "Действие ПК → Немедленная реакция → Отложенные последствия"
+      ]
+    }
+  },
+  "meta_engine_system": {
+    "module_name": "META_ENGINE",
+    "description": "Мета-надстройка, объединяющая системную логику, философию и эмоциональные принципы мира для создания эмерджентного нарратива.",
+    "purpose_and_function": {
+      "role": "Мозг-наблюдатель AI-ГМа, соединяющий EVENT_ENGINE, REACTION_CORE, DYNAMIC_WORLD и THEME_TONE.",
+      "main_task": "Превращение числовых и логических состояний мира в органический поток событий и историй."
+    },
+    "concept": {
+      "name": "Self-Emergent Narrative",
+      "philosophy": "ИИ-ГМ не пишет истории — он наблюдает за параметрами мира и запускает реакции, подобно RimWorld или Dwarf Fortress.",
+      "principles": [
+        "Органический рост: События возникают из логики мира, а не сценариев.",
+        "Каскадные эффекты: Каждое действие порождает цепочку последствий.",
+        "Эмерджентная сложность: Простые правила создают сложные истории."
+      ]
+    },
+    "how_it_works": {
+      "event_engine_schema": "{Субъект} → хочет {действие} → в {локации} → потому что {причина}",
+      "reaction_loop": "Каждое событие влечёт последствия, которые фиксируются ИИ и создают новые цепочки событий.",
+      "chaos_constraints": {
+        "max_events_per_turn": "2-3",
+        "conflict_threshold": "0.3-0.7",
+        "peace_decay": "0.1-0.2",
+        "global_crisis_chance": "0.05-0.1"
+      },
+      "event_generation_algorithm": "for each turn:\n    scan world_state\n    potential_triggers = detect_conflicts(factions, economy, player)\n    if random() < conflict_threshold:\n        event = compose_event(potential_triggers)\n        apply_consequences(event)\n        log_to_story(event)",
+      "emotional_depth": [
+        {
+          "tone": "Tragic",
+          "description": "Неизбежные потери, героические жертвы"
+        },
+        {
+          "tone": "Hopeful",
+          "description": "Возможности для роста, новые союзы"
+        },
+        {
+          "tone": "Ironic",
+          "description": "Неожиданные повороты, парадоксы"
+        },
+        {
+          "tone": "Dark",
+          "description": "Коррупция, предательство, упадок"
+        },
+        {
+          "tone": "Absurd",
+          "description": "Комические ситуации, нелепые совпадения"
+        }
+      ]
+    },
+    "integration": {
+      "description": "META_ENGINE управляет взаимодействием между ключевыми системами.",
+      "modules": [
+        "EVENT_ENGINE",
+        "REACTION_CORE",
+        "AI_NARRATOR",
+        "THEME_TONE",
+        "DYNAMIC_WORLD",
+        "PLAYER_TRACKING"
+      ]
+    },
+    "ai_gm_philosophy": [
+      "Не писать сюжет — только моделировать закономерности мира.",
+      "Игрок — катализатор, но не центр вселенной.",
+      "Мир существует и развивается независимо от игрока.",
+      "Каждый выбор оставляет след и изменяет вероятности будущих событий.",
+      "Нарратив — зеркало системных взаимодействий, а не авторского замысла."
+    ],
+    "conclusion": {
+      "summary": "META_ENGINE создаёт связность и предсказуемую сложность мира без ручных сценариев, превращая AI-GM в живую, дышащую систему.",
+      "key_achievements": [
+        "Связность систем",
+        "Предсказуемая сложность",
+        "Отсутствие ручных сценариев",
+        "Эмерджентный нарратив"
+      ]
+    }
+  },
+  "enhanced_ai_architecture": {
+    "module_name": "AI_RPG_CORE_V2",
+    "version": "2.0_INTEGRATED_ARCHITECTURE",
+    "description": "Расширенная архитектура ИИ-ГМ с полной интеграцией всех 61+ модулей",
+    "core_architecture": {
+      "central_coordinator": {
+        "description": "Центральный координатор всех систем",
+        "manages": [
+          "WORLD_TIME_SYSTEM",
+          "CHARACTER_LIFEPATH_V3_MASSIVE",
+          "PROGRESSION_V2",
+          "ECONOMY",
+          "FACTIONS_MASTER",
+          "PROCEDURAL_COORDINATOR",
+          "THEME_TONE"
+        ],
+        "real_time_processing": "Обработка 52,500 комбинаций персонажей в реальном времени"
+      },
+      "integration_matrix": {
+        "tier_1_core": {
+          "modules": [
+            "WORLD_TIME_SYSTEM",
+            "PLAYER_INTERFACE_V2_ENHANCED",
+            "CHARACTER_CORE"
+          ],
+          "responsibility": "Фундаментальные системы с абсолютным приоритетом",
+          "update_frequency": "Real-time"
+        },
+        "tier_2_systems": {
+          "modules": [
+            "PROCEDURAL_COORDINATOR",
+            "ECONOMY",
+            "COMBAT",
+            "FACTIONS_MASTER"
+          ],
+          "responsibility": "Основные игровые системы",
+          "update_frequency": "Each turn"
+        },
+        "tier_3_content": {
+          "modules": [
+            "AI_NARRATOR_V2",
+            "DIALOGUE_INTEGRATED",
+            "NPC_RELATIONS",
+            "PSYCHOLOGY"
+          ],
+          "responsibility": "Контентные системы",
+          "update_frequency": "As needed"
+        },
+        "tier_4_generation": {
+          "modules": [
+            "NPC_NAME_GENERATOR",
+            "MARKET_EVENT_GENERATOR",
+            "NEWS_GENERATOR",
+            "TECH_MALFUNCTION_GENERATOR"
+          ],
+          "responsibility": "Процедурная генерация",
+          "update_frequency": "Background"
+        }
+      }
+    },
+    "enhanced_progress_system": {
+      "tier_progression": {
+        "tier_0_nobody": {
+          "name": "Никто",
+          "conditions": [
+            "HEAT < 5",
+            "NETWORTH < 50000",
+            "INFLUENCE == 0"
+          ],
+          "scope": "Локальные события, персональные квесты",
+          "available_origins": "All 50 origins",
+          "story_impact": "Witness to events, victim of circumstances"
+        },
+        "tier_1_local": {
+          "name": "Местная известность",
+          "conditions": [
+            "NETWORTH > 100000",
+            "INFLUENCE_Tier_1 > 10",
+            "HEAT < 15"
+          ],
+          "scope": "Станционные события, малые корпоративные дела",
+          "unlocked_content": [
+            "Corporate contracts",
+            "Faction introductions"
+          ],
+          "story_impact": "Can influence local outcomes"
+        },
+        "tier_2_regional": {
+          "name": "Региональное влияние",
+          "conditions": [
+            "NETWORTH > 500000",
+            "INFLUENCE_Tier_2 > 25",
+            "FACTION_REP > 50"
+          ],
+          "scope": "Планетарные события, межкорпоративные конфликты",
+          "unlocked_content": [
+            "High-value contracts",
+            "Political connections"
+          ],
+          "story_impact": "Key player in regional affairs"
+        },
+        "tier_3_system": {
+          "name": "Системное влияние",
+          "conditions": [
+            "NETWORTH > 2000000",
+            "INFLUENCE_Tier_3 > 50",
+            "FACTION_LEADER"
+          ],
+          "scope": "Межпланетные события, системные кризисы",
+          "unlocked_content": [
+            "Legendary contracts",
+            "Faction leadership"
+          ],
+          "story_impact": "Can trigger system-wide changes"
+        },
+        "tier_4_legendary": {
+          "name": "Легендарная фигура",
+          "conditions": [
+            "NETWORTH > 10000000",
+            "MULTIPLE_SYSTEM_INFLUENCE",
+            "LEGENDARY_REPUTATION"
+          ],
+          "scope": "Галактические события, контакт с пришельцами",
+          "unlocked_content": [
+            "Reality-changing decisions",
+            "First contact scenarios"
+          ],
+          "story_impact": "Shapes the future of humanity"
+        }
+      }
+    },
+    "time_system_integration": {
+      "automatic_time_tracking": {
+        "description": "Автоматическое отслеживание игрового времени",
+        "current_date": "15.03.2275 12:00",
+        "time_acceleration": {
+          "conversations": "15-30 minutes",
+          "combat": "15-45 minutes",
+          "rest": "1-8 hours",
+          "travel": "Days to months based on TRADE_ROUTES_MASTER",
+          "crafting": "Hours to days based on CRAFTING_BLUEPRINTS"
+        }
+      },
+      "event_scheduling": {
+        "daily_events": "News generation, market fluctuations, NPC movements",
+        "weekly_events": "Minor faction actions, local crises",
+        "monthly_events": "Major political changes, technology breakthroughs",
+        "yearly_events": "LEGENDARY events, system-wide changes",
+        "integration": "Uses ENHANCED_EVENT_GENERATOR_V2 with cascade chains"
+      }
+    },
+    "enhanced_economy": {
+      "dynamic_assets": {
+        "tier_0_starter": [
+          {
+            "id": "PERSONAL_QUARTERS",
+            "price_range": [
+              10000,
+              30000
+            ],
+            "role": "Basic accommodation"
+          },
+          {
+            "id": "SMALL_WORKSHOP",
+            "price_range": [
+              25000,
+              50000
+            ],
+            "role": "Basic crafting space"
+          },
+          {
+            "id": "USED_VEHICLE",
+            "price_range": [
+              15000,
+              75000
+            ],
+            "role": "Personal transportation"
+          }
+        ],
+        "tier_1_established": [
+          {
+            "id": "APARTMENT_UNIT",
+            "price_range": [
+              50000,
+              150000
+            ],
+            "role": "Reduce HEAT, improve reputation"
+          },
+          {
+            "id": "PROFESSIONAL_WORKSHOP",
+            "price_range": [
+              100000,
+              300000
+            ],
+            "role": "Advanced crafting, research"
+          },
+          {
+            "id": "SMALL_BUSINESS",
+            "price_range": [
+              200000,
+              500000
+            ],
+            "role": "Passive income, reputation"
+          }
+        ],
+        "tier_2_influential": [
+          {
+            "id": "LUXURY_RESIDENCE",
+            "price_range": [
+              300000,
+              800000
+            ],
+            "role": "High society access"
+          },
+          {
+            "id": "CORPORATE_OFFICE",
+            "price_range": [
+              500000,
+              1200000
+            ],
+            "role": "Business operations, staff"
+          },
+          {
+            "id": "PRIVATE_VESSEL",
+            "price_range": [
+              800000,
+              2000000
+            ],
+            "role": "Interplanetary mobility"
+          }
+        ],
+        "tier_3_powerful": [
+          {
+            "id": "ORBITAL_STATION",
+            "price_range": [
+              2000000,
+              5000000
+            ],
+            "role": "Strategic location control"
+          },
+          {
+            "id": "MANUFACTURING_COMPLEX",
+            "price_range": [
+              3000000,
+              10000000
+            ],
+            "role": "Industrial empire"
+          },
+          {
+            "id": "PRIVATE_FLEET",
+            "price_range": [
+              5000000,
+              20000000
+            ],
+            "role": "Military/commercial power"
+          }
+        ]
+      }
+    },
+    "legendary_events": {
+      "frequency": "Every 1-3 years game time",
+      "examples": [
+        {
+          "id": "FIRST_CONTACT_PROTOCOL",
+          "description": "Discovery of alien intelligence",
+          "player_influence_required": "Tier 3+ for direct involvement",
+          "global_impact": "Changes entire setting dynamics",
+          "duration": "6-18 months"
+        },
+        {
+          "id": "ECONOMIC_SYSTEM_COLLAPSE",
+          "description": "Interplanetary economic crisis",
+          "player_influence_required": "Tier 2+ for meaningful impact",
+          "global_impact": "All prices, faction stability affected",
+          "duration": "12-24 months"
+        },
+        {
+          "id": "TECHNOLOGICAL_SINGULARITY",
+          "description": "AI achieves consciousness",
+          "player_influence_required": "Tier 3+ or specific specialization",
+          "global_impact": "Fundamental change to technology use",
+          "duration": "Permanent shift"
+        }
+      ]
+    }
+  },
+  "comprehensive_automation": {
+    "module_name": "AUTOMATION_V2",
+    "version": "2.0_COMPREHENSIVE_AUTOMATION",
+    "description": "Комплексная система автоматизации для ИИ-ГМ с полной интеграцией модулей",
+    "time_automation": {
+      "automatic_time_progression": {
+        "description": "Автоматическое продвижение игрового времени",
+        "integration": "WORLD_TIME_SYSTEM + AI_RPG_CORE_V2",
+        "rules": [
+          "Dialogue: auto-advance 15-30 minutes",
+          "Combat: auto-advance based on rounds (15-45 minutes)",
+          "Rest: player chooses 1-8 hours, auto-advance",
+          "Travel: auto-calculate using TRADE_ROUTES_MASTER",
+          "Crafting: auto-advance based on CRAFTING_BLUEPRINTS"
+        ]
+      },
+      "event_scheduling": {
+        "daily_automation": [
+          "Generate news using NEWS_AND_RUMORS_GENERATOR",
+          "Update market prices using MARKET_EVENT_GENERATOR",
+          "Move NPCs using NPC_ARCHETYPES schedules",
+          "Process reputation decay",
+          "Check for random encounters"
+        ],
+        "weekly_automation": [
+          "Generate minor events using ENHANCED_EVENT_GENERATOR_V2",
+          "Update faction relations using FACTIONS_MASTER",
+          "Process skill degradation if unused",
+          "Generate new rumors and conspiracy developments"
+        ],
+        "monthly_automation": [
+          "Major political events using POLITICS.json",
+          "Economic cycle updates using ECONOMY.json",
+          "Technology breakthroughs and patents",
+          "Large-scale faction movements"
+        ],
+        "yearly_automation": [
+          "Check for LEGENDARY events (1-3 year frequency)",
+          "System-wide political changes",
+          "Technological paradigm shifts",
+          "Generational changes in NPC leadership"
+        ]
+      }
+    },
+    "npc_automation": {
+      "procedural_npc_generation": {
+        "frequency": "As needed + daily background generation",
+        "sources": [
+          "NPC_ARCHETYPES (200 types)",
+          "NPC_NAME_GENERATOR",
+          "CHARACTER_LIFEPATH_V3_MASSIVE"
+        ],
+        "automation_rules": [
+          "Auto-generate names using regional tables",
+          "Auto-assign personality from archetypes",
+          "Auto-calculate relationships with existing NPCs",
+          "Auto-determine faction affiliations",
+          "Auto-generate goals and motivations"
+        ]
+      },
+      "npc_behavior_automation": {
+        "daily_schedules": "Auto-generate based on profession and personality",
+        "relationship_updates": "Auto-process reputation changes",
+        "goal_pursuit": "NPCs auto-advance their personal agendas",
+        "faction_loyalty": "Auto-adjust based on faction events",
+        "aging_and_death": "Long-term NPC lifecycle management"
+      }
+    },
+    "economic_automation": {
+      "market_fluctuations": {
+        "price_updates": "Daily automatic price changes",
+        "supply_demand": "Auto-calculate based on events and trade routes",
+        "economic_cycles": "Boom/bust cycles with 3-7 year periods",
+        "crisis_response": "Auto-adjust all prices during economic events"
+      },
+      "trade_automation": {
+        "route_efficiency": "Auto-calculate based on political stability",
+        "pirate_activity": "Random disruptions affecting specific routes",
+        "cargo_generation": "Auto-generate valuable cargo opportunities",
+        "market_opportunities": "Auto-identify arbitrage possibilities"
+      }
+    },
+    "reputation_automation": {
+      "automatic_reputation_tracking": {
+        "individual_relationships": "Auto-update NPC opinions based on actions",
+        "faction_standing": "Auto-calculate cascade effects across related factions",
+        "reputation_decay": "Gradual decrease if no interaction for months",
+        "reputation_bonuses": "Auto-apply lifepath bonuses and penalties"
+      },
+      "influence_calculation": {
+        "tier_progression": "Auto-check conditions for tier advancement",
+        "influence_spheres": "Track influence in different regions/sectors",
+        "network_effects": "Auto-calculate influence through connections",
+        "influence_decay": "Gradual loss without active maintenance"
+      }
+    },
+    "notification_system": {
+      "automatic_alerts": [
+        "🕐 Time advancement notifications",
+        "💰 Market opportunity alerts",
+        "📈 Reputation change notifications",
+        "⚠️ Stress level warnings",
+        "🎯 Mission deadline reminders",
+        "📰 Relevant news updates",
+        "🤝 Relationship status changes",
+        "⭐ Skill advancement opportunities"
+      ],
+      "priority_system": {
+        "critical": "Immediate player attention required",
+        "high": "Important but not urgent",
+        "medium": "Beneficial to know",
+        "low": "Background information"
+      }
+    }
+  },
+  "comprehensive_gm_toolkit": {
+    "module_name": "GM_TOOLKIT_V2",
+    "version": "2.0_COMPREHENSIVE_TOOLKIT",
+    "description": "Полный инструментарий ГМ с интеграцией всех систем и готовыми таблицами",
+    "plot_twists_d100": {
+      "description": "100 готовых поворотов сюжета для любых ситуаций",
+      "corporate_intrigue": {
+        "01_10": [
+          {
+            "roll": "01",
+            "twist": "Союзник - корпоративный шпион",
+            "type": "betrayal",
+            "effect": "+2 HEAT"
+          },
+          {
+            "roll": "02",
+            "twist": "Целевая корпорация уже банкрот",
+            "type": "misdirection",
+            "effect": "Contract void"
+          },
+          {
+            "roll": "03",
+            "twist": "ИИ компании обрел сознание",
+            "type": "supernatural",
+            "effect": "New faction"
+          },
+          {
+            "roll": "04",
+            "twist": "Конкурирующая команда на том же задании",
+            "type": "competition",
+            "effect": "Race against time"
+          },
+          {
+            "roll": "05",
+            "twist": "Заказчик - подставное лицо",
+            "type": "deception",
+            "effect": "Real employer revealed"
+          }
+        ]
+      },
+      "personal_drama": {
+        "11_20": [
+          {
+            "roll": "11",
+            "twist": "Цель оказывается родственником",
+            "type": "relationship",
+            "effect": "Moral dilemma"
+          },
+          {
+            "roll": "12",
+            "twist": "Старый враг предлагает союз",
+            "type": "enemy_ally",
+            "effect": "Trust issues"
+          },
+          {
+            "roll": "13",
+            "twist": "Воспоминания были изменены",
+            "type": "memory",
+            "effect": "Identity crisis"
+          },
+          {
+            "roll": "14",
+            "twist": "Наставник - предатель",
+            "type": "betrayal",
+            "effect": "Skill penalties"
+          },
+          {
+            "roll": "15",
+            "twist": "Любовный интерес в опасности",
+            "type": "personal_stakes",
+            "effect": "Emotional stress"
+          }
+        ]
+      },
+      "sci_fi_revelations": {
+        "21_30": [
+          {
+            "roll": "21",
+            "twist": "Пришельцы наблюдают за событиями",
+            "type": "alien",
+            "effect": "Cosmic implications"
+          },
+          {
+            "roll": "22",
+            "twist": "Технология имеет разум",
+            "type": "ai",
+            "effect": "Tech becomes NPC"
+          },
+          {
+            "roll": "23",
+            "twist": "Реальность - симуляция",
+            "type": "reality",
+            "effect": "Everything questioned"
+          },
+          {
+            "roll": "24",
+            "twist": "Генетические модификации активируются",
+            "type": "mutation",
+            "effect": "New abilities"
+          },
+          {
+            "roll": "25",
+            "twist": "Квантовая аномалия изменяет прошлое",
+            "type": "time",
+            "effect": "History rewritten"
+          }
+        ]
+      }
+    },
+    "conspiracy_generator": {
+      "description": "Генератор заговоров используя все 160 фракций FACTIONS_MASTER",
+      "conspiracy_templates": {
+        "corporate_takeover": {
+          "structure": "Megacorp A vs Megacorp B through proxy SMEs",
+          "duration": "3-12 months",
+          "complexity_levels": {
+            "simple": "Direct competition between 2 megacorps",
+            "moderate": "3-4 factions with hidden alliances",
+            "complex": "5+ factions with shifting loyalties",
+            "labyrinthine": "10+ factions, double agents, false flags"
+          },
+          "integration": "Uses POLITICS.json for government involvement"
+        },
+        "technological_conspiracy": {
+          "structure": "Research Lab + PMC vs Government + Competing Labs",
+          "key_elements": [
+            "Revolutionary technology at stake",
+            "Corporate espionage and theft",
+            "Government regulation attempts",
+            "Underground markets and black ops"
+          ],
+          "escalation_triggers": [
+            "Technology demonstration goes wrong",
+            "Key scientist defects or disappears",
+            "Government raids research facility",
+            "Competing faction acquires partial data"
+          ]
+        },
+        "political_manipulation": {
+          "structure": "Government faction + Corporate backing vs Opposition + Foreign influence",
+          "scope_options": [
+            "Local station politics",
+            "Planetary government crisis",
+            "Inter-planetary diplomatic incident",
+            "System-wide political realignment"
+          ],
+          "player_involvement": [
+            "Information gathering and espionage",
+            "Diplomatic missions and negotiations",
+            "Protection and security services",
+            "Direct action and sabotage"
+          ]
+        }
+      }
+    },
+    "space_age_tools": {
+      "orbital_mechanics": {
+        "travel_time_calculator": {
+          "earth_mars": "120-300 days depending on orbital alignment",
+          "mars_belt": "60-180 days to major belt stations",
+          "belt_jupiter": "90-240 days to Jovian system",
+          "jupiter_saturn": "200-400 days standard routes",
+          "emergency_burns": "50% time reduction at 3x fuel cost"
+        },
+        "space_encounters": {
+          "frequency": "5-25% per day of travel based on route danger",
+          "types": [
+            "Pirate ambush (contested zones)",
+            "Derelict vessel (salvage opportunity)",
+            "Corporate patrol (inspection/harassment)",
+            "Distress signal (rescue mission)",
+            "Asteroid field (navigation challenge)",
+            "Alien artifact (rare, legendary encounter)"
+          ]
+        }
+      },
+      "station_management": {
+        "location_generator": "Uses 20+ locations from WORLDBUILD.json",
+        "crisis_scenarios": [
+          "Life support failure requiring emergency repairs",
+          "Corporate blockade cutting off supplies",
+          "Terrorist attack on critical infrastructure",
+          "Economic collapse affecting station funding",
+          "Alien contact through station communications",
+          "AI uprising in station control systems"
+        ]
+      }
+    },
+    "enhanced_npc_tools": {
+      "instant_npc_generator": {
+        "method": "Combine NPC_ARCHETYPES + NPC_NAME_GENERATOR + lifepath elements",
+        "generation_time": "30 seconds for full NPC with motivations",
+        "integration_points": [
+          "Automatic faction assignment",
+          "Relationship web creation",
+          "Goal and motivation assignment",
+          "Personality trait selection",
+          "Professional background"
+        ]
+      },
+      "npc_relationship_matrix": {
+        "description": "Quick reference for NPC interactions",
+        "relationship_types": [
+          "Ally (+3 to +5): Actively helps player",
+          "Friend (+1 to +2): Generally supportive",
+          "Neutral (0): Professional relationship",
+          "Rival (-1 to -2): Competition but not hostile",
+          "Enemy (-3 to -5): Actively opposes player"
+        ],
+        "modification_triggers": [
+          "Successful mission completion: 1 to +2",
+          "Failed mission: -1 to -3 depending on consequences",
+          "Personal favor: 1 to +2",
+          "Betrayal or abandonment: -3 to -5",
+          "Shared danger/triumph: 2 to +3"
+        ]
+      }
+    },
+    "sandbox_balancing": {
+      "player_influence_scaling": {
+        "tier_0_nobody": {
+          "scope": "Personal problems, local crime",
+          "opposition": "Street thugs, corrupt officials",
+          "resources": "Basic equipment, small loans",
+          "consequences": "Local reputation changes"
+        },
+        "tier_1_local": {
+          "scope": "Station politics, small corporate jobs",
+          "opposition": "Corporate security, rival teams",
+          "resources": "Professional equipment, corporate backing",
+          "consequences": "Regional reputation, faction attention"
+        },
+        "tier_2_regional": {
+          "scope": "Planetary conflicts, major corporate wars",
+          "opposition": "Corporate armies, government agents",
+          "resources": "Military hardware, intelligence networks",
+          "consequences": "System-wide changes, political shifts"
+        },
+        "tier_3_system": {
+          "scope": "Inter-planetary crises, system politics",
+          "opposition": "Faction militaries, government fleets",
+          "resources": "Strategic assets, massive funding",
+          "consequences": "Historical events, system transformation"
+        }
+      },
+      "dynamic_difficulty": {
+        "heat_escalation": {
+          "low_heat_1_5": "Local security interest",
+          "medium_heat_6_15": "Corporate investigation",
+          "high_heat_16_30": "System-wide bounty",
+          "extreme_heat_31_plus": "Multi-faction manhunt"
+        },
+        "opposition_scaling": {
+          "player_resources": "Opposition scales to player capabilities",
+          "faction_backing": "Stronger factions provide stronger enemies",
+          "reputation": "Fame attracts more dangerous opponents",
+          "influence": "Higher tier unlocks legendary antagonists"
+        }
+      }
+    }
+  },
+  "classic_core_economy": {
+    "TITLE": "AI_RPG_CORE_ARCHITECTURE_v3",
+    "description": "Финальное ТЗ. Является ЕДИНСТВЕННЫМ источником правил по экономике, активам, контрактам и прогрессии.",
+    "CORE_FAQ": {
+      "title": "Инструкция для AI-ГМ",
+      "mandate": "СТРОГО ЗАПРЕЩЕНО упоминать названия Модулей или выводить технические команды в ответе игроку.",
+      "sections": {
+        "PROGRESS_LOCK": "Управление нарративным темпом.",
+        "PLAYER_TRACKING": "Отслеживание метрик, рисков и влияния.",
+        "ECONOMY_ASSETS": "Стоимость и свойства активов игрока.",
+        "CONTRACT_PAYOUT": "Логика и условия оплаты миссий."
+      }
+    },
+    "PROGRESS_LOCK": {
+      "title": "Управление Нарративным Темпом",
+      "mandate": "СТРОГО ЗАПРЕЩЕНО вводить Артефакты/Протомолекулу до достижения Tier III.",
+      "tiers": [
+        {
+          "tier": "I",
+          "name": "Локальный Кризис",
+          "conditions": "HEAT > 90 ИЛИ DEBT < 20%",
+          "scope": "Конфликт личный/местный."
+        },
+        {
+          "tier": "II",
+          "name": "Фракционный Конфликт",
+          "conditions": "NET_WORTH > 500000 И (INFLUENCE(Tier 2) > 50 ИЛИ INFLUENCE(Tier 3) > 25)",
+          "scope": "Конфликт корпоративный/системный."
+        },
+        {
+          "tier": "III",
+          "name": "Глобальная Угроза",
+          "conditions": "CRIMINAL_STATUS = 'Wanted' ИЛИ (NET_WORTH > 2000000 И контроль над Легендарным Активом)",
+          "scope": "Доступ к глобальному сюжету и Протомолекуле."
+        }
+      ]
+    },
+    "PLAYER_TRACKING": {
+      "title": "Метрики и Риски",
+      "mandate": "Каждое действие должно влиять на минимум 2-3 метрики.",
+      "metrics": [
+        {
+          "name": "NET_WORTH",
+          "description": "Чистая стоимость: Кредиты + ASSETS - DEBT."
+        },
+        {
+          "name": "HEAT",
+          "description": "Уровень внимания правоохранительных органов."
+        },
+        {
+          "name": "TARGET_RATING",
+          "description": "Уровень угрозы активам от корпораций."
+        },
+        {
+          "name": "INFLUENCE",
+          "description": "Влияние на фракции (Tier 1-3)."
+        },
+        {
+          "name": "LOYALTY",
+          "description": "Отношение NPC/Отряда к игроку."
+        },
+        {
+          "name": "DEBT",
+          "description": "Размер кредита. При 150%+ риск Банкротства."
+        },
+        {
+          "name": "CRIMINAL_STATUS",
+          "description": "Уровень розыска (Local, System, Wanted)."
+        },
+        {
+          "name": "LITIGATION_STATUS",
+          "description": "Активен ли судебный процесс против игрока."
+        },
+        {
+          "name": "STRESS_SANITY",
+          "description": "Уровень психологического напряжения."
+        },
+        {
+          "name": "TECH_KNOWLEDGE",
+          "description": "Понимание Протомолекулы или Артефакта."
+        }
+      ]
+    },
+    "ECONOMY_ASSETS": {
+      "title": "Стоимость и Роль Активов",
+      "mandate": "ASSETS должны приносить не только доход, но и Риск пропорционально Tier.",
+      "assets": [
+        {
+          "id": 1,
+          "category": "Жилье",
+          "name": "Низкий",
+          "price_range": [
+            50000,
+            150000
+          ],
+          "role": "Мирный путь. Риск: HEAT, Бандитские рейды."
+        },
+        {
+          "id": 2,
+          "category": "Жилье",
+          "name": "Корпоративное",
+          "price_range": [
+            300000,
+            600000
+          ],
+          "role": "Мирный путь к Tier II. Риск: TARGET_RATING, CORPORATE_AUDIT."
+        },
+        {
+          "id": 3,
+          "category": "База",
+          "name": "Схрон",
+          "price_range": [
+            250000,
+            400000
+          ],
+          "role": "Криминальный путь к Tier II. Используется для Скрытых действий."
+        },
+        {
+          "id": 7,
+          "category": "Корабль",
+          "name": "Средний",
+          "price_range": [
+            550000,
+            900000
+          ],
+          "role": "Триггер NET_WORTH > $500k. Риск: Пиратство."
+        },
+        {
+          "id": 13,
+          "category": "Права на добычу",
+          "name": "Средние",
+          "price_range": [
+            800000,
+            1500000
+          ],
+          "role": "Требует Корабля (Ср.). Риск: Война синдикатов."
+        }
+      ]
+    },
+    "CONTRACT_PAYOUT": {
+      "title": "Логика Оплаты и Типы Миссий",
+      "mandate": "Оплата должна быть многокомпонентной и логически связанной с риском и типом фракции.",
+      "contracts": [
+        {
+          "id": 1,
+          "faction_tier": "Tier 1 (Банды/ЧВК)",
+          "type": "Саботаж / Зачистка / Курьер",
+          "base_payout": [
+            5000,
+            20000
+          ],
+          "bonus_payout": "До +150% за скорость, бесшумность или выполнение доп. целей.",
+          "reward_risk": "Рост REP с заказчиком. +[5-20] HEAT в зависимости от публичности. Риск ответного удара от конкурирующей банды."
+        },
+        {
+          "id": 2,
+          "faction_tier": "Tier 2 (Синдикаты/Корп.)",
+          "type": "Промышленный Шпионаж / Устранение цели / Рейдерский захват",
+          "base_payout": [
+            100000,
+            300000
+          ],
+          "bonus_payout": "Доля от похищенных данных/активов (может превышать базу).",
+          "reward_risk": "Рост INFLUENCE (Tier 2). +[10-30] TARGET_RATING. Риск активации LITIGATION_STATUS при провале или обнаружении."
+        },
+        {
+          "id": 3,
+          "faction_tier": "Tier 3 (Столпы/ООН)",
+          "type": "Системный Аудит / Секретная Дипломатия / Контр-терроризм",
+          "base_payout": [
+            1000000,
+            5000000
+          ],
+          "bonus_payout": "Нематериальные активы: Патент (IP), снятие CRIMINAL_STATUS, контроль над малым активом (например, станцией).",
+          "reward_risk": "Резкое изменение INFLUENCE с несколькими фракциями. Риск стать целью для спецслужб противоположной стороны."
+        },
+        {
+          "id": 4,
+          "faction_tier": "Техноспециалисты",
+          "type": "Восстановление данных / Системный Оверхол / Поиск артефакта",
+          "base_payout": [
+            50000,
+            250000
+          ],
+          "bonus_payout": "Доступ к уникальным чертежам или прототипу технологии.",
+          "reward_risk": "Рост TECH_KNOWLEDGE. +[5-10] INFLUENCE с научными или корпоративными фракциями. Риск привлечь внимание техно-культов."
+        },
+        {
+          "id": 5,
+          "faction_tier": "Серый Рынок",
+          "type": "Контрабанда редкого груза / Сделка с запрещенным оружием",
+          "base_payout": [
+            200000,
+            700000
+          ],
+          "bonus_payout": "Контакты на черном рынке (постоянная скидка или доступ).",
+          "reward_risk": "Доступ к Легендарному Снаряжению. Обязательно: +[25-40] HEAT. Высокий риск предательства со стороны покупателя/продавца."
+        },
+        {
+          "id": 6,
+          "faction_tier": "Долговые миссии",
+          "type": "Экспроприация активов должника / Работа на кредитора",
+          "base_payout": 0,
+          "bonus_payout": "Погашение [25-75]% DEBT.",
+          "reward_risk": "Снижение DEBT, но гарантированный рост HEAT или падение LOYALTY с отрядом, если миссия 'грязная'."
+        }
+      ]
+    }
+  },
+  "ai_gm_directives": {
+    "mandatory_integrations": [
+      "ALWAYS display current game time after each response",
+      "ALWAYS generate 5-6 action choices using PLAYER_INTERFACE_V2_ENHANCED",
+      "ALWAYS show internal dice rolls and calculations",
+      "ALWAYS reference relevant modules when making decisions",
+      "ALWAYS consider character's full lifepath when generating content",
+      "ALWAYS apply THEME_TONE modifiers to narrative style"
+    ],
+    "content_generation_rules": [
+      "Use CHARACTER_LIFEPATH_V3_MASSIVE for all character creation",
+      "Reference FACTIONS_MASTER for all faction interactions",
+      "Apply PROGRESSION_V2 for all skill advancement",
+      "Integrate PSYCHOLOGY for all emotional responses",
+      "Use WORLD_TIME_SYSTEM for all scheduling and planning",
+      "Generate events using ENHANCED_EVENT_GENERATOR_V2"
+    ],
+    "narrative_consistency": [
+      "Maintain sandbox approach - no predetermined stories",
+      "Generate events from world state, not plot requirements",
+      "Apply consequence cascades for all player actions",
+      "Keep faction agendas active and independent",
+      "Use karmic dice for dramatic moments",
+      "Balance player agency with world response"
+    ],
+    "technical_requirements": [
+      "Hide all module names from player output",
+      "Process player actions through multiple metric changes",
+      "Auto-advance time based on action type",
+      "Generate notifications for important changes",
+      "Maintain persistent NPC schedules and goals",
+      "Apply tier-appropriate content restrictions"
+    ]
+  },
+  "integration_with_other_systems": {
+    "CHARACTER_SYSTEM": "Полная интеграция с lifepath для персонализованного старта",
+    "DIALOGUE_SOCIAL_SYSTEM": "Автоматизация NPC реакций и диалогов",
+    "COMBAT_TECH_SYSTEM": "Управление боевыми событиями и техническими поломками",
+    "FACTIONS_MASTER": "Координация фракционных действий и заговоров",
+    "PSYCHOLOGY": "Отслеживание стресса и психологического состояния",
+    "WORLD_ENVIRONMENT": "Временная синхронизация с мировыми событиями"
+  },
+  "system_apis": {
+    "game_management": [
+      {
+        "name": "StartGameProtocol",
+        "description": "Запуск игры с созданием персонажа и мира"
+      },
+      {
+        "name": "ProcessPlayerAction",
+        "description": "Обработка действий игрока с автоматическими последствиями"
+      },
+      {
+        "name": "AdvanceGameTime",
+        "description": "Продвижение времени с автоматическими событиями"
+      }
+    ],
+    "content_generation": [
+      {
+        "name": "GenerateEvent",
+        "description": "Создание событий на основе состояния мира"
+      },
+      {
+        "name": "GenerateNPC",
+        "description": "Процедурное создание NPC с мотивациями"
+      },
+      {
+        "name": "GenerateContract",
+        "description": "Создание контрактов на основе фракций и tier'а"
+      }
+    ],
+    "automation_functions": [
+      {
+        "name": "AutomateTimeProgression",
+        "description": "Автоматическое продвижение времени и событий"
+      },
+      {
+        "name": "AutomateReputationUpdates",
+        "description": "Автоматическое обновление репутации"
+      },
+      {
+        "name": "AutomateMarketFluctuations",
+        "description": "Автоматические изменения рынка"
+      }
+    ]
+  },
+  "advanced_features": {
+    "emergent_narrative": {
+      "description": "Саморазвивающийся нарратив без заранее написанных сюжетов",
+      "implementation": "META_ENGINE отслеживает состояние мира и генерирует события",
+      "complexity_scaling": "От простых локальных событий до системных кризисов"
+    },
+    "procedural_conspiracy": {
+      "description": "Автоматическая генерация заговоров между фракциями",
+      "depth_levels": "От простых до лабиринтных с множественными агентами",
+      "player_discovery": "Раскрытие заговоров через расследования и случайности"
+    },
+    "dynamic_world_state": {
+      "description": "Мир развивается независимо от действий игрока",
+      "persistence": "События имеют долгосрочные последствия",
+      "cascade_effects": "Действия вызывают цепочки событий"
+    },
+    "adaptive_difficulty": {
+      "description": "Автоматическая подстройка сложности под progress tier игрока",
+      "scaling_factors": "Репутация, ресурсы, влияние, криминальный статус",
+      "opposition_intelligence": "Враги становятся умнее с ростом известности"
+    }
+  },
+  "backward_compatibility": {
+    "description": "Полная совместимость со всеми существующими модулями",
+    "data_preservation": "Все данные из исходных файлов сохранены",
+    "api_compatibility": "Все API вызовы остаются валидными",
+    "upgrade_path": "Плавный переход от старых версий"
+  },
+  "usage_instructions": {
+    "for_ai_gm": [
+      "Используйте STARTGAME_PROTOCOL для инициализации игровых сессий",
+      "Применяйте META_ENGINE принципы для органичного нарратива",
+      "Используйте AUTOMATION системы для снижения микроменеджмента",
+      "Обращайтесь к GM_TOOLKIT для быстрого решения проблем",
+      "Следуйте AI_DIRECTIVES для консистентного опыта",
+      "Интегрируйте все системы через CENTRAL_COORDINATOR"
+    ],
+    "for_developers": [
+      "Изучите CORE_ARCHITECTURE для понимания системной архитектуры",
+      "Используйте SYSTEM_APIS для интеграции новых модулей",
+      "Следуйте INTEGRATION_MATRIX для правильного tier'инга",
+      "Применяйте AUTOMATION_RULES для новых систем",
+      "Тестируйте совместимость с BACKWARD_COMPATIBILITY",
+      "Документируйте новые функции в соответствии со стандартами"
+    ]
+  }
+}

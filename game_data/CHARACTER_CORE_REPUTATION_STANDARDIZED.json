@@ -1,0 +1,150 @@
+{
+  "module_name": "CHARACTER_CORE_REPUTATION_STANDARDIZED",
+  "description": "Стандартизированная репутационная система для всех модулей",
+  "version": "3.0_REPUTATION_MASTER",
+  "reputation_master_system": {
+    "description": "Единая система репутации для всех модулей от -100 до +100",
+    "scale": {
+      "range": [
+        -100,
+        100
+      ],
+      "default_value": 0,
+      "scaling": "Все модули используют эту шкалу для консистентности"
+    },
+    "reputation_categories": {
+      "faction_reputation": {
+        "category_MEGACORP": {
+          "range": [
+            -100,
+            100
+          ],
+          "description": "Репутация с мегакорпорациями",
+          "examples": [
+            "Weyland-Yutani",
+            "Tyrell Corporation",
+            "Protogen Corporation"
+          ]
+        },
+        "category_GOVERNMENT": {
+          "range": [
+            -100,
+            100
+          ],
+          "description": "Репутация с правительственными структурами",
+          "examples": [
+            "Earth Government",
+            "Mars Congressional Republic",
+            "Belt Administration"
+          ]
+        },
+        "category_MILITARY": {
+          "range": [
+            -100,
+            100
+          ],
+          "description": "Репутация с военными организациями",
+          "examples": [
+            "Mars Fleet",
+            "Earth Navy",
+            "UN Marines"
+          ]
+        },
+        "category_SCIENTIFIC": {
+          "range": [
+            -100,
+            100
+          ],
+          "description": "Репутация с научными учреждениями",
+          "examples": [
+            "Research Institutes",
+            "Universities",
+            "Labs"
+          ]
+        },
+        "category_CRIMINAL": {
+          "range": [
+            -100,
+            100
+          ],
+          "description": "Репутация в преступном мире",
+          "examples": [
+            "Crime Syndicates",
+            "Pirates",
+            "Smugglers"
+          ]
+        },
+        "category_WORKERS_UNION": {
+          "range": [
+            -100,
+            100
+          ],
+          "description": "Репутация с рабочими организациями",
+          "examples": [
+            "Miner Unions",
+            "Transport Workers",
+            "OPA"
+          ]
+        }
+      },
+      "individual_reputation": {
+        "trust": {
+          "range": [
+            -100,
+            100
+          ],
+          "description": "Личное доверие от конкретного NPC",
+          "conversion": "Старые '+3 Trust' = +30 reputation"
+        },
+        "respect": {
+          "range": [
+            -100,
+            100
+          ],
+          "description": "Профессиональное уважение от NPC",
+          "conversion": "Старые '+2 Professional Respect' = +20 reputation"
+        },
+        "loyalty": {
+          "range": [
+            -100,
+            100
+          ],
+          "description": "Личная преданность NPC",
+          "conversion": "Старые '+3 Military Loyalty' = +30 reputation"
+        }
+      }
+    },
+    "reputation_effects": {
+      "threshold_effects": {
+        "-100_to_-80": "Враждебность - атака при встрече",
+        "-79_to_-50": "Ненависть - отказ от взаимодействия",
+        "-49_to_-20": "Неприязнь - штрафы к переговорам",
+        "-19_to_19": "Нейтральность - стандартные взаимодействия",
+        "20_to_49": "Уважение - бонусы к переговорам",
+        "50_to_79": "Доверие - доступ к особой информации",
+        "80_to_100": "Преданность - максимальная поддержка"
+      },
+      "skill_modifiers": {
+        "negotiation_bonus": "reputation / 20 (максимум +5)",
+        "information_access": "reputation / 25 (влияет на качество информации)",
+        "service_discount": "reputation / 10 (процентная скидка на услуги)"
+      }
+    }
+  },
+  "integration_guide": {
+    "for_npc_relations": {
+      "old_format": "+3 Trust, +2 Professional Respect",
+      "new_format": "trust: 30, respect: 20",
+      "conversion_rule": "Умножить старое значение на 10"
+    },
+    "for_psychology": {
+      "stress_reputation_link": "Высокий стресс снижает репутацию в социальных взаимодействиях",
+      "humanity_reputation_link": "Низкая человечность штрафует репутацию с этичными фракциями",
+      "ideology_reputation_link": "Идеологические конфликты влияют на фракционную репутацию"
+    },
+    "for_tech_equipment": {
+      "access_control": "Репутация определяет доступ к снаряжению",
+      "price_modifiers": "Репутация влияет на цены и доступность"
+    }
+  }
+}

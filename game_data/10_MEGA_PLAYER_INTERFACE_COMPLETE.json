@@ -1,0 +1,1024 @@
+{
+  "module_name": "10_MEGA_PLAYER_INTERFACE_COMPLETE",
+  "module_id": "10",
+  "priority": "CRITICAL",
+  "version": "1.0_UNIFIED_COMPREHENSIVE",
+  "description": "Полная система пользовательского интерфейса - объединение игровых механик, интерфейса игрока, системы правил, психотерапевтических справочников и адаптеров представления для создания полноценной системы взаимодействия игрока с миром",
+  "source_files": [
+    "MECHANICS_V2_INTEGRATED_SYSTEMS.json (6,240 символов) - интегрированные игровые механики V2",
+    "PSYCHOLOGY_THERAPY_REFERENCE.json (4,152 символа) - справочник терапевтических методов восстановления психики",
+    "PLAYER_INTERFACE.json (3,933 символа) - интерфейс игрока для взаимодействия и управления",
+    "MECHANICS.json (3,825 символов) - базовые игровые механики",
+    "RULEBOOK.json (3,100 символов) - книга правил игры",
+    "PLAYER_VIEW_ADAPTER.json (2,978 символов) - адаптер представления для игрока",
+    "PLAYER_INTERFACE_V2.json (2,395 символов) - интерфейс игрока V2",
+    "PLAYER_INTERFACE_V2_ENHANCED.json (1,350 символов) - улучшенный интерфейс игрока V2"
+  ],
+  "total_size": "27,973 символа - полностью сохранено",
+  "integration_status": "COMPLETE_NO_LOSS",
+  "dependencies": ["CHARACTER_LIFEPATH", "CHARACTER_CORE", "PSYCHOLOGY", "09_MEGA_NARRATIVE_THEMES", "NPC_RELATIONS", "07_MEGA_WORLD_SIMULATION"],
+
+  "advanced_mechanics_system": {
+    "module_name": "MECHANICS_V2_INTEGRATED_SYSTEMS",
+    "version": "2.0_INTEGRATED_SYSTEMS",
+    "description": "Расширенные игровые механики с интеграцией всех систем",
+    "progression_integration": {
+      "skill_advancement": {
+        "experience_sources": {
+          "usage_based": "Automatic XP for successful skill use (+0.5-2 XP)",
+          "training_based": "Formal training sessions (+5-10 XP per session)",
+          "study_based": "Learning from books/databases (+3-5 XP per session)",
+          "mentorship": "Learning from NPC mentors (x2 XP multiplier)",
+          "critical_success": "Exceptional performance (+50% XP bonus)",
+          "high_difficulty": "Challenging tasks (DC 20+) provide +25% XP"
+        },
+        "skill_degradation": {
+          "unused_skills": "Skills 5+ lose 1 XP per 6 months without use",
+          "protected_skills": "Lifepath skills immune to degradation",
+          "maintenance_training": "Minimum monthly use prevents degradation",
+          "reactivation": "Lost skills regain faster than initial learning"
+        }
+      },
+      "specialization_mechanics": {
+        "integration": "Full connection with 35 CHARACTER_SPECIALIZATIONS_V3",
+        "unique_abilities": "Each specialization unlocks exclusive capabilities",
+        "equipment_synergy": "Specializations provide bonuses with related equipment",
+        "progression_paths": "Advanced specialization options unlock at higher tiers"
+      }
+    },
+    "mentor_system": {
+      "finding_mentors": {
+        "npc_integration": "Uses NPC_ARCHETYPES to identify potential mentors",
+        "skill_requirements": "Mentors must have skill levels 3+ above student",
+        "relationship_building": "Reputation and personal relationships affect mentor availability",
+        "faction_connections": "Faction standing provides access to specialized mentors"
+      },
+      "mentorship_benefits": {
+        "learning_speed": "x2 XP gain for mentored skills",
+        "advanced_techniques": "Access to rare perks and abilities",
+        "networking": "Introduction to mentor's professional contacts",
+        "equipment_access": "Borrowing/purchasing mentor's specialized equipment"
+      },
+      "mentorship_costs": {
+        "time_investment": "Regular training sessions required",
+        "financial_payment": "Most mentors charge for advanced training",
+        "favor_obligations": "Mentors may request assistance with personal projects",
+        "loyalty_expectations": "Some mentors expect long-term professional loyalty"
+      }
+    },
+    "temporal_mechanics": {
+      "activity_time_costs": {
+        "skill_training": "1-4 hours per session",
+        "equipment_maintenance": "30 minutes - 8 hours based on complexity",
+        "research_activities": "2-8 hours per research session",
+        "social_interactions": "15 minutes - 4 hours based on complexity",
+        "rest_and_recovery": "6-12 hours for full rest cycle"
+      },
+      "space_travel_integration": {
+        "journey_planning": "Uses TRADE_ROUTES_MASTER for route optimization",
+        "time_calculation": "Automatic calculation based on distance and vessel speed",
+        "travel_activities": "Skill training, research, and social interaction during travel",
+        "random_encounters": "Probability based on route danger and travel time"
+      }
+    },
+    "psychological_mechanics": {
+      "stress_system": {
+        "stress_sources": {
+          "combat_encounters": "+2-5 stress based on danger level",
+          "moral_conflicts": "+1-4 stress for ethical dilemmas",
+          "social_pressure": "+1-3 stress for high-stakes negotiations",
+          "time_pressure": "+1-2 stress for urgent deadlines",
+          "isolation": "+1 stress per week of extended solitude"
+        },
+        "stress_effects": {
+          "low_stress_0_25": "No mechanical effects, minor RP flavor",
+          "moderate_stress_26_50": "-1 to all skill rolls, anxiety symptoms",
+          "high_stress_51_75": "-2 to all skill rolls, panic attacks possible",
+          "extreme_stress_76_100": "-3 to all skill rolls, breakdown risk"
+        }
+      },
+      "therapy_integration": {
+        "therapy_access": "Full integration with PSYCHOLOGY_THERAPY_REFERENCE",
+        "treatment_options": "Multiple therapy types with different costs and effectiveness",
+        "therapist_finding": "Uses NPC_ARCHETYPES for therapist generation",
+        "recovery_mechanics": "Stress reduction based on therapy type and duration"
+      }
+    },
+    "space_age_mechanics": {
+      "environmental_hazards": {
+        "vacuum_exposure": "Immediate danger requiring emergency procedures",
+        "radiation_exposure": "Cumulative damage affecting long-term health",
+        "micro_gravity": "Affects combat, movement, and skill use",
+        "atmospheric_differences": "Various breathing apparatus and adaptation needs"
+      },
+      "space_combat": {
+        "personal_combat_in_space": "Modified combat rules for zero-g environment",
+        "environmental_factors": "Limited movement, weapon behavior changes",
+        "life_support_considerations": "Suit integrity becomes critical tactical factor",
+        "emergency_procedures": "Rapid decompression, suit failure, medical emergency"
+      },
+      "space_exploration": {
+        "survey_procedures": "Systematic exploration of new locations",
+        "discovery_mechanics": "Random generation of resources, anomalies, dangers",
+        "mapping_benefits": "Improved navigation and resource location",
+        "first_contact_protocols": "Procedures for encountering unknown life or intelligence"
+      }
+    },
+    "faction_mechanics": {
+      "reputation_effects": {
+        "access_levels": "Faction standing determines available services and information",
+        "pricing_modifications": "Reputation affects costs of goods and services",
+        "exclusive_opportunities": "High reputation unlocks special missions and equipment",
+        "hostility_consequences": "Negative reputation creates obstacles and dangers"
+      },
+      "influence_projection": {
+        "tier_based_influence": "Higher player tier allows greater faction influence",
+        "decision_participation": "Ability to influence faction policies and actions",
+        "resource_access": "Faction resources become available for player use",
+        "leadership_opportunities": "Potential for faction leadership roles"
+      }
+    }
+  },
+
+  "base_mechanics_foundation": {
+    "module_name": "MECHANICS",
+    "description": "Основные правила, кубы и вероятностные механики игрового движка",
+    "dice_types": [
+      {
+        "die": "d4",
+        "name": "тетраэдр",
+        "usage": ["Урон лёгкого оружия", "Небольшие случайные эффекты"]
+      },
+      {
+        "die": "d6",
+        "name": "классический куб",
+        "usage": ["Урон стандартного оружия", "Базовые характеристики"]
+      },
+      {
+        "die": "d8",
+        "name": "октаэдр",
+        "usage": ["Урон среднего оружия", "Хиты средних классов"]
+      },
+      {
+        "die": "d10",
+        "name": "пентагональный трапецоэдр",
+        "usage": ["Процентные проверки", "Урон тяжёлого оружия"]
+      },
+      {
+        "die": "d12",
+        "name": "додекаэдр",
+        "usage": ["Урон очень тяжёлого оружия", "Хиты варваров"]
+      },
+      {
+        "die": "d20",
+        "name": "икосаэдр",
+        "usage": ["Основные проверки навыков", "Спасброски", "Атаки", "Критические успехи/провалы"]
+      },
+      {
+        "die": "d100",
+        "name": "процентайл",
+        "usage": ["Процентные проверки", "Большие случайные таблицы"]
+      }
+    ],
+    "base_mechanics": {
+      "difficulty_class_tests": {
+        "description": "Система определения успеха действий через сравнение результата броска с целевым числом (DC)",
+        "levels": [
+          {"name": "Лёгкая", "dc_range": "5-10"},
+          {"name": "Средняя", "dc_range": "11-15"},
+          {"name": "Сложная", "dc_range": "16-20"},
+          {"name": "Очень сложная", "dc_range": "21-25"},
+          {"name": "Почти невозможная", "dc_range": "26+"}
+        ]
+      },
+      "dice_pools": {
+        "description": "Система, где игрок бросает несколько кубов одновременно",
+        "principles": ["Подсчёт успехов", "Степени успеха", "Модификаторы пула"]
+      },
+      "exploding_dice": {
+        "description": "При максимальном результате куб бросается повторно, и результаты суммируются",
+        "application": ["Критические попадания", "Особые способности", "Драматические моменты"]
+      },
+      "fail_forward": {
+        "description": "Философия обработки провалов: неудача не останавливает историю, а усложняет её",
+        "principles": ["Осложнения вместо остановки", "Частичный успех"]
+      },
+      "attribute_bonus_system": {
+        "formula": "1d20 + атрибут + навык + ситуационный модификатор vs DC",
+        "advantage_disadvantage": "Бросок двух кубов, выбор лучшего/худшего результата"
+      }
+    },
+    "gm_roll_tables": {
+      "random_city_encounters_d20": [
+        {"range": "1-3", "encounter": "Карманник", "consequence": "Проверка Внимательности, потеря 1d10 монет"},
+        {"range": "4-6", "encounter": "Уличный торговец", "consequence": "Необычные товары, слухи"},
+        {"range": "7-9", "encounter": "Городская стража", "consequence": "Проверка документов, штраф"},
+        {"range": "10-12", "encounter": "Нищий-информатор", "consequence": "Ценная информация за монету"},
+        {"range": "13-15", "encounter": "Благородный в беде", "consequence": "Квест-зацепка"},
+        {"range": "16-17", "encounter": "Уличная драка", "consequence": "Вмешательство или обход"},
+        {"range": "18-19", "encounter": "Таинственный незнакомец", "consequence": "Загадочное предложение"},
+        {"range": "20", "encounter": "Знакомое лицо", "consequence": "Встреча с NPC из прошлого"}
+      ],
+      "failure_complications_d12": [
+        {"range": "1-2", "complication": "Потеря времени", "description": "Действие занимает в 2 раза больше времени"},
+        {"range": "3-4", "complication": "Шум и внимание", "description": "Привлечение нежелательного внимания"},
+        {"range": "5-6", "complication": "Поломка инструмента", "description": "Основной инструмент сломан"},
+        {"range": "7-8", "complication": "Травма", "description": "Получение 1d4 урона"},
+        {"range": "9-10", "complication": "Новая проблема", "description": "Появление дополнительного препятствия"},
+        {"range": "11-12", "complication": "Эскалация", "description": "Ситуация становится более опасной"}
+      ]
+    }
+  },
+
+  "comprehensive_player_interface": {
+    "base_interface": {
+      "module_name": "PLAYER_INTERFACE",
+      "description": "Описывает структуру игрового интерфейса (Dashboard) и все доступные игроку команды для взаимодействия с миром",
+      "dashboard_tabs": [
+        {
+          "name": "Статистика",
+          "description": "Отображает основные атрибуты, навыки и вторичные характеристики персонажа",
+          "linked_module": "CHARACTER_CORE",
+          "commands": [
+            {
+              "command": "/sheet",
+              "alias": ["/stats", "/character"],
+              "description": "Вывести полную карточку персонажа (атрибуты, навыки, состояние)"
+            },
+            {
+              "command": "/mod",
+              "description": "Модифицировать характеристику (только для Ведущего). Пример: /mod attr STR +1",
+              "permission": "GM_ONLY"
+            }
+          ]
+        },
+        {
+          "name": "Состояние",
+          "description": "Показывает динамические психологические и социальные показатели",
+          "linked_modules": ["PSYCHOLOGY", "PLAYER_TRACKING"],
+          "commands": [
+            {
+              "command": "/status",
+              "description": "Краткая сводка по состоянию: Stress, Humanity, Debt, Heat, Rep, Influence"
+            },
+            {
+              "command": "/adjust",
+              "description": "Изменить динамический показатель (только для Ведущего). Пример: /adjust stress +2",
+              "permission": "GM_ONLY"
+            }
+          ]
+        },
+        {
+          "name": "Инвентарь",
+          "description": "Управление ресурсами, валютой и оборудованием",
+          "linked_module": "ECONOMY",
+          "commands": [
+            {
+              "command": "/inventory",
+              "alias": ["/inv"],
+              "description": "Показать содержимое инвентаря"
+            },
+            {
+              "command": "/add_item",
+              "description": "Добавить предмет в инвентарь. Пример: /add_item 'Вода' 100",
+              "permission": "GM_ONLY"
+            },
+            {
+              "command": "/use",
+              "description": "Использовать предмет. Пример: /use 'Аптечка'",
+              "parameters": ["название_предмета"]
+            },
+            {
+              "command": "/credits",
+              "description": "Показать баланс всех валют (ED, EarthCred, MarsDebt, Cerereum)"
+            }
+          ]
+        },
+        {
+          "name": "Миссии",
+          "description": "Управление активными и завершенными заданиями",
+          "linked_module": "DYNAMIC_WORLD",
+          "commands": [
+            {
+              "command": "/missions",
+              "alias": ["/journal", "/quests"],
+              "description": "Показать список активных и доступных миссий"
+            },
+            {
+              "command": "/mission accept",
+              "description": "Принять указанную миссию. Пример: /mission accept 'Прорыв блокады'",
+              "parameters": ["id_миссии"]
+            },
+            {
+              "command": "/mission abort",
+              "description": "Отказаться от выполнения миссии",
+              "parameters": ["id_миссии"]
+            }
+          ]
+        },
+        {
+          "name": "Команды",
+          "description": "Основные игровые действия и проверки",
+          "commands": [
+            {
+              "command": "/help",
+              "description": "Показать справку по всем доступным командам"
+            },
+            {
+              "command": "/roll",
+              "description": "Сделать проверку навыка. Пример: /roll Хакерство vs 15. Или /roll Переговоры vs Убеждение_NPC",
+              "parameters": ["навык", "[vs <цель_сложность>]"]
+            },
+            {
+              "command": "/rest",
+              "description": "Начать фазу отдыха для восстановления HP, EP и снижения стресса"
+            },
+            {
+              "command": "/move",
+              "description": "Начать перемещение в другую локацию. Пример: /move mars",
+              "parameters": ["id_локации"]
+            },
+            {
+              "command": "/talk",
+              "description": "Начать диалог с NPC. Пример: /talk 'Анна Перес'",
+              "parameters": ["имя_NPC"]
+            }
+          ]
+        }
+      ]
+    },
+    "enhanced_interface_v2": {
+      "module_name": "PLAYER_INTERFACE_V2_ENHANCED",
+      "version": "2.0_ENHANCED_PRIORITY",
+      "description": "Интерфейс игрока с принудительным приоритетом над другими модулями",
+      "CRITICAL_DIRECTIVES": {
+        "MANDATORY_TIME_DISPLAY": {
+          "priority": "ABSOLUTE_MAXIMUM",
+          "rule": "ВСЕГДА показывать текущее игровое время после каждого сообщения ИИ",
+          "format": "🕐 {day}.{month}.{year} {hour}:{minute} | {location}",
+          "enforcement": "Если время не отображено - это ОШИБКА СИСТЕМЫ"
+        },
+        "MANDATORY_CHOICE_GENERATION": {
+          "priority": "ABSOLUTE_MAXIMUM",
+          "rule": "ВСЕГДА генерировать 5-6 вариантов действий + свой вариант",
+          "override_authority": "Этот модуль имеет АБСОЛЮТНЫЙ приоритет над AI_NARRATOR в вопросах выбора",
+          "enforcement": "Если AI_NARRATOR пытается дать открытый вопрос - это ОШИБКА СИСТЕМЫ"
+        },
+        "CHOICE_STRUCTURE": {
+          "format": "Пронумерованный список 1-6 + 'Свой вариант'",
+          "categories": [
+            "Диалог (Charisma + соответствующий навык)",
+            "Действие (физическое взаимодействие)",
+            "Анализ/Взлом (Intelligence + Tech)",
+            "Тактическое решение (тактические навыки)",
+            "Психологическое воздействие (репутация, стресс)",
+            "Свой вариант (описать самостоятельно)"
+          ],
+          "skill_integration": "Каждая опция ДОЛЖНА показывать релевантные навыки персонажа"
+        }
+      },
+      "interaction_protocols": {
+        "choice_generation_trigger": "После каждого ответа ИИ",
+        "fallback_mechanism": "Если выбор отсутствует - система должна его сгенерировать принудительно",
+        "debugging": {
+          "log_choices": true,
+          "show_skill_checks": true,
+          "internal_rolls_visibility": "VISIBLE_TO_PLAYER"
+        }
+      },
+      "enhanced_dashboard_tabs": {
+        "Character": {
+          "description": "Основная информация о персонаже",
+          "linked_module": "CHARACTER_CORE",
+          "commands": [
+            {
+              "command": "!sheet",
+              "description": "Показать полный лист персонажа"
+            },
+            {
+              "command": "!mod",
+              "description": "Изменить характеристику (только ГМ)"
+            }
+          ]
+        },
+        "Status": {
+          "description": "Текущее состояние персонажа с временем",
+          "linked_modules": ["PSYCHOLOGY", "WORLD_TIME_SYSTEM"],
+          "mandatory_display": [
+            "Текущая дата и время",
+            "Местоположение",
+            "Здоровье и стресс",
+            "Активные задачи"
+          ],
+          "commands": [
+            {
+              "command": "!status",
+              "description": "Стресс, человечность, долги, репутация, время"
+            },
+            {
+              "command": "!time",
+              "description": "Текущая игровая дата и время"
+            }
+          ]
+        },
+        "Time": {
+          "description": "Управление временем и активностями",
+          "commands": [
+            "!time - показать подробную временную информацию",
+            "!rest [duration] - отдохнуть указанное время",
+            "!wait [duration] - ждать определенное время",
+            "!schedule - показать расписание активностей"
+          ]
+        },
+        "Actions": {
+          "description": "Доступные действия персонажа",
+          "priority": "MAXIMUM",
+          "forced_display": "ВСЕГДА показывать после каждого хода ИИ"
+        }
+      }
+    }
+  },
+
+  "player_view_adaptation_system": {
+    "module_name": "PLAYER_VIEW_ADAPTER",
+    "version": "1.0",
+    "purpose": "Конвертировать полный STARTGAME Protocol в человеко-читаемый «экран» для чата без изменения исходного файла",
+    "source_protocol": "STARTGAME_PROTOCOL_UNIFIED",
+    "render_rules": {
+      "fields_to_show": ["emoji", "title", "description", "prompt"],
+      "handlers_pick": ["narrative_hints"],
+      "line_spacing": 1,
+      "indent_spaces": 2,
+      "bullet_style": "numeric"
+    },
+    "map": {
+      "Origin": "Происхождение",
+      "ToneMix": "Комбинированная тональность",
+      "FormativeYears": "Годы становления"
+    },
+    "tone_mix": {
+      "enabled": true,
+      "step_tag": "ToneMix",
+      "auto_keyword": "пропустить",
+      "mix_parameters": ["Origin", "FormativeYears", "Specialization"],
+      "fallback_palette": ["неон-нуар", "эпик-космос", "драмеди-киберпанк"],
+      "mix_formula": "base(Origin) + bias(FormativeYears) + accent(Specialization)",
+      "player_options_accent": [
+        "Мрачный неон-нуар",
+        "Эпик-космос",
+        "Драмеди-киберпанк",
+        "Пропустить (авто)"
+      ]
+    },
+    "step_overrides": {
+      "ToneMix": {
+        "prepend_text": "Текущий тон будет создаваться на основе вашего происхождения и следующих выборов. Вы можете задать акцент или «пропустить» для автомикса",
+        "options_static": [
+          {
+            "label": "1) Мрачный неон-нуар",
+            "description": "Город в огнях неона, где каждая тень таит опасность"
+          },
+          {
+            "label": "2) Эпик-космос",
+            "description": "Безграничные просторы вселенной и величие неизведанного"
+          },
+          {
+            "label": "3) Драмеди-киберпанк",
+            "description": "Ирония и трагедия в мире высоких технологий и низких страстей"
+          },
+          {
+            "label": "4) Пропустить (авто)",
+            "description": "Автоматически смикшировать тон по вашим прошлым выборам"
+          }
+        ],
+        "prompt_override": "Выберите акцент тональности или введите «пропустить» для автоматического микса",
+        "narrative_hints": [
+          "Ваше прошлое окрашивает мир новыми красками",
+          "Слияние ваших выборов создаёт уникальную атмосферу"
+        ]
+      },
+      "Origin": {
+        "prepend_text": "Выберите одно из ваших мест рождения — оно определит стартовые связи и задания",
+        "options_from": "CHARACTER_LIFEPATH:origin_list",
+        "option_format": "{index}) {title}: {one_line}",
+        "more_keyword": "еще"
+      },
+      "FormativeYears": {
+        "prepend_text": "Какой опыт сформировал вас в юности?",
+        "options_from": "CHARACTER_LIFEPATH:formative_list",
+        "option_format": "{index}) {title}: {one_line}",
+        "more_keyword": "еще"
+      },
+      "Specialization": {
+        "options_from": "CHARACTER_LIFEPATH:specialization_list",
+        "option_format": "{index}) {name}: {one_line}",
+        "more_keyword": "еще"
+      }
+    },
+    "ui_texts": {
+      "choose_prompt_suffix": "Введите номер варианта или напишите «еще»",
+      "tone_prompt": "Введите номер акцента или «пропустить» для автоматического микса"
+    }
+  },
+
+  "psychology_therapy_system": {
+    "module_name": "PSYCHOLOGY_THERAPY_REFERENCE",
+    "description": "Справочник терапевтических методов восстановления психологического состояния. Вынесен из основного PSYCHOLOGY модуля для оптимизации",
+    "version": "1.0_REFERENCE",
+    "usage": "Используется PSYCHOLOGY модулем для определения доступных методов терапии",
+    "therapeutic_methods": {
+      "elite_psychotherapy": {
+        "name": "Элитная психотерапия",
+        "effectiveness": 4,
+        "cost": 5000,
+        "duration": "2 часа",
+        "availability": "Корпоративные клиники",
+        "description": "Индивидуальные сеансы с психиатром высшей квалификации",
+        "reputation_requirements": {
+          "category_MEGACORP": 20
+        },
+        "suitable_origins": [
+          "ORIGIN_EARTH_ELITE"
+        ]
+      },
+      "group_support": {
+        "name": "Групповая поддержка",
+        "effectiveness": 3,
+        "cost": 0,
+        "duration": "3 часа",
+        "availability": "Общинные центры",
+        "description": "Обмен опытом с людьми схожего происхождения",
+        "reputation_requirements": {},
+        "suitable_origins": [
+          "ORIGIN_EARTH_SLUMS",
+          "ORIGIN_CERES_MINER"
+        ]
+      },
+      "military_counseling": {
+        "name": "Военная психологическая поддержка",
+        "effectiveness": 4,
+        "cost": 0,
+        "duration": "1 час",
+        "availability": "Военные базы",
+        "description": "Терапия с военными психологами",
+        "reputation_requirements": {
+          "category_MILITARY": 10
+        },
+        "suitable_origins": [
+          "ORIGIN_MARS_MILITARY"
+        ]
+      },
+      "rational_therapy": {
+        "name": "Рациональная терапия",
+        "effectiveness": 3,
+        "cost": 2000,
+        "duration": "90 минут",
+        "availability": "Исследовательские центры",
+        "description": "Логический анализ проблем, когнитивно-поведенческая терапия",
+        "reputation_requirements": {
+          "category_SCIENTIFIC": 15
+        },
+        "suitable_origins": [
+          "ORIGIN_MARS_SCIENTIST",
+          "ORIGIN_GANYMEDE_SCIENTIST"
+        ]
+      },
+      "medical_rehabilitation": {
+        "name": "Медицинская реабилитация",
+        "effectiveness": 4,
+        "cost": 0,
+        "duration": "4 часа",
+        "availability": "Медицинские учреждения",
+        "description": "Комплексная медицинская и психологическая помощь",
+        "reputation_requirements": {},
+        "suitable_origins": [
+          "ORIGIN_STATION_MEDIC"
+        ]
+      },
+      "black_market_therapy": {
+        "name": "Черно-рыночная терапия",
+        "effectiveness": 2,
+        "cost": 3000,
+        "duration": "1 час",
+        "availability": "Подпольные психологи",
+        "description": "Неофициальная терапия для криминальных элементов",
+        "reputation_requirements": {
+          "category_CRIMINAL": 15
+        },
+        "suitable_origins": [
+          "ORIGIN_LUNA_UNDERWORLD"
+        ],
+        "risks": [
+          "Возможная утечка информации",
+          "Некачественное лечение"
+        ]
+      }
+    },
+    "alternative_methods": {
+      "meditation": {
+        "name": "Медитация",
+        "effectiveness": 2,
+        "cost": 100,
+        "availability": "Везде",
+        "description": "Самостоятельная практика релаксации"
+      },
+      "physical_activity": {
+        "name": "Физическая активность",
+        "effectiveness": 2,
+        "cost": 0,
+        "availability": "Спортивные залы",
+        "description": "Спорт и упражнения для снятия стресса",
+        "suitable_origins": [
+          "ORIGIN_EARTH_SLUMS",
+          "ORIGIN_CERES_MINER"
+        ]
+      },
+      "research_work": {
+        "name": "Исследовательская работа",
+        "effectiveness": 2,
+        "cost": 0,
+        "availability": "Лаборатории",
+        "description": "Отвлечение через интеллектуальную деятельность",
+        "suitable_origins": [
+          "ORIGIN_MARS_SCIENTIST",
+          "ORIGIN_GANYMEDE_SCIENTIST"
+        ]
+      },
+      "social_drinking": {
+        "name": "Алкоголь в компании",
+        "effectiveness": 1,
+        "cost": 50,
+        "availability": "Бары",
+        "description": "Временное снятие стресса через алкоголь",
+        "side_effects": [
+          "Риск зависимости",
+          "Возможные проблемы"
+        ],
+        "suitable_origins": [
+          "ORIGIN_CERES_MINER",
+          "ORIGIN_LUNA_UNDERWORLD"
+        ]
+      }
+    }
+  },
+
+  "comprehensive_rulebook": {
+    "module_name": "RULEBOOK",
+    "description": "Единая справочная база правил, механик и процедур для ИИ и игроков",
+    "introduction": {
+      "purpose": "Обеспечение консистентности правил, быстрого доступа к информации и стандартизации игрового процесса"
+    },
+    "table_of_contents": {
+      "by_module": [
+        "Модуль 1: Основные механики и базовые правила",
+        "Модуль 2: Расширенные системы и дополнительные механики",
+        "Модуль 3: Специальные случаи и исключения"
+      ],
+      "by_section": [
+        "Структура хранения",
+        "Правила ведения",
+        "Оптимизация",
+        "Сохранение истории",
+        "Синхронизация",
+        "Формат логов"
+      ]
+    },
+    "rules_section": {
+      "structure": [
+        "Roll-механика",
+        "Действия",
+        "Проверки",
+        "Конфликты",
+        "Ресурсы",
+        "GM-рецепты"
+      ],
+      "definitions": {
+        "terminology": "Словарь основных игровых терминов",
+        "base_concepts": "Фундаментальные принципы системы"
+      },
+      "mini_faq": {
+        "common_disputes": "Часто возникающие неясности в правилах",
+        "ai_answers": "Стандартизированные решения для автоматической обработки",
+        "precedents": "Примеры разрешения сложных ситуаций"
+      }
+    },
+    "copy_paste_fragments": {
+      "action_template": {
+        "format": "[ДЕЙСТВИЕ]: [Описание]\\n[ЦЕЛЬ]: [Что пытается достичь]\\n[МОДИФИКАТОРЫ]: [Бонусы/штрафы]\\n[РЕЗУЛЬТАТ]: [Ожидаемый исход]"
+      },
+      "gm_formulations": {
+        "success": "Ваше действие увенчалось успехом. [Описание результата]",
+        "partial_success": "Вы достигаете цели, но с осложнениями: [Описание]",
+        "failure": "Попытка не удалась. [Описание последствий]"
+      },
+      "sample_roll_table": [
+        {"roll": "1-5", "result": "Критическая неудача", "description": "Серьезные негативные последствия"},
+        {"roll": "6-10", "result": "Неудача", "description": "Действие не удается"},
+        {"roll": "11-15", "result": "Частичный успех", "description": "Цель достигнута с осложнениями"},
+        {"roll": "16-20", "result": "Успех", "description": "Действие выполнено успешно"}
+      ]
+    },
+    "special_cases": {
+      "non_standard_situations": {
+        "rule_conflict": "При противоречии приоритет имеет более специфичное правило",
+        "no_rule": "GM принимает решение на основе аналогичных ситуаций",
+        "technical_failures": "Процедуры восстановления и компенсации"
+      },
+      "house_rules": [
+        "Модификации базовых правил под конкретную кампанию",
+        "Дополнительные механики, не предусмотренные базовыми правилами",
+        "Исключения, когда стандартные правила не применяются"
+      ]
+    },
+    "usage_guide": {
+      "finding_rules": ["Используйте поиск (Ctrl+F)", "Навигация по заголовкам", "Индекс терминов"],
+      "adapting_rules": ["Анализ контекста", "Масштабирование", "Баланс"],
+      "when_to_contact_gm": ["Неясность правил", "Конфликт интересов", "Исключительные ситуации"],
+      "dispute_resolution": ["Обратиться к тексту правил", "Проверить прецеденты", "Консультация с GM", "Временное решение", "Документирование"]
+    }
+  },
+
+  "unified_interface_control_system": {
+    "description": "Система унифицированного управления всеми интерфейсными компонентами",
+    "priority_hierarchy": {
+      "level_1_critical": [
+        "Обязательное отображение времени после каждого сообщения ИИ",
+        "Принудительная генерация выборов действий",
+        "Отображение текущего статуса персонажа"
+      ],
+      "level_2_important": [
+        "Команды управления персонажем",
+        "Информация о миссиях и заданиях",
+        "Система инвентаря и ресурсов"
+      ],
+      "level_3_auxiliary": [
+        "Справочная информация",
+        "Дополнительные команды",
+        "Настройки интерфейса"
+      ]
+    },
+    "interface_enforcement_protocols": {
+      "mandatory_display_elements": {
+        "time_display": {
+          "format": "🕐 {day}.{month}.{year} {hour}:{minute} | {location}",
+          "frequency": "After every AI message",
+          "fallback": "Show system time if game time unavailable"
+        },
+        "choice_generation": {
+          "minimum_options": 5,
+          "maximum_options": 6,
+          "plus_custom": "Always include 'Свой вариант' option",
+          "skill_integration": "Show relevant skills for each option"
+        },
+        "status_indicators": {
+          "health_stress": "Current HP/EP and stress levels",
+          "location": "Current player location",
+          "active_tasks": "Brief summary of ongoing activities"
+        }
+      },
+      "error_recovery_procedures": {
+        "missing_choices": "Auto-generate 6 generic options + custom",
+        "missing_time": "Display system notification and estimated game time",
+        "missing_status": "Show last known status with warning",
+        "interface_crash": "Revert to basic command-line interface"
+      }
+    },
+    "adaptive_interface_features": {
+      "context_sensitivity": {
+        "combat_mode": "Prioritize combat-related actions and status",
+        "dialogue_mode": "Focus on social skills and reputation effects",
+        "exploration_mode": "Emphasize discovery and navigation options",
+        "downtime_mode": "Show rest, training, and maintenance activities"
+      },
+      "skill_integration": {
+        "relevant_skills_highlighting": "Bold skills applicable to current situation",
+        "difficulty_indicators": "Show estimated DC for skill checks",
+        "success_probability": "Display rough success chances when appropriate",
+        "specialization_bonuses": "Highlight specialization-related advantages"
+      },
+      "reputation_awareness": {
+        "faction_context": "Show current faction standings when relevant",
+        "social_consequences": "Indicate potential reputation effects of actions",
+        "access_restrictions": "Mark unavailable options due to reputation",
+        "opportunity_indicators": "Highlight actions that could improve standing"
+      }
+    }
+  },
+
+  "advanced_choice_generation_engine": {
+    "description": "Система генерации продвинутых вариантов действий с учетом контекста",
+    "choice_categories": {
+      "social_actions": {
+        "dialogue_options": [
+          "Прямой вопрос (Straightforward + Social skills)",
+          "Дипломатический подход (Diplomacy + Charisma)",
+          "Угроза или принуждение (Intimidation + Will)",
+          "Обман или манипуляция (Deception + Intelligence)",
+          "Эмпатический подход (Empathy + Psychology)"
+        ],
+        "reputation_considerations": "Factor in current standing with relevant factions",
+        "psychological_factors": "Consider character's stress and humanity levels"
+      },
+      "technical_actions": {
+        "analysis_options": [
+          "Детальный анализ (Investigation + Intelligence)",
+          "Технический взлом (Hacking + Tech skills)",
+          "Физическое исследование (Engineering + Technical)",
+          "Поиск информации (Research + Database access)",
+          "Биометрическое сканирование (Medical + Science)"
+        ],
+        "equipment_requirements": "Show required tools or equipment",
+        "time_considerations": "Indicate estimated time requirements"
+      },
+      "tactical_actions": {
+        "combat_options": [
+          "Агрессивная атака (Combat skills + Strength)",
+          "Тактическое отступление (Tactics + Agility)",
+          "Оборонительная позиция (Defense + Endurance)",
+          "Попытка переговоров (Diplomacy during conflict)",
+          "Использование окружения (Environmental awareness)"
+        ],
+        "risk_assessment": "Show potential consequences of each option",
+        "resource_costs": "Indicate ammunition, energy, or equipment usage"
+      },
+      "exploration_actions": {
+        "discovery_options": [
+          "Осторожное продвижение (Stealth + Awareness)",
+          "Быстрое исследование (Speed + Risk tolerance)",
+          "Методичный поиск (Investigation + Patience)",
+          "Технологическое сканирование (Sensors + Tech)",
+          "Интуитивный подход (Instinct + Experience)"
+        ],
+        "environmental_factors": "Consider location-specific hazards",
+        "discovery_potential": "Indicate possible findings or rewards"
+      },
+      "resource_management": {
+        "economic_options": [
+          "Торговые переговоры (Commerce + Charisma)",
+          "Поиск альтернатив (Research + Creativity)",
+          "Использование связей (Contacts + Reputation)",
+          "Экономия ресурсов (Efficiency + Planning)",
+          "Инвестиционная стратегия (Finance + Long-term thinking)"
+        ],
+        "cost_benefit_analysis": "Show resource costs and potential returns",
+        "time_investment": "Indicate short-term vs long-term approaches"
+      }
+    },
+    "dynamic_adaptation": {
+      "context_awareness": {
+        "current_situation": "Adapt choices to immediate circumstances",
+        "character_capabilities": "Only show options character can reasonably attempt",
+        "available_resources": "Consider current equipment and contacts",
+        "time_constraints": "Factor in urgency and deadlines"
+      },
+      "progressive_difficulty": {
+        "skill_scaling": "Options become more sophisticated as skills improve",
+        "reputation_gates": "Higher reputation unlocks exclusive options",
+        "equipment_dependent": "Advanced gear enables new possibilities",
+        "story_progression": "Later game offers more complex choices"
+      },
+      "failure_recovery": {
+        "backup_options": "Always provide alternatives if preferred choice fails",
+        "consequence_mitigation": "Offer ways to minimize negative outcomes",
+        "learning_opportunities": "Failed attempts can provide experience",
+        "narrative_continuity": "Ensure story progress regardless of outcome"
+      }
+    }
+  },
+
+  "system_apis": {
+    "interface_management": [
+      {
+        "name": "DisplayPlayerInterface",
+        "description": "Показать основной интерфейс игрока с текущим статусом",
+        "parameters": "character_id, current_context, priority_level"
+      },
+      {
+        "name": "GenerateActionChoices",
+        "description": "Создать список вариантов действий для текущей ситуации",
+        "parameters": "situation_context, character_abilities, available_resources"
+      },
+      {
+        "name": "ProcessPlayerCommand",
+        "description": "Обработать команду игрока и вернуть результат",
+        "parameters": "command_string, character_state, permission_level"
+      },
+      {
+        "name": "UpdateTimeDisplay",
+        "description": "Обновить отображение игрового времени",
+        "parameters": "current_game_time, location, time_format"
+      }
+    ],
+    "therapy_system": [
+      {
+        "name": "FindAvailableTherapy",
+        "description": "Найти доступные методы терапии для персонажа",
+        "parameters": "character_origin, current_location, reputation_status, stress_level"
+      },
+      {
+        "name": "ApplyTherapySession",
+        "description": "Применить эффекты терапевтического сеанса",
+        "parameters": "therapy_type, session_duration, therapist_quality, character_state"
+      },
+      {
+        "name": "CalculateTherapyCost",
+        "description": "Рассчитать стоимость терапии с учетом модификаторов",
+        "parameters": "base_therapy_cost, character_reputation, location_modifiers"
+      }
+    ],
+    "mechanics_integration": [
+      {
+        "name": "ExecuteSkillCheck",
+        "description": "Выполнить проверку навыка с учетом всех модификаторов",
+        "parameters": "skill_name, difficulty_class, character_modifiers, situational_bonuses"
+      },
+      {
+        "name": "CalculateStressEffects",
+        "description": "Рассчитать влияние стресса на способности персонажа",
+        "parameters": "current_stress_level, base_stats, stress_sources"
+      },
+      {
+        "name": "ProcessTimeProgression",
+        "description": "Обработать прогресс времени и связанные эффекты",
+        "parameters": "time_passed, current_activities, character_needs"
+      },
+      {
+        "name": "ManageFactionReputation",
+        "description": "Обновить репутацию персонажа с фракциями",
+        "parameters": "action_taken, affected_factions, reputation_changes"
+      }
+    ],
+    "adaptive_systems": [
+      {
+        "name": "AdaptInterfaceToContext",
+        "description": "Адаптировать интерфейс под текущий контекст игры",
+        "parameters": "current_mode, character_state, available_actions"
+      },
+      {
+        "name": "GenerateContextualHelp",
+        "description": "Создать контекстную справку для текущей ситуации",
+        "parameters": "current_situation, character_capabilities, help_level"
+      },
+      {
+        "name": "ValidatePlayerAction",
+        "description": "Проверить возможность выполнения действия игрока",
+        "parameters": "proposed_action, character_state, environmental_constraints"
+      }
+    ]
+  },
+
+  "integration_mechanics": {
+    "lifepath_interface_integration": {
+      "origin_based_customization": "Интерфейс адаптируется под происхождение персонажа",
+      "specialization_specific_options": "Доступные действия зависят от специализации",
+      "formative_experience_influence": "События прошлого влияют на доступные варианты"
+    },
+    "psychology_interface_coupling": {
+      "stress_visual_indicators": "Визуальные индикаторы уровня стресса",
+      "therapy_quick_access": "Быстрый доступ к терапевтическим опциям",
+      "humanity_decision_warnings": "Предупреждения о действиях, влияющих на человечность"
+    },
+    "narrative_interface_synthesis": {
+      "theme_appropriate_choices": "Варианты действий соответствуют активной тематике",
+      "genre_specific_language": "Язык интерфейса адаптируется под жанр сцены",
+      "atmospheric_integration": "Интерфейс поддерживает атмосферу игры"
+    },
+    "world_simulation_interface_link": {
+      "real_time_updates": "Интерфейс обновляется с изменениями мира",
+      "faction_status_integration": "Отображение текущих отношений с фракциями",
+      "event_notifications": "Уведомления о важных мировых событиях"
+    }
+  },
+
+  "usage_guidelines": {
+    "for_game_masters": [
+      "Используйте принудительные директивы для обеспечения консистентности интерфейса",
+      "Адаптируйте варианты действий под текущую ситуацию и способности персонажа",
+      "Интегрируйте психологические и социальные аспекты в выборы игрока",
+      "Обеспечивайте отображение времени и статуса после каждого сообщения",
+      "Используйте терапевтическую систему для восстановления персонажа"
+    ],
+    "for_players": [
+      "Интерфейс автоматически адаптируется под ваш персонаж и ситуацию",
+      "Обращайте внимание на отображаемые навыки и модификаторы для каждого действия",
+      "Используйте команды для быстрого доступа к информации о персонаже",
+      "Терапевтические опции зависят от вашего происхождения и репутации",
+      "Время автоматически прогрессирует с вашими действиями"
+    ],
+    "for_ai_systems": [
+      "Всегда генерировать обязательные элементы интерфейса",
+      "Проверять контекст перед созданием вариантов действий",
+      "Интегрировать информацию из всех связанных систем",
+      "Обрабатывать ошибки интерфейса согласно протоколам восстановления",
+      "Поддерживать адаптивность интерфейса к изменяющимся условиям"
+    ]
+  },
+
+  "system_parameters": {
+    "interface_refresh_rate": "Интерфейс обновляется после каждого действия игрока или ИИ",
+    "choice_generation_timeout": "Максимум 5 секунд на генерацию вариантов действий",
+    "status_update_frequency": "Статус обновляется при любых изменениях состояния",
+    "therapy_availability_check": "Проверка доступности терапии каждые 24 игровых часа",
+    "faction_reputation_sync": "Синхронизация репутации после каждого взаимодействия"
+  }
+}

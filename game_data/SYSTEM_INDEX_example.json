@@ -1,0 +1,168 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "total_modules": 47,
+    "last_updated": "2025-10-12",
+    "system_version": "RPG_1.7",
+    "critical_modules": [
+      "CHARACTER_CORE",
+      "CHARACTER_LIFEPATH",
+      "FACTIONS_MASTER",
+      "NPC_ARCHETYPES"
+    ]
+  },
+  "categories": {
+    "core": {
+      "description": "Базовые системы персонажей и интерфейса",
+      "modules": {
+        "CHARACTER_CORE": {
+          "file": "CHARACTER_CORE.json",
+          "description": "Базовая система персонажа",
+          "size": 12638,
+          "dependencies": [
+            "CHARACTER_LIFEPATH"
+          ],
+          "provides": [
+            "attributes",
+            "skills",
+            "derived_stats"
+          ],
+          "priority": "critical",
+          "frequent_queries": [
+            "stats",
+            "skills",
+            "health_points"
+          ]
+        },
+        "CHARACTER_LIFEPATH": {
+          "file": "CHARACTER_LIFEPATH.json",
+          "description": "Система предыстории персонажа",
+          "size": 48471,
+          "dependencies": [
+            "NPC_RELATIONS",
+            "PSYCHOLOGY"
+          ],
+          "provides": [
+            "origins",
+            "backgrounds",
+            "lifepath_bonuses"
+          ],
+          "priority": "critical",
+          "frequent_queries": [
+            "origin",
+            "background",
+            "lifepath"
+          ]
+        },
+        "PLAYER_INTERFACE": {
+          "file": "PLAYER_INTERFACE.json",
+          "description": "Интерфейс игрока и команды",
+          "size": 4966,
+          "dependencies": [
+            "CHARACTER_CORE",
+            "PSYCHOLOGY"
+          ],
+          "provides": [
+            "commands",
+            "dashboard",
+            "interface"
+          ],
+          "priority": "high"
+        }
+      }
+    },
+    "content": {
+      "description": "Контентные модули с игровыми данными",
+      "modules": {
+        "FACTIONS_MASTER": {
+          "file": "FACTIONS_MASTER.json",
+          "description": "160 фракций всех типов",
+          "size": 158329,
+          "split_recommended": {
+            "FACTIONS_MEGACORP": "15 мегакорпораций",
+            "FACTIONS_SME": "50 малых и средних предприятий",
+            "FACTIONS_PMC": "20 частных военных компаний",
+            "FACTIONS_CLANS": "50 кланов и лабораторий"
+          },
+          "provides": [
+            "faction_data",
+            "relationships",
+            "mechanics"
+          ],
+          "priority": "critical",
+          "frequent_queries": [
+            "faction_info",
+            "allies",
+            "enemies"
+          ]
+        },
+        "NPC_ARCHETYPES": {
+          "file": "NPC_ARCHETYPES.json",
+          "description": "200 архетипов NPC",
+          "size": 62788,
+          "optimization_needed": "Add social_type and motive indexes",
+          "provides": [
+            "npc_templates",
+            "personalities",
+            "motivations"
+          ],
+          "priority": "high",
+          "frequent_queries": [
+            "archetype",
+            "social_type",
+            "motive"
+          ]
+        }
+      }
+    }
+  },
+  "quick_access": {
+    "character_creation": {
+      "files": [
+        "CHARACTER_CORE",
+        "CHARACTER_LIFEPATH"
+      ],
+      "workflow": "origin -> formative_years -> specialization -> calculate_stats"
+    },
+    "npc_generation": {
+      "files": [
+        "NPC_ARCHETYPES",
+        "NPC_RELATIONS",
+        "FACTIONS_MASTER"
+      ],
+      "workflow": "archetype -> faction -> relationships -> stats"
+    },
+    "combat": {
+      "files": [
+        "COMBAT",
+        "TECH_EQUIPMENT",
+        "PSYCHOLOGY"
+      ],
+      "workflow": "initiative -> actions -> damage -> morale"
+    },
+    "dialogue": {
+      "files": [
+        "DIALOGUE_INTEGRATED",
+        "NPC_RELATIONS",
+        "PSYCHOLOGY"
+      ],
+      "workflow": "npc_data -> relationship -> psychology -> dialogue_options"
+    }
+  },
+  "ai_gm_protocol": {
+    "mandatory_checks": [
+      "Always check SYSTEM_INDEX.json first",
+      "Use QUICK_REFERENCE.json for common queries",
+      "Check specific module files before external search",
+      "Cross-reference using dependency map",
+      "Log file access for debugging"
+    ],
+    "file_priority_order": [
+      "SYSTEM_INDEX.json",
+      "QUICK_REFERENCE.json",
+      "Module-specific files",
+      "Reference files",
+      "External search as last resort"
+    ]
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "module_name": "TECH_MALFUNCTION_GENERATOR",
+  "description": "Система случайных поломок и модификаций технологий",
+  "version": "1.0_PROCEDURAL_TECH",
+  "malfunction_frequency": {
+    "high_quality_gear": "1% per month of use",
+    "standard_gear": "5% per month of use",
+    "cheap_gear": "15% per month of use",
+    "experimental_tech": "25% per month of use"
+  },
+  "malfunctions_d20": [
+    {
+      "id": 1,
+      "type": "Power_Drain",
+      "effect": "Батарея разряжается в 2 раза быстрее",
+      "repair_cost": "10-50% от стоимости"
+    },
+    {
+      "id": 2,
+      "type": "Sensor_Glitch",
+      "effect": "Ложные показания датчиков",
+      "repair_cost": "20-100% от стоимости"
+    },
+    {
+      "id": 3,
+      "type": "Overheating",
+      "effect": "Перегрев при длительном использовании",
+      "repair_cost": "15-75% от стоимости"
+    },
+    {
+      "id": 4,
+      "type": "Memory_Corruption",
+      "effect": "Потеря сохраненных данных",
+      "repair_cost": "Данные утеряны навсегда"
+    },
+    {
+      "id": 5,
+      "type": "Interface_Bug",
+      "effect": "Сложности в управлении устройством",
+      "repair_cost": "5-25% от стоимости"
+    },
+    {
+      "id": 6,
+      "type": "Structural_Crack",
+      "effect": "Снижение прочности на 50%",
+      "repair_cost": "30-150% от стоимости"
+    },
+    {
+      "id": 7,
+      "type": "Calibration_Drift",
+      "effect": "Постепенное снижение точности",
+      "repair_cost": "Регулярное обслуживание"
+    },
+    {
+      "id": 8,
+      "type": "Electromagnetic_Interference",
+      "effect": "Помехи от других устройств",
+      "repair_cost": "Экранирование 25-75%"
+    },
+    {
+      "id": 9,
+      "type": "Firmware_Corruption",
+      "effect": "Устройство работает непредсказуемо",
+      "repair_cost": "Переустановка ПО"
+    },
+    {
+      "id": 10,
+      "type": "Physical_Damage",
+      "effect": "Видимые повреждения корпуса",
+      "repair_cost": "50-200% от стоимости"
+    },
+    {
+      "id": 11,
+      "type": "Connection_Loose",
+      "effect": "Периодическая потеря связи",
+      "repair_cost": "10-30% от стоимости"
+    },
+    {
+      "id": 12,
+      "type": "Component_Aging",
+      "effect": "Общее снижение производительности",
+      "repair_cost": "Замена компонентов"
+    },
+    {
+      "id": 13,
+      "type": "Software_Conflict",
+      "effect": "Конфликты с другим оборудованием",
+      "repair_cost": "Обновление ПО"
+    },
+    {
+      "id": 14,
+      "type": "Power_Spike_Damage",
+      "effect": "Повреждение от скачка напряжения",
+      "repair_cost": "75-300% от стоимости"
+    },
+    {
+      "id": 15,
+      "type": "Moisture_Damage",
+      "effect": "Коррозия от влажности",
+      "repair_cost": "40-120% от стоимости"
+    },
+    {
+      "id": 16,
+      "type": "Radiation_Degradation",
+      "effect": "Повреждение от космической радиации",
+      "repair_cost": "Радиационное экранирование"
+    },
+    {
+      "id": 17,
+      "type": "Wear_and_Tear",
+      "effect": "Механический износ движущихся частей",
+      "repair_cost": "Замена изношенных деталей"
+    },
+    {
+      "id": 18,
+      "type": "Thermal_Shock",
+      "effect": "Повреждение от резких перепадов температуры",
+      "repair_cost": "60-180% от стоимости"
+    },
+    {
+      "id": 19,
+      "type": "Virus_Infection",
+      "effect": "Заражение вредоносным ПО",
+      "repair_cost": "Антивирусная очистка"
+    },
+    {
+      "id": 20,
+      "type": "Quantum_Decoherence",
+      "effect": "Экзотический эффект для высокотехнологичного оборудования",
+      "repair_cost": "Требует специалистов"
+    }
+  ],
+  "beneficial_modifications_d12": [
+    {
+      "id": 1,
+      "mod": "Efficiency_Boost",
+      "effect": "+25% к производительности",
+      "chance": "5% при ремонте"
+    },
+    {
+      "id": 2,
+      "mod": "Power_Optimization",
+      "effect": "-30% энергопотребление",
+      "chance": "8% при ремонте"
+    },
+    {
+      "id": 3,
+      "mod": "Durability_Enhancement",
+      "effect": "+50% к прочности",
+      "chance": "6% при ремонте"
+    },
+    {
+      "id": 4,
+      "mod": "Speed_Increase",
+      "effect": "+40% к скорости работы",
+      "chance": "4% при ремонте"
+    },
+    {
+      "id": 5,
+      "mod": "Precision_Calibration",
+      "effect": "+35% к точности",
+      "chance": "7% при ремонте"
+    },
+    {
+      "id": 6,
+      "mod": "Range_Extension",
+      "effect": "+60% к дальности",
+      "chance": "5% при ремонте"
+    },
+    {
+      "id": 7,
+      "mod": "Stealth_Mode",
+      "effect": "Скрытность от сканеров",
+      "chance": "3% при ремонте"
+    },
+    {
+      "id": 8,
+      "mod": "Auto_Repair",
+      "effect": "Самовосстановление мелких повреждений",
+      "chance": "2% при ремонте"
+    },
+    {
+      "id": 9,
+      "mod": "Multi_Function",
+      "effect": "Дополнительная функция",
+      "chance": "4% при ремонте"
+    },
+    {
+      "id": 10,
+      "mod": "Radiation_Hardening",
+      "effect": "Иммунитет к радиации",
+      "chance": "6% при ремонте"
+    },
+    {
+      "id": 11,
+      "mod": "AI_Assistant",
+      "effect": "Встроенный ИИ-помощник",
+      "chance": "1% при ремонте"
+    },
+    {
+      "id": 12,
+      "mod": "Quantum_Enhancement",
+      "effect": "Квантовые эффекты",
+      "chance": "0.5% при ремонте"
+    }
+  ]
+}

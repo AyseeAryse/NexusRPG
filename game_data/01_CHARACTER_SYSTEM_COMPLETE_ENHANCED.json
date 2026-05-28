@@ -1,0 +1,100 @@
+{
+  "module_name": "01_CHARACTER_SYSTEM_COMPLETE_ENHANCED",
+  "module_id": "01",
+  "priority": "CRITICAL",
+  "version": "2.0_WITH_DICE_SYSTEM",
+  "description": "Полная система персонажей с обязательной системой бросков кубиков",
+  "source_files": [
+    "PROGRESSION.json (23,645 символов)",
+    "CHARACTER_LIFEPATH.json (42,187 символов)",
+    "PROGRESSION_V2.json (2,082 символа)",
+    "CHARACTER_CORE_REPUTATION_STANDARDIZED.json (4,502 символа)",
+    "balanced_character_presets.json (7,380 символов)",
+    "CHARACTER_CREATION_V2.json (5,077 символов)",
+    "CHARACTER_CORE.json (11,047 символов)",
+    "CHARACTER_SPECIALIZATIONS_V3_MASSIVE.json (16,848 символов)",
+    "CHARACTER_LIFEPATH_V3_MASSIVE_PART1.json (33,286 символов)",
+    "DICE_SYSTEM_INTEGRATION (NEW) - система обязательных бросков кубиков"
+  ],
+  "total_size": "150,000+ символов с расширениями",
+  "integration_status": "ENHANCED_WITH_DICE",
+  "dependencies": [
+    "AI_GM_CORE",
+    "FACTIONS_MASTER",
+    "PSYCHOLOGY",
+    "THEME_TONE",
+    "NPC_RELATIONS"
+  ],
+  "character_creation_comprehensive": {
+    "creation_workflow": {
+      "step_1": "Выбор имени и возраста (ОБЯЗАТЕЛЬНО)",
+      "step_2": "Выбор происхождения из 50 вариантов",
+      "step_3": "Выбор формирующих событий",
+      "step_4": "Выбор специализации из 35 вариантов",
+      "step_5": "Применение автоматических модификаторов",
+      "step_6": "Расчет финальных характеристик"
+    },
+    "mandatory_fields": {
+      "character_name": {
+        "required": true,
+        "prompt": "Как зовут вашего персонажа?",
+        "validation": "Не менее 2 символов, без цифр"
+      },
+      "character_age": {
+        "required": true,
+        "prompt": "Сколько лет вашему персонажу?",
+        "range": [
+          16,
+          80
+        ]
+      }
+    }
+  },
+  "dice_system_integration": {
+    "module_name": "DICE_SYSTEM_MANDATORY",
+    "version": "1.0_PYTHON_ENFORCED",
+    "description": "Система ОБЯЗАТЕЛЬНЫХ бросков кубиков через Python для всех действий",
+    "CRITICAL_DIRECTIVE": {
+      "priority": "ABSOLUTE_MAXIMUM",
+      "rule": "КАЖДОЕ действие персонажа ДОЛЖНО сопровождаться броском кубиков через Python",
+      "enforcement": "Если бросок не выполнен - это КРИТИЧЕСКАЯ ОШИБКА СИСТЕМЫ"
+    },
+    "python_dice_engine": {
+      "class_definition": "\nclass DiceSystem:\n    import random\n\n    def __init__(self):\n        self.roll_history = []\n        self.critical_success_threshold = 20\n        self.critical_failure_threshold = 1\n\n    def roll(self, dice_expression, skill_bonus=0, difficulty_class=10, advantage=False, disadvantage=False, description=\"\"):\n        '''\n        Обязательная функция броска кубиков\n\n        dice_expression: строка типа \"1d20\", \"2d6+3\", \"1d10\"\n        skill_bonus: бонус от навыка персонажа\n        difficulty_class: сложность действия (DC)\n        advantage/disadvantage: преимущество/помеха\n        description: описание действия\n        '''\n        # Парсинг выражения кубика\n        if 'd' in dice_expression:\n            parts = dice_expression.split('d')\n            num_dice = int(parts[0]) if parts[0] else 1\n\n            if '+' in parts[1]:\n                die_size, bonus = parts[1].split('+')\n                die_size = int(die_size)\n                dice_bonus = int(bonus)\n            elif '-' in parts[1]:\n                die_size, malus = parts[1].split('-')\n                die_size = int(die_size)\n                dice_bonus = -int(malus)\n            else:\n                die_size = int(parts[1])\n                dice_bonus = 0\n        else:\n            return {\"error\": \"Invalid dice expression\"}\n\n        # Выполнение бросков\n        rolls = []\n        for _ in range(num_dice):\n            roll = self.random.randint(1, die_size)\n            rolls.append(roll)\n\n        # Обработка преимущества/помехи для d20\n        if die_size == 20 and (advantage or disadvantage):\n            extra_roll = self.random.randint(1, 20)\n            if advantage:\n                final_roll = max(rolls[0], extra_roll)\n                rolls.append(extra_roll)\n            else:\n                final_roll = min(rolls[0], extra_roll)\n                rolls.append(extra_roll)\n        else:\n            final_roll = sum(rolls)\n\n        # Подсчёт общего результата\n        total_result = final_roll + dice_bonus + skill_bonus\n\n        # Определение успеха/провала\n        success = total_result >= difficulty_class\n        margin = total_result - difficulty_class\n\n        # Критические результаты (только для d20)\n        critical_success = (die_size == 20 and final_roll == 20)\n        critical_failure = (die_size == 20 and final_roll == 1)\n\n        # Подготовка результата\n        result = {\n            \"dice_expression\": dice_expression,\n            \"rolls\": rolls,\n            \"dice_bonus\": dice_bonus,\n            \"skill_bonus\": skill_bonus,\n            \"total_result\": total_result,\n            \"difficulty_class\": difficulty_class,\n            \"success\": success,\n            \"critical_success\": critical_success,\n            \"critical_failure\": critical_failure,\n            \"margin\": margin,\n            \"description\": description,\n            \"narrative\": self.generate_narrative(success, critical_success, critical_failure, margin)\n        }\n\n        # Сохранение в истории\n        self.roll_history.append(result)\n\n        return result\n\n    def generate_narrative(self, success, critical_success, critical_failure, margin):\n        '''Генерирует нарративное описание результата броска'''\n        if critical_success:\n            return self.random.choice([\n                \"⭐ ПРЕВОСХОДНЫЙ УСПЕХ! Вы превзошли самого себя!\",\n                \"🎯 КРИТИЧЕСКИЙ УСПЕХ! Идеальное исполнение!\",\n                \"🌟 ТРИУМФ! Так рождаются легенды!\",\n                \"💫 СОВЕРШЕНСТВО! Боги улыбнулись вам!\"\n            ])\n        elif critical_failure:\n            return self.random.choice([\n                \"💥 КРИТИЧЕСКАЯ НЕУДАЧА! Всё пошло не так!\",\n                \"⚡ ЭПИЧЕСКИЙ ПРОВАЛ! Катастрофа космических масштабов!\",\n                \"🌋 ФИАСКО! Даже звёзды отвернулись от вас!\",\n                \"💀 КАТАСТРОФА! Это войдёт в историю как эпический провал!\"\n            ])\n        elif success:\n            if margin >= 10:\n                return self.random.choice([\n                    \"✅ Блестящий успех! Действие выполнено с запасом\",\n                    \"🎯 Отличный результат! Всё прошло лучше ожидаемого\",\n                    \"⚡ Уверенная победа! Навыки не подвели\",\n                    \"🌟 Искусная работа! Годы тренировок окупились\"\n                ])\n            elif margin >= 5:\n                return self.random.choice([\n                    \"✅ Успех! Действие выполнено уверенно\",\n                    \"🎯 Хороший результат! Задача решена\",\n                    \"💪 Успешно! Умения сработали как надо\",\n                    \"⭐ Получилось! Опыт помог в решающий момент\"\n                ])\n            else:\n                return self.random.choice([\n                    \"✅ Едва удалось! Успех на грани провала\",\n                    \"😅 Получилось, но впритык! Еле-еле\",\n                    \"🤞 На волоске от неудачи, но успех!\",\n                    \"😰 С трудом, но цель достигнута!\"\n                ])\n        else:\n            if margin >= -5:\n                return self.random.choice([\n                    \"❌ Неудача... Совсем немного не хватило\",\n                    \"😔 Провал. Почти получилось, но не судьба\",\n                    \"💔 Не вышло. Мельчайшие детали подвели\",\n                    \"😞 Фиаско. Так близко к успеху!\"\n                ])\n            else:\n                return self.random.choice([\n                    \"❌ Серьёзная неудача. Ничего не получилось\",\n                    \"💥 Провал. Всё пошло совсем не по плану\",\n                    \"🌊 Неудача. Обстоятельства сильнее\",\n                    \"⛈️ Фиаско. Звёзды явно не на вашей стороне\"\n                ])\n\n    def get_difficulty_by_task(self, task_type):\n        '''Определяет базовую сложность для разных типов задач'''\n        difficulty_table = {\n            \"trivial\": 5,      # Тривиальное\n            \"easy\": 10,        # Лёгкое\n            \"moderate\": 15,    # Умеренное\n            \"hard\": 20,        # Сложное\n            \"very_hard\": 25,   # Очень сложное\n            \"legendary\": 30,   # Легендарное\n\n            # Специфичные задачи\n            \"basic_hacking\": 12,\n            \"advanced_hacking\": 18,\n            \"military_hacking\": 22,\n\n            \"small_talk\": 8,\n            \"business_negotiation\": 15,\n            \"hostile_negotiation\": 20,\n\n            \"basic_repair\": 10,\n            \"complex_system\": 16,\n            \"experimental_tech\": 24,\n\n            \"street_combat\": 14,\n            \"professional_combat\": 18,\n            \"elite_combat\": 22\n        }\n\n        return difficulty_table.get(task_type, 15)  # Default moderate\n\n    def format_roll_display(self, result):\n        '''Форматирует результат броска для отображения игроку'''\n        emoji = \"⭐\" if result[\"critical_success\"] else \"💥\" if result[\"critical_failure\"] else \"🎲\"\n        success_text = \"УСПЕХ\" if result[\"success\"] else \"ПРОВАЛ\"\n\n        display = f\"{emoji} {success_text}: {result['total_result']} vs DC{result['difficulty_class']}\\n\"\n        display += f\"📊 Детали: [{result['dice_expression']}] = {result['rolls']} \"\n        if result[\"dice_bonus\"] != 0:\n            display += f\"+ {result['dice_bonus']} (кости) \"\n        if result[\"skill_bonus\"] != 0:\n            display += f\"+ {result['skill_bonus']} (навык)\"\n        display += f\"\\n💬 {result['narrative']}\"\n\n        return display\n            "
+    },
+    "integration_rules": {
+      "mandatory_skill_checks": [
+        "Hacking - требует бросок Intelligence + Hacking",
+        "Combat - требует бросок соответствующего боевого навыка",
+        "Negotiation - требует бросок Charisma + Negotiation",
+        "Stealth - требует бросок Dexterity + Stealth",
+        "Piloting - требует бросок Reflexes + Piloting",
+        "Engineering - требует бросок Intelligence + Engineering",
+        "Medicine - требует бросок Intelligence + Medicine"
+      ],
+      "automatic_difficulty_scaling": {
+        "character_level_1_3": "Базовые сложности по таблице",
+        "character_level_4_7": "+2 к базовой сложности всех задач",
+        "character_level_8_10": "+4 к базовой сложности всех задач"
+      },
+      "lifepath_modifiers": {
+        "ORIGIN_MARS_MILITARY": {
+          "combat_bonus": 2,
+          "discipline_bonus": 1,
+          "authority_bonus": 1
+        },
+        "ORIGIN_EARTH_ELITE": {
+          "negotiation_bonus": 2,
+          "education_bonus": 2,
+          "influence_bonus": 3
+        },
+        "ORIGIN_GANYMEDE_SCIENTIST": {
+          "technology_bonus": 3,
+          "research_bonus": 2,
+          "analysis_bonus": 2
+        }
+      }
+    },
+    "python_implementation_sample": "\n# Пример использования системы в игре:\n\ndice_system = DiceSystem()\n\ndef perform_action(character, action_type, target_difficulty=None):\n    # Определяем навык для действия\n    skill_mapping = {\n        'hack_computer': ('hacking', 'intelligence'),\n        'fight_enemy': ('combat', 'strength'),  \n        'negotiate_deal': ('negotiation', 'charisma'),\n        'sneak_around': ('stealth', 'dexterity'),\n        'pilot_ship': ('piloting', 'reflexes'),\n        'repair_device': ('engineering', 'intelligence'),\n        'treat_wounds': ('medicine', 'intelligence')\n    }\n\n    if action_type not in skill_mapping:\n        return {\"error\": \"Unknown action type\"}\n\n    skill_name, attribute_name = skill_mapping[action_type]\n\n    # Получаем значения от персонажа\n    skill_level = getattr(character, skill_name, 0)\n    attribute_level = getattr(character, attribute_name, 5)\n\n    # Общий бонус навыка\n    skill_bonus = skill_level + attribute_level\n\n    # Определяем сложность\n    if target_difficulty is None:\n        difficulty = dice_system.get_difficulty_by_task(action_type)\n    else:\n        difficulty = target_difficulty\n\n    # Выполняем бросок (ОБЯЗАТЕЛЬНО!)\n    result = dice_system.roll(\"1d20\", \n                            skill_bonus=skill_bonus, \n                            difficulty_class=difficulty,\n                            description=f\"Персонаж пытается: {action_type}\")\n\n    # Отображаем результат игроку\n    print(dice_system.format_roll_display(result))\n\n    return result\n\n# ВСЕГДА используется при любых действиях игрока!\n"
+  }
+}

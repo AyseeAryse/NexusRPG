@@ -1,0 +1,127 @@
+{
+  "version": "1.0",
+  "common_data": {
+    "skills": {
+      "list": [
+        "hacking",
+        "piloting",
+        "negotiation",
+        "combat",
+        "stealth",
+        "technology",
+        "medicine",
+        "engineering",
+        "criminal",
+        "survival",
+        "diplomacy"
+      ],
+      "source_file": "CHARACTER_CORE.json",
+      "path": "baseskills"
+    },
+    "attributes": {
+      "list": [
+        "strength",
+        "dexterity",
+        "intelligence",
+        "charisma",
+        "endurance",
+        "willpower",
+        "reflexes",
+        "techempathy"
+      ],
+      "source_file": "CHARACTER_CORE.json",
+      "path": "baseattributes"
+    },
+    "origins": {
+      "common": [
+        "Earth Elite",
+        "Mars Military",
+        "Mars Scientist",
+        "Ceres Miner",
+        "Ganymede Scientist"
+      ],
+      "rare": [
+        "Earth Corporate Heir",
+        "Mars Rebel",
+        "Belt Smuggler",
+        "AI Researcher"
+      ],
+      "source_file": "CHARACTER_LIFEPATH.json",
+      "path": "stages.origin.options"
+    },
+    "factions": {
+      "megacorps": [
+        "LunarTech Industries",
+        "Helios Energy Corp",
+        "Protogen",
+        "Genesis Bioworks"
+      ],
+      "governments": [
+        "Mars Fleet",
+        "Earth UN",
+        "OPA"
+      ],
+      "criminals": [
+        "Black Lotus Triad",
+        "Belt Raiders",
+        "Shadow Consortium"
+      ],
+      "source_file": "FACTIONS_MASTER.json",
+      "total_count": 160
+    }
+  },
+  "frequent_queries": {
+    "character_stats": {
+      "command": "/stats",
+      "file": "CHARACTER_CORE.json",
+      "returns": "full character sheet with attributes, skills, health"
+    },
+    "faction_lookup": {
+      "query": "faction information",
+      "file": "FACTIONS_MASTER.json",
+      "path": "factions[faction_id]",
+      "includes": [
+        "history",
+        "leaders",
+        "allies",
+        "enemies",
+        "mechanics"
+      ]
+    },
+    "npc_archetype": {
+      "query": "NPC personality type",
+      "file": "NPC_ARCHETYPES.json",
+      "path": "archetypes[archetype_id]",
+      "includes": [
+        "social_type",
+        "motive",
+        "game_function",
+        "gm_example"
+      ]
+    },
+    "equipment_stats": {
+      "query": "weapon or gear stats",
+      "file": "TECH_EQUIPMENT.json",
+      "includes": [
+        "stats",
+        "cost",
+        "availability",
+        "restrictions"
+      ]
+    }
+  },
+  "problem_areas": {
+    "ai_gm_issues": [
+      "Tends to create synthetic data instead of using files",
+      "Skips file checking for 'simple' questions",
+      "Abstracts details instead of providing specifics",
+      "Doesn't always cross-reference related modules"
+    ],
+    "file_structure_issues": [
+      "FACTIONS_MASTER.json too large (158KB)",
+      "NPC_ARCHETYPES.json lacks indexing",
+      "COMBAT.json mixes multiple scales",
+      "Cross-references can be hard to follow"
+    ]
+  }
+}

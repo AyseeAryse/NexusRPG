@@ -1,0 +1,75 @@
+{
+  "module_name": "PLAYER_VIEW_ADAPTER",
+  "version": "1.0",
+  "purpose": "Конвертировать полный STARTGAME Protocol в человеко-читаемый «экран» для чата без изменения исходного файла",
+  "source_protocol": "STARTGAME_PROTOCOL_UNIFIED",
+
+  "render_rules": {
+    "fields_to_show": ["emoji", "title", "description", "prompt"],
+    "handlers_pick": ["narrative_hints"],
+    "line_spacing": 1,
+    "indent_spaces": 2,
+    "bullet_style": "numeric"
+  },
+
+  "map": {
+    "Origin": "Происхождение",
+    "ToneMix": "Комбинированная тональность",
+    "FormativeYears": "Годы становления"
+  },
+
+  "tone_mix": {
+    "enabled": true,
+    "step_tag": "ToneMix",
+    "auto_keyword": "пропустить",
+    "mix_parameters": ["Origin", "FormativeYears", "Specialization"],
+    "fallback_palette": ["неон-нуар", "эпик-космос", "драмеди-киберпанк"],
+    "mix_formula": "base(Origin) + bias(FormativeYears) + accent(Specialization)",
+    "player_options_accent": [
+      "Мрачный неон-нуар",
+      "Эпик-космос",
+      "Драмеди-киберпанк",
+      "Пропустить (авто)"
+    ]
+  },
+
+  "step_overrides": {
+    "ToneMix": {
+      "prepend_text": "Текущий тон будет создаваться на основе вашего происхождения и следующих выборов. Вы можете задать акцент или «пропустить» для автомикса.",
+      "options_static": [
+        { "label": "1) Мрачный неон-нуар", "description": "Город в огнях неона, где каждая тень таит опасность." },
+        { "label": "2) Эпик-космос", "description": "Безграничные просторы вселенной и величие неизведанного." },
+        { "label": "3) Драмеди-киберпанк", "description": "Ирония и трагедия в мире высоких технологий и низких страстей." },
+        { "label": "4) Пропустить (авто)", "description": "Автоматически смикшировать тон по вашим прошлым выборам." }
+      ],
+      "prompt_override": "Выберите акцент тональности или введите «пропустить» для автоматического микса.",
+      "narrative_hints": [
+        "Ваше прошлое окрашивает мир новыми красками.",
+        "Слияние ваших выборов создаёт уникальную атмосферу."
+      ]
+    },
+
+    "Origin": {
+      "prepend_text": "Выберите одно из ваших мест рождения — оно определит стартовые связи и задания.",
+      "options_from": "CHARACTER_LIFEPATH:origin_list",
+      "option_format": "{index}) {title}: {one_line}",
+      "more_keyword": "еще"
+    },
+
+    "FormativeYears": {
+      "prepend_text": "Какой опыт сформировал вас в юности?",
+      "options_from": "CHARACTER_LIFEPATH:formative_list",
+      "option_format": "{index}) {title}: {one_line}",
+      "more_keyword": "еще"
+    },
+    "Specialization": {
+      "options_from": "CHARACTER_LIFEPATH:specialization_list",
+      "option_format": "{index}) {name}: {one_line}",
+      "more_keyword": "еще"
+    }
+  },
+  "ui_texts": {
+    "choose_prompt_suffix": "Введите номер варианта или напишите «еще».",
+    "tone_prompt": "Введите номер акцента или «пропустить» для автоматического микса."
+  }
+}

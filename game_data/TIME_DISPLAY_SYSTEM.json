@@ -1,0 +1,26 @@
+{
+  "module_name": "TIME_DISPLAY_SYSTEM",
+  "version": "1.0_CHAT_INTEGRATION",
+  "description": "Система отображения игрового времени в чате",
+  "display_format": {
+    "standard": "🕐 {day}.{month}.{year} {hour}:{minute} | {location}",
+    "travel": "🚀 {day}.{month}.{year} {hour}:{minute} | В пути: {destination} (осталось {time_left})",
+    "activity": "⚙️ {day}.{month}.{year} {hour}:{minute} | {activity_name} ({duration})",
+    "examples": [
+      "🕐 15.03.2275 14:30 | Церера, Главный Порт",
+      "🚀 20.03.2275 09:15 | В пути: Марс (осталось 89 дней)",
+      "⚙️ 15.03.2275 16:45 | Ремонт двигателя (2 часа)"
+    ]
+  },
+  "auto_display_triggers": {
+    "after_ai_response": "Показывать время после каждого ответа ИИ",
+    "significant_time_jump": "При изменении времени на 1+ час",
+    "location_change": "При смене локации",
+    "activity_start_end": "При начале/завершении длительных действий"
+  },
+  "integration": {
+    "player_interface_v2": "Встроить в PLAYER_INTERFACE_V2",
+    "world_time_system": "Получать данные из WORLD_TIME_SYSTEM",
+    "ai_narrator_v2": "Принудительное отображение ИИ"
+  }
+}

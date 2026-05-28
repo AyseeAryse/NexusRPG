@@ -1,0 +1,700 @@
+{
+  "module_name": "CRAFTING_BLUEPRINTS_COMPLETE_OPTIMIZED",
+  "description": "Полная система создания и модификации предметов с детальными чертежами, ресурсами, механиками и интеграцией с жизненным путем.",
+  "version": "2.0_COMPLETE_OPTIMIZED",
+  "system_overview": {
+    "purpose": "Создание и модификация предметов через систему ремесла",
+    "scope": "Чертежи, ресурсы, навыковые требования, механики успеха/неудачи, модификации",
+    "integration": "Создает предметы из TECH_EQUIPMENT_COMPLETE_OPTIMIZED",
+    "complexity": "Многоуровневая система от простых инструментов до экзотических артефактов"
+  },
+  "crafting_mechanics": {
+    "success_calculation": {
+      "formula": "Skill_Level + Tech_Knowledge + Equipment_Bonus + d20 vs Difficulty",
+      "modifiers": {
+        "lifepath_bonus": "Origin и Specialization могут давать +1 до +3",
+        "workshop_bonus": "Качество мастерской: +0 до +5",
+        "assistant_bonus": "Помощники: +1 за каждого (максимум +3)",
+        "time_bonus": "+1 за каждые дополнительные 50% времени"
+      },
+      "critical_success": "Nat 20: +25% к характеристикам предмета, экономия 20% материалов",
+      "critical_failure": "Nat 1: Потеря 75% материалов, 2d6 урона, возможно внимание враждебных фракций"
+    },
+    "difficulty_scale": {
+      "trivial": "DC 5 - Простой ремонт, базовые инструменты",
+      "easy": "DC 8 - Стандартное снаряжение, известные технологии",
+      "medium": "DC 12 - Продвинутое оборудование, специализированные детали",
+      "hard": "DC 16 - Военные технологии, редкие материалы",
+      "very_hard": "DC 20 - Экспериментальные устройства, экзотические ресурсы",
+      "extreme": "DC 25 - Артефакты, неизученные технологии"
+    },
+    "time_requirements": {
+      "simple_items": "2-6 часов (инструменты, простое оружие)",
+      "complex_items": "1-3 дня (продвинутое снаряжение, импланты)",
+      "legendary_items": "1-2 недели (силовая броня, экзотические устройства)",
+      "artifacts": "1-6 месяцев (артефакты, революционные технологии)"
+    },
+    "failure_consequences": {
+      "minor_failure": {
+        "description": "Неудача на 1-5 пунктов",
+        "effects": "Потеря 25% материалов, удвоенное время"
+      },
+      "major_failure": {
+        "description": "Неудача на 6-10 пунктов",
+        "effects": "Потеря 50% материалов, 1d6 урона, испорченное оборудование"
+      },
+      "critical_failure": {
+        "description": "Неудача на 11+ пунктов или Nat 1",
+        "effects": "Потеря всех материалов, 2d6 урона, взрыв/пожар, внимание властей"
+      },
+      "catastrophic_failure": {
+        "description": "Критическая неудача при создании артефактов",
+        "effects": "Разрушение мастерской, 4d6 урона, аномальные эффекты, расследование"
+      }
+    }
+  },
+  "resource_system": {
+    "basic_materials": {
+      "metal_alloy": {
+        "description": "Стандартный конструкционный материал",
+        "sources": [
+          "Ceres mining stations",
+          "Asteroid belt",
+          "Industrial recycling"
+        ],
+        "base_cost": 50,
+        "difficulty": "Easy",
+        "yield_per_expedition": "20-100 units",
+        "storage_requirements": "Standard warehouse"
+      },
+      "polymer_composite": {
+        "description": "Легкие композитные материалы",
+        "sources": [
+          "Chemical plants",
+          "Tech manufacturing",
+          "Corporate suppliers"
+        ],
+        "base_cost": 75,
+        "difficulty": "Easy",
+        "yield_per_expedition": "10-50 units"
+      },
+      "ceramic_plate": {
+        "description": "Высокопрочная керамика для брони",
+        "sources": [
+          "Specialized foundries",
+          "Military surplus",
+          "Industrial salvage"
+        ],
+        "base_cost": 120,
+        "difficulty": "Medium",
+        "yield_per_expedition": "5-20 units"
+      }
+    },
+    "advanced_materials": {
+      "energy_cell": {
+        "description": "Стандартные энергетические элементы",
+        "sources": [
+          "Tech markets",
+          "Corporate suppliers",
+          "Salvaged equipment"
+        ],
+        "base_cost": 200,
+        "difficulty": "Medium",
+        "yield_per_expedition": "2-15 units",
+        "special_note": "Могут быть перезаряжены при наличии соответствующего оборудования"
+      },
+      "plasma_core": {
+        "description": "Высокоэнергетические плазменные ядра",
+        "sources": [
+          "Military surplus",
+          "High-tech labs",
+          "Restricted zones"
+        ],
+        "base_cost": 2000,
+        "difficulty": "Hard",
+        "yield_per_expedition": "1-3 units",
+        "special_requirements": "Лицензия на обращение с опасными материалами"
+      },
+      "bio_gel": {
+        "description": "Биосовместимый гель для имплантов",
+        "sources": [
+          "Medical facilities",
+          "Research stations",
+          "Black market"
+        ],
+        "base_cost": 800,
+        "difficulty": "Medium",
+        "yield_per_expedition": "3-12 units",
+        "storage_requirements": "Холодильное оборудование"
+      },
+      "nano_fiber": {
+        "description": "Нанотехнологичные волокна",
+        "sources": [
+          "Advanced manufacturing",
+          "Corporate R&D",
+          "Jovian tech hubs"
+        ],
+        "base_cost": 1500,
+        "difficulty": "Hard",
+        "yield_per_expedition": "1-5 units"
+      }
+    },
+    "exotic_materials": {
+      "quantum_chip": {
+        "description": "Квантовые процессоры",
+        "sources": [
+          "Corporate R&D",
+          "Jovian tech hubs",
+          "Alien artifacts"
+        ],
+        "base_cost": 15000,
+        "difficulty": "Extreme",
+        "yield_per_expedition": "1 unit per major operation",
+        "special_requirements": "Quantum containment facility"
+      },
+      "graviton_matrix": {
+        "description": "Матрица гравитонных полей",
+        "sources": [
+          "Alien technology",
+          "Deep space anomalies",
+          "Theoretical physics labs"
+        ],
+        "base_cost": 50000,
+        "difficulty": "Legendary",
+        "yield_per_expedition": "1 unit per campaign arc",
+        "special_requirements": "Understanding of exotic physics"
+      },
+      "psi_crystal": {
+        "description": "Психоактивные кристаллы неизвестного происхождения",
+        "sources": [
+          "Alien ruins",
+          "Deep space expeditions",
+          "Psi-active individuals"
+        ],
+        "base_cost": 25000,
+        "difficulty": "Extreme",
+        "special_note": "Может вызывать психические аномалии при неправильном обращении"
+      }
+    },
+    "salvage_system": {
+      "description": "Разборка оборудования для получения материалов",
+      "salvage_categories": {
+        "civilian_tech": {
+          "yield": "20-40% от стоимости",
+          "common_materials": [
+            "metal_alloy",
+            "polymer_composite",
+            "energy_cell"
+          ],
+          "skill_requirement": "Engineering 2"
+        },
+        "military_hardware": {
+          "yield": "40-60% от стоимости",
+          "common_materials": [
+            "ceramic_plate",
+            "plasma_core",
+            "armor_plating"
+          ],
+          "skill_requirement": "Engineering 4, Combat 2"
+        },
+        "alien_technology": {
+          "yield": "10-80% от стоимости (непредсказуемо)",
+          "possible_materials": [
+            "quantum_chip",
+            "graviton_matrix",
+            "unknown_alloys"
+          ],
+          "skill_requirement": "Engineering 6, Technology 4",
+          "risks": "Возможные аномальные эффекты"
+        }
+      }
+    }
+  },
+  "blueprint_database": {
+    "weapons": [
+      {
+        "blueprint_id": "WP_CORP_PISTOL",
+        "creates_item": "Corporate Enforcer Pistol",
+        "creates_tech_equipment_id": "WEAPON_001",
+        "difficulty": 14,
+        "required_resources": {
+          "metal_alloy": 20,
+          "energy_cell": 3,
+          "polymer_composite": 8,
+          "bio_scanner": 1
+        },
+        "required_skills": {
+          "Engineering": 3,
+          "Combat": 2,
+          "Technology": 2
+        },
+        "required_tech_knowledge": 2,
+        "crafting_time": "8 hours",
+        "special_requirements": "Corporate-grade workshop, biometric programming equipment",
+        "origin_bonuses": {
+          "ORIGIN_EARTH_ELITE": "Доступ к премиальным биометрическим модулям",
+          "FY_CORP_INTERNSHIP": "Знание корпоративных стандартов (-20% время)",
+          "SPEC_ENGINEER": "Улучшенная эффективность сборки"
+        }
+      },
+      {
+        "blueprint_id": "WP_PLASMA_RIFLE",
+        "creates_item": "Plasma Rifle MK-VII",
+        "creates_tech_equipment_id": "WEAPON_003",
+        "difficulty": 20,
+        "required_resources": {
+          "metal_alloy": 50,
+          "plasma_core": 2,
+          "energy_cell": 15,
+          "ceramic_plate": 10,
+          "cooling_unit": 1
+        },
+        "required_skills": {
+          "Engineering": 5,
+          "Combat": 3,
+          "Technology": 4
+        },
+        "required_tech_knowledge": 4,
+        "crafting_time": "3 days",
+        "special_requirements": "Military-grade fabricator, plasma containment facility, clearance level 3",
+        "origin_bonuses": {
+          "ORIGIN_MARS_MILITARY": "Доступ к военным спецификациям",
+          "ORIGIN_MARS_SCIENTIST": "Понимание плазменной физики (+2 к созданию)",
+          "FY_MARS_ACADEMY": "Знание систем безопасности"
+        }
+      },
+      {
+        "blueprint_id": "WP_CRYO_SHOTGUN",
+        "creates_item": "Cryo Shotgun 'Freezer'",
+        "creates_tech_equipment_id": "WEAPON_004",
+        "difficulty": 18,
+        "required_resources": {
+          "metal_alloy": 30,
+          "cryo_gel": 15,
+          "pressure_tank": 2,
+          "thermal_insulation": 5
+        },
+        "required_skills": {
+          "Engineering": 4,
+          "Combat": 2,
+          "Technology": 3
+        },
+        "required_tech_knowledge": 3,
+        "crafting_time": "2 days",
+        "special_requirements": "Cryogenic workshop, pressure testing equipment",
+        "origin_bonuses": {
+          "ORIGIN_GANYMEDE_SCIENTIST": "Экспертиза в криогенике (+3 к созданию)",
+          "ORIGIN_JOVIAN_SCIENTIST": "Доступ к продвинутым охладителям"
+        }
+      }
+    ],
+    "armor": [
+      {
+        "blueprint_id": "AR_POWER_ARMOR",
+        "creates_item": "Power Armor T-45 'Titan'",
+        "creates_tech_equipment_id": "ARMOR_001",
+        "difficulty": 25,
+        "required_resources": {
+          "exo_alloy": 200,
+          "hydraulic_actuators": 25,
+          "servo_motors": 20,
+          "life_support_unit": 2,
+          "power_core": 1,
+          "armor_plating": 50
+        },
+        "required_skills": {
+          "Engineering": 6,
+          "Technology": 5,
+          "Combat": 3
+        },
+        "required_tech_knowledge": 5,
+        "crafting_time": "3 weeks",
+        "special_requirements": "Heavy fabrication facility, crane systems, clean room",
+        "origin_bonuses": {
+          "ORIGIN_MARS_MILITARY": "Доступ к военным схемам движения",
+          "ORIGIN_GANYMEDE_ENGINEER": "Опыт работы с экзоскелетами",
+          "FY_MARS_ACADEMY": "Знание тактических требований"
+        }
+      },
+      {
+        "blueprint_id": "AR_ENERGY_SHIELD",
+        "creates_item": "Energy Shield 'Aurora'",
+        "creates_tech_equipment_id": "ARMOR_002",
+        "difficulty": 22,
+        "required_resources": {
+          "energy_cell": 30,
+          "shield_generator": 1,
+          "quantum_chip": 1,
+          "focusing_lens": 4,
+          "energy_conductor": 10
+        },
+        "required_skills": {
+          "Technology": 5,
+          "Engineering": 4,
+          "Physics": 3
+        },
+        "required_tech_knowledge": 4,
+        "crafting_time": "4 days",
+        "special_requirements": "Quantum fabricator, electromagnetic shielding",
+        "origin_bonuses": {
+          "ORIGIN_JOVIAN_SCIENTIST": "Понимание энергетических полей",
+          "ORIGIN_GANYMEDE_SCIENTIST": "Опыт работы с защитными системами"
+        }
+      }
+    ],
+    "implants": [
+      {
+        "blueprint_id": "IM_REFLEX_BOOSTER",
+        "creates_item": "Reflex Booster Implant",
+        "creates_tech_equipment_id": "IMPLANT_001",
+        "difficulty": 20,
+        "required_resources": {
+          "bio_gel": 12,
+          "neural_interface": 2,
+          "micro_processors": 8,
+          "bio_compatible_alloy": 5
+        },
+        "required_skills": {
+          "Medicine": 4,
+          "Technology": 3,
+          "Biology": 3
+        },
+        "required_tech_knowledge": 4,
+        "crafting_time": "1 week",
+        "special_requirements": "Sterile bio-lab, surgical equipment, test subjects",
+        "origin_bonuses": {
+          "ORIGIN_STATION_MEDIC": "Медицинская экспертиза (+2 к безопасности)",
+          "ORIGIN_MARS_SCIENTIST": "Понимание нейрологии"
+        }
+      },
+      {
+        "blueprint_id": "IM_CYBER_EYE",
+        "creates_item": "Cybernetic Eye 'Eagle Eye'",
+        "creates_tech_equipment_id": "IMPLANT_002",
+        "difficulty": 18,
+        "required_resources": {
+          "optical_sensors": 5,
+          "micro_processors": 3,
+          "bio_gel": 8,
+          "titanium_casing": 2
+        },
+        "required_skills": {
+          "Medicine": 4,
+          "Technology": 4,
+          "Biology": 2
+        },
+        "required_tech_knowledge": 3,
+        "crafting_time": "5 days",
+        "special_requirements": "Precision optics workshop, surgical facility"
+      }
+    ],
+    "gadgets": [
+      {
+        "blueprint_id": "GD_GEO_SCANNER",
+        "creates_item": "Geo-Scanner v3",
+        "creates_tech_equipment_id": "GADGET_001",
+        "difficulty": 16,
+        "required_resources": {
+          "sensor_array": 3,
+          "quantum_chip": 1,
+          "energy_cell": 8,
+          "data_storage": 2
+        },
+        "required_skills": {
+          "Engineering": 3,
+          "Technology": 4,
+          "Science": 2
+        },
+        "required_tech_knowledge": 3,
+        "crafting_time": "2 days",
+        "special_requirements": "Electronics workshop, calibration equipment"
+      },
+      {
+        "blueprint_id": "GD_HOLO_PROJECTOR",
+        "creates_item": "Holographic Projector 'Mirage'",
+        "creates_tech_equipment_id": "GADGET_002",
+        "difficulty": 19,
+        "required_resources": {
+          "holo_emitters": 6,
+          "quantum_chip": 2,
+          "energy_cell": 12,
+          "processing_unit": 1
+        },
+        "required_skills": {
+          "Engineering": 4,
+          "Technology": 4,
+          "Computer": 3
+        },
+        "required_tech_knowledge": 4,
+        "crafting_time": "3 days",
+        "special_requirements": "Holographic workshop, advanced computing facility"
+      }
+    ],
+    "vehicles_and_mechs": [
+      {
+        "blueprint_id": "VH_LIGHT_MECH",
+        "creates_item": "Light Mecha Frame MK-I",
+        "difficulty": 28,
+        "required_resources": {
+          "exo_alloy": 300,
+          "hydraulic_actuators": 40,
+          "servo_motors": 30,
+          "cockpit_module": 1,
+          "weapon_hardpoints": 4,
+          "sensor_suite": 1
+        },
+        "required_skills": {
+          "Engineering": 7,
+          "Technology": 5,
+          "Piloting": 4,
+          "Combat": 3
+        },
+        "required_tech_knowledge": 6,
+        "crafting_time": "6 weeks",
+        "special_requirements": "Heavy industrial complex, testing range, multiple specialists"
+      }
+    ],
+    "exotic_devices": [
+      {
+        "blueprint_id": "EX_GRAV_MANIPULATOR",
+        "creates_item": "Gravity Manipulator",
+        "creates_tech_equipment_id": "SPECIAL_001",
+        "difficulty": 30,
+        "required_resources": {
+          "graviton_matrix": 1,
+          "quantum_chip": 5,
+          "exotic_matter": 3,
+          "containment_field": 2,
+          "power_core": 2
+        },
+        "required_skills": {
+          "Physics": 8,
+          "Engineering": 6,
+          "Technology": 7,
+          "Exotic_Science": 4
+        },
+        "required_tech_knowledge": 8,
+        "crafting_time": "3-6 months",
+        "special_requirements": "Theoretical physics laboratory, exotic matter containment, multiple PhD-level specialists",
+        "risks": "High chance of dimensional anomalies, space-time distortions"
+      }
+    ]
+  },
+  "modification_system": {
+    "weapon_modifications": [
+      {
+        "mod_id": "WPN_SILENCER",
+        "name": "Глушитель",
+        "applies_to": [
+          "Пистолеты",
+          "ПП"
+        ],
+        "effect": "Скрытые атаки, -10% урон, +2 к Stealth при стрельбе",
+        "required_resources": {
+          "metal_alloy": 5,
+          "sound_dampener": 2,
+          "polymer_composite": 3
+        },
+        "required_skills": {
+          "Engineering": 2
+        },
+        "crafting_time": "3 hours",
+        "cost": 800
+      },
+      {
+        "mod_id": "WPN_SMART_TARGETING",
+        "name": "Система умного наведения",
+        "applies_to": [
+          "Все оружие дальнего боя"
+        ],
+        "effect": "+3 к точности, автоматическая баллистическая коррекция",
+        "required_resources": {
+          "micro_processors": 3,
+          "optical_sensors": 2,
+          "energy_cell": 1
+        },
+        "required_skills": {
+          "Technology": 4,
+          "Engineering": 2
+        },
+        "crafting_time": "6 hours",
+        "cost": 2500
+      },
+      {
+        "mod_id": "WPN_OVERCHARGE",
+        "name": "Система перегрузки",
+        "applies_to": [
+          "Энергетическое оружие"
+        ],
+        "effect": "+50% урон на 1 выстрел, затем перегрев на 2 раунда",
+        "required_resources": {
+          "energy_conductor": 4,
+          "cooling_unit": 1,
+          "capacitor": 2
+        },
+        "required_skills": {
+          "Engineering": 3,
+          "Technology": 3
+        },
+        "crafting_time": "4 hours",
+        "cost": 1800
+      }
+    ],
+    "armor_modifications": [
+      {
+        "mod_id": "ARM_REACTIVE_PLATES",
+        "name": "Реактивная броня",
+        "applies_to": [
+          "Тяжелая броня"
+        ],
+        "effect": "+4 защита против взрывов, -1 маневренность",
+        "required_resources": {
+          "explosive_plates": 8,
+          "ceramic_plate": 15,
+          "detonation_sensors": 4
+        },
+        "required_skills": {
+          "Engineering": 4,
+          "Combat": 2
+        },
+        "crafting_time": "8 hours",
+        "cost": 3500
+      },
+      {
+        "mod_id": "ARM_STEALTH_COATING",
+        "name": "Покрытие скрытности",
+        "applies_to": [
+          "Любая броня"
+        ],
+        "effect": "+3 к Stealth, невидимость для некоторых сенсоров",
+        "required_resources": {
+          "nano_coating": 10,
+          "optical_fibers": 20,
+          "energy_cell": 2
+        },
+        "required_skills": {
+          "Technology": 4,
+          "Stealth": 2
+        },
+        "crafting_time": "12 hours",
+        "cost": 4200
+      }
+    ]
+  },
+  "workshop_system": {
+    "workshop_types": {
+      "basic_garage": {
+        "bonus": "+0",
+        "capabilities": "Простой ремонт, базовые инструменты",
+        "cost": 5000,
+        "space_required": "20 кв.м."
+      },
+      "professional_workshop": {
+        "bonus": "+2",
+        "capabilities": "Продвинутое оборудование, специализированные станки",
+        "cost": 25000,
+        "space_required": "50 кв.м."
+      },
+      "industrial_fabricator": {
+        "bonus": "+4",
+        "capabilities": "Массовое производство, тяжелое оборудование",
+        "cost": 100000,
+        "space_required": "200 кв.м."
+      },
+      "research_laboratory": {
+        "bonus": "+3 (только научное оборудование)",
+        "capabilities": "Экспериментальные технологии, чистая среда",
+        "cost": 150000,
+        "space_required": "100 кв.м.",
+        "special": "Требует научный персонал"
+      },
+      "military_armory": {
+        "bonus": "+3 (только военное снаряжение)",
+        "capabilities": "Военные технологии, системы безопасности",
+        "cost": 200000,
+        "space_required": "150 кв.м.",
+        "special": "Требует военные лицензии"
+      }
+    }
+  },
+  "lifepath_integration": {
+    "origin_crafting_bonuses": {
+      "ORIGIN_MARS_SCIENTIST": {
+        "blueprint_access": [
+          "Все научное оборудование",
+          "Исследовательские устройства"
+        ],
+        "crafting_bonus": "+3 к проверкам создания научных приборов",
+        "resource_bonus": "Доступ к лабораторным материалам со скидкой 30%",
+        "special": "Может импровизировать замену редких научных компонентов"
+      },
+      "ORIGIN_GANYMEDE_ENGINEER": {
+        "blueprint_access": [
+          "Продвинутые технические чертежи",
+          "Инженерные системы"
+        ],
+        "crafting_bonus": "+3 к созданию в условиях низкой гравитации",
+        "resource_bonus": "Экспертиза в переработке материалов (+20% выход при сальваже)",
+        "special": "Может модифицировать чертежи для работы в экстремальных условиях"
+      },
+      "ORIGIN_CERES_MINER": {
+        "blueprint_access": [
+          "Горное оборудование",
+          "Промышленные инструменты"
+        ],
+        "crafting_bonus": "+4 к обработке металлов и минералов",
+        "resource_bonus": "Бесплатная добыча базовых металлов и руд",
+        "special": "Интуитивное понимание материаловедения"
+      },
+      "ORIGIN_EARTH_ELITE": {
+        "blueprint_access": [
+          "Роскошные товары",
+          "Корпоративные технологии"
+        ],
+        "crafting_bonus": "+2 к созданию высококачественных предметов",
+        "resource_bonus": "Доступ к премиальным материалам",
+        "special": "Может заказывать эксклюзивные компоненты"
+      },
+      "ORIGIN_MARS_MILITARY": {
+        "blueprint_access": [
+          "Военное снаряжение",
+          "Тактические системы"
+        ],
+        "crafting_bonus": "+3 к созданию оружия и брони",
+        "resource_bonus": "Доступ к военным материалам через старые связи",
+        "special": "Знание военных стандартов качества"
+      }
+    },
+    "specialization_bonuses": {
+      "SPEC_ENGINEER": {
+        "all_crafting": "+2",
+        "time_reduction": "20%",
+        "failure_mitigation": "Может повторить проверку один раз за сессию"
+      },
+      "SPEC_SCIENTIST": {
+        "research_items": "+4",
+        "experimental_bonus": "Может создавать улучшенные версии",
+        "analysis": "Может определить состав неизвестных предметов"
+      },
+      "SPEC_MEDIC": {
+        "medical_items": "+3",
+        "implant_bonus": "+2 к безопасности имплантации",
+        "bio_materials": "Экспертиза в биосовместимых материалах"
+      }
+    }
+  },
+  "economy_integration": {
+    "market_dynamics": {
+      "supply_and_demand": "Цены на ресурсы меняются в зависимости от наличия и потребности",
+      "faction_control": "Некоторые материалы контролируются определенными фракциями",
+      "trade_routes": "Межпланетная торговля влияет на доступность ресурсов"
+    },
+    "pricing_factors": {
+      "base_material_cost": "Базовая стоимость всех материалов",
+      "transportation": "+10-50% для межпланетных поставок",
+      "faction_markup": "+0-200% в зависимости от отношений",
+      "rarity_multiplier": "x1.5 до x10 для редких материалов",
+      "market_volatility": "±25% случайные колебания цен"
+    }
+  }
+}

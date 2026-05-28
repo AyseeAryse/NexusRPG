@@ -1,0 +1,380 @@
+{
+  "module_name": "INVESTIGATION_V2",
+  "version": "2.0_GALACTIC_DETECTIVE",
+  "description": "Комплексная система расследований с интеграцией 160 фракций и космических заговоров",
+  "replaces": "INVESTIGATION.json",
+  "size_target": "7,000+ символов",
+  "investigation_categories": {
+    "corporate_espionage": {
+      "complexity": "Medium to High",
+      "typical_duration": "2-8 weeks",
+      "key_skills": [
+        "Investigation",
+        "Hacking",
+        "Negotiation",
+        "Stealth"
+      ],
+      "faction_involvement": "Megacorporations, SMEs, Corporate security",
+      "evidence_types": [
+        "Financial records",
+        "Communication logs",
+        "Witness testimony",
+        "Digital forensics"
+      ],
+      "common_obstacles": [
+        "Corporate lawyers",
+        "Security systems",
+        "False identities",
+        "Destroyed evidence"
+      ],
+      "resolution_methods": [
+        "Legal prosecution",
+        "Corporate settlement",
+        "Media exposure",
+        "Blackmail leverage"
+      ]
+    },
+    "political_conspiracy": {
+      "complexity": "High to Legendary",
+      "typical_duration": "1-6 months",
+      "key_skills": [
+        "Investigation",
+        "Law",
+        "Negotiation",
+        "Psychology"
+      ],
+      "faction_involvement": "Government agencies, Political parties, Lobbying groups",
+      "evidence_types": [
+        "Voting records",
+        "Financial donations",
+        "Meeting schedules",
+        "Communication intercepts"
+      ],
+      "common_obstacles": [
+        "Classification barriers",
+        "Political immunity",
+        "Media manipulation",
+        "Witness intimidation"
+      ],
+      "resolution_methods": [
+        "Public hearings",
+        "Electoral consequences",
+        "Legal proceedings",
+        "Regime change"
+      ]
+    },
+    "scientific_mystery": {
+      "complexity": "Medium to Legendary",
+      "typical_duration": "1 week - 2 years",
+      "key_skills": [
+        "Investigation",
+        "Science",
+        "Technology",
+        "Medicine"
+      ],
+      "faction_involvement": "Research labs, Universities, Government science agencies",
+      "evidence_types": [
+        "Research data",
+        "Experiment results",
+        "Patent filings",
+        "Academic publications"
+      ],
+      "common_obstacles": [
+        "Technical complexity",
+        "Peer review process",
+        "Funding pressure",
+        "Ethical restrictions"
+      ],
+      "resolution_methods": [
+        "Scientific publication",
+        "Patent disputes",
+        "Regulatory action",
+        "Public safety measures"
+      ]
+    },
+    "organized_crime": {
+      "complexity": "Medium to High",
+      "typical_duration": "3 weeks - 1 year",
+      "key_skills": [
+        "Investigation",
+        "Combat",
+        "Criminal",
+        "Stealth"
+      ],
+      "faction_involvement": "Crime families, Pirate clans, Corrupt officials",
+      "evidence_types": [
+        "Financial transactions",
+        "Surveillance footage",
+        "Informant testimony",
+        "Physical evidence"
+      ],
+      "common_obstacles": [
+        "Violence threats",
+        "Witness intimidation",
+        "Police corruption",
+        "Evidence tampering"
+      ],
+      "resolution_methods": [
+        "Criminal prosecution",
+        "Gang warfare",
+        "Protection deals",
+        "Underground justice"
+      ]
+    }
+  },
+  "conspiracy_generator": {
+    "faction_integration": {
+      "primary_conspirators": "Select 1-2 factions from FACTIONS_MASTER as main actors",
+      "secondary_actors": "Add 2-4 related factions as allies/enemies/neutrals",
+      "innocent_bystanders": "Include 1-3 unaware factions that will be affected",
+      "hidden_puppetmasters": "Optional 1 faction manipulating events from shadows"
+    },
+    "conspiracy_templates": {
+      "resource_manipulation": {
+        "structure": "Control key resource → Manipulate market → Profit/Power",
+        "participants": [
+          "Mining corporations",
+          "Transport companies",
+          "Government regulators"
+        ],
+        "motivations": [
+          "Market dominance",
+          "Political control",
+          "Technological advantage"
+        ],
+        "investigation_hooks": [
+          "Price anomalies",
+          "Supply shortages",
+          "Whistleblower testimony"
+        ]
+      },
+      "political_puppet_master": {
+        "structure": "Influence politicians → Shape policy → Achieve hidden agenda",
+        "participants": [
+          "Corporate lobbyists",
+          "Government officials",
+          "Media outlets"
+        ],
+        "motivations": [
+          "Regulatory capture",
+          "Tax advantages",
+          "Military contracts"
+        ],
+        "investigation_hooks": [
+          "Voting pattern analysis",
+          "Financial disclosure irregularities",
+          "Policy beneficiary tracking"
+        ]
+      },
+      "technological_suppression": {
+        "structure": "Suppress innovation → Maintain status quo → Preserve existing profits",
+        "participants": [
+          "Established tech companies",
+          "Patent trolls",
+          "Research institutions"
+        ],
+        "motivations": [
+          "Market protection",
+          "Technological control",
+          "Strategic advantage"
+        ],
+        "investigation_hooks": [
+          "Missing researchers",
+          "Abandoned projects",
+          "Patent warfare"
+        ]
+      }
+    }
+  },
+  "space_age_investigations": {
+    "unique_challenges": {
+      "jurisdictional_complexity": {
+        "problem": "Crimes span multiple planets/stations with different legal systems",
+        "solutions": [
+          "Interplanetary law enforcement cooperation",
+          "Private investigation firms",
+          "Corporate security"
+        ],
+        "complications": [
+          "Legal immunity",
+          "Diplomatic protection",
+          "Sovereignty disputes"
+        ]
+      },
+      "evidence_preservation": {
+        "problem": "Space environment destroys evidence, distances prevent timely collection",
+        "solutions": [
+          "Automated evidence drones",
+          "Digital forensics",
+          "Witness preservation"
+        ],
+        "complications": [
+          "Vacuum exposure",
+          "Radiation damage",
+          "Travel time delays"
+        ]
+      },
+      "communication_delays": {
+        "problem": "Light-speed limits cause investigation coordination problems",
+        "solutions": [
+          "Quantum communication networks",
+          "Local investigation teams",
+          "AI assistance"
+        ],
+        "complications": [
+          "Information gaps",
+          "Coordination failures",
+          "Timeline confusion"
+        ]
+      }
+    },
+    "space_specific_evidence": {
+      "ship_logs": {
+        "description": "Navigation, communication, and system logs from spacecraft",
+        "reliability": "High for technical data, medium for personal logs",
+        "acquisition": "Requires physical access or expert hacking",
+        "limitations": [
+          "Can be falsified",
+          "May be corrupted",
+          "Legal seizure issues"
+        ]
+      },
+      "orbital_surveillance": {
+        "description": "Satellite and station monitoring of ship movements",
+        "reliability": "High for location data, limited for activity details",
+        "acquisition": "Government/corporate database access required",
+        "limitations": [
+          "Coverage gaps",
+          "Stealth technology",
+          "Data retention limits"
+        ]
+      },
+      "gravitational_analysis": {
+        "description": "Mass and trajectory analysis to reconstruct events",
+        "reliability": "Very high for physics, complex interpretation",
+        "acquisition": "Specialized equipment and expertise required",
+        "limitations": [
+          "Requires clean data",
+          "Complex calculations",
+          "Multiple variables"
+        ]
+      }
+    }
+  },
+  "advanced_techniques": {
+    "psychological_profiling": {
+      "integration": "Uses PSYCHOLOGY.json and NPC_ARCHETYPES",
+      "applications": [
+        "Suspect motivation analysis",
+        "Witness reliability assessment",
+        "Behavioral prediction"
+      ],
+      "skill_requirements": [
+        "Psychology 3+",
+        "Investigation 2+",
+        "Experience with criminal behavior"
+      ],
+      "success_factors": [
+        "Access to subject history",
+        "Direct observation",
+        "Cultural context understanding"
+      ]
+    },
+    "digital_forensics": {
+      "integration": "Uses HACKING_V2 and TECH_EQUIPMENT systems",
+      "applications": [
+        "Data recovery",
+        "Communication analysis",
+        "System intrusion detection"
+      ],
+      "skill_requirements": [
+        "Technology 3+",
+        "Hacking 2+",
+        "Investigation 2+"
+      ],
+      "success_factors": [
+        "Hardware access",
+        "Encryption breaking",
+        "Data integrity verification"
+      ]
+    },
+    "social_network_analysis": {
+      "integration": "Uses NPC_RELATIONS and FACTIONS_MASTER",
+      "applications": [
+        "Connection mapping",
+        "Influence tracking",
+        "Communication pattern analysis"
+      ],
+      "skill_requirements": [
+        "Investigation 2+",
+        "Negotiation 2+",
+        "Intelligence gathering"
+      ],
+      "success_factors": [
+        "Broad information access",
+        "Relationship understanding",
+        "Pattern recognition"
+      ]
+    },
+    "forensic_accounting": {
+      "integration": "Uses ECONOMY.json and corporate financial systems",
+      "applications": [
+        "Money laundering detection",
+        "Fraud investigation",
+        "Asset tracking"
+      ],
+      "skill_requirements": [
+        "Law 2+",
+        "Economics 2+",
+        "Investigation 3+"
+      ],
+      "success_factors": [
+        "Financial records access",
+        "Economic expertise",
+        "Legal authority"
+      ]
+    }
+  },
+  "political_investigation": {
+    "power_structure_analysis": {
+      "integration": "Full connection with POLITICS.json system",
+      "focus_areas": [
+        "Decision-making processes",
+        "Influence networks",
+        "Corruption patterns"
+      ],
+      "investigation_methods": [
+        "Public record analysis",
+        "Meeting surveillance",
+        "Financial tracking",
+        "Informant networks"
+      ],
+      "typical_discoveries": [
+        "Hidden campaign contributions",
+        "Regulatory capture",
+        "Nepotism networks",
+        "Policy manipulation"
+      ]
+    },
+    "interplanetary_politics": {
+      "complexity_factors": [
+        "Multiple jurisdictions",
+        "Diplomatic immunity",
+        "Treaty complications",
+        "Cultural differences"
+      ],
+      "investigation_challenges": [
+        "Legal authority limits",
+        "Information sharing barriers",
+        "Political pressure",
+        "International incidents"
+      ],
+      "specialized_skills": [
+        "Diplomatic protocol",
+        "International law",
+        "Cultural sensitivity",
+        "Multi-language capability"
+      ]
+    }
+  }
+}

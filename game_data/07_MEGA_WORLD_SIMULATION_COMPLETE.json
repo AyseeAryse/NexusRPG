@@ -1,0 +1,2239 @@
+{
+  "module_name": "07_MEGA_WORLD_SIMULATION_COMPLETE",
+  "module_id": "07",
+  "priority": "CRITICAL",
+  "version": "1.0_UNIFIED_COMPREHENSIVE",
+  "description": "Полная симуляция живой вселенной - объединение построения мира, выживания, динамических событий и временных систем",
+  "source_files": [
+    "WORLDBUILD.json (15,773 символа) - конструктор игрового мира с планетами и локациями",
+    "WORLD_SIM_V2_LIVING_UNIVERSE.json (12,577 символов) - симуляция живой вселенной V2",
+    "lore_chronology.json (~10,584 символа) - хронология мирового лора",
+    "WORLD_SIM.json (6,253 символа) - базовая симуляция мира с медициной и культурой",
+    "ENVIRONMENT_SURVIVAL.json (5,981 символ) - модуль выживания в экстремальных условиях",
+    "DYNAMIC_WORLD.json (2,495 символов) - система динамического мира"
+  ],
+  "total_size": "53,663 символов - полностью сохранено",
+  "integration_status": "COMPLETE_NO_LOSS",
+  "dependencies": [
+    "06_MEGA_ECONOMY_CRAFTING",
+    "FACTIONS_MASTER",
+    "CHARACTER_LIFEPATH",
+    "AI_GM_CORE"
+  ],
+  "comprehensive_world_construction": {
+    "module_name": "WORLDBUILD",
+    "description": "Интегрированная и расширенная база локаций для всей системы: планета → город → район → заведение с полной детализацией, маршрутами и событиями.",
+    "locations": [
+      {
+        "id": "earth",
+        "name": "Земля",
+        "type": "planet",
+        "overview": {
+          "population": 12000000000,
+          "governance": "ООН Земли",
+          "primary_resources": [
+            "вода",
+            "пища",
+            "энергия"
+          ],
+          "economy": "Мировой центр торговли и финансов",
+          "security": "Международные военные альянсы"
+        },
+        "gravity": 1.0,
+        "atmosphere": {
+          "N2": 78,
+          "O2": 21,
+          "Ar": 0.93
+        },
+        "resources": [
+          "вода",
+          "металлы",
+          "пища"
+        ],
+        "infrastructure": {
+          "major_cities": [
+            "Нью-Токио",
+            "Нью-Йорк",
+            "Генеральная Асамблея ООН"
+          ],
+          "population_distribution": {
+            "Нью-Токио": 500000000,
+            "Нью-Йорк": 350000000
+          }
+        },
+        "faction_control": {
+          "ООН Земли": 80,
+          "Корпорации": 15,
+          "OPA": 5
+        },
+        "cities": [
+          {
+            "id": "newtokyo",
+            "name": "Нью-Токио",
+            "population": 500000000,
+            "districts": [
+              {
+                "id": "tokyo_gov_core",
+                "name": "Правительственный сектор",
+                "type": "Political",
+                "description": "Расположен на бывших линиях метро, превращённых в правительственные башни.",
+                "security_level": "Maximum",
+                "average_income": "High",
+                "dominant_factions": [
+                  "ООН Земли"
+                ],
+                "establishments": [
+                  {
+                    "id": "un_assembly_hall",
+                    "name": "Зал Генеральной Ассамблеи ООН",
+                    "type": "Government",
+                    "services": [
+                      "Дипломатические встречи",
+                      "Голосования по резолюциям"
+                    ],
+                    "risks": [
+                      "Протесты активистов",
+                      "Террористические угрозы"
+                    ],
+                    "plot_hooks": [
+                      "Проникновение шпионов в штаб ООН",
+                      "Утечка компромата на голову Генсека"
+                    ]
+                  },
+                  {
+                    "id": "newshanghai",
+                    "name": "Квартал «Новая Шанхай»",
+                    "type": "Residential/Commercial",
+                    "services": [
+                      "Корпоративные офисы",
+                      "Роскошные апартаменты"
+                    ],
+                    "risks": [
+                      "Корпоративный шпионаж",
+                      "Угрозы рейдерских захватов"
+                    ],
+                    "plot_hooks": [
+                      "Корпоративный саботаж во время IPO",
+                      "Диверсия в жилом небоскрёбе"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "tokyo_industrial_corridor",
+                "name": "Индустриальный коридор",
+                "type": "Industrial",
+                "description": "Точка сборки и производства дронов и космических модулей.",
+                "security_level": "Medium",
+                "average_income": "Medium",
+                "establishments": [
+                  {
+                    "id": "mechforge",
+                    "name": "Завод MechForge",
+                    "type": "Industrial",
+                    "services": [
+                      "Производство дронов",
+                      "Мехатронные разработки"
+                    ],
+                    "risks": [
+                      "Промышленные аварии",
+                      "Кражи прототипов"
+                    ],
+                    "plot_hooks": [
+                      "Кража экспериментального дрона",
+                      "Сбой в системе безопасности цеха"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "newyork",
+            "name": "Нью-Йорк",
+            "population": 350000000,
+            "districts": [
+              {
+                "id": "finance_hub",
+                "name": "Финансовый узел",
+                "type": "Financial",
+                "description": "Центр глобальной экономики, штаб-квартиры крупнейших банков.",
+                "security_level": "High",
+                "average_income": "Very High",
+                "establishments": [
+                  {
+                    "id": "dome_wallstreet",
+                    "name": "Купол WallStreet",
+                    "type": "Financial",
+                    "services": [
+                      "Межпланетные валютные обмены",
+                      "Криптовалютные аукционы"
+                    ],
+                    "risks": [
+                      "Биржевые крахи",
+                      "Корпоративные войны"
+                    ],
+                    "plot_hooks": [
+                      "Падение курса EarthCred",
+                      "Взлом центрального бота трейдинга"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "routes": [
+          {
+            "to": "mars",
+            "delta_v_kms": 5.5,
+            "time_h": 72,
+            "risk": "low"
+          },
+          {
+            "to": "ganymede",
+            "delta_v_kms": 9.0,
+            "time_h": 180,
+            "risk": "medium"
+          },
+          {
+            "to": "luna",
+            "delta_v_kms": 3.2,
+            "time_h": 3,
+            "risk": "low"
+          },
+          {
+            "to": "ceres",
+            "delta_v_kms": 9.5,
+            "time_h": 200,
+            "risk": "medium"
+          }
+        ]
+      },
+      {
+        "id": "mars",
+        "name": "Марс",
+        "type": "planet",
+        "overview": {
+          "population": 800000000,
+          "governance": "Марсианская Республика",
+          "primary_resources": [
+            "гелий-3",
+            "металлы"
+          ],
+          "economy": "Горнодобыча, терраформирование",
+          "security": "Марсианский флот"
+        },
+        "gravity": 0.38,
+        "atmosphere": {
+          "CO2": 95,
+          "N2": 3,
+          "Ar": 1.6
+        },
+        "resources": [
+          "вода",
+          "металлы",
+          "пища"
+        ],
+        "infrastructure": {
+          "major_cities": [
+            "Новый Бостон"
+          ],
+          "population_distribution": {
+            "Новый Бостон": 200000000
+          }
+        },
+        "faction_control": {
+          "Марсианская Республика": 60,
+          "Earth UN": 20,
+          "OPA": 10,
+          "Corporates": 10
+        },
+        "cities": [
+          {
+            "id": "newboston",
+            "name": "Новый Бостон",
+            "population": 200000000,
+            "districts": [
+              {
+                "id": "terraform_projects",
+                "name": "Терраформенные проекты",
+                "type": "Agricultural",
+                "description": "Купольные фермы и научные станции.",
+                "security_level": "High",
+                "average_income": "High",
+                "establishments": [
+                  {
+                    "id": "renaissance_biodome",
+                    "name": "Био-купол «Ренессанс»",
+                    "type": "Research",
+                    "services": [
+                      "Генетические исследования флоры",
+                      "Тестовые экосистемы"
+                    ],
+                    "risks": [
+                      "Вспышки болезни растений",
+                      "Саботаж экотеррористов"
+                    ],
+                    "plot_hooks": [
+                      "Вирус в биокуполе",
+                      "Контрабанда растений"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "orbital_ring",
+                "name": "Окружное кольцо",
+                "type": "Logistics",
+                "description": "Торговая станция и порт для грузовых судов.",
+                "security_level": "Medium",
+                "average_income": "Medium",
+                "establishments": [
+                  {
+                    "id": "marsgate_terminal",
+                    "name": "МарсГейт Терминал",
+                    "type": "Logistics",
+                    "services": [
+                      "Перевозка грузов",
+                      "Таможенное оформление"
+                    ],
+                    "risks": [
+                      "Пиратские нападения",
+                      "Задержки поставок"
+                    ],
+                    "plot_hooks": [
+                      "Пиратская засада у терминала",
+                      "Коррупция на таможне"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "routes": [
+          {
+            "to": "earth",
+            "delta_v_kms": 5.5,
+            "time_h": 72,
+            "risk": "low"
+          },
+          {
+            "to": "ceres",
+            "delta_v_kms": 6.8,
+            "time_h": 120,
+            "risk": "medium"
+          }
+        ]
+      },
+      {
+        "id": "ganymede",
+        "name": "Ганимед",
+        "type": "moon",
+        "overview": {
+          "population": 200000000,
+          "governance": "ESA-Earth",
+          "primary_resources": [
+            "вода",
+            "биотехнологии"
+          ],
+          "economy": "Научные исследования, гидропонные фермы",
+          "security": "Частные военные компании"
+        },
+        "gravity": 0.146,
+        "atmosphere": null,
+        "resources": [
+          "вода",
+          "аммиак",
+          "редкие металлы"
+        ],
+        "infrastructure": {
+          "major_cities": [
+            "Технохаб"
+          ],
+          "population_distribution": {
+            "Технохаб": 50000000
+          }
+        },
+        "faction_control": {
+          "ESA-Earth": 50,
+          "Corporates": 30,
+          "OPA": 20
+        },
+        "cities": [
+          {
+            "id": "technohub",
+            "name": "Технохаб",
+            "population": 50000000,
+            "districts": [
+              {
+                "id": "bioethical_center",
+                "name": "Биоэтический центр",
+                "type": "Corporate",
+                "description": "Лаборатории и клиники для испытаний генетических технологий.",
+                "security_level": "High",
+                "average_income": "High",
+                "establishments": [
+                  {
+                    "id": "genesis_hq",
+                    "name": "Genesis Bioworks HQ",
+                    "type": "Corporate",
+                    "services": [
+                      "Этические эксперименты",
+                      "Регенеративные протезы"
+                    ],
+                    "risks": [
+                      "Этические протесты",
+                      "Шпионаж конкурентов"
+                    ],
+                    "plot_hooks": [
+                      "Утечка экспериментальных образцов",
+                      "Протез с побочными эффектами"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "hydroponic_farms",
+                "name": "Ганимедские фермы",
+                "type": "Agricultural",
+                "description": "Гидропонные комплексы, снабжающие систему едой.",
+                "security_level": "Medium",
+                "average_income": "Medium",
+                "establishments": [
+                  {
+                    "id": "redsand_farm",
+                    "name": "Ферма RedSand",
+                    "type": "Agricultural",
+                    "services": [
+                      "Гидропонная еда",
+                      "Семена ген-улучшенного зерна"
+                    ],
+                    "risks": [
+                      "Продовольственный кризис",
+                      "Вирусы сельхозкультур"
+                    ],
+                    "plot_hooks": [
+                      "Контрабанда семян",
+                      "Вспышка грибковой инфекции"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "routes": [
+          {
+            "to": "earth",
+            "delta_v_kms": 9.0,
+            "time_h": 180,
+            "risk": "medium"
+          },
+          {
+            "to": "mars",
+            "delta_v_kms": 9.0,
+            "time_h": 180,
+            "risk": "medium"
+          }
+        ]
+      },
+      {
+        "id": "luna",
+        "name": "Луна",
+        "type": "moon",
+        "overview": {
+          "population": 150000000,
+          "governance": "ООН Земли / Марсианская Республика",
+          "primary_resources": [
+            "гелий-3",
+            "минералы"
+          ],
+          "economy": "Добыча ресурсов, исследовательские базы",
+          "security": "Лунный флот ООН"
+        },
+        "gravity": 0.165,
+        "atmosphere": null,
+        "resources": [
+          "гелий-3",
+          "металлы"
+        ],
+        "infrastructure": {
+          "major_cities": [
+            "Армстронг-Сити"
+          ],
+          "population_distribution": {
+            "Армстронг-Сити": 60000000
+          }
+        },
+        "faction_control": {
+          "ООН Земли": 60,
+          "MarsRep": 40
+        },
+        "cities": [
+          {
+            "id": "armstrong_city",
+            "name": "Армстронг-Сити",
+            "population": 60000000,
+            "districts": [
+              {
+                "id": "alpha_labs",
+                "name": "Лаборатории Alpha",
+                "type": "Research",
+                "description": "Секретные исследовательские комплексы Protogen.",
+                "security_level": "Maximum",
+                "average_income": "High",
+                "establishments": [
+                  {
+                    "id": "protogen_alpha",
+                    "name": "Protogen Alpha Labs",
+                    "type": "Research",
+                    "services": [
+                      "Эксперименты с протомолекулой",
+                      "Создание ИИ-организмов"
+                    ],
+                    "risks": [
+                      "Утечки биооружия",
+                      "Корпоративные диверсии"
+                    ],
+                    "plot_hooks": [
+                      "Побег генетически модифицированного образца",
+                      "Шпион в штате учёных"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "novo_peking",
+                "name": "Ново-Пекин",
+                "type": "Commercial",
+                "description": "Коммерческий и жилой центр Nexus Pharmaceuticals.",
+                "security_level": "High",
+                "average_income": "Very High",
+                "establishments": [
+                  {
+                    "id": "nexus_tower",
+                    "name": "Nexus Pharma Tower",
+                    "type": "Corporate",
+                    "services": [
+                      "Медицинские препараты",
+                      "Нейростабилизация"
+                    ],
+                    "risks": [
+                      "Черный рынок лекарств",
+                      "Корпоративный шантаж"
+                    ],
+                    "plot_hooks": [
+                      "Разоблачение нелегальных испытаний",
+                      "Кража данных пациентов"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "routes": [
+          {
+            "to": "earth",
+            "delta_v_kms": 3.2,
+            "time_h": 3,
+            "risk": "low"
+          },
+          {
+            "to": "mars",
+            "delta_v_kms": 4.0,
+            "time_h": 5,
+            "risk": "low"
+          }
+        ]
+      },
+      {
+        "id": "ceres",
+        "name": "Церера",
+        "type": "ast_hub",
+        "overview": {
+          "population": 100000000,
+          "governance": "OPA",
+          "primary_resources": [
+            "редкие металлы",
+            "пища"
+          ],
+          "economy": "Горнодобыча, контрабанда",
+          "security": "Уличные банды"
+        },
+        "gravity": 0.028,
+        "atmosphere": null,
+        "resources": [
+          "вода",
+          "аммиак",
+          "редкие металлы"
+        ],
+        "infrastructure": {
+          "major_cities": [
+            "Глубины"
+          ],
+          "population_distribution": {
+            "Глубины": 40000000
+          }
+        },
+        "faction_control": {
+          "OPA": 70,
+          "Corporate": 20,
+          "Earth UN": 5,
+          "MarsRep": 5
+        },
+        "cities": [
+          {
+            "id": "deep",
+            "name": "Глубины",
+            "population": 40000000,
+            "districts": [
+              {
+                "id": "miners_quarter",
+                "name": "Шахтёрский квартал",
+                "type": "Residential",
+                "description": "Кольцеобразная структура туннелей под поверхностью.",
+                "security_level": "Low",
+                "average_income": "Low",
+                "establishments": [
+                  {
+                    "id": "the_pit_bar",
+                    "name": "Бар «Забой»",
+                    "type": "Entertainment",
+                    "services": [
+                      "Нелегальные бои",
+                      "Черный рынок оружия"
+                    ],
+                    "risks": [
+                      "Уличные драки",
+                      "Полицейские рейды"
+                    ],
+                    "plot_hooks": [
+                      "Организация нелегального турнира",
+                      "Засада охранников шахты"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "industrial_zone",
+                "name": "Производственная зона",
+                "type": "Industrial",
+                "description": "Фабрики по переработке металлов и топлива.",
+                "security_level": "Medium",
+                "average_income": "Medium",
+                "establishments": [
+                  {
+                    "id": "ceres_metal",
+                    "name": "Церера-Металл",
+                    "type": "Industrial",
+                    "services": [
+                      "Переработка редкоземельных металлов",
+                      "Контракты на экспорт"
+                    ],
+                    "risks": [
+                      "Профсоюзные протесты",
+                      "Экологические аварии"
+                    ],
+                    "plot_hooks": [
+                      "Забастовка рабочих",
+                      "Выброс токсичных отходов"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "routes": [
+          {
+            "to": "mars",
+            "delta_v_kms": 6.8,
+            "time_h": 120,
+            "risk": "medium"
+          },
+          {
+            "to": "earth",
+            "delta_v_kms": 9.5,
+            "time_h": 200,
+            "risk": "medium"
+          }
+        ]
+      }
+    ]
+  },
+  "living_universe_simulation": {
+    "module_name": "WORLD_SIM_V2",
+    "version": "2.0_LIVING_UNIVERSE",
+    "description": "Живая симуляция вселенной с полной интеграцией времени и межпланетных отношений",
+    "temporal_integration": {
+      "world_time_sync": {
+        "current_date": "15.03.2275 12:00",
+        "time_scale_effects": {
+          "minutes": "Minor NPC activities, conversation outcomes",
+          "hours": "NPC schedule changes, local market fluctuations",
+          "days": "News generation, faction minor actions, reputation decay",
+          "weeks": "Economic cycles, political developments, technology progress",
+          "months": "Major faction movements, seasonal changes, birth/death cycles",
+          "years": "Generational changes, technological paradigm shifts, historical events"
+        }
+      },
+      "dynamic_event_scheduling": {
+        "personal_events": {
+          "frequency": "Daily",
+          "triggers": [
+            "Player actions",
+            "NPC relationships",
+            "Random encounters"
+          ],
+          "examples": [
+            "Meeting old contacts",
+            "Receiving job offers",
+            "Personal crises"
+          ]
+        },
+        "local_events": {
+          "frequency": "Weekly",
+          "scope": "Station/city level",
+          "examples": [
+            "Dock worker strikes",
+            "Security crackdowns",
+            "Festival celebrations",
+            "Technical failures"
+          ]
+        },
+        "regional_events": {
+          "frequency": "Monthly",
+          "scope": "Planet/asteroid cluster level",
+          "examples": [
+            "Political elections",
+            "Natural disasters",
+            "Economic booms/busts",
+            "Military conflicts"
+          ]
+        },
+        "system_events": {
+          "frequency": "Quarterly",
+          "scope": "Entire solar system",
+          "examples": [
+            "Interplanetary treaties",
+            "Technological breakthroughs",
+            "Trade route changes",
+            "Alien contact"
+          ]
+        }
+      }
+    },
+    "interplanetary_relations": {
+      "relationship_matrix": {
+        "earth_government": {
+          "mars_colonies": {
+            "status": -25,
+            "trend": "deteriorating",
+            "issues": [
+              "Independence movements",
+              "Resource taxation"
+            ]
+          },
+          "belt_miners": {
+            "status": -15,
+            "trend": "stable",
+            "issues": [
+              "Worker rights",
+              "Safety regulations"
+            ]
+          },
+          "jupiter_system": {
+            "status": 35,
+            "trend": "improving",
+            "issues": [
+              "Trade agreements",
+              "Scientific cooperation"
+            ]
+          },
+          "saturn_system": {
+            "status": 10,
+            "trend": "neutral",
+            "issues": [
+              "Territorial disputes",
+              "Mining rights"
+            ]
+          },
+          "corporate_interests": {
+            "status": 50,
+            "trend": "very stable",
+            "issues": [
+              "Regulatory compliance",
+              "Tax policy"
+            ]
+          }
+        },
+        "mars_independence": {
+          "earth_government": {
+            "status": -35,
+            "trend": "worsening",
+            "issues": [
+              "Colonial taxation",
+              "Political autonomy"
+            ]
+          },
+          "belt_alliance": {
+            "status": 45,
+            "trend": "strengthening",
+            "issues": [
+              "Mutual defense",
+              "Trade cooperation"
+            ]
+          },
+          "corporate_neutrality": {
+            "status": 15,
+            "trend": "cautious",
+            "issues": [
+              "Investment security",
+              "Political stability"
+            ]
+          }
+        },
+        "belt_miners_union": {
+          "earth_corporations": {
+            "status": -40,
+            "trend": "hostile",
+            "issues": [
+              "Worker exploitation",
+              "Safety violations"
+            ]
+          },
+          "mars_solidarity": {
+            "status": 35,
+            "trend": "growing",
+            "issues": [
+              "Labor rights",
+              "Colonial solidarity"
+            ]
+          },
+          "pirate_tolerance": {
+            "status": -20,
+            "trend": "deteriorating",
+            "issues": [
+              "Route security",
+              "Protection rackets"
+            ]
+          }
+        }
+      },
+      "diplomatic_events": {
+        "trade_negotiations": {
+          "frequency": "Quarterly",
+          "participants": "Any 2+ factions with economic interests",
+          "outcomes": [
+            "New trade routes",
+            "Tariff changes",
+            "Economic partnerships",
+            "Trade wars"
+          ]
+        },
+        "territorial_disputes": {
+          "frequency": "Yearly",
+          "focus": "Asteroid mining rights, orbital space claims",
+          "escalation": [
+            "Diplomatic protests",
+            "Economic sanctions",
+            "Military posturing",
+            "Armed conflict"
+          ]
+        },
+        "technological_treaties": {
+          "frequency": "Every 2-3 years",
+          "subjects": [
+            "AI development limits",
+            "Genetic modification ethics",
+            "Weapons technology",
+            "Space exploration"
+          ]
+        }
+      }
+    },
+    "procedural_economy": {
+      "dynamic_market_simulation": {
+        "base_commodities": {
+          "raw_materials": [
+            "Iron ore",
+            "Rare metals",
+            "Silicon",
+            "Carbon composites"
+          ],
+          "energy_sources": [
+            "Fusion fuel",
+            "Solar cells",
+            "Antimatter",
+            "Quantum batteries"
+          ],
+          "life_support": [
+            "Water",
+            "Oxygen",
+            "Food",
+            "Medical supplies"
+          ],
+          "technology": [
+            "Computer components",
+            "Weapons",
+            "Ship parts",
+            "Communication gear"
+          ]
+        },
+        "price_drivers": {
+          "supply_factors": [
+            "Mining output",
+            "Manufacturing capacity",
+            "Trade route security",
+            "Political stability"
+          ],
+          "demand_factors": [
+            "Population growth",
+            "Military conflicts",
+            "Technological advancement",
+            "Natural disasters"
+          ],
+          "speculation": [
+            "Market rumors",
+            "Political uncertainty",
+            "Technological breakthroughs",
+            "War threats"
+          ]
+        }
+      },
+      "economic_cycles": {
+        "boom_periods": {
+          "duration": "2-4 years",
+          "characteristics": [
+            "High employment",
+            "Rapid growth",
+            "Easy credit",
+            "Technological investment"
+          ],
+          "triggers": [
+            "New resource discoveries",
+            "Technological breakthroughs",
+            "Trade route openings",
+            "Peace treaties"
+          ]
+        },
+        "recession_periods": {
+          "duration": "1-2 years",
+          "characteristics": [
+            "High unemployment",
+            "Reduced spending",
+            "Credit contraction",
+            "Social unrest"
+          ],
+          "triggers": [
+            "Resource depletion",
+            "Trade disruptions",
+            "Military conflicts",
+            "Political instability"
+          ]
+        },
+        "recovery_periods": {
+          "duration": "1-3 years",
+          "characteristics": [
+            "Cautious optimism",
+            "Gradual investment",
+            "Employment growth",
+            "Infrastructure rebuilding"
+          ]
+        }
+      }
+    },
+    "technological_evolution": {
+      "research_progression": {
+        "quantum_computing": {
+          "current_level": 7,
+          "advancement_rate": "0.5 levels per year",
+          "breakthrough_threshold": 10,
+          "impact": "Revolutionary AI capabilities, obsolete encryption"
+        },
+        "fusion_technology": {
+          "current_level": 8,
+          "advancement_rate": "0.3 levels per year",
+          "breakthrough_threshold": 10,
+          "impact": "Unlimited clean energy, space colonization boom"
+        },
+        "genetic_engineering": {
+          "current_level": 6,
+          "advancement_rate": "0.4 levels per year",
+          "breakthrough_threshold": 9,
+          "impact": "Human enhancement, disease elimination, ethical debates"
+        },
+        "faster_than_light": {
+          "current_level": 2,
+          "advancement_rate": "0.1 levels per year",
+          "breakthrough_threshold": 8,
+          "impact": "Interstellar travel, contact with alien civilizations"
+        }
+      },
+      "breakthrough_consequences": {
+        "economic_disruption": "Entire industries become obsolete overnight",
+        "political_realignment": "Power shifts to technology controllers",
+        "social_upheaval": "Mass unemployment and lifestyle changes",
+        "military_implications": "New weapons and defense systems",
+        "philosophical_questions": "Fundamental questions about humanity and reality"
+      }
+    },
+    "faction_dynamics": {
+      "power_shifts": {
+        "corporate_consolidation": {
+          "trend": "Megacorps absorbing smaller companies",
+          "timeline": "Ongoing over 5-10 years",
+          "resistance": "Government antitrust, worker unions, startup innovation",
+          "consequences": "Monopolistic control, reduced competition, higher prices"
+        },
+        "political_fragmentation": {
+          "trend": "Government authority declining",
+          "timeline": "Accelerating over next decade",
+          "causes": [
+            "Colonial independence movements",
+            "Corporate influence",
+            "Technological disruption"
+          ],
+          "consequences": [
+            "Regional autonomy",
+            "Corporate governance",
+            "Anarchic zones"
+          ]
+        },
+        "technological_supremacy": {
+          "trend": "AI and quantum tech dominance",
+          "timeline": "Next 5-15 years",
+          "leaders": [
+            "Research labs",
+            "Tech megacorps",
+            "Military R&D"
+          ],
+          "consequences": [
+            "Technological gap",
+            "Digital divide",
+            "AI governance"
+          ]
+        }
+      },
+      "alliance_formation": {
+        "anti_corporate_coalition": {
+          "members": [
+            "Mars Independence",
+            "Belt Miners Union",
+            "Worker Rights Groups"
+          ],
+          "goals": [
+            "Corporate regulation",
+            "Worker protection",
+            "Democratic governance"
+          ],
+          "challenges": [
+            "Funding limitations",
+            "Internal disagreements",
+            "Corporate infiltration"
+          ]
+        },
+        "technological_partnership": {
+          "members": [
+            "Research Labs",
+            "Tech Megacorps",
+            "Government Science Agencies"
+          ],
+          "goals": [
+            "Accelerated R&D",
+            "Patent sharing",
+            "Technological leadership"
+          ],
+          "tensions": [
+            "Profit vs progress",
+            "Military applications",
+            "Ethical boundaries"
+          ]
+        }
+      }
+    },
+    "conflict_simulation": {
+      "war_types": {
+        "economic_warfare": {
+          "methods": [
+            "Trade blockades",
+            "Corporate espionage",
+            "Market manipulation",
+            "Resource hoarding"
+          ],
+          "participants": "Corporations, governments, trade unions",
+          "duration": "Months to years",
+          "resolution": "Economic treaties, mergers, regulatory intervention"
+        },
+        "information_warfare": {
+          "methods": [
+            "Propaganda campaigns",
+            "Data theft",
+            "Network attacks",
+            "Social manipulation"
+          ],
+          "participants": "Intelligence agencies, hackers, media corporations",
+          "duration": "Ongoing background activity",
+          "escalation": "Physical sabotage, assassination, conventional conflict"
+        },
+        "territorial_conflict": {
+          "methods": [
+            "Military occupation",
+            "Naval blockades",
+            "Guerrilla warfare",
+            "Civilian displacement"
+          ],
+          "participants": "Government militaries, PMCs, independence movements",
+          "duration": "Weeks to decades",
+          "resolution": "Diplomatic negotiations, military victory, international intervention"
+        },
+        "technological_warfare": {
+          "methods": [
+            "AI attacks",
+            "Quantum disruption",
+            "Reality manipulation",
+            "Consciousness hacking"
+          ],
+          "participants": "Advanced tech factions, AI entities, reality hackers",
+          "duration": "Minutes to months",
+          "consequences": "Paradigm shifts, reality restructuring, existential threats"
+        }
+      }
+    }
+  },
+  "historical_chronology": {
+    "module_name": "LORE_CHRONOLOGY",
+    "description": "Хронология мирового лора - детальная временная линия развития вселенной с ключевыми событиями",
+    "timeline": [
+      {
+        "id": "era_1",
+        "title": "Эра Основания",
+        "period": "1900-2050",
+        "sections": [
+          {
+            "id": "section_11",
+            "title": "Предтеча космических технологий",
+            "period": "1900-2050",
+            "tone": "Романтический оптимизм прогресса",
+            "key_events": [
+              "1957 - Первый спутник запущен в космос",
+              "1969 - Человек ступает на Луну",
+              "1980-2020 - Развитие интернета и цифровых технологий",
+              "1929 - Мировой экономический кризис",
+              "1998 - Начало МКС",
+              "2028 - Первые коммерческие полеты в космос"
+            ],
+            "cultural_impact": "Романтизация космоса как последнего рубежа",
+            "game_references": [
+              "WORLDBUILD - Земля как центр",
+              "ECONOMY - Начало глобальной экономики"
+            ]
+          },
+          {
+            "id": "section_12",
+            "title": "Цифровая революция",
+            "period": "1980-2020",
+            "tone": "Технологический энтузиазм и первые предостережения",
+            "key_events": [
+              "1991 - Рождение Всемирной паутины",
+              "2000 - Y2K кризис показывает зависимость от технологий",
+              "2007 - iPhone революционизирует персональные устройства",
+              "2015 - ИИ начинает побеждать людей в сложных играх"
+            ],
+            "cultural_impact": "Формирование цифровой культуры",
+            "game_references": [
+              "HACKING - Корни киберпреступности",
+              "FACTIONS - Зарождение техно-корпораций"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "era_2",
+        "title": "Эра Экспансии",
+        "period": "2070-2150",
+        "sections": [
+          {
+            "id": "section_21",
+            "title": "Лунная колонизация",
+            "period": "2070-2110",
+            "tone": "Промышленная экспансия",
+            "key_events": [
+              "2075 - Первая постоянная лунная база",
+              "2080 - Начало добычи гелия-3",
+              "2090 - Восстание шахтеров на Луне",
+              "2095 - Belters формируют первые профсоюзы"
+            ],
+            "cultural_impact": "Рождение культуры космических рабочих",
+            "game_references": [
+              "BACKGROUND - Лунные корни",
+              "FACTIONS - OPA зарождение"
+            ]
+          },
+          {
+            "id": "section_22",
+            "title": "Марсианская терраформация",
+            "period": "2090-2130",
+            "tone": "Научный оптимизм и корпоративные амбиции",
+            "key_events": [
+              "2090 - Первые марсианские купола",
+              "2105 - Начало атмосферной трансформации",
+              "2120 - Первые дети, родившиеся на Марсе",
+              "2125 - Формирование Марсианского Конгресса"
+            ],
+            "cultural_impact": "Марсианская идентичность против земной",
+            "game_references": [
+              "TECH/TECH_EQUIPMENT - Терраформационные технологии",
+              "PSYCHOLOGY - Марсианский менталитет"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "era_3",
+        "title": "Эра Напряжения",
+        "period": "2150-2220",
+        "sections": [
+          {
+            "id": "section_31",
+            "title": "Война за независимость",
+            "period": "2160",
+            "tone": "Политическое напряжение",
+            "key_events": [
+              "2155 - Марсианская декларация независимости",
+              "2160 - 10-летняя война за независимость",
+              "2170 - Основание Solar Council",
+              "2175 - Первые REP-соглашения"
+            ],
+            "cultural_impact": "Межпланетные культурные различия",
+            "game_references": [
+              "POLITICS - Основы межпланетной политики",
+              "REP-системы"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "era_4",
+        "title": "Современная эра",
+        "period": "2220-2275",
+        "sections": [
+          {
+            "id": "section_41",
+            "title": "Информационные войны",
+            "period": "2220-2230",
+            "tone": "Киберпанковская паранойя",
+            "key_events": [
+              "2225 - Великий Data Storm поражает Землю",
+              "2227 - Первые ИИ-террористы",
+              "2229 - Квантовое шифрование становится стандартом"
+            ],
+            "game_references": [
+              "DYNAMIC_WORLD - События как Data Storm",
+              "INT-системы - Data Storm последствия"
+            ]
+          },
+          {
+            "id": "section_42",
+            "title": "Корпоративные войны",
+            "period": "2230-2250",
+            "tone": "Коммерческая агрессия",
+            "key_events": [
+              "2235 - Первая межпланетная корпоративная война",
+              "2240 - Слияние мегакорпораций",
+              "2245 - Появление Data Rebels и Neo-Truthers"
+            ],
+            "game_references": [
+              "REP-системы",
+              "Data Rebels как фракция",
+              "Neo-Truthers движение"
+            ]
+          },
+          {
+            "id": "section_43",
+            "title": "Финансовый кризис",
+            "period": "2240-2260",
+            "tone": "Экономическая нестабильность",
+            "key_events": [
+              "2245 - Крах межпланетных бирж",
+              "2250 - Появление DEBT и HEAT систем",
+              "2255 - Финансовая реформа Solar Council"
+            ],
+            "cultural_impact": "Финансовая грамотность как выживание",
+            "game_references": [
+              "ECONOMY - DEBT/HEAT системы",
+              "Financial Saboteur и Debt Broker как архетипы"
+            ]
+          },
+          {
+            "id": "section_44",
+            "title": "Настоящее время",
+            "period": "2275",
+            "summary": "Текущая игровая эпоха с установленными системами DEBT, HEAT, REP и активными конфликтами всех уровней",
+            "game_references": [
+              "Все основные системы",
+              "DYNAMIC_WORLD как движущая сила"
+            ]
+          }
+        ]
+      }
+    ],
+    "key_themes": [
+      "Технологический прогресс и его последствия",
+      "Колониальная экспансия и борьба за независимость",
+      "Корпоративная власть против индивидуальной свободы",
+      "Информация как оружие и валюта",
+      "Человеческая адаптация к космической жизни"
+    ],
+    "recurring_conflicts": [
+      "Земля vs Колонии",
+      "Корпорации vs Рабочие",
+      "Традиция vs Инновации",
+      "Безопасность vs Свобода",
+      "Человечность vs Эффективность"
+    ]
+  },
+  "medical_cultural_simulation": {
+    "module_name": "WORLD_SIM",
+    "description": "Комплексная система симуляции медицины и культурных особенностей.",
+    "medical_system": {
+      "injury_classification": {
+        "categories": [
+          "Физические",
+          "Психологические",
+          "Отравления",
+          "Инфекции",
+          "Хронические"
+        ],
+        "severity_levels": [
+          "Легкие",
+          "Средние",
+          "Тяжелые",
+          "Критические"
+        ],
+        "localization": [
+          "Голова",
+          "Торс",
+          "Конечности",
+          "Внутренние органы"
+        ]
+      },
+      "treatment_protocols": [
+        "Первая помощь",
+        "Консервативное лечение",
+        "Хирургическое вмешательство",
+        "Экстренная медицина"
+      ],
+      "personnel_types": [
+        "Парамедики",
+        "Медсестры",
+        "Врачи общей практики",
+        "Специалисты",
+        "Исследователи"
+      ],
+      "infrastructure": [
+        "Поликлиники",
+        "Больницы",
+        "Специализированные центры",
+        "Исследовательские институты"
+      ],
+      "tables": {
+        "injury_d20": [
+          {
+            "roll": 1,
+            "type": "Поверхностная рана",
+            "complications": "Инфекция, рубцевание"
+          },
+          {
+            "roll": 2,
+            "type": "Глубокая рана",
+            "complications": "Кровотечение, повреждение нервов"
+          },
+          {
+            "roll": 3,
+            "type": "Ушиб легкой степени",
+            "complications": "Гематома, отек"
+          },
+          {
+            "roll": 4,
+            "type": "Ушиб тяжелой степени",
+            "complications": "Внутреннее кровотечение, некроз"
+          },
+          {
+            "roll": 5,
+            "type": "Растяжение связок",
+            "complications": "Нестабильность сустава"
+          },
+          {
+            "roll": 6,
+            "type": "Разрыв связок",
+            "complications": "Полная потеря функции"
+          },
+          {
+            "roll": 7,
+            "type": "Вывих",
+            "complications": "Повреждение сосудов и нервов"
+          },
+          {
+            "roll": 8,
+            "type": "Перелом закрытый",
+            "complications": "Смещение отломков"
+          },
+          {
+            "roll": 9,
+            "type": "Перелом открытый",
+            "complications": "Инфекция, остеомиелит"
+          },
+          {
+            "roll": 10,
+            "type": "Сотрясение мозга",
+            "complications": "Посттравматический синдром"
+          },
+          {
+            "roll": 11,
+            "type": "Ушиб мозга",
+            "complications": "Отек мозга, кома"
+          },
+          {
+            "roll": 12,
+            "type": "Ожог I степени",
+            "complications": "Инфекция, пигментация"
+          },
+          {
+            "roll": 13,
+            "type": "Ожог II степени",
+            "complications": "Инфекция, рубцевание, контрактуры"
+          },
+          {
+            "roll": 14,
+            "type": "Ожог III степени",
+            "complications": "Шок, сепсис, смерть"
+          },
+          {
+            "roll": 15,
+            "type": "Отморожение",
+            "complications": "Некроз, гангрена"
+          },
+          {
+            "roll": 16,
+            "type": "Электротравма",
+            "complications": "Остановка сердца, ожоги"
+          },
+          {
+            "roll": 17,
+            "type": "Отравление легкое",
+            "complications": "Аллергические реакции"
+          },
+          {
+            "roll": 18,
+            "type": "Отравление тяжелое",
+            "complications": "Полиорганная недостаточность, кома"
+          },
+          {
+            "roll": 19,
+            "type": "Утопление",
+            "complications": "Отек легких, пневмония"
+          },
+          {
+            "roll": 20,
+            "type": "Комбинированная травма",
+            "complications": "Травматический шок, смерть"
+          }
+        ],
+        "complications_d20": [
+          {
+            "roll": "1-2",
+            "complication": "Аллергическая реакция",
+            "effect": "Отёк, затруднение дыхания"
+          },
+          {
+            "roll": "3-4",
+            "complication": "Внутреннее кровотечение",
+            "effect": "Падение давления, слабость"
+          },
+          {
+            "roll": "5-6",
+            "complication": "Инфекция раны",
+            "effect": "Лихорадка, гнойные выделения"
+          },
+          {
+            "roll": "7-8",
+            "complication": "Тромбоз",
+            "effect": "Отёк конечности, боль"
+          },
+          {
+            "roll": "9-10",
+            "complication": "Сердечная аритмия",
+            "effect": "Нерегулярный пульс, обморок"
+          },
+          {
+            "roll": "11-12",
+            "complication": "Почечная недостаточность",
+            "effect": "Отёки, снижение диуреза"
+          },
+          {
+            "roll": "13-14",
+            "complication": "Дыхательная недостаточность",
+            "effect": "Одышка, цианоз"
+          },
+          {
+            "roll": "15-16",
+            "complication": "Неврологические нарушения",
+            "effect": "Судороги, потеря сознания"
+          },
+          {
+            "roll": "17-18",
+            "complication": "Анафилактический шок",
+            "effect": "Критическое падение давления"
+          },
+          {
+            "roll": "19-20",
+            "complication": "Полиорганная недостаточность",
+            "effect": "Системный коллапс"
+          }
+        ],
+        "treatment_consequences_d12": [
+          {
+            "roll": "1-2",
+            "consequence": "Полное восстановление",
+            "type": "Позитивное"
+          },
+          {
+            "roll": "3-4",
+            "consequence": "Улучшенная регенерация",
+            "type": "Позитивное"
+          },
+          {
+            "roll": "5-6",
+            "consequence": "Повышенная выносливость",
+            "type": "Позитивное"
+          },
+          {
+            "roll": "7-8",
+            "consequence": "Хроническая боль",
+            "type": "Негативное"
+          },
+          {
+            "roll": "9-10",
+            "consequence": "Ограниченная подвижность",
+            "type": "Негативное"
+          },
+          {
+            "roll": "11",
+            "consequence": "Психологическая травма",
+            "type": "Негативное"
+          },
+          {
+            "roll": "12",
+            "consequence": "Непредсказуемый эффект",
+            "type": "Переменное"
+          }
+        ]
+      }
+    },
+    "culture_system": {
+      "key_parameters": [
+        "Язык",
+        "Ценности",
+        "Ритуалы",
+        "Табу",
+        "Стиль общения",
+        "Иерархия",
+        "Праздники",
+        "Знаки статуса",
+        "Отношение к чужому"
+      ],
+      "culture_typology": [
+        "Традиционная",
+        "Гибридная",
+        "Корпоративная",
+        "Постиндустриальная",
+        "Клановая",
+        "Религиозная",
+        "Техно-культура",
+        "Мультикультурализм",
+        "Враждебная среда"
+      ],
+      "tables": {
+        "cultural_markers_d20": [
+          {
+            "roll": 1,
+            "marker": "Приветствие"
+          },
+          {
+            "roll": 2,
+            "marker": "Одежда"
+          },
+          {
+            "roll": 3,
+            "marker": "Еда"
+          },
+          {
+            "roll": 4,
+            "marker": "Музыка"
+          },
+          {
+            "roll": 5,
+            "marker": "Архитектура"
+          },
+          {
+            "roll": 6,
+            "marker": "Искусство"
+          },
+          {
+            "roll": 7,
+            "marker": "Религия"
+          },
+          {
+            "roll": 8,
+            "marker": "Семья"
+          },
+          {
+            "roll": 9,
+            "marker": "Торговля"
+          },
+          {
+            "roll": 10,
+            "marker": "Война"
+          },
+          {
+            "roll": 11,
+            "marker": "Образование"
+          },
+          {
+            "roll": 12,
+            "marker": "Время"
+          },
+          {
+            "roll": 13,
+            "marker": "Смерть"
+          },
+          {
+            "roll": 14,
+            "marker": "Природа"
+          },
+          {
+            "roll": 15,
+            "marker": "Магия"
+          },
+          {
+            "roll": 16,
+            "marker": "Закон"
+          },
+          {
+            "roll": 17,
+            "marker": "Гостеприимство"
+          },
+          {
+            "roll": 18,
+            "marker": "Труд"
+          },
+          {
+            "roll": 19,
+            "marker": "Развлечения"
+          },
+          {
+            "roll": 20,
+            "marker": "Коммуникация"
+          }
+        ],
+        "cultural_conflicts_d12": [
+          {
+            "roll": 1,
+            "conflict": "Религиозный"
+          },
+          {
+            "roll": 2,
+            "conflict": "Языковой"
+          },
+          {
+            "roll": 3,
+            "conflict": "Пищевой"
+          },
+          {
+            "roll": 4,
+            "conflict": "Гендерный"
+          },
+          {
+            "roll": 5,
+            "conflict": "Возрастной"
+          },
+          {
+            "roll": 6,
+            "conflict": "Классовый"
+          },
+          {
+            "roll": 7,
+            "conflict": "Территориальный"
+          },
+          {
+            "roll": 8,
+            "conflict": "Торговый"
+          },
+          {
+            "roll": 9,
+            "conflict": "Магический"
+          },
+          {
+            "roll": 10,
+            "conflict": "Семейный"
+          },
+          {
+            "roll": 11,
+            "conflict": "Ритуальный"
+          },
+          {
+            "roll": 12,
+            "conflict": "Технологический"
+          }
+        ]
+      }
+    }
+  },
+  "comprehensive_survival_system": {
+    "module_name": "ENVIRONMENT_SURVIVAL",
+    "description": "Моделирование влияния экстремальных условий на персонажей, включая классификацию сред, основные угрозы, механику проверок и специальное оборудование.",
+    "environments": [
+      {
+        "type": "Городская",
+        "parameters": [
+          "Плотность населения",
+          "Уровень инфраструктуры",
+          "Социальная напряженность"
+        ],
+        "threats": [
+          "Загрязнение воздуха",
+          "Криминал",
+          "Эпидемии"
+        ],
+        "resources": [
+          "Медицинская помощь",
+          "Укрытие",
+          "Торговля"
+        ],
+        "modifiers": {
+          "social_tests_bonus": 2,
+          "wilderness_survival_penalty": -1
+        }
+      },
+      {
+        "type": "Индустриальная зона",
+        "parameters": [
+          "Уровень токсичности",
+          "Радиационный фон",
+          "Температурные аномалии"
+        ],
+        "threats": [
+          "Химические выбросы",
+          "Структурные обрушения"
+        ],
+        "resources": [
+          "Промышленное оборудование",
+          "Энергия",
+          "Сырье"
+        ],
+        "modifiers": {
+          "health_tests_penalty": -2,
+          "technical_skills_bonus": 1
+        }
+      },
+      {
+        "type": "Постапокалиптическая среда",
+        "parameters": [
+          "Уровень разрушений",
+          "Доступность ресурсов"
+        ],
+        "threats": [
+          "Радиация",
+          "Мутанты",
+          "Нехватка еды и воды",
+          "Банды"
+        ],
+        "resources": [
+          "Обломки технологий",
+          "Редкие материалы"
+        ],
+        "modifiers": {
+          "comfort_penalty": -3,
+          "survival_skill_bonus": 2
+        }
+      },
+      {
+        "type": "Арктическая среда",
+        "parameters": [
+          "Температура",
+          "Видимость",
+          "Ледовые условия"
+        ],
+        "threats": [
+          "Переохлаждение",
+          "Обморожение",
+          "Снежная слепота",
+          "Лавины"
+        ],
+        "resources": [
+          "Лед (вода)",
+          "Дичь",
+          "Природные укрытия"
+        ],
+        "modifiers": {
+          "endurance_penalty": -4,
+          "movement_speed_penalty": -2
+        }
+      },
+      {
+        "type": "Пустынная среда",
+        "parameters": [
+          "Температура (день/ночь)",
+          "Влажность",
+          "Песчаные бури"
+        ],
+        "threats": [
+          "Обезвоживание",
+          "Тепловой удар",
+          "Дезориентация"
+        ],
+        "resources": [
+          "Оазисы",
+          "Подземная вода",
+          "Минералы"
+        ],
+        "modifiers": {
+          "day_endurance_penalty": -3,
+          "night_endurance_penalty": -1,
+          "navigation_penalty": -2
+        }
+      },
+      {
+        "type": "Космическая среда",
+        "parameters": [
+          "Давление",
+          "Радиация",
+          "Микрогравитация"
+        ],
+        "threats": [
+          "Разгерметизация",
+          "Космическая радиация",
+          "Микрометеориты"
+        ],
+        "resources": [
+          "Технологическое оборудование",
+          "Переработанные материалы"
+        ],
+        "modifiers": {
+          "no_suit_penalty": -5,
+          "zero_g_tech_bonus": 1
+        }
+      },
+      {
+        "type": "Аномальная зона",
+        "parameters": [
+          "Тип аномалии",
+          "Интенсивность",
+          "Стабильность"
+        ],
+        "threats": [
+          "Пространственные искажения",
+          "Временные петли",
+          "Ментальное воздействие"
+        ],
+        "resources": [
+          "Аномальные артефакты",
+          "Уникальные материалы"
+        ],
+        "modifiers": "Переменные, зависят от типа аномалии"
+      }
+    ],
+    "core_threats_mechanics": {
+      "temperature": {
+        "effect": "Переохлаждение (-2 DEX) или тепловой удар (-2 CON). Риск отказа электроники."
+      },
+      "radiation": {
+        "effect": "Лучевая болезнь (потеря 1 HP/час при >50 рад), сбои датчиков."
+      },
+      "toxins": {
+        "effect": "Отравление (-4 ко всем физ. характеристикам), галлюцинации."
+      },
+      "gravity": {
+        "effect": "Низкая гравитация (-2 к точности), высокая гравитация (-3 к скорости)."
+      },
+      "biohazards": {
+        "effect": "Инфекционные заболевания (-2 ко всем характеристикам)."
+      },
+      "anomalies": {
+        "effect": "Непредсказуемые события: телепортация, временные петли."
+      }
+    },
+    "survival_check_system": {
+      "formula": "1d20 + Модификатор_Характеристики (CON/DEX/INT) + Навык_Выживания vs Сложность",
+      "difficulty_scale": [
+        {
+          "level": "Низкий",
+          "dc": 12,
+          "example": "День без еды в умеренном климате."
+        },
+        {
+          "level": "Средний",
+          "dc": 15,
+          "example": "Переход через пустыню днем."
+        },
+        {
+          "level": "Высокий",
+          "dc": 18,
+          "example": "Выживание в арктической буре."
+        },
+        {
+          "level": "Критический",
+          "dc": 22,
+          "example": "Короткое нахождение в вакууме в обычном скафандре."
+        }
+      ],
+      "outcomes": {
+        "critical_success": "Полная адаптация, получение бонуса (+2) к следующей проверке в этой среде.",
+        "success": "Нормальное функционирование, минимальные негативные эффекты.",
+        "failure": "Получение 1 уровня состояния (Истощение, Обморожение и т.д.).",
+        "critical_failure": "Получение 2 уровней состояния и дополнительное осложнение (потеря снаряжения)."
+      }
+    },
+    "status_effects": [
+      {
+        "name": "Истощение",
+        "mechanics": "-1 ко всем проверкам за каждый уровень.",
+        "treatment": "Отдых и питание (снимает 1 уровень/день)."
+      },
+      {
+        "name": "Обморожение",
+        "mechanics": "1d4 урона/час, -2 к DEX.",
+        "treatment": "Согревание, медпомощь."
+      },
+      {
+        "name": "Тепловой удар",
+        "mechanics": "1d6 урона/час, -2 к CON.",
+        "treatment": "Охлаждение, гидратация."
+      },
+      {
+        "name": "Декомпрессия",
+        "mechanics": "Мгновенная потеря сознания, 1d10 урона/раунд.",
+        "treatment": "Немедленная герметизация."
+      }
+    ],
+    "survival_equipment": {
+      "gear": [
+        {
+          "name": "Термо-костюм",
+          "function": "Защита от температур от -100°C до +150°C.",
+          "cost_ed": 15000
+        },
+        {
+          "name": "Радиационный щит (портативный)",
+          "function": "Снижает получаемую радиацию на 90%.",
+          "cost_ed": 20000
+        }
+      ],
+      "implants": [
+        {
+          "name": "Криогенный регулятор",
+          "effect": "Иммунитет к обморожению.",
+          "cost_ed": 25000
+        },
+        {
+          "name": "Токсин-фильтр",
+          "effect": "Автоматическая нейтрализация большинства известных ядов.",
+          "cost_ed": 30000
+        },
+        {
+          "name": "Гравитационный стабилизатор",
+          "effect": "Нейтрализует негативные эффекты аномальной гравитации.",
+          "cost_ed": 40000
+        }
+      ]
+    },
+    "survival_actions": [
+      {
+        "name": "Построить укрытие",
+        "check": "Интеллект + Выживание vs DC 15",
+        "time": "2-4 часа",
+        "success_outcome": "Защита от погодных условий, позволяет нормально отдохнуть."
+      },
+      {
+        "name": "Найти воду",
+        "check": "Восприятие + Выживание vs DC 12-18",
+        "time": "1-3 часа",
+        "success_outcome": "Найден источник воды, достаточный на 1-2 дня."
+      },
+      {
+        "name": "Подать сигнал SOS",
+        "check": "Технология + Интеллект vs DC 10/15/20",
+        "risks": [
+          "Привлечение нежелательного внимания",
+          "Разрядка источника питания."
+        ]
+      }
+    ]
+  },
+  "dynamic_world_events": {
+    "module_name": "DYNAMIC_WORLD",
+    "description": "Система динамических изменений мира, генератор глобальных событий и механики реагирования фракций и игроков.",
+    "core_concepts": {
+      "world_timer": "Измеряется в игровых днях/ходах, делится на фазы.",
+      "instability_level": {
+        "range": [
+          0,
+          100
+        ],
+        "description": "0 - мир стабилен, 100 - частые кризисы. Уровень меняется под влиянием событий и действий игроков."
+      },
+      "event_priority": [
+        "Высокий (немедленное вмешательство)",
+        "Средний (планируется на следующий ход)",
+        "Низкий (фоновая активность)"
+      ]
+    },
+    "event_trigger_system": {
+      "check": "Каждый ход бросок 1d20 + ⌊уровень нестабильности / 20⌋.",
+      "results": [
+        {
+          "range": [
+            1,
+            5
+          ],
+          "event_type": "Природное/фоновое событие"
+        },
+        {
+          "range": [
+            6,
+            10
+          ],
+          "event_type": "Лёгкий кризис"
+        },
+        {
+          "range": [
+            11,
+            15
+          ],
+          "event_type": "Политическое/экономическое событие"
+        },
+        {
+          "range": [
+            16,
+            19
+          ],
+          "event_type": "Крупный кризис или технологический прорыв"
+        },
+        {
+          "range": [
+            20,
+            "max"
+          ],
+          "event_type": "Эпохальное событие"
+        }
+      ]
+    },
+    "event_processing_flow": [
+      "1. Инициация: GM объявляет событие и его область действия.",
+      "2. Реакция фракций: NPC-фракции делают проверки для смягчения или усугубления эффектов.",
+      "3. Вмешательство игроков: Игроки получают возможность повлиять на событие через миссии или действия.",
+      "4. Итог и последствия: Обновляются глобальные показатели (экономика, политика), событие записывается в хронологию мира."
+    ],
+    "epochal_events_generator": [
+      {
+        "roll": 1,
+        "event": "Обнаружение инопланетной станции",
+        "effect": "Открытие доступа к технологиям Tier V."
+      },
+      {
+        "roll": 2,
+        "event": "Восстание ИИ",
+        "effect": "Глобальная проверка для всех AI-инженеров, последствия для всех AI-систем."
+      },
+      {
+        "roll": 3,
+        "event": "Галактический саммит",
+        "effect": "Все фракции получают по 10 R&D очков."
+      },
+      {
+        "roll": 4,
+        "event": "Активация протокола «Метта-Мементо»",
+        "effect": "Массовое изменение сознания населения, –10 к лояльности во всех системах."
+      },
+      {
+        "roll": 5,
+        "event": "Экономический пузырь лопнул",
+        "effect": "Мировой экономический коллапс, –30% всех ресурсов."
+      },
+      {
+        "roll": 6,
+        "event": "Активация древних врат",
+        "effect": "Появление нового, неизведанного сектора на карте мира."
+      }
+    ],
+    "world_log_template": {
+      "date": "xx.xx.xxxx",
+      "event": "Название события",
+      "influence": "Краткое описание влияния на мир",
+      "notes": "Последствия, связанные события"
+    }
+  },
+  "unified_integration_systems": {
+    "temporal_synchronization": {
+      "world_time_engine": "Синхронизированное время между всеми системами",
+      "event_cascading": "События в одной системе влияют на другие",
+      "historical_continuity": "Все события записываются в единую хронологию",
+      "future_prediction": "Система предсказывает долгосрочные последствия"
+    },
+    "location_dynamics": {
+      "environmental_interaction": "Локации влияют на выживание и события",
+      "economic_effects": "Местоположение влияет на торговлю и ресурсы",
+      "cultural_evolution": "Культуры развиваются в зависимости от окружения",
+      "faction_territorial": "Территориальный контроль фракций влияет на игру"
+    },
+    "survival_world_integration": {
+      "environmental_events": "Погодные и природные катастрофы",
+      "resource_scarcity": "Дефицит ресурсов создает конфликты",
+      "adaptation_evolution": "Долгосрочные изменения в ответ на среду",
+      "technology_environment": "Технологии адаптируются к условиям"
+    },
+    "medical_cultural_synthesis": {
+      "cultural_medicine": "Разные культуры имеют разные подходы к лечению",
+      "epidemic_social": "Болезни влияют на социальную структуру",
+      "healing_traditions": "Традиционные и современные методы лечения",
+      "psychological_culture": "Культурные травмы и коллективная психология"
+    }
+  },
+  "gameplay_integration": {
+    "player_interaction": {
+      "world_commands": [
+        "travel <location> - путешествие между локациями",
+        "survive <environment> - проверка выживания в среде",
+        "explore <region> - исследование неизвестных зон",
+        "history <event> - изучение исторических событий",
+        "culture <faction> - изучение культурных особенностей",
+        "medical <treatment> - медицинская помощь",
+        "environment <scan> - анализ окружающей среды"
+      ],
+      "status_tracking": [
+        "location - текущее местоположение",
+        "environment_status - состояние в текущей среде",
+        "survival_gear - экипировка для выживания",
+        "cultural_knowledge - знание местных обычаев",
+        "medical_condition - текущее здоровье",
+        "historical_awareness - знание мирового лора"
+      ]
+    },
+    "ai_gm_integration": {
+      "automatic_world_updates": "ИИ-ГМ автоматически обновляет мир в реальном времени",
+      "dynamic_location_generation": "Процедурная генерация новых локаций",
+      "environmental_responses": "Автоматические реакции мира на действия игроков",
+      "cultural_interactions": "NPC ведут себя согласно культурным нормам",
+      "medical_consequences": "Реалистичные медицинские последствия действий",
+      "historical_continuity": "События влияют на будущее развитие мира"
+    },
+    "progression_rewards": {
+      "exploration_mastery": "Знание мира открывает новые возможности",
+      "survival_expertise": "Мастерство выживания дает преимущества в экстремальных условиях",
+      "cultural_understanding": "Понимание культур улучшает отношения с фракциями",
+      "medical_knowledge": "Медицинские навыки критически важны для выживания",
+      "historical_insight": "Знание истории помогает предсказывать события"
+    }
+  },
+  "system_apis": {
+    "world_management": [
+      {
+        "name": "GetCurrentLocation",
+        "description": "Получение детальной информации о текущей локации"
+      },
+      {
+        "name": "ProcessTravel",
+        "description": "Обработка путешествий между локациями с расчетом времени и рисков"
+      },
+      {
+        "name": "UpdateWorldTime",
+        "description": "Обновление мирового времени и инициация событий"
+      }
+    ],
+    "survival_system": [
+      {
+        "name": "CheckEnvironmentalHazards",
+        "description": "Проверка опасностей окружающей среды"
+      },
+      {
+        "name": "ProcessSurvivalCheck",
+        "description": "Выполнение проверок выживания"
+      },
+      {
+        "name": "ApplyEnvironmentalEffects",
+        "description": "Применение эффектов окружающей среды к персонажу"
+      }
+    ],
+    "cultural_medical": [
+      {
+        "name": "GetCulturalModifiers",
+        "description": "Получение культурных модификаторов для взаимодействий"
+      },
+      {
+        "name": "ProcessMedicalTreatment",
+        "description": "Обработка медицинского лечения с учетом культурных факторов"
+      },
+      {
+        "name": "GenerateCulturalEvent",
+        "description": "Генерация культурных событий и конфликтов"
+      }
+    ]
+  },
+  "advanced_features": {
+    "procedural_world_evolution": {
+      "description": "Мир развивается независимо от действий игроков",
+      "demographic_shifts": "Изменения в населении планет и станций",
+      "technological_diffusion": "Распространение технологий между культурами",
+      "environmental_change": "Долгосрочные изменения планетарных условий",
+      "cultural_synthesis": "Смешение и эволюция культур при контакте"
+    },
+    "complex_environmental_systems": {
+      "description": "Сложные взаимодействия между различными факторами среды",
+      "ecosystem_modeling": "Моделирование экосистем и их изменений",
+      "climate_systems": "Долгосрочные климатические изменения",
+      "resource_depletion": "Истощение природных ресурсов и его последствия",
+      "terraforming_progress": "Изменения атмосферы и климата планет"
+    },
+    "historical_depth": {
+      "description": "Глубокая историческая проработка влияет на настоящее",
+      "ancestral_legacies": "Влияние исторических событий на современность",
+      "cultural_memory": "Коллективная память народов влияет на поведение",
+      "archaeological_discoveries": "Находки из прошлого меняют понимание истории",
+      "temporal_echoes": "Повторение исторических паттернов в новых условиях"
+    },
+    "medical_realism": {
+      "description": "Реалистичная медицинская система с долгосрочными последствиями",
+      "chronic_conditions": "Хронические заболевания влияют на игровой процесс",
+      "epidemic_modeling": "Распространение болезней между локациями",
+      "psychological_trauma": "Психологические последствия травматических событий",
+      "evolutionary_adaptation": "Адаптация человечества к космическим условиям"
+    }
+  },
+  "backward_compatibility": {
+    "description": "Полная совместимость со всеми игровыми системами",
+    "character_integration": "Интеграция с системой персонажей и их происхождением",
+    "economy_integration": "Связь с экономическими системами и торговлей",
+    "faction_integration": "Взаимодействие с системой фракций",
+    "ai_gm_support": "Поддержка автоматизации через ИИ-ГМ"
+  },
+  "usage_instructions": {
+    "for_players": [
+      "Изучите культурные особенности локаций перед посещением",
+      "Подготовьте соответствующее снаряжение для выживания",
+      "Учитывайте исторический контекст при принятии решений",
+      "Обращайте внимание на медицинские риски различных сред",
+      "Используйте знание мирового времени для планирования"
+    ],
+    "for_gm": [
+      "Используйте генераторы событий для создания живого мира",
+      "Применяйте культурные модификаторы для NPC",
+      "Следите за влиянием окружающей среды на персонажей",
+      "Интегрируйте исторические события в текущие приключения",
+      "Используйте медицинские осложнения для повышения реализма"
+    ]
+  }
+}

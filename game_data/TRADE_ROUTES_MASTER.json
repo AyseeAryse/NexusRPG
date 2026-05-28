@@ -1,0 +1,91 @@
+{
+  "module_name": "TRADE_ROUTES_MASTER",
+  "description": "Мастер-модуль торговых маршрутов с динамической системой расчета времени, стоимости и рисков, учитывающей игровые события.",
+  "calculation_principles": {
+    "base_formula": "FinalValue = BaseValue * (1 + PoliticalFactor + EconomicFactor + EventFactor)",
+    "variability_factor": "Всегда добавляется случайная вариативность в диапазоне ±5-15% к итоговому значению."
+  },
+  "routes": [
+    {
+      "id": "ROUTE-EM",
+      "name": "Земля ↔ Марс",
+      "start_point": "EARTH",
+      "end_point": "MARS",
+      "base_travel_time_days": 60,
+      "base_fuel_cost": 50000,
+      "base_risk_level": "Low",
+      "dynamic_factors": [
+        {
+          "factor": "PoliticalTension_UN_MCR",
+          "effect_on_cost": "+10-30%",
+          "effect_on_risk": "Medium"
+        },
+        {
+          "factor": "PiracyAlert_Sol_Corridor",
+          "effect_on_risk": "High"
+        }
+      ]
+    },
+    {
+      "id": "ROUTE-EG",
+      "name": "Земля ↔ Ганимед",
+      "start_point": "EARTH",
+      "end_point": "GANYMEDE",
+      "base_travel_time_days": 240,
+      "base_fuel_cost": 90000,
+      "base_risk_level": "Medium",
+      "dynamic_factors": [
+        {
+          "factor": "OPA_Blockade",
+          "effect_on_time": "+20-50%",
+          "effect_on_risk": "High"
+        }
+      ]
+    },
+    {
+      "id": "ROUTE-MC",
+      "name": "Марс ↔ Церера",
+      "start_point": "MARS",
+      "end_point": "CERES",
+      "base_travel_time_days": 100,
+      "base_fuel_cost": 35000,
+      "base_risk_level": "Medium",
+      "dynamic_factors": [
+        {
+          "factor": "AsteroidBelt_HighDensity",
+          "effect_on_risk": "High"
+        }
+      ]
+    },
+    {
+      "id": "ROUTE-LB",
+      "name": "Луна ↔ Пояс (Торговый Хаб)",
+      "start_point": "LUNA",
+      "end_point": "CERES",
+      "base_travel_time_days": 150,
+      "base_fuel_cost": 45000,
+      "base_risk_level": "High",
+      "dynamic_factors": [
+        {
+          "factor": "CriminalActivity_High",
+          "effect_on_risk": "Very High"
+        }
+      ]
+    },
+    {
+      "id": "ROUTE-GE",
+      "name": "Ганимед ↔ Земля (Продовольствие)",
+      "start_point": "GANYMEDE",
+      "end_point": "EARTH",
+      "base_travel_time_days": 240,
+      "base_fuel_cost": 120000,
+      "base_risk_level": "Medium",
+      "dynamic_factors": [
+        {
+          "factor": "FoodCrisis_Earth",
+          "effect_on_cost": "+50-100% (страховка и спрос)"
+        }
+      ]
+    }
+  ]
+}

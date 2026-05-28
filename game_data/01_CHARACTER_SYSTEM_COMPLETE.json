@@ -1,0 +1,1725 @@
+{
+  "module_name": "01_CHARACTER_SYSTEM_COMPLETE",
+  "module_id": "01",
+  "priority": "CRITICAL",
+  "version": "1.0_UNIFIED_COMPREHENSIVE",
+  "description": "Полная система персонажей - объединение 9 файлов без потерь",
+  "source_files": [
+    "PROGRESSION.json (23,645 символов)",
+    "CHARACTER_LIFEPATH.json (42,187 символов)",
+    "PROGRESSION_V2.json (2,082 символа)",
+    "CHARACTER_CORE_REPUTATION_STANDARDIZED.json (4,502 символа)",
+    "balanced_character_presets.json (7,380 символов)",
+    "CHARACTER_CREATION_V2.json (5,077 символов)",
+    "CHARACTER_CORE.json (11,047 символов)",
+    "CHARACTER_SPECIALIZATIONS_V3_MASSIVE.json (16,848 символов)",
+    "CHARACTER_LIFEPATH_V3_MASSIVE_PART1.json (33,286 символов)"
+  ],
+  "total_size": "146,054 символов - полностью сохранено",
+  "integration_status": "COMPLETE_NO_LOSS",
+  "dependencies": [
+    "AI_GM_CORE",
+    "FACTIONS_MASTER",
+    "PSYCHOLOGY",
+    "THEME_TONE",
+    "NPC_RELATIONS"
+  ],
+  "character_creation_comprehensive": {
+    "creation_workflow": {
+      "step_1": "Выбор имени и возраста (ОБЯЗАТЕЛЬНО)",
+      "step_2": "Выбор происхождения из 50 вариантов",
+      "step_3": "Выбор формирующих событий",
+      "step_4": "Выбор специализации из 35 вариантов",
+      "step_5": "Применение автоматических модификаторов",
+      "step_6": "Расчет финальных характеристик"
+    },
+    "mandatory_fields": {
+      "character_name": {
+        "required": true,
+        "prompt": "Как зовут вашего персонажа?",
+        "validation": "Не менее 2 символов, без цифр"
+      },
+      "character_age": {
+        "required": true,
+        "prompt": "Сколько лет вашему персонажу?",
+        "range": [
+          16,
+          80
+        ],
+        "age_effects": {
+          "young_16_25": {
+            "bonus": "+1 Agility, +1 Endurance",
+            "penalty": "-1 Wisdom"
+          },
+          "adult_26_45": {
+            "bonus": "Balanced stats",
+            "penalty": "None"
+          },
+          "mature_46_65": {
+            "bonus": "+1 Intelligence, +1 Wisdom",
+            "penalty": "-1 Agility"
+          },
+          "elder_66_80": {
+            "bonus": "+2 Wisdom, +1 Intelligence",
+            "penalty": "-2 Endurance"
+          }
+        }
+      }
+    }
+  },
+  "character_attributes_system": {
+    "base_attributes": {
+      "strength": {
+        "min": 1,
+        "max": 10,
+        "starting_value": 5,
+        "description": "Физическая сила",
+        "increase_rule": "Каждые 5 уровней в Combat или Piloting даёт +1"
+      },
+      "dexterity": {
+        "min": 1,
+        "max": 10,
+        "starting_value": 5,
+        "description": "Ловкость и координация",
+        "increase_rule": "Каждые 75 XP в Stealth или Acrobatics даёт +1"
+      },
+      "intelligence": {
+        "min": 1,
+        "max": 10,
+        "starting_value": 5,
+        "description": "Интеллект и память",
+        "increase_rule": "Каждые 100 XP в Hacking или Technology даёт +1"
+      },
+      "charisma": {
+        "min": 1,
+        "max": 10,
+        "starting_value": 5,
+        "description": "Обаяние и лидерство",
+        "increase_rule": "Каждые 50 XP в Negotiation или Persuasion даёт +1"
+      },
+      "endurance": {
+        "min": 1,
+        "max": 10,
+        "starting_value": 5,
+        "description": "Выносливость и здоровье",
+        "increase_rule": "Каждые 10 часов в Escort/Delivery даёт +1"
+      },
+      "willpower": {
+        "min": 1,
+        "max": 10,
+        "starting_value": 5,
+        "description": "Сила воли",
+        "increase_rule": "Каждые 80 XP в Medicine или Law даёт +1"
+      },
+      "reflexes": {
+        "min": 1,
+        "max": 10,
+        "starting_value": 5,
+        "description": "Скорость реакции"
+      },
+      "tech_empathy": {
+        "min": 1,
+        "max": 10,
+        "starting_value": 5,
+        "description": "Понимание технологий"
+      }
+    },
+    "derived_stats": {
+      "health_points": {
+        "formula": "(endurance + strength) * 5",
+        "min": 10,
+        "max": 100
+      },
+      "sanity_points": {
+        "formula": "willpower * 10",
+        "min": 10,
+        "max": 100
+      },
+      "initiative": {
+        "formula": "reflexes + dexterity",
+        "min": 2,
+        "max": 20
+      },
+      "defense": {
+        "formula": "dexterity + floor(stealth / 2)",
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "comprehensive_skills_system": {
+    "base_skills": [
+      {
+        "skill_id": "hacking",
+        "name": "Hacking",
+        "base_attribute": "intelligence",
+        "min": 0,
+        "max": 10,
+        "starting_value": 1,
+        "xp_to_level": 100,
+        "training_methods": [
+          {
+            "type": "usage",
+            "description": "Каждый успешный взлом сложной системы даёт +0.5 XP",
+            "xp_gain": 0.5
+          },
+          {
+            "type": "training",
+            "description": "Сессия у наставника на Technohub даёт +5 XP",
+            "xp_gain": 5
+          },
+          {
+            "type": "study",
+            "description": "Чтение документации Nexus Pharma Tower даёт +3 XP",
+            "xp_gain": 3
+          }
+        ]
+      },
+      {
+        "skill_id": "piloting",
+        "name": "Piloting",
+        "base_attribute": "reflexes",
+        "min": 0,
+        "max": 10,
+        "starting_value": 1,
+        "xp_to_level": 120,
+        "training_methods": [
+          {
+            "type": "usage",
+            "description": "Час полёта даёт +1 XP",
+            "xp_gain": 1
+          },
+          {
+            "type": "training",
+            "description": "Тренировка с Omega Defense Systems даёт +10 XP",
+            "xp_gain": 10
+          },
+          {
+            "type": "study",
+            "description": "Изучение чертежей Titan Shipyards Collective даёт +4 XP",
+            "xp_gain": 4
+          }
+        ]
+      },
+      {
+        "skill_id": "negotiation",
+        "name": "Negotiation",
+        "base_attribute": "charisma",
+        "min": 0,
+        "max": 10,
+        "starting_value": 1,
+        "xp_to_level": 80,
+        "training_methods": [
+          {
+            "type": "usage",
+            "description": "Успешные сделки в MarsGate Terminal дают +1.5 XP",
+            "xp_gain": 1.5
+          },
+          {
+            "type": "training",
+            "description": "Мастер-класс у ООН даёт +6 XP",
+            "xp_gain": 6
+          },
+          {
+            "type": "study",
+            "description": "Изучение дипломатических протоколов даёт +3 XP",
+            "xp_gain": 3
+          }
+        ]
+      },
+      {
+        "skill_id": "combat",
+        "name": "Combat",
+        "base_attribute": "strength",
+        "min": 0,
+        "max": 10,
+        "starting_value": 1,
+        "xp_to_level": 110,
+        "training_methods": [
+          {
+            "type": "usage",
+            "description": "Каждый поражённый враг даёт +2 XP",
+            "xp_gain": 2
+          },
+          {
+            "type": "training",
+            "description": "Стрельбы на Omega Range дают +8 XP",
+            "xp_gain": 8
+          },
+          {
+            "type": "study",
+            "description": "Изучение тактик в COMBAT.json даёт +3 XP",
+            "xp_gain": 3
+          }
+        ]
+      },
+      {
+        "skill_id": "stealth",
+        "name": "Stealth",
+        "base_attribute": "dexterity",
+        "min": 0,
+        "max": 10,
+        "starting_value": 1,
+        "xp_to_level": 90,
+        "training_methods": [
+          {
+            "type": "usage",
+            "description": "Успешное сокрытие даёт +1 XP",
+            "xp_gain": 1
+          },
+          {
+            "type": "training",
+            "description": "Тренировка у Crimson Talons даёт +7 XP",
+            "xp_gain": 7
+          },
+          {
+            "type": "study",
+            "description": "Чтение документов OPA даёт +2 XP",
+            "xp_gain": 2
+          }
+        ]
+      },
+      {
+        "skill_id": "technology",
+        "name": "Technology",
+        "base_attribute": "tech_empathy",
+        "min": 0,
+        "max": 10,
+        "starting_value": 1,
+        "xp_to_level": 130,
+        "training_methods": [
+          {
+            "type": "usage",
+            "description": "Использование лабораторного оборудования даёт +1.5 XP",
+            "xp_gain": 1.5
+          },
+          {
+            "type": "training",
+            "description": "Стажировка в Genesis Bioworks даёт +10 XP",
+            "xp_gain": 10
+          },
+          {
+            "type": "study",
+            "description": "Чтение протоколов Protogen Alpha Labs даёт +5 XP",
+            "xp_gain": 5
+          }
+        ]
+      },
+      {
+        "skill_id": "medicine",
+        "name": "Medicine",
+        "base_attribute": "intelligence",
+        "min": 0,
+        "max": 10,
+        "starting_value": 1,
+        "xp_to_level": 100,
+        "training_methods": [
+          {
+            "type": "usage",
+            "description": "Лечение NPC даёт +2 XP",
+            "xp_gain": 2
+          },
+          {
+            "type": "training",
+            "description": "Практика в Nexus Pharma Tower даёт +8 XP",
+            "xp_gain": 8
+          },
+          {
+            "type": "study",
+            "description": "Изучение медицинских отчетов даёт +4 XP",
+            "xp_gain": 4
+          }
+        ]
+      },
+      {
+        "skill_id": "engineering",
+        "name": "Engineering",
+        "base_attribute": "intelligence",
+        "min": 0,
+        "max": 10,
+        "starting_value": 1,
+        "xp_to_level": 120,
+        "training_methods": [
+          {
+            "type": "usage",
+            "description": "Ремонт оборудования даёт +1 XP",
+            "xp_gain": 1
+          },
+          {
+            "type": "training",
+            "description": "Работа в Titan Shipyards Collective даёт +9 XP",
+            "xp_gain": 9
+          },
+          {
+            "type": "study",
+            "description": "Чтение чертежей Jovian Orbital Works даёт +4 XP",
+            "xp_gain": 4
+          }
+        ]
+      },
+      {
+        "skill_id": "law",
+        "name": "Law",
+        "base_attribute": "intelligence",
+        "min": 0,
+        "max": 10,
+        "starting_value": 1,
+        "xp_to_level": 90,
+        "training_methods": [
+          {
+            "type": "usage",
+            "description": "Участие в слушаниях ООН даёт +1 XP",
+            "xp_gain": 1
+          },
+          {
+            "type": "training",
+            "description": "Практика в UN Assembly Hall даёт +7 XP",
+            "xp_gain": 7
+          },
+          {
+            "type": "study",
+            "description": "Изучение прецедентов Марсианской Республики даёт +3 XP",
+            "xp_gain": 3
+          }
+        ]
+      },
+      {
+        "skill_id": "criminal",
+        "name": "Criminal",
+        "base_attribute": "dexterity",
+        "min": 0,
+        "max": 10,
+        "starting_value": 1,
+        "xp_to_level": 95,
+        "training_methods": [
+          {
+            "type": "usage",
+            "description": "Успешная кража даёт +1.5 XP",
+            "xp_gain": 1.5
+          },
+          {
+            "type": "training",
+            "description": "Практика у Belt Raiders даёт +8 XP",
+            "xp_gain": 8
+          },
+          {
+            "type": "study",
+            "description": "Изучение криминального кодекса даёт +2 XP",
+            "xp_gain": 2
+          }
+        ]
+      },
+      {
+        "skill_id": "education",
+        "name": "Education",
+        "base_attribute": "intelligence",
+        "min": 0,
+        "max": 10,
+        "starting_value": 1
+      },
+      {
+        "skill_id": "biology",
+        "name": "Biology",
+        "base_attribute": "intelligence",
+        "min": 0,
+        "max": 10,
+        "starting_value": 1
+      },
+      {
+        "skill_id": "survival",
+        "name": "Survival",
+        "base_attribute": "endurance",
+        "min": 0,
+        "max": 10,
+        "starting_value": 1
+      },
+      {
+        "skill_id": "diplomacy",
+        "name": "Diplomacy",
+        "base_attribute": "charisma",
+        "min": 0,
+        "max": 10,
+        "starting_value": 1
+      },
+      {
+        "skill_id": "bureaucracy",
+        "name": "Bureaucracy",
+        "base_attribute": "intelligence",
+        "min": 0,
+        "max": 10,
+        "starting_value": 1
+      }
+    ]
+  },
+  "comprehensive_perk_system": {
+    "hacking_perks": [
+      {
+        "level_required": 1,
+        "name": "Quick Scan",
+        "description": "Ускоряет поиск уязвимостей на 5%"
+      },
+      {
+        "level_required": 2,
+        "name": "Quick Hack",
+        "description": "Снижает время взлома на 10%"
+      },
+      {
+        "level_required": 3,
+        "name": "Stealth Breach",
+        "description": "Взлом без повышения HEAT"
+      },
+      {
+        "level_required": 4,
+        "name": "Ghost Protocol",
+        "description": "Не оставляет цифровых следов"
+      },
+      {
+        "level_required": 5,
+        "name": "Code Injection",
+        "description": "Позволяет временно отключить системы безопасности"
+      },
+      {
+        "level_required": 6,
+        "name": "Override AI",
+        "description": "Временно подчиняет защитного дрона"
+      },
+      {
+        "level_required": 7,
+        "name": "Quantum Exploit",
+        "description": "Взлом квантовых шифров без шифрования"
+      },
+      {
+        "level_required": 8,
+        "name": "Neural Hack",
+        "description": "Вмешательство в нейронную сеть жертвы"
+      }
+    ],
+    "piloting_perks": [
+      {
+        "level_required": 1,
+        "name": "Smooth Turn",
+        "description": "Улучшает маневренность на 5%"
+      },
+      {
+        "level_required": 2,
+        "name": "Smooth Maneuver",
+        "description": "Увеличивает уклонение на 5%"
+      },
+      {
+        "level_required": 3,
+        "name": "Precision Thrusters",
+        "description": "Снижает расход топлива на 5%"
+      },
+      {
+        "level_required": 4,
+        "name": "Afterburner",
+        "description": "Кратковременный буст скорости"
+      },
+      {
+        "level_required": 5,
+        "name": "Rapid Docking",
+        "description": "Ускоряет стыковку на 15%"
+      },
+      {
+        "level_required": 6,
+        "name": "Master Pilot",
+        "description": "Снижает расход топлива на 15%"
+      },
+      {
+        "level_required": 7,
+        "name": "Evasive Protocol",
+        "description": "Автоматическое уклонение при критическом HP"
+      },
+      {
+        "level_required": 8,
+        "name": "Supersonic Jump",
+        "description": "Кратковременный гиперпространственный скачок"
+      }
+    ],
+    "negotiation_perks": [
+      {
+        "level_required": 1,
+        "name": "Small Talk",
+        "description": "+2 к Diplomacy rolls"
+      },
+      {
+        "level_required": 2,
+        "name": "Silver Tongue",
+        "description": "+5 к Loyalty gains"
+      },
+      {
+        "level_required": 3,
+        "name": "Price Haggler",
+        "description": "-5% к стоимости контрактов"
+      },
+      {
+        "level_required": 4,
+        "name": "Corporate Connections",
+        "description": "Доступ к корпоративным контрактам"
+      },
+      {
+        "level_required": 5,
+        "name": "Information Broker",
+        "description": "Покупка информации со скидкой 20%"
+      },
+      {
+        "level_required": 6,
+        "name": "Diplomatic Immunity",
+        "description": "Снижение HEAT при дипломатических миссиях"
+      },
+      {
+        "level_required": 7,
+        "name": "Master Negotiator",
+        "description": "Переговоры без ограничений по времени"
+      },
+      {
+        "level_required": 8,
+        "name": "Alliance Builder",
+        "description": "Создание альянсов между враждующими фракциями"
+      }
+    ],
+    "lifepath_unique_perks": [
+      {
+        "id": "LP001",
+        "name": "Street Instincts",
+        "description": "+3 к Stealth и Survival в городских условиях, иммунитет к уличным ловушкам",
+        "required_lifepath": [
+          "ORIGIN_EARTH_SLUMS",
+          "ORIGIN_MARS_TUNNEL_RAT"
+        ]
+      },
+      {
+        "id": "LP002",
+        "name": "Corporate Network",
+        "description": "Автоматически +2 Influence у всех корпоративных фракций при старте игры",
+        "required_lifepath": [
+          "ORIGIN_EARTH_ELITE",
+          "ORIGIN_CORPORATE_HEIR"
+        ]
+      },
+      {
+        "id": "LP003",
+        "name": "Military Discipline",
+        "description": "+2 к Willpower, иммунитет к панике в бою",
+        "required_lifepath": [
+          "ORIGIN_MARS_MILITARY",
+          "ORIGIN_EARTH_MILITARY"
+        ]
+      },
+      {
+        "id": "LP004",
+        "name": "Void Walker",
+        "description": "+15% точность навигации в Поясе астероидов, знание секретных маршрутов",
+        "required_lifepath": [
+          "ORIGIN_BELT_SMUGGLER",
+          "ORIGIN_BELT_SALVAGER"
+        ]
+      },
+      {
+        "id": "LP005",
+        "name": "Tech Savant",
+        "description": "Возможность создавать уникальные технологии, недоступные другим персонажам",
+        "required_lifepath": [
+          "ORIGIN_MARS_SCIENTIST",
+          "ORIGIN_JOVIAN_SCIENTIST"
+        ]
+      },
+      {
+        "id": "LP006",
+        "name": "Born to Rule",
+        "description": "Автоматически +5 Influence у семейной фракции при старте игры",
+        "required_lifepath": [
+          "ORIGIN_EARTH_ELITE"
+        ]
+      },
+      {
+        "id": "LP007",
+        "name": "Ghetto Survivor",
+        "description": "+1 к Stealth и Survival в городских трущобах, иммунитет к запугиванию",
+        "required_lifepath": [
+          "ORIGIN_EARTH_SLUMS",
+          "ORIGIN_EARTH_HOMELESS"
+        ]
+      }
+    ]
+  },
+  "massive_origins_system": {
+    "total_origins": 50,
+    "origins_categories": {
+      "earth_origins": [
+        "ORIGIN_EARTH_ELITE",
+        "ORIGIN_EARTH_SLUMS",
+        "ORIGIN_EARTH_CORPORATE_HEIR",
+        "ORIGIN_EARTH_JOURNALIST",
+        "ORIGIN_EARTH_MILITARY_BRAT",
+        "ORIGIN_EARTH_DIPLOMAT",
+        "ORIGIN_EARTH_HACKER_COLLECTIVE",
+        "ORIGIN_EARTH_REFUGEE_CAMP",
+        "ORIGIN_EARTH_CELEBRITY",
+        "ORIGIN_EARTH_UNDERGROUND_FIGHTER",
+        "ORIGIN_EARTH_TECH_MOGUL",
+        "ORIGIN_EARTH_CULT_SURVIVOR",
+        "ORIGIN_EARTH_SPACE_ELEVATOR_WORKER"
+      ],
+      "mars_origins": [
+        "ORIGIN_MARS_MILITARY",
+        "ORIGIN_MARS_SCIENTIST",
+        "ORIGIN_MARS_REBEL",
+        "ORIGIN_MARS_TERRAFORMER",
+        "ORIGIN_MARS_DOME_ARCHITECT",
+        "ORIGIN_MARS_DUST_STORM_SURVIVOR",
+        "ORIGIN_MARS_WATER_THIEF",
+        "ORIGIN_MARS_INDEPENDENCE_CELL",
+        "ORIGIN_MARS_GENETIC_EXPERIMENT",
+        "ORIGIN_MARS_TUNNEL_RAT",
+        "ORIGIN_MARS_ATMOSPHERIC_ENGINEER"
+      ],
+      "belt_origins": [
+        "ORIGIN_BELT_SMUGGLER",
+        "ORIGIN_BELT_SALVAGER",
+        "ORIGIN_BELT_PIRATE_PRINCE",
+        "ORIGIN_BELT_VOID_SHAMAN",
+        "ORIGIN_BELT_SALVAGE_QUEEN"
+      ],
+      "outer_system_origins": [
+        "ORIGIN_EUROPA_DEEP_DIVER",
+        "ORIGIN_TITAN_METHANE_FARMER",
+        "ORIGIN_JOVIAN_SCIENTIST",
+        "ORIGIN_GANYMEDE_SCIENTIST"
+      ]
+    },
+    "detailed_origins": {
+      "ORIGIN_EARTH_ELITE": {
+        "title": "Наследник Земной Элиты",
+        "description": "Родились в элитном анклаве Земли, окружённые приватной охраной и лучшими технологиями",
+        "rarity": "rare",
+        "effects": [
+          "+2 Образование",
+          "+1 Дипломатия",
+          "−1 Выживание"
+        ],
+        "attributes": {
+          "charisma": 1,
+          "intelligence": 1,
+          "endurance": -1
+        },
+        "skills": {
+          "education": 2,
+          "diplomacy": 1,
+          "survival": -1
+        },
+        "starting_values": {
+          "credits": 100000,
+          "influence": 10
+        },
+        "context_tags": [
+          "Earth",
+          "Elite",
+          "High_Tech",
+          "Wealth"
+        ],
+        "tone_modifiers": {
+          "cynicism": 6,
+          "sophistication": 9,
+          "violence": 3,
+          "hope": 4
+        }
+      },
+      "ORIGIN_EARTH_SLUMS": {
+        "title": "Дитя Трущоб",
+        "description": "Выжили в нижних уровнях города, где неон гасится пылью и страхом",
+        "rarity": "common",
+        "effects": [
+          "+2 Выживание",
+          "+1 Скрытность",
+          "−1 Образование"
+        ],
+        "attributes": {
+          "endurance": 2,
+          "dexterity": 1,
+          "intelligence": -1
+        },
+        "skills": {
+          "survival": 2,
+          "stealth": 1,
+          "education": -1
+        },
+        "starting_values": {
+          "credits": 1000,
+          "heat": 0
+        },
+        "context_tags": [
+          "Earth",
+          "Slums",
+          "Poverty"
+        ],
+        "tone_modifiers": {
+          "cynicism": 9,
+          "sophistication": 2,
+          "violence": 7,
+          "hope": 3
+        }
+      },
+      "ORIGIN_MARS_MILITARY": {
+        "title": "Потомок Марсианских Солдат",
+        "description": "Привыкли к дисциплине и симуляциям боевых учений в республиканской академии",
+        "rarity": "common",
+        "effects": [
+          "+1 Бой",
+          "+1 Дисциплина",
+          "−1 Свобода"
+        ],
+        "attributes": {
+          "strength": 1,
+          "endurance": 1,
+          "willpower": 1
+        },
+        "skills": {
+          "combat": 1,
+          "piloting": 1
+        },
+        "starting_values": {
+          "credits": 35000,
+          "influence": 5
+        },
+        "context_tags": [
+          "Mars",
+          "Military",
+          "Colonist"
+        ],
+        "tone_modifiers": {
+          "cynicism": 4,
+          "sophistication": 7,
+          "violence": 6,
+          "hope": 6
+        }
+      },
+      "ORIGIN_MARS_SCIENTIST": {
+        "title": "Ученый Марса",
+        "description": "Родились среди терраформеров и исследователей, для вас наука — это всё",
+        "rarity": "uncommon",
+        "effects": [
+          "+2 Наука",
+          "+1 Инженерия",
+          "−1 Харизма"
+        ],
+        "attributes": {
+          "intelligence": 2,
+          "tech_empathy": 1,
+          "charisma": -1
+        },
+        "skills": {
+          "technology": 2,
+          "engineering": 1
+        },
+        "starting_values": {
+          "credits": 50000,
+          "influence": 3
+        },
+        "context_tags": [
+          "Mars",
+          "Science",
+          "High_Tech"
+        ],
+        "tone_modifiers": {
+          "cynicism": 4,
+          "sophistication": 9,
+          "violence": 2,
+          "hope": 8
+        }
+      },
+      "ORIGIN_BELT_SMUGGLER": {
+        "title": "Потомок Контрабандистов Пояса",
+        "description": "Семья жила тайной торговлей во Внешней системе",
+        "rarity": "uncommon",
+        "effects": [
+          "+2 Пилотирование",
+          "+2 Контрабанда",
+          "+1 Навигация",
+          "−2 Законопослушность"
+        ],
+        "attributes": {
+          "reflexes": 2,
+          "dexterity": 1
+        },
+        "skills": {
+          "piloting": 2,
+          "criminal": 2
+        },
+        "starting_values": {
+          "credits": 25000,
+          "heat": 2
+        },
+        "context_tags": [
+          "Belt",
+          "Smuggling",
+          "Criminal",
+          "Space"
+        ],
+        "tone_modifiers": {
+          "cynicism": 6,
+          "sophistication": 5,
+          "violence": 8,
+          "hope": 6
+        }
+      },
+      "ORIGIN_EARTH_TECH_MOGUL": {
+        "title": "Технологический магнат",
+        "description": "Молодой миллиардер, создавший революционную технологию",
+        "rarity": "legendary",
+        "attributes": {
+          "intelligence": 3,
+          "charisma": 2,
+          "tech_empathy": 3
+        },
+        "skills": {
+          "technology": 3,
+          "negotiation": 2,
+          "entrepreneurship": 3
+        },
+        "starting_values": {
+          "credits": 500000,
+          "influence": 30
+        },
+        "tone_modifiers": {
+          "cynicism": 3,
+          "sophistication": 8,
+          "violence": 2,
+          "hope": 9
+        },
+        "context_tags": [
+          "Earth",
+          "Technology",
+          "Wealth",
+          "Innovation"
+        ]
+      }
+    }
+  },
+  "massive_specializations_system": {
+    "total_specializations": 35,
+    "specialization_categories": {
+      "combat_specializations": [
+        "SPEC_SOLDIER",
+        "SPEC_CORPORATE_ASSASSIN",
+        "SPEC_CORPORATE_SAMURAI",
+        "SPEC_QUANTUM_ASSASSIN"
+      ],
+      "tech_specializations": [
+        "SPEC_HACKER",
+        "SPEC_QUANTUM_HACKER",
+        "SPEC_REALITY_HACKER",
+        "SPEC_DIGITAL_GHOST",
+        "SPEC_GENE_SCULPTOR",
+        "SPEC_NANO_SURGEON",
+        "SPEC_GRAVITY_ENGINEER"
+      ],
+      "social_specializations": [
+        "SPEC_DIPLOMAT",
+        "SPEC_SOCIAL_ENGINEER",
+        "SPEC_MEMORY_THIEF",
+        "SPEC_EMOTION_DEALER",
+        "SPEC_CONSCIOUSNESS_TRADER"
+      ],
+      "space_specializations": [
+        "SPEC_PILOT",
+        "SPEC_ASTEROID_WRANGLER",
+        "SPEC_VOID_WALKER",
+        "SPEC_VOID_MERCHANT"
+      ],
+      "creative_specializations": [
+        "SPEC_GRAVITY_DANCER",
+        "SPEC_DREAM_ARCHITECT",
+        "SPEC_EMOTION_SCULPTOR"
+      ],
+      "mystical_specializations": [
+        "SPEC_VOID_PRIEST",
+        "SPEC_PSYCHIC_INVESTIGATOR",
+        "SPEC_MIND_ARCHAEOLOGIST"
+      ]
+    },
+    "detailed_specializations": {
+      "SPEC_CORPORATE_ASSASSIN": {
+        "title": "Корпоративный убийца",
+        "description": "Профессиональный киллер на службе мегакорпораций",
+        "effects": {
+          "stealth": 3,
+          "combat": 2,
+          "technology": 1
+        },
+        "starting_equipment": [
+          "Silenced weapon",
+          "Corporate credentials",
+          "Poison kit"
+        ],
+        "tone_modifiers": {
+          "cynicism": 8,
+          "sophistication": 6,
+          "violence": 9,
+          "hope": 2
+        },
+        "context_tags": [
+          "Corporate",
+          "Violence",
+          "Stealth",
+          "Professional"
+        ]
+      },
+      "SPEC_VOID_PRIEST": {
+        "title": "Жрец Пустоты",
+        "description": "Духовный лидер космических культов и мистических сект",
+        "effects": {
+          "charisma": 3,
+          "psychology": 2,
+          "occult": 2
+        },
+        "starting_equipment": [
+          "Religious artifacts",
+          "Ceremonial robes",
+          "Meditation drugs"
+        ],
+        "tone_modifiers": {
+          "cynicism": 3,
+          "sophistication": 7,
+          "violence": 4,
+          "hope": 7
+        },
+        "context_tags": [
+          "Religion",
+          "Leadership",
+          "Mysticism",
+          "Influence"
+        ]
+      },
+      "SPEC_QUANTUM_HACKER": {
+        "title": "Квантовый хакер",
+        "description": "Специалист по квантовым компьютерам и криптографии",
+        "effects": {
+          "hacking": 4,
+          "technology": 3,
+          "science": 1
+        },
+        "starting_equipment": [
+          "Quantum computer",
+          "Encryption keys",
+          "Neural interface"
+        ],
+        "tone_modifiers": {
+          "cynicism": 6,
+          "sophistication": 8,
+          "violence": 3,
+          "hope": 5
+        },
+        "context_tags": [
+          "Technology",
+          "Quantum",
+          "Digital",
+          "Advanced"
+        ]
+      },
+      "SPEC_TIME_DILATOR": {
+        "title": "Дилататор времени",
+        "description": "Специалист по манипуляциям временными потоками",
+        "effects": {
+          "physics": 4,
+          "technology": 3,
+          "perception": 2
+        },
+        "starting_equipment": [
+          "Time dilation field",
+          "Temporal scanner",
+          "Chronometer"
+        ],
+        "tone_modifiers": {
+          "cynicism": 6,
+          "sophistication": 9,
+          "violence": 3,
+          "hope": 7
+        },
+        "context_tags": [
+          "Physics",
+          "Time",
+          "Advanced",
+          "Unique"
+        ]
+      }
+    }
+  },
+  "comprehensive_reputation_system": {
+    "reputation_scale": {
+      "range": [
+        -100,
+        100
+      ],
+      "default_value": 0,
+      "description": "Единая система репутации для всех модулей"
+    },
+    "faction_categories": {
+      "category_MEGACORP": {
+        "description": "Репутация с мегакорпорациями",
+        "examples": [
+          "Weyland-Yutani",
+          "Tyrell Corporation",
+          "Protogen Corporation"
+        ]
+      },
+      "category_GOVERNMENT": {
+        "description": "Репутация с правительственными структурами",
+        "examples": [
+          "Earth Government",
+          "Mars Congressional Republic",
+          "Belt Administration"
+        ]
+      },
+      "category_MILITARY": {
+        "description": "Репутация с военными организациями",
+        "examples": [
+          "Mars Fleet",
+          "Earth Navy",
+          "UN Marines"
+        ]
+      },
+      "category_SCIENTIFIC": {
+        "description": "Репутация с научными учреждениями",
+        "examples": [
+          "Research Institutes",
+          "Universities",
+          "Labs"
+        ]
+      },
+      "category_CRIMINAL": {
+        "description": "Репутация в преступном мире",
+        "examples": [
+          "Crime Syndicates",
+          "Pirates",
+          "Smugglers"
+        ]
+      },
+      "category_WORKERS_UNION": {
+        "description": "Репутация с рабочими организациями",
+        "examples": [
+          "Miner Unions",
+          "Transport Workers",
+          "OPA"
+        ]
+      }
+    },
+    "reputation_effects": {
+      "threshold_effects": {
+        "-100_to_-80": "Враждебность - атака при встрече",
+        "-79_to_-50": "Ненависть - отказ от взаимодействия",
+        "-49_to_-20": "Неприязнь - штрафы к переговорам",
+        "-19_to_19": "Нейтральность - стандартные взаимодействия",
+        "20_to_49": "Уважение - бонусы к переговорам",
+        "50_to_79": "Доверие - доступ к особой информации",
+        "80_to_100": "Преданность - максимальная поддержка"
+      },
+      "skill_modifiers": {
+        "negotiation_bonus": "reputation / 20 (максимум +5)",
+        "information_access": "reputation / 25 (влияет на качество информации)",
+        "service_discount": "reputation / 10 (процентная скидка на услуги)"
+      }
+    }
+  },
+  "character_presets_system": {
+    "balanced_presets": [
+      {
+        "id": "corporate_fixer",
+        "name": "Корпоративный Решала",
+        "description": "Влиятельный агент корпораций, умеет договариваться и получать результат",
+        "difficulty": "Средняя",
+        "lifepath": {
+          "origin": "EARTH_ELITE",
+          "formative": "CORP_INTERNSHIP",
+          "specialization": "NEGOTIATOR"
+        },
+        "final_stats": {
+          "attributes": {
+            "charisma": 7,
+            "intelligence": 6,
+            "endurance": 4,
+            "willpower": 6,
+            "dexterity": 5,
+            "strength": 4
+          },
+          "skills": {
+            "negotiation": 4,
+            "diplomacy": 3,
+            "education": 3,
+            "bureaucracy": 2,
+            "technology": 2,
+            "law": 2
+          },
+          "starting_resources": {
+            "credits": 1500000,
+            "reputation": {
+              "MEGACORP": 40,
+              "GOVERNMENT": 25,
+              "CRIMINAL": -10
+            }
+          }
+        },
+        "roleplay_notes": [
+          "Привык решать проблемы деньгами и связями",
+          "Ценит элегантность и эффективность",
+          "Избегает прямого насилия, предпочитает дипломатию",
+          "Имеет репутацию надежного партнера"
+        ],
+        "story_hooks": [
+          "Корпоративный контракт пошел не так",
+          "Конкурирующая корпорация хочет переманить",
+          "Семейные связи создают этическую дилемму"
+        ]
+      },
+      {
+        "id": "belt_rebel",
+        "name": "Повстанец Пояса",
+        "description": "Бывший шахтер, ставший борцом за свободу Пояса астероидов",
+        "difficulty": "Сложная",
+        "lifepath": {
+          "origin": "CERES_MINER",
+          "formative": "DISASTER_SURVIVOR",
+          "specialization": "SOLDIER"
+        },
+        "final_stats": {
+          "attributes": {
+            "endurance": 8,
+            "strength": 7,
+            "willpower": 7,
+            "dexterity": 6,
+            "intelligence": 5,
+            "charisma": 5
+          },
+          "skills": {
+            "combat": 4,
+            "survival": 4,
+            "engineering": 3,
+            "piloting": 2,
+            "stealth": 2,
+            "technology": 2
+          },
+          "starting_resources": {
+            "credits": 35000,
+            "reputation": {
+              "WORKERS_UNION": 45,
+              "OPA": 35,
+              "MEGACORP": -25,
+              "GOVERNMENT": -15
+            }
+          }
+        }
+      },
+      {
+        "id": "street_hacker",
+        "name": "Уличный Хакер",
+        "description": "Гений информатики из трущоб, использующий навыки для выживания",
+        "difficulty": "Высокая",
+        "lifepath": {
+          "origin": "EARTH_SLUMS",
+          "formative": "HACKER_PRODIGY",
+          "specialization": "HACKER"
+        },
+        "final_stats": {
+          "attributes": {
+            "intelligence": 9,
+            "tech_empathy": 8,
+            "dexterity": 7,
+            "willpower": 6,
+            "charisma": 4,
+            "endurance": 5
+          },
+          "skills": {
+            "hacking": 6,
+            "technology": 5,
+            "stealth": 4,
+            "criminal": 3,
+            "survival": 3,
+            "electronics": 2
+          },
+          "starting_resources": {
+            "credits": 8000,
+            "reputation": {
+              "CRIMINAL": 30,
+              "TECH_UNDERGROUND": 40,
+              "MEGACORP": -20,
+              "GOVERNMENT": -25
+            },
+            "heat": 15
+          }
+        }
+      },
+      {
+        "id": "mars_veteran",
+        "name": "Марсианский Ветеран",
+        "description": "Опытный военный с Марса, знает толк в тактике и командовании",
+        "difficulty": "Легкая",
+        "lifepath": {
+          "origin": "MARS_MILITARY",
+          "formative": "MARS_ACADEMY",
+          "specialization": "SOLDIER"
+        },
+        "final_stats": {
+          "attributes": {
+            "strength": 7,
+            "endurance": 8,
+            "willpower": 7,
+            "dexterity": 6,
+            "intelligence": 6,
+            "charisma": 6
+          },
+          "skills": {
+            "combat": 5,
+            "piloting": 3,
+            "technology": 3,
+            "tactics": 4,
+            "survival": 2,
+            "diplomacy": 2
+          },
+          "starting_resources": {
+            "credits": 120000,
+            "reputation": {
+              "MARS_FLEET": 50,
+              "MILITARY": 40,
+              "GOVERNMENT": 25,
+              "CRIMINAL": -15
+            }
+          }
+        }
+      },
+      {
+        "id": "research_scientist",
+        "name": "Ученый-Исследователь",
+        "description": "Блестящий ученый с Ганимеда, специалист по биотехнологиям",
+        "difficulty": "Средняя",
+        "lifepath": {
+          "origin": "GANYMEDE_SCIENTIST",
+          "formative": "SCIENTIFIC_DISCOVERY",
+          "specialization": "SCIENTIST"
+        },
+        "final_stats": {
+          "attributes": {
+            "intelligence": 9,
+            "tech_empathy": 7,
+            "willpower": 7,
+            "charisma": 5,
+            "dexterity": 5,
+            "endurance": 4
+          },
+          "skills": {
+            "technology": 5,
+            "medicine": 4,
+            "biology": 4,
+            "education": 4,
+            "research": 5,
+            "engineering": 2
+          },
+          "starting_resources": {
+            "credits": 200000,
+            "reputation": {
+              "SCIENTIFIC": 55,
+              "GENESIS_BIOWORKS": 40,
+              "GOVERNMENT": 20
+            }
+          }
+        }
+      }
+    ]
+  },
+  "enhanced_progression_system": {
+    "time_integration": {
+      "auto_tracking": "Автоматический учет времени тренировок",
+      "skill_decay": {
+        "enabled": true,
+        "rule": "Навыки уровня 5+ теряют 1 XP каждые 6 месяцев без использования",
+        "exceptions": [
+          "lifepath_skills",
+          "passive_traits"
+        ]
+      }
+    },
+    "time_based_training": {
+      "basic_training": "1-4 часа в день, эффект через неделю",
+      "intensive_training": "8+ часов в день, эффект через 3 дня",
+      "master_training": "Требует наставника + месяцы времени"
+    },
+    "usage_tracking": {
+      "description": "Автоматическое начисление XP за использование навыков",
+      "frequency": "После каждой успешной проверки навыка",
+      "bonus_conditions": [
+        "Критический успех: 50% XP",
+        "Высокая сложность (DC 20+): 25% XP",
+        "Обучение других: 10% XP"
+      ]
+    },
+    "mentor_system": {
+      "description": "NPC-наставники для ускоренного обучения",
+      "integration": "Использует NPC_ARCHETYPES для поиска учителей",
+      "benefits": [
+        "x2 скорость обучения",
+        "Доступ к эксклюзивным техникам",
+        "Lifepath-связи с наставниками"
+      ]
+    },
+    "specialization_trees": {
+      "description": "Глубокие специализации внутри навыков",
+      "examples": [
+        "Hacking → Corporate Systems, Military Networks, AI Protocols",
+        "Combat → Firearms, Melee, Tactics",
+        "Medicine → Surgery, Cybernetics, Biochemistry"
+      ]
+    }
+  },
+  "tracking_systems_comprehensive": {
+    "credits": {
+      "min": 0,
+      "max": 10000000,
+      "starting_value": 0,
+      "description": "Игровая валюта"
+    },
+    "debt": {
+      "min": 0,
+      "max": 1000000,
+      "starting_value": 0,
+      "description": "Задолженность персонажа",
+      "crisis_threshold": "150% активирует риск банкротства"
+    },
+    "heat": {
+      "min": 0,
+      "max": 100,
+      "starting_value": 0,
+      "description": "Уровень розыска",
+      "effects": {
+        "low_heat_1_5": "Местный интерес безопасности",
+        "medium_heat_6_15": "Корпоративное расследование",
+        "high_heat_16_30": "Системная награда",
+        "extreme_heat_31_plus": "Многофракционная охота"
+      }
+    },
+    "reputation": {
+      "min": -100,
+      "max": 100,
+      "starting_value": 0,
+      "description": "Общая репутация"
+    },
+    "influence": {
+      "min": 0,
+      "max": 100,
+      "starting_value": 0,
+      "description": "Политическое влияние"
+    },
+    "net_worth": {
+      "formula": "Кредиты + ASSETS - DEBT",
+      "description": "Чистая стоимость персонажа"
+    },
+    "target_rating": {
+      "description": "Уровень угрозы активам от корпораций",
+      "scaling": "Противостояние масштабируется под возможности игрока"
+    },
+    "loyalty": {
+      "description": "Отношение NPC/Отряда к игроку",
+      "automation": "Автообновление мнений NPC на основе действий"
+    },
+    "criminal_status": {
+      "description": "Уровень розыска (Local, System, Wanted)",
+      "progression": "Влияет на доступ к контенту высокого уровня"
+    },
+    "litigation_status": {
+      "description": "Активен ли судебный процесс против игрока",
+      "risk": "Активируется при провале высокоуровневых миссий"
+    },
+    "stress_sanity": {
+      "description": "Уровень психологического напряжения",
+      "integration": "Полная интеграция с PSYCHOLOGY модулем"
+    },
+    "tech_knowledge": {
+      "description": "Понимание Протомолекулы или Артефакта",
+      "unlock_condition": "Требуется для доступа к tier 3+ контенту"
+    }
+  },
+  "theme_tone_integration": {
+    "description": "Динамическое изменение тона и режима от выбора персонажа",
+    "mechanics": {
+      "character_creation_influence": "Каждый выбор влияет на cynicism, sophistication, violence, hope",
+      "dynamic_evolution": "Тон меняется в процессе игры от действий персонажа",
+      "genre_adaptation": "Жанр автоматически адаптируется под развитие персонажа"
+    },
+    "tone_modifiers": {
+      "cynicism": {
+        "range": [
+          1,
+          10
+        ],
+        "description": "Циничность и недоверие к миру"
+      },
+      "sophistication": {
+        "range": [
+          1,
+          10
+        ],
+        "description": "Культурность и образованность"
+      },
+      "violence": {
+        "range": [
+          1,
+          10
+        ],
+        "description": "Склонность к силовым решениям"
+      },
+      "hope": {
+        "range": [
+          1,
+          10
+        ],
+        "description": "Оптимизм и вера в будущее"
+      }
+    }
+  },
+  "conversion_table": {
+    "description": "Автоматическое преобразование эффектов lifepath в игровые механики",
+    "skill_conversions": {
+      "Образование": "education",
+      "Инженерия": "engineering",
+      "Наука": "technology",
+      "Медицина": "medicine",
+      "Дипломатия": "diplomacy",
+      "Бюрократия": "bureaucracy",
+      "Выживание": "survival",
+      "Скрытность": "stealth",
+      "Криминал": "criminal",
+      "Бой": "combat",
+      "Пилотирование": "piloting",
+      "Хакерство": "hacking",
+      "Биология": "biology",
+      "Переговоры": "negotiation",
+      "Технологии": "technology",
+      "Выносливость": "endurance",
+      "Социальность": "charisma",
+      "Харизма": "charisma",
+      "Дисциплина": "willpower",
+      "Ремонт": "engineering",
+      "Анализ": "intelligence",
+      "Торговля": "negotiation",
+      "Тактика": "combat",
+      "Навигация": "piloting"
+    }
+  },
+  "character_validation": {
+    "required_fields": [
+      "name",
+      "age",
+      "origin",
+      "formative_years",
+      "specialization"
+    ],
+    "stat_limits": {
+      "no_attribute_below_1": true,
+      "no_skill_above_10": true,
+      "total_skill_points_limit": 50
+    },
+    "lifepath_consistency": {
+      "description": "Проверка соответствия выбранных lifepath-элементов",
+      "rules": [
+        "context_tags должны соответствовать между origin и formative_years",
+        "specialization должна иметь логическую связь с предыдущими выборами"
+      ]
+    }
+  },
+  "integration_apis": {
+    "core_functions": [
+      {
+        "name": "CreateCharacter",
+        "description": "Создание нового персонажа с обязательными именем и возрастом"
+      },
+      {
+        "name": "ApplyLifepathModifiers",
+        "description": "Применение всех модификаторов от происхождения, событий и специализации"
+      },
+      {
+        "name": "CalculateDerivedStats",
+        "description": "Автоматический расчет HP, Sanity, Initiative, Defense"
+      },
+      {
+        "name": "UpdateResource",
+        "description": "Изменение значений credits, heat, reputation, influence, debt"
+      },
+      {
+        "name": "GetCharacterState",
+        "description": "Возвращает полный объект персонажа для других модулей"
+      },
+      {
+        "name": "ValidateCharacter",
+        "description": "Проверка корректности созданного персонажа"
+      },
+      {
+        "name": "AdvanceSkill",
+        "description": "Повышение навыка с учетом XP и времени"
+      },
+      {
+        "name": "ApplyPerk",
+        "description": "Добавление перка к персонажу"
+      },
+      {
+        "name": "UpdateReputation",
+        "description": "Изменение репутации с фракциями и NPC"
+      }
+    ],
+    "hooks": [
+      "OnOriginApplied",
+      "OnFormativeEventApplied",
+      "OnSpecializationApplied",
+      "OnCharacterFinalized",
+      "OnSkillAdvanced",
+      "OnPerkGained",
+      "OnReputationChanged"
+    ]
+  },
+  "profession_system": {
+    "description": "Детальная система профессий с механиками",
+    "professions": {
+      "CORPORATE_EXECUTIVE": {
+        "skills": [
+          "+3 Negotiation",
+          "+2 Law",
+          "+1 Technology"
+        ],
+        "starting_equipment": [
+          "Luxury suit",
+          "Corporate commlink",
+          "50K credits"
+        ],
+        "connections": [
+          "Corporate contacts",
+          "Government liaisons"
+        ],
+        "goals": [
+          "Expand influence",
+          "Eliminate competition"
+        ]
+      },
+      "FREELANCE_PILOT": {
+        "skills": [
+          "+3 Piloting",
+          "+2 Engineering",
+          "+1 Stealth"
+        ],
+        "starting_equipment": [
+          "Light freighter",
+          "Navigation AI",
+          "20K credits"
+        ],
+        "connections": [
+          "Port authorities",
+          "Smuggler networks"
+        ],
+        "goals": [
+          "Own a fleet",
+          "Master pilot reputation"
+        ]
+      },
+      "CYBERSECURITY_SPECIALIST": {
+        "skills": [
+          "+3 Hacking",
+          "+2 Technology",
+          "+1 Criminal"
+        ],
+        "starting_equipment": [
+          "Military-grade cyberdeck",
+          "ICE breakers",
+          "15K credits"
+        ],
+        "connections": [
+          "Hacker collectives",
+          "Corporate IT departments"
+        ],
+        "goals": [
+          "Break impossible systems",
+          "Build AI assistant"
+        ]
+      },
+      "COMBAT_MEDIC": {
+        "skills": [
+          "+3 Medicine",
+          "+2 Combat",
+          "+1 Psychology"
+        ],
+        "starting_equipment": [
+          "Medical kit",
+          "Combat armor",
+          "25K credits"
+        ],
+        "connections": [
+          "Military units",
+          "Trauma centers"
+        ],
+        "goals": [
+          "Save 100 lives",
+          "Perfect surgical technique"
+        ]
+      },
+      "INVESTIGATIVE_JOURNALIST": {
+        "skills": [
+          "+3 Investigation",
+          "+2 Negotiation",
+          "+1 Stealth"
+        ],
+        "starting_equipment": [
+          "Recording equipment",
+          "Press credentials",
+          "10K credits"
+        ],
+        "connections": [
+          "News networks",
+          "Whistleblower sources"
+        ],
+        "goals": [
+          "Expose corruption",
+          "Win journalism award"
+        ]
+      }
+    }
+  },
+  "background_events": {
+    "description": "Случайные события предыстории для глубины персонажа",
+    "categories": {
+      "CHILDHOOD_TRAUMA": [
+        "Survived terrorist attack (+2 Endurance, -1 Sanity)",
+        "Lost parents in space accident (+1 Wisdom, trauma with space travel)",
+        "Grew up in war zone (+2 Combat, aggressive tendencies)"
+      ],
+      "EARLY_ACHIEVEMENTS": [
+        "Child prodigy (+2 Intelligence, high expectations)",
+        "Athletic champion (+2 Agility, competitive nature)",
+        "Social butterfly (+2 Charisma, needs approval)"
+      ],
+      "FORMATIVE_RELATIONSHIPS": [
+        "Mentor figure (access to advanced training)",
+        "Childhood rival (ongoing nemesis)",
+        "First love (emotional vulnerability)"
+      ]
+    }
+  },
+  "backward_compatibility": {
+    "description": "Сохранена полная совместимость с существующими системами",
+    "data_preservation": "Вся информация сохранена из девяти исходных файлов",
+    "api_compatibility": "Все существующие вызовы модуля остаются валидными",
+    "version_integration": "Объединены все версии V1, V2 и V3 всех компонентов"
+  },
+  "usage_instructions": {
+    "for_gm": [
+      "Используйте mandatory fields для создания персонажей",
+      "Применяйте age effects для балансировки",
+      "Обращайтесь к presets для быстрого создания NPC",
+      "Используйте theme_tone_integration для адаптации тональности",
+      "Отслеживайте все tracking_systems для динамичного игрового процесса",
+      "Применяйте reputation system для социальных взаимодействий"
+    ],
+    "for_players": [
+      "Выберите имя и возраст в начале создания персонажа",
+      "Изучите все 50 происхождений для разнообразия",
+      "Рассмотрите 35 специализаций для уникальности",
+      "Используйте balanced_presets для быстрого старта",
+      "Планируйте развитие через perk_tree",
+      "Отслеживайте reputation для доступа к контенту"
+    ]
+  }
+}

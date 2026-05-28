@@ -1,0 +1,315 @@
+{
+  "module_name": "MODIFICATION_V2",
+  "version": "2.0_QUANTUM_BIOTECH_ERA",
+  "description": "Комплексная система модификаций от кибернетики до квантовых улучшений",
+  "replaces": "MODIFICATION.json",
+  "size_target": "5,000+ символов",
+  "modification_categories": {
+    "cybernetic_implants": {
+      "neural_interfaces": {
+        "basic_neural_link": {
+          "description": "Прямое подключение мозга к компьютерным системам",
+          "effects": [
+            "+2 к Hacking",
+            "+1 к Technology",
+            "Доступ к сетевой информации"
+          ],
+          "requirements": [
+            "Surgery skill 2+",
+            "50K credits",
+            "Legal cyberdoc"
+          ],
+          "risks": [
+            "Infection",
+            "Neural feedback",
+            "Hacker vulnerabilities"
+          ],
+          "integration": "References TECH_EQUIPMENT.json for components"
+        },
+        "quantum_neural_processor": {
+          "description": "Квантовый мозговой сопроцессор",
+          "effects": [
+            "+4 к Hacking",
+            "+3 к Technology",
+            "Quantum computing capability"
+          ],
+          "requirements": [
+            "Surgery skill 4+",
+            "500K credits",
+            "Quantum tech access"
+          ],
+          "risks": [
+            "Quantum instability",
+            "Reality distortion",
+            "Consciousness fragmentation"
+          ],
+          "rarity": "Legendary modification"
+        }
+      },
+      "physical_enhancements": {
+        "cyber_limbs": {
+          "description": "Замена конечностей на кибернетические протезы",
+          "effects": [
+            "+2 к Strength",
+            "+1 к Endurance",
+            "Встроенные инструменты"
+          ],
+          "requirements": [
+            "Surgery skill 3+",
+            "75K credits",
+            "Amputation procedure"
+          ],
+          "maintenance": "Monthly service required",
+          "customization": "Various tool and weapon integrations available"
+        },
+        "dermal_armor": {
+          "description": "Подкожная защитная сетка",
+          "effects": [
+            "+3 к physical damage resistance",
+            "Environmental protection"
+          ],
+          "requirements": [
+            "Surgery skill 2+",
+            "40K credits",
+            "Extended recovery"
+          ],
+          "limitations": [
+            "Visible scarring",
+            "Metal detector detection",
+            "Temperature sensitivity"
+          ]
+        }
+      },
+      "sensory_augmentation": {
+        "cyber_eyes": {
+          "description": "Кибернетические глаза с расширенными возможностями",
+          "effects": [
+            "Night vision",
+            "Zoom capability",
+            "HUD overlay",
+            "+2 к Investigation"
+          ],
+          "requirements": [
+            "Surgery skill 3+",
+            "60K credits",
+            "Neural interface compatible"
+          ],
+          "features": [
+            "Recording capability",
+            "X-ray vision",
+            "Thermal imaging"
+          ]
+        }
+      }
+    },
+    "biological_modifications": {
+      "genetic_enhancements": {
+        "intellect_boost": {
+          "description": "Генетическое улучшение когнитивных способностей",
+          "effects": [
+            "+2 к Intelligence",
+            "+1 к all mental skills",
+            "Enhanced memory"
+          ],
+          "requirements": [
+            "Gene therapy facility",
+            "200K credits",
+            "Genetic compatibility test"
+          ],
+          "duration": "Permanent but may fade over decades",
+          "risks": [
+            "Autoimmune reactions",
+            "Personality changes",
+            "Genetic instability"
+          ]
+        },
+        "physical_optimization": {
+          "description": "Оптимизация физических характеристик",
+          "effects": [
+            "+1 к Strength/Agility/Endurance",
+            "Disease resistance",
+            "Extended lifespan"
+          ],
+          "requirements": [
+            "Gene therapy facility",
+            "150K credits",
+            "Medical monitoring"
+          ],
+          "timeline": "6 months for full effect",
+          "complications": [
+            "Organ rejection",
+            "Metabolic changes",
+            "Social discrimination"
+          ]
+        }
+      },
+      "bioware_implants": {
+        "enhanced_organs": {
+          "description": "Биологически улучшенные органы",
+          "heart_boost": {
+            "effects": [
+              "+3 к Endurance",
+              "Improved cardiovascular performance"
+            ],
+            "requirements": [
+              "Surgery skill 4+",
+              "80K credits",
+              "Organ compatibility"
+            ]
+          },
+          "liver_filter": {
+            "effects": [
+              "Toxin resistance",
+              "Alcohol/drug immunity",
+              "+1 к survival"
+            ],
+            "requirements": [
+              "Surgery skill 3+",
+              "45K credits",
+              "Recovery time"
+            ]
+          }
+        }
+      }
+    },
+    "quantum_modifications": {
+      "quantum_consciousness": {
+        "description": "Квантовое расширение сознания",
+        "effects": [
+          "Parallel thought processing",
+          "Probability perception",
+          "+3 к всем mental skills"
+        ],
+        "requirements": [
+          "Quantum facility",
+          "1M+ credits",
+          "Extreme rarity"
+        ],
+        "risks": [
+          "Reality dissociation",
+          "Multiple personality disorder",
+          "Quantum instability"
+        ],
+        "integration": "Connects with HACKING_V2 quantum systems"
+      },
+      "dimensional_anchor": {
+        "description": "Защита от реальностных атак",
+        "effects": [
+          "Immunity to reality hacking",
+          "Dimensional stability",
+          "Timeline consistency"
+        ],
+        "requirements": [
+          "Reality tech access",
+          "750K credits",
+          "Government clearance"
+        ],
+        "applications": [
+          "Protection from quantum hackers",
+          "Timeline integrity",
+          "Dimensional travel"
+        ]
+      }
+    },
+    "space_adaptations": {
+      "zero_g_optimization": {
+        "description": "Физическая адаптация к невесомости",
+        "effects": [
+          "+4 к Piloting в космосе",
+          "Spatial orientation",
+          "Reduced space sickness"
+        ],
+        "requirements": [
+          "Gene therapy",
+          "100K credits",
+          "Space environment exposure"
+        ],
+        "timeline": "3 months adaptation period",
+        "benefits": [
+          "Enhanced space mobility",
+          "Extended zero-g tolerance",
+          "Improved spatial awareness"
+        ]
+      },
+      "radiation_resistance": {
+        "description": "Защита от космической радиации",
+        "effects": [
+          "Radiation immunity",
+          "+2 к Endurance в космосе",
+          "Extended EVA capability"
+        ],
+        "requirements": [
+          "Biological modification",
+          "120K credits",
+          "Medical supervision"
+        ],
+        "methods": [
+          "Genetic therapy",
+          "Synthetic organs",
+          "Cellular reinforcement"
+        ]
+      },
+      "atmospheric_adaptation": {
+        "description": "Адаптация к различным атмосферам",
+        "effects": [
+          "Multiple atmosphere tolerance",
+          "Reduced life support needs",
+          "+1 к Survival"
+        ],
+        "requirements": [
+          "Advanced gene therapy",
+          "200K credits",
+          "Environmental testing"
+        ],
+        "limitations": [
+          "Cannot survive in vacuum",
+          "Limited to tested atmospheres"
+        ]
+      }
+    }
+  },
+  "modification_procedures": {
+    "surgical_requirements": {
+      "skill_levels": {
+        "basic_1_2": "Simple implants, standard prosthetics",
+        "advanced_3_4": "Neural interfaces, organ replacement",
+        "expert_5_plus": "Experimental tech, quantum modifications"
+      },
+      "facility_requirements": {
+        "clinic": "Basic cybernetics and simple bioware",
+        "hospital": "Advanced surgery and organ work",
+        "research_lab": "Experimental and quantum modifications",
+        "black_market": "Cheaper but much higher risk options"
+      }
+    },
+    "risk_management": {
+      "complication_types": {
+        "infection": "Standard surgical risk, treatable with medicine",
+        "rejection": "Body rejects modification, requires removal",
+        "malfunction": "Technical failure requiring repair/replacement",
+        "psychological": "Mental adaptation problems, therapy needed",
+        "legal": "Illegal modifications attracting law enforcement"
+      },
+      "risk_factors": {
+        "surgeon_skill": "Higher skill reduces complications",
+        "facility_quality": "Better facilities reduce risk",
+        "modification_complexity": "More complex = higher risk",
+        "patient_health": "Better health improves success rate",
+        "aftercare": "Proper recovery reduces long-term problems"
+      }
+    }
+  },
+  "system_integration": {
+    "tech_equipment_connection": {
+      "description": "Full integration with TECH_EQUIPMENT.json for all hardware",
+      "component_sourcing": "All modification components available through equipment system",
+      "pricing_integration": "Modification costs scale with equipment rarity and tech level",
+      "availability": "Modification availability tied to faction relations and location"
+    },
+    "character_integration": {
+      "lifepath_bonuses": "Origins provide modification access and cost reductions",
+      "profession_synergies": "Specializations unlock unique modification options",
+      "faction_relations": "Faction standing affects modification availability and pricing"
+    }
+  }
+}

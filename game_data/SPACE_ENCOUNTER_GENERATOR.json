@@ -1,0 +1,132 @@
+{
+  "module_name": "SPACE_ENCOUNTER_GENERATOR",
+  "description": "Случайные встречи во время космических путешествий",
+  "version": "1.0_INFINITE_TRAVEL",
+  "encounter_frequency": {
+    "safe_routes": "5% chance per day of travel",
+    "dangerous_routes": "15% chance per day of travel",
+    "unexplored_space": "25% chance per day of travel"
+  },
+  "encounters_d20": [
+    {
+      "id": 1,
+      "name": "Пиратская засада",
+      "type": "combat",
+      "consequence": "Потеря груза или бой"
+    },
+    {
+      "id": 2,
+      "name": "Сломанный корабль",
+      "type": "rescue",
+      "consequence": "Спасение или игнорирование"
+    },
+    {
+      "id": 3,
+      "name": "Торговец в космосе",
+      "type": "trade",
+      "consequence": "Редкие товары или обман"
+    },
+    {
+      "id": 4,
+      "name": "Военный патруль",
+      "type": "inspection",
+      "consequence": "Проверка документов"
+    },
+    {
+      "id": 5,
+      "name": "Космический мусор",
+      "type": "obstacle",
+      "consequence": "Повреждения корабля"
+    },
+    {
+      "id": 6,
+      "name": "Радиовызов о помощи",
+      "type": "mystery",
+      "consequence": "Ловушка или настоящая беда"
+    },
+    {
+      "id": 7,
+      "name": "Астероидное поле",
+      "type": "navigation",
+      "consequence": "Обход или риск"
+    },
+    {
+      "id": 8,
+      "name": "Заброшенная станция",
+      "type": "exploration",
+      "consequence": "Сокровища или опасность"
+    },
+    {
+      "id": 9,
+      "name": "Корабль беженцев",
+      "type": "humanitarian",
+      "consequence": "Помощь или отказ"
+    },
+    {
+      "id": 10,
+      "name": "Контрабандисты",
+      "type": "criminal",
+      "consequence": "Сделка или доносительство"
+    },
+    {
+      "id": 11,
+      "name": "Научная экспедиция",
+      "type": "research",
+      "consequence": "Сотрудничество или конфликт"
+    },
+    {
+      "id": 12,
+      "name": "Солнечная буря",
+      "type": "hazard",
+      "consequence": "Укрытие или повреждения"
+    },
+    {
+      "id": 13,
+      "name": "Неизвестный сигнал",
+      "type": "mystery",
+      "consequence": "Исследование или игнорирование"
+    },
+    {
+      "id": 14,
+      "name": "Корпоративный транспорт",
+      "type": "corporate",
+      "consequence": "Сотрудничество или саботаж"
+    },
+    {
+      "id": 15,
+      "name": "Горняцкий корабль",
+      "type": "industrial",
+      "consequence": "Торговля ресурсами"
+    },
+    {
+      "id": 16,
+      "name": "Дипломатическая миссия",
+      "type": "political",
+      "consequence": "Почетный эскорт"
+    },
+    {
+      "id": 17,
+      "name": "Пиратская база",
+      "type": "location",
+      "consequence": "Избежать или штурмовать"
+    },
+    {
+      "id": 18,
+      "name": "Космическое кладбище",
+      "type": "exploration",
+      "consequence": "Исследование руин"
+    },
+    {
+      "id": 19,
+      "name": "Чужой артефакт",
+      "type": "discovery",
+      "consequence": "Изучение или продажа"
+    },
+    {
+      "id": 20,
+      "name": "Временная аномалия",
+      "type": "supernatural",
+      "consequence": "Магический эффект"
+    }
+  ]
+}

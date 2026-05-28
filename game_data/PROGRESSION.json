@@ -1,0 +1,482 @@
+{
+  "module_name": "PROGRESSION",
+  "description": "Формализация развития персонажа: навыки, атрибуты, перки, спец.умения и пассивные черты с учётом лора, оружия, мафии, права и лабораторий. Теперь с полной интеграцией CHARACTER_LIFEPATH через context_tags и уникальные lifepath_perks.",
+  "skill_up_rules": [
+    {
+      "skill": "Hacking",
+      "methods": [
+        { "type": "usage", "description": "Каждый успешный взлом сложной системы даёт +0.5 XP." },
+        { "type": "training", "description": "Сессия у наставника на Technohub даёт +5 XP." },
+        { "type": "study", "description": "Чтение Nexus Pharma Tower даёт +3 XP." }
+      ],
+      "xp_to_level": 100
+    },
+    {
+      "skill": "Piloting",
+      "methods": [
+        { "type": "usage", "description": "Час полёта даёт +1 XP." },
+        { "type": "training", "description": "Тренировка с Omega Defense Systems даёт +10 XP." },
+        { "type": "study", "description": "Изучение чертежей Titan Shipyards Collective даёт +4 XP." }
+      ],
+      "xp_to_level": 120
+    },
+    {
+      "skill": "Negotiation",
+      "methods": [
+        { "type": "usage", "description": "Успешные сделки в MarsGate Terminal дают +1.5 XP." },
+        { "type": "training", "description": "Мастер-класс у ООН даёт +6 XP." },
+        { "type": "study", "description": "Изучение дипломатических протоколов даёт +3 XP." }
+      ],
+      "xp_to_level": 80
+    },
+    {
+      "skill": "Combat",
+      "methods": [
+        { "type": "usage", "description": "Каждый поражённый враг даёт +2 XP." },
+        { "type": "training", "description": "Стрельбы на Omega Range дают +8 XP." },
+        { "type": "study", "description": "Изучение тактик в COMBAT.json даёт +3 XP." }
+      ],
+      "xp_to_level": 110
+    },
+    {
+      "skill": "Stealth",
+      "methods": [
+        { "type": "usage", "description": "Успешное сокрытие даёт +1 XP." },
+        { "type": "training", "description": "Тренировка у Crimson Talons даёт +7 XP." },
+        { "type": "study", "description": "Чтение документов OPA даёт +2 XP." }
+      ],
+      "xp_to_level": 90
+    },
+    {
+      "skill": "Technology",
+      "methods": [
+        { "type": "usage", "description": "Использование лабораторного оборудования даёт +1.5 XP." },
+        { "type": "training", "description": "Стажировка в Genesis Bioworks даёт +10 XP." },
+        { "type": "study", "description": "Чтение протоколов Protogen Alpha Labs даёт +5 XP." }
+      ],
+      "xp_to_level": 130
+    },
+    {
+      "skill": "Medicine",
+      "methods": [
+        { "type": "usage", "description": "Лечение NPC даёт +2 XP." },
+        { "type": "training", "description": "Практика в Nexus Pharma Tower даёт +8 XP." },
+        { "type": "study", "description": "Изучение медицинских отчетов даёт +4 XP." }
+      ],
+      "xp_to_level": 100
+    },
+    {
+      "skill": "Engineering",
+      "methods": [
+        { "type": "usage", "description": "Ремонт оборудования даёт +1 XP." },
+        { "type": "training", "description": "Работа в Titan Shipyards Collective даёт +9 XP." },
+        { "type": "study", "description": "Чтение чертежей Jovian Orbital Works даёт +4 XP." }
+      ],
+      "xp_to_level": 120
+    },
+    {
+      "skill": "Law",
+      "methods": [
+        { "type": "usage", "description": "Участие в слушаниях ООН даёт +1 XP." },
+        { "type": "training", "description": "Практика в UN Assembly Hall даёт +7 XP." },
+        { "type": "study", "description": "Изучение прецедентов Марсианской Республики даёт +3 XP." }
+      ],
+      "xp_to_level": 90
+    },
+    {
+      "skill": "Criminal",
+      "methods": [
+        { "type": "usage", "description": "Успешная кража даёт +1.5 XP." },
+        { "type": "training", "description": "Практика у Belt Raiders даёт +8 XP." },
+        { "type": "study", "description": "Изучение криминального кодекса даёт +2 XP." }
+      ],
+      "xp_to_level": 95
+    }
+  ],
+  "attribute_increase": [
+    { "attribute": "Strength", "rule": "Каждые 5 уровней в Combat или Piloting даёт +1." },
+    { "attribute": "Intelligence", "rule": "Каждые 100 XP в Hacking или Technology даёт +1." },
+    { "attribute": "Charisma", "rule": "Каждые 50 XP в Negotiation или Persuasion даёт +1." },
+    { "attribute": "Endurance", "rule": "Каждые 10 часов в Escort/Delivery даёт +1." },
+    { "attribute": "Agility", "rule": "Каждые 75 XP в Stealth или Acrobatics даёт +1." },
+    { "attribute": "Wisdom", "rule": "Каждые 80 XP в Medicine или Law даёт +1." }
+  ],
+  "perk_tree": [
+    {
+      "skill_branch": "Hacking",
+      "perks": [
+        { "level_required": 1, "name": "Quick Scan", "description": "Ускоряет поиск уязвимостей на 5%." },
+        { "level_required": 2, "name": "Quick Hack", "description": "Снижает время взлома на 10%." },
+        { "level_required": 3, "name": "Stealth Breach", "description": "Взлом без повышения HEAT." },
+        { "level_required": 4, "name": "Ghost Protocol", "description": "Не оставляет цифровых следов." },
+        { "level_required": 5, "name": "Code Injection", "description": "Позволяет временно отключить системы безопасности." },
+        { "level_required": 6, "name": "Override AI", "description": "Временно подчиняет защитного дрона." },
+        { "level_required": 7, "name": "Quantum Exploit", "description": "Взлом квантовых шифров без шифрования." },
+        { "level_required": 8, "name": "Neural Hack", "description": "Вмешательство в нейронную сеть жертвы." }
+      ]
+    },
+    {
+      "skill_branch": "Piloting",
+      "perks": [
+        { "level_required": 1, "name": "Smooth Turn", "description": "Улучшает маневренность на 5%." },
+        { "level_required": 2, "name": "Smooth Maneuver", "description": "Увеличивает уклонение на 5%." },
+        { "level_required": 3, "name": "Precision Thrusters", "description": "Снижает расход топлива на 5%." },
+        { "level_required": 4, "name": "Afterburner", "description": "Кратковременный буст скорости." },
+        { "level_required": 5, "name": "Rapid Docking", "description": "Ускоряет стыковку на 15%." },
+        { "level_required": 6, "name": "Master Pilot", "description": "Снижает расход топлива на 15%." },
+        { "level_required": 7, "name": "Evasive Protocol", "description": "Автоматическое уклонение при критическом HP." },
+        { "level_required": 8, "name": "Supersonic Jump", "description": "Кратковременный гиперпространственный скачок." }
+      ]
+    },
+    {
+      "skill_branch": "Negotiation",
+      "perks": [
+        { "level_required": 1, "name": "Small Talk", "description": "+2 к Diplomacy rolls." },
+        { "level_required": 2, "name": "Silver Tongue", "description": "+5 к Loyalty gains." },
+        { "level_required": 3, "name": "Price Haggler", "description": "-5% к стоимости контрактов." },
+        { "level_required": 4, "name": "Diplomat", "description": "-10% к стоимости контрактов." },
+        { "level_required": 5, "name": "Peacekeeper", "description": "+10 Influence при переговорах." },
+        { "level_required": 6, "name": "Master Orator", "description": "+5% Influence со всеми фракциями." },
+        { "level_required": 7, "name": "Subtle Intimidation", "description": "+3 Heat при угрозах." },
+        { "level_required": 8, "name": "Legislative Savvy", "description": "Доступ к редким контрактам ООН." }
+      ]
+    },
+    {
+      "skill_branch": "Combat",
+      "perks": [
+        { "level_required": 1, "name": "Sharpshooter", "description": "+5% к урону дальнего боя." },
+        { "level_required": 2, "name": "Iron Skin", "description": "+2 к Armor." },
+        { "level_required": 3, "name": "Weapon Specialist", "description": "+1d4 к урону выбранным оружием." },
+        { "level_required": 4, "name": "Tactical Retreat", "description": "Отступление без потери хода." },
+        { "level_required": 5, "name": "Combat Reflexes", "description": "+1 к Initiative." },
+        { "level_required": 6, "name": "Battle Master", "description": "+10% к урону при полном HP." },
+        { "level_required": 7, "name": "Demolition Expert", "description": "+20% урон от взрывчатки." },
+        { "level_required": 8, "name": "Close Quarters Specialist", "description": "+10% урон в ближнем бою." }
+      ]
+    },
+    {
+      "skill_branch": "Stealth",
+      "perks": [
+        { "level_required": 1, "name": "Quiet Step", "description": "-5% шанс быть обнаруженным." },
+        { "level_required": 2, "name": "Shadow Blend", "description": "-10% шанс обнаружения в тени." },
+        { "level_required": 3, "name": "Silent Takedown", "description": "Ликвидация без шума." },
+        { "level_required": 4, "name": "Ghost Move", "description": "+5m к радиусу скрытия." },
+        { "level_required": 5, "name": "Infiltrator", "description": "+1d6 к Stealth checks." },
+        { "level_required": 6, "name": "Master of Shadows", "description": "-20% шанс обнаружения." },
+        { "level_required": 7, "name": "Urban Phantom", "description": "+5% Stealth в городах." },
+        { "level_required": 8, "name": "Night Stalker", "description": "+10% Stealth ночью." }
+      ]
+    },
+    {
+      "skill_branch": "Technology",
+      "perks": [
+        { "level_required": 1, "name": "Circuit Tuner", "description": "Ускоряет настройку устройств на 5%." },
+        { "level_required": 2, "name": "Lab Efficiency", "description": "-5% время исследований." },
+        { "level_required": 3, "name": "Prototype Builder", "description": "Снижает ресурсы для прототипов на 10%." },
+        { "level_required": 4, "name": "Quantum Engineer", "description": "Ускоряет квантовые исследования на 15%." },
+        { "level_required": 5, "name": "Biointegrator", "description": "Увеличивает эффективность биомодификаций на 10%." },
+        { "level_required": 6, "name": "Synth Designer", "description": "Доступ к синтетическим материалам." },
+        { "level_required": 7, "name": "AI Specialist", "description": "Возможность создавать простые ИИ помощников." },
+        { "level_required": 8, "name": "Prototype Master", "description": "Создание уникальных технологий." }
+      ]
+    },
+    {
+      "skill_branch": "Medicine",
+      "perks": [
+        { "level_required": 1, "name": "First Aid", "description": "+5% к лечению ранений." },
+        { "level_required": 2, "name": "Field Medic", "description": "Мгновенное лечение 10% HP." },
+        { "level_required": 3, "name": "Pharmacist", "description": "-5% время приготовления медикаментов." },
+        { "level_required": 4, "name": "Surgical Precision", "description": "-10% риск осложнений." },
+        { "level_required": 5, "name": "Genetic Therapy", "description": "+10% эффективность технологий регенерации." },
+        { "level_required": 6, "name": "Trauma Specialist", "description": "+15% к лечению тяжёлых травм." },
+        { "level_required": 7, "name": "Biomedical Engineer", "description": "Создание медицинских имплантов." },
+        { "level_required": 8, "name": "Resurrection Protocol", "description": "Возможность реанимации недавно умерших." }
+      ]
+    },
+    {
+      "skill_branch": "Engineering",
+      "perks": [
+        { "level_required": 1, "name": "Tool Proficiency", "description": "+5% скорость ремонта." },
+        { "level_required": 2, "name": "Structural Analyst", "description": "Увеличивает прочность конструкций на 10%." },
+        { "level_required": 3, "name": "Power Engineer", "description": "Снижает потребление энергии на 10%." },
+        { "level_required": 4, "name": "Automation Specialist", "description": "Автоматизация снижает время работы на 15%." },
+        { "level_required": 5, "name": "Factory Master", "description": "+20% к производительности." },
+        { "level_required": 6, "name": "Orbital Architect", "description": "Снижает расходы на строительство станций на 10%." },
+        { "level_required": 7, "name": "Megastructure Designer", "description": "Возможность проектировать крупные объекты." },
+        { "level_required": 8, "name": "Terraforming Engineer", "description": "Участие в проектах терраформирования." }
+      ]
+    },
+    {
+      "skill_branch": "Law",
+      "perks": [
+        { "level_required": 1, "name": "Legal Scholar", "description": "+5% к успешным проверкам Law." },
+        { "level_required": 2, "name": "Courtroom Presence", "description": "Увеличивает шанс оправдать обвиняемого на 10%." },
+        { "level_required": 3, "name": "Diplomatic Immunity", "description": "Снижает штрафы на 10%." },
+        { "level_required": 4, "name": "Legislative Drafting", "description": "-5% время создания законопроектов." },
+        { "level_required": 5, "name": "Judicial Authority", "description": "+5 Influence при взаимодействии с ООН." },
+        { "level_required": 6, "name": "Galactic Jurist", "description": "Доступ к секретным юридическим архивам." },
+        { "level_required": 7, "name": "Constitutional Expert", "description": "Возможность изменять законы фракций." },
+        { "level_required": 8, "name": "Interplanetary Diplomat", "description": "Ведение переговоров высочайшего уровня." }
+      ]
+    },
+    {
+      "skill_branch": "Criminal",
+      "perks": [
+        { "level_required": 1, "name": "Pickpocket", "description": "+5% шанс кражи." },
+        { "level_required": 2, "name": "Lockpicking", "description": "+10% шанс вскрыть замок." },
+        { "level_required": 3, "name": "Smuggler", "description": "Снижает риск проверки контрабанды на 10%." },
+        { "level_required": 4, "name": "Underworld Contacts", "description": "+5% скидка у черного рынка." },
+        { "level_required": 5, "name": "Gang Enforcer", "description": "+10% урон при столкновениях с бандами." },
+        { "level_required": 6, "name": "Crime Lord", "description": "+15% к доходу от нелегальных сделок." },
+        { "level_required": 7, "name": "Shadow Network", "description": "Создание собственной криминальной сети." },
+        { "level_required": 8, "name": "Syndicate Boss", "description": "Управление крупным синдикатом." }
+      ]
+    }
+  ],
+  "special_abilities": [
+    {
+      "id": "SA001",
+      "name": "Adrenal Surge",
+      "unlock_condition": "Endurance ≥ 5",
+      "cooldown_hours": 24,
+      "effect": "Если HP<20%, даёт +10 Strength на 10s.",
+      "origin_bonus": {
+        "ORIGIN_MARS_MILITARY": "Увеличивает продолжительность до 15s.",
+        "ORIGIN_CERES_MINER": "Также даёт +5 к Endurance."
+      }
+    },
+    {
+      "id": "SA002",
+      "name": "Neural Overclock",
+      "unlock_condition": "Intelligence ≥ 7",
+      "cooldown_hours": 48,
+      "effect": "Трать 10 Sanity для +25 XP в любом навыке.",
+      "origin_bonus": {
+        "ORIGIN_MARS_SCIENTIST": "+30 XP вместо +25.",
+        "ORIGIN_JOVIAN_SCIENTIST": "Стоит 8 Sanity вместо 10."
+      }
+    },
+    {
+      "id": "SA003",
+      "name": "Camouflage Field",
+      "unlock_condition": "Stealth ≥ 6",
+      "cooldown_hours": 72,
+      "effect": "30s –50% к обнаружению.",
+      "origin_bonus": {
+        "ORIGIN_REBEL_HIDEOUT": "Продолжительность 40s.",
+        "FY_SLUMS_GANGWAR": "Также даёт +10% скорость передвижения."
+      }
+    },
+    {
+      "id": "SA004",
+      "name": "Battle Cry",
+      "unlock_condition": "Charisma ≥ 5",
+      "cooldown_hours": 24,
+      "effect": "+10 Morale (allies) в радиусе 10m.",
+      "origin_bonus": {
+        "ORIGIN_MARS_MILITARY": "Радиус увеличивается до 15m.",
+        "FY_MARS_ACADEMY": "Также даёт +5% урон союзников."
+      }
+    },
+    {
+      "id": "SA005",
+      "name": "Quick Heal",
+      "unlock_condition": "Medicine ≥ 4",
+      "cooldown_hours": 12,
+      "effect": "Мгновенно восстанавливает 15% HP.",
+      "origin_bonus": {
+        "ORIGIN_STATION_MEDIC": "Восстанавливает 20% HP.",
+        "FY_STATION_ACCIDENT": "Также снимает один отрицательный эффект."
+      }
+    },
+    {
+      "id": "SA006",
+      "name": "Tech Interface",
+      "unlock_condition": "Technology ≥ 6",
+      "cooldown_hours": 36,
+      "effect": "Прямое подключение к технике без инструментов на 60s.",
+      "origin_bonus": {
+        "ORIGIN_GANYMEDE_ENGINEER": "Продолжительность 90s.",
+        "ORIGIN_LUNA_COLONY": "Не тратит cooldown при работе с системами жизнеобеспечения."
+      }
+    }
+  ],
+  "passive_traits": [
+    {
+      "id": "PT001",
+      "name": "Streetwise",
+      "description": "+2 к Negotiation в городских зонах.",
+      "source": "LifePath:Urban Explorer",
+      "context_tags": ["ORIGIN_EARTH_SLUMS", "ORIGIN_EARTH_HOMELESS", "FY_SLUMS_GANGWAR", "FY_SLUMS_FIXER"]
+    },
+    {
+      "id": "PT002",
+      "name": "Tech Savant",
+      "description": "-10% к XP стоимости изучения технологий.",
+      "source": "CHARACTER_CORE:Tech Background",
+      "context_tags": ["ORIGIN_MARS_SCIENTIST", "ORIGIN_JOVIAN_SCIENTIST", "ORIGIN_GANYMEDE_SCIENTIST", "FY_MARS_LAB_ASSISTANT"]
+    },
+    {
+      "id": "PT003",
+      "name": "Marine Training",
+      "description": "+1 к Endurance и +5% к урону в Combat в открытом космосе.",
+      "source": "LifePath:Space Marine",
+      "context_tags": ["ORIGIN_MARS_MILITARY", "FY_MARS_ACADEMY"]
+    },
+    {
+      "id": "PT004",
+      "name": "Corporate Networking",
+      "description": "+5 Loyalty при взаимодействии с корпоративными фракциями.",
+      "source": "NPC_ARCHETYPES:Corporate Envoy",
+      "context_tags": ["ORIGIN_EARTH_ELITE", "FY_CORP_INTERNSHIP"]
+    },
+    {
+      "id": "PT005",
+      "name": "Zero-G Native",
+      "description": "Игнорирование штрафов в условиях низкой или нулевой гравитации.",
+      "source": "LifePath:Belter Born",
+      "context_tags": ["ORIGIN_CERES_MINER", "ORIGIN_JOVIAN_STATION", "ORIGIN_LUNA_COLONY", "ORIGIN_GANYMEDE_ENGINEER", "FY_BELTER_PROSPECTOR"]
+    },
+    {
+      "id": "PT006",
+      "name": "Field Medic",
+      "description": "+10% к эффективности лечения в боевых условиях.",
+      "source": "Emergency Response Training",
+      "context_tags": ["ORIGIN_STATION_MEDIC", "FY_STATION_ACCIDENT"]
+    },
+    {
+      "id": "PT007",
+      "name": "Survivalist",
+      "description": "+2 к Survival в экстремальных условиях.",
+      "source": "Harsh Environment Adaptation",
+      "context_tags": ["ORIGIN_MARS_FARMER", "FY_MARS_DUST_STORM"]
+    },
+    {
+      "id": "PT008",
+      "name": "Black Market Merchant",
+      "description": "-5% стоимость нелегальных товаров.",
+      "source": "Underground Economy",
+      "context_tags": ["ORIGIN_LUNA_UNDERWORLD", "FY_MARS_BLACK_MARKET"]
+    },
+    {
+      "id": "PT009",
+      "name": "Lab Rat",
+      "description": "+5% к эффективности всех экспериментов.",
+      "source": "Extended Laboratory Experience",
+      "context_tags": ["ORIGIN_MARS_SCIENTIST", "FY_MARS_LAB_ASSISTANT"]
+    },
+    {
+      "id": "PT010",
+      "name": "Rebel Soul",
+      "description": "+5% к Charisma при взаимодействии с повстанцами и диссидентами.",
+      "source": "Anti-Establishment Background",
+      "context_tags": ["ORIGIN_REBEL_HIDEOUT", "FY_CORP_SABOTAGE"]
+    },
+    {
+      "id": "PT011",
+      "name": "Diplomat's Child",
+      "description": "+3 к начальной репутации у всех официальных фракций.",
+      "source": "Elite Upbringing",
+      "context_tags": ["ORIGIN_EARTH_ELITE", "FY_STATION_DIPLOMACY"]
+    },
+    {
+      "id": "PT012",
+      "name": "Void Walker",
+      "description": "+10% сопротивление радиации и экстремальным температурам.",
+      "source": "Extended Space Exposure",
+      "context_tags": ["ORIGIN_JOVIAN_STATION", "ORIGIN_CERES_SMUGGLER"]
+    }
+  ],
+  "lifepath_perks": [
+    {
+      "id": "LP001",
+      "name": "Underworld Contacts",
+      "description": "Начальный надёжный контакт в криминальном мире. Раз в сессию можно получить ценную информацию или редкий предмет.",
+      "required_lifepath": ["ORIGIN_LUNA_UNDERWORLD", "FY_MARS_BLACK_MARKET", "FY_SLUMS_FIXER", "ORIGIN_CERES_SMUGGLER"]
+    },
+    {
+      "id": "LP002",
+      "name": "Corporate Immunity",
+      "description": "Раз в сессию автоматически проходить проверку безопасности низкого уровня в корпоративной зоне.",
+      "required_lifepath": ["ORIGIN_EARTH_ELITE", "FY_CORP_INTERNSHIP"]
+    },
+    {
+      "id": "LP003",
+      "name": "Heart of the Miner",
+      "description": "+10% к скорости добычи руды и небольшой шанс найти редкие минералы.",
+      "required_lifepath": ["ORIGIN_CERES_MINER", "FY_BELTER_PROSPECTOR"]
+    },
+    {
+      "id": "LP004",
+      "name": "Field Technician",
+      "description": "Экстренный ремонт базового оборудования (I-II) раз за бой даже без инструментов.",
+      "required_lifepath": ["ORIGIN_UNDERCITY_ENGINEER", "FY_STATION_ACCIDENT", "FY_MARS_DUST_STORM"]
+    },
+    {
+      "id": "LP005",
+      "name": "Military Bearing",
+      "description": "+1 к Intimidation или Leadership при общении с военными.",
+      "required_lifepath": ["ORIGIN_MARS_MILITARY", "FY_MARS_ACADEMY"]
+    },
+    {
+      "id": "LP006",
+      "name": "Academic Peerage",
+      "description": "Доступ к закрытым научным архивам, +5% скорость исследований.",
+      "required_lifepath": ["ORIGIN_MARS_SCIENTIST", "ORIGIN_JOVIAN_SCIENTIST", "FY_MARS_LAB_ASSISTANT"]
+    },
+    {
+      "id": "LP007",
+      "name": "Born to Rule",
+      "description": "Автоматически +5 Influence у семейной фракции при старте игры.",
+      "required_lifepath": ["ORIGIN_EARTH_ELITE"]
+    },
+    {
+      "id": "LP008",
+      "name": "Ghetto Survivor",
+      "description": "+1 к Stealth и Survival в городских трущобах, иммунитет к запугиванию.",
+      "required_lifepath": ["ORIGIN_EARTH_SLUMS", "ORIGIN_EARTH_HOMELESS"]
+    },
+    {
+      "id": "LP009",
+      "name": "Void Navigator",
+      "description": "+15% точность навигации в Поясе астероидов, знание секретных маршрутов.",
+      "required_lifepath": ["ORIGIN_CERES_SMUGGLER", "FY_BELTER_PROSPECTOR"]
+    },
+    {
+      "id": "LP010",
+      "name": "Medical Ethics Override",
+      "description": "Возможность проводить экспериментальные процедуры без согласия пациента (с моральными последствиями).",
+      "required_lifepath": ["ORIGIN_STATION_MEDIC", "FY_CORP_SABOTAGE"]
+    },
+    {
+      "id": "LP011",
+      "name": "Terraform Specialist",
+      "description": "+20% эффективность всех операций, связанных с терраформированием и экологией.",
+      "required_lifepath": ["ORIGIN_MARS_FARMER", "ORIGIN_MARS_SCIENTIST"]
+    },
+    {
+      "id": "LP012",
+      "name": "Crisis Manager",
+      "description": "+2 к всем проверкам в аварийных ситуациях, может координировать спасательные операции.",
+      "required_lifepath": ["FY_STATION_ACCIDENT", "FY_MARS_DUST_STORM"]
+    },
+    {
+      "id": "LP013",
+      "name": "Shadow Broker",
+      "description": "Раз в сессию можно продать информацию за значительную сумму или обменять на услуги.",
+      "required_lifepath": ["FY_SLUMS_FIXER", "FY_CORP_SABOTAGE"]
+    },
+    {
+      "id": "LP014",
+      "name": "Diplomatic Heritage",
+      "description": "Начальный доступ к дипломатическим каналам всех основных фракций.",
+      "required_lifepath": ["FY_STATION_DIPLOMACY", "ORIGIN_EARTH_ELITE"]
+    },
+    {
+      "id": "LP015",
+      "name": "Research Pioneer",
+      "description": "Возможность открывать новые технологические направления, недоступные другим персонажам.",
+      "required_lifepath": ["ORIGIN_JOVIAN_SCIENTIST", "ORIGIN_GANYMEDE_SCIENTIST"]
+    }
+  ]
+}

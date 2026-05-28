@@ -1,0 +1,787 @@
+{
+  "module_name": "13_MEGA_TIME_SYSTEM_COMPLETE",
+  "module_id": "13",
+  "priority": "CRITICAL",
+  "version": "1.0_UNIFIED_COMPREHENSIVE",
+  "description": "Полная система управления временем - объединение мирового времени, логирования сессий и отображения времени для создания комплексной системы хронологического контроля и исторической достоверности",
+  "source_files": [
+    "WORLD_TIME_SYSTEM.json (2,716 символов) - система мирового времени",
+    "SESSION_LOG.json (1,192 символа) - логирование игровых сессий", 
+    "TIME_DISPLAY_SYSTEM.json (1,112 символов) - система отображения времени"
+  ],
+  "total_size": "5,020 символов - полностью сохранено",
+  "integration_status": "COMPLETE_NO_LOSS",
+  "dependencies": ["12_MEGA_NARRATIVE_INTERFACE", "10_MEGA_PLAYER_INTERFACE", "07_MEGA_WORLD_SIMULATION", "11_MEGA_POLITICS_STRATEGY", "AI_NARRATOR_V2"],
+
+  "comprehensive_world_time_system": {
+    "module_name": "WORLD_TIME_SYSTEM_COMPREHENSIVE",
+    "description": "Централизованная система времени для синхронизации всех модулей и процедурной генерации",
+    "version": "1.0_INFINITE_RPG_UNIFIED",
+    "temporal_foundation": {
+      "game_calendar": {
+        "start_date": {
+          "year": 2275,
+          "month": 3,
+          "day": 15,
+          "hour": 12,
+          "minute": 0,
+          "setting_context": "Начало игры в середине 23 века, эпоха межпланетной колонизации"
+        },
+        "calendar_system": {
+          "year_length": "365 дней (стандартный земной год)",
+          "month_names": ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+          "week_structure": "7-дневная неделя",
+          "day_length": "24 часа (стандартное земное время)",
+          "universal_coordination": "Все колонии используют единое UTC (Universal Terran Coordination)"
+        },
+        "time_flow_mechanics": {
+          "base_increment": "15 минут",
+          "description": "Минимальный временной шаг для большинства действий",
+          "flexible_scaling": "Может адаптироваться под конкретные ситуации"
+        }
+      },
+      "activity_time_modifiers": {
+        "social_interactions": {
+          "conversation": "15-30 минут",
+          "negotiation": "30-60 минут",
+          "diplomatic_meeting": "1-3 часа",
+          "social_gathering": "2-6 часов",
+          "context_note": "Зависит от сложности и важности диалога"
+        },
+        "movement_and_travel": {
+          "local_travel": "30-60 минут",
+          "city_navigation": "15-45 минут",
+          "facility_exploration": "1-4 часа",
+          "planetary_surface": "2-12 часов",
+          "context_note": "Местное перемещение в пределах одной локации"
+        },
+        "combat_and_conflict": {
+          "combat_round": "6 секунд",
+          "skirmish": "5-15 минут",
+          "full_combat": "15-45 минут",
+          "strategic_battle": "2-8 часов",
+          "siege_operation": "1-30 дней",
+          "context_note": "От личного боя до масштабных военных операций"
+        },
+        "rest_and_recovery": {
+          "rest_short": "1 час",
+          "rest_long": "8 часов",
+          "medical_recovery": "1-14 дней",
+          "psychological_therapy": "2-8 сессий (недели)",
+          "context_note": "Восстановление физического и ментального здоровья"
+        },
+        "crafting_and_creation": {
+          "crafting_simple": "2-4 часа",
+          "crafting_complex": "1-7 дней",
+          "research_project": "1 неделя - 6 месяцев",
+          "prototype_development": "2-12 недель",
+          "mass_production_setup": "1-6 месяцев",
+          "context_note": "От простых инструментов до высокотехнологичных устройств"
+        },
+        "medical_and_treatment": {
+          "first_aid": "5-15 минут",
+          "medical_treatment": "30 минут - 2 часа",
+          "surgery": "2-8 часов",
+          "rehabilitation": "1-12 недель",
+          "cybernetic_implantation": "4-12 часов + 1-4 недели восстановления",
+          "context_note": "Медицинские процедуры различной сложности"
+        },
+        "business_and_economics": {
+          "simple_transaction": "5-15 минут",
+          "contract_negotiation": "2-8 часов",
+          "market_analysis": "4-24 часа",
+          "corporate_merger": "2-12 месяцев",
+          "context_note": "Коммерческие и экономические операции"
+        },
+        "investigation_and_research": {
+          "information_gathering": "1-6 часов",
+          "forensic_analysis": "4-24 часа",
+          "deep_investigation": "1-4 недели",
+          "scientific_research": "1-12 месяцев",
+          "context_note": "Исследовательская деятельность различной глубины"
+        }
+      }
+    },
+    "space_travel_system": {
+      "description": "Реалистичные времена перемещения между локациями на основе астрономических расстояний",
+      "transportation_categories": {
+        "shuttle": "Межпланетный шаттл для коротких дистанций",
+        "transport": "Стандартный межпланетный транспорт",
+        "freight": "Грузовые корабли с медленной скоростью",
+        "military": "Военные корабли с высокой скоростью",
+        "industrial": "Промышленные суда для ресурсных операций",
+        "deep_space": "Корабли для дальних межпланетных путешествий"
+      },
+      "travel_routes": {
+        "inner_system_routes": {
+          "earth_to_luna": {
+            "min_days": 3,
+            "max_days": 5,
+            "transport_type": "shuttle",
+            "distance_notes": "384,400 км - ближайшее расстояние",
+            "route_description": "Стандартный маршрут Земля-Луна"
+          },
+          "earth_to_mars": {
+            "min_days": 120,
+            "max_days": 300,
+            "transport_type": "transport",
+            "distance_notes": "54.6 млн км (близкое) - 401 млн км (далекое)",
+            "route_description": "Зависит от орбитального положения планет",
+            "orbital_considerations": "Окно запуска каждые 26 месяцев"
+          },
+          "mars_to_ceres": {
+            "min_days": 90,
+            "max_days": 180,
+            "transport_type": "freight",
+            "distance_notes": "Переменное расстояние в поясе астероидов",
+            "route_description": "Маршрут к крупнейшему астероиду пояса"
+          },
+          "inner_system_patrol": {
+            "min_days": 7,
+            "max_days": 14,
+            "transport_type": "military",
+            "distance_notes": "Патрулирование орбит Земли-Марса",
+            "route_description": "Военные патрули внутренней системы"
+          }
+        },
+        "outer_system_routes": {
+          "ceres_to_ganymede": {
+            "min_days": 60,
+            "max_days": 120,
+            "transport_type": "transport",
+            "distance_notes": "От пояса астероидов к спутнику Юпитера",
+            "route_description": "Стандартный маршрут Пояс-Юпитер"
+          },
+          "ganymede_to_titan": {
+            "min_days": 200,
+            "max_days": 400,
+            "transport_type": "deep_space",
+            "distance_notes": "От системы Юпитера к системе Сатурна",
+            "route_description": "Дальняя дистанция внешней системы"
+          },
+          "belt_mining_circuit": {
+            "min_days": 30,
+            "max_days": 60,
+            "transport_type": "industrial",
+            "distance_notes": "Круговой маршрут по поясу астероидов",
+            "route_description": "Промышленный цикл добычи в поясе"
+          }
+        }
+      },
+      "travel_factors": {
+        "orbital_mechanics": "Позиции планет влияют на время и стоимость путешествий",
+        "fuel_efficiency": "Более долгие маршруты экономят топливо",
+        "emergency_travel": "Ускоренные маршруты на 30-50% быстрее за двойную стоимость",
+        "cargo_influence": "Грузовые корабли на 20-40% медленнее пассажирских",
+        "military_priority": "Военные корабли получают приоритет в навигационных коридорах"
+      }
+    },
+    "procedural_world_cycles": {
+      "description": "Циклические системы для запуска различных процедурных механик",
+      "temporal_scaling": {
+        "micro_events": "Минуты-часы (личные взаимодействия)",
+        "minor_events": "Дни-недели (локальные изменения)",
+        "major_events": "Месяцы (региональные сдвиги)",
+        "legendary_events": "Годы (системные трансформации)"
+      },
+      "event_cycles": {
+        "minor_events": {
+          "frequency": "каждые 3-7 дней игрового времени",
+          "description": "Регулярные локальные события для поддержания динамики мира",
+          "triggers": [
+            "local_news",
+            "market_fluctuations",
+            "npc_movements",
+            "minor_faction_actions"
+          ],
+          "impact_scope": "Локальный (одна станция, корабль, район)",
+          "player_influence_required": "Минимальное (присутствие в локации)",
+          "examples": [
+            "Изменение цен на станции",
+            "Прибытие нового NPC",
+            "Мелкие технические неполадки",
+            "Слухи и сплетни",
+            "Небольшие конфликты"
+          ]
+        },
+        "major_events": {
+          "frequency": "каждые 30-90 дней игрового времени",
+          "description": "Значительные события, влияющие на региональную ситуацию",
+          "triggers": [
+            "political_changes",
+            "economic_shifts", 
+            "technological_breakthroughs",
+            "inter_faction_conflicts"
+          ],
+          "impact_scope": "Региональный (планета, система, крупная фракция)",
+          "player_influence_required": "Среднее (Tier II, известность, связи)",
+          "examples": [
+            "Смена руководства корпорации",
+            "Новые торговые соглашения",
+            "Технологические прорывы",
+            "Региональные конфликты",
+            "Изменения в законодательстве"
+          ]
+        },
+        "legendary_events": {
+          "frequency": "каждые 1-3 года игрового времени",
+          "description": "Эпические события, меняющие всю солнечную систему",
+          "triggers": [
+            "system_wide_crises",
+            "discovery_of_alien_tech",
+            "interplanetary_wars",
+            "major_corporate_mergers"
+          ],
+          "impact_scope": "Системный (вся солнечная система)",
+          "player_influence_required": "Очень высокое (Tier III, 10M+ кредитов, лидер крупной фракции)",
+          "examples": [
+            "Открытие внеземного разума",
+            "Межпланетные войны",
+            "Революционные технологии",
+            "Формирование новых альянсов",
+            "Крах крупных корпораций"
+          ]
+        }
+      },
+      "cycle_synchronization": {
+        "economic_cycles": "Синхронизированы с политическими событиями",
+        "technological_progress": "Влияет на частоту всех типов событий",
+        "player_actions": "Могут ускорять или замедлять естественные циклы",
+        "faction_dynamics": "Активность фракций определяет интенсивность событий"
+      }
+    }
+  },
+
+  "comprehensive_session_log_system": {
+    "module_name": "SESSION_LOG_COMPREHENSIVE",
+    "description": "Архитектура и правила ведения логов игровой сессии для обеспечения целостности и необратимости истории мира",
+    "version": "1.0_HISTORICAL_INTEGRITY",
+    "storage_architecture": {
+      "primary_storage": {
+        "location": "Мульти-лог на Google Drive",
+        "redundancy": "Автоматическое резервное копирование каждые 24 часа",
+        "accessibility": "24/7 доступ для ИИ-ГМ и авторизованных пользователей",
+        "security": "Защищенное хранение с контролем версий"
+      },
+      "log_components": {
+        "main_chronicle": {
+          "name": "Главный лог (полная хроника)",
+          "content": "Все события игры в хронологическом порядке",
+          "update_frequency": "Реальное время",
+          "retention": "Постоянное хранение"
+        },
+        "key_events_log": {
+          "name": "Лог ключевых событий",
+          "content": "Важные события, влияющие на мир",
+          "criteria": "Смерти NPC, политические изменения, экономические сдвиги",
+          "cross_references": "Связи с основными участниками и последствиями"
+        },
+        "archive_logs": {
+          "name": "Архив старых логов",
+          "content": "Исторические записи старше 6 месяцев",
+          "optimization": "Сжатие для экономии пространства",
+          "access": "Доступ по запросу для исторических справок"
+        },
+        "specialized_logs": {
+          "name": "Специализированные логи",
+          "types": ["войны", "кампании", "исследовательские проекты", "корпоративные операции"],
+          "purpose": "Детальное отслеживание долгосрочных процессов",
+          "integration": "Связаны с главным логом через UUID события"
+        }
+      }
+    },
+    "logging_principles": {
+      "core_principle": {
+        "rule": "Запись всех фактических событий: ходы, решения, результаты, необратимые перемены",
+        "scope": "Охватывает действия игроков, NPC, фракций и мировые события",
+        "granularity": "От индивидуальных действий до системных изменений"
+      },
+      "irreversibility_principle": {
+        "rule": "Фракция или NPC не возобновляется, если уничтожена в логе",
+        "enforcement": "Строгая проверка статуса перед любым взаимодействием",
+        "exceptions": "Только если смерть была записана по ошибке (требует ручной коррекции)",
+        "impact": "Действия игроков имеют постоянные последствия"
+      },
+      "causality_tracking": {
+        "rule": "Каждое событие связано с причинами и последствиями",
+        "implementation": "Система причинно-следственных связей",
+        "benefits": "Позволяет отслеживать цепочки событий и их влияние"
+      },
+      "temporal_accuracy": {
+        "rule": "Точная временная привязка всех событий",
+        "synchronization": "Использует единую временную систему WORLD_TIME_SYSTEM",
+        "resolution": "С точностью до минуты для важных событий"
+      }
+    },
+    "log_management": {
+      "optimization_strategies": {
+        "automatic_archiving": {
+          "frequency": "Раз в полгода",
+          "process": "Старый лог автоматически архивируется, начинается новый",
+          "preservation": "Полное сохранение данных с оптимизацией хранения",
+          "indexing": "Создание поисковых индексов для быстрого доступа"
+        },
+        "data_compression": {
+          "archived_data": "Сжатие неактивных записей",
+          "active_data": "Полное хранение текущих событий",
+          "balance": "Баланс между доступностью и эффективностью хранения"
+        },
+        "performance_optimization": {
+          "indexing": "Индексы по времени, участникам, локациям, типам событий",
+          "caching": "Кэширование часто запрашиваемых данных",
+          "query_optimization": "Оптимизированные запросы для ИИ-ГМ"
+        }
+      },
+      "history_retention": {
+        "permanent_access": {
+          "availability": "Старые логи сохраняются для постоянного доступа к истории и фактам",
+          "search_capabilities": "Полнотекстовый поиск по всем архивам",
+          "reference_system": "Система ссылок для связи исторических и текущих событий"
+        },
+        "data_integrity": {
+          "verification": "Регулярная проверка целостности данных",
+          "backup_strategy": "Множественные резервные копии",
+          "recovery_procedures": "Процедуры восстановления при сбоях"
+        }
+      },
+      "synchronization_protocols": {
+        "real_time_updates": {
+          "process": "ИИ-ГМ сам сверяется с логом в режиме реального времени",
+          "frequency": "При каждом значимом событии",
+          "automation": "Автоматическая синхронизация без ручного вмешательства"
+        },
+        "conflict_resolution": {
+          "prevention": "Проверка конфликтов перед записью",
+          "resolution": "Автоматическое разрешение простых конфликтов",
+          "escalation": "Ручное вмешательство для сложных случаев"
+        }
+      }
+    },
+    "log_formatting": {
+      "flexible_format_selection": {
+        "principle": "ИИ выбирает наиболее удобный формат — текст, таблица, Markdown или JSON",
+        "adaptation": "Формат адаптируется под тип события и контекст",
+        "consistency": "Единые стандарты для схожих типов записей"
+      },
+      "required_template_structure": {
+        "core_fields": [
+          {
+            "field": "Дата",
+            "format": "YYYY-MM-DD HH:MM",
+            "source": "WORLD_TIME_SYSTEM",
+            "required": true
+          },
+          {
+            "field": "Событие", 
+            "format": "Текстовое описание",
+            "detail_level": "От краткого до подробного в зависимости от важности",
+            "required": true
+          },
+          {
+            "field": "ID Участников",
+            "format": "UUID или имена",
+            "scope": "Игроки, NPC, фракции",
+            "required": true
+          },
+          {
+            "field": "Статус/Последствия",
+            "format": "Краткое описание результатов",
+            "impact": "Немедленные и потенциальные долгосрочные эффекты",
+            "required": true
+          }
+        ],
+        "optional_fields": [
+          "Локация",
+          "Тип события",
+          "Уровень важности",
+          "Связанные события",
+          "Экономическое влияние",
+          "Политическое влияние",
+          "Технологическое влияние"
+        ]
+      },
+      "event_categorization": {
+        "personal_events": "Действия индивидуальных персонажей",
+        "social_events": "Взаимодействия между персонажами",
+        "economic_events": "Торговые операции, рыночные изменения",
+        "political_events": "Дипломатические и властные изменения",
+        "military_events": "Конфликты и военные операции",
+        "technological_events": "Исследования, открытия, разработки",
+        "environmental_events": "Изменения в физическом мире"
+      }
+    }
+  },
+
+  "comprehensive_time_display_system": {
+    "module_name": "TIME_DISPLAY_SYSTEM_COMPREHENSIVE",
+    "version": "1.0_CHAT_INTEGRATION_UNIFIED",
+    "description": "Система отображения игрового времени в чате с полной интеграцией в игровой интерфейс",
+    "display_format_system": {
+      "format_templates": {
+        "standard": {
+          "template": "🕐 {day}.{month}.{year} {hour}:{minute} | {location}",
+          "usage": "Обычные ситуации, когда персонаж находится в стабильной локации",
+          "example": "🕐 15.03.2275 14:30 | Церера, Главный Порт",
+          "context": "Статическое положение без активной деятельности"
+        },
+        "travel": {
+          "template": "🚀 {day}.{month}.{year} {hour}:{minute} | В пути: {destination} (осталось {time_left})",
+          "usage": "Во время космических путешествий между локациями",
+          "example": "🚀 20.03.2275 09:15 | В пути: Марс (осталось 89 дней)",
+          "context": "Межпланетные перемещения с отображением прогресса"
+        },
+        "activity": {
+          "template": "⚙️ {day}.{month}.{year} {hour}:{minute} | {activity_name} ({duration})",
+          "usage": "Во время длительных действий (крафтинг, лечение, исследования)",
+          "example": "⚙️ 15.03.2275 16:45 | Ремонт двигателя (2 часа)",
+          "context": "Активная деятельность с временными рамками"
+        },
+        "combat": {
+          "template": "⚔️ {day}.{month}.{year} {hour}:{minute} | Бой: {combat_type} (Раунд {round_number})",
+          "usage": "Во время боевых действий",
+          "example": "⚔️ 15.03.2275 18:22 | Бой: Космическая стычка (Раунд 3)",
+          "context": "Боевые ситуации с детализацией"
+        },
+        "diplomatic": {
+          "template": "🤝 {day}.{month}.{year} {hour}:{minute} | {diplomatic_event} | {participants}",
+          "usage": "Во время дипломатических встреч и переговоров",
+          "example": "🤝 15.03.2275 10:00 | Торговые переговоры | TerraForm Union",
+          "context": "Политические и социальные взаимодействия"
+        },
+        "emergency": {
+          "template": "🚨 {day}.{month}.{year} {hour}:{minute} | АВАРИЙНАЯ СИТУАЦИЯ: {emergency_type}",
+          "usage": "Во время критических ситуаций и чрезвычайных происшествий",
+          "example": "🚨 15.03.2275 22:30 | АВАРИЙНАЯ СИТУАЦИЯ: Разгерметизация отсека",
+          "context": "Кризисные моменты, требующие немедленного внимания"
+        }
+      },
+      "contextual_adaptation": {
+        "location_awareness": "Отображение специфично для типа локации (станция, корабль, планета)",
+        "activity_sensitivity": "Автоматический выбор формата на основе текущей деятельности",
+        "urgency_indication": "Визуальные индикаторы для критических ситуаций",
+        "cultural_localization": "Адаптация под культурные особенности локации"
+      }
+    },
+    "automated_display_triggers": {
+      "response_synchronization": {
+        "trigger": "after_ai_response",
+        "description": "Показывать время после каждого ответа ИИ",
+        "frequency": "Каждое взаимодействие",
+        "purpose": "Поддержание временной осведомленности игрока"
+      },
+      "temporal_jump_detection": {
+        "trigger": "significant_time_jump", 
+        "threshold": "При изменении времени на 1+ час",
+        "description": "Автоматическое уведомление о значительных временных сдвигах",
+        "purpose": "Предотвращение дезориентации при пропусках времени"
+      },
+      "location_change_tracking": {
+        "trigger": "location_change",
+        "description": "При смене локации",
+        "includes": "Новая локация, время прибытия, условия окружения",
+        "purpose": "Ориентация в пространстве и времени"
+      },
+      "activity_lifecycle": {
+        "trigger": "activity_start_end",
+        "description": "При начале/завершении длительных действий",
+        "coverage": "Начало, прогресс, завершение активностей",
+        "purpose": "Отслеживание продуктивности и планирование"
+      },
+      "event_driven_updates": {
+        "trigger": "world_events",
+        "description": "При происхождении значимых мировых событий",
+        "scope": "События, затрагивающие персонажа или его окружение",
+        "purpose": "Интеграция персонального времени с мировыми процессами"
+      }
+    },
+    "system_integration": {
+      "player_interface_integration": {
+        "target": "PLAYER_INTERFACE_V2",
+        "method": "Встроить в PLAYER_INTERFACE_V2",
+        "display_position": "Верхняя строка интерфейса",
+        "update_mechanism": "Автоматическое обновление при изменениях"
+      },
+      "world_time_synchronization": {
+        "source": "WORLD_TIME_SYSTEM",
+        "method": "Получать данные из WORLD_TIME_SYSTEM",
+        "frequency": "Реальное время",
+        "accuracy": "Синхронизация с точностью до минуты"
+      },
+      "ai_narrator_coordination": {
+        "target": "AI_NARRATOR_V2",
+        "method": "Принудительное отображение ИИ",
+        "trigger_conditions": "Нарративно важные моменты",
+        "presentation": "Интеграция временного контекста в повествование"
+      },
+      "session_log_connection": {
+        "target": "SESSION_LOG",
+        "method": "Timestamp sync for historical accuracy",
+        "purpose": "Обеспечение точной временной привязки всех событий",
+        "bidirectional": "Время влияет на логи, логи влияют на восприятие времени"
+      }
+    },
+    "advanced_display_features": {
+      "timezone_management": {
+        "universal_time": "Отображение универсального времени (UTC)",
+        "local_time": "Опциональное отображение местного времени локации",
+        "dual_display": "Параллельное отображение для путешественников"
+      },
+      "calendar_integration": {
+        "date_significance": "Выделение важных дат и событий",
+        "anniversary_tracking": "Напоминания о годовщинах событий",
+        "seasonal_awareness": "Отражение сезонных изменений на планетах"
+      },
+      "predictive_display": {
+        "eta_calculation": "Расчет времени прибытия для путешествий",
+        "activity_completion": "Прогноз завершения длительных действий",
+        "event_scheduling": "Отображение запланированных событий"
+      },
+      "visual_enhancements": {
+        "color_coding": "Цветовая индикация для различных типов времени",
+        "progress_bars": "Визуальные индикаторы прогресса для длительных действий",
+        "alert_animations": "Анимированные уведомления для критических событий"
+      }
+    }
+  },
+
+  "integrated_temporal_mechanics": {
+    "cross_system_synchronization": {
+      "unified_time_source": {
+        "master_clock": "WORLD_TIME_SYSTEM служит единым источником времени",
+        "propagation": "Все модули синхронизируются с мастер-часами",
+        "consistency": "Гарантированная временная согласованность по всей системе",
+        "precision": "Точность до минуты для всех временных операций"
+      },
+      "event_cascade_management": {
+        "temporal_triggers": "События запускают временные каскады в связанных системах",
+        "dependency_tracking": "Отслеживание временных зависимостей между модулями",
+        "conflict_resolution": "Разрешение конфликтов при одновременных событиях",
+        "priority_system": "Приоритизация событий по важности и срочности"
+      },
+      "narrative_time_integration": {
+        "story_pacing": "Время влияет на темп повествования",
+        "dramatic_timing": "Использование временных интервалов для драматического эффекта",
+        "historical_continuity": "Поддержание исторической последовательности в нарративе",
+        "character_development": "Временной контекст для развития персонажей"
+      }
+    },
+    "procedural_time_effects": {
+      "aging_systems": {
+        "character_aging": "Постепенное старение персонажей со временем",
+        "technology_obsolescence": "Устаревание технологий и оборудования",
+        "relationship_evolution": "Изменение отношений между персонажами",
+        "skill_degradation": "Потеря навыков при неиспользовании"
+      },
+      "economic_temporal_cycles": {
+        "market_volatility": "Циклические изменения в экономике",
+        "seasonal_trade": "Сезонные колебания торговых маршрутов",
+        "long_term_inflation": "Долгосрочные экономические тренды",
+        "crisis_recovery": "Временные рамки восстановления после кризисов"
+      },
+      "political_time_dynamics": {
+        "electoral_cycles": "Политические выборы и смена власти",
+        "treaty_durations": "Временные рамки дипломатических соглашений",
+        "revolution_timing": "Развитие политических кризисов во времени",
+        "succession_planning": "Планирование преемственности власти"
+      },
+      "technological_progression": {
+        "research_timelines": "Реалистичные временные рамки для исследований",
+        "innovation_cycles": "Циклы технологических прорывов",
+        "adoption_periods": "Время принятия новых технологий обществом",
+        "patent_expiration": "Временные рамки технологических патентов"
+      }
+    },
+    "temporal_player_agency": {
+      "time_manipulation_abilities": {
+        "acceleration_options": "Ускорение времени для длительных процессов",
+        "pause_mechanisms": "Паузы для стратегического планирования",
+        "rewind_limitations": "Ограниченные возможности возврата времени",
+        "prophecy_systems": "Предсказание будущих событий"
+      },
+      "scheduling_systems": {
+        "appointment_booking": "Планирование встреч и событий",
+        "deadline_management": "Отслеживание временных ограничений",
+        "calendar_integration": "Личные календари персонажей",
+        "reminder_systems": "Автоматические напоминания о важных событиях"
+      },
+      "temporal_consequences": {
+        "delay_penalties": "Последствия опозданий и просрочек",
+        "timing_rewards": "Бонусы за своевременные действия",
+        "opportunity_windows": "Ограниченные по времени возможности",
+        "irreversible_changes": "Необратимые временные последствия"
+      }
+    }
+  },
+
+  "system_apis": {
+    "world_time_management": [
+      {
+        "name": "GetCurrentGameTime",
+        "description": "Получить текущее игровое время",
+        "parameters": "timezone_preference, format_type",
+        "returns": "Полная временная метка с контекстом"
+      },
+      {
+        "name": "AdvanceGameTime",
+        "description": "Продвинуть игровое время на указанный период",
+        "parameters": "time_increment, activity_type, automatic_events_trigger",
+        "returns": "Новое время и список произошедших событий"
+      },
+      {
+        "name": "CalculateTravelTime",
+        "description": "Рассчитать время путешествия между локациями",
+        "parameters": "origin_location, destination_location, transport_type, cargo_weight",
+        "returns": "Минимальное и максимальное время путешествия"
+      },
+      {
+        "name": "GetActivityDuration",
+        "description": "Определить продолжительность конкретной активности",
+        "parameters": "activity_type, complexity_level, character_skills, environmental_factors",
+        "returns": "Расчетное время выполнения"
+      },
+      {
+        "name": "TriggerWorldEvent",
+        "description": "Запустить процедурное мировое событие",
+        "parameters": "event_type, current_time, player_influence_level, affected_regions",
+        "returns": "Детали события и временные рамки"
+      }
+    ],
+    "session_logging": [
+      {
+        "name": "LogGameEvent",
+        "description": "Записать событие в игровой лог",
+        "parameters": "event_description, participants, consequences, importance_level, event_type",
+        "returns": "Уникальный ID события для последующих ссылок"
+      },
+      {
+        "name": "QueryEventHistory",
+        "description": "Найти события в истории игры",
+        "parameters": "search_criteria, time_range, participant_filter, event_type_filter",
+        "returns": "Список соответствующих событий с полными деталями"
+      },
+      {
+        "name": "ValidateWorldState",
+        "description": "Проверить консистентность состояния мира",
+        "parameters": "target_entities, cross_reference_logs, consistency_rules",
+        "returns": "Отчет о состоянии и обнаруженных несоответствиях"
+      },
+      {
+        "name": "GenerateHistoryReport",
+        "description": "Создать отчет по истории событий",
+        "parameters": "time_period, focus_areas, detail_level, format_type",
+        "returns": "Структурированный исторический отчет"
+      },
+      {
+        "name": "ArchiveOldEvents",
+        "description": "Архивировать старые события для оптимизации",
+        "parameters": "cutoff_date, archive_criteria, compression_level",
+        "returns": "Статистика архивации и новое состояние хранилища"
+      }
+    ],
+    "time_display": [
+      {
+        "name": "FormatTimeDisplay",
+        "description": "Отформатировать время для отображения",
+        "parameters": "current_time, context_type, location, current_activity",
+        "returns": "Отформатированная строка времени с соответствующими иконками"
+      },
+      {
+        "name": "UpdateTimeDisplay",
+        "description": "Обновить отображение времени в интерфейсе",
+        "parameters": "new_time, trigger_reason, visual_effects",
+        "returns": "Подтверждение обновления интерфейса"
+      },
+      {
+        "name": "SetDisplayPreferences",
+        "description": "Настроить предпочтения отображения времени",
+        "parameters": "format_preferences, update_frequency, notification_settings",
+        "returns": "Сохраненные настройки пользователя"
+      },
+      {
+        "name": "GenerateTimeAlert",
+        "description": "Создать временное уведомление или напоминание",
+        "parameters": "alert_type, trigger_time, alert_message, priority_level",
+        "returns": "ID уведомления для управления"
+      }
+    ],
+    "temporal_integration": [
+      {
+        "name": "SynchronizeSystemTime",
+        "description": "Синхронизировать время между всеми модулями",
+        "parameters": "master_time_source, affected_modules, sync_tolerance",
+        "returns": "Отчет о синхронизации и обнаруженных расхождениях"
+      },
+      {
+        "name": "ProcessTemporalCascade",
+        "description": "Обработать каскадные эффекты временного события",
+        "parameters": "trigger_event, affected_systems, cascade_depth",
+        "returns": "Список всех произошедших каскадных изменений"
+      },
+      {
+        "name": "ValidateTemporalConsistency",
+        "description": "Проверить временную согласованность системы",
+        "parameters": "check_scope, consistency_rules, tolerance_levels",
+        "returns": "Отчет о временной целостности системы"
+      },
+      {
+        "name": "PredictTemporalEffects",
+        "description": "Предсказать влияние временного изменения",
+        "parameters": "proposed_change, affected_timeline, prediction_depth",
+        "returns": "Прогноз последствий с вероятностными оценками"
+      }
+    ]
+  },
+
+  "usage_guidelines": {
+    "for_game_masters": [
+      "Используйте централизованную систему времени для синхронизации всех игровых процессов",
+      "Регулярно записывайте значимые события в лог для поддержания исторической целостности",
+      "Адаптируйте отображение времени под текущий контекст и деятельность игроков",
+      "Используйте процедурные циклы для создания динамичного и живого игрового мира",
+      "Обеспечивайте реалистичные временные рамки для всех действий и путешествий"
+    ],
+    "for_players": [
+      "Время имеет реальные последствия - планируйте свои действия заранее",
+      "Путешествия между планетами занимают месяцы - готовьтесь к долгим перелетам",
+      "Ваши действия записываются в историю и имеют постоянные последствия",
+      "Следите за временными индикаторами для понимания продолжительности активностей",
+      "Используйте возможности планирования для эффективного управления временем"
+    ],
+    "for_ai_systems": [
+      "Всегда синхронизируйтесь с WORLD_TIME_SYSTEM перед обработкой временных событий",
+      "Записывайте все значимые события в SESSION_LOG с точными временными метками",
+      "Адаптируйте отображение времени под контекст текущей ситуации",
+      "Используйте реалистичные временные рамки для всех игровых процессов",
+      "Поддерживайте историческую консистентность через проверку логов событий"
+    ]
+  },
+
+  "integration_mechanics": {
+    "temporal_world_synchronization": {
+      "unified_timeline": "Единая временная шкала для всех игровых процессов",
+      "event_coordination": "Координация событий между различными системами",
+      "causality_preservation": "Сохранение причинно-следственных связей",
+      "historical_accuracy": "Точная историческая документация всех изменений"
+    },
+    "cross_module_time_effects": {
+      "economic_temporal_impact": "Временные циклы влияют на экономические процессы",
+      "political_time_dynamics": "Политические события развиваются в реальном времени",
+      "character_temporal_progression": "Развитие персонажей связано с течением времени",
+      "technology_time_correlation": "Технологический прогресс следует реалистичным временным рамкам"
+    },
+    "narrative_temporal_integration": {
+      "story_time_correlation": "Повествование синхронизировано с игровым временем",
+      "dramatic_timing_control": "Использование времени для драматических эффектов",
+      "character_arc_timing": "Развитие персонажей привязано к временной шкале",
+      "world_evolution_tracking": "Отслеживание эволюции мира во времени"
+    }
+  },
+
+  "system_parameters": {
+    "time_precision": "Точность времени до минуты для всех игровых процессов",
+    "sync_frequency": "Синхронизация систем каждые 15 минут игрового времени",
+    "log_retention": "Постоянное хранение всех событий с архивацией каждые 6 месяцев",
+    "display_update_rate": "Обновление интерфейса при каждом значимом временном изменении",
+    "event_cascade_depth": "Максимум 5 уровней каскадных временных эффектов"
+  }
+}

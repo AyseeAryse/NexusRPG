@@ -1,0 +1,901 @@
+{
+  "module_name": "VEHICLES_COMPREHENSIVE",
+  "description": "Полная система транспорта и техники: от персональных ховербайков до межзвездных супертанкеров. Охватывает военную, гражданскую, коммерческую и специализированную технику.",
+  "version": "2.0_COMPREHENSIVE",
+  "vehicle_categories": {
+    "civilian": {
+      "description": "Гражданский транспорт для повседневного использования",
+      "primary_purpose": "Перевозка людей и грузов",
+      "restrictions": "Минимальное или отсутствующее вооружение",
+      "availability": "Широко доступен, стандартные лицензии"
+    },
+    "commercial": {
+      "description": "Коммерческий транспорт для бизнеса и торговли",
+      "primary_purpose": "Массовые грузоперевозки, пассажирский транспорт",
+      "restrictions": "Ограниченная защита, коммерческие лицензии",
+      "availability": "Требует коммерческую регистрацию"
+    },
+    "industrial": {
+      "description": "Промышленная техника для работ и строительства",
+      "primary_purpose": "Добыча, строительство, обслуживание",
+      "restrictions": "Специальные лицензии на опасные работы",
+      "availability": "Корпоративный доступ, высокая стоимость"
+    },
+    "military": {
+      "description": "Военная техника для боевых действий",
+      "primary_purpose": "Ведение войны, защита территорий",
+      "restrictions": "Строго контролируется, военные лицензии",
+      "availability": "Только для военных и PMC"
+    },
+    "luxury": {
+      "description": "Премиальные транспортные средства",
+      "primary_purpose": "Статус, комфорт, эксклюзивность",
+      "restrictions": "Высокая стоимость ограничивает доступ",
+      "availability": "Элита, состоятельные граждане"
+    },
+    "utility": {
+      "description": "Специализированная техника для служб",
+      "primary_purpose": "Экстренные службы, коммунальные работы",
+      "restrictions": "Служебное использование",
+      "availability": "Государственные и корпоративные службы"
+    }
+  },
+  "transportation_types": {
+    "ground_vehicles": {
+      "description": "Наземный транспорт для планетарного использования",
+      "subtypes": {
+        "personal": {
+          "hovercars": [
+            {
+              "name": "AeroSedan 'Comet'",
+              "class": "personal_hover",
+              "category": "civilian",
+              "capacity": "4 пассажира",
+              "range": "800 км",
+              "max_speed": "180 км/ч",
+              "power_source": "Водородная ячейка",
+              "price": "45,000 кредитов",
+              "hull": 150,
+              "armor": 2,
+              "features": [
+                "Автопилот",
+                "Климат-контроль",
+                "Развлекательная система"
+              ],
+              "lifepath_access": {
+                "ORIGIN_EARTH_ELITE": "Стандартная комплектация",
+                "ORIGIN_MARS_CITIZEN": "Доступен по кредиту",
+                "ORIGIN_EARTH_SLUMS": "Только б/у варианты"
+              }
+            },
+            {
+              "name": "StreetRider 'Phantom'",
+              "class": "hoverbike",
+              "category": "civilian",
+              "capacity": "2 пассажира",
+              "range": "400 км",
+              "max_speed": "220 км/ч",
+              "power_source": "Электробатарея",
+              "price": "12,000 кредитов",
+              "hull": 80,
+              "armor": 1,
+              "features": [
+                "Компактный размер",
+                "Быстрая зарядка",
+                "Противоугонная система"
+              ],
+              "popularity": "Популярен среди курьеров и молодежи"
+            }
+          ],
+          "wheeled_cars": [
+            {
+              "name": "Titan Motors 'Guardian'",
+              "class": "SUV",
+              "category": "civilian",
+              "capacity": "7 пассажиров",
+              "range": "1200 км",
+              "max_speed": "160 км/ч",
+              "power_source": "Гибридный двигатель",
+              "price": "32,000 кредитов",
+              "hull": 200,
+              "armor": 3,
+              "features": [
+                "Полный привод",
+                "Усиленная подвеска",
+                "Грузовой отсек"
+              ],
+              "terrain_capability": "Бездорожье, легкое пересеченное"
+            },
+            {
+              "name": "EcoDrive 'Whisper'",
+              "class": "compact",
+              "category": "civilian",
+              "capacity": "2 пассажира",
+              "range": "600 км",
+              "max_speed": "120 км/ч",
+              "power_source": "Электро",
+              "price": "18,000 кредитов",
+              "hull": 120,
+              "armor": 1,
+              "features": [
+                "Экономичность",
+                "Бесшумность",
+                "Компактная парковка"
+              ],
+              "environmental_bonus": "Нулевые выбросы"
+            }
+          ]
+        },
+        "commercial": {
+          "transport_trucks": [
+            {
+              "name": "MegaTrans 'Hauler'",
+              "class": "heavy_truck",
+              "category": "commercial",
+              "cargo_capacity": "50 тонн",
+              "range": "2000 км",
+              "max_speed": "100 км/ч",
+              "power_source": "Дизель-электрический",
+              "price": "180,000 кредитов",
+              "hull": 400,
+              "armor": 8,
+              "crew": "1-2 водителя",
+              "features": [
+                "Автоматическая навигация",
+                "Холодильная установка",
+                "Защита груза"
+              ],
+              "trailer_options": [
+                "Контейнер",
+                "Цистерна",
+                "Платформа"
+              ]
+            },
+            {
+              "name": "LogiCorp 'Express'",
+              "class": "delivery_van",
+              "category": "commercial",
+              "cargo_capacity": "5 тонн",
+              "range": "800 км",
+              "max_speed": "140 км/ч",
+              "power_source": "Электро",
+              "price": "55,000 кредитов",
+              "hull": 180,
+              "armor": 4,
+              "crew": "1 водитель",
+              "features": [
+                "Быстрая загрузка",
+                "Трекинг груза",
+                "Роботизированная доставка"
+              ],
+              "specialization": "Городская логистика"
+            }
+          ],
+          "public_transport": [
+            {
+              "name": "MetroGlide 'Cityline'",
+              "class": "maglev_bus",
+              "category": "utility",
+              "capacity": "60 пассажиров",
+              "range": "500 км",
+              "max_speed": "80 км/ч в городе",
+              "power_source": "Магнитная левитация",
+              "price": "320,000 кредитов",
+              "hull": 300,
+              "armor": 6,
+              "crew": "1 водитель (опционально)",
+              "features": [
+                "Автономное движение",
+                "Низкий пол",
+                "Кондиционирование"
+              ],
+              "route_flexibility": "Фиксированные маршруты"
+            }
+          ]
+        },
+        "industrial": {
+          "construction": [
+            {
+              "name": "BuildTech 'Colossus'",
+              "class": "mega_excavator",
+              "category": "industrial",
+              "operation_range": "Ограничено топливом",
+              "max_speed": "5 км/ч",
+              "power_source": "Ядерный реактор малой мощности",
+              "price": "15,000,000 кредитов",
+              "hull": 2500,
+              "armor": 30,
+              "crew": "3-5 операторов",
+              "lift_capacity": "500 тонн",
+              "features": [
+                "Плазменный резак",
+                "Антигравитационные манипуляторы",
+                "Автономная работа 30 дней"
+              ],
+              "specialization": "Планетарное терраформирование"
+            },
+            {
+              "name": "MiningCorp 'Driller'",
+              "class": "mining_vehicle",
+              "category": "industrial",
+              "operation_range": "48 часов автономной работы",
+              "max_speed": "15 км/ч",
+              "power_source": "Дизель-генератор",
+              "price": "2,200,000 кредитов",
+              "hull": 800,
+              "armor": 25,
+              "crew": "2 оператора",
+              "drilling_depth": "200 метров",
+              "features": [
+                "Алмазная буровая головка",
+                "Пробоотборник",
+                "Защита от взрывов"
+              ],
+              "specialization": "Добыча полезных ископаемых"
+            }
+          ]
+        },
+        "military": {
+          "armored_vehicles": [
+            {
+              "name": "Ares Defense 'Centurion'",
+              "class": "main_battle_tank",
+              "category": "military",
+              "crew": "4 человека",
+              "max_speed": "65 км/ч",
+              "range": "450 км",
+              "power_source": "Гибридный турбинный двигатель",
+              "price": "8,500,000 кредитов",
+              "hull": 1200,
+              "armor": 45,
+              "armament": [
+                "125мм электромагнитная пушка",
+                "7.62мм коаксиальный пулемет",
+                "Система ПВО 'Точка'"
+              ],
+              "features": [
+                "Реактивная броня",
+                "Система активной защиты",
+                "Тепловизор",
+                "Лазерный дальномер"
+              ],
+              "combat_systems": [
+                "Система управления огнем",
+                "Баллистический компьютер",
+                "Автозаряжающий"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "aircraft": {
+      "description": "Атмосферные летательные аппараты",
+      "subtypes": {
+        "civilian_aircraft": [
+          {
+            "name": "SkyTech 'Voyager'",
+            "class": "personal_aircraft",
+            "category": "luxury",
+            "capacity": "8 пассажиров",
+            "range": "3500 км",
+            "max_speed": "850 км/ч",
+            "service_ceiling": "12000 м",
+            "power_source": "Реактивные двигатели",
+            "price": "12,000,000 кредитов",
+            "hull": 400,
+            "armor": 5,
+            "crew": "2 пилота",
+            "features": [
+              "Роскошный салон",
+              "Бар",
+              "Офисная зона",
+              "Спальные места"
+            ],
+            "certifications": [
+              "Межпланетные перелеты",
+              "Автопилот класса А"
+            ]
+          },
+          {
+            "name": "EcoFly 'Bumblebee'",
+            "class": "urban_air_taxi",
+            "category": "civilian",
+            "capacity": "4 пассажира",
+            "range": "150 км",
+            "max_speed": "200 км/ч",
+            "service_ceiling": "500 м",
+            "power_source": "Электрические вентиляторы",
+            "price": "280,000 кредитов",
+            "hull": 150,
+            "armor": 2,
+            "crew": "Автопилот",
+            "features": [
+              "Вертикальный взлет",
+              "Бесшумность",
+              "Автоматическое управление"
+            ],
+            "use_case": "Городские такси, экскурсии"
+          }
+        ],
+        "commercial_aircraft": [
+          {
+            "name": "AirCorp 'Mammoth'",
+            "class": "cargo_transport",
+            "category": "commercial",
+            "cargo_capacity": "200 тонн",
+            "range": "8000 км",
+            "max_speed": "900 км/ч",
+            "service_ceiling": "11000 м",
+            "power_source": "Турбовентиляторы",
+            "price": "85,000,000 кредитов",
+            "hull": 800,
+            "armor": 8,
+            "crew": "3 пилота + 2 грузчика",
+            "cargo_bay": "Климат-контроль, подъемники",
+            "features": [
+              "Автоматическая загрузка",
+              "Рефрижераторные секции",
+              "Топливозаправка в воздухе"
+            ]
+          }
+        ],
+        "utility_aircraft": [
+          {
+            "name": "Rescue 'Guardian Angel'",
+            "class": "emergency_helicopter",
+            "category": "utility",
+            "capacity": "12 пострадавших + 4 медика",
+            "range": "600 км",
+            "max_speed": "320 км/ч",
+            "service_ceiling": "6000 м",
+            "power_source": "Турбовальные двигатели",
+            "price": "18,000,000 кредитов",
+            "hull": 350,
+            "armor": 12,
+            "crew": "2 пилота + 2 медика",
+            "medical_equipment": [
+              "ИВЛ",
+              "Дефибриллятор",
+              "Операционный стол"
+            ],
+            "features": [
+              "Лебедка спасения",
+              "Прожекторы",
+              "Термальная камера",
+              "Защита от обстрела"
+            ]
+          }
+        ]
+      }
+    },
+    "spacecraft": {
+      "description": "Космические корабли для межпланетных путешествий",
+      "subtypes": {
+        "personal_spacecraft": [
+          {
+            "name": "StarWing 'Navigator'",
+            "class": "personal_yacht",
+            "category": "luxury",
+            "capacity": "12 пассажиров + 4 экипажа",
+            "range": "100 световых лет",
+            "max_speed": "0.8c (варп-скорость)",
+            "power_source": "Антиматерный реактор",
+            "price": "450,000,000 кредитов",
+            "hull": 1500,
+            "armor": 15,
+            "shields": 800,
+            "crew": "4 + ИИ-пилот",
+            "life_support": "6 месяцев автономности",
+            "features": [
+              "Роскошные каюты",
+              "Голо-палуба",
+              "Ресторан",
+              "Обсерватория",
+              "Шаттл-ангар"
+            ],
+            "warp_drive": "Класс 5 - высокая скорость"
+          },
+          {
+            "name": "Budget Space 'Hopper'",
+            "class": "shuttle",
+            "category": "civilian",
+            "capacity": "6 пассажиров",
+            "range": "Система - 50 а.е.",
+            "max_speed": "0.1c",
+            "power_source": "Термоядерный двигатель",
+            "price": "8,500,000 кредитов",
+            "hull": 400,
+            "armor": 8,
+            "shields": 200,
+            "crew": "1 пилот",
+            "life_support": "2 недели",
+            "features": [
+              "Экономичность",
+              "Простота обслуживания",
+              "Надежность"
+            ],
+            "use_case": "Межпланетные рейсы эконом-класса"
+          }
+        ],
+        "commercial_spacecraft": [
+          {
+            "name": "TransGalactic 'Behemoth'",
+            "class": "super_freighter",
+            "category": "commercial",
+            "cargo_capacity": "100,000 тонн",
+            "range": "500 световых лет",
+            "max_speed": "0.95c (варп)",
+            "power_source": "Множественные реакторы",
+            "price": "2,800,000,000 кредитов",
+            "hull": 5000,
+            "armor": 25,
+            "shields": 2000,
+            "crew": "150 + автоматизация",
+            "cargo_bays": "20 модульных отсеков",
+            "features": [
+              "Роботизированная обработка груза",
+              "Защищенные контейнеры",
+              "Дозаправка на ходу"
+            ],
+            "trade_routes": "Основные торговые магистрали"
+          },
+          {
+            "name": "StarLine 'Cruiser'",
+            "class": "passenger_liner",
+            "category": "commercial",
+            "capacity": "2000 пассажиров",
+            "range": "200 световых лет",
+            "max_speed": "0.7c",
+            "power_source": "Термоядерные реакторы",
+            "price": "890,000,000 кредитов",
+            "hull": 3000,
+            "armor": 20,
+            "shields": 1500,
+            "crew": "300 обслуживающего персонала",
+            "accommodations": [
+              "Каюты класса люкс",
+              "Стандартные каюты",
+              "Экономичные капсулы"
+            ],
+            "entertainment": [
+              "Казино",
+              "Театр",
+              "Спортивные залы",
+              "Рестораны",
+              "Торговые галереи"
+            ],
+            "life_support": "Замкнутый цикл, неограниченное время"
+          }
+        ],
+        "industrial_spacecraft": [
+          {
+            "name": "AsteroidMining 'Harvester'",
+            "class": "mining_platform",
+            "category": "industrial",
+            "operation_range": "Пояс астероидов",
+            "max_speed": "0.05c (рабочая)",
+            "power_source": "Солнечные панели + ядерный реактор",
+            "price": "150,000,000 кредитов",
+            "hull": 2000,
+            "armor": 30,
+            "shields": 500,
+            "crew": "50 + роботы",
+            "mining_capacity": "1000 тонн/день",
+            "features": [
+              "Лазерные буры",
+              "Переработка на борту",
+              "Складские отсеки"
+            ],
+            "specialization": "Добыча редких металлов в космосе"
+          }
+        ],
+        "exploration": [
+          {
+            "name": "Pioneer 'Pathfinder'",
+            "class": "exploration_vessel",
+            "category": "utility",
+            "capacity": "30 исследователей + оборудование",
+            "range": "1000 световых лет",
+            "max_speed": "1.2c (экспериментальный варп)",
+            "power_source": "Экспериментальный реактор",
+            "price": "800,000,000 кредитов",
+            "hull": 1800,
+            "armor": 22,
+            "shields": 1000,
+            "crew": "30 ученых + 20 экипажа",
+            "research_labs": [
+              "Астрофизика",
+              "Биология",
+              "Геология",
+              "Ксеноархеология"
+            ],
+            "features": [
+              "Дальние сенсоры",
+              "Научные зонды",
+              "Планетарные шаттлы",
+              "Карантинные отсеки"
+            ],
+            "mission_duration": "5+ лет автономности"
+          }
+        ]
+      }
+    },
+    "watercraft": {
+      "description": "Водный транспорт для планет с океанами",
+      "subtypes": {
+        "civilian_boats": [
+          {
+            "name": "Neptune 'Cruiser'",
+            "class": "luxury_yacht",
+            "category": "luxury",
+            "capacity": "20 гостей + 8 экипажа",
+            "range": "5000 морских миль",
+            "max_speed": "45 узлов",
+            "power_source": "Водородные элементы",
+            "price": "35,000,000 кредитов",
+            "hull": 600,
+            "armor": 8,
+            "displacement": "250 тонн",
+            "features": [
+              "Вертолетная площадка",
+              "Подводная обсерватория",
+              "Роскошные каюты"
+            ],
+            "water_sports": "Гидроциклы, акваланги, подводные скутеры"
+          }
+        ],
+        "commercial_ships": [
+          {
+            "name": "OceanTrans 'Leviathan'",
+            "class": "container_ship",
+            "category": "commercial",
+            "cargo_capacity": "25,000 контейнеров",
+            "range": "20,000 морских миль",
+            "max_speed": "25 узлов",
+            "power_source": "Ядерный реактор",
+            "price": "180,000,000 кредитов",
+            "hull": 3000,
+            "armor": 15,
+            "crew": "25 + автоматизация",
+            "automated_systems": "95% операций роботизированы",
+            "features": [
+              "Автоматическая загрузка",
+              "Холодильные контейнеры",
+              "Защита от пиратов"
+            ]
+          }
+        ],
+        "submarine": [
+          {
+            "name": "DeepSea 'Explorer'",
+            "class": "research_submarine",
+            "category": "utility",
+            "capacity": "12 исследователей",
+            "range": "Ограничено запасами",
+            "max_speed": "35 узлов подводный ход",
+            "diving_depth": "6000 метров",
+            "power_source": "Атомная силовая установка",
+            "price": "85,000,000 кредитов",
+            "hull": 800,
+            "armor": 35,
+            "crew": "8 операторов + 12 ученых",
+            "research_equipment": [
+              "Глубоководные зонды",
+              "Образцы донных отложений",
+              "Биологические лаборатории"
+            ],
+            "life_support": "90 дней подводного плавания"
+          }
+        ]
+      }
+    }
+  },
+  "vehicle_systems": {
+    "power_sources": {
+      "electric": {
+        "advantages": [
+          "Тихая работа",
+          "Экологичность",
+          "Низкие эксплуатационные расходы"
+        ],
+        "disadvantages": [
+          "Ограниченная дальность",
+          "Время зарядки",
+          "Вес батарей"
+        ],
+        "best_use": "Городской транспорт, короткие поездки"
+      },
+      "hydrogen": {
+        "advantages": [
+          "Быстрая заправка",
+          "Большая дальность",
+          "Только водяной пар в выхлопе"
+        ],
+        "disadvantages": [
+          "Дорогое топливо",
+          "Ограниченная инфраструктура",
+          "Взрывоопасность"
+        ],
+        "best_use": "Коммерческий транспорт, долгие маршруты"
+      },
+      "fusion": {
+        "advantages": [
+          "Огромная энергоемкость",
+          "Долгая работа",
+          "Экологичность"
+        ],
+        "disadvantages": [
+          "Высокая стоимость",
+          "Сложное обслуживание",
+          "Радиационная опасность"
+        ],
+        "best_use": "Космические корабли, крупная промышленная техника"
+      },
+      "antimatter": {
+        "advantages": [
+          "Максимальная энергоемкость",
+          "Компактность"
+        ],
+        "disadvantages": [
+          "Чрезвычайно дорого",
+          "Крайне опасно",
+          "Требует специального хранения"
+        ],
+        "best_use": "Только самые продвинутые космические корабли"
+      }
+    },
+    "defensive_systems": {
+      "armor_types": {
+        "composite": "Стандартная защита, баланс цены и эффективности",
+        "reactive": "Взрывающиеся блоки против кинетических снарядов",
+        "energy_dispersive": "Рассеивает энергетические атаки",
+        "adaptive": "Подстраивается под тип атаки (дорого)"
+      },
+      "shield_systems": {
+        "deflector": "Отклоняет мелкие объекты и энергию",
+        "absorption": "Поглощает энергию атак для подзарядки",
+        "kinetic_barrier": "Замедляет кинетические снаряды",
+        "full_spectrum": "Защита от всех типов атак (энергоемко)"
+      }
+    },
+    "navigation_systems": {
+      "basic_autopilot": "Простые маршруты, требует контроля человека",
+      "advanced_ai": "Полностью автономное управление",
+      "quantum_navigation": "Точная навигация в глубоком космосе",
+      "predictive_routing": "Предсказывает трафик и оптимизирует маршрут"
+    }
+  },
+  "ownership_and_regulations": {
+    "licensing_system": {
+      "personal_license": {
+        "requirements": "Базовое обучение, медосмотр, экзамен",
+        "allows": "Управление личным транспортом до определенной массы",
+        "restrictions": "Нет коммерческого использования"
+      },
+      "commercial_license": {
+        "requirements": "Расширенное обучение, опыт работы, регулярные проверки",
+        "allows": "Коммерческие перевозки, пассажирский транспорт",
+        "insurance": "Обязательное страхование ответственности"
+      },
+      "industrial_permit": {
+        "requirements": "Специализированное обучение, сертификация безопасности",
+        "allows": "Управление тяжелой промышленной техникой",
+        "monitoring": "Постоянный контроль за соблюдением норм"
+      },
+      "military_clearance": {
+        "requirements": "Военная служба или контракт с МОВ",
+        "allows": "Боевая техника, оружие массового поражения",
+        "classification": "Различные уровни секретности"
+      }
+    },
+    "insurance_tiers": {
+      "basic": {
+        "coverage": "Базовые повреждения, третьи лица",
+        "cost": "1-3% от стоимости транспорта ежегодно",
+        "exclusions": "Военные действия, модификации"
+      },
+      "comprehensive": {
+        "coverage": "Полная защита, включая угон и стихийные бедствия",
+        "cost": "5-8% от стоимости ежегодно",
+        "bonuses": "Техпомощь на дорогах, замещающий транспорт"
+      },
+      "premium": {
+        "coverage": "Максимальная защита + модификации",
+        "cost": "10-15% от стоимости ежегодно",
+        "services": "VIP-обслуживание, персональный агент"
+      }
+    },
+    "modification_regulations": {
+      "cosmetic": "Свободно, не влияет на безопасность",
+      "performance": "Требует сертификации, может повлиять на страховку",
+      "weapons": "Строго регулируется, специальные лицензии",
+      "defensive": "Умеренное регулирование, зависит от уровня защиты"
+    }
+  },
+  "economic_aspects": {
+    "vehicle_markets": {
+      "new_vehicle": {
+        "advantages": "Гарантия, современные технологии, финансирование",
+        "disadvantages": "Высокая цена, быстрая амортизация",
+        "target_market": "Состоятельные покупатели, корпорации"
+      },
+      "used_vehicle": {
+        "advantages": "Низкая цена, медленная амортизация",
+        "disadvantages": "Потенциальные проблемы, устаревшие технологии",
+        "target_market": "Средний класс, малый бизнес"
+      },
+      "refurbished": {
+        "advantages": "Баланс цены и качества, обновленные системы",
+        "disadvantages": "Ограниченная гарантия",
+        "target_market": "Коммерческие покупатели, фрилансеры"
+      },
+      "rental_leasing": {
+        "short_term": "Туристы, временные потребности",
+        "long_term": "Корпоративные парки, тестирование техники",
+        "rent_to_own": "Путь к владению для тех, кто не может купить сразу"
+      }
+    },
+    "operating_costs": {
+      "fuel_energy": {
+        "calculation": "Зависит от типа энергии, дальности, стиля вождения",
+        "optimization": "Эффективные маршруты, обслуживание техники"
+      },
+      "maintenance": {
+        "routine": "5-10% от стоимости покупки ежегодно",
+        "repairs": "Непредсказуемые расходы, зависят от возраста и использования",
+        "upgrades": "Добровольные улучшения для производительности"
+      },
+      "licensing_registration": {
+        "annual_fees": "Зависит от класса и массы транспорта",
+        "inspection": "Обязательные проверки безопасности"
+      }
+    }
+  },
+  "cultural_variations": {
+    "mars": {
+      "preferences": "Прочная, надежная техника для суровых условий",
+      "restrictions": "Строгие нормы герметичности и жизнеобеспечения",
+      "popular_brands": [
+        "MarsRugged",
+        "RedPlanet Engineering",
+        "Olympus Motors"
+      ],
+      "unique_features": "Адаптация к низкой гравитации и пылевым бурям"
+    },
+    "earth": {
+      "preferences": "Роскошь и статус в развитых регионах, практичность в развивающихся",
+      "regulations": "Старейшие и наиболее развитые транспортные законы",
+      "popular_brands": [
+        "TerraDrive",
+        "GlobalMotors",
+        "EarthFirst"
+      ],
+      "environmental_focus": "Сильный акцент на экологичности"
+    },
+    "luna": {
+      "preferences": "Компактность из-за ограниченного пространства",
+      "specialization": "Техника для низкой гравитации и вакуума",
+      "popular_brands": [
+        "LunarTech",
+        "MoonRider",
+        "Crater Motors"
+      ],
+      "unique_features": "Системы для работы в вакууме"
+    },
+    "belt_stations": {
+      "preferences": "Универсальность и ремонтопригодность",
+      "focus": "Промышленная техника для добычи и обработки",
+      "popular_brands": [
+        "AsteroidHauler",
+        "SpaceProspector",
+        "BeltRunner"
+      ],
+      "specialization": "Техника для работы в невесомости и низких температурах"
+    }
+  },
+  "integration_systems": {
+    "lifepath_vehicle_access": {
+      "description": "Происхождение персонажа влияет на доступную технику",
+      "access_levels": {
+        "ORIGIN_EARTH_ELITE": {
+          "starting_vehicle": "Luxury hovercar или личный шаттл",
+          "financing": "Неограниченный кредит",
+          "insurance": "Премиум покрытие включено",
+          "special_access": "Прототипы, эксклюзивные модели"
+        },
+        "ORIGIN_MARS_MILITARY": {
+          "starting_vehicle": "Военный транспорт или конвертированная техника",
+          "discount": "50% скидка на военную технику",
+          "contacts": "Доступ к военным поставщикам",
+          "knowledge": "Экспертные знания боевых систем"
+        },
+        "ORIGIN_CERES_MINER": {
+          "starting_vehicle": "Промышленная техника или модифицированный транспорт",
+          "specialization": "Глубокие знания промышленных машин",
+          "contacts": "Связи в горнодобывающих корпорациях",
+          "modifications": "Способность к кустарной модификации"
+        },
+        "ORIGIN_EARTH_SLUMS": {
+          "starting_vehicle": "Старый, подержанный транспорт или украденный",
+          "financing": "Ограниченный доступ к кредитам",
+          "skills": "Экспертные знания ремонта и угона",
+          "black_market": "Доступ к нелегальным модификациям"
+        }
+      }
+    },
+    "character_skills_integration": {
+      "pilot_skills": {
+        "ground_vehicles": "Навык управления наземным транспортом",
+        "aircraft": "Пилотирование атмосферных аппаратов",
+        "spacecraft": "Управление космическими кораблями",
+        "watercraft": "Навыки морского судовождения"
+      },
+      "technical_skills": {
+        "mechanics": "Ремонт и обслуживание техники",
+        "electronics": "Работа с электронными системами",
+        "modifications": "Установка улучшений и оружия",
+        "diagnostics": "Быстрое определение неисправностей"
+      }
+    }
+  },
+  "sample_scenarios": {
+    "daily_commute": {
+      "scenario": "Офисный работник на Земле добирается на работу",
+      "vehicle": "EcoDrive 'Whisper' - экономичный электромобиль",
+      "considerations": [
+        "Пробки",
+        "Парковка",
+        "Экологические зоны"
+      ],
+      "alternatives": [
+        "Общественный транспорт",
+        "Каршеринг",
+        "Телепорт"
+      ]
+    },
+    "interplanetary_business": {
+      "scenario": "Бизнесмен летит с Земли на Марс для переговоров",
+      "vehicle": "StarLine 'Cruiser' - пассажирский лайнер",
+      "considerations": [
+        "Время в пути",
+        "Комфорт",
+        "Деловые встречи на борту"
+      ],
+      "alternatives": [
+        "Частная яхта",
+        "Грузовой корабль эконом-класса",
+        "Дипломатический транспорт"
+      ]
+    },
+    "emergency_rescue": {
+      "scenario": "Спасательная операция на удаленной станции",
+      "vehicle": "Rescue 'Guardian Angel' - специализированный спасательный корабль",
+      "considerations": [
+        "Скорость реагирования",
+        "Медицинское оборудование",
+        "Условия на месте"
+      ],
+      "challenges": [
+        "Ограниченное время",
+        "Опасная среда",
+        "Нехватка ресурсов"
+      ]
+    }
+  },
+  "integration_with_other_modules": {
+    "CHARACTER_LIFEPATH": "Происхождение определяет доступ к транспорту и навыки",
+    "TECH_EQUIPMENT": "Модификации и улучшения техники",
+    "COMBAT_COMPREHENSIVE": "Боевое применение техники интегрировано",
+    "ECONOMICS": "Стоимость, страхование, рынок транспорта",
+    "PSYCHOLOGY": "Статусные аспекты владения транспортом",
+    "ENVIRONMENT_SURVIVAL": "Техника для экстремальных условий",
+    "CRAFTING_BLUEPRINTS": "Изготовление и модификация транспорта"
+  },
+  "system_notes": {
+    "realism": "Баланс между реалистичностью и научной фантастикой",
+    "accessibility": "Техника доступна игрокам разных уровней",
+    "progression": "Возможность улучшения от простых к сложным машинам",
+    "narrative_support": "Транспорт как элемент развития сюжета"
+  }
+}

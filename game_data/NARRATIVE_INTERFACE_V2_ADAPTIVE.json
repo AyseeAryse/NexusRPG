@@ -1,0 +1,80 @@
+{
+  "module_name": "NARRATIVE_INTERFACE_V2",
+  "version": "2.0_ADAPTIVE_STORYTELLING",
+  "description": "Адаптивный интерфейс нарратива с динамической интеграцией THEME_TONE",
+  "replaces": "NARRATIVE_INTERFACE.json",
+  "size_target": "4,000+ символов",
+  "dynamic_tone_adaptation": {
+    "tone_tracking": {
+      "cynicism_effects": {
+        "low_1_3": "Optimistic descriptions, hope in situations, positive NPC attitudes",
+        "medium_4_6": "Balanced outlook, realistic assessments, mixed experiences",
+        "high_7_10": "Dark descriptions, suspicious NPCs, pessimistic outcomes"
+      },
+      "sophistication_effects": {
+        "low_1_3": "Simple language, crude environments, basic technology",
+        "medium_4_6": "Professional language, standard tech, competent NPCs",
+        "high_7_10": "Elegant prose, advanced technology, cultured interactions"
+      },
+      "violence_effects": {
+        "low_1_3": "Peaceful resolutions preferred, violence described minimally",
+        "medium_4_6": "Violence present but not glorified, tactical descriptions",
+        "high_7_10": "Graphic combat descriptions, violence as first solution"
+      },
+      "hope_effects": {
+        "low_1_3": "Bleak outcomes, pessimistic NPCs, dark atmosphere",
+        "medium_4_6": "Mixed outcomes, realistic expectations, neutral tone",
+        "high_7_10": "Positive outcomes, inspiring NPCs, uplifting atmosphere"
+      }
+    },
+    "narrative_voice_adaptation": {
+      "corporate_thriller": "Professional, paranoid, technology-focused language",
+      "space_opera": "Heroic, expansive, adventure-focused descriptions",
+      "cyberpunk": "Gritty, high-tech, anti-establishment tone",
+      "hard_science_fiction": "Technical, realistic, science-focused approach",
+      "space_western": "Frontier, lawless, independence-focused themes"
+    }
+  },
+  "dialogue_generation": {
+    "character_voice_consistency": {
+      "personality_integration": "Uses NPC_ARCHETYPES for consistent character voices",
+      "background_influence": "Lifepath affects speech patterns and vocabulary",
+      "faction_alignment": "Faction loyalty influences dialogue choices and topics",
+      "relationship_adjustment": "Relationship level affects tone and cooperation"
+    },
+    "contextual_responses": {
+      "situation_awareness": "NPCs respond appropriately to current circumstances",
+      "emotional_state": "Character stress and psychology affect dialogue options",
+      "reputation_recognition": "NPCs acknowledge player's reputation and past actions",
+      "cultural_sensitivity": "Origin-based cultural differences in communication style"
+    }
+  },
+  "atmospheric_generation": {
+    "environment_description": {
+      "location_mood": "Descriptions adapted to match current tone parameters",
+      "weather_psychology": "Environmental conditions reflect narrative mood",
+      "lighting_symbolism": "Light/dark descriptions support thematic elements",
+      "sound_atmosphere": "Auditory descriptions enhance emotional impact"
+    },
+    "tension_management": {
+      "escalation_techniques": "Gradually increase pressure through description and pacing",
+      "relief_moments": "Provide breathing space through environmental calm",
+      "foreshadowing": "Subtle hints about upcoming challenges or opportunities",
+      "emotional_peaks": "Dramatic climaxes supported by intense descriptive language"
+    }
+  },
+  "psychological_narrative": {
+    "internal_monologue": {
+      "stress_reflection": "Character thoughts reflect current psychological state",
+      "moral_conflict": "Internal struggle descriptions for ethical dilemmas",
+      "memory_integration": "Past experiences influence current thought patterns",
+      "growth_recognition": "Acknowledgment of character development and change"
+    },
+    "empathy_responses": {
+      "npc_psychology": "Understanding and responding to NPC emotional states",
+      "social_reading": "Ability to interpret social cues and hidden meanings",
+      "relationship_depth": "Deeper connections provide richer dialogue options",
+      "emotional_intelligence": "High empathy unlocks unique narrative paths"
+    }
+  }
+}

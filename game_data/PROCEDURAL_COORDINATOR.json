@@ -1,0 +1,64 @@
+{
+  "module_name": "PROCEDURAL_COORDINATOR",
+  "description": "Центральный координатор всех систем процедурной генерации, синхронизированный с мировым временем",
+  "version": "1.0_INFINITE_RPG",
+  "generation_schedule": {
+    "real_time_triggers": {
+      "player_action": "Мгновенно - NPC реакции, диалоги, локальные события",
+      "location_change": "Мгновенно - Новые NPC, локальные условия, возможности",
+      "rest_recovery": "Мгновенно - Обновление состояний, новости"
+    },
+    "time_based_triggers": {
+      "hourly": [
+        "npc_movement_updates",
+        "local_market_prices",
+        "ship_schedules"
+      ],
+      "daily": [
+        "faction_reputation_decay",
+        "economy_fluctuations",
+        "news_generation",
+        "random_encounters"
+      ],
+      "weekly": [
+        "minor_events",
+        "npc_goal_updates",
+        "faction_minor_actions"
+      ],
+      "monthly": [
+        "major_events",
+        "economic_cycles",
+        "political_changes"
+      ],
+      "yearly": [
+        "legendary_events",
+        "major_faction_evolution",
+        "technology_breakthroughs"
+      ]
+    }
+  },
+  "event_scaling": {
+    "player_influence_levels": {
+      "tier_0_nobody": {
+        "description": "Новый игрок без влияния",
+        "accessible_events": "Локальные происшествия, мелкие криминальные дела, персональные квесты",
+        "global_event_role": "Свидетель, жертва обстоятельств"
+      },
+      "tier_1_local": {
+        "description": "Местная известность (50K+ credits, локальная репутация)",
+        "accessible_events": "Станционные кризисы, корпоративные контракты, фракционные задания",
+        "global_event_role": "Мелкий участник, исполнитель"
+      },
+      "tier_2_regional": {
+        "description": "Региональное влияние (500K+ credits, влияние в системе)",
+        "accessible_events": "Межпланетные конфликты, крупные торговые операции, дипломатические миссии",
+        "global_event_role": "Значимый участник, может повлиять на исход"
+      },
+      "tier_3_system": {
+        "description": "Системное влияние (5M+ credits, лидер фракций)",
+        "accessible_events": "Политические кризисы, технологические прорывы, межфракционные войны",
+        "global_event_role": "Ключевая фигура, может инициировать события"
+      }
+    }
+  }
+}

@@ -1,0 +1,354 @@
+{
+  "module_name": "NPC_RELATIONS",
+  "description": "Модуль отслеживания и управления ключевыми NPC с полной интеграцией CHARACTER_LIFEPATH и использованием единой репутационной системы через внешний справочник NPC_RELATIONS_REPUTATION_STANDARDIZED.json",
+  "version": "2.0_LIFEPATH_INTEGRATED_REPUTATION_EXTERNAL",
+  "reputation_reference": {
+    "description": "Все значения репутации берутся из внешнего справочника",
+    "source_module": "NPC_RELATIONS_REPUTATION_STANDARDIZED.json",
+    "usage": "Для получения репутации NPC используйте: NPC_RELATIONS_REPUTATION_STANDARDIZED.npc_definitions[npc_id].reputation_bonuses"
+  },
+  "npc_definitions": [
+    {
+      "npc_id": "NPC_001",
+      "name": "Д-р София Кендрик",
+      "archetype": "Bioethicist",
+      "current_location": "ganymede:technohub:bioethical_center",
+      "relationship_status": "Neutral",
+      "personal_goals": [
+        "Защитить данные об этических экспериментах",
+        "Обнаружить шпиона среди коллег"
+      ],
+      "knowledge": [
+        "Секреты Protogen Alpha Labs",
+        "Биоданные уникального регенеративного протеза"
+      ],
+      "lifepath_connections": {
+        "ORIGIN_GANYMEDE_SCIENTIST": {
+          "relationship_type": "former_colleague",
+          "shared_history": "Работали в одной лаборатории 5 лет назад",
+          "greeting": "София: 'Боже мой, это же [имя]! Как дела в исследованиях?'",
+          "reputation_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.npc_definitions.NPC_001.lifepath_connections.ORIGIN_GANYMEDE_SCIENTIST.reputation_bonuses",
+          "unique_dialogue_options": [
+            "[Научный] Обсудить последние открытия в биоэтике",
+            "[Коллега] Попросить доступ к закрытым исследованиям",
+            "[Воспоминания] Вспомнить совместные проекты"
+          ]
+        },
+        "ORIGIN_MARS_SCIENTIST": {
+          "relationship_type": "academic_rival",
+          "shared_history": "Конкурировали за исследовательский грант 3 года назад",
+          "greeting": "София: 'Марсианская наука по-прежнему отстает от Ганимедской, [имя]?'",
+          "reputation_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.npc_definitions.NPC_001.lifepath_connections.ORIGIN_MARS_SCIENTIST.reputation_bonuses",
+          "unique_dialogue_options": [
+            "[Вызов] Доказать превосходство марсианских методов",
+            "[Соперничество] Предложить научное пари",
+            "[Уважение] Признать компетентность коллеги"
+          ]
+        },
+        "FY_MARS_LAB_ASSISTANT": {
+          "relationship_type": "recommending_mentor",
+          "shared_history": "София была вашим наставником во время стажировки",
+          "greeting": "София: 'Мой бывший студент! Надеюсь, ты помнишь, чему я тебя учила.'",
+          "reputation_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.npc_definitions.NPC_001.lifepath_connections.FY_MARS_LAB_ASSISTANT.reputation_bonuses",
+          "unique_dialogue_options": [
+            "[Ученик] Попросить совета по сложной проблеме",
+            "[Благодарность] Поблагодарить за наставничество",
+            "[Отчет] Рассказать о применении полученных знаний"
+          ]
+        }
+      },
+      "quest_chain": [
+        {
+          "quest_id": "Q_NPC001_01",
+          "title": "Утечка образцов",
+          "description": "Выяснить, кто похитил экспериментальные ткани из Genesis Bioworks HQ.",
+          "status": "Available",
+          "steps": [
+            "Найти свидетеля в Биоэтическом центре",
+            "Собрать записи камер",
+            "Допросить подозреваемого"
+          ],
+          "rewards": {
+            "influence": 10,
+            "access": "blueprint:regenerative_prosthesis"
+          },
+          "reputation_requirements_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.npc_definitions.NPC_001.quest_chain[0].reputation_requirements",
+          "lifepath_variations": {
+            "ORIGIN_GANYMEDE_SCIENTIST": {
+              "additional_step": "Использовать знания лаборатории для ускоренного поиска",
+              "bonus_reward": "+5 Scientific Reputation"
+            },
+            "FY_MARS_LAB_ASSISTANT": {
+              "difficulty_reduction": "Софии нужно меньше убеждений для доверия важной информации",
+              "bonus_reward": "Доступ к личным исследовательским архивам"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "npc_id": "NPC_002",
+      "name": "Адмирал Карл Ван Дирк",
+      "archetype": "Military Commander",
+      "current_location": "mars:newboston:orbital_ring",
+      "relationship_status": "Ally",
+      "personal_goals": [
+        "Заблокировать пиратский коридор",
+        "Защитить коммерческие грузы"
+      ],
+      "knowledge": [
+        "Тайные маршруты Belt Raiders",
+        "Уровень готовности Марсианского флота"
+      ],
+      "lifepath_connections": {
+        "ORIGIN_MARS_MILITARY": {
+          "relationship_type": "former_commanding_officer",
+          "shared_history": "Служили под его командованием 8 лет назад",
+          "greeting": "Ван Дирк: 'Солдат [фамилия]! Рад видеть, что ты не потерял форму.'",
+          "reputation_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.npc_definitions.NPC_002.lifepath_connections.ORIGIN_MARS_MILITARY.reputation_bonuses",
+          "unique_dialogue_options": [
+            "[Военный протокол] Запросить приказы",
+            "[Старая служба] Вспомнить совместные операции",
+            "[Рапорт] Доложить о текущей ситуации"
+          ]
+        },
+        "FY_MARS_ACADEMY": {
+          "relationship_type": "academy_instructor",
+          "shared_history": "Преподавал курс тактики в военной академии",
+          "greeting": "Ван Дирк: 'Кадет [фамилия]! Надеюсь, ты применяешь мои уроки.'",
+          "reputation_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.npc_definitions.NPC_002.lifepath_connections.FY_MARS_ACADEMY.reputation_bonuses",
+          "unique_dialogue_options": [
+            "[Ученик] Запросить тактический совет",
+            "[Академия] Обсудить других выпускников",
+            "[Применение] Рассказать об использовании изученной тактики"
+          ]
+        },
+        "ORIGIN_MARS_SCIENTIST": {
+          "relationship_type": "strategic_advisor",
+          "shared_history": "Консультировали по военному применению технологий",
+          "greeting": "Ван Дирк: 'Доктор [фамилия], ваши разработки спасли не одну жизнь.'",
+          "reputation_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.npc_definitions.NPC_002.lifepath_connections.ORIGIN_MARS_SCIENTIST.reputation_bonuses",
+          "unique_dialogue_options": [
+            "[Технический] Предложить научно-военное решение",
+            "[Консультация] Дать экспертную оценку",
+            "[Разработка] Обсудить новые военные технологии"
+          ]
+        }
+      }
+    },
+    {
+      "npc_id": "NPC_003",
+      "name": "Председатель Надя Простова",
+      "archetype": "Rebel Leader",
+      "current_location": "ceres:deep:miners_quarter",
+      "relationship_status": "Opponent",
+      "personal_goals": [
+        "Организовать протест против Ceres Mining Consortium",
+        "Расширить влияние OPA"
+      ],
+      "knowledge": [
+        "Неофициальные контракты OPA",
+        "Скрытые запасы редких металлов"
+      ],
+      "lifepath_connections": {
+        "ORIGIN_CERES_MINER": {
+          "relationship_type": "union_representative",
+          "shared_history": "Представляла ваши интересы в споре с управлением",
+          "greeting": "Простова: '[Имя], мой старый товарищ! Как дела в шахтах?'",
+          "reputation_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.npc_definitions.NPC_003.lifepath_connections.ORIGIN_CERES_MINER.reputation_bonuses",
+          "unique_dialogue_options": [
+            "[Рабочий] Обсудить условия труда в шахтах",
+            "[Солидарность] Поддержать забастовку",
+            "[Опыт] Поделиться знаниями о корпоративных злоупотреблениях"
+          ]
+        },
+        "FY_BELTER_PIRACY": {
+          "relationship_type": "resistance_contact",
+          "shared_history": "Координировали действия против корпоративных конвоев",
+          "greeting": "Простова: 'А вот и наш специалист по 'перераспределению грузов'.'",
+          "reputation_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.npc_definitions.NPC_003.lifepath_connections.FY_BELTER_PIRACY.reputation_bonuses",
+          "unique_dialogue_options": [
+            "[Пиратство] Поделиться информацией о маршрутах",
+            "[Сопротивление] Предложить саботаж",
+            "[Координация] Спланировать совместную операцию"
+          ]
+        },
+        "ORIGIN_CERES_SMUGGLER": {
+          "relationship_type": "smuggling_coordinator",
+          "shared_history": "Организовывала каналы поставки оружия через контрабандные маршруты",
+          "greeting": "Простова: 'Наш лучший 'доставщик' прибыл. Что привез на этот раз?'",
+          "reputation_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.npc_definitions.NPC_003.lifepath_connections.ORIGIN_CERES_SMUGGLER.reputation_bonuses",
+          "unique_dialogue_options": [
+            "[Контрабанда] Предложить поставки оружия",
+            "[Маршруты] Обсудить безопасные пути",
+            "[Сеть] Поделиться контактами в преступном мире"
+          ]
+        }
+      }
+    }
+  ],
+  "lifepath_npc_assignment_system": {
+    "description": "Автоматическая система назначения NPC-контактов на основе жизненного пути персонажа",
+    "assignment_rules": {
+      "guaranteed_connections": {
+        "description": "NPC, которых персонаж ОБЯЗАТЕЛЬНО знает",
+        "ORIGIN_MARS_MILITARY": {
+          "guaranteed_npcs": [
+            "NPC_002",
+            "any_military_archetype"
+          ],
+          "reputation_bonus_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.faction_reputation_integration.category_MILITARY.high_reputation",
+          "special_access": "Military channels and classified information"
+        },
+        "ORIGIN_EARTH_ELITE": {
+          "guaranteed_npcs": [
+            "any_corporate_executive",
+            "any_politician"
+          ],
+          "reputation_bonus_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.faction_reputation_integration.category_MEGACORP.high_reputation",
+          "special_access": "High society events and exclusive information"
+        },
+        "ORIGIN_GANYMEDE_SCIENTIST": {
+          "guaranteed_npcs": [
+            "NPC_001",
+            "any_scientist_archetype"
+          ],
+          "reputation_bonus_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.faction_reputation_integration.category_SCIENTIFIC.high_reputation",
+          "special_access": "Scientific databases and experimental data"
+        },
+        "ORIGIN_CERES_MINER": {
+          "guaranteed_npcs": [
+            "NPC_003",
+            "any_worker_representative"
+          ],
+          "reputation_bonus_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.faction_reputation_integration.category_WORKERS_UNION.high_reputation",
+          "special_access": "Union networks and worker intelligence"
+        }
+      }
+    }
+  },
+  "lifepath_relationship_types": {
+    "description": "Типы отношений между персонажем и NPC на основе жизненного пути",
+    "relationship_categories": {
+      "professional": {
+        "former_colleague": {
+          "reputation_modifier_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.standardized_reputation_system.reputation_effects.dialogue_access",
+          "interaction_style": "Professional familiarity",
+          "common_topics": [
+            "Work experiences",
+            "Industry news",
+            "Professional development"
+          ]
+        },
+        "mentor_student": {
+          "reputation_modifier_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.standardized_reputation_system.reputation_effects.information_sharing",
+          "interaction_style": "Respectful guidance",
+          "common_topics": [
+            "Learning opportunities",
+            "Wisdom sharing",
+            "Personal growth"
+          ]
+        },
+        "competitive_rival": {
+          "reputation_modifier_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.backwards_compatibility.conversion_table",
+          "interaction_style": "Respectful competition",
+          "common_topics": [
+            "Professional challenges",
+            "Proving competence",
+            "Market dynamics"
+          ]
+        }
+      }
+    }
+  },
+  "lifepath_dialogue_integration": {
+    "description": "Система персонализированных диалогов на основе общей истории",
+    "dialogue_pattern_examples": {
+      "ORIGIN_MARS_MILITARY + military_npc": {
+        "greeting_variations": [
+          "'Солдат [rank]! Докладывай обстановку.'",
+          "'[Name], рад видеть живым после операции на [location].'",
+          "'Эй, [nickname]! Помнишь ту передрягу с пиратами?'"
+        ],
+        "conversation_starters": [
+          "Обсудить текущую военную ситуацию",
+          "Вспомнить совместные операции",
+          "Попросить военной поддержки",
+          "Обменяться тактическими знаниями"
+        ],
+        "farewell_variations": [
+          "'До свидания, солдат. Честь превыше всего.'",
+          "'Береги себя там. Нам нужны живые герои.'",
+          "'За Марс и за товарищество!'"
+        ]
+      }
+    }
+  },
+  "procedural_npc_generation": {
+    "description": "Процедурная генерация NPC с учетом жизненного пути персонажа",
+    "generation_parameters": {
+      "reputation_influence_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.procedural_npc_generation.generation_rules.reputation_influence",
+      "archetype_probability_by_lifepath": {
+        "ORIGIN_MARS_MILITARY": {
+          "military_officer": 0.3,
+          "veteran": 0.25,
+          "arms_dealer": 0.15,
+          "war_correspondent": 0.1,
+          "general_population": 0.2
+        },
+        "ORIGIN_EARTH_ELITE": {
+          "corporate_executive": 0.25,
+          "politician": 0.2,
+          "socialite": 0.2,
+          "financial_advisor": 0.15,
+          "general_population": 0.2
+        }
+      }
+    }
+  },
+  "faction_npc_relations": {
+    "description": "Интеграция с репутационной системой фракций",
+    "faction_influence_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.faction_reputation_integration",
+    "faction_influence_on_npc": {
+      "corporate_npcs": {
+        "loyalty_to_corporation": "Affects willingness to share corporate secrets",
+        "reputation_effects_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.faction_reputation_integration.faction_effects.category_MEGACORP"
+      },
+      "military_npcs": {
+        "government_position": "Influences access to official information",
+        "reputation_effects_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.faction_reputation_integration.faction_effects.category_MILITARY"
+      },
+      "criminal_npcs": {
+        "organization_membership": "Affects trust levels with law-abiding characters",
+        "reputation_effects_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.faction_reputation_integration.faction_effects.category_CRIMINAL"
+      }
+    }
+  },
+  "npc_memory_system": {
+    "description": "NPC помнят историю взаимодействий с персонажем и его происхождение",
+    "memory_categories": {
+      "reputation_knowledge": {
+        "description": "Что NPC знают о репутации персонажа",
+        "reputation_sources": "NPC_RELATIONS_REPUTATION_STANDARDIZED.standardized_reputation_system.reputation_calculation",
+        "update_frequency": {
+          "close_contacts": "Weekly",
+          "professional_network": "Monthly",
+          "general_public": "Quarterly"
+        }
+      }
+    }
+  },
+  "integration_with_other_modules": {
+    "CHARACTER_LIFEPATH": "Определяет автоматические NPC связи и типы отношений",
+    "NPC_RELATIONS_REPUTATION_STANDARDIZED": "Единственный источник всех репутационных данных",
+    "DIALOGUE": "Репутация из справочника определяет доступные опции разговора",
+    "PSYCHOLOGY": "Психологические состояния влияют на социальные взаимодействия",
+    "TECH_EQUIPMENT": "Репутация влияет на доступ к снаряжению через NPC"
+  },
+  "system_notes": {
+    "no_reputation_duplication": "Модуль не содержит собственных репутационных полей",
+    "external_reputation_source": "Все значения репутации берутся из NPC_RELATIONS_REPUTATION_STANDARDIZED.json",
+    "backwards_compatibility": "Поддерживается через справочную таблицу конверсии в репутационном модуле",
+    "maintainability": "Изменения репутационной логики требуют изменений только в одном файле"
+  }
+}

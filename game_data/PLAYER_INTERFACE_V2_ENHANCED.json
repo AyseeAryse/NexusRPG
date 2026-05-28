@@ -1,0 +1,39 @@
+{
+  "module_name": "PLAYER_INTERFACE_V2_ENHANCED",
+  "version": "2.1_TIME_INTEGRATED",
+  "description": "Улучшенный интерфейс игрока с отображением времени",
+  "replaces": "PLAYER_INTERFACE_V2.json",
+  "CRITICAL_DIRECTIVES": {
+    "MANDATORY_TIME_DISPLAY": {
+      "priority": "ABSOLUTE_MAXIMUM",
+      "rule": "ВСЕГДА показывать текущее игровое время после каждого сообщения ИИ",
+      "format": "🕐 {day}.{month}.{year} {hour}:{minute} | {location}",
+      "enforcement": "Если время не отображено - это ОШИБКА СИСТЕМЫ"
+    },
+    "MANDATORY_CHOICE_GENERATION": {
+      "priority": "ABSOLUTE_MAXIMUM",
+      "rule": "ВСЕГДА генерировать 5-6 вариантов действий + свой вариант",
+      "override_authority": "Абсолютный приоритет над AI_NARRATOR"
+    }
+  },
+  "dashboard_tabs": {
+    "Status": {
+      "description": "Текущее состояние персонажа с временем",
+      "mandatory_display": [
+        "Текущая дата и время",
+        "Местоположение",
+        "Здоровье и стресс",
+        "Активные задачи"
+      ]
+    },
+    "Time": {
+      "description": "Управление временем и активностями",
+      "commands": [
+        "!time - показать подробную временную информацию",
+        "!rest [duration] - отдохнуть указанное время",
+        "!wait [duration] - ждать определенное время",
+        "!schedule - показать расписание активностей"
+      ]
+    }
+  }
+}

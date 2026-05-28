@@ -1,0 +1,130 @@
+{
+  "module_name": "ENHANCED_EVENT_GENERATOR_V2",
+  "description": "Расширение ENHANCED_EVENT_GENERATOR для всех 20+ локаций из WORLDBUILD",
+  "version": "2.0_ALL_LOCATIONS",
+  "integration_note": "Расширяет существующий ENHANCED_EVENT_GENERATOR.json",
+  "new_location_events": {
+    "LUNA_COLONY": [
+      {
+        "id": "EVENT_LUNA_01",
+        "name": "Кризис систем жизнеобеспечения",
+        "type": "Technical",
+        "triggers": [
+          "Equipment_Failure",
+          "Sabotage_Attempt"
+        ],
+        "description": "Отказ основных систем переработки воздуха угрожает жизни всей колонии",
+        "effects": [
+          "Эвакуация гражданского персонала (+20% к стоимости транспорта)",
+          "Экстренные закупки оборудования (+300% цена на системы жизнеобеспечения)",
+          "Репутационные потери для ответственных корпораций (-15 MEGACORP)"
+        ]
+      },
+      {
+        "id": "EVENT_LUNA_02",
+        "name": "Открытие подземных туннелей",
+        "type": "Discovery",
+        "triggers": [
+          "Mining_Operation",
+          "Random_Discovery"
+        ],
+        "description": "Обнаружена сеть естественных пещер с возможными ресурсами",
+        "effects": [
+          "Новые возможности добычи (новые торговые контракты)",
+          "Научный интерес (+10 SCIENTIFIC репутации)",
+          "Территориальные споры между корпорациями"
+        ]
+      }
+    ],
+    "JOVIAN_STATIONS": [
+      {
+        "id": "EVENT_JOVIAN_01",
+        "name": "Шторм в атмосфере Юпитера",
+        "type": "Natural",
+        "triggers": [
+          "Weather_Pattern",
+          "Orbital_Mechanics"
+        ],
+        "description": "Мощный атмосферный шторм нарушает добычу гелия-3",
+        "effects": [
+          "Перебои в поставках энергии (+150% цена на энергоэлементы)",
+          "Опасность для добывающих платформ",
+          "Возможности для контрабанды во время хаоса"
+        ]
+      }
+    ],
+    "BELT_STATIONS": [
+      {
+        "id": "EVENT_BELT_01",
+        "name": "Астероид-убийца",
+        "type": "Hazard",
+        "triggers": [
+          "Navigation_Error",
+          "Sabotage"
+        ],
+        "description": "Крупный астероид меняет орбиту, угрожая станции",
+        "effects": [
+          "Экстренная эвакуация населения",
+          "Мобилизация всех доступных кораблей",
+          "Возможность героических действий для игрока"
+        ]
+      },
+      {
+        "id": "EVENT_BELT_02",
+        "name": "Обнаружение богатого астероида",
+        "type": "Discovery",
+        "triggers": [
+          "Prospecting_Success",
+          "Lucky_Find"
+        ],
+        "description": "Найден астероид с редкими металлами стоимостью в миллиарды",
+        "effects": [
+          "Золотая лихорадка в Поясе",
+          "Конфликты между старателями",
+          "Корпоративные войны за контроль"
+        ]
+      }
+    ],
+    "DEEP_SPACE": [
+      {
+        "id": "EVENT_DEEP_01",
+        "name": "Сигнал из межзвездного пространства",
+        "type": "Mystery",
+        "triggers": [
+          "Scientific_Discovery",
+          "Random_Event"
+        ],
+        "description": "Получен загадочный сигнал неизвестного происхождения",
+        "effects": [
+          "Мобилизация научного сообщества",
+          "Секретные правительственные проекты",
+          "Паника среди религиозных групп",
+          "Возможность первого контакта"
+        ]
+      }
+    ]
+  },
+  "event_chains": {
+    "description": "Каскадные события распространяющиеся между локациями",
+    "ECONOMIC_CASCADE": {
+      "trigger": "Major_Economic_Crisis",
+      "progression": [
+        "EVENT_EARTH_ECONOMIC_CRASH",
+        "EVENT_MARS_SUPPLY_SHORTAGE",
+        "EVENT_BELT_MINING_BOOM",
+        "EVENT_OUTER_SYSTEM_INDEPENDENCE_MOVEMENT"
+      ],
+      "total_duration": "6-18 months game time"
+    },
+    "TECHNOLOGY_CASCADE": {
+      "trigger": "Breakthrough_Discovery",
+      "progression": [
+        "EVENT_DISCOVERY_ANNOUNCEMENT",
+        "EVENT_CORPORATE_ESPIONAGE_WAR",
+        "EVENT_PROTOTYPE_THEFT",
+        "EVENT_TECHNOLOGICAL_REVOLUTION"
+      ],
+      "total_duration": "3-12 months game time"
+    }
+  }
+}

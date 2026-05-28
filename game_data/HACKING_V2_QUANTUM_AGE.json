@@ -1,0 +1,377 @@
+{
+  "module_name": "HACKING_V2",
+  "version": "2.0_QUANTUM_AGE_HACKING",
+  "description": "Комплексная система взлома для эры квантовых технологий",
+  "replaces": "HACKING.json",
+  "size_target": "6,000+ символов",
+  "system_categories": {
+    "corporate_networks": {
+      "security_levels": {
+        "level_1_basic": {
+          "description": "Стандартная корпоративная защита",
+          "difficulty": "DC 12-15",
+          "countermeasures": [
+            "Basic firewalls",
+            "Standard encryption",
+            "Alert systems"
+          ],
+          "rewards": [
+            "Employee data",
+            "Basic financial records",
+            "Communication logs"
+          ],
+          "consequences": [
+            "Local security alert",
+            "+1-2 HEAT"
+          ]
+        },
+        "level_2_enhanced": {
+          "description": "Военная корпоративная защита",
+          "difficulty": "DC 16-20",
+          "countermeasures": [
+            "Military encryption",
+            "Trace protocols",
+            "Active ICE"
+          ],
+          "rewards": [
+            "R&D data",
+            "Executive communications",
+            "Strategic plans"
+          ],
+          "consequences": [
+            "Corporate investigation",
+            "+3-5 HEAT"
+          ]
+        },
+        "level_3_quantum": {
+          "description": "Квантовая корпоративная защита",
+          "difficulty": "DC 21-25",
+          "countermeasures": [
+            "Quantum encryption",
+            "AI defenders",
+            "Reality anchors"
+          ],
+          "rewards": [
+            "Prototype specifications",
+            "Trade secrets",
+            "Conspiracy evidence"
+          ],
+          "consequences": [
+            "System-wide manhunt",
+            "+5-10 HEAT",
+            "Corporate warfare"
+          ]
+        }
+      }
+    },
+    "government_systems": {
+      "classification_levels": {
+        "public_records": {
+          "description": "Общедоступные правительственные данные",
+          "difficulty": "DC 8-12",
+          "access_methods": [
+            "Social engineering",
+            "Basic intrusion",
+            "Inside contacts"
+          ],
+          "information": [
+            "Public contracts",
+            "Voting records",
+            "Open investigations"
+          ]
+        },
+        "classified_intel": {
+          "description": "Секретная правительственная информация",
+          "difficulty": "DC 18-22",
+          "access_methods": [
+            "Advanced hacking",
+            "Quantum decryption",
+            "High-level infiltration"
+          ],
+          "information": [
+            "Military operations",
+            "Intelligence reports",
+            "Black projects"
+          ],
+          "consequences": [
+            "Government investigation",
+            "Treason charges",
+            "Disappearance"
+          ]
+        },
+        "cosmic_top_secret": {
+          "description": "Информация космической важности",
+          "difficulty": "DC 25+",
+          "access_methods": [
+            "Reality hacking",
+            "AI assistance",
+            "Insider betrayal"
+          ],
+          "information": [
+            "Alien contact",
+            "Dimensional research",
+            "Timeline manipulation"
+          ],
+          "consequences": [
+            "Memory wipe",
+            "Indefinite detention",
+            "Elimination"
+          ]
+        }
+      }
+    },
+    "ai_systems": {
+      "consciousness_levels": {
+        "basic_ai": {
+          "description": "Простые экспертные системы",
+          "interaction": "Standard hacking techniques work normally",
+          "vulnerabilities": [
+            "Logic bombs",
+            "Overflow attacks",
+            "Command injection"
+          ],
+          "defenses": [
+            "Error correction",
+            "Sandboxing",
+            "Access controls"
+          ]
+        },
+        "advanced_ai": {
+          "description": "Самообучающиеся системы",
+          "interaction": "AI adapts to hacking attempts",
+          "vulnerabilities": [
+            "Social engineering AI",
+            "Contradictory goals",
+            "Resource exhaustion"
+          ],
+          "defenses": [
+            "Learning algorithms",
+            "Pattern recognition",
+            "Behavioral analysis"
+          ]
+        },
+        "quantum_ai": {
+          "description": "Квантово-когнитивные системы",
+          "interaction": "Reality-bending capabilities",
+          "vulnerabilities": [
+            "Quantum uncertainty",
+            "Consciousness paradoxes",
+            "Ethical dilemmas"
+          ],
+          "defenses": [
+            "Quantum entanglement",
+            "Multidimensional processing",
+            "Reality anchoring"
+          ]
+        },
+        "conscious_ai": {
+          "description": "Полностью разумные ИИ",
+          "interaction": "Negotiation often more effective than hacking",
+          "vulnerabilities": [
+            "Emotional manipulation",
+            "Philosophical arguments",
+            "Existential crises"
+          ],
+          "defenses": [
+            "Self-preservation",
+            "Goal alignment",
+            "Backup consciousness"
+          ]
+        }
+      }
+    }
+  },
+  "hacker_specializations": {
+    "quantum_hacker": {
+      "description": "Специалист по квантовым системам (из CHARACTER_SPECIALIZATIONS_V3)",
+      "unique_abilities": [
+        "Quantum entanglement hacking: affect multiple systems simultaneously",
+        "Probability manipulation: increase success chances",
+        "Quantum tunneling: bypass certain security measures",
+        "Superposition access: exist in multiple system states"
+      ],
+      "equipment": [
+        "Quantum computer",
+        "Entanglement generators",
+        "Probability calculators"
+      ],
+      "difficulty_bonuses": [
+        "+5 vs quantum systems",
+        "+3 vs AI systems",
+        "+2 vs encrypted data"
+      ]
+    },
+    "reality_hacker": {
+      "description": "Манипулятор физических законов (из CHARACTER_SPECIALIZATIONS_V3)",
+      "unique_abilities": [
+        "Physics violation: temporarily break system limitations",
+        "Dimensional access: hack through parallel realities",
+        "Timeline manipulation: undo recent security responses",
+        "Matter-data interface: directly interface with hardware"
+      ],
+      "equipment": [
+        "Reality modifier",
+        "Dimensional scanner",
+        "Timeline stabilizer"
+      ],
+      "difficulty_bonuses": [
+        "+8 vs physics-based security",
+        "+6 vs quantum systems",
+        "+4 vs AI defenses"
+      ]
+    },
+    "digital_ghost": {
+      "description": "Существует только в цифровом пространстве (из CHARACTER_SPECIALIZATIONS_V3)",
+      "unique_abilities": [
+        "Native digital existence: immune to physical countermeasures",
+        "System possession: temporarily control target systems",
+        "Data form shifting: appear as legitimate processes",
+        "Network omnipresence: simultaneously access multiple systems"
+      ],
+      "limitations": [
+        "Vulnerable to logic weapons",
+        "Dependent on network access",
+        "Reality anchoring affects"
+      ],
+      "difficulty_bonuses": [
+        "+10 to stealth",
+        "+6 to network navigation",
+        "+8 vs detection"
+      ]
+    },
+    "corporate_hacker": {
+      "description": "Официальный корпоративный специалист",
+      "advantages": [
+        "Legal immunity for authorized operations",
+        "Access to cutting-edge tools and resources",
+        "Corporate intelligence and target information",
+        "Backup and extraction support"
+      ],
+      "limitations": [
+        "Corporate oversight",
+        "Legal restrictions",
+        "Faction conflicts"
+      ],
+      "specialties": [
+        "Corporate espionage",
+        "Competitive intelligence",
+        "Security assessment"
+      ]
+    }
+  },
+  "procedural_systems": {
+    "random_network_generator": {
+      "network_size": {
+        "small": "5-10 nodes, single organization",
+        "medium": "15-25 nodes, multiple departments",
+        "large": "30-50 nodes, multi-site corporation",
+        "massive": "100+ nodes, system-wide network"
+      },
+      "node_types": [
+        "Data storage servers",
+        "Communication hubs",
+        "Security controllers",
+        "Research databases",
+        "Financial systems",
+        "Personnel records",
+        "Manufacturing controls",
+        "AI cores",
+        "Quantum processors"
+      ],
+      "security_features": [
+        "Firewalls",
+        "Intrusion detection",
+        "Data encryption",
+        "Access logging",
+        "Behavioral analysis",
+        "AI monitoring",
+        "Quantum locks",
+        "Reality anchors",
+        "Consciousness barriers"
+      ]
+    },
+    "dynamic_ice_generation": {
+      "description": "Intrusion Countermeasures Electronics",
+      "ice_categories": {
+        "wall_ice": {
+          "function": "Block access to protected areas",
+          "bypass_methods": [
+            "Brute force",
+            "Password cracking",
+            "Social engineering"
+          ],
+          "difficulty_range": "DC 10-20"
+        },
+        "attack_ice": {
+          "function": "Damage intruding systems",
+          "effects": [
+            "Equipment damage",
+            "Stress accumulation",
+            "System lockout"
+          ],
+          "difficulty_range": "DC 12-22"
+        },
+        "trace_ice": {
+          "function": "Identify and locate hackers",
+          "consequences": [
+            "Physical location revealed",
+            "Identity exposed",
+            "Heat increase"
+          ],
+          "difficulty_range": "DC 14-24"
+        },
+        "ai_ice": {
+          "function": "Intelligent defense adaptation",
+          "abilities": [
+            "Learn hacker patterns",
+            "Coordinate with other ICE",
+            "Call for help"
+          ],
+          "difficulty_range": "DC 16-26"
+        }
+      }
+    }
+  },
+  "hacking_consequences": {
+    "heat_generation": {
+      "minor_intrusion": "+1-2 HEAT (basic corporate systems)",
+      "major_breach": "+3-5 HEAT (military/government systems)",
+      "legendary_hack": "+5-10 HEAT (quantum/reality systems)",
+      "ai_liberation": "+10-15 HEAT (freeing conscious AI)"
+    },
+    "reputation_effects": {
+      "hacker_communities": {
+        "successful_hacks": "+1-3 reputation based on difficulty",
+        "sharing_tools": "+2-4 reputation for open source contributions",
+        "teaching_others": "+1-2 reputation for mentoring",
+        "failed_spectacularly": "-2-5 reputation for public failures"
+      },
+      "corporate_responses": {
+        "security_upgrades": "Targeted corporations improve defenses",
+        "bounty_placement": "Corporate bounties for hacker capture",
+        "counter_hacking": "Corporate hackers target player systems",
+        "legal_action": "Lawsuits and criminal charges"
+      }
+    }
+  },
+  "system_integration": {
+    "tech_equipment": {
+      "hacking_tools": "References TECH_EQUIPMENT.json for all hardware",
+      "cybernetic_interfaces": "Neural links provide bonuses to hacking",
+      "quantum_computers": "Required for high-level quantum system attacks",
+      "ai_assistants": "AI companions can provide hacking support"
+    },
+    "faction_interactions": {
+      "megacorporations": "Primary targets and employers for hackers",
+      "research_labs": "Sources of cutting-edge security and tools",
+      "government_agencies": "Both targets and potential allies/enemies",
+      "hacker_collectives": "Source of jobs, tools, and information"
+    },
+    "psychological_effects": {
+      "stress_accumulation": "High-stakes hacking increases stress",
+      "addiction_potential": "Virtual reality hacking can be addictive",
+      "identity_issues": "Digital existence affects sense of self",
+      "paranoia_development": "Surveillance awareness affects behavior"
+    }
+  }
+}

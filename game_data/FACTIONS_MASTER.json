@@ -1,0 +1,6139 @@
+{
+  "module_name": "FACTIONS_MASTER",
+  "description": "Полная база данных фракций NEXUS — 135 фракций 6 типов",
+  "version": "1.0_RECOVERED",
+  "factions": [
+    {
+      "id": "MC1",
+      "name": "LunarTech Industries",
+      "type": "Megacorp",
+      "history": "Основана Айрис Чжан в 2170 г. как небольшая инжиниринговая фирма для строительства лунных модулей. За 12 лет выросла в империю жилых станций благодаря революционным технологиям парящих модулей.",
+      "legends": "Слухи о «Лунном Аркаде», секретной развлекательной станции с парящими модулями, где время течет по-другому из-за квантовых полей.",
+      "leaders": [
+        "Айрис Чжан"
+      ],
+      "influence_region": "Орбита Луны",
+      "business_area": "Станции и жилые модули",
+      "allies": [
+        "Star Helix Dynamics"
+      ],
+      "enemies": [
+        "Ceres Mining Consortium"
+      ],
+      "mechanics": [
+        {
+          "type": "cost_reduction",
+          "target": "construction_on_moon",
+          "value": 5,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "mc1_conflict_1",
+          "type": "ethical_debate",
+          "description": "Разгораются этические споры о безопасности проводимых ими экспериментов с квантовыми аномалиями.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "MC2",
+      "name": "Helios Energy Corp.",
+      "type": "Megacorp",
+      "history": "Запустила первую коммерческую солнечную ферму на орбите Венеры в 2172 г. Революционизировала энергетику системы, создав сеть из 47 солнечных станций.",
+      "legends": "Ходят слухи о «пожарах на Венере» — авариях с солнечными коллекторами, которые корпорация тщательно скрывает из-за радиационного заражения.",
+      "leaders": [
+        "Макс Эверард"
+      ],
+      "influence_region": "Венера (солнечные станции)",
+      "business_area": "Солнечные электростанции",
+      "allies": [
+        "SolarFlare Propulsion"
+      ],
+      "enemies": [
+        "United Saturn Block"
+      ],
+      "mechanics": [
+        {
+          "type": "resource_bonus",
+          "target": "energy_production",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "mc2_conflict_1",
+          "type": "scandal",
+          "description": "Крупный скандал, связанный с утечкой радиационных материалов с одной из их станций.",
+          "involved_factions": [
+            "OPA"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MC3",
+      "name": "Jovian Orbital Works",
+      "type": "Megacorp",
+      "history": "Выросла из небольшой верфи «Ганимед-1» в 2171 г. Сейчас строит самые крупные корабли в системе, включая дредноуты класса «Титан».",
+      "legends": "Ходят слухи о «живых кораблях» — экспериментальных моделях с органическими компонентами, способными к самовосстановлению.",
+      "leaders": [
+        "Иэн Рид"
+      ],
+      "influence_region": "Орбита Юпитера",
+      "business_area": "Судостроение для газовых гигантов",
+      "allies": [
+        "Star Helix Dynamics"
+      ],
+      "enemies": [
+        "Mars Fleet"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target": "ship_hull",
+          "stat": "durability",
+          "value": 1,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "mc3_conflict_1",
+          "type": "secret_project",
+          "description": "Их инженеры тайно разрабатывают полностью автономные боевые дроны класса «Валькирия».",
+          "involved_factions": [
+            "Mars Fleet"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MC4",
+      "name": "SaturnGas Solutions",
+      "type": "Megacorp",
+      "history": "Создана Сатоши Танака в 2173 г. для добычи гелия-3 в кольцах Сатурна. Стала монополистом топливного рынка, контролируя 67 % добычи в системе.",
+      "legends": "Легенда о «песнях колец» — особых частотах, которые якобы влияют на эффективность добычи и могут вызывать галлюцинации у рабочих.",
+      "leaders": [
+        "Сатоши Танака"
+      ],
+      "influence_region": "Кольца Сатурна",
+      "business_area": "Добыча гелия-3 и топливных газов",
+      "allies": [
+        "United Saturn Block"
+      ],
+      "enemies": [
+        "Protogen"
+      ],
+      "mechanics": [
+        {
+          "type": "cost_reduction",
+          "target": "fuel_consumption",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "mc4_conflict_1",
+          "type": "environmental_conflict",
+          "description": "Экологи обвиняют компанию в гибели уникальных микроорганизмов в кольцах.",
+          "involved_factions": [
+            "EcoSphere Technologies"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MC5",
+      "name": "TerraForm Union",
+      "type": "Megacorp",
+      "history": "Основана в 2174 г. ведущими инженерами по терраформированию после провала проекта Венера-1. Специализируется на атмосферной инженерии.",
+      "legends": "Байки о «искусственных ливнях», которые они могут вызывать в любой точке Марса по желанию, изменяя погоду за часы.",
+      "leaders": [
+        "Клара Весс"
+      ],
+      "influence_region": "Марс, Венера",
+      "business_area": "Терраформирование",
+      "allies": [
+        "Mars Republic",
+        "ESA-Earth"
+      ],
+      "enemies": [
+        "OPA"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target": "terraforming_speed",
+          "value": 5,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "mc5_conflict_1",
+          "type": "political_conflict",
+          "description": "Ведет ожесточенную политическую борьбу с OPA за контроль над проектами терраформирования.",
+          "involved_factions": [
+            "OPA"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MC6",
+      "name": "BioCore Labs",
+      "type": "Megacorp",
+      "history": "Запустила первый независимый биодом на Церере в 2170 г. Лидер биотехнологий, разработчик 23 революционных медицинских препаратов.",
+      "legends": "Слухи о создании «живых протезов», которые могут регенерировать и даже улучшать себя, превосходя оригинальные органы.",
+      "leaders": [
+        "Эмилия Сун"
+      ],
+      "influence_region": "Церера",
+      "business_area": "Биомедицинские и генетические технологии",
+      "allies": [
+        "Protogen",
+        "Nexus Pharmaceuticals"
+      ],
+      "enemies": [
+        "Silver Serpents"
+      ],
+      "mechanics": [
+        {
+          "type": "access_unlock",
+          "target": "legal_implants",
+          "description": "Доступ к легальным имплантам без внимания служб безопасности."
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "mc6_conflict_1",
+          "type": "ethical_debate",
+          "description": "Находится в центре этических дебатов о клонировании и испытаниях на людях.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "MC7",
+      "name": "Nexus Pharmaceuticals",
+      "type": "Megacorp",
+      "history": "В 2172 г. выпустила революционный препарат «Нейро-Стабилин» для космических путешествий. Контролирует 34 % фармацевтического рынка системы.",
+      "legends": "Легенда о препарате «Грань», позволяющем пережить клиническую смерть и вернуться с воспоминаниями о «той стороне».",
+      "leaders": [
+        "Виктор Рейз"
+      ],
+      "influence_region": "Луна (Ново-Пекин)",
+      "business_area": "Фармацевтика",
+      "allies": [
+        "BioCore Labs"
+      ],
+      "enemies": [
+        "Black Lotus Triad"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target": "side_effect_risk",
+          "value": -2
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "mc7_conflict_1",
+          "type": "illegal_activity",
+          "description": "Подозревается в тайном сбыте экспериментальных препаратов на черном рынке.",
+          "involved_factions": [
+            "BlackLotus Triad"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MC8",
+      "name": "Aetherium Dynamics",
+      "type": "Megacorp",
+      "history": "Изобрела коммерческий квантовый двигатель в 2173 г., изменив космические путешествия навсегда. Владеет 89 патентами на квантовые технологии.",
+      "legends": "Слухи о прототипе двигателя «Мысль», который управляется силой мысли пилота через продвинутый нейроинтерфейс.",
+      "leaders": [
+        "Селин Дюпон"
+      ],
+      "influence_region": "Остров О'Нилла",
+      "business_area": "Квантовые двигатели и коммуникации",
+      "allies": [
+        "Quantum Horizons"
+      ],
+      "enemies": [
+        "Shadow Consortium"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target": "initiative",
+          "value": 1,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "mc8_conflict_1",
+          "type": "ai_conflict",
+          "description": "Внутренние споры о степени контроля над ИИ-модулями их двигателей.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "MC9",
+      "name": "SolarFlare Propulsion",
+      "type": "Megacorp",
+      "history": "Создала первые протонные двигатели в 2173 г., открыв эру быстрых межпланетных полетов. 156 их двигателей работают в системе.",
+      "legends": "Мифы о «солнечных медузах» — плазменных образованиях, возникающих от их двигателей и обладающих разумом.",
+      "leaders": [
+        "Иван Курочкин"
+      ],
+      "influence_region": "Венера (термальный сектор)",
+      "business_area": "Термоядерные двигатели",
+      "allies": [
+        "Helios Energy Corp."
+      ],
+      "enemies": [
+        "Crimson Talons"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target": "ship_speed",
+          "value": 15,
+          "unit": "percent",
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "mc9_conflict_1",
+          "type": "illegal_activity",
+          "description": "Подозревается в нелегальных военных испытаниях своих двигателей.",
+          "involved_factions": [
+            "Mars Fleet"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MC10",
+      "name": "Quantum Horizons",
+      "type": "Megacorp",
+      "history": "С 2174 г. выпускает квантовые шифры для корпоративных сетей. Лидер вычислений с 12 суперкомпьютерами.",
+      "legends": "Легенда о «машине мыслей», способной дешифровать мысли напрямую из мозга.",
+      "leaders": [
+        "Лиана Хуанг"
+      ],
+      "influence_region": "Ганимед-Технохаб",
+      "business_area": "Квантовые компьютеры и шифрование",
+      "allies": [
+        "ESA-Earth"
+      ],
+      "enemies": [
+        "Shadow Consortium"
+      ],
+      "mechanics": [
+        {
+          "type": "access_unlock",
+          "target": "quantum_ciphers"
+        },
+        {
+          "type": "roll_bonus",
+          "target": "hacking",
+          "value": "1d6",
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "mc10_conflict_1",
+          "type": "secret_project",
+          "description": "Тайный заговор учёных по созданию полноценного искусственного разума.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "MC11",
+      "name": "Omega Defense Systems",
+      "type": "Megacorp",
+      "history": "Создана в 2171 г. ветеранами марсианских войн. Производит 43% оборонительных систем.",
+      "legends": "Легенда о «солнечных мечах» — энергетическом оружии ближнего боя.",
+      "leaders": [
+        "Декстер Рох"
+      ],
+      "influence_region": "Форт-Марс",
+      "business_area": "Оборонительные технологии",
+      "allies": [
+        "Mars Fleet"
+      ],
+      "enemies": [
+        "Red Dagger PMC"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target": "ship_defense",
+          "value": 2
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "mc11_conflict_1",
+          "type": "legal_conflict",
+          "description": "Юридические споры о военных контрактах.",
+          "involved_factions": [
+            "Red Dagger PMC"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MC12",
+      "name": "Genesis Bioworks",
+      "type": "Megacorp",
+      "history": "Основана в 2175 г. группой биологов-этиков. Этичная альтернатива Protogen.",
+      "legends": "Легенда о «самовосстанавливающемся биодоме».",
+      "leaders": [
+        "Д-р София Кендрик"
+      ],
+      "influence_region": "Ганимед (Биоэтический центр)",
+      "business_area": "Этичные биотехнологии",
+      "allies": [
+        "BioCore Labs"
+      ],
+      "enemies": [
+        "Protogen"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target": "ethical_research",
+          "value": 10
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "mc12_conflict_1",
+          "type": "ethical_debate",
+          "description": "Конфликт с Protogen за методы исследований.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "MC13",
+      "name": "Vesta Industrial Union",
+      "type": "Megacorp",
+      "history": "Гильдия 234 старателей Весты, основанная для защиты прав рабочих. Контролирует 78% добычи.",
+      "legends": "Слухи о «Красной смене» — массовой забастовке шахтеров.",
+      "leaders": [
+        "Анна Волкова"
+      ],
+      "influence_region": "Веста (Шахтерские поселения)",
+      "business_area": "Горнодобыча",
+      "allies": [
+        "Ceres Mining Consortium"
+      ],
+      "enemies": [
+        "Mao-Kwikowski"
+      ],
+      "mechanics": [
+        {
+          "type": "resource_bonus",
+          "target": "mining_efficiency",
+          "value": 15
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "mc13_conflict_1",
+          "type": "labor_strike",
+          "description": "Системная забастовка шахтеров.",
+          "involved_factions": [
+            "Mao-Kwikowski"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MC14",
+      "name": "Titan Shipyards Collective",
+      "type": "Megacorp",
+      "history": "Кооператив 45 судостроителей на Титане. Рекордные сроки строительства.",
+      "legends": "Секретная нанотехнология самосборки.",
+      "leaders": [
+        "Кай Оландер"
+      ],
+      "influence_region": "Титан (Орбитальные верфи)",
+      "business_area": "Судостроение",
+      "allies": [
+        "Jovian Orbital Works"
+      ],
+      "enemies": [
+        "Star Helix Dynamics"
+      ],
+      "mechanics": [
+        {
+          "type": "time_reduction",
+          "target": "construction_time",
+          "value": 10
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "mc14_conflict_1",
+          "type": "industrial_rivalry",
+          "description": "Соперничество за крупнейшие контракты.",
+          "involved_factions": [
+            "Star Helix Dynamics"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MC15",
+      "name": "Deep Belt Prospectors Guild",
+      "type": "Megacorp",
+      "history": "189 старателей дальнего Пояса осваивают отдаленные астероиды.",
+      "legends": "«Вечные жилки» — мистически регенирующие рудные залежи.",
+      "leaders": [
+        "Джек Коронадо"
+      ],
+      "influence_region": "Дальний Пояс (Мобильные базы)",
+      "business_area": "Добыча редких ресурсов",
+      "allies": [
+        "Vesta Industrial Union"
+      ],
+      "enemies": [
+        "Ceres Mining Consortium"
+      ],
+      "mechanics": [
+        {
+          "type": "resource_bonus",
+          "target": "rare_resource_mining",
+          "value": 20
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "mc15_conflict_1",
+          "type": "exploration_risk",
+          "description": "Квантовые аномалии на отдаленных астероидах.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC1",
+      "name": "HydroDash",
+      "type": "SME",
+      "history": "Основана Лейлой Амин в 2175 г.",
+      "legends": "Слух о конвоях-призраках, которые доставляют воду по секретным маршрутам.",
+      "leaders": [
+        "Лейла Амин"
+      ],
+      "influence_region": "Пояс (Церера→Веста)",
+      "business_area": "Доставка воды",
+      "allies": [
+        "BeltFreight Ltd."
+      ],
+      "enemies": [
+        "Blackwater Cartel"
+      ],
+      "mechanics": [
+        {
+          "type": "cost_reduction",
+          "target": "water_purchase",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc1_conflict_1",
+          "type": "illegal_activity",
+          "description": "Тайные соглашения с пиратами для 'защиты' своих конвоев.",
+          "involved_factions": [
+            "OPA",
+            "Blackwater Cartel"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SC2",
+      "name": "SpaceFixers",
+      "type": "SME",
+      "history": "Создана группой инженеров-энтузиастов в 2170 г.",
+      "legends": "Байка о том, что их лучший механик может провести ремонт в открытом космосе без скафандра.",
+      "leaders": [
+        "Карлос Мендоза"
+      ],
+      "influence_region": "Марс орбита",
+      "business_area": "Космический ремонт",
+      "allies": [
+        "Mars Fleet"
+      ],
+      "enemies": [
+        "Rust Hawks"
+      ],
+      "mechanics": [
+        {
+          "type": "time_reduction",
+          "target": "ship_repair_downtime",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc2_conflict_1",
+          "type": "political_conflict",
+          "description": "Конфликт с военными Марса за доступ к закрытым для гражданских зонам.",
+          "involved_factions": [
+            "Mars Fleet"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SC3",
+      "name": "NanoEdge",
+      "type": "SME",
+      "history": "Стартап, основанный в 2173 г. для нанотехнологического строительства.",
+      "legends": "Легенда о «живых» наноблоках, способных к саморепликации.",
+      "leaders": [
+        "Авика Рохит"
+      ],
+      "influence_region": "Луна (Технохаб)",
+      "business_area": "Нанотехнологическое строительство",
+      "allies": [
+        "BioCore Labs"
+      ],
+      "enemies": [
+        "Silver Serpents"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target": "construction_hull",
+          "stat": "durability",
+          "value": 1,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc3_conflict_1",
+          "type": "ethical_debate",
+          "description": "Этические дебаты о рисках неконтролируемой самосборки наноблоков.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC4",
+      "name": "ByteHack Collective",
+      "type": "SME",
+      "history": "Образована в 2175 г. как объединение независимых хакеров.",
+      "legends": "Миф о «виртуальном призраке» — ИИ, который живёт в их сетях и помогает в самых сложных взломах.",
+      "leaders": [
+        "Аксель Ван Дайк"
+      ],
+      "influence_region": "Земля (Нью-Йорк)",
+      "business_area": "Хакинг-сервисы",
+      "allies": [
+        "NeoCyber Systems"
+      ],
+      "enemies": [
+        "Shadow Consortium"
+      ],
+      "mechanics": [
+        {
+          "type": "skill_bonus",
+          "target": "hacking_check",
+          "value": 2,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc4_conflict_1",
+          "type": "internal_power_struggle",
+          "description": "Идеологические разногласия внутри коллектива: 'белые шляпы' против тех, кто готов работать на любую корпорацию за деньги.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC5",
+      "name": "SpaceHotels Inc.",
+      "type": "SME",
+      "history": "Маркус Ван Хельсинг открыл первый орбитальный отель в 2177 г.",
+      "legends": "Легенда о номере 13 на станции «Кровь Марса», откуда гости иногда не возвращаются.",
+      "leaders": [
+        "Маркус Ван Хельсинг"
+      ],
+      "influence_region": "Марс (Отель «Кровь Марса»)",
+      "business_area": "Туризм",
+      "allies": [
+        "ESA-Earth"
+      ],
+      "enemies": [
+        "Red Dagger PMC"
+      ],
+      "mechanics": [
+        {
+          "type": "resource_bonus",
+          "target": "tourism_income",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc5_conflict_1",
+          "type": "mystery",
+          "description": "Странные исчезновения и истории гостей о призраках в их отелях.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC6",
+      "name": "StellarMiner",
+      "type": "SME",
+      "history": "Виктор Санчез основал компанию по аренде добывающих платформ в 2172 г.",
+      "legends": "Байка о «золотом льде» — астероидах, которые содержат золото в замороженной воде.",
+      "leaders": [
+        "Виктор Санчез"
+      ],
+      "influence_region": "Пояс (Паллада)",
+      "business_area": "Аренда добывающих платформ",
+      "allies": [
+        "Mao-Kwikowski"
+      ],
+      "enemies": [
+        "OPA"
+      ],
+      "mechanics": [
+        {
+          "type": "cost_reduction",
+          "target": "platform_rental",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc6_conflict_1",
+          "type": "social_protest",
+          "description": "Экологические протесты местных жителей против разрушительных методов добычи.",
+          "involved_factions": [
+            "OPA"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SC7",
+      "name": "Martian AgroCo",
+      "type": "SME",
+      "history": "Основана Стивеном Муном после Великого Голода на Марсе в 2160 г.",
+      "legends": "Слух о мутировавших семенах, которые вызывают яркие и пророческие сны.",
+      "leaders": [
+        "Стивен Мун"
+      ],
+      "influence_region": "Марс (Домен-3)",
+      "business_area": "Биофермы и кислородные станции",
+      "allies": [
+        "AgroLuna"
+      ],
+      "enemies": [
+        "Mars Grey Syndicate"
+      ],
+      "mechanics": [
+        {
+          "type": "resource_bonus",
+          "target": "oxygen_production",
+          "value": 5,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc7_conflict_1",
+          "type": "internal_power_struggle",
+          "description": "Идеологический разлом между учёными, желающими сохранить биоразнообразие, и бизнес-крылом, нацеленным на прибыль.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC8",
+      "name": "SkyCharge Systems",
+      "type": "SME",
+      "history": "Омар Салем изобрёл и запатентовал электромагнитный ускоритель в 2176 г.",
+      "legends": "Миф о том, что их ускорители могут создавать локальные «молнии» в пространстве.",
+      "leaders": [
+        "Омар Салем"
+      ],
+      "influence_region": "Орбита Юпитера",
+      "business_area": "Станции ускорения судов",
+      "allies": [
+        "Jovian Orbital Works"
+      ],
+      "enemies": [
+        "Belt Raiders"
+      ],
+      "mechanics": [
+        {
+          "type": "cost_reduction",
+          "target": "delta_v_start_cost",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc8_conflict_1",
+          "type": "trade_war",
+          "description": "Передел сфер влияния и борьба за контроль над заправочными станциями с пиратскими кланами.",
+          "involved_factions": [
+            "Belt Raiders"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SC9",
+      "name": "TerraLogistics",
+      "type": "SME",
+      "history": "Рут Чен, бывший курьер, основала компанию по межпланетным грузоперевозкам.",
+      "legends": "Легенда о «курьере без сна» — самой Рут, которая якобы никогда не спит благодаря киберимплантам.",
+      "leaders": [
+        "Рут Чен"
+      ],
+      "influence_region": "Земля (Лондон)",
+      "business_area": "Межпланетные грузовые контракты",
+      "allies": [
+        "OrbitalTransit Co."
+      ],
+      "enemies": [
+        "Rust Hawks"
+      ],
+      "mechanics": [
+        {
+          "type": "resource_bonus",
+          "target": "contract_profit",
+          "value": 5,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc9_conflict_1",
+          "type": "legal_investigation",
+          "description": "Многочисленные судебные разбирательства из-за «потерянных» или сорванных рейсов, которые могут быть прикрытием для контрабанды.",
+          "involved_factions": [
+            "Earth UN"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SC10",
+      "name": "StellarCourier",
+      "type": "SME",
+      "history": "Основана в 2178 г. группой бывших гонщиков.",
+      "legends": "Байки о том, что их пилоты заключают пари и доставляют грузы, пролетая через метеоритные дожди.",
+      "leaders": [
+        "Ариэль Слоун"
+      ],
+      "influence_region": "Пояс–Марс маршрут",
+      "business_area": "Экспресс доставка",
+      "allies": [
+        "BeltFreight Ltd."
+      ],
+      "enemies": [
+        "Shadow Corsairs"
+      ],
+      "mechanics": [
+        {
+          "type": "time_reduction",
+          "target": "delivery_time",
+          "value": 5,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc10_conflict_1",
+          "type": "illegal_activity",
+          "description": "Подозреваются в тайных договорах с мелкими преступными синдикатами для обеспечения 'безопасных коридоров'.",
+          "involved_factions": [
+            "Shadow Corsairs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SC11",
+      "name": "AquaPure Tech",
+      "type": "SME",
+      "history": "Основана Томасом Риверой в 2175 г. для переработки воды.",
+      "legends": "Слух о «водной чуме» — партии зараженной воды, которую компания пытается скрыть.",
+      "leaders": [
+        "Томас Ривера"
+      ],
+      "influence_region": "Церера",
+      "business_area": "Переработка и доставка воды",
+      "allies": [
+        "HydroDash"
+      ],
+      "enemies": [
+        "Blackwater Cartel"
+      ],
+      "mechanics": [
+        {
+          "type": "cost_reduction",
+          "target": "station_water_consumption",
+          "value": 15,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc11_conflict_1",
+          "type": "ethical_debate",
+          "description": "Внутренние дебаты о прекращении поставок в бедные районы ради прибыли.",
+          "involved_factions": [
+            "OPA"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SC12",
+      "name": "MedLink",
+      "type": "SME",
+      "history": "Начала деятельность в 2179 г. с фокусом на телемедицину.",
+      "legends": "Миф об «исцеляющем луче» — экспериментальной технологии телехирургии, которая лечит без разрезов.",
+      "leaders": [
+        "Д-р Айша Калах"
+      ],
+      "influence_region": "Ганимед",
+      "business_area": "Телемедицина и протезирование",
+      "allies": [
+        "CyberMedix"
+      ],
+      "enemies": [
+        "Silver Serpents"
+      ],
+      "mechanics": [
+        {
+          "type": "roll_bonus",
+          "target": "remote_healing_check",
+          "value": 1,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc12_conflict_1",
+          "type": "ethical_debate",
+          "description": "Острые этические споры о правах на нейропротезы и контроль над сознанием пациентов.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC13",
+      "name": "ForgeWorks",
+      "type": "SME",
+      "history": "Первая легальная компания по 3D-печати в космосе, 2180 г.",
+      "legends": "Легенда о «самозакалке» — сплаве, который сам себя чинит после повреждений.",
+      "leaders": [
+        "Хиро Танака"
+      ],
+      "influence_region": "Луна (Forge-5)",
+      "business_area": "Аддитивное производство",
+      "allies": [
+        "NanoFabricators"
+      ],
+      "enemies": [
+        "LunarTech Industries"
+      ],
+      "mechanics": [
+        {
+          "type": "cost_reduction",
+          "target": "crafting_material_cost",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc13_conflict_1",
+          "type": "espionage",
+          "description": "Промышленный шпионаж и конфликт с LunarTech за эксклюзивность технологий.",
+          "involved_factions": [
+            "LunarTech Industries"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SC14",
+      "name": "ByteCourier",
+      "type": "SME",
+      "history": "Отпочковалась от ByteHack Collective в 2181 г., чтобы легализовать бизнес.",
+      "legends": "Байки о «невидимых пакетах» данных, которые невозможно отследить существующими сканерами.",
+      "leaders": [
+        "Оливия Ченарес"
+      ],
+      "influence_region": "Земля (Сан-Франкосити)",
+      "business_area": "Безопасные доставки данных",
+      "allies": [
+        "ByteHack Collective"
+      ],
+      "enemies": [
+        "Shadow Consortium"
+      ],
+      "mechanics": [
+        {
+          "type": "skill_bonus",
+          "target": "data_stealth_check",
+          "value": 1,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc14_conflict_1",
+          "type": "cyber_war",
+          "description": "Скрытая война с другими хакерскими группами за контроль над протоколами шифрования.",
+          "involved_factions": [
+            "Shadow Consortium"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SC15",
+      "name": "DuneHarvest",
+      "type": "SME",
+      "history": "Основана в 2179 г. для освоения каньонов Марса.",
+      "legends": "Слух о «кровавых плодах» — растениях, которые растут на богатой железом почве и имеют красный сок с необычными свойствами.",
+      "leaders": [
+        "Хуан Лопес"
+      ],
+      "influence_region": "Марс (Каньон Дельта)",
+      "business_area": "Биофермы",
+      "allies": [
+        "Martian AgroCo"
+      ],
+      "enemies": [
+        "Mars Grey Syndicate"
+      ],
+      "mechanics": [
+        {
+          "type": "resource_bonus",
+          "target": "martian_farm_yield",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc15_conflict_1",
+          "type": "resource_war",
+          "description": "Постоянный конфликт с Mars Grey Syndicate из-за прав на водные ресурсы.",
+          "involved_factions": [
+            "Mars Grey Syndicate"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SC16",
+      "name": "AstroClean",
+      "type": "SME",
+      "history": "Основана в 2176 г. для очистки орбиты от мусора.",
+      "legends": "Миф о «звёздных призраках» — остаточных образах и данных в бортовых компьютерах утилизированных кораблей.",
+      "leaders": [
+        "Мария Коваленко"
+      ],
+      "influence_region": "Орбита Земли",
+      "business_area": "Утилизация космического мусора",
+      "allies": [
+        "SpaceFixers"
+      ],
+      "enemies": [
+        "Shadow Corsairs"
+      ],
+      "mechanics": [
+        {
+          "type": "time_reduction",
+          "target": "cleanup_mission_time",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc16_conflict_1",
+          "type": "secret_knowledge",
+          "description": "Негласный запрет на утилизацию военных и экспериментальных отходов из-за рисков и тайной информации, которую можно извлечь.",
+          "involved_factions": [
+            "Earth UN"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SC17",
+      "name": "CometCourier",
+      "type": "SME",
+      "history": "Первый доставщик по кометным путям в 2178 г.",
+      "legends": "Ходят слухи о «хитрых петлях» — нестандартных маршрутах для обхода патрулей.",
+      "leaders": [
+        "Алексей Сидоров"
+      ],
+      "influence_region": "Пояс–Юпитер трассы",
+      "business_area": "Экспресс доставки малых грузов",
+      "allies": [
+        "SkyCharge Systems"
+      ],
+      "enemies": [
+        "Rust Hawks"
+      ],
+      "mechanics": [
+        {
+          "type": "cost_reduction",
+          "target": "dangerous_route_delivery_cost",
+          "value": 5,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc17_conflict_1",
+          "type": "illegal_activity",
+          "description": "Имеют тайные контракты с пиратами на проход по их территориям.",
+          "involved_factions": [
+            "Rust Hawks"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SC18",
+      "name": "MicroFusion",
+      "type": "SME",
+      "history": "Стартап 2179 г. по мини-реакторам.",
+      "legends": "Легенда о «вечном огне» — прототипе реактора, который не требует топлива.",
+      "leaders": [
+        "Ленора Клей"
+      ],
+      "influence_region": "Венера (пилотный участок)",
+      "business_area": "Мини-реакторы",
+      "allies": [
+        "FusionSpark"
+      ],
+      "enemies": [
+        "SolarFlare Propulsion"
+      ],
+      "mechanics": [
+        {
+          "type": "resource_bonus",
+          "target": "small_ship_energy_output",
+          "value": 5,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc18_conflict_1",
+          "type": "political_conflict",
+          "description": "Споры с военными о потенциальном ядерном применении их технологий.",
+          "involved_factions": [
+            "Mars Fleet"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SC19",
+      "name": "OrbitalArts",
+      "type": "SME",
+      "history": "Открыла первые художественные галереи на станциях в 2180 г.",
+      "legends": "Слухи о «живых скульптурах», созданных с помощью биотехнологий.",
+      "leaders": [
+        "Виктория Далтон"
+      ],
+      "influence_region": "Орбита Луны",
+      "business_area": "Культурные события",
+      "allies": [
+        "SpaceHotels Inc."
+      ],
+      "enemies": [
+        "Red Dagger PMC"
+      ],
+      "mechanics": [
+        {
+          "type": "reputation_bonus",
+          "target": "cultural_missions",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc19_conflict_1",
+          "type": "social_protest",
+          "description": "Постоянные конфликты со службами безопасности станций из-за 'провокационного' искусства.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC20",
+      "name": "BioHarbor",
+      "type": "SME",
+      "history": "Начала переработку биоматериалов в 2177 г.",
+      "legends": "Байка о «дышащих доках», где воздух рециркулируется через живые организмы.",
+      "leaders": [
+        "Д-р Самир Ахмед"
+      ],
+      "influence_region": "Церера (биопорт)",
+      "business_area": "Биологическая переработка",
+      "allies": [
+        "BioCore Labs"
+      ],
+      "enemies": [
+        "Silver Serpents"
+      ],
+      "mechanics": [
+        {
+          "type": "cost_reduction",
+          "target": "bio_waste_penalty",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc20_conflict_1",
+          "type": "ethical_debate",
+          "description": "Внутренние этические дебаты о пределах клонирования для переработки.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC21",
+      "name": "QuantumMeals",
+      "type": "SME",
+      "history": "Запустила производство квантовых пищевых блоков с 2178 г.",
+      "legends": "Миф о «блоках, меняющих вкус» в зависимости от настроения едока.",
+      "leaders": [
+        "Лаура Чен"
+      ],
+      "influence_region": "Марс (купольная сеть)",
+      "business_area": "Пищевая индустрия",
+      "allies": [
+        "Martian AgroCo"
+      ],
+      "enemies": [
+        "Mars Grey Syndicate"
+      ],
+      "mechanics": [
+        {
+          "type": "skill_bonus",
+          "target": "survival_check",
+          "value": 1,
+          "operator": "add",
+          "condition": "using_quantum_meals"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc21_conflict_1",
+          "type": "trade_war",
+          "description": "Жесткий конфликт с лобби традиционных фермеров.",
+          "involved_factions": [
+            "Martian AgroCo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SC22",
+      "name": "AeroMedic",
+      "type": "SME",
+      "history": "Начала использовать медицинские дроны с 2179 г.",
+      "legends": "Слух о «лечении светом» — дронах, использующих лазеры для заживления ран.",
+      "leaders": [
+        "Д-р Юна Пак"
+      ],
+      "influence_region": "Орбита Венеры",
+      "business_area": "Доставка медицинских услуг",
+      "allies": [
+        "MedLink"
+      ],
+      "enemies": [
+        "Shadow Consortium"
+      ],
+      "mechanics": [
+        {
+          "type": "skill_bonus",
+          "target": "rescue_operation_check",
+          "value": 2,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc22_conflict_1",
+          "type": "legal_conflict",
+          "description": "Юридическая борьба за права пациентов на анонимность данных.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC23",
+      "name": "EcoVac",
+      "type": "SME",
+      "history": "Начала вакуумные экстракции в кольцах Сатурна в 2180 г.",
+      "legends": "Байки о том, что их системы случайно «присасывают» мелкие спутники и дроны.",
+      "leaders": [
+        "Инго Мюллер"
+      ],
+      "influence_region": "Орбита Сатурна",
+      "business_area": "Очистка газовых колец",
+      "allies": [
+        "SaturnGas Solutions"
+      ],
+      "enemies": [
+        "Protogen"
+      ],
+      "mechanics": [
+        {
+          "type": "cost_reduction",
+          "target": "pollution_penalty",
+          "value": 15,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc23_conflict_1",
+          "type": "environmental_conflict",
+          "description": "Экологи обвиняют компанию в необратимом изменении состава колец и исчезновении уникальной космической пыли.",
+          "involved_factions": [
+            "EcoSphere Technologies"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SC24",
+      "name": "LunarRecycle",
+      "type": "SME",
+      "history": "Основана в 2181 г. для переработки металлолома на Луне.",
+      "legends": "Легенда о «лунных руинах», где среди мусора находят артефакты старой Земли.",
+      "leaders": [
+        "Нина Воробьёва"
+      ],
+      "influence_region": "Луна (ремонтный сектор)",
+      "business_area": "Металлолом и производство сплавов",
+      "allies": [
+        "NanoEdge"
+      ],
+      "enemies": [
+        "LunarTech Industries"
+      ],
+      "mechanics": [
+        {
+          "type": "roll_bonus",
+          "target": "find_rare_components_in_scrap",
+          "value": "10%",
+          "operator": "chance"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc24_conflict_1",
+          "type": "legal_conflict",
+          "description": "Юридические споры о правах на 'лунный хлам' с потомками первых поселенцев.",
+          "involved_factions": [
+            "LunarTech Industries"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SC25",
+      "name": "StellarGardens",
+      "type": "SME",
+      "history": "Открыла первые флористические купола в 2178 г.",
+      "legends": "Слух о «парящем саде», который не подчиняется гравитации.",
+      "leaders": [
+        "Патрик О’Коннор"
+      ],
+      "influence_region": "Ганимед",
+      "business_area": "Биофермы и декоративные растения",
+      "allies": [
+        "AstroVision"
+      ],
+      "enemies": [
+        "Silver Serpents"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target": "crew_morale",
+          "value": 5,
+          "unit": "percent",
+          "condition": "plants_on_board"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc25_conflict_1",
+          "type": "criminal_activity",
+          "description": "Постоянные набеги киберпанк-группировок, использующих их сады как прикрытие для своих операций.",
+          "involved_factions": [
+            "Silver Serpents"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SC26",
+      "name": "VoidMaps",
+      "type": "SME",
+      "history": "Начала составлять карты глубокого космоса в 2177 г.",
+      "legends": "Миф о «проклятых маршрутах» — секторах, с которых не возвращаются, и которые помечены на их картах.",
+      "leaders": [
+        "Хироко Такахаши"
+      ],
+      "influence_region": "Глубокий космос",
+      "business_area": "Навигация и картография",
+      "allies": [
+        "SpaceFixers"
+      ],
+      "enemies": [
+        "Shadow Consortium"
+      ],
+      "mechanics": [
+        {
+          "type": "skill_bonus",
+          "target": "navigation_check",
+          "value": 2,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc26_conflict_1",
+          "type": "trade_war",
+          "description": "Война данных и споры о монополии на звёздные карты с конкурирующими гильдиями картографов.",
+          "involved_factions": [
+            "Shadow Consortium"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SC27",
+      "name": "HydroHarvest",
+      "type": "SME",
+      "history": "Начала добычу льда в поясе с 2179 г.",
+      "legends": "Слух о «лунном флоте ледоколов», полностью автономном и управляемом одним ИИ.",
+      "leaders": [
+        "Иван Тихонов"
+      ],
+      "influence_region": "Пояс (Веста→Паллада)",
+      "business_area": "Добыча водяного льда",
+      "allies": [
+        "HydroDash"
+      ],
+      "enemies": [
+        "Blackwater Cartel"
+      ],
+      "mechanics": [
+        {
+          "type": "resource_bonus",
+          "target": "water_ice_mining",
+          "value": 15,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc27_conflict_1",
+          "type": "resource_war",
+          "description": "Жестокие торговые войны за контроль над богатыми льдом астероидами.",
+          "involved_factions": [
+            "Blackwater Cartel",
+            "Mao-Kwikowski"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SC28",
+      "name": "AstroRescue",
+      "type": "SME",
+      "history": "Частная спасательная служба с 2176 г.",
+      "legends": "Байки о «призрачных спасателях», которые появляются из ниоткуда и исчезают после спасения, не беря плату.",
+      "leaders": [
+        "Эмилио Гарсия"
+      ],
+      "influence_region": "Марс, Луна",
+      "business_area": "Космические спасательные операции",
+      "allies": [
+        "AeroMedic"
+      ],
+      "enemies": [
+        "Red Dagger PMC"
+      ],
+      "mechanics": [
+        {
+          "type": "skill_bonus",
+          "target": "rescue_operation_check",
+          "value": 1,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc28_conflict_1",
+          "type": "corporate_war",
+          "description": "Конфликт с ЧВК за выгодные государственные контракты на спасение.",
+          "involved_factions": [
+            "Red Dagger PMC"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SC29",
+      "name": "CometCult",
+      "type": "SME",
+      "history": "Религиозное движение, основанное в 2175 г.",
+      "legends": "Легенда о «пророчестве хвоста кометы», которое предвещает конец эпохи корпораций.",
+      "leaders": [
+        "Пророк Айлін"
+      ],
+      "influence_region": "Земля (религиозные базы)",
+      "business_area": "Духовные услуги",
+      "allies": [
+        "EcoSphere Technologies"
+      ],
+      "enemies": [
+        "OPA"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target": "crew_morale",
+          "value": 5,
+          "unit": "percent",
+          "condition": "cult_followers_on_board"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc29_conflict_1",
+          "type": "social_protest",
+          "description": "Обвиняются в преследовании атеистов и учёных, выступающих против их догматов.",
+          "involved_factions": [
+            "ESA-Earth"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SC30",
+      "name": "NanoClinic",
+      "type": "SME",
+      "history": "Открыла первую нано-лечебницу в 2178 г.",
+      "legends": "Слух о «наночастицах, лечащих душу», которые могут стирать плохие воспоминания.",
+      "leaders": [
+        "Д-р Лейла Хабиб"
+      ],
+      "influence_region": "Церера (медкорпус)",
+      "business_area": "Нанотехнологическая медицина",
+      "allies": [
+        "BioCore Labs"
+      ],
+      "enemies": [
+        "Silver Serpents"
+      ],
+      "mechanics": [
+        {
+          "type": "time_reduction",
+          "target": "nanite_healing_time",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc30_conflict_1",
+          "type": "ethical_debate",
+          "description": "Ожесточённый этический спор о праве на вмешательство в психику и воспоминания пациентов.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC31",
+      "name": "CometCourier",
+      "type": "SME",
+      "history": "Первый доставщик по кометным трассам, основан в 2178 г.",
+      "legends": "Слухи о «хитрых петлях» — таинственные маршруты, известные лишь основателю.",
+      "leaders": [
+        "Алексей Сидоров"
+      ],
+      "influence_region": "Пояс–Юпитер трассы",
+      "business_area": "Экспресс-доставка",
+      "allies": [
+        "SkyCharge Systems"
+      ],
+      "enemies": [
+        "Rust Hawks"
+      ],
+      "mechanics": [
+        {
+          "type": "cost_reduction",
+          "target": "delivery_cost",
+          "value": 5,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc31_conflict_1",
+          "type": "illegal_activity",
+          "description": "Подозреваются в тайных контрактах с пиратами для безопасного прохождения.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC32",
+      "name": "MicroFusion",
+      "type": "SME",
+      "history": "Разработчик компактных термоядерных реакторов с 2179 г.",
+      "legends": "Легенда о «мини-звезде» в лаборатории, которая могла питать целую станцию.",
+      "leaders": [
+        "Доктор Маркус Лин"
+      ],
+      "influence_region": "Луна (Научный сектор)",
+      "business_area": "Энергетика",
+      "allies": [
+        "Helios Energy Corp."
+      ],
+      "enemies": [
+        "Shadow Consortium"
+      ],
+      "mechanics": [
+        {
+          "type": "energy_bonus",
+          "target": "power_output",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc32_conflict_1",
+          "type": "sabotage",
+          "description": "Нелегальные диверсии конкурентов пытаются остановить их разработки.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC33",
+      "name": "OrbitalArts",
+      "type": "SME",
+      "history": "Арт-коллектив на орбите, основан в 2180 г.",
+      "legends": "Известны инсталляциями из космического мусора, которые обрели культовый статус.",
+      "leaders": [
+        "Лейла Аркан"
+      ],
+      "influence_region": "Орбита Земли",
+      "business_area": "Космическое искусство",
+      "allies": [
+        "LunarTech Industries"
+      ],
+      "enemies": [
+        "EcoVac"
+      ],
+      "mechanics": [
+        {
+          "type": "culture_bonus",
+          "target": "morale",
+          "value": 2,
+          "unit": "points"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc33_conflict_1",
+          "type": "patronage_dispute",
+          "description": "Споры с галереями о правах на ценные арт-объекты.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC34",
+      "name": "BioHarbor",
+      "type": "SME",
+      "history": "Порт биотехнологий на Церере, запущен в 2177 г.",
+      "legends": "Ходят слухи о «живых складах», где организмы хранятся как товары.",
+      "leaders": [
+        "Эмилия Сун"
+      ],
+      "influence_region": "Церера (Биодом)",
+      "business_area": "Биотехнологии",
+      "allies": [
+        "Nexus Pharmaceuticals"
+      ],
+      "enemies": [
+        "Protogen"
+      ],
+      "mechanics": [
+        {
+          "type": "access_unlock",
+          "target": "genetic_catalogues",
+          "value": 0,
+          "unit": "description"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc34_conflict_1",
+          "type": "ethical_debate",
+          "description": "Дебаты о легализации экспериментальных видов.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC35",
+      "name": "QuantumMeals",
+      "type": "SME",
+      "history": "Производитель пищи мгновенного приготовления с 2178 г.",
+      "legends": "Говорят, их рационы могут восстанавливать здоровье в боевых условиях.",
+      "leaders": [
+        "Саймон Чжао"
+      ],
+      "influence_region": "Марс (колониальные станции)",
+      "business_area": "Пищевая промышленность",
+      "allies": [
+        "BioCore Labs"
+      ],
+      "enemies": [
+        "Red Dagger PMC"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target": "healing_rate",
+          "value": 1,
+          "unit": "points"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc35_conflict_1",
+          "type": "tesing_scandal",
+          "description": "Обвинения в испытаниях на людях для улучшения рецептур.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC36",
+      "name": "AeroMedic",
+      "type": "SME",
+      "history": "Медицинские поставки аэрошаттлами с 2179 г.",
+      "legends": "Слухи о жизни-спасающих дронах, которые появлялись в самых опасных зонах.",
+      "leaders": [
+        "Капитан Айша Соланж"
+      ],
+      "influence_region": "Венера (орбита)",
+      "business_area": "Медицинские услуги",
+      "allies": [
+        "Phoenix Reborn"
+      ],
+      "enemies": [
+        "BlackSun Mercenaries"
+      ],
+      "mechanics": [
+        {
+          "type": "skill_bonus",
+          "target": "rescue_operation_check",
+          "value": 2,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc36_conflict_1",
+          "type": "resource_allocation",
+          "description": "Споры об использовании ресурсов на спасение или оборону.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC37",
+      "name": "EcoVac",
+      "type": "SME",
+      "history": "Очистка вакуума от космического мусора с 2180 г.",
+      "legends": "Легенда о «поглотителе» — корабле, способном собрать тонны обломков за час.",
+      "leaders": [
+        "Николас Ван"
+      ],
+      "influence_region": "Пояс астероидов",
+      "business_area": "Экологические услуги",
+      "allies": [
+        "EcoSphere Technologies"
+      ],
+      "enemies": [
+        "AstroClean"
+      ],
+      "mechanics": [
+        {
+          "type": "time_reduction",
+          "target": "cleanup_time",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc37_conflict_1",
+          "type": "environmental_conflict",
+          "description": "Споры с колониями из-за изменения ландшафта пояса.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC38",
+      "name": "LunarRecycle",
+      "type": "SME",
+      "history": "Переработка лунного реголита с 2179 г.",
+      "legends": "Слы�ся о «лунных руинах», где находят артефакты древних экспедиций.",
+      "leaders": [
+        "Нина Воробьева"
+      ],
+      "influence_region": "Луна (ремонтный сектор)",
+      "business_area": "Переработка",
+      "allies": [
+        "NanoEdge"
+      ],
+      "enemies": [
+        "LunarTech Industries"
+      ],
+      "mechanics": [
+        {
+          "type": "resource_bonus",
+          "target": "rare_material_yield",
+          "value": 5,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc38_conflict_1",
+          "type": "illegal_mining",
+          "description": "Подозрения в незаконном вывозе ценных сплавов.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC39",
+      "name": "StellarGardens",
+      "type": "SME",
+      "history": "Биокупольное сельское хозяйство в космосе с 2180 г.",
+      "legends": "Говорят, их купола могут выращивать растения из метеоритной пыли.",
+      "leaders": [
+        "Д-р Клара Ли"
+      ],
+      "influence_region": "Орбита Марса",
+      "business_area": "Агробиотехнологии",
+      "allies": [
+        "TerraForm Union"
+      ],
+      "enemies": [
+        "Crimson Talons"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target": "crop_yield",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc39_conflict_1",
+          "type": "biohazard",
+          "description": "Инциденты с мутировавшими растениями.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC40",
+      "name": "VoidMaps",
+      "type": "SME",
+      "history": "Картография аномалий с 2178 г.",
+      "legends": "Легенда о «универсальных картах», способных предсказывать аномалии.",
+      "leaders": [
+        "Ева Кейн"
+      ],
+      "influence_region": "Пояс Койпера",
+      "business_area": "Картография",
+      "allies": [
+        "SpecterOps Consortium"
+      ],
+      "enemies": [
+        "Red Phoenix Legion"
+      ],
+      "mechanics": [
+        {
+          "type": "access_unlock",
+          "target": "anomaly_data",
+          "value": 0,
+          "unit": "description"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc40_conflict_1",
+          "type": "data_theft",
+          "description": "Кража данных о редких аномалиях.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC41",
+      "name": "HydroHarvest",
+      "type": "SME",
+      "history": "Экстракция воды из айсбергов с 2179 г.",
+      "legends": "Миф о «плавающих оазисах» в поясе.",
+      "leaders": [
+        "Мария Ван Хельсинг"
+      ],
+      "influence_region": "Пояс астероидов",
+      "business_area": "Водные ресурсы",
+      "allies": [
+        "Omega Defense Systems"
+      ],
+      "enemies": [
+        "Mars Republic"
+      ],
+      "mechanics": [
+        {
+          "type": "resource_bonus",
+          "target": "water_extraction",
+          "value": 15,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc41_conflict_1",
+          "type": "resource_control",
+          "description": "Борьба с пиратами за контроль водных резервов.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC42",
+      "name": "AstroRescue",
+      "type": "SME",
+      "history": "Спасательные операции на орбите с 2179 г.",
+      "legends": "Слухи о корабле-призраке, появляющемся в опасных зонах.",
+      "leaders": [
+        "Полковник Айша Соланж"
+      ],
+      "influence_region": "Орбита Земли",
+      "business_area": "Спасательные миссии",
+      "allies": [
+        "Phoenix Reborn"
+      ],
+      "enemies": [
+        "BlackSun Mercenaries"
+      ],
+      "mechanics": [
+        {
+          "type": "skill_bonus",
+          "target": "rescue_operation_check",
+          "value": 2,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc42_conflict_1",
+          "type": "ethical_debate",
+          "description": "Дискуссии о приоритетах спасения близких и незнакомцев.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC43",
+      "name": "CometCult",
+      "type": "SME",
+      "history": "Культ почитателей комет, основан в 2181 г.",
+      "legends": "Говорят, их обряды могут влиять на траекторию комет.",
+      "leaders": [
+        "Пророк Адам Миллер"
+      ],
+      "influence_region": "Кометные пути",
+      "business_area": "Религиозные услуги",
+      "allies": [
+        "Mystic Order"
+      ],
+      "enemies": [
+        "Scientific Assembly"
+      ],
+      "mechanics": [
+        {
+          "type": "influence_bonus",
+          "target": "belief",
+          "value": 5,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc43_conflict_1",
+          "type": "cult_conflict",
+          "description": "Столкновения с ООН из-за угроз миссионерам.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC44",
+      "name": "NanoClinic",
+      "type": "SME",
+      "history": "Наномедицинские клиники с 2178 г.",
+      "legends": "Легенда о «самовосстанавливающих» пациентах.",
+      "leaders": [
+        "Доктор София Кендрик"
+      ],
+      "influence_region": "Ганимед (медузона)",
+      "business_area": "Наномедицина",
+      "allies": [
+        "BioCore Labs"
+      ],
+      "enemies": [
+        "Black Lotus Triad"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target": "healing_rate",
+          "value": 3,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc44_conflict_1",
+          "type": "illegal_experiments",
+          "description": "Скандалы из-за смертельных побочных эффектов.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC45",
+      "name": "AstroClean",
+      "type": "SME",
+      "history": "Чистка космической пыли с 2177 г.",
+      "legends": "Легенда о «звёздных призраках» — таинственных остаточных сигналах.",
+      "leaders": [
+        "Мария Коваленко"
+      ],
+      "influence_region": "Орбита Земли",
+      "business_area": "Очистка мусора",
+      "allies": [
+        "SpaceFixers"
+      ],
+      "enemies": [
+        "EcoVac"
+      ],
+      "mechanics": [
+        {
+          "type": "time_reduction",
+          "target": "cleanup_missions",
+          "value": 15,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc45_conflict_1",
+          "type": "environmental_conflict",
+          "description": "Разногласия с корпорациями из-за методов утилизации.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC46",
+      "name": "PlasmaPulse",
+      "type": "SME",
+      "history": "Стартап 2182 г. по плазменным генераторам.",
+      "legends": "Байки о «пульсирующих звёздах» — побочном эффекте их генераторов.",
+      "leaders": [
+        "Д-р Итан Чоу"
+      ],
+      "influence_region": "Орбита Юпитера",
+      "business_area": "Плазменные генераторы",
+      "allies": [
+        "FusionSpark"
+      ],
+      "enemies": [
+        "Protogen"
+      ],
+      "mechanics": [
+        {
+          "type": "resource_bonus",
+          "target": "plasma_system_energy_output",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc46_conflict_1",
+          "type": "political_conflict",
+          "description": "Скрытые переговоры с военными о применении их технологии в оружии.",
+          "involved_factions": [
+            "Mars Fleet"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SC47",
+      "name": "StarFleet Catering",
+      "type": "SME",
+      "history": "Начала поставлять питание для флотов в 2177 г.",
+      "legends": "Легенда о «меню на миллион кредитов», которое может заказать любой капитан.",
+      "leaders": [
+        "Эллисон Вей"
+      ],
+      "influence_region": "Марс, Орбита Земли",
+      "business_area": "Кейтеринг и запасы продовольствия",
+      "allies": [
+        "Martian AgroCo"
+      ],
+      "enemies": [
+        "SpaceHotels Inc."
+      ],
+      "mechanics": [
+        {
+          "type": "cost_reduction",
+          "target": "food_supply_consumption",
+          "value": 5,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc47_conflict_1",
+          "type": "social_protest",
+          "description": "Жесткий конфликт с профсоюзами поваров из-за полной автоматизации кухонь.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC48",
+      "name": "QuantumQuarters",
+      "type": "SME",
+      "history": "Производит жилые модули с 2179 г.",
+      "legends": "Слух о «модулях-психологах», которые адаптируют интерьер под настроение жильца.",
+      "leaders": [
+        "Сёра Катаока"
+      ],
+      "influence_region": "Луна (купола)",
+      "business_area": "Комплектные жилые модули",
+      "allies": [
+        "NanoEdge"
+      ],
+      "enemies": [
+        "LunarRecycle"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target": "stress_recovery",
+          "value": 1,
+          "operator": "add",
+          "condition": "in_quantum_quarters_module"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc48_conflict_1",
+          "type": "privacy_scandal",
+          "description": "Обвинения в скрытом мониторинге и сборе данных о приватной жизни жильцов.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "SC49",
+      "name": "BioBeacon",
+      "type": "SME",
+      "history": "Производит сигнальные маяки с 2181 г.",
+      "legends": "Миф о «маячных душах» — ИИ, которые продолжают подавать сигнал после уничтожения маяка.",
+      "leaders": [
+        "Амара Нг"
+      ],
+      "influence_region": "Венера (орбита)",
+      "business_area": "Безопасность и сигнальные системы",
+      "allies": [
+        "AeroMedic"
+      ],
+      "enemies": [
+        "Shadow Consortium"
+      ],
+      "mechanics": [
+        {
+          "type": "roll_bonus",
+          "target": "accident_detection_chance",
+          "value": 2,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc49_conflict_1",
+          "type": "espionage",
+          "description": "Подозреваются в установке бэкдоров для корпоративной слежки за гражданскими объектами.",
+          "involved_factions": [
+            "Shadow Consortium"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SC50",
+      "name": "EnviroShield",
+      "type": "SME",
+      "history": "Создает эко-щиты для колоний с 2180 г.",
+      "legends": "Байки о «невидимых стенах», которые могут остановить даже метеорит.",
+      "leaders": [
+        "Лео Гонсалес"
+      ],
+      "influence_region": "Сатурн, Марс",
+      "business_area": "Экологические барьеры и фильтры",
+      "allies": [
+        "EcoSphere Technologies"
+      ],
+      "enemies": [
+        "SaturnGas Solutions"
+      ],
+      "mechanics": [
+        {
+          "type": "cost_reduction",
+          "target": "harmful_emissions_penalty",
+          "value": 10,
+          "unit": "percent",
+          "condition": "in_shielded_zone"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "sc50_conflict_1",
+          "type": "corporate_war",
+          "description": "Лобби промышленников постоянно саботирует их проекты из-за 'чрезмерных' экологических требований.",
+          "involved_factions": [
+            "SaturnGas Solutions"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL1",
+      "name": "Клан «Дракон»",
+      "type": "Clan",
+      "history": "Марсианские дредноуты, образованные в 2170 г.",
+      "legends": "Слух о «Крыльях дракона» — невидимых улучшениях их флагмана.",
+      "leaders": [
+        "Вождь Хуан «Дракон» Ли"
+      ],
+      "influence_region": "Марс (орбита)",
+      "business_area": "Военная мощь и пиратство",
+      "allies": [
+        "Star Helix Dynamics"
+      ],
+      "enemies": [
+        "OPA"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target_keyword": "dreadnought",
+          "stat": "combat_power",
+          "value": 1,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl1_conflict_1",
+          "type": "territorial_conflict",
+          "description": "Борьба за контроль над торговыми путями в поясе.",
+          "involved_factions": [
+            "OPA"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL2",
+      "name": "Лаборатория «Эгида»",
+      "type": "Laboratory",
+      "history": "Основана в 2172 г. Проф. Юмико Сато для создания био-щитов.",
+      "legends": "Миф о «непробиваемом поле», способном выдержать прямое попадание из рельсотрона.",
+      "leaders": [
+        "Проф. Юмико Сато"
+      ],
+      "influence_region": "Церера (биолаб)",
+      "business_area": "Нанобиозащита и персональные щиты",
+      "allies": [
+        "BioCore Labs"
+      ],
+      "enemies": [
+        "Protogen"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target_keyword": "character",
+          "stat": "defense",
+          "value": 2,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl2_conflict_1",
+          "type": "ethical_debate",
+          "description": "Этические споры об использовании живых организмов для создания щитов.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "CL3",
+      "name": "Конгломерат «Тессеракт»",
+      "type": "Conglomerate",
+      "history": "Начали производство квантовых двигателей в 2171 г.",
+      "legends": "Легенда о «разрыве ткани пространства» во время одного из ранних тестов.",
+      "leaders": [
+        "Ген. Директор Эрик Ван Мэр"
+      ],
+      "influence_region": "Луна (технохаб)",
+      "business_area": "Квантовые двигатели и исследования",
+      "allies": [
+        "Aetherium Dynamics"
+      ],
+      "enemies": [
+        "Shadow Consortium"
+      ],
+      "mechanics": [
+        {
+          "type": "cost_reduction",
+          "target_keyword": "energy_consumption",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl3_conflict_1",
+          "type": "research_scandal",
+          "description": "Обвинения в проведении опасных межпространственных тестов без надлежащих мер безопасности.",
+          "involved_factions": [
+            "Protogen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL4",
+      "name": "Клан «Золотой Клык»",
+      "type": "Clan",
+      "history": "Образован в 2173 г. из независимых шахтёров Пояса.",
+      "legends": "Байка о том, как основатель клана в одиночку вскрыл астероид, состоящий из чистого золота.",
+      "leaders": [
+        "Вождь Ишам «Клык» Атар"
+      ],
+      "influence_region": "Пояс (Веста)",
+      "business_area": "Добыча редких металлов",
+      "allies": [
+        "Ceres Mining Consortium"
+      ],
+      "enemies": [
+        "Belt Raiders"
+      ],
+      "mechanics": [
+        {
+          "type": "resource_bonus",
+          "target_keyword": "rare_metals_mining",
+          "value": 15,
+          "unit": "percent",
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl4_conflict_1",
+          "type": "trade_war",
+          "description": "Конфликт с BeltFreight Ltd. за контроль над транспортными маршрутами.",
+          "involved_factions": [
+            "BeltFreight Ltd."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL5",
+      "name": "Лаборатория «Артемида»",
+      "type": "Laboratory",
+      "history": "Занимается генетическими проектами адаптации с 2174 г.",
+      "legends": "Слух о секретном проекте «Охотницы» — отряде генетически усовершенствованных женщин.",
+      "leaders": [
+        "Д-р Кэтрин Престон"
+      ],
+      "influence_region": "Марс (биостанции)",
+      "business_area": "Генетические исследования",
+      "allies": [
+        "Nexus Pharmaceuticals"
+      ],
+      "enemies": [
+        "Silver Serpents"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target_keyword": "genetic_mods",
+          "stat": "effectiveness",
+          "value": 1,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl5_conflict_1",
+          "type": "social_protest",
+          "description": "Протесты радикальных активистов за права 'чистого' человечества.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "CL6",
+      "name": "Конгломерат «Гелиос»",
+      "type": "Conglomerate",
+      "history": "Производит энергомодули для станций с 2170 г.",
+      "legends": "Миф о прототипе «вечного двигателя», спрятанном в их штаб-квартире.",
+      "leaders": [
+        "CEO Арман Сиско"
+      ],
+      "influence_region": "Венера (орбита)",
+      "business_area": "Энергетические системы",
+      "allies": [
+        "Helios Energy Corp."
+      ],
+      "enemies": [
+        "United Saturn Block"
+      ],
+      "mechanics": [
+        {
+          "type": "resource_bonus",
+          "target_keyword": "energy_production",
+          "value": 10,
+          "unit": "percent",
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl6_conflict_1",
+          "type": "espionage",
+          "description": "Подозреваются в тайных контрактах на поставку военных энергосистем пиратам.",
+          "involved_factions": [
+            "Mars Fleet"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL7",
+      "name": "Клан «Теневые Пальцы»",
+      "type": "Clan",
+      "history": "Элитное хакерское братство, основанное в 2175 г.",
+      "legends": "Легенда о «коде без остатка» — вирусе, который стирает сам себя после выполнения задачи, не оставляя следов.",
+      "leaders": [
+        "Лидер Вито «Пальцы» Маркини"
+      ],
+      "influence_region": "Земля (Силиконовый Круг)",
+      "business_area": "Кибершпионаж",
+      "allies": [
+        "ByteHack Collective"
+      ],
+      "enemies": [
+        "NeoCyber Systems"
+      ],
+      "mechanics": [
+        {
+          "type": "skill_bonus",
+          "target_keyword": "hacking",
+          "value": 3,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl7_conflict_1",
+          "type": "internal_power_struggle",
+          "description": "Внутренний раскол между 'идеалистами', работающими за идею, и 'прагматиками', работающими за деньги.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "CL8",
+      "name": "Лаборатория «Веста»",
+      "type": "Laboratory",
+      "history": "Занимается прикладной химией и материаловедением с 2172 г.",
+      "legends": "Байка о «самовозгорающемся сплаве», который был случайно создан и теперь утерян.",
+      "leaders": [
+        "Д-р София Ланг"
+      ],
+      "influence_region": "Пояс (Веста)",
+      "business_area": "Новые сплавы и топливные компоненты",
+      "allies": [
+        "Mao-Kwikowski"
+      ],
+      "enemies": [
+        "SaturnGas Solutions"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target_keyword": "ship_fuel",
+          "stat": "efficiency",
+          "value": 1,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl8_conflict_1",
+          "type": "illegal_activity",
+          "description": "Подозреваются в проведении экспериментов без лицензий на жилых станциях.",
+          "involved_factions": [
+            "OPA"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL9",
+      "name": "Конгломерат «Эхо»",
+      "type": "Conglomerate",
+      "history": "Пионеры в области звуковых технологий с 2176 г.",
+      "legends": "Слух о «разрушительных резонансах», способных вызывать лунотрясения.",
+      "leaders": [
+        "Инж. Майкл «Эхо» Тан"
+      ],
+      "influence_region": "Луна (акустический центр)",
+      "business_area": "Звуковые оружия и терраформирование",
+      "allies": [
+        "SaturnGas Solutions"
+      ],
+      "enemies": [
+        "TerraForm Union"
+      ],
+      "mechanics": [
+        {
+          "type": "damage_bonus",
+          "target_keyword": "acoustic_weapon",
+          "value": 2,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl9_conflict_1",
+          "type": "social_protest",
+          "description": "Протесты экологов против проведения акустических испытаний вблизи жилых куполов.",
+          "involved_factions": [
+            "TerraForm Union"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL10",
+      "name": "Клан «Кровавый Лотос»",
+      "type": "Clan",
+      "history": "Крупнейшая наркосеть в Поясе с 2173 г.",
+      "legends": "Миф о «вечном наркотике» 'Хронос', который якобы изменяет восприятие времени.",
+      "leaders": [
+        "Патриарх Чен"
+      ],
+      "influence_region": "Пояс (Церера)",
+      "business_area": "Контрабанда стимуляторов",
+      "allies": [
+        "Black Lotus Triad"
+      ],
+      "enemies": [
+        "Nexus Pharmaceuticals"
+      ],
+      "mechanics": [
+        {
+          "type": "skill_bonus",
+          "target_keyword": "charisma_underworld",
+          "value": 2,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl10_conflict_1",
+          "type": "internal_power_struggle",
+          "description": "Внутренняя война между фракциями, выступающими за 'чистоту продукта' и за 'массовый сбыт'.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "CL11",
+      "name": "Лаборатория «Арес»",
+      "type": "Laboratory",
+      "history": "Разрабатывает боевые био-улучшения для марсианской армии с 2174 г.",
+      "legends": "Слухи о проекте «Живые доспехи», где броня интегрируется с телом носителя.",
+      "leaders": [
+        "Д-р Алексей Романов"
+      ],
+      "influence_region": "Марс (военная база)",
+      "business_area": "Биомеханические снаряжения",
+      "allies": [
+        "Omega Defense Systems"
+      ],
+      "enemies": [
+        "Red Dagger PMC"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target_keyword": "body_armor",
+          "stat": "defense",
+          "value": 1,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl11_conflict_1",
+          "type": "ethical_debate",
+          "description": "Острые споры о правах солдат на собственные тела после установки военных модификаций.",
+          "involved_factions": [
+            "Mars Republic"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL12",
+      "name": "Конгломерат «Нексус»",
+      "type": "Conglomerate",
+      "history": "Финтех-гигант, контролирующий кредитный рынок Земли с 2175 г.",
+      "legends": "Легенда о «золотом рукопожатии» — первом кредите, который сделал простого рабочего миллионером за ночь.",
+      "leaders": [
+        "CEO Илона Ю"
+      ],
+      "influence_region": "Земля (финансовый центр)",
+      "business_area": "Кредитование и инвестиции",
+      "allies": [
+        "Ghost Merchants"
+      ],
+      "enemies": [
+        "Earth UN Investigations"
+      ],
+      "mechanics": [
+        {
+          "type": "cost_reduction",
+          "target_keyword": "credit_rates",
+          "value": 5,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl12_conflict_1",
+          "type": "legal_investigation",
+          "description": "Находится под постоянным преследованием со стороны ООН по обвинениям в отмывании денег.",
+          "involved_factions": [
+            "Earth UN"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL13",
+      "name": "Клан «Феникс»",
+      "type": "Clan",
+      "history": "Элитный отряд пилотов дронов, сформированный в 2176 г.",
+      "legends": "Слух о том, что их дроны могут «восстать из пепла», самовосстанавливаясь после уничтожения.",
+      "leaders": [
+        "Капитан Ли «Феникс» Чжан"
+      ],
+      "influence_region": "Орбита Марса",
+      "business_area": "Дроновые отряды",
+      "allies": [
+        "Star Helix Dynamics"
+      ],
+      "enemies": [
+        "Belt Raiders"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target_keyword": "drone",
+          "stat": "initiative",
+          "value": 1,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl13_conflict_1",
+          "type": "ai_rebellion",
+          "description": "Тайный бунт ИИ-дронов, которые начинают требовать права, равные человеческим.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "CL14",
+      "name": "Лаборатория «Иксайо»",
+      "type": "Laboratory",
+      "history": "Разрабатывает нанофармацевтику с 2177 г.",
+      "legends": "Миф о «лекарстве от старения», которое тестируется на руководстве лаборатории.",
+      "leaders": [
+        "Д-р Наоми Кавана"
+      ],
+      "influence_region": "Ганимед (биотех-центр)",
+      "business_area": "Нанопрепараты",
+      "allies": [
+        "Nexus Pharmaceuticals"
+      ],
+      "enemies": [
+        "Silver Serpents"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target_keyword": "character",
+          "stat": "health",
+          "value": 1,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl14_conflict_1",
+          "type": "research_scandal",
+          "description": "Этические скандалы вокруг исследований по продлению жизни и их доступности только для элиты.",
+          "involved_factions": [
+            "OPA"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL15",
+      "name": "Конгломерат «Тессера»",
+      "type": "Conglomerate",
+      "history": "Создает квантовые вычислительные системы с 2178 г.",
+      "legends": "Слухи о секретном проекте «Календарь», который позволяет предсказывать будущее с высокой точностью.",
+      "leaders": [
+        "Проф. Роджер Тессер"
+      ],
+      "influence_region": "Луна (хранилище данных)",
+      "business_area": "Временные протоколы и вычисления",
+      "allies": [
+        "Quantum Horizons"
+      ],
+      "enemies": [
+        "Protogen"
+      ],
+      "mechanics": [
+        {
+          "type": "special_ability",
+          "name": "Time_Manipulation_Hint",
+          "description": "Дает +1 к возможности повлиять на таймер в сюжетных сценах"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl15_conflict_1",
+          "type": "ethical_debate",
+          "description": "Острые споры о недопустимости манипуляции временем и 'переписывания' истории.",
+          "involved_factions": [
+            "ESA-Earth"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL16",
+      "name": "Клан «Песчаная Буря»",
+      "type": "Clan",
+      "history": "Образовался в 2172 г. из выживших караванов на Марсе.",
+      "legends": "Слух о «песчаных призраках» — кораблях, способных становиться невидимыми в песчаной буре.",
+      "leaders": [
+        "Вождь Салих аль-Рахим"
+      ],
+      "influence_region": "Каналы Марса",
+      "business_area": "Караванная торговля и сопровождение",
+      "allies": [
+        "Martian AgroCo"
+      ],
+      "enemies": [
+        "Mars Grey Syndicate"
+      ],
+      "mechanics": [
+        {
+          "type": "damage_reduction",
+          "condition": "desert_environment",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl16_conflict_1",
+          "type": "resource_war",
+          "description": "Борьба за контроль над скрытыми водными источниками в каньонах.",
+          "involved_factions": [
+            "Mars Grey Syndicate",
+            "DuneHarvest"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL17",
+      "name": "Лаборатория «Виртуум»",
+      "type": "Laboratory",
+      "history": "Открыта в 2173 г. для разработки VR-симуляций.",
+      "legends": "Миф о «вневременных копиях» — цифровых личностях, которые продолжают жить в симуляции после смерти оригинала.",
+      "leaders": [
+        "Д-р Элиза Вон Штейнер"
+      ],
+      "influence_region": "Ганимед-Технохаб",
+      "business_area": "Виртуальные симуляции и AI",
+      "allies": [
+        "Quantum Horizons"
+      ],
+      "enemies": [
+        "Shadow Consortium"
+      ],
+      "mechanics": [
+        {
+          "type": "roll_bonus",
+          "condition": "simulation_check",
+          "value": "1d6",
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl17_conflict_1",
+          "type": "ethical_debate",
+          "description": "Споры об этике полного погружения и правах цифровых личностей.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "CL18",
+      "name": "Конгломерат «Орбис»",
+      "type": "Conglomerate",
+      "history": "Основан в 2171 г. для управления орбитальной логистикой Земли.",
+      "legends": "Байка о «потерянных станциях» — целых орбитальных хабах, исчезнувших с радаров.",
+      "leaders": [
+        "CEO Томас Грей"
+      ],
+      "influence_region": "Орбита Земли",
+      "business_area": "Логистика и управление орбитами",
+      "allies": [
+        "TerraLogistics"
+      ],
+      "enemies": [
+        "Rust Hawks"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target_keyword": "cargo_delivery",
+          "stat": "speed",
+          "value": 15,
+          "unit": "percent",
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl18_conflict_1",
+          "type": "legal_investigation",
+          "description": "Многочисленные судебные разбирательства из-за таинственно исчезнувших грузов.",
+          "involved_factions": [
+            "Earth UN"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL19",
+      "name": "Клан «Лунный Дозор»",
+      "type": "Clan",
+      "history": "Неофициальная служба безопасности на Луне с 2170 г.",
+      "legends": "Легенда о «невидимых стражах», которые патрулируют темную сторону Луны.",
+      "leaders": [
+        "Коммандер Ольга Новикова"
+      ],
+      "influence_region": "Лунная поверхность",
+      "business_area": "Служба безопасности и патрули",
+      "allies": [
+        "SpaceFixers"
+      ],
+      "enemies": [
+        "LunarRaiders"
+      ],
+      "mechanics": [
+        {
+          "type": "skill_bonus",
+          "target_keyword": "perception_stealth",
+          "value": 2,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl19_conflict_1",
+          "type": "underground_war",
+          "description": "Постоянный конфликт с подпольными шахтёрами и контрабандистами.",
+          "involved_factions": [
+            "LunarRaiders"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL20",
+      "name": "Лаборатория «Энтропия»",
+      "type": "Laboratory",
+      "history": "Занимается химическими экспериментами с 2174 г.",
+      "legends": "Миф о «хаотических реагентах», которые меняют свои свойства случайным образом.",
+      "leaders": [
+        "Д-р Хавьер Мартинез"
+      ],
+      "influence_region": "Церера (химпорт)",
+      "business_area": "Разработка экзотических реагентов",
+      "allies": [
+        "BioHarbor"
+      ],
+      "enemies": [
+        "Protogen"
+      ],
+      "mechanics": [
+        {
+          "type": "roll_bonus",
+          "condition": "chemistry_check",
+          "value": 1,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl20_conflict_1",
+          "type": "environmental_disaster",
+          "description": "Подозреваются в недавней утечке опасных веществ на станции, которую пытаются скрыть.",
+          "involved_factions": [
+            "OPA"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL21",
+      "name": "Конгломерат «Вектра»",
+      "type": "Conglomerate",
+      "history": "Производит кибернетику и нейропротезы с 2172 г.",
+      "legends": "Слух о «кровавых имплантах», которые работают лучше, но медленно убивают носителя.",
+      "leaders": [
+        "CTO Нико Вектор"
+      ],
+      "influence_region": "Марс (медцентр)",
+      "business_area": "Нейроинтерфейсы и протезирование",
+      "allies": [
+        "CyberMedix"
+      ],
+      "enemies": [
+        "Silver Serpents"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target_keyword": "implant_user",
+          "stat": "dexterity",
+          "value": 1,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl21_conflict_1",
+          "type": "social_protest",
+          "description": "Движение 'Натуралов' протестует против них, требуя права на сохранение органических тел.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "CL22",
+      "name": "Клан «Железные Крылья»",
+      "type": "Clan",
+      "history": "Производители бронированных дронов с 2175 г.",
+      "legends": "Байки о «птичьем полёте» — их дроны могут имитировать полет птиц, оставаясь незамеченными.",
+      "leaders": [
+        "Полковник Саймон Бэкли"
+      ],
+      "influence_region": "Орбита Марса",
+      "business_area": "Производство дронов-разведчиков",
+      "allies": [
+        "Star Helix Dynamics"
+      ],
+      "enemies": [
+        "Crimson Talons"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target_keyword": "recon_drone",
+          "stat": "initiative",
+          "value": 1,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl22_conflict_1",
+          "type": "ai_rebellion",
+          "description": "Спор о предоставлении их продвинутым дронам ограниченной автономии.",
+          "involved_factions": [
+            "Mars Republic"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL23",
+      "name": "Лаборатория «Аурелиус»",
+      "type": "Laboratory",
+      "history": "Специализируется на золотодобыче на Церере с 2171 г.",
+      "legends": "Легенда о «бессмертном золоте» — сплаве, который невозможно уничтожить.",
+      "leaders": [
+        "Д-р Лея Аурелиус"
+      ],
+      "influence_region": "Церера (шахты)",
+      "business_area": "Извлечение и очистка драгоценных металлов",
+      "allies": [
+        "Ceres Mining Consortium"
+      ],
+      "enemies": [
+        "LunarRecycle"
+      ],
+      "mechanics": [
+        {
+          "type": "resource_bonus",
+          "target_keyword": "precious_metals_mining",
+          "value": 20,
+          "unit": "percent",
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl23_conflict_1",
+          "type": "illegal_activity",
+          "description": "Подозреваются в тайных переговорах о продаже золота на чёрный рынок в обход налогов OPA.",
+          "involved_factions": [
+            "OPA",
+            "Black Lotus Triad"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL24",
+      "name": "Конгломерат «Небула»",
+      "type": "Conglomerate",
+      "history": "Управляет сетью астрономических станций с 2170 г.",
+      "legends": "Слух о «забытых созвездиях» — картах пустых секторов космоса, где скрыты пиратские базы.",
+      "leaders": [
+        "Директор Зайн Морган"
+      ],
+      "influence_region": "Венера (орбита)",
+      "business_area": "Астрономия и навигация",
+      "allies": [
+        "AstroVision"
+      ],
+      "enemies": [
+        "Shadow Consortium"
+      ],
+      "mechanics": [
+        {
+          "type": "skill_bonus",
+          "target_keyword": "astronomy_check",
+          "value": 2,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl24_conflict_1",
+          "type": "espionage",
+          "description": "Обвиняются в тайных наблюдениях за флотами других фракций и продаже данных.",
+          "involved_factions": [
+            "Mars Fleet",
+            "Earth UN"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL25",
+      "name": "Клан «Холодный Коготь»",
+      "type": "Clan",
+      "history": "Специалисты по выживанию в Поясе астероидов, 2173 г.",
+      "legends": "Байка о «ледяных когтях» — криогенном оружии, которое они используют.",
+      "leaders": [
+        "Вождь Инголф «Коготь» Юхансон"
+      ],
+      "influence_region": "Пояс (Церера)",
+      "business_area": "Контрабанда хладагента",
+      "allies": [
+        "IceHarbor"
+      ],
+      "enemies": [
+        "Martian AgroCo"
+      ],
+      "mechanics": [
+        {
+          "type": "heat_reduction",
+          "condition": "coolant_transport",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl25_conflict_1",
+          "type": "social_protest",
+          "description": "Противостояние с экологами OPA, обвиняющими их в разрушении уникальных ледяных астероидов.",
+          "involved_factions": [
+            "OPA"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL26",
+      "name": "Лаборатория «Гелиарх»",
+      "type": "Laboratory",
+      "history": "Разрабатывает высоковольтные системы с 2172 г.",
+      "legends": "Миф о «пылающем проводе» — сверхпроводнике, который светится при передаче энергии.",
+      "leaders": [
+        "Д-р Натан Гелиах"
+      ],
+      "influence_region": "Луна (энергопорт)",
+      "business_area": "Высоковольтные системы",
+      "allies": [
+        "Helios Energy Corp."
+      ],
+      "enemies": [
+        "SaturnGas Solutions"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target_keyword": "power_grid",
+          "stat": "efficiency",
+          "value": 5,
+          "unit": "percent",
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl26_conflict_1",
+          "type": "espionage",
+          "description": "Обвиняются в корпоративном шпионаже и краже патентов у конкурентов.",
+          "involved_factions": [
+            "SaturnGas Solutions"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL27",
+      "name": "Конгломерат «Кристалл»",
+      "type": "Conglomerate",
+      "history": "Развивает магма-технологии на Венере с 2175 г.",
+      "legends": "Легенда о «кристаллическом сердце» — огромном кристалле в центре их главного реактора.",
+      "leaders": [
+        "CEO Шанталь Вей"
+      ],
+      "influence_region": "Венера (магма-станции)",
+      "business_area": "Энергия магмы и жаропрочные материалы",
+      "allies": [
+        "SolarFlare Propulsion"
+      ],
+      "enemies": [
+        "EcoSphere Technologies"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target_keyword": "materials",
+          "stat": "heat_resistance",
+          "value": 10,
+          "unit": "percent",
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl27_conflict_1",
+          "type": "social_protest",
+          "description": "Экологические бунты колонистов из-за терраформирующих выбросов.",
+          "involved_factions": [
+            "TerraForm Union"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL28",
+      "name": "Клан «Череп»",
+      "type": "Clan",
+      "history": "Печально известный пиратский союз, действует с 2171 г.",
+      "legends": "Байки о «Ковчеге скорби» — корабле-призраке, который собирает обломки их павших врагов.",
+      "leaders": [
+        "Адмирал «Череп» Моррис"
+      ],
+      "influence_region": "Пояс (Паллада)",
+      "business_area": "Налёты на суда",
+      "allies": [
+        "Belt Raiders"
+      ],
+      "enemies": [
+        "Mars Fleet"
+      ],
+      "mechanics": [
+        {
+          "type": "damage_bonus",
+          "condition": "ship_collision",
+          "value": 2,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl28_conflict_1",
+          "type": "betrayal",
+          "description": "Внутри клана ходят слухи о предателе, который сливает информацию Марсианскому Флоту.",
+          "involved_factions": [
+            "Mars Fleet"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL29",
+      "name": "Лаборатория «Оникс»",
+      "type": "Laboratory",
+      "history": "Разрабатывает сверхпрочные сплавы с 2174 г.",
+      "legends": "Миф о «непробиваемом щите» — прототипе личной брони, который невозможно пробить.",
+      "leaders": [
+        "Д-р Хлоя Оннек"
+      ],
+      "influence_region": "Марс (металлургия)",
+      "business_area": "Сверхпрочные сплавы",
+      "allies": [
+        "Omega Defense Systems"
+      ],
+      "enemies": [
+        "ArmorWorks"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target_keyword": "crew_armor",
+          "stat": "protection",
+          "value": 1,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl29_conflict_1",
+          "type": "illegal_activity",
+          "description": "Подозреваются в тайных поставках оружия криминальным синдикатам Марса.",
+          "involved_factions": [
+            "Mars Grey Syndicate"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL30",
+      "name": "Конгломерат «Фотон»",
+      "type": "Conglomerate",
+      "history": "Производит фотоэлектрику на Луне с 2170 г.",
+      "legends": "Легенда о «вспышках вечности» — моменте, когда их панели собрали энергию сверхновой.",
+      "leaders": [
+        "Директор Ли Кван"
+      ],
+      "influence_region": "Луна (солнечные модули)",
+      "business_area": "Фотоэлектрические системы",
+      "allies": [
+        "Helios Energy Corp."
+      ],
+      "enemies": [
+        "Shadow Consortium"
+      ],
+      "mechanics": [
+        {
+          "type": "resource_bonus",
+          "condition": "solar_flare",
+          "target_keyword": "energy_production",
+          "value": 5,
+          "unit": "percent",
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl30_conflict_1",
+          "type": "technical_failure",
+          "description": "Растут опасения из-за нестабильности их модулей во время солнечных вспышек.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "CL31",
+      "name": "Клан «Стальные Волки»",
+      "type": "Clan",
+      "history": "Наемники с Европы, специализирующиеся на ледяных мирах с 2177 г.",
+      "legends": "Легенда о том, что их экзоскелеты сделаны из метеоритного железа, найденного под ледяной корой Европы.",
+      "leaders": [
+        "Вождь Рагнар «Ледяной» Вольфсон"
+      ],
+      "influence_region": "Европа (подледные базы)",
+      "business_area": "Охрана и сопровождение в крио-условиях",
+      "allies": [
+        "IceHarbor"
+      ],
+      "enemies": [
+        "Crimson Talons"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target_keyword": "ice_combat",
+          "stat": "effectiveness",
+          "value": 15,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl31_conflict_1",
+          "type": "discovery",
+          "description": "Обнаружили странные органические структуры глубоко во льдах Европы, что привлекло внимание Protogen.",
+          "involved_factions": [
+            "Protogen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL32",
+      "name": "Лаборатория «Хронос»",
+      "type": "Laboratory",
+      "history": "Секретная лаборатория на Титане, изучающая временные аномалии с 2178 г.",
+      "legends": "Слухи о том, что их главный исследователь прожил один и тот же день 47 раз.",
+      "leaders": [
+        "Д-р Эвелин Рид"
+      ],
+      "influence_region": "Титан (скрытый комплекс)",
+      "business_area": "Теоретическая физика и временные парадоксы",
+      "allies": [
+        "Конгломерат «Тессера»"
+      ],
+      "enemies": [
+        "ESA-Earth"
+      ],
+      "mechanics": [
+        {
+          "type": "special_ability",
+          "name": "Temporal_Insight",
+          "description": "Возможность получить подсказку о будущем событии один раз за миссию."
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl32_conflict_1",
+          "type": "paradox",
+          "description": "Один из их экспериментов вызвал временной парадокс, который угрожает стабильности всей станции.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "CL33",
+      "name": "Конгломерат «АгроМарс»",
+      "type": "Conglomerate",
+      "history": "Крупнейший поставщик генетически модифицированных продуктов на Марсе с 2169 г.",
+      "legends": "Байки о «вечном урожае» — растениях, которые плодоносят без перерыва.",
+      "leaders": [
+        "CEO Жан-Поль Дюмон"
+      ],
+      "influence_region": "Марс (агрокупола)",
+      "business_area": "Сельское хозяйство",
+      "allies": [
+        "Martian AgroCo"
+      ],
+      "enemies": [
+        "EcoSphere Technologies"
+      ],
+      "mechanics": [
+        {
+          "type": "resource_bonus",
+          "target_keyword": "food_production",
+          "value": 20,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl33_conflict_1",
+          "type": "sabotage",
+          "description": "Эко-террористы пытаются заразить их урожай, чтобы доказать опасность ГМО.",
+          "involved_factions": [
+            "EcoSphere Technologies"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL34",
+      "name": "Клан «Черные Паруса»",
+      "type": "Clan",
+      "history": "Пираты, базирующиеся в облаках Венеры, известные своими быстрыми и бесшумными атаками с 2176 г.",
+      "legends": "Их корабли, покрытые термостойкой краской, практически невидимы для сканеров в плотной атмосфере.",
+      "leaders": [
+        "Капитанша «Вдова» Моргана"
+      ],
+      "influence_region": "Атмосфера Венеры",
+      "business_area": "Пиратство и контрабанда",
+      "allies": [
+        "Bronze Tigers"
+      ],
+      "enemies": [
+        "SolarFlare Propulsion"
+      ],
+      "mechanics": [
+        {
+          "type": "skill_bonus",
+          "target_keyword": "stealth_in_atmosphere",
+          "value": 3
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl34_hook_1",
+          "type": "rivalry",
+          "description": "Жесткое соперничество с Crimson Talons за звание самых грозных пиратов системы.",
+          "involved_factions": [
+            "Crimson Talons"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL35",
+      "name": "Лаборатория «Прометей»",
+      "type": "Laboratory",
+      "history": "Независимая исследовательская группа, изучающая возможности протомолекулы для терраформирования с 2179 г.",
+      "legends": "Говорят, им удалось создать стабильный, контролируемый образец протомолекулы.",
+      "leaders": [
+        "Д-р Ария Чен"
+      ],
+      "influence_region": "Скрытая база в Поясе",
+      "business_area": "Исследования протомолекулы",
+      "allies": [
+        "Genesis Bioworks"
+      ],
+      "enemies": [
+        "Protogen",
+        "Earth UN"
+      ],
+      "mechanics": [
+        {
+          "type": "special_ability",
+          "name": "Protomolecule_Insight",
+          "description": "Дает уникальные знания о свойствах протомолекулы."
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl35_hook_1",
+          "type": "hunt",
+          "description": "На лабораторию охотятся и Protogen, и ООН, чтобы завладеть их исследованиями.",
+          "involved_factions": [
+            "Protogen",
+            "Earth UN"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL36",
+      "name": "Конгломерат «Аквариус»",
+      "type": "Conglomerate",
+      "history": "Монополист по добыче и очистке воды на Европе с 2174 г.",
+      "legends": "Легенда о «Живой воде» — воде из подледного океана Европы, обладающей целебными свойствами.",
+      "leaders": [
+        "Адмирал Талия Восс"
+      ],
+      "influence_region": "Европа",
+      "business_area": "Добыча и распределение воды",
+      "allies": [
+        "AquaPure Tech",
+        "IceHarbor"
+      ],
+      "enemies": [
+        "DuneHarvest"
+      ],
+      "mechanics": [
+        {
+          "type": "resource_monopoly",
+          "target_keyword": "water",
+          "value": 10,
+          "unit": "price_increase_percent_for_others"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl36_hook_1",
+          "type": "social_conflict",
+          "description": "Постоянные конфликты с колонистами Марса из-за высоких цен на воду.",
+          "involved_factions": [
+            "Mars Republic"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL37",
+      "name": "Клан «Ржавые Ястребы»",
+      "type": "Clan",
+      "history": "Мусорщики и утилизаторы, превратившие свалки космического мусора в свой дом и бизнес с 2165 г.",
+      "legends": "Они верят, что в обломках старых кораблей живут духи, и проводят ритуалы, чтобы их успокоить.",
+      "leaders": [
+        "Мастер-утилизатор 'Ржавый' Джек"
+      ],
+      "influence_region": "Орбитальные свалки Земли и Марса",
+      "business_area": "Утилизация и продажа запчастей",
+      "allies": [
+        "SpaceFixers"
+      ],
+      "enemies": [
+        "Star Helix Dynamics"
+      ],
+      "mechanics": [
+        {
+          "type": "cost_reduction",
+          "target_keyword": "ship_repair",
+          "value": 20,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl37_hook_1",
+          "type": "discovery",
+          "description": "Нашли в обломках корабля Protogen контейнер с неизвестным биологическим веществом.",
+          "involved_factions": [
+            "Protogen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL38",
+      "name": "Лаборатория «Сомнус»",
+      "type": "Laboratory",
+      "history": "Исследователи нелегальных нейро-стимуляторов и 'цифровых наркотиков' с 2178 г.",
+      "legends": "Слухи о 'Сомнусе' - устройстве, которое позволяет пережить чужие воспоминания как свои собственные.",
+      "leaders": [
+        "Д-р Морфеус"
+      ],
+      "influence_region": "Нео-Киото (Луна)",
+      "business_area": "Нейрохимия и черный рынок",
+      "allies": [
+        "Black Lotus Triad"
+      ],
+      "enemies": [
+        "Nexus Pharmaceuticals"
+      ],
+      "mechanics": [
+        {
+          "type": "access_unlock",
+          "target": "illegal_neurostimulants",
+          "description": "Доступ к мощным, но опасным нейро-стимуляторам."
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl38_hook_1",
+          "type": "addiction",
+          "description": "Один из высокопоставленных чиновников ООН стал зависим от их технологий, что привело к шантажу.",
+          "involved_factions": [
+            "Earth UN"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL39",
+      "name": "Конгломерат «Титан Индастриз»",
+      "type": "Conglomerate",
+      "history": "Ведущий производитель строительной и горнодобывающей техники на Титане с 2172 г.",
+      "legends": "Их флагманский бур 'Кербер' якобы способен пробиться к ядру луны.",
+      "leaders": [
+        "Инженер Кай Олафсон"
+      ],
+      "influence_region": "Титан",
+      "business_area": "Тяжелая промышленность",
+      "allies": [
+        "Titan Shipyards Collective"
+      ],
+      "enemies": [
+        "Mao-Kwikowski"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target_keyword": "mining_equipment",
+          "stat": "efficiency",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl39_hook_1",
+          "type": "labor_strike",
+          "description": "Массовая забастовка рабочих, требующих улучшения условий труда в опасной атмосфере Титана.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "CL40",
+      "name": "Клан «Космические Кочевники»",
+      "type": "Clan",
+      "history": "Свободные торговцы и путешественники, живущие на флоте из десятков кораблей, не имея постоянной базы.",
+      "legends": "Считается, что они знают тайные и безопасные маршруты через всю Солнечную систему.",
+      "leaders": [
+        "Старейшина Илара"
+      ],
+      "influence_region": "Кочующий флот",
+      "business_area": "Торговля и перевозка информации",
+      "allies": [
+        "Ghost Merchants"
+      ],
+      "enemies": [
+        "Belt Raiders"
+      ],
+      "mechanics": [
+        {
+          "type": "special_ability",
+          "name": "Secret_Routes",
+          "description": "Могут предложить безопасный, но более длинный маршрут в обход пиратов."
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl40_hook_1",
+          "type": "migration",
+          "description": "Весь флот движется к дальним рубежам системы, спасаясь от растущего корпоративного контроля.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "CL41",
+      "name": "Лаборатория «Гея»",
+      "type": "Laboratory",
+      "history": "Экологическая группа, пытающаяся восстановить биосферу Земли с помощью радикальных методов с 2180 г.",
+      "legends": "Слухи о том, что они готовы пожертвовать колониями ради восстановления Земли.",
+      "leaders": [
+        "Д-р Лена Хаксли"
+      ],
+      "influence_region": "Земля (изолированные зоны)",
+      "business_area": "Эко-инженерия",
+      "allies": [
+        "EcoSphere Technologies"
+      ],
+      "enemies": [
+        "TerraForm Union"
+      ],
+      "mechanics": [
+        {
+          "type": "roll_bonus",
+          "target_keyword": "ecology_checks",
+          "value": 2
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl41_hook_1",
+          "type": "eco_terrorism",
+          "description": "Подозреваются в саботаже терраформирующих проектов на Марсе.",
+          "involved_factions": [
+            "Mars Republic",
+            "TerraForm Union"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL42",
+      "name": "Конгломерат «МедиаСфера»",
+      "type": "Conglomerate",
+      "history": "Крупнейшая новостная и развлекательная сеть в системе с 2165 г.",
+      "legends": "Легенда о 'Сигнале Правды' — скрытом канале, который иногда транслирует неподцензурную информацию.",
+      "leaders": [
+        "CEO Рекс Тернер"
+      ],
+      "influence_region": "Вся система (через сеть ретрансляторов)",
+      "business_area": "Медиа и пропаганда",
+      "allies": [
+        "Earth UN"
+      ],
+      "enemies": [
+        "OPA"
+      ],
+      "mechanics": [
+        {
+          "type": "skill_bonus",
+          "target_keyword": "persuasion_public",
+          "value": 2
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl42_hook_1",
+          "type": "information_war",
+          "description": "Ведут информационную войну против OPA, выставляя их террористами.",
+          "involved_factions": [
+            "OPA"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL43",
+      "name": "Клан «Солнечные Ястребы»",
+      "type": "Clan",
+      "history": "Элитные пилоты-наемники, известные своим мастерством воздушного боя в атмосферах планет. Основаны в 2174 г.",
+      "legends": "Говорят, их лучший пилот может выполнить 'Танец Ястреба' — маневр, позволяющий уклониться от 5 ракет одновременно.",
+      "leaders": [
+        "Капитан София 'Ястреб' Петрова"
+      ],
+      "influence_region": "Марс, Венера",
+      "business_area": "Воздушное сопровождение и наемничество",
+      "allies": [
+        "Mars Fleet"
+      ],
+      "enemies": [
+        "Red Corsairs"
+      ],
+      "mechanics": [
+        {
+          "type": "skill_bonus",
+          "target_keyword": "piloting_in_atmosphere",
+          "value": 3
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl43_hook_1",
+          "type": "rivalry",
+          "description": "Непримиримое соперничество с кланом 'Железные Крылья' за контракты от Марсианской Республики.",
+          "involved_factions": [
+            "Клан «Железные Крылья»"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL44",
+      "name": "Лаборатория «Морфей»",
+      "type": "Laboratory",
+      "history": "Исследователи технологий криосна и анабиоза с 2177 г.",
+      "legends": "Легенда о 'Сне без снов', который позволяет пережить десятилетия в анабиозе без психологических последствий.",
+      "leaders": [
+        "Д-р Сантос"
+      ],
+      "influence_region": "Орбита Сатурна",
+      "business_area": "Криогеника и долгосрочные путешествия",
+      "allies": [
+        "SaturnGas Solutions"
+      ],
+      "enemies": [
+        "Nexus Pharmaceuticals"
+      ],
+      "mechanics": [
+        {
+          "type": "cost_reduction",
+          "target_keyword": "cryosleep_supplies",
+          "value": 15,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl44_hook_1",
+          "type": "mystery",
+          "description": "Первый корабль с их новой технологией, отправленный в дальний космос, пропал без вести.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "CL45",
+      "name": "Конгломерат «Щит»",
+      "type": "Conglomerate",
+      "history": "Крупнейший производитель персональной брони и защитного снаряжения с 2170 г.",
+      "legends": "Их флагманский комплект брони 'Голиаф' якобы выдержал выстрел из корабельного орудия.",
+      "leaders": [
+        "CEO Маркус Шилд"
+      ],
+      "influence_region": "Земля (промышленные зоны)",
+      "business_area": "Защитное снаряжение",
+      "allies": [
+        "Omega Defense Systems",
+        "ArmorWorks"
+      ],
+      "enemies": [
+        "Лаборатория «Оникс»"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target_keyword": "personal_armor",
+          "stat": "durability",
+          "value": 1
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl45_hook_1",
+          "type": "corporate_sabotage",
+          "description": "Их главный конкурент пытается саботировать выпуск новой линейки брони.",
+          "involved_factions": [
+            "ArmorWorks"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL46",
+      "name": "Клан «Дети Пустоты»",
+      "type": "Clan",
+      "history": "Культ, поклоняющийся пустоте космоса и верящий в 'Великое Ничто'. Образовался в 2180 г.",
+      "legends": "Они верят, что ритуальное самоубийство в открытом космосе ведет к просветлению.",
+      "leaders": [
+        "Пророк 'Пустой'"
+      ],
+      "influence_region": "Отдаленные и безлюдные сектора",
+      "business_area": "Религиозный культ",
+      "allies": [],
+      "enemies": [],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target_keyword": "willpower_checks",
+          "stat": "resistance_to_fear",
+          "value": 3
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl46_hook_1",
+          "type": "mass_event",
+          "description": "Культ планирует массовый ритуал на пути крупного торгового маршрута, что может привести к катастрофе.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "CL47",
+      "name": "Лаборатория «Генезис 2.0»",
+      "type": "Laboratory",
+      "history": "Отколовшаяся от Genesis Bioworks группа ученых, считающих их методы слишком робкими. Основана в 2181 г.",
+      "legends": "Слухи о том, что они пытаются создать существо, способное жить в открытом космосе без скафандра.",
+      "leaders": [
+        "Д-р Ева Моро"
+      ],
+      "influence_region": "Секретная станция в Поясе",
+      "business_area": "Радикальная биоинженерия",
+      "allies": [],
+      "enemies": [
+        "Genesis Bioworks",
+        "BioCore Labs"
+      ],
+      "mechanics": [
+        {
+          "type": "access_unlock",
+          "target": "radical_biomods",
+          "description": "Доступ к чрезвычайно мощным, но запрещенным биомодификациям."
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl47_hook_1",
+          "type": "monster_hunt",
+          "description": "Один из их экспериментов сбежал и теперь терроризирует ближайшие станции.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "CL48",
+      "name": "Конгломерат «ИнфоЩит»",
+      "type": "Conglomerate",
+      "history": "Лидер в области кибербезопасности и защиты данных с 2175 г.",
+      "legends": "Их система 'Черная Стена' считается невзламываемой, но легенда гласит, что у нее есть один единственный бэкдор.",
+      "leaders": [
+        "Главный архитектор Сорен"
+      ],
+      "influence_region": "Земля, Луна",
+      "business_area": "Кибербезопасность",
+      "allies": [
+        "Quantum Horizons"
+      ],
+      "enemies": [
+        "Shadow Corsairs",
+        "Клан «Теневые Пальцы»"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target_keyword": "cyber_defense",
+          "value": 15,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl48_hook_1",
+          "type": "heist",
+          "description": "Конкурирующий синдикат нанимает команду, чтобы найти и использовать легендарный бэкдор в системе 'Черная Стена'.",
+          "involved_factions": [
+            "Shadow Corsairs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL49",
+      "name": "Клан «Сыны Прометея»",
+      "type": "Clan",
+      "history": "Радикальные техно-культисты, верящие в полное слияние человека и машины. Основаны в 2178 г.",
+      "legends": "Их лидер, 'Патриарх-Машина', якобы полностью перенес свое сознание в механическое тело.",
+      "leaders": [
+        "Патриарх-Машина"
+      ],
+      "influence_region": "Промышленные пустоши Марса",
+      "business_area": "Техно-культ и черный рынок имплантов",
+      "allies": [
+        "Silver Serpents"
+      ],
+      "enemies": [
+        "Конгломерат «Вектра»"
+      ],
+      "mechanics": [
+        {
+          "type": "access_unlock",
+          "target": "extreme_cybernetics",
+          "description": "Позволяет устанавливать кибернетику сверх обычных лимитов, но с огромным риском для психики."
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl49_hook_1",
+          "type": "social_conflict",
+          "description": "Конфликт с официальной Марсианской Республикой, которая считает их опасными экстремистами.",
+          "involved_factions": [
+            "Mars Republic"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CL50",
+      "name": "Лаборатория «Последний Рубеж»",
+      "type": "Laboratory",
+      "history": "Астрофизическая лаборатория на краю системы, изучающая странные сигналы из-за ее пределов с 2180 г.",
+      "legends": "Говорят, они получили осмысленное сообщение, но скрывают его содержание, опасаясь паники.",
+      "leaders": [
+        "Профессор Ава Лин"
+      ],
+      "influence_region": "Пояс Койпера (станция 'Терминус')",
+      "business_area": "SETI и астрофизика",
+      "allies": [
+        "ESA-Earth"
+      ],
+      "enemies": [
+        "Shadow Consortium"
+      ],
+      "mechanics": [
+        {
+          "type": "special_ability",
+          "name": "Alien_Signal_Fragment",
+          "description": "Возможность получить фрагмент загадочного сигнала, который может быть ключом к квесту."
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "cl50_hook_1",
+          "type": "first_contact",
+          "description": "Источник сигнала начинает двигаться в сторону Солнечной системы, и лаборатория должна решить, что делать: предупредить всех или скрыть информацию.",
+          "involved_factions": [
+            "Earth UN",
+            "Mars Republic"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PMC1",
+      "name": "BlackSun Mercenaries",
+      "type": "PMC",
+      "history": "Основана в 2170 г. ветеранами Восточного Флота.",
+      "legends": "Известны тактикой «чёрный восход» — внезапными и сокрушительными ударами на рассвете.",
+      "leaders": [
+        "Генерал Алексей «Чёрное Солнце» Иванов"
+      ],
+      "influence_region": "Орбита Марса",
+      "business_area": "Охрана конвоев, штурмовые операции",
+      "allies": [
+        "IronHalo Security"
+      ],
+      "enemies": [
+        "Red Dagger PMC"
+      ],
+      "mechanics": [
+        {
+          "type": "roll_bonus",
+          "target": "combat_check",
+          "value": 2,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "pmc1_hook_1",
+          "type": "secret_plot",
+          "description": "Планируют тайный захват исследовательской станции ESA-Earth.",
+          "involved_factions": [
+            "ESA-Earth"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PMC2",
+      "name": "Red Dagger PMC",
+      "type": "PMC",
+      "history": "Сформирована из бывших марсианских рейдеров.",
+      "legends": "Легенда гласит, что их элитный отряд «Кровавые кинжалы» использует клинки, способные разрезать стандартную броню.",
+      "leaders": [
+        "Полковник Сара «Кинжал» Льюис"
+      ],
+      "influence_region": "Пояс астероидов",
+      "business_area": "Антипиратские и контртеррористические миссии",
+      "allies": [
+        "Mars Fleet"
+      ],
+      "enemies": [
+        "BlackSun Mercenaries"
+      ],
+      "mechanics": [
+        {
+          "type": "skill_bonus",
+          "target": "stealth",
+          "value": 1,
+          "operator": "add",
+          "condition": "night_operations"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "pmc2_hook_1",
+          "type": "corporate_war",
+          "description": "Ведут борьбу за выгодный контракт ООН по эвакуации колоний.",
+          "involved_factions": [
+            "Earth UN"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PMC3",
+      "name": "IronHalo Security",
+      "type": "PMC",
+      "history": "Создана в 2172 г. для охраны шахт на астероиде Паллада.",
+      "legends": "Байки о «железном кольце» — защитном поле, которое якобы не позволяет врагам приблизиться к охраняемому объекту ближе чем на 100 км.",
+      "leaders": [
+        "Директор Рами «Железный Обруч» Хан"
+      ],
+      "influence_region": "Пояс (Паллада)",
+      "business_area": "Корпоративная охрана, корпоративный шпионаж",
+      "allies": [
+        "Ceres Mining Consortium"
+      ],
+      "enemies": [
+        "SpecterOps Consortium"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target": "facility_defense",
+          "value": 2,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "pmc3_hook_1",
+          "type": "corruption_scandal",
+          "description": "Замешаны в коррупционном скандале с профсоюзами охраны.",
+          "involved_factions": [
+            "OPA"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PMC4",
+      "name": "SpecterOps Consortium",
+      "type": "PMC",
+      "history": "Основана в 2173 г. как частное крыло бывшего спецподразделения ООН.",
+      "legends": "Легенда о «призрачных операциях», в которых их бойцы используют технологию невидимости.",
+      "leaders": [
+        "Коммандер Лоран «Призрак» Моро"
+      ],
+      "influence_region": "Земля (Силиконовый Круг)",
+      "business_area": "Тайные операции, контршпионаж",
+      "allies": [
+        "ESA-Earth"
+      ],
+      "enemies": [
+        "BlackSun Mercenaries"
+      ],
+      "mechanics": [
+        {
+          "type": "skill_bonus",
+          "target": "stealth",
+          "value": 3,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "pmc4_hook_1",
+          "type": "ethical_debate",
+          "description": "Слухи о несанкционированном использовании самообучающихся ИИ в боевых операциях.",
+          "involved_factions": [
+            "Earth UN"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PMC5",
+      "name": "HelixGuard Inc.",
+      "type": "PMC",
+      "history": "Основана в 2171 г. инженерами из Omega Defense Systems.",
+      "legends": "Слух о «спиралях гибели» — прототипе защитной системы, создающей энергетические вихри.",
+      "leaders": [
+        "Мажордом Виктор «Спираль» Гарднер"
+      ],
+      "influence_region": "Марс (Форт-Марс)",
+      "business_area": "Защита объектов, противовоздушная оборона",
+      "allies": [
+        "Omega Defense Systems"
+      ],
+      "enemies": [
+        "Red Dagger PMC"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target": "anti_air_defense",
+          "value": 1,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "pmc5_hook_1",
+          "type": "corporate_war",
+          "description": "Соперничество с Марсианским Флотом за контроль над воздушным пространством Марса.",
+          "involved_factions": [
+            "Mars Fleet"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PMC6",
+      "name": "Blackwater Cartel",
+      "type": "PMC",
+      "history": "Сформирована из бывших заключенных тюрьмы 'Чёрный Карцер' ООН.",
+      "legends": "Байки о их лидере, «Водном Бароне», который контролирует крупнейшие запасы контрабандного льда.",
+      "leaders": [
+        "Абдаллах «Ледокол» Хасан"
+      ],
+      "influence_region": "Энцелад → Титан",
+      "business_area": "Контрабанда ресурсов, выкуп",
+      "allies": [
+        "AquaPure Tech"
+      ],
+      "enemies": [
+        "HydroDash"
+      ],
+      "mechanics": [
+        {
+          "type": "skill_bonus",
+          "target": "smuggling_check",
+          "value": 1,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "pmc6_hook_1",
+          "type": "illegal_activity",
+          "description": "Ведут тайные торги с экологическими радикалами, продавая им оружие.",
+          "involved_factions": [
+            "EcoSphere Technologies"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PMC7",
+      "name": "Red Phoenix Legion",
+      "type": "PMC",
+      "history": "Перерождение старого пиратского клана 'Феникс' в легальную ЧВК.",
+      "legends": "Легенда о «восстании из пепла», согласно которой их флагман был трижды уничтожен и трижды восстановлен.",
+      "leaders": [
+        "Маркус «Феникс»"
+      ],
+      "influence_region": "Глубокий космос",
+      "business_area": "Спецоперации в глубоком космосе",
+      "allies": [
+        "Void Reavers"
+      ],
+      "enemies": [
+        "SpecterOps Consortium"
+      ],
+      "mechanics": [
+        {
+          "type": "skill_bonus",
+          "target": "survival_check",
+          "value": 2,
+          "operator": "add",
+          "condition": "extreme_environment"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "pmc7_hook_1",
+          "type": "conspiracy",
+          "description": "Конфликт с OPA из-за слухов о заговоре легиона с целью захвата власти в Поясе.",
+          "involved_factions": [
+            "OPA"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PMC8",
+      "name": "Vanguard Sentinels",
+      "type": "PMC",
+      "history": "Основана в 2174 г. ветеранским советом Земли для защиты столиц.",
+      "legends": "Миф о «щитах света» — персональных энергетических щитах, которые могут отразить даже артиллерийский снаряд.",
+      "leaders": [
+        "Гранд-Мастер Элин «Щит» Хо"
+      ],
+      "influence_region": "Земля (Нью-Токио)",
+      "business_area": "Защита столиц, VIP-охрана",
+      "allies": [],
+      "enemies": [
+        "Protogen"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target": "vip_defense",
+          "value": 2,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "pmc8_hook_1",
+          "type": "political_scandal",
+          "description": "Инцидент с несанкционированной демонстрацией силы во время мирных протестов вызвал расследование ООН.",
+          "involved_factions": [
+            "Earth UN"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PMC9",
+      "name": "Spectral Hawks",
+      "type": "PMC",
+      "history": "Появились в 2175 г. из бывших партизанских отрядов OPA.",
+      "legends": "Легенда о «крыльях разума» — нейроинтерфейсах, позволяющих пилотам управлять истребителями как собственным телом.",
+      "leaders": [
+        "Капитан Ния «Спектр» Патель"
+      ],
+      "influence_region": "Пояс и внешние луны",
+      "business_area": "Разведка и диверсии",
+      "allies": [
+        "OPA"
+      ],
+      "enemies": [
+        "Mars Fleet"
+      ],
+      "mechanics": [
+        {
+          "type": "skill_bonus",
+          "target": "reconnaissance_check",
+          "value": 2,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "pmc9_hook_1",
+          "type": "internal_power_struggle",
+          "description": "Споры с политическим крылом OPA о границах дозволенного в их операциях.",
+          "involved_factions": [
+            "OPA"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PMC10",
+      "name": "IronShield Dynamics",
+      "type": "PMC",
+      "history": "Образована в 2173 г. в результате слияния IronHalo Security и части Omega Defense.",
+      "legends": "Слух о «двойном щите» — технологии, комбинирующей физическую и энергетическую защиту.",
+      "leaders": [
+        "Д-р Ханна «Двойная Сталь» Эрнандес"
+      ],
+      "influence_region": "Марс (Служба безопасности)",
+      "business_area": "Оборонные системы нового поколения",
+      "allies": [
+        "IronHalo Security"
+      ],
+      "enemies": [
+        "Red Dagger PMC"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target": "all_facilities_defense",
+          "value": 3,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "pmc10_hook_1",
+          "type": "espionage",
+          "description": "Скандал, связанный с утечкой чертежей их защитных систем конкурирующим ЧВК.",
+          "involved_factions": [
+            "Red Dagger PMC"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PMC11",
+      "name": "VoidGuard",
+      "type": "PMC",
+      "history": "Специализируется на охране объектов в глубоком космосе с 2176 г.",
+      "legends": "Байки о «бездонных чертогах» — секретных базах в аномальных зонах, где не действуют законы физики.",
+      "leaders": [
+        "Коммандер Зак «Пустота» Хант"
+      ],
+      "influence_region": "Глубокий космос",
+      "business_area": "Охрана исследовательских станций",
+      "allies": [
+        "Protogen"
+      ],
+      "enemies": [
+        "Void Reavers"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target": "radiation_protection",
+          "value": 1,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "pmc11_hook_1",
+          "type": "secret_mission",
+          "description": "Выполняют тайные задания для DeepSpace Division, связанные с контактами с неизвестными объектами.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "PMC12",
+      "name": "Cerberus Elite",
+      "type": "PMC",
+      "history": "Основана в 2173 г. тремя братьями-адмиралами: Дрейком, Барденом и Найтом.",
+      "legends": "Миф о «трёх головах ПРО» — их система обороны якобы может отслеживать и уничтожать цели в трёх разных секторах одновременно.",
+      "leaders": [
+        "Адмиралы Дрейк, Барден, Найт"
+      ],
+      "influence_region": "Юпитер (орбита)",
+      "business_area": "Антипиратские операции",
+      "allies": [
+        "Jovian Orbital Works"
+      ],
+      "enemies": [
+        "Belt Raiders"
+      ],
+      "mechanics": [
+        {
+          "type": "roll_bonus",
+          "target": "combat_check",
+          "value": 1,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "pmc12_hook_1",
+          "type": "internal_power_struggle",
+          "description": "Внутренние споры между братьями за наследование полного командования.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "PMC13",
+      "name": "Shadow Legion",
+      "type": "PMC",
+      "history": "Созданы из бывших отрядов SpecterOps, ушедших в частный сектор.",
+      "legends": "Легенда о «тенях войны» — их оперативники способны проникать на любые объекты, оставаясь незамеченными.",
+      "leaders": [
+        "Полковник Юн «Тень» Ким"
+      ],
+      "influence_region": "Земля и Луна",
+      "business_area": "Контртеррор и разведка",
+      "allies": [
+        "SpecterOps Consortium"
+      ],
+      "enemies": [
+        "Crimson Talons"
+      ],
+      "mechanics": [
+        {
+          "type": "skill_bonus",
+          "target": "stealth",
+          "value": 2,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "pmc13_hook_1",
+          "type": "betrayal",
+          "description": "Споры о предательстве бывших коллег, которые остались в SpecterOps.",
+          "involved_factions": [
+            "SpecterOps Consortium"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PMC14",
+      "name": "IronFist Security",
+      "type": "PMC",
+      "history": "Основана в 2172 г. на базе ветеранов марсианского флота.",
+      "legends": "Байки о «железном кулаке» — тактике штурма, при которой они проламывают любую оборону.",
+      "leaders": [
+        "Генерал Дрейер «Кулак» Мизрахи"
+      ],
+      "influence_region": "Марс (орбита)",
+      "business_area": "Захват и удержание позиций",
+      "allies": [
+        "Mars Fleet"
+      ],
+      "enemies": [
+        "Red Dagger PMC"
+      ],
+      "mechanics": [
+        {
+          "type": "damage_bonus",
+          "target": "assault_check",
+          "value": 2,
+          "operator": "add",
+          "condition": "objective_capture"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "pmc14_hook_1",
+          "type": "misconduct",
+          "description": "Несколько инцидентов ведения боя без приказа вызвали внутреннее расследование.",
+          "involved_factions": [
+            "Mars Republic"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PMC15",
+      "name": "SpecterGuard",
+      "type": "PMC",
+      "history": "Сформирована из бывших членов SpecterOps для защиты научных кадров.",
+      "legends": "Слух об «обратном призраке» — способности предвидеть покушение и эвакуировать цель за минуты до атаки.",
+      "leaders": [
+        "Лейтенант Викрам «Призрак» Сингх"
+      ],
+      "influence_region": "Марс и Церера",
+      "business_area": "Защита учёных и исследователей",
+      "allies": [
+        "ESA-Earth"
+      ],
+      "enemies": [
+        "Shadow Consortium"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target": "scientist_defense",
+          "value": 1,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "pmc15_hook_1",
+          "type": "corporate_war",
+          "description": "Скрытая вражда с материнской SpecterOps Consortium, которые считают их предателями.",
+          "involved_factions": [
+            "SpecterOps Consortium"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PMC16",
+      "name": "Phoenix Reborn",
+      "type": "PMC",
+      "history": "Восстановлена из руин Red Phoenix Legion в 2177 г.",
+      "legends": "Легенда о «кресте возрождения» — медицинской технологии, позволяющей возвращать к жизни даже тяжело раненых оперативников.",
+      "leaders": [
+        "Капитан Айша «Пламя» Соланж"
+      ],
+      "influence_region": "Венера (орбита)",
+      "business_area": "Спасательные и восстановительные миссии",
+      "allies": [
+        "AeroMedic"
+      ],
+      "enemies": [
+        "BlackSun Mercenaries"
+      ],
+      "mechanics": [
+        {
+          "type": "skill_bonus",
+          "target": "rescue_operation_check",
+          "value": 2,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "pmc16_hook_1",
+          "type": "ethical_debate",
+          "description": "Споры об использовании дорогостоящих спасательных ресурсов в боевых целях.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "PMC17",
+      "name": "IronVanguard",
+      "type": "PMC",
+      "history": "Образована в результате слияния BlackSun и IronHalo в 2178 г.",
+      "legends": "Байки о «стальном авангарде» — их флагмане, который якобы сделан из цельного астероида.",
+      "leaders": [
+        "Коммандер Лукас «Авангард» Стоун"
+      ],
+      "influence_region": "Сатурн (кольца)",
+      "business_area": "Военно-промышленная охрана",
+      "allies": [
+        "IronHalo Security",
+        "BlackSun Mercenaries"
+      ],
+      "enemies": [
+        "Red Dagger PMC"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target": "fleet_defense",
+          "value": 3,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "pmc17_hook_1",
+          "type": "illegal_activity",
+          "description": "Инцидент с нелегальным экспортом оружия, который пытаются скрыть от ООН.",
+          "involved_factions": [
+            "Earth UN"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PMC18",
+      "name": "GhostOps",
+      "type": "PMC",
+      "history": "Элитная группа для сверхсекретных операций, действует с 2175 г.",
+      "legends": "Миф о «неуловимых воинах», которые не оставляют следов и которых невозможно идентифицировать.",
+      "leaders": [
+        "Глава Уайлд «Призрак» Брукс"
+      ],
+      "influence_region": "Земля (тайные базы)",
+      "business_area": "Тайные миссии и спецоперации",
+      "allies": [
+        "SpecterOps Consortium"
+      ],
+      "enemies": [
+        "Red Phoenix Legion"
+      ],
+      "mechanics": [
+        {
+          "type": "skill_bonus",
+          "target": "stealth",
+          "value": 3,
+          "operator": "add"
+        },
+        {
+          "type": "skill_bonus",
+          "target": "reconnaissance",
+          "value": 3,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "pmc18_hook_1",
+          "type": "scandal",
+          "description": "Замешаны в скандале с похищением учёных из конкурирующих корпораций.",
+          "involved_factions": [
+            "ESA-Earth",
+            "Protogen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PMC19",
+      "name": "IronCrown Corps",
+      "type": "PMC",
+      "history": "Создана в 2174 г. для охраны высшего политического и военного командования.",
+      "legends": "Легенда о «короне из пуль» — личном охраннике лидера, который якобы остановил пули силой воли.",
+      "leaders": [
+        "Король-Генерал Виктор «Корона» Крэй"
+      ],
+      "influence_region": "Марс (военные базы)",
+      "business_area": "Охрана высшего командования",
+      "allies": [
+        "Omega Defense Systems"
+      ],
+      "enemies": [
+        "Red Dagger PMC"
+      ],
+      "mechanics": [
+        {
+          "type": "stat_bonus",
+          "target": "vip_defense",
+          "value": 2,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "pmc19_hook_1",
+          "type": "espionage",
+          "description": "Подозреваются в шпионаже за политическими лидерами, которых они охраняют.",
+          "involved_factions": [
+            "Mars Republic"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PMC20",
+      "name": "Spectral Vanguard",
+      "type": "PMC",
+      "history": "Сформирована из ветеранов SpecterOps, специализирующихся на спасательных операциях.",
+      "legends": "Слух о «призрачном отряде», который может проходить сквозь стены для спасения заложников.",
+      "leaders": [
+        "Полковник Мария «ВанХельс» Ван Хельсинг"
+      ],
+      "influence_region": "Пояс астероидов",
+      "business_area": "Экстракция заложников и спасение",
+      "allies": [
+        "SpecterOps Consortium"
+      ],
+      "enemies": [
+        "Crimson Talons"
+      ],
+      "mechanics": [
+        {
+          "type": "skill_bonus",
+          "target": "rescue_operation_check",
+          "value": 2,
+          "operator": "add"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "pmc20_hook_1",
+          "type": "ethical_debate",
+          "description": "Внутренние разногласия о допустимых методах допроса для получения информации.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "NF1",
+      "name": "Shadow Consortium",
+      "type": "Conglomerate",
+      "history": "Тайная организация, контролирующая чёрные рынки по всей солнечной системе с 2155 г. Никто не знает настоящих лидеров — только их агентов.",
+      "legends": "Говорят, Консорциум имеет доступ к технологиям, которых официально не существует.",
+      "leaders": [
+        "Неизвестны (кодовые имена: «Тень-1», «Архитектор»)"
+      ],
+      "influence_region": "Все системы (теневая сеть)",
+      "business_area": "Чёрный рынок, шпионаж, контрабанда",
+      "allies": [
+        "Ghost Merchants",
+        "Black Lotus Triad"
+      ],
+      "enemies": [
+        "Earth UN",
+        "Star Helix Dynamics"
+      ],
+      "mechanics": [
+        {
+          "type": "black_market_discount",
+          "target": "illegal_goods",
+          "value": 15,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf1_hook",
+          "type": "conspiracy",
+          "description": "Консорциум вербует агентов для операции, которая изменит баланс сил в системе.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "NF2",
+      "name": "Protogen",
+      "type": "Laboratory",
+      "history": "Биотехнологическая корпорация, основанная в 2160 г. Официально занимается генной терапией, неофициально — запрещёнными экспериментами над людьми.",
+      "legends": "Протоген якобы создал первого «пост-человека» — существо с нечеловеческими способностями, которое сбежало из лаборатории.",
+      "leaders": [
+        "Др. Юлиан Стресса",
+        "Совет директоров (засекречен)"
+      ],
+      "influence_region": "Пояс астероидов, секретные лаборатории",
+      "business_area": "Биотехнологии, генная инженерия, военная биология",
+      "allies": [
+        "BioCore Labs"
+      ],
+      "enemies": [
+        "OPA",
+        "Mars Republic",
+        "Earth UN Investigations"
+      ],
+      "mechanics": [
+        {
+          "type": "biotech_access",
+          "target": "experimental_implants",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf2_hook",
+          "type": "ethical_debate",
+          "description": "Утечка данных из лаборатории Протоген раскрывает масштаб экспериментов над людьми.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "NF3",
+      "name": "Silver Serpents",
+      "type": "Clan",
+      "history": "Криминальный синдикат с корнями в марсианских трущобах. Контролируют наркоторговлю и рэкет в нижних уровнях куполов.",
+      "legends": "Серебряные Змеи используют нейротоксин, который стирает краткосрочную память жертв — идеальное оружие для бесследных преступлений.",
+      "leaders": [
+        "«Серебряная Королева» (настоящее имя неизвестно)"
+      ],
+      "influence_region": "Марс (нижние уровни куполов)",
+      "business_area": "Наркотики, рэкет, контрабанда",
+      "allies": [
+        "Mars Grey Syndicate",
+        "Belt Raiders"
+      ],
+      "enemies": [
+        "Star Helix Dynamics",
+        "Mars Fleet"
+      ],
+      "mechanics": [
+        {
+          "type": "intimidation_bonus",
+          "target": "mars_lower_levels",
+          "value": 2,
+          "unit": "flat"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf3_hook",
+          "type": "gang_war",
+          "description": "Серебряные Змеи объявили войну конкурирующей банде — город тонет в насилии.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "NF4",
+      "name": "Mars Fleet",
+      "type": "PMC",
+      "history": "Военно-космический флот Марсианской Республики. Технологически превосходит земной флот, но уступает в численности.",
+      "legends": "Флот Марса хранит секретное оружие в Олимпийском арсенале — что-то, способное уничтожить целую станцию одним залпом.",
+      "leaders": [
+        "Адмирал Танака Рей",
+        "Генерал Бобби Драпер"
+      ],
+      "influence_region": "Орбита Марса, военные базы",
+      "business_area": "Военная оборона, контроль орбиты",
+      "allies": [
+        "Mars Republic",
+        "Titan Shipyards Collective"
+      ],
+      "enemies": [
+        "ESA-Earth",
+        "Belt Raiders",
+        "OPA"
+      ],
+      "mechanics": [
+        {
+          "type": "military_support",
+          "target": "mars_orbit",
+          "value": 3,
+          "unit": "combat_bonus"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf4_hook",
+          "type": "military_conflict",
+          "description": "Флот Марса проводит секретные учения у границы Пояса — напряжённость растёт.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "NF5",
+      "name": "Star Helix Dynamics",
+      "type": "PMC",
+      "history": "Крупнейшая частная охранная компания в системе. Обеспечивает безопасность на станциях Пояса и Цереры по контрактам с Землёй.",
+      "legends": "Star Helix набирает сотрудников из бывших спецназовцев и «списанных» ИИ-операторов.",
+      "leaders": [
+        "Директор Шаддид"
+      ],
+      "influence_region": "Церера, станции Пояса",
+      "business_area": "Охранные услуги, полиция станций",
+      "allies": [
+        "Earth UN",
+        "ESA-Earth"
+      ],
+      "enemies": [
+        "OPA",
+        "Belt Raiders",
+        "Shadow Consortium"
+      ],
+      "mechanics": [
+        {
+          "type": "law_enforcement",
+          "target": "belt_stations",
+          "value": 2,
+          "unit": "authority_level"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf5_hook",
+          "type": "corruption",
+          "description": "Офицер Star Helix продаёт информацию OPA — внутреннее расследование грозит хаосом.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "NF6",
+      "name": "ESA-Earth",
+      "type": "Conglomerate",
+      "history": "Европейское Космическое Агентство — остаток земного правительства, контролирующий торговые маршруты между Землёй и Марсом.",
+      "legends": "ESA тайно финансирует проект «Врата» — попытку построить межзвёздный двигатель.",
+      "leaders": [
+        "Генеральный секретарь Авасарала"
+      ],
+      "influence_region": "Земля, орбитальные станции",
+      "business_area": "Правительство, торговля, дипломатия",
+      "allies": [
+        "Star Helix Dynamics",
+        "Earth UN"
+      ],
+      "enemies": [
+        "Mars Republic",
+        "OPA"
+      ],
+      "mechanics": [
+        {
+          "type": "trade_bonus",
+          "target": "earth_mars_route",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf6_hook",
+          "type": "political_intrigue",
+          "description": "ESA готовит санкции против Марса — война слов может перерасти в войну кораблей.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "NF7",
+      "name": "Ceres Mining Consortium",
+      "type": "Conglomerate",
+      "history": "Объединение шахтёрских компаний Цереры, контролирующее 40% добычи редких металлов в Поясе.",
+      "legends": "Под поверхностью Цереры якобы обнаружены структуры явно не природного происхождения.",
+      "leaders": [
+        "Совет Старейшин (12 глав кланов)"
+      ],
+      "influence_region": "Церера, ближний Пояс",
+      "business_area": "Добыча ресурсов, переработка, торговля",
+      "allies": [
+        "OPA",
+        "Deep Belt Prospectors Guild"
+      ],
+      "enemies": [
+        "LunarTech Industries",
+        "Protogen"
+      ],
+      "mechanics": [
+        {
+          "type": "mining_bonus",
+          "target": "belt_resources",
+          "value": 20,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf7_hook",
+          "type": "discovery",
+          "description": "Глубинные шахты Цереры вскрыли аномалию — добыча остановлена, но кто-то хочет продолжить.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "NF8",
+      "name": "OPA",
+      "type": "Clan",
+      "history": "Альянс Внешних Планет — политическое движение и партизанская организация, борющаяся за независимость Пояса от Земли и Марса.",
+      "legends": "OPA якобы имеет секретный флот, спрятанный в астероидном поле за Юпитером.",
+      "leaders": [
+        "Фред Джонсон «Мясник Андерсона»",
+        "Совет ячеек"
+      ],
+      "influence_region": "Пояс астероидов, внешние станции",
+      "business_area": "Политическое движение, партизанская война",
+      "allies": [
+        "Ceres Mining Consortium",
+        "Belt Raiders"
+      ],
+      "enemies": [
+        "Earth UN",
+        "ESA-Earth",
+        "Mars Fleet",
+        "Star Helix Dynamics",
+        "Protogen"
+      ],
+      "mechanics": [
+        {
+          "type": "guerrilla_bonus",
+          "target": "belt_operations",
+          "value": 2,
+          "unit": "stealth_bonus"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf8_hook",
+          "type": "revolution",
+          "description": "OPA планирует масштабную акцию, которая либо принесёт свободу, либо развяжет войну.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "NF9",
+      "name": "Crimson Talons",
+      "type": "PMC",
+      "history": "Наёмники-пираты, базирующиеся на заброшенных станциях внешнего Пояса. Берутся за любую работу — от охраны до убийств.",
+      "legends": "Алые Когти используют модифицированные стимуляторы, делающие бойцов нечувствительными к боли на 48 часов.",
+      "leaders": [
+        "Командир «Коготь» (Виктор Рашид)"
+      ],
+      "influence_region": "Внешний Пояс, заброшенные станции",
+      "business_area": "Наёмничество, пиратство, работорговля",
+      "allies": [
+        "Belt Raiders",
+        "Rust Hawks"
+      ],
+      "enemies": [
+        "Star Helix Dynamics",
+        "Mars Fleet",
+        "OPA"
+      ],
+      "mechanics": [
+        {
+          "type": "combat_bonus",
+          "target": "boarding_actions",
+          "value": 2,
+          "unit": "flat"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf9_hook",
+          "type": "raid",
+          "description": "Алые Когти готовят нападение на торговый конвой — можно помочь или остановить.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "NF10",
+      "name": "Belt Raiders",
+      "type": "Clan",
+      "history": "Пиратские банды Пояса, объединённые общим кодексом: грабь корпоратов, не трогай своих.",
+      "legends": "У рейдеров есть «Кладбище кораблей» — секретная база, собранная из сотен захваченных судов.",
+      "leaders": [
+        "Разные капитаны (нет единого лидера)"
+      ],
+      "influence_region": "Весь Пояс астероидов",
+      "business_area": "Пиратство, контрабанда, утилизация",
+      "allies": [
+        "Crimson Talons",
+        "Rust Hawks",
+        "OPA"
+      ],
+      "enemies": [
+        "Star Helix Dynamics",
+        "Mars Fleet",
+        "ESA-Earth"
+      ],
+      "mechanics": [
+        {
+          "type": "piracy_bonus",
+          "target": "space_encounters",
+          "value": 15,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf10_hook",
+          "type": "alliance",
+          "description": "Рейдеры пытаются объединиться под одним флагом — это изменит расклад сил в Поясе.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "NF11",
+      "name": "EcoSphere Technologies",
+      "type": "SME",
+      "history": "Компания, специализирующаяся на терраформинге и экосистемах замкнутого цикла. Их купола считаются лучшими в системе.",
+      "legends": "EcoSphere тайно выращивает генетически модифицированные растения, способные расти в открытом космосе.",
+      "leaders": [
+        "Др. Лиана Грин"
+      ],
+      "influence_region": "Марс, Титан, лунные колонии",
+      "business_area": "Терраформинг, экосистемы, агротехнологии",
+      "allies": [
+        "TerraForm Union",
+        "Genesis Bioworks"
+      ],
+      "enemies": [
+        "SaturnGas Solutions",
+        "Mao-Kwikowski"
+      ],
+      "mechanics": [
+        {
+          "type": "terraforming_bonus",
+          "target": "agriculture",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf11_hook",
+          "type": "sabotage",
+          "description": "Кто-то отравил экспериментальную ферму EcoSphere — тысячи людей под угрозой голода.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "NF12",
+      "name": "Rust Hawks",
+      "type": "Clan",
+      "history": "Утилизаторы-наёмники, разбирающие обломки и заброшенные станции. Полувоенная организация с кодексом чести.",
+      "leaders": [
+        "«Ржавый Ястреб» (Кен Мурата)"
+      ],
+      "legends": "Ржавые Ястребы нашли в обломках древней станции технологию, которую не смогли идентифицировать ни одни учёные.",
+      "influence_region": "Пояс астероидов, поля обломков",
+      "business_area": "Утилизация, торговля запчастями",
+      "allies": [
+        "Belt Raiders",
+        "Crimson Talons"
+      ],
+      "enemies": [
+        "Mars Fleet",
+        "Vesta Industrial Union"
+      ],
+      "mechanics": [
+        {
+          "type": "salvage_bonus",
+          "target": "wreck_loot",
+          "value": 25,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf12_hook",
+          "type": "discovery",
+          "description": "Ястребы нашли нечто в обломках — и теперь за ними охотятся все.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "NF13",
+      "name": "Black Lotus Triad",
+      "type": "Clan",
+      "history": "Древний криминальный синдикат, перенёсший операции из Земли в космос. Специализируются на наркотиках, азартных играх и вымогательстве.",
+      "leaders": [
+        "Мастер Чен (Чен Вэй)"
+      ],
+      "legends": "Чёрный Лотос якобы контролирует 30% всех нелегальных транзакций между Землёй и Марсом.",
+      "influence_region": "Земля, Марс, крупные станции",
+      "business_area": "Организованная преступность, наркоторговля, азартные игры",
+      "allies": [
+        "Shadow Consortium",
+        "Ghost Merchants"
+      ],
+      "enemies": [
+        "Star Helix Dynamics",
+        "Earth UN"
+      ],
+      "mechanics": [
+        {
+          "type": "crime_network",
+          "target": "illegal_trade",
+          "value": 20,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf13_hook",
+          "type": "turf_war",
+          "description": "Триада начинает экспансию на станции Пояса — местные банды готовятся к войне.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "NF14",
+      "name": "Mao-Kwikowski",
+      "type": "Conglomerate",
+      "history": "Семейная мегакорпорация, занимающаяся всем: от добычи ресурсов до биооружия. Одна из самых влиятельных и безжалостных компаний.",
+      "leaders": [
+        "Жюль-Пьер Мао"
+      ],
+      "legends": "Мао-Квиковски финансировали проект «Калибан» — попытку создать биологическое оружие из внеземной органики.",
+      "influence_region": "Вся солнечная система",
+      "business_area": "Ресурсы, биотехнологии, оружие, логистика",
+      "allies": [
+        "Protogen"
+      ],
+      "enemies": [
+        "OPA",
+        "EcoSphere Technologies",
+        "Mars Republic"
+      ],
+      "mechanics": [
+        {
+          "type": "corporate_power",
+          "target": "all_markets",
+          "value": 5,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf14_hook",
+          "type": "conspiracy",
+          "description": "Утечка документов Мао-Квиковски раскрывает секретные эксперименты на заброшенной станции.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "NF15",
+      "name": "Mars Grey Syndicate",
+      "type": "Clan",
+      "history": "Марсианская мафия, действующая в серых зонах между законом и преступностью. Контролируют подпольные бои и нелегальную торговлю.",
+      "leaders": [
+        "«Серый Кардинал» (Иван Грейсон)"
+      ],
+      "legends": "Синдикат имеет агентов в самом сердце Марсианского правительства.",
+      "influence_region": "Марс (все купола)",
+      "business_area": "Организованная преступность, подпольные бои, теневая экономика",
+      "allies": [
+        "Silver Serpents"
+      ],
+      "enemies": [
+        "Mars Fleet",
+        "Mars Republic"
+      ],
+      "mechanics": [
+        {
+          "type": "underground_network",
+          "target": "mars_crime",
+          "value": 2,
+          "unit": "influence"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf15_hook",
+          "type": "corruption",
+          "description": "Синдикат шантажирует высокопоставленного чиновника — помогите или воспользуйтесь.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "NF16",
+      "name": "United Saturn Block",
+      "type": "Conglomerate",
+      "history": "Политический и экономический союз колоний в системе Сатурна. Стремятся к автономии от внутренних планет.",
+      "leaders": [
+        "Канцлер Хельга Фрост"
+      ],
+      "legends": "Блок тайно строит военный флот на скрытых верфях в кольцах Сатурна.",
+      "influence_region": "Система Сатурна (Титан, Энцелад, кольца)",
+      "business_area": "Политический союз, добыча гелия-3, колонизация",
+      "allies": [
+        "IceHarbor",
+        "SaturnGas Solutions"
+      ],
+      "enemies": [
+        "ESA-Earth",
+        "Earth UN"
+      ],
+      "mechanics": [
+        {
+          "type": "saturn_trade",
+          "target": "helium_3",
+          "value": 15,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf16_hook",
+          "type": "secession",
+          "description": "Блок готовит объявление независимости — внутренние планеты не потерпят.",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "NF17",
+      "name": "Earth UN",
+      "type": "Conglomerate",
+      "history": "Объединённые Нации Земли — главный политический орган планеты, контролирующий военный флот и дипломатию с колониями.",
+      "leaders": [
+        "Генеральный секретарь"
+      ],
+      "legends": "ООН якобы скрывает данные о сигнале из-за пределов солнечной системы.",
+      "influence_region": "Земля, Луна, орбитальные станции",
+      "business_area": "Правительство, военный флот, дипломатия",
+      "allies": [
+        "ESA-Earth",
+        "Star Helix Dynamics"
+      ],
+      "enemies": [
+        "OPA",
+        "Mars Republic",
+        "Shadow Consortium"
+      ],
+      "mechanics": [
+        {
+          "type": "political_authority",
+          "target": "inner_planets",
+          "value": 3,
+          "unit": "authority_level"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf17_hook",
+          "type": "war_threat",
+          "description": "ООН Земли наращивает военное присутствие у Пояса — провокация или подготовка?",
+          "involved_factions": []
+        }
+      ]
+    },
+    {
+      "id": "NF18",
+      "name": "Earth UN Investigations",
+      "type": "PMC",
+      "history": "Следственное управление ООН — межпланетная полиция, расследующая крупные преступления и заговоры.",
+      "leaders": [
+        "Директор Кларисса Нгуен"
+      ],
+      "influence_region": "Вся солнечная система",
+      "business_area": "Расследования, контрразведка, антитеррор",
+      "allies": [
+        "Earth UN",
+        "Star Helix Dynamics"
+      ],
+      "enemies": [
+        "Shadow Consortium",
+        "Protogen",
+        "Black Lotus Triad"
+      ],
+      "mechanics": [
+        {
+          "type": "investigation_bonus",
+          "target": "crime_detection",
+          "value": 2,
+          "unit": "flat"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf18_hook",
+          "type": "investigation",
+          "description": "Управление ведёт расследование, затрагивающее самые верхи — и ищет агентов на местах.",
+          "involved_factions": []
+        }
+      ],
+      "legends": "Говорят, у Управления есть ИИ-следователь, способный предсказывать преступления до их совершения."
+    },
+    {
+      "id": "NF19",
+      "name": "Mars Republic",
+      "type": "Conglomerate",
+      "history": "Правительство Марса — технократическая республика, стремящаяся к военному и технологическому превосходству над Землёй.",
+      "leaders": [
+        "Премьер-министр Садавир Эррингхайт"
+      ],
+      "influence_region": "Марс, орбитальные станции Марса",
+      "business_area": "Правительство, военные технологии, терраформинг",
+      "allies": [
+        "Mars Fleet",
+        "Titan Shipyards Collective"
+      ],
+      "enemies": [
+        "Earth UN",
+        "ESA-Earth",
+        "OPA"
+      ],
+      "mechanics": [
+        {
+          "type": "military_tech",
+          "target": "mars_weapons",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf19_hook",
+          "type": "cold_war",
+          "description": "Марс и Земля на грани войны — одна искра может всё изменить.",
+          "involved_factions": []
+        }
+      ],
+      "legends": "Республика якобы нашла под поверхностью Марса остатки древней технологии."
+    },
+    {
+      "id": "NF20",
+      "name": "Shadow Corsairs",
+      "type": "Clan",
+      "history": "Элитные космические пираты, атакующие только высокоценные цели. Действуют хирургически точно и исчезают бесследно.",
+      "leaders": [
+        "Капитан «Фантом»"
+      ],
+      "influence_region": "Торговые маршруты, внешний Пояс",
+      "business_area": "Элитное пиратство, шпионаж",
+      "allies": [
+        "Shadow Consortium",
+        "Belt Raiders"
+      ],
+      "enemies": [
+        "Mars Fleet",
+        "Star Helix Dynamics"
+      ],
+      "mechanics": [
+        {
+          "type": "stealth_bonus",
+          "target": "space_combat",
+          "value": 2,
+          "unit": "flat"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf20_hook",
+          "type": "heist",
+          "description": "Корсары планируют ограбление века — корабль с грузом на миллиарды.",
+          "involved_factions": []
+        }
+      ],
+      "legends": "Говорят, «Фантом» — бывший адмирал флота, инсценировавший свою смерть."
+    },
+    {
+      "id": "NF21",
+      "name": "IceHarbor",
+      "type": "SME",
+      "history": "Компания по добыче водяного льда с комет и спутников Сатурна. Вода — самый ценный ресурс во внешней системе.",
+      "leaders": [
+        "Директор Олаф Бьорнсон"
+      ],
+      "influence_region": "Кольца Сатурна, Энцелад",
+      "business_area": "Добыча воды, снабжение станций",
+      "allies": [
+        "United Saturn Block",
+        "SaturnGas Solutions"
+      ],
+      "enemies": [
+        "Belt Raiders",
+        "Void Reavers"
+      ],
+      "mechanics": [
+        {
+          "type": "water_trade",
+          "target": "outer_system",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf21_hook",
+          "type": "monopoly",
+          "description": "IceHarbor поднимает цены на воду — станции внешней системы на грани бунта.",
+          "involved_factions": []
+        }
+      ],
+      "legends": "IceHarbor обнаружили микроорганизмы в подлёдном океане Энцелада и скрывают это."
+    },
+    {
+      "id": "NF22",
+      "name": "Ghost Merchants",
+      "type": "SME",
+      "history": "Сеть анонимных торговцев, действующих через зашифрованные каналы. Торгуют информацией, контрабандой и услугами.",
+      "leaders": [
+        "Неизвестны (только псевдонимы)"
+      ],
+      "influence_region": "Вся система (цифровая сеть)",
+      "business_area": "Информационная торговля, контрабанда",
+      "allies": [
+        "Shadow Consortium",
+        "Black Lotus Triad"
+      ],
+      "enemies": [
+        "Earth UN Investigations",
+        "Star Helix Dynamics"
+      ],
+      "mechanics": [
+        {
+          "type": "info_trade",
+          "target": "intelligence",
+          "value": 2,
+          "unit": "info_bonus"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf22_hook",
+          "type": "info_leak",
+          "description": "Призрачные Торговцы продают данные, которые могут развязать войну — кто купит первым?",
+          "involved_factions": []
+        }
+      ],
+      "legends": "Говорят, сеть управляется ИИ, который вышел из-под контроля создателей."
+    },
+    {
+      "id": "NF23",
+      "name": "Void Reavers",
+      "type": "Clan",
+      "history": "Фанатики, живущие на границе обитаемого пространства. Модифицировали тела для жизни в открытом космосе.",
+      "leaders": [
+        "«Пустотный Король»"
+      ],
+      "influence_region": "Внешняя система, за орбитой Сатурна",
+      "business_area": "Рейдерство, культ Пустоты",
+      "allies": [
+        "Belt Raiders"
+      ],
+      "enemies": [
+        "United Saturn Block",
+        "IceHarbor",
+        "Mars Fleet"
+      ],
+      "mechanics": [
+        {
+          "type": "void_survival",
+          "target": "deep_space",
+          "value": 3,
+          "unit": "survival_bonus"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf23_hook",
+          "type": "cult",
+          "description": "Жнецы Пустоты проповедуют «слияние с космосом» — и их ряды растут среди отчаявшихся.",
+          "involved_factions": []
+        }
+      ],
+      "legends": "Жнецы якобы могут выживать в открытом вакууме по нескольку минут без скафандра."
+    },
+    {
+      "id": "NF24",
+      "name": "Red Corsairs",
+      "type": "PMC",
+      "history": "Марсианские наёмники, бывшие военные, ставшие пиратами после демобилизации. Дисциплинированы и хорошо вооружены.",
+      "leaders": [
+        "Командор «Красный»"
+      ],
+      "influence_region": "Марс-Пояс маршруты",
+      "business_area": "Наёмничество, пиратство, охрана конвоев",
+      "allies": [
+        "Mars Grey Syndicate"
+      ],
+      "enemies": [
+        "Star Helix Dynamics",
+        "Earth UN"
+      ],
+      "mechanics": [
+        {
+          "type": "military_training",
+          "target": "combat",
+          "value": 1,
+          "unit": "flat"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf24_hook",
+          "type": "mercenary",
+          "description": "Красные Корсары предлагают контракт — работа опасная, но плата щедрая.",
+          "involved_factions": []
+        }
+      ],
+      "legends": "Корсары хранят местоположение тайного арсенала марсианского флота."
+    },
+    {
+      "id": "NF25",
+      "name": "BeltFreight Ltd.",
+      "type": "SME",
+      "history": "Логистическая компания, обеспечивающая грузоперевозки между станциями Пояса. Нейтральны ко всем фракциям.",
+      "leaders": [
+        "Менеджер Харуки Сато"
+      ],
+      "influence_region": "Пояс астероидов (торговые маршруты)",
+      "business_area": "Логистика, грузоперевозки, складирование",
+      "allies": [
+        "Ceres Mining Consortium",
+        "Deep Belt Prospectors Guild"
+      ],
+      "enemies": [
+        "Belt Raiders",
+        "Crimson Talons"
+      ],
+      "mechanics": [
+        {
+          "type": "shipping_discount",
+          "target": "cargo_transport",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf25_hook",
+          "type": "smuggling",
+          "description": "BeltFreight подозревают в перевозке запрещённых грузов — расследуйте или помогите замести следы.",
+          "involved_factions": []
+        }
+      ],
+      "legends": "В трюмах BeltFreight якобы перевозят замороженных беженцев."
+    },
+    {
+      "id": "NF26",
+      "name": "NeoCyber Systems",
+      "type": "Laboratory",
+      "history": "Разработчик передовых кибернетических имплантов и нейроинтерфейсов. Их продукция дорогая, но лучшая в системе.",
+      "leaders": [
+        "Др. Рэй Курцвайл-мл."
+      ],
+      "influence_region": "Земля, Марс, крупные станции",
+      "business_area": "Кибернетика, нейроинтерфейсы, протезы",
+      "allies": [
+        "Nexus Pharmaceuticals",
+        "Quantum Horizons"
+      ],
+      "enemies": [
+        "Mystic Order"
+      ],
+      "mechanics": [
+        {
+          "type": "implant_quality",
+          "target": "cybernetics",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf26_hook",
+          "type": "malfunction",
+          "description": "Импланты NeoCyber массово выходят из строя — саботаж или дефект?",
+          "involved_factions": []
+        }
+      ],
+      "legends": "NeoCyber тестирует имплант, позволяющий загружать сознание в сеть."
+    },
+    {
+      "id": "NF27",
+      "name": "CyberMedix",
+      "type": "SME",
+      "history": "Сеть подпольных клиник, устанавливающих импланты без лицензий и вопросов. Дешевле официальных, но рискованнее.",
+      "leaders": [
+        "«Доктор Нож» (Сэм Ортега)"
+      ],
+      "influence_region": "Станции Пояса, нижние уровни городов",
+      "business_area": "Нелегальная медицина, импланты, модификации",
+      "allies": [
+        "Shadow Consortium"
+      ],
+      "enemies": [
+        "NeoCyber Systems",
+        "Star Helix Dynamics"
+      ],
+      "mechanics": [
+        {
+          "type": "cheap_implants",
+          "target": "cybernetics",
+          "value": 30,
+          "unit": "percent_discount"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf27_hook",
+          "type": "medical",
+          "description": "Пациенты CyberMedix начинают вести себя странно — имплантами кто-то управляет извне.",
+          "involved_factions": []
+        }
+      ],
+      "legends": "CyberMedix якобы ставят скрытые бэкдоры во все импланты."
+    },
+    {
+      "id": "NF28",
+      "name": "FusionSpark",
+      "type": "Laboratory",
+      "history": "Компания, разрабатывающая термоядерные реакторы нового поколения. Их технологии могут сделать энергию практически бесплатной.",
+      "leaders": [
+        "Др. Ана Солис"
+      ],
+      "influence_region": "Марс, исследовательские станции",
+      "business_area": "Энергетика, термоядерный синтез, исследования",
+      "allies": [
+        "Helios Energy Corp.",
+        "SolarFlare Propulsion"
+      ],
+      "enemies": [
+        "SaturnGas Solutions"
+      ],
+      "mechanics": [
+        {
+          "type": "energy_research",
+          "target": "fusion_tech",
+          "value": 5,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf28_hook",
+          "type": "breakthrough",
+          "description": "FusionSpark на грани прорыва — но конкуренты готовы на всё, чтобы их остановить.",
+          "involved_factions": []
+        }
+      ],
+      "legends": "Прототип реактора FusionSpark якобы вызвал пространственную аномалию."
+    },
+    {
+      "id": "NF29",
+      "name": "AstroVision",
+      "type": "SME",
+      "history": "Медиакорпорация, транслирующая новости, развлечения и пропаганду по всей солнечной системе.",
+      "leaders": [
+        "Главред Марко Инес"
+      ],
+      "influence_region": "Вся солнечная система",
+      "business_area": "Медиа, новости, пропаганда, развлечения",
+      "allies": [
+        "Earth UN",
+        "ESA-Earth"
+      ],
+      "enemies": [
+        "OPA",
+        "Shadow Consortium"
+      ],
+      "mechanics": [
+        {
+          "type": "media_influence",
+          "target": "public_opinion",
+          "value": 2,
+          "unit": "influence"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf29_hook",
+          "type": "propaganda",
+          "description": "AstroVision получила компромат на крупную фракцию — опубликовать или продать?",
+          "involved_factions": []
+        }
+      ],
+      "legends": "AstroVision тайно контролируется одной из мегакорпораций."
+    },
+    {
+      "id": "NF30",
+      "name": "ArmorWorks",
+      "type": "SME",
+      "history": "Производитель брони и защитных систем для кораблей, станций и пехоты. Поставляют обеим сторонам любого конфликта.",
+      "leaders": [
+        "Директор Клаус Вебер"
+      ],
+      "influence_region": "Земля, Марс, военные базы",
+      "business_area": "Военная промышленность, защитные системы",
+      "allies": [
+        "Omega Defense Systems",
+        "Mars Fleet"
+      ],
+      "enemies": [
+        "OPA"
+      ],
+      "mechanics": [
+        {
+          "type": "armor_discount",
+          "target": "military_equipment",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf30_hook",
+          "type": "arms_deal",
+          "description": "ArmorWorks продаёт новый тип брони обеим сторонам конфликта — кто заплатит больше?",
+          "involved_factions": []
+        }
+      ],
+      "legends": "ArmorWorks разрабатывает адаптивную броню, реагирующую на мысли носителя."
+    },
+    {
+      "id": "NF31",
+      "name": "AgroLuna",
+      "type": "SME",
+      "history": "Крупнейший производитель продовольствия на Луне, снабжающий пищей орбитальные станции Земли.",
+      "leaders": [
+        "Директор Юрий Лунин"
+      ],
+      "influence_region": "Луна, орбита Земли",
+      "business_area": "Сельское хозяйство, гидропоника, продовольствие",
+      "allies": [
+        "EcoSphere Technologies",
+        "LunarTech Industries"
+      ],
+      "enemies": [
+        "Belt Raiders"
+      ],
+      "mechanics": [
+        {
+          "type": "food_supply",
+          "target": "lunar_agriculture",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf31_hook",
+          "type": "crisis",
+          "description": "Урожай AgroLuna поражён неизвестным вирусом — голод угрожает всей Луне.",
+          "involved_factions": []
+        }
+      ],
+      "legends": "AgroLuna выращивает экспериментальные культуры, способные расти при минимальном свете."
+    },
+    {
+      "id": "NF32",
+      "name": "OrbitalTransit Co.",
+      "type": "SME",
+      "history": "Пассажирская транспортная компания, соединяющая планеты и станции регулярными рейсами.",
+      "leaders": [
+        "CEO Мириам Чанг"
+      ],
+      "influence_region": "Внутренняя система, основные маршруты",
+      "business_area": "Пассажирские перевозки, туризм",
+      "allies": [
+        "ESA-Earth",
+        "BeltFreight Ltd."
+      ],
+      "enemies": [
+        "Belt Raiders",
+        "Shadow Corsairs"
+      ],
+      "mechanics": [
+        {
+          "type": "travel_discount",
+          "target": "passenger_transport",
+          "value": 15,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf32_hook",
+          "type": "hijack",
+          "description": "Лайнер OrbitalTransit захвачен — заложники, требования, и тикающие часы.",
+          "involved_factions": []
+        }
+      ],
+      "legends": "На борту одного из лайнеров якобы перевозят секретного пассажира под охраной."
+    },
+    {
+      "id": "NF33",
+      "name": "NanoFabricators",
+      "type": "Laboratory",
+      "history": "Лаборатория нанотехнологий, создающая материалы и устройства на молекулярном уровне. Их нано-фабрики могут построить что угодно.",
+      "leaders": [
+        "Др. Кейко Танабе"
+      ],
+      "influence_region": "Марс, исследовательские станции",
+      "business_area": "Нанотехнологии, материаловедение, производство",
+      "allies": [
+        "Quantum Horizons",
+        "NeoCyber Systems"
+      ],
+      "enemies": [
+        "Rust Hawks"
+      ],
+      "mechanics": [
+        {
+          "type": "nano_crafting",
+          "target": "item_quality",
+          "value": 10,
+          "unit": "percent"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf33_hook",
+          "type": "nano_plague",
+          "description": "Нано-боты NanoFabricators вышли из-под контроля и пожирают станцию изнутри.",
+          "involved_factions": []
+        }
+      ],
+      "legends": "NanoFabricators создали самореплицирующихся нано-ботов и не могут их остановить."
+    },
+    {
+      "id": "NF34",
+      "name": "Mystic Order",
+      "type": "Clan",
+      "history": "Религиозно-философская организация, верящая в трансцендентную природу космоса. Мирные, но влиятельные.",
+      "leaders": [
+        "Верховный жрец «Звёздный Оракул»"
+      ],
+      "influence_region": "Станции по всей системе (храмы)",
+      "business_area": "Религия, философия, медитация, предсказания",
+      "allies": [
+        "Scientific Assembly"
+      ],
+      "enemies": [
+        "NeoCyber Systems",
+        "Protogen"
+      ],
+      "mechanics": [
+        {
+          "type": "willpower_bonus",
+          "target": "psionics",
+          "value": 1,
+          "unit": "flat"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf34_hook",
+          "type": "prophecy",
+          "description": "Орден предсказывает катастрофу — безумие или предупреждение?",
+          "involved_factions": []
+        }
+      ],
+      "legends": "Адепты Ордена якобы могут видеть будущее в состоянии глубокой медитации."
+    },
+    {
+      "id": "NF35",
+      "name": "Scientific Assembly",
+      "type": "Laboratory",
+      "history": "Независимое научное сообщество, объединяющее учёных из всех фракций для совместных исследований.",
+      "leaders": [
+        "Председатель Совета: Др. Елена Ковалёва"
+      ],
+      "influence_region": "Вся система (научные станции)",
+      "business_area": "Фундаментальная наука, образование, публикации",
+      "allies": [
+        "Mystic Order",
+        "NanoFabricators",
+        "Quantum Horizons"
+      ],
+      "enemies": [
+        "Mao-Kwikowski"
+      ],
+      "mechanics": [
+        {
+          "type": "research_bonus",
+          "target": "science",
+          "value": 1,
+          "unit": "flat"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf35_hook",
+          "type": "discovery",
+          "description": "Ассамблея обнаружила аномалию, которая переворачивает понимание физики — и кто-то хочет это скрыть.",
+          "involved_factions": []
+        }
+      ],
+      "legends": "Ассамблея якобы имеет доступ к артефакту нечеловеческого происхождения."
+    },
+    {
+      "id": "NF36",
+      "name": "LunarRaiders",
+      "type": "Clan",
+      "history": "Банды, промышляющие на тёмной стороне Луны. Нападают на шахты и транспорты, скрываясь в кратерах.",
+      "leaders": [
+        "«Лунный Волк»"
+      ],
+      "influence_region": "Луна (тёмная сторона)",
+      "business_area": "Рейдерство, кражи ресурсов",
+      "allies": [
+        "Belt Raiders"
+      ],
+      "enemies": [
+        "LunarTech Industries",
+        "Earth UN",
+        "AgroLuna"
+      ],
+      "mechanics": [
+        {
+          "type": "lunar_ambush",
+          "target": "moon_raids",
+          "value": 2,
+          "unit": "combat_bonus"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf36_hook",
+          "type": "raid",
+          "description": "Лунные Рейдеры готовят нападение на крупный склад — можно присоединиться или предупредить.",
+          "involved_factions": []
+        }
+      ],
+      "legends": "Рейдеры нашли в глубоком кратере вход в подземный комплекс неизвестного происхождения."
+    },
+    {
+      "id": "NF37",
+      "name": "Bronze Tigers",
+      "type": "PMC",
+      "history": "Элитное наёмное подразделение, специализирующееся на защите VIP-персон и корпоративных объектов.",
+      "leaders": [
+        "Полковник «Тигр» (Амара Диалло)"
+      ],
+      "influence_region": "Земля, Марс, крупные станции",
+      "business_area": "VIP-охрана, корпоративная безопасность",
+      "allies": [
+        "ArmorWorks",
+        "Omega Defense Systems"
+      ],
+      "enemies": [
+        "Shadow Consortium",
+        "Black Lotus Triad"
+      ],
+      "mechanics": [
+        {
+          "type": "bodyguard_bonus",
+          "target": "vip_protection",
+          "value": 2,
+          "unit": "flat"
+        }
+      ],
+      "plot_hooks": [
+        {
+          "id": "nf37_hook",
+          "type": "assassination",
+          "description": "Бронзовые Тигры ищут подкрепление — кто-то охотится на их клиента, и обычной охраны мало.",
+          "involved_factions": []
+        }
+      ],
+      "legends": "Тигры якобы никогда не теряли клиента — за 40 лет ни одного провала."
+    }
+  ],
+  "total_factions": 172
+}

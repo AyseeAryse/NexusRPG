@@ -1,0 +1,914 @@
+{
+  "library_name": "CHARACTER_ORIGINS",
+  "version": "1.0",
+  "description": "Библиотека происхождений персонажей (Origins) с бонусами, атрибутами, навыками и стартовыми значениями",
+  "origins": [
+    {
+      "id": "ORIGIN_EARTH_ELITE",
+      "title": "Наследник Земной Элиты",
+      "description": "Родились в элитном анклаве Земли, окружённые приватной охраной и лучшими технологиями.",
+      "rarity": "rare",
+      "attributes": {
+        "charisma": 1,
+        "intelligence": 1,
+        "endurance": -1
+      },
+      "skills": {
+        "education": 2,
+        "diplomacy": 1,
+        "survival": -1
+      },
+      "starting_values": {
+        "credits": 100000,
+        "influence": 10
+      },
+      "context_tags": [
+        "Earth",
+        "Elite",
+        "High_Tech",
+        "Wealth"
+      ],
+      "tone_modifiers": {
+        "cynicism": 6,
+        "sophistication": 9,
+        "violence": 3,
+        "hope": 4
+      }
+    },
+    {
+      "id": "ORIGIN_EARTH_SLUMS",
+      "title": "Дитя Трущоб",
+      "description": "Выжили в нижних уровнях города, где неон гасится пылью и страхом.",
+      "rarity": "common",
+      "attributes": {
+        "endurance": 2,
+        "dexterity": 1,
+        "intelligence": -1
+      },
+      "skills": {
+        "survival": 2,
+        "stealth": 1,
+        "education": -1
+      },
+      "starting_values": {
+        "credits": 1000,
+        "heat": 0
+      },
+      "context_tags": [
+        "Earth",
+        "Slums",
+        "Poverty"
+      ],
+      "tone_modifiers": {
+        "cynicism": 9,
+        "sophistication": 2,
+        "violence": 7,
+        "hope": 3
+      }
+    },
+    {
+      "id": "ORIGIN_EARTH_CORPORATE_HEIR",
+      "title": "Корпоративный наследник",
+      "description": "Вы выросли в семье владельцев корпорации, с детства обучались бизнесу и политике.",
+      "rarity": "rare",
+      "attributes": {
+        "charisma": 2,
+        "intelligence": 1
+      },
+      "skills": {
+        "negotiation": 2,
+        "bureaucracy": 1
+      },
+      "starting_values": {
+        "credits": 75000,
+        "influence": 15
+      },
+      "context_tags": [
+        "Earth",
+        "Corporate",
+        "Wealth"
+      ],
+      "tone_modifiers": {
+        "cynicism": 7,
+        "sophistication": 8,
+        "violence": 2,
+        "hope": 5
+      }
+    },
+    {
+      "id": "ORIGIN_EARTH_JOURNALIST",
+      "title": "Журналист Земли",
+      "description": "Вы посвятили себя поиску правды и разоблачению коррупции.",
+      "rarity": "uncommon",
+      "attributes": {
+        "intelligence": 1,
+        "charisma": 1
+      },
+      "skills": {
+        "education": 1,
+        "diplomacy": 1,
+        "criminal": 1
+      },
+      "starting_values": {
+        "credits": 5000,
+        "influence": 2
+      },
+      "context_tags": [
+        "Earth",
+        "Media",
+        "Investigation"
+      ],
+      "tone_modifiers": {
+        "cynicism": 6,
+        "sophistication": 6,
+        "violence": 2,
+        "hope": 6
+      }
+    },
+    {
+      "id": "ORIGIN_EARTH_MILITARY_BRAT",
+      "title": "Ребёнок военных",
+      "description": "Вы выросли в военных базах Земли, привыкли к дисциплине и субординации.",
+      "rarity": "common",
+      "attributes": {
+        "willpower": 1,
+        "endurance": 1
+      },
+      "skills": {
+        "combat": 1,
+        "law": 1
+      },
+      "starting_values": {
+        "credits": 10000,
+        "influence": 3
+      },
+      "context_tags": [
+        "Earth",
+        "Military",
+        "Family"
+      ],
+      "tone_modifiers": {
+        "cynicism": 5,
+        "sophistication": 5,
+        "violence": 5,
+        "hope": 6
+      }
+    },
+    {
+      "id": "ORIGIN_EARTH_DIPLOMAT",
+      "title": "Дипломат Земли",
+      "description": "Вы обучались искусству переговоров и представляли интересы Земли в межпланетных делах.",
+      "rarity": "uncommon",
+      "attributes": {
+        "charisma": 2,
+        "intelligence": 1
+      },
+      "skills": {
+        "diplomacy": 2,
+        "negotiation": 1
+      },
+      "starting_values": {
+        "credits": 20000,
+        "influence": 8
+      },
+      "context_tags": [
+        "Earth",
+        "Politics",
+        "Diplomacy"
+      ],
+      "tone_modifiers": {
+        "cynicism": 4,
+        "sophistication": 8,
+        "violence": 1,
+        "hope": 7
+      }
+    },
+    {
+      "id": "ORIGIN_EARTH_HACKER_COLLECTIVE",
+      "title": "Хакер Земли",
+      "description": "Вы были частью подпольного коллектива хакеров.",
+      "rarity": "uncommon",
+      "attributes": {
+        "intelligence": 2,
+        "tech_empathy": 2
+      },
+      "skills": {
+        "hacking": 2,
+        "technology": 1
+      },
+      "starting_values": {
+        "credits": 5000,
+        "heat": 2
+      },
+      "context_tags": [
+        "Earth",
+        "Hacker",
+        "Underground"
+      ],
+      "tone_modifiers": {
+        "cynicism": 7,
+        "sophistication": 6,
+        "violence": 3,
+        "hope": 4
+      }
+    },
+    {
+      "id": "ORIGIN_EARTH_REFUGEE_CAMP",
+      "title": "Беженец Земли",
+      "description": "Вы выросли в лагере беженцев, где выживали в тяжёлых условиях.",
+      "rarity": "common",
+      "attributes": {
+        "endurance": 2,
+        "willpower": 1
+      },
+      "skills": {
+        "survival": 2,
+        "medicine": 1
+      },
+      "starting_values": {
+        "credits": 500,
+        "heat": 1
+      },
+      "context_tags": [
+        "Earth",
+        "Refugee",
+        "Survival"
+      ],
+      "tone_modifiers": {
+        "cynicism": 8,
+        "sophistication": 3,
+        "violence": 5,
+        "hope": 4
+      }
+    },
+    {
+      "id": "ORIGIN_EARTH_CELEBRITY",
+      "title": "Земная знаменитость",
+      "description": "Вы были известны в медиа, но слава имеет и тёмные стороны.",
+      "rarity": "rare",
+      "attributes": {
+        "charisma": 3
+      },
+      "skills": {
+        "diplomacy": 1,
+        "negotiation": 1
+      },
+      "starting_values": {
+        "credits": 50000,
+        "influence": 12
+      },
+      "context_tags": [
+        "Earth",
+        "Celebrity",
+        "Media"
+      ],
+      "tone_modifiers": {
+        "cynicism": 6,
+        "sophistication": 7,
+        "violence": 2,
+        "hope": 6
+      }
+    },
+    {
+      "id": "ORIGIN_EARTH_UNDERGROUND_FIGHTER",
+      "title": "Подпольный боец",
+      "description": "Вы участвовали в нелегальных боях, где выживает сильнейший.",
+      "rarity": "common",
+      "attributes": {
+        "strength": 2,
+        "endurance": 1
+      },
+      "skills": {
+        "combat": 2,
+        "stealth": 1
+      },
+      "starting_values": {
+        "credits": 2000,
+        "heat": 3
+      },
+      "context_tags": [
+        "Earth",
+        "Fighter",
+        "Underground"
+      ],
+      "tone_modifiers": {
+        "cynicism": 7,
+        "sophistication": 3,
+        "violence": 8,
+        "hope": 3
+      }
+    },
+    {
+      "id": "ORIGIN_EARTH_TECH_MOGUL",
+      "title": "Технологический магнат",
+      "description": "Молодой миллиардер, создавший революционную технологию.",
+      "rarity": "legendary",
+      "attributes": {
+        "intelligence": 3,
+        "charisma": 2,
+        "tech_empathy": 3
+      },
+      "skills": {
+        "technology": 3,
+        "negotiation": 2,
+        "bureaucracy": 1
+      },
+      "starting_values": {
+        "credits": 500000,
+        "influence": 30
+      },
+      "context_tags": [
+        "Earth",
+        "Technology",
+        "Wealth",
+        "Innovation"
+      ],
+      "tone_modifiers": {
+        "cynicism": 3,
+        "sophistication": 8,
+        "violence": 2,
+        "hope": 9
+      }
+    },
+    {
+      "id": "ORIGIN_MARS_MILITARY",
+      "title": "Потомок Марсианских Солдат",
+      "description": "Привыкли к дисциплине и симуляциям боевых учений в республиканской академии.",
+      "rarity": "common",
+      "attributes": {
+        "strength": 1,
+        "endurance": 1,
+        "willpower": 1
+      },
+      "skills": {
+        "combat": 1,
+        "piloting": 1
+      },
+      "starting_values": {
+        "credits": 35000,
+        "influence": 5
+      },
+      "context_tags": [
+        "Mars",
+        "Military",
+        "Colonist"
+      ],
+      "tone_modifiers": {
+        "cynicism": 4,
+        "sophistication": 7,
+        "violence": 6,
+        "hope": 6
+      }
+    },
+    {
+      "id": "ORIGIN_MARS_SCIENTIST",
+      "title": "Учёный Марса",
+      "description": "Родились среди терраформеров и исследователей, для вас наука — это всё.",
+      "rarity": "uncommon",
+      "attributes": {
+        "intelligence": 2,
+        "tech_empathy": 1,
+        "charisma": -1
+      },
+      "skills": {
+        "technology": 2,
+        "engineering": 1
+      },
+      "starting_values": {
+        "credits": 50000,
+        "influence": 3
+      },
+      "context_tags": [
+        "Mars",
+        "Science",
+        "High_Tech"
+      ],
+      "tone_modifiers": {
+        "cynicism": 4,
+        "sophistication": 9,
+        "violence": 2,
+        "hope": 8
+      }
+    },
+    {
+      "id": "ORIGIN_MARS_REBEL",
+      "title": "Марсианский повстанец",
+      "description": "Вы участвовали в подпольных движениях за независимость Марса.",
+      "rarity": "uncommon",
+      "attributes": {
+        "willpower": 2,
+        "endurance": 1
+      },
+      "skills": {
+        "combat": 1,
+        "criminal": 1
+      },
+      "starting_values": {
+        "credits": 5000,
+        "heat": 3
+      },
+      "context_tags": [
+        "Mars",
+        "Rebel",
+        "Underground"
+      ],
+      "tone_modifiers": {
+        "cynicism": 7,
+        "sophistication": 4,
+        "violence": 7,
+        "hope": 5
+      }
+    },
+    {
+      "id": "ORIGIN_MARS_TERRAFORMER",
+      "title": "Терраформер Марса",
+      "description": "Вы работали над изменением атмосферы и климата Марса.",
+      "rarity": "common",
+      "attributes": {
+        "intelligence": 1,
+        "endurance": 1
+      },
+      "skills": {
+        "engineering": 2,
+        "technology": 1
+      },
+      "starting_values": {
+        "credits": 15000,
+        "influence": 2
+      },
+      "context_tags": [
+        "Mars",
+        "Terraforming",
+        "Worker"
+      ],
+      "tone_modifiers": {
+        "cynicism": 5,
+        "sophistication": 6,
+        "violence": 3,
+        "hope": 7
+      }
+    },
+    {
+      "id": "ORIGIN_MARS_DOME_ARCHITECT",
+      "title": "Архитектор куполов",
+      "description": "Вы проектировали и строили жилые купола для колонистов.",
+      "rarity": "uncommon",
+      "attributes": {
+        "intelligence": 2,
+        "tech_empathy": 1
+      },
+      "skills": {
+        "engineering": 2,
+        "bureaucracy": 1
+      },
+      "starting_values": {
+        "credits": 25000,
+        "influence": 4
+      },
+      "context_tags": [
+        "Mars",
+        "Architecture",
+        "Engineering"
+      ],
+      "tone_modifiers": {
+        "cynicism": 4,
+        "sophistication": 7,
+        "violence": 2,
+        "hope": 7
+      }
+    },
+    {
+      "id": "ORIGIN_MARS_DUST_STORM_SURVIVOR",
+      "title": "Выживший в пылевой буре",
+      "description": "Вы пережили катастрофическую бурю на Марсе, закалившую ваш характер.",
+      "rarity": "common",
+      "attributes": {
+        "endurance": 2,
+        "willpower": 1
+      },
+      "skills": {
+        "survival": 2
+      },
+      "starting_values": {
+        "credits": 5000,
+        "heat": 1
+      },
+      "context_tags": [
+        "Mars",
+        "Survivor",
+        "Environment"
+      ],
+      "tone_modifiers": {
+        "cynicism": 6,
+        "sophistication": 3,
+        "violence": 5,
+        "hope": 6
+      }
+    },
+    {
+      "id": "ORIGIN_MARS_WATER_THIEF",
+      "title": "Вор воды",
+      "description": "Выживание заставило вас воровать воду у корпораций.",
+      "rarity": "common",
+      "attributes": {
+        "dexterity": 2,
+        "reflexes": 1
+      },
+      "skills": {
+        "stealth": 2,
+        "criminal": 1
+      },
+      "starting_values": {
+        "credits": 2000,
+        "heat": 2
+      },
+      "context_tags": [
+        "Mars",
+        "Criminal",
+        "Survival"
+      ],
+      "tone_modifiers": {
+        "cynicism": 8,
+        "sophistication": 3,
+        "violence": 6,
+        "hope": 4
+      }
+    },
+    {
+      "id": "ORIGIN_MARS_INDEPENDENCE_CELL",
+      "title": "Ячейка независимости",
+      "description": "Вы были частью подпольной организации, борющейся за независимость Марса.",
+      "rarity": "uncommon",
+      "attributes": {
+        "willpower": 2,
+        "charisma": 1
+      },
+      "skills": {
+        "diplomacy": 1,
+        "combat": 1
+      },
+      "starting_values": {
+        "credits": 3000,
+        "heat": 3
+      },
+      "context_tags": [
+        "Mars",
+        "Rebel",
+        "Politics"
+      ],
+      "tone_modifiers": {
+        "cynicism": 7,
+        "sophistication": 5,
+        "violence": 6,
+        "hope": 5
+      }
+    },
+    {
+      "id": "ORIGIN_MARS_GENETIC_EXPERIMENT",
+      "title": "Генетический эксперимент",
+      "description": "Вы — результат марсианских экспериментов по изменению генома.",
+      "rarity": "rare",
+      "attributes": {
+        "intelligence": 1,
+        "endurance": 1,
+        "tech_empathy": 1
+      },
+      "skills": {
+        "biology": 2,
+        "medicine": 1
+      },
+      "starting_values": {
+        "credits": 10000,
+        "influence": 1
+      },
+      "context_tags": [
+        "Mars",
+        "Science",
+        "Experiment"
+      ],
+      "tone_modifiers": {
+        "cynicism": 8,
+        "sophistication": 7,
+        "violence": 4,
+        "hope": 3
+      }
+    },
+    {
+      "id": "ORIGIN_MARS_TUNNEL_RAT",
+      "title": "Крыс туннелей",
+      "description": "Вы выросли в подземных туннелях Марса, где царит криминал и нищета.",
+      "rarity": "common",
+      "attributes": {
+        "dexterity": 2,
+        "endurance": 1
+      },
+      "skills": {
+        "stealth": 2,
+        "criminal": 1
+      },
+      "starting_values": {
+        "credits": 1000,
+        "heat": 2
+      },
+      "context_tags": [
+        "Mars",
+        "Underground",
+        "Survival"
+      ],
+      "tone_modifiers": {
+        "cynicism": 8,
+        "sophistication": 3,
+        "violence": 7,
+        "hope": 3
+      }
+    },
+    {
+      "id": "ORIGIN_MARS_ATMOSPHERIC_ENGINEER",
+      "title": "Инженер атмосферы",
+      "description": "Вы работали над системами жизнеобеспечения и атмосферного контроля.",
+      "rarity": "uncommon",
+      "attributes": {
+        "intelligence": 2,
+        "tech_empathy": 1
+      },
+      "skills": {
+        "engineering": 2,
+        "technology": 1
+      },
+      "starting_values": {
+        "credits": 20000,
+        "influence": 2
+      },
+      "context_tags": [
+        "Mars",
+        "Engineering",
+        "Terraforming"
+      ],
+      "tone_modifiers": {
+        "cynicism": 5,
+        "sophistication": 7,
+        "violence": 3,
+        "hope": 7
+      }
+    },
+    {
+      "id": "ORIGIN_BELT_SMUGGLER",
+      "title": "Контрабандист Пояса",
+      "description": "Семья жила тайной торговлей во Внешней системе.",
+      "rarity": "uncommon",
+      "attributes": {
+        "reflexes": 2,
+        "dexterity": 1
+      },
+      "skills": {
+        "piloting": 2,
+        "criminal": 2
+      },
+      "starting_values": {
+        "credits": 25000,
+        "heat": 2
+      },
+      "context_tags": [
+        "Belt",
+        "Smuggling",
+        "Criminal",
+        "Space"
+      ],
+      "tone_modifiers": {
+        "cynicism": 6,
+        "sophistication": 5,
+        "violence": 8,
+        "hope": 6
+      }
+    },
+    {
+      "id": "ORIGIN_BELT_SALVAGER",
+      "title": "Сборщик обломков",
+      "description": "Вы зарабатывали на жизнь разбором старых кораблей и станций.",
+      "rarity": "common",
+      "attributes": {
+        "endurance": 1,
+        "tech_empathy": 1
+      },
+      "skills": {
+        "engineering": 1,
+        "survival": 1
+      },
+      "starting_values": {
+        "credits": 5000
+      },
+      "context_tags": [
+        "Belt",
+        "Salvage",
+        "Worker"
+      ],
+      "tone_modifiers": {
+        "cynicism": 5,
+        "sophistication": 4,
+        "violence": 4,
+        "hope": 6
+      }
+    },
+    {
+      "id": "ORIGIN_BELT_MINER",
+      "title": "Шахтёр Пояса",
+      "description": "Вы добывали руду и лёд в опасных условиях астероидных шахт.",
+      "rarity": "common",
+      "attributes": {
+        "strength": 1,
+        "endurance": 2
+      },
+      "skills": {
+        "engineering": 1,
+        "survival": 1
+      },
+      "starting_values": {
+        "credits": 3000
+      },
+      "context_tags": [
+        "Belt",
+        "Mining",
+        "Worker"
+      ],
+      "tone_modifiers": {
+        "cynicism": 6,
+        "sophistication": 3,
+        "violence": 5,
+        "hope": 5
+      }
+    },
+    {
+      "id": "ORIGIN_BELT_PIRATE_PRINCE",
+      "title": "Принц пиратов Пояса",
+      "description": "Вы выросли в клане пиратов, где сила и хитрость решают всё.",
+      "rarity": "rare",
+      "attributes": {
+        "strength": 1,
+        "reflexes": 2
+      },
+      "skills": {
+        "combat": 2,
+        "criminal": 2,
+        "piloting": 1
+      },
+      "starting_values": {
+        "credits": 20000,
+        "heat": 5
+      },
+      "context_tags": [
+        "Belt",
+        "Pirate",
+        "Criminal"
+      ],
+      "tone_modifiers": {
+        "cynicism": 7,
+        "sophistication": 4,
+        "violence": 9,
+        "hope": 4
+      }
+    },
+    {
+      "id": "ORIGIN_BELT_TRADER",
+      "title": "Космический торговец",
+      "description": "Вы торговали между станциями Пояса, балансируя между законом и серым рынком.",
+      "rarity": "uncommon",
+      "attributes": {
+        "charisma": 1,
+        "reflexes": 1
+      },
+      "skills": {
+        "negotiation": 2,
+        "piloting": 1
+      },
+      "starting_values": {
+        "credits": 15000,
+        "influence": 2
+      },
+      "context_tags": [
+        "Belt",
+        "Trader",
+        "Commerce"
+      ],
+      "tone_modifiers": {
+        "cynicism": 5,
+        "sophistication": 6,
+        "violence": 3,
+        "hope": 7
+      }
+    },
+    {
+      "id": "ORIGIN_JOVIAN_SCIENTIST",
+      "title": "Учёный Юпитера",
+      "description": "Вы работали на орбитальных станциях Юпитера, исследуя экстремальные условия.",
+      "rarity": "uncommon",
+      "attributes": {
+        "intelligence": 2,
+        "tech_empathy": 1
+      },
+      "skills": {
+        "biology": 1,
+        "engineering": 1
+      },
+      "starting_values": {
+        "credits": 20000,
+        "influence": 2
+      },
+      "context_tags": [
+        "OuterSystem",
+        "Jupiter",
+        "Science"
+      ],
+      "tone_modifiers": {
+        "cynicism": 4,
+        "sophistication": 7,
+        "violence": 2,
+        "hope": 7
+      }
+    },
+    {
+      "id": "ORIGIN_SATURN_RING_RUNNER",
+      "title": "Беглец колец Сатурна",
+      "description": "Вы выросли среди станций на кольцах Сатурна, где контрабанда и выживание идут рука об руку.",
+      "rarity": "common",
+      "attributes": {
+        "dexterity": 1,
+        "reflexes": 1
+      },
+      "skills": {
+        "piloting": 1,
+        "criminal": 1
+      },
+      "starting_values": {
+        "credits": 5000,
+        "heat": 2
+      },
+      "context_tags": [
+        "OuterSystem",
+        "Saturn",
+        "Smuggling"
+      ],
+      "tone_modifiers": {
+        "cynicism": 7,
+        "sophistication": 4,
+        "violence": 6,
+        "hope": 5
+      }
+    },
+    {
+      "id": "ORIGIN_NEPTUNE_OUTCAST",
+      "title": "Изгнанник Нептуна",
+      "description": "Выжили в изоляции на окраинах системы, вдали от цивилизации.",
+      "rarity": "rare",
+      "attributes": {
+        "endurance": 2,
+        "willpower": 1
+      },
+      "skills": {
+        "survival": 2
+      },
+      "starting_values": {
+        "credits": 2000
+      },
+      "context_tags": [
+        "OuterSystem",
+        "Neptune",
+        "Isolation"
+      ],
+      "tone_modifiers": {
+        "cynicism": 8,
+        "sophistication": 3,
+        "violence": 5,
+        "hope": 4
+      }
+    },
+    {
+      "id": "ORIGIN_PLUTO_EXPLORER",
+      "title": "Исследователь Плутона",
+      "description": "Вы участвовали в экспедициях на окраины Солнечной системы.",
+      "rarity": "legendary",
+      "attributes": {
+        "intelligence": 2,
+        "willpower": 2
+      },
+      "skills": {
+        "exploration": 2,
+        "survival": 1
+      },
+      "starting_values": {
+        "credits": 30000,
+        "influence": 5
+      },
+      "context_tags": [
+        "OuterSystem",
+        "Pluto",
+        "Explorer"
+      ],
+      "tone_modifiers": {
+        "cynicism": 5,
+        "sophistication": 8,
+        "violence": 3,
+        "hope": 9
+      }
+    }
+  ]
+}

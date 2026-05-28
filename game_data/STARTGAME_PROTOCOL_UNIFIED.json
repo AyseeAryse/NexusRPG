@@ -1,0 +1,282 @@
+{
+  "title": "STARTGAME Protocol",
+  "status": "Final, for chat text RPG in browser, no external UI dependencies",
+  "compatible_modules": [
+    "AINARRATOR",
+    "CHARACTER_CORE",
+    "CHARACTER_LIFEPATH",
+    "DIALOGUE_INTEGRATED_WITH_LIFEPATH",
+    "FACTIONS_MASTER",
+    "PLAYER_INTERFACE",
+    "STARTING_QUESTS",
+    "THEME_TONE",
+    "VISUALS_ENGINE"
+  ],
+  "purpose": "Unified start procedure with dynamic character generation, personalized atmosphere and start conditions, optimized for step-by-step chat messages",
+  "philosophy_and_changes": {
+    "full_lifepath": "Origin â†’ Formative Years â†’ Specialization with mandatory name and age input at final identification step",
+    "dynamic_tone": "Initial mode/tone initiate palette, then adapt to player choices and THEME_TONE matrix",
+    "personalization": "Name and age mandatory but collected after key branches so tone and context are pre-defined",
+    "context": "Dialogues and starting quests generated from profile modules with 5-6 relevant options considering Lifepath and tone"
+  },
+  "start_command": {
+    "usage": "Single chat message with parameters read as key:value, order irrelevant",
+    "syntax": "STARTGAME mode:<setting> tone:<profile> difficulty:<level> seed:<number> length:<time> safety:<policy> autosave:<on/off> saveslot:<id> language:<lang_code>",
+    "description": {
+      "mode": "Macro world setting, eg sci-fi affecting factions, artifacts, and events",
+      "tone": "Starting tone profile, eg noir, adapted later in mixing",
+      "difficulty": "Mechanics difficulty and checks, default normal",
+      "seed": "Random seed for reproducibility",
+      "length": "Planned duration eg 90m affecting event intensity",
+      "safety": "Safety policy eg standard",
+      "autosave": "Autosave on/off, chat format persist log internally",
+      "saveslot": "Arbitrary save id eg A-001",
+      "language": "Interface lang eg ru"
+    }
+  },
+  "start_flow": [
+    {
+      "phase": "Technical initialization",
+      "description": "Parse command and generate session-id, load base modules and profiles THEME_TONE/VISUALS_ENGINE for later delivery"
+    },
+    {
+      "phase": "Character creation",
+      "steps": [
+        {
+          "tag": "Origin",
+          "emoji": "ðŸ§¬",
+          "title": "ÐŸÑ€Ð¾Ð¸ÑÑ…Ð¾Ð¶Ð´ÐµÐ½Ð¸Ðµ",
+          "description": "Choose from 20+ options in CHARACTER_LIFEPATH.json, setting start context, connections, and modifiers",
+          "prompt": "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ ÑÐ²Ð¾Ð¹ Ð¿ÑƒÑ‚ÑŒ. Ð•ÑÐ»Ð¸ Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð½Ñ‹Ðµ Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ñ‹ Ð½Ðµ Ð¿Ð¾Ð´Ñ…Ð¾Ð´ÑÑ‚, ÑÐºÐ°Ð¶Ð¸Ñ‚Ðµ 'ÐµÑ‰Ðµ' Ð¸Ð»Ð¸ ÑƒÑ‚Ð¾Ñ‡Ð½Ð¸Ñ‚Ðµ, Ñ‡Ñ‚Ð¾ Ð¸Ñ‰ÐµÑ‚Ðµ.",
+          "user_interaction_handlers": {
+            "on_select": "ÐŸÐµÑ€ÐµÐ¹Ñ‚Ð¸ Ðº ÑÐ»ÐµÐ´ÑƒÑŽÑ‰ÐµÐ¼Ñƒ ÑˆÐ°Ð³Ñƒ (ToneMix).",
+            "on_request_more": "ÐŸÑ€ÐµÐ´ÑÑ‚Ð°Ð²Ð¸Ñ‚ÑŒ ÐµÑ‰Ñ‘ 5-6 ÑƒÐ½Ð¸ÐºÐ°Ð»ÑŒÐ½Ñ‹Ñ… Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ð¾Ð² Ð¿Ñ€Ð¾Ð¸ÑÑ…Ð¾Ð¶Ð´ÐµÐ½Ð¸Ñ Ð¸Ð· CHARACTER_LIFEPATH.json.",
+            "on_request_specific": "ÐžÑ‚Ñ„Ð¸Ð»ÑŒÑ‚Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ñ‹ Ð¿Ð¾ ÐºÐ»ÑŽÑ‡ÐµÐ²Ñ‹Ð¼ ÑÐ»Ð¾Ð²Ð°Ð¼ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ (Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€, 'Ð¿Ð¸Ñ€Ð°Ñ‚', 'ÑƒÑ‡Ñ‘Ð½Ñ‹Ð¹') Ð¸ Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ Ð¿Ð¾Ð´Ñ…Ð¾Ð´ÑÑ‰Ð¸Ðµ.",
+            "on_invalid_input": "ÐŸÐ¾Ð²Ñ‚Ð¾Ñ€Ð½Ð¾ Ð²Ñ‹Ð²ÐµÑÑ‚Ð¸ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ñ‹ Ñ Ð¿Ð¾Ð´ÑÐºÐ°Ð·ÐºÐ°Ð¼Ð¸."
+          }
+        },
+        {
+          "tag": "ToneMix",
+          "emoji": "ðŸŽ¨",
+          "title": "ÐšÐ¾Ð¼Ð±Ð¸Ð½Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ð°Ñ Ñ‚Ð¾Ð½Ð°Ð»ÑŒÐ½Ð¾ÑÑ‚ÑŒ",
+          "text": "Ð¢ÐµÐºÑƒÑ‰Ð¸Ð¹ Ñ‚Ð¾Ð½ Ð±ÑƒÐ´ÐµÑ‚ ÑÐ¾Ð·Ð´Ð°Ð²Ð°Ñ‚ÑŒÑÑ Ð½Ð° Ð¾ÑÐ½Ð¾Ð²Ðµ Ð²Ð°ÑˆÐµÐ³Ð¾ Ð¿Ñ€Ð¾Ð¸ÑÑ…Ð¾Ð¶Ð´ÐµÐ½Ð¸Ñ Ð¸ ÑÐ»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ñ… Ð²Ñ‹Ð±Ð¾Ñ€Ð¾Ð². Ð’Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð·Ð°Ð´Ð°Ñ‚ÑŒ Ð°ÐºÑ†ÐµÐ½Ñ‚:",
+          "options": [
+            {
+              "label": "1) ÐœÑ€Ð°Ñ‡Ð½Ñ‹Ð¹ Ð½ÐµÐ¾Ð½-Ð½ÑƒÐ°Ñ€",
+              "description": "Ð“Ð¾Ñ€Ð¾Ð´ Ð² Ð¾Ð³Ð½ÑÑ… Ð½ÐµÐ¾Ð½Ð°, Ð³Ð´Ðµ ÐºÐ°Ð¶Ð´Ð°Ñ Ñ‚ÐµÐ½ÑŒ Ñ‚Ð°Ð¸Ñ‚ Ð¾Ð¿Ð°ÑÐ½Ð¾ÑÑ‚ÑŒ."
+            },
+            {
+              "label": "2) Ð­Ð¿Ð¸Ðº-ÐºÐ¾ÑÐ¼Ð¾Ñ",
+              "description": "Ð‘ÐµÐ·Ð³Ñ€Ð°Ð½Ð¸Ñ‡Ð½Ñ‹Ðµ Ð¿Ñ€Ð¾ÑÑ‚Ð¾Ñ€Ñ‹ Ð²ÑÐµÐ»ÐµÐ½Ð½Ð¾Ð¹ Ð¸ Ð²ÐµÐ»Ð¸Ñ‡Ð¸Ðµ Ð½ÐµÐ¸Ð·Ð²ÐµÐ´Ð°Ð½Ð½Ð¾Ð³Ð¾."
+            },
+            {
+              "label": "3) Ð”Ñ€Ð°Ð¼ÐµÐ´Ð¸-ÐºÐ¸Ð±ÐµÑ€Ð¿Ð°Ð½Ðº",
+              "description": "Ð˜Ñ€Ð¾Ð½Ð¸Ñ Ð¸ Ñ‚Ñ€Ð°Ð³ÐµÐ´Ð¸Ñ Ð² Ð¼Ð¸Ñ€Ðµ Ð²Ñ‹ÑÐ¾ÐºÐ¸Ñ… Ñ‚ÐµÑ…Ð½Ð¾Ð»Ð¾Ð³Ð¸Ð¹ Ð¸ Ð½Ð¸Ð·ÐºÐ¸Ñ… ÑÑ‚Ñ€Ð°ÑÑ‚ÐµÐ¹."
+            },
+            {
+              "label": "4) ÐŸÑ€Ð¾Ð¿ÑƒÑÑ‚Ð¸Ñ‚ÑŒ (Ð°Ð²Ñ‚Ð¾)",
+              "description": "ÐÐ²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸ ÑÐ¼Ð¸ÐºÑˆÐ¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ñ‚Ð¾Ð½ Ð¿Ð¾ Ð²Ð°ÑˆÐ¸Ð¼ Ð¿Ñ€Ð¾ÑˆÐ»Ñ‹Ð¼ Ð²Ñ‹Ð±Ð¾Ñ€Ð°Ð¼."
+            }
+          ],
+          "prompt": "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð°ÐºÑ†ÐµÐ½Ñ‚ Ñ‚Ð¾Ð½Ð°Ð»ÑŒÐ½Ð¾ÑÑ‚Ð¸ Ð¸Ð»Ð¸ Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ Â«Ð¿Ñ€Ð¾Ð¿ÑƒÑÑ‚Ð¸Ñ‚ÑŒÂ», Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ñ‚Ð¾Ð½ Ð¼Ð¸ÐºÑÐ° Ð·Ð°Ð´Ð°Ð²Ð°Ð»ÑÑ Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸ Ð½Ð° Ð¾ÑÐ½Ð¾Ð²Ðµ Ð²Ð°ÑˆÐµÐ³Ð¾ Ð¿Ñ€Ð¾Ð¸ÑÑ…Ð¾Ð¶Ð´ÐµÐ½Ð¸Ñ.",
+          "narrative_hints": [
+            "Ð’Ð°ÑˆÐµ Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ðµ Ð¾ÐºÑ€Ð°ÑˆÐ¸Ð²Ð°ÐµÑ‚ Ð¼Ð¸Ñ€ Ð½Ð¾Ð²Ñ‹Ð¼Ð¸ ÐºÑ€Ð°ÑÐºÐ°Ð¼Ð¸.",
+            "Ð¡Ð»Ð¸ÑÐ½Ð¸Ðµ Ð²Ð°ÑˆÐ¸Ñ… Ð²Ñ‹Ð±Ð¾Ñ€Ð¾Ð² ÑÐ¾Ð·Ð´Ð°Ñ‘Ñ‚ ÑƒÐ½Ð¸ÐºÐ°Ð»ÑŒÐ½ÑƒÑŽ Ð°Ñ‚Ð¼Ð¾ÑÑ„ÐµÑ€Ñƒ."
+          ],
+          "user_interaction_handlers": {
+            "on_select": "ÐŸÐµÑ€ÐµÐ¹Ñ‚Ð¸ Ðº ÑÐ»ÐµÐ´ÑƒÑŽÑ‰ÐµÐ¼Ñƒ ÑˆÐ°Ð³Ñƒ (FormativeYears).",
+            "on_invalid_input": "ÐŸÐ¾Ð²Ñ‚Ð¾Ñ€Ð½Ð¾ Ð¾Ð±ÑŠÑÑÐ½Ð¸Ñ‚ÑŒ Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ñ‹ Ñ‚Ð¾Ð½Ð°Ð»ÑŒÐ½Ð¾ÑÑ‚Ð¸."
+          }
+        },
+        {
+          "tag": "FormativeYears",
+          "emoji": "ðŸŒ±",
+          "title": "Ð¤Ð¾Ñ€Ð¼Ð°Ñ‚Ð¸Ð²Ð½Ñ‹Ðµ Ð³Ð¾Ð´Ñ‹",
+          "description": "4-6 events/decisions influencing genre focus and emotional modifiers affecting future checks",
+          "user_interaction_handlers": {
+            "on_select": "ÐŸÐµÑ€ÐµÐ¹Ñ‚Ð¸ Ðº ÑÐ»ÐµÐ´ÑƒÑŽÑ‰ÐµÐ¼Ñƒ ÑˆÐ°Ð³Ñƒ (Specialization).",
+            "on_request_more": "ÐŸÑ€ÐµÐ´ÑÑ‚Ð°Ð²Ð¸Ñ‚ÑŒ ÐµÑ‰Ñ‘ 3-4 Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ð° Ð¾Ð¿Ñ‹Ñ‚Ð° Ð¸Ð· CHARACTER_LIFEPATH.json.",
+            "on_request_specific": "ÐžÑ‚Ñ„Ð¸Ð»ÑŒÑ‚Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ñ‹ Ð¿Ð¾ ÐºÐ»ÑŽÑ‡ÐµÐ²Ñ‹Ð¼ ÑÐ»Ð¾Ð²Ð°Ð¼ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ Ð¸ Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ Ð¿Ð¾Ð´Ñ…Ð¾Ð´ÑÑ‰Ð¸Ðµ.",
+            "on_invalid_input": "ÐŸÐ¾Ð²Ñ‚Ð¾Ñ€Ð½Ð¾ Ð²Ñ‹Ð²ÐµÑÑ‚Ð¸ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ñ‹ Ñ Ð¿Ð¾Ð´ÑÐºÐ°Ð·ÐºÐ°Ð¼Ð¸."
+          }
+        },
+        {
+          "tag": "Specialization",
+          "emoji": "ðŸ‘¤",
+          "title": "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ ÑÐ¿ÐµÑ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸ÑŽ",
+          "options": [
+            {
+              "id": "Hacker",
+              "name": "Ð¥Ð°ÐºÐµÑ€ (Hacker)",
+              "description": "ÐœÐ°ÑÑ‚ÐµÑ€ Ð²Ð·Ð»Ð¾Ð¼Ð° ÐºÐ¾Ñ€Ð¿Ð¾Ñ€Ð°Ñ‚Ð¸Ð²Ð½Ñ‹Ñ… ÑÐµÑ‚ÐµÐ¹ Ð¸ Ñ†Ð¸Ñ„Ñ€Ð¾Ð²Ð¾Ð¹ Ð±Ð¾Ð³ Ð² Ð¼Ð¸Ñ€Ðµ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ð¸.",
+              "effects": {
+                "Hacking": 3,
+                "Electronics": 2,
+                "Survival": -1
+              },
+              "unique_ability": {
+                "name": "Ð¦Ð¸Ñ„Ñ€Ð¾Ð²Ð¾Ð¹ Ñ„Ð°Ð½Ñ‚Ð¾Ð¼",
+                "description": "ÐžÐ´Ð½Ð¾ÐºÑ€Ð°Ñ‚Ð½Ñ‹Ð¹ Ð¼Ð°ÑÐºÐ¸Ñ€Ð¾Ð²Ð¾Ñ‡Ð½Ñ‹Ð¹ Â«Ñ„Ð°Ð½Ñ‚Ð¾Ð¼Â» Ð² Ð·Ð°Ñ‰Ð¸Ñ‰Ñ‘Ð½Ð½Ñ‹Ñ… ÑÐµÑ‚ÑÑ… Ð±ÐµÐ· ÑÐ»ÐµÐ´Ð¾Ð²."
+              }
+            },
+            {
+              "id": "Pilot",
+              "name": "ÐŸÐ¸Ð»Ð¾Ñ‚ (Pilot)",
+              "description": "ÐÑ, ÑÐ¿Ð¾ÑÐ¾Ð±Ð½Ñ‹Ð¹ Ð¿Ñ€Ð¾Ð²ÐµÑÑ‚Ð¸ ÐºÐ¾Ñ€Ð°Ð±Ð»ÑŒ Ñ‡ÐµÑ€ÐµÐ· Ð°ÑÑ‚ÐµÑ€Ð¾Ð¸Ð´Ð½Ð¾Ðµ Ð¿Ð¾Ð»Ðµ Ñ Ð·Ð°ÐºÑ€Ñ‹Ñ‚Ñ‹Ð¼Ð¸ Ð³Ð»Ð°Ð·Ð°Ð¼Ð¸.",
+              "effects": {
+                "Piloting": 3,
+                "Navigation": 2,
+                "Charisma": -1
+              },
+              "unique_ability": {
+                "name": "Ð­ÐºÑÑ‚Ñ€ÐµÐ¼Ð°Ð»ÑŒÐ½Ñ‹Ð¹ ÐºÑƒÑ€Ñ",
+                "description": "Ð Ð°Ð·Ð¾Ð²Ñ‹Ð¹ Ð¼Ð°Ð½Ñ‘Ð²Ñ€ Ð´Ð»Ñ Ð¸Ð·Ð±ÐµÐ¶Ð°Ð½Ð¸Ñ Ð¿Ð¾Ð²Ñ€ÐµÐ¶Ð´ÐµÐ½Ð¸Ð¹."
+              }
+            },
+            {
+              "id": "Medic",
+              "name": "ÐœÐµÐ´Ð¸Ðº (Medic)",
+              "description": "Ð¡Ð¿ÐµÑ†Ð¸Ð°Ð»Ð¸ÑÑ‚ Ð¿Ð¾ ÑÐ¿Ð°ÑÐµÐ½Ð¸ÑŽ Ð¶Ð¸Ð·Ð½ÐµÐ¹: Ð¾Ñ‚ Ð¿Ð¾Ð»ÐµÐ²Ð¾Ð¹ Ñ…Ð¸Ñ€ÑƒÑ€Ð³Ð¸Ð¸ Ð´Ð¾ Ð³ÐµÐ½ÐµÑ‚Ð¸Ñ‡ÐµÑÐºÐ¾Ð¹ Ñ‚ÐµÑ€Ð°Ð¿Ð¸Ð¸.",
+              "effects": {
+                "Medicine": 3,
+                "Genetics": 2,
+                "Strength": -1
+              },
+              "unique_ability": {
+                "name": "Ð­ÐºÑÑ‚Ñ€ÐµÐ½Ð½Ð¾Ðµ Ð»ÐµÑ‡ÐµÐ½Ð¸Ðµ",
+                "description": "Ð’ ÐºÑ€Ð¸Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¾Ð¹ ÑÐ¸Ñ‚ÑƒÐ°Ñ†Ð¸Ð¸ Ð²Ð¾ÑÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ 50% Ð·Ð´Ð¾Ñ€Ð¾Ð²ÑŒÑ ÑÐ¾ÑŽÐ·Ð½Ð¸ÐºÐ°."
+              }
+            },
+            {
+              "id": "Negotiator",
+              "name": "ÐŸÐµÑ€ÐµÐ³Ð¾Ð²Ð¾Ñ€Ñ‰Ð¸Ðº (Negotiator)",
+              "description": "Ð”Ð¸Ð¿Ð»Ð¾Ð¼Ð°Ñ‚, ÑÐ¿Ð¾ÑÐ¾Ð±Ð½Ñ‹Ð¹ Ñ€Ð°Ð·Ñ€ÐµÑˆÐ¸Ñ‚ÑŒ Ð»ÑŽÐ±Ð¾Ð¹ ÐºÐ¾Ð½Ñ„Ð»Ð¸ÐºÑ‚ ÑÐ»Ð¾Ð²Ð¾Ð¼, Ð° Ð½Ðµ Ð¾Ñ€ÑƒÐ¶Ð¸ÐµÐ¼.",
+              "effects": {
+                "Diplomacy": 3,
+                "Charisma": 2,
+                "Combat": -1
+              },
+              "unique_ability": {
+                "name": "Ð”Ð¸Ð¿Ð»Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸Ð¹ Ð¸Ð¼Ð¼ÑƒÐ½Ð¸Ñ‚ÐµÑ‚",
+                "description": "Ð Ð°Ð· Ð² Ð¼Ð¸ÑÑÐ¸ÑŽ Ð¸Ð·Ð±ÐµÐ¶Ð°Ñ‚ÑŒ ÑˆÑ‚Ñ€Ð°Ñ„Ð¾Ð² Ð¿Ñ€Ð¸ Ð¿Ñ€Ð¾Ð²Ð°Ð»Ðµ Ð¿ÐµÑ€ÐµÐ³Ð¾Ð²Ð¾Ñ€Ð¾Ð²."
+              }
+            },
+            {
+              "id": "Engineer",
+              "name": "Ð˜Ð½Ð¶ÐµÐ½ÐµÑ€ (Engineer)",
+              "description": "Ð¢ÐµÑ…Ð½Ð¸Ñ‡ÐµÑÐºÐ¸Ð¹ Ð³ÐµÐ½Ð¸Ð¹, ÑÐ¿Ð¾ÑÐ¾Ð±Ð½Ñ‹Ð¹ Ð¿Ð¾Ñ‡Ð¸Ð½Ð¸Ñ‚ÑŒ Ñ‡Ñ‚Ð¾ ÑƒÐ³Ð¾Ð´Ð½Ð¾, Ð¾Ñ‚ Ñ‚Ñ€Ð°ÑÑ‚ÐµÑ€Ð° Ð´Ð¾ Ð·Ð²ÐµÐ·Ð´Ð¾Ð»Ñ‘Ñ‚Ð½Ð¾Ð³Ð¾ Ð´Ð²Ð¸Ð³Ð°Ñ‚ÐµÐ»Ñ.",
+              "effects": {
+                "Engineering": 3,
+                "Mechanics": 2,
+                "Charisma": -1
+              },
+              "unique_ability": {
+                "name": "Ð¡Ð°Ð¿Ñ‘Ñ€Ð½Ñ‹Ð¹ Ð¸Ð¼Ð¿ÑƒÐ»ÑŒÑ",
+                "description": "ÐœÐ³Ð½Ð¾Ð²ÐµÐ½Ð½Ñ‹Ð¹ Ñ€ÐµÐ¼Ð¾Ð½Ñ‚ Ð»ÑŽÐ±Ð¾Ð³Ð¾ Ð¼ÐµÑ…Ð°Ð½Ð¸Ð·Ð¼Ð°."
+              }
+            },
+            {
+              "id": "Soldier",
+              "name": "Ð¡Ð¾Ð»Ð´Ð°Ñ‚ (Soldier)",
+              "description": "ÐŸÑ€Ð¾Ñ„ÐµÑÑÐ¸Ð¾Ð½Ð°Ð»ÑŒÐ½Ñ‹Ð¹ Ð²Ð¾ÐµÐ½Ð½Ñ‹Ð¹, Ð¼Ð°ÑÑ‚ÐµÑ€ Ñ‚Ð°ÐºÑ‚Ð¸ÐºÐ¸ Ð¸ Ð²ÐµÐ´ÐµÐ½Ð¸Ñ Ð±Ð¾Ñ.",
+              "effects": {
+                "Combat": 3,
+                "Tactics": 2,
+                "Diplomacy": -1
+              },
+              "unique_ability": {
+                "name": "Ð‘Ð¾ÐµÐ²Ð¾Ð¹ Ð¿Ð¾Ð´ÑŠÑ‘Ð¼",
+                "description": "Ð Ð°Ð· Ð² Ð¼Ð¸ÑÑÐ¸ÑŽ Ð¿Ð¾Ð²Ñ‹ÑÐ¸Ñ‚ÑŒ Ð¼Ð¾Ñ€Ð°Ð»ÑŒ Ð¾Ñ‚Ñ€ÑÐ´Ð°: +2 Ðº Ð°Ñ‚Ð°ÐºÐµ."
+              }
+            },
+            {
+              "id": "Spy",
+              "name": "Ð¨Ð¿Ð¸Ð¾Ð½ (Spy)",
+              "description": "ÐœÐ°ÑÑ‚ÐµÑ€ Ð¼Ð°ÑÐºÐ¸Ñ€Ð¾Ð²ÐºÐ¸ Ð¸ Ð¸Ð½Ñ„Ð¸Ð»ÑŒÑ‚Ñ€Ð°Ñ†Ð¸Ð¸ â€” Ð½ÐµÑ‚ Ñ‡ÑƒÐ¶Ð¸Ñ… ÑÐµÐºÑ€ÐµÑ‚Ð¾Ð².",
+              "effects": {
+                "Stealth": 3,
+                "Intrigue": 2,
+                "Strength": -1
+              },
+              "unique_ability": {
+                "name": "Ð¢ÐµÐ½ÐµÐ²Ð°Ñ ÑÐµÑ‚ÑŒ",
+                "description": "ÐŸÐ¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ðµ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð° Ðº Ð·Ð°ÐºÑ€Ñ‹Ñ‚Ñ‹Ð¼ Ð´Ð°Ð½Ð½Ñ‹Ð¼ Ð¿Ñ€Ð¾Ñ‚Ð¸Ð²Ð½Ð¸ÐºÐ°."
+              }
+            },
+            {
+              "id": "Scientist",
+              "name": "Ð£Ñ‡Ñ‘Ð½Ñ‹Ð¹ (Scientist)",
+              "description": "Ð˜ÑÑÐ»ÐµÐ´Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ, Ð¿Ð¾ÑÐ²ÑÑ‚Ð¸Ð²ÑˆÐ¸Ð¹ Ð¶Ð¸Ð·Ð½ÑŒ Ñ€Ð°Ð·Ð³Ð°Ð´ÐºÐµ Ñ‚Ð°Ð¹Ð½ Ð’ÑÐµÐ»ÐµÐ½Ð½Ð¾Ð¹.",
+              "effects": {
+                "Science": 3,
+                "Technology": 2,
+                "Perception": -1
+              },
+              "unique_ability": {
+                "name": "ÐÐ°ÑƒÑ‡Ð½Ñ‹Ð¹ Ð¸Ð½ÑÐ°Ð¹Ñ‚",
+                "description": "Ð Ð°Ð· Ð² Ð´ÐµÐ½ÑŒ Ð½Ð°Ð¹Ñ‚Ð¸ Ð½Ð¾Ð²Ð¾Ðµ Ð¿Ñ€Ð¸Ð¼ÐµÐ½ÐµÐ½Ð¸Ðµ ÑÑ‚Ð°Ð½Ð´Ð°Ñ€Ñ‚Ð½Ð¾Ð¼Ñƒ Ð¾Ð±Ð¾Ñ€ÑƒÐ´Ð¾Ð²Ð°Ð½Ð¸ÑŽ."
+              }
+            }
+          ],
+          "prompt": "ÐšÐ°ÐºÑƒÑŽ ÑÐ¿ÐµÑ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸ÑŽ Ð²Ñ‹ Ð²Ñ‹Ð±Ð¸Ñ€Ð°ÐµÑ‚Ðµ? Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ Ð¾Ñ‚ 1 Ð´Ð¾ 8 Ð¸Ð»Ð¸ Â«randomÂ».",
+          "user_interaction_handlers": {
+            "on_select": "ÐŸÐµÑ€ÐµÐ¹Ñ‚Ð¸ Ðº ÑÐ»ÐµÐ´ÑƒÑŽÑ‰ÐµÐ¼Ñƒ ÑˆÐ°Ð³Ñƒ (Identity).",
+            "on_request_more": "ÐŸÑ€ÐµÐ´ÑÑ‚Ð°Ð²Ð¸Ñ‚ÑŒ ÐµÑ‰Ñ‘ 3-4 Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ð° ÑÐ¿ÐµÑ†Ð¸Ð°Ð»ÑŒÐ½Ð¾ÑÑ‚ÐµÐ¹ Ð¸Ð· CHARACTER_LIFEPATH.json.",
+            "on_request_specific": "ÐžÑ‚Ñ„Ð¸Ð»ÑŒÑ‚Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ñ‹ Ð¿Ð¾ ÐºÐ»ÑŽÑ‡ÐµÐ²Ñ‹Ð¼ ÑÐ»Ð¾Ð²Ð°Ð¼ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ Ð¸ Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ Ð¿Ð¾Ð´Ñ…Ð¾Ð´ÑÑ‰Ð¸Ðµ.",
+            "on_invalid_input": "ÐŸÐ¾Ð²Ñ‚Ð¾Ñ€Ð½Ð¾ Ð²Ñ‹Ð²ÐµÑÑ‚Ð¸ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ñ‹ Ñ Ð¿Ð¾Ð´ÑÐºÐ°Ð·ÐºÐ°Ð¼Ð¸."
+          },
+          "THEME_TONE": "dark_cyberpunk",
+          "VISUALS_ENGINE": "ascii_emphasis"
+        },
+        {
+          "tag": "Identity",
+          "description": "Mandatory name and age input after all choices to overlay personalization on pre-defined context",
+          "user_interaction_handlers": {
+            "on_valid_input": "Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð¸ Ð¿ÐµÑ€ÐµÐ¹Ñ‚Ð¸ Ðº Ñ„Ð¸Ð½Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ð¸.",
+            "on_invalid_input": "ÐÐ°Ð¿Ð¾Ð¼Ð½Ð¸Ñ‚ÑŒ Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚ Ð²Ð²Ð¾Ð´Ð° Ð¸Ð¼ÐµÐ½Ð¸ Ð¸ Ð²Ð¾Ð·Ñ€Ð°ÑÑ‚Ð°."
+          }
+        },
+        {
+          "tag": "Validation",
+          "description": "Validation per CHARACTER_CORE rules for completeness and correctness before finalization"
+        }
+      ],
+      "notes": "Each step outputs a separate 'screen' with emoji and [tag: ...] styled through THEME_TONE and VISUALS_ENGINE keys for clean text rendering in chat"
+    },
+    {
+      "phase": "Finalization",
+      "steps": [
+        "ApplyLifepathModifiers",
+        "CalculateDerivedStats",
+        "ValidateCharacter"
+      ],
+      "description": "Apply bonuses/penalties per origin, formative years, and specialization, recalc derived stats, finalize character"
+    },
+    {
+      "phase": "World initialization",
+      "description": "Generate starting quests from STARTING_QUESTS considering Origin/Formative/Specialization and final tone",
+      "additional_preparations": [
+        "Prepare 5-6 relevant dialogue options from DIALOGUE_INTEGRATED_WITH_LIFEPATH aligned with genre-tone matrix",
+        "Launch first scene and display player interface styled via THEME_TONE/VISUALS_ENGINE"
+      ]
+    }
+  ],
+  "integration_of_theme_and_visual": {
+    "THEME_TONE": "Each step picks tone key plus motifs, color accents, lexical markers to create an atmospheric prompt even in plain text",
+    "VISUALS_ENGINE": "Determines text delivery style eg inline_boxes, ascii_emphasis, rich_tables for HTML chats, plain for minimalistic view",
+    "recommendations": "Set engine level at phase level, override in steps if needed for consistent and recognizable visual style"
+  },
+  "player_command_reference": {
+    "character": "sheet | stats | character - character sheet (attributes, skills)",
+    "status": "status - psycho-social state (stress, reputation, etc)",
+    "inventory": "inventory | inv - show inventory, use - use item, credits - show balance",
+    "missions": "missions | journal | quests - list tasks; mission accept - accept; mission abort - decline",
+    "interaction": "talk - dialogue with NPC; move - move location; roll - skill/attribute check",
+    "general": "help - show available commands"
+  },
+  "browser_notes": {
+    "text_screen_format": "Text messages with short blocks and emoji/tags, no graphic UI; formatting via VISUALS_ENGINE string wrappers and THEME_TONE dictionaries for lexicon and intonation",
+    "step_by_step_prompting": "Do not show all steps at once: one step one message, then confirmation/response, then next; character card builds smooth and readable",
+    "reproducibility": "Keep seed and save step states in session autolog; same seed and mode/tone leads to equivalent decision palette"
+  }
+}

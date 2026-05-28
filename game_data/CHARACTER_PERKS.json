@@ -1,0 +1,83 @@
+{
+  "library_name": "CHARACTER_PERKS",
+  "version": "1.0",
+  "description": "Библиотека перков по навыкам и уникальных перков по жизненному пути",
+
+  "hacking_perks": [
+    { "level_required": 1, "name": "Quick Scan", "description": "Ускоряет поиск уязвимостей на 5%" },
+    { "level_required": 2, "name": "Quick Hack", "description": "Снижает время взлома на 10%" },
+    { "level_required": 3, "name": "Stealth Breach", "description": "Взлом без повышения HEAT" },
+    { "level_required": 4, "name": "Ghost Protocol", "description": "Не оставляет цифровых следов" },
+    { "level_required": 5, "name": "Code Injection", "description": "Позволяет временно отключить системы безопасности" },
+    { "level_required": 6, "name": "Override AI", "description": "Временно подчиняет защитного дрона" },
+    { "level_required": 7, "name": "Quantum Exploit", "description": "Взлом квантовых шифров без шифрования" },
+    { "level_required": 8, "name": "Neural Hack", "description": "Вмешательство в нейронную сеть жертвы" }
+  ],
+
+  "piloting_perks": [
+    { "level_required": 1, "name": "Smooth Turn", "description": "Улучшает маневренность на 5%" },
+    { "level_required": 2, "name": "Smooth Maneuver", "description": "Увеличивает уклонение на 5%" },
+    { "level_required": 3, "name": "Precision Thrusters", "description": "Снижает расход топлива на 5%" },
+    { "level_required": 4, "name": "Afterburner", "description": "Кратковременный буст скорости" },
+    { "level_required": 5, "name": "Rapid Docking", "description": "Ускоряет стыковку на 15%" },
+    { "level_required": 6, "name": "Master Pilot", "description": "Снижает расход топлива на 15%" },
+    { "level_required": 7, "name": "Evasive Protocol", "description": "Автоматическое уклонение при критическом HP" },
+    { "level_required": 8, "name": "Supersonic Jump", "description": "Кратковременный гиперпространственный скачок" }
+  ],
+
+  "negotiation_perks": [
+    { "level_required": 1, "name": "Small Talk", "description": "+2 к Diplomacy rolls" },
+    { "level_required": 2, "name": "Silver Tongue", "description": "+5 к Loyalty gains" },
+    { "level_required": 3, "name": "Price Haggler", "description": "-5% к стоимости контрактов" },
+    { "level_required": 4, "name": "Corporate Connections", "description": "Доступ к корпоративным контрактам" },
+    { "level_required": 5, "name": "Information Broker", "description": "Покупка информации со скидкой 20%" },
+    { "level_required": 6, "name": "Diplomatic Immunity", "description": "Снижение HEAT при дипломатических миссиях" },
+    { "level_required": 7, "name": "Master Negotiator", "description": "Переговоры без ограничений по времени" },
+    { "level_required": 8, "name": "Alliance Builder", "description": "Создание альянсов между враждующими фракциями" }
+  ],
+
+  "lifepath_unique_perks": [
+    {
+      "id": "LP001",
+      "name": "Street Instincts",
+      "description": "+3 к Stealth и Survival в городских условиях, иммунитет к уличным ловушкам",
+      "required_lifepath": ["ORIGIN_EARTH_SLUMS", "ORIGIN_MARS_TUNNEL_RAT"]
+    },
+    {
+      "id": "LP002",
+      "name": "Corporate Network",
+      "description": "Автоматически +2 Influence у всех корпоративных фракций при старте игры",
+      "required_lifepath": ["ORIGIN_EARTH_ELITE", "ORIGIN_CORPORATE_HEIR"]
+    },
+    {
+      "id": "LP003",
+      "name": "Military Discipline",
+      "description": "+2 к Willpower, иммунитет к панике в бою",
+      "required_lifepath": ["ORIGIN_MARS_MILITARY", "ORIGIN_EARTH_MILITARY"]
+    },
+    {
+      "id": "LP004",
+      "name": "Void Walker",
+      "description": "+15% точность навигации в Поясе астероидов, знание секретных маршрутов",
+      "required_lifepath": ["ORIGIN_BELT_SMUGGLER", "ORIGIN_BELT_SALVAGER"]
+    },
+    {
+      "id": "LP005",
+      "name": "Tech Savant",
+      "description": "Возможность создавать уникальные технологии, недоступные другим персонажам",
+      "required_lifepath": ["ORIGIN_MARS_SCIENTIST", "ORIGIN_JOVIAN_SCIENTIST"]
+    },
+    {
+      "id": "LP006",
+      "name": "Born to Rule",
+      "description": "Автоматически +5 Influence у семейной фракции при старте игры",
+      "required_lifepath": ["ORIGIN_EARTH_ELITE"]
+    },
+    {
+      "id": "LP007",
+      "name": "Ghetto Survivor",
+      "description": "+1 к Stealth и Survival в городских трущобах, иммунитет к запугиванию",
+      "required_lifepath": ["ORIGIN_EARTH_SLUMS", "ORIGIN_EARTH_HOMELESS"]
+    }
+  ]
+}

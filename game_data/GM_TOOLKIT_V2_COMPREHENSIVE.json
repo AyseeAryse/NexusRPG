@@ -1,0 +1,417 @@
+{
+  "module_name": "GM_TOOLKIT_V2",
+  "version": "2.0_COMPREHENSIVE_TOOLKIT",
+  "description": "Полный инструментарий ГМ с интеграцией всех систем и готовыми таблицами",
+  "replaces": "GM_TOOLKIT.json",
+  "size_target": "12,000+ символов",
+  "plot_twists_d100": {
+    "description": "100 готовых поворотов сюжета для любых ситуаций",
+    "corporate_intrigue": {
+      "01_10": [
+        {
+          "roll": "01",
+          "twist": "Союзник - корпоративный шпион",
+          "type": "betrayal",
+          "effect": "+2 HEAT"
+        },
+        {
+          "roll": "02",
+          "twist": "Целевая корпорация уже банкрот",
+          "type": "misdirection",
+          "effect": "Contract void"
+        },
+        {
+          "roll": "03",
+          "twist": "ИИ компании обрел сознание",
+          "type": "supernatural",
+          "effect": "New faction"
+        },
+        {
+          "roll": "04",
+          "twist": "Конкурирующая команда на том же задании",
+          "type": "competition",
+          "effect": "Race against time"
+        },
+        {
+          "roll": "05",
+          "twist": "Заказчик - подставное лицо",
+          "type": "deception",
+          "effect": "Real employer revealed"
+        }
+      ]
+    },
+    "personal_drama": {
+      "11_20": [
+        {
+          "roll": "11",
+          "twist": "Цель оказывается родственником",
+          "type": "relationship",
+          "effect": "Moral dilemma"
+        },
+        {
+          "roll": "12",
+          "twist": "Старый враг предлагает союз",
+          "type": "enemy_ally",
+          "effect": "Trust issues"
+        },
+        {
+          "roll": "13",
+          "twist": "Воспоминания были изменены",
+          "type": "memory",
+          "effect": "Identity crisis"
+        },
+        {
+          "roll": "14",
+          "twist": "Наставник - предатель",
+          "type": "betrayal",
+          "effect": "Skill penalties"
+        },
+        {
+          "roll": "15",
+          "twist": "Любовный интерес в опасности",
+          "type": "personal_stakes",
+          "effect": "Emotional stress"
+        }
+      ]
+    },
+    "sci_fi_revelations": {
+      "21_30": [
+        {
+          "roll": "21",
+          "twist": "Пришельцы наблюдают за событиями",
+          "type": "alien",
+          "effect": "Cosmic implications"
+        },
+        {
+          "roll": "22",
+          "twist": "Технология имеет разум",
+          "type": "ai",
+          "effect": "Tech becomes NPC"
+        },
+        {
+          "roll": "23",
+          "twist": "Реальность - симуляция",
+          "type": "reality",
+          "effect": "Everything questioned"
+        },
+        {
+          "roll": "24",
+          "twist": "Генетические модификации активируются",
+          "type": "mutation",
+          "effect": "New abilities"
+        },
+        {
+          "roll": "25",
+          "twist": "Квантовая аномалия изменяет прошлое",
+          "type": "time",
+          "effect": "History rewritten"
+        }
+      ]
+    }
+  },
+  "conspiracy_generator": {
+    "description": "Генератор заговоров используя все 160 фракций FACTIONS_MASTER",
+    "conspiracy_templates": {
+      "corporate_takeover": {
+        "structure": "Megacorp A vs Megacorp B through proxy SMEs",
+        "duration": "3-12 months",
+        "complexity_levels": {
+          "simple": "Direct competition between 2 megacorps",
+          "moderate": "3-4 factions with hidden alliances",
+          "complex": "5+ factions with shifting loyalties",
+          "labyrinthine": "10+ factions, double agents, false flags"
+        },
+        "integration": "Uses POLITICS.json for government involvement"
+      },
+      "technological_conspiracy": {
+        "structure": "Research Lab + PMC vs Government + Competing Labs",
+        "key_elements": [
+          "Revolutionary technology at stake",
+          "Corporate espionage and theft",
+          "Government regulation attempts",
+          "Underground markets and black ops"
+        ],
+        "escalation_triggers": [
+          "Technology demonstration goes wrong",
+          "Key scientist defects or disappears",
+          "Government raids research facility",
+          "Competing faction acquires partial data"
+        ]
+      },
+      "political_manipulation": {
+        "structure": "Government faction + Corporate backing vs Opposition + Foreign influence",
+        "scope_options": [
+          "Local station politics",
+          "Planetary government crisis",
+          "Inter-planetary diplomatic incident",
+          "System-wide political realignment"
+        ],
+        "player_involvement": [
+          "Information gathering and espionage",
+          "Diplomatic missions and negotiations",
+          "Protection and security services",
+          "Direct action and sabotage"
+        ]
+      }
+    }
+  },
+  "space_age_tools": {
+    "orbital_mechanics": {
+      "travel_time_calculator": {
+        "earth_mars": "120-300 days depending on orbital alignment",
+        "mars_belt": "60-180 days to major belt stations",
+        "belt_jupiter": "90-240 days to Jovian system",
+        "jupiter_saturn": "200-400 days standard routes",
+        "emergency_burns": "50% time reduction at 3x fuel cost"
+      },
+      "space_encounters": {
+        "frequency": "5-25% per day of travel based on route danger",
+        "types": [
+          "Pirate ambush (contested zones)",
+          "Derelict vessel (salvage opportunity)",
+          "Corporate patrol (inspection/harassment)",
+          "Distress signal (rescue mission)",
+          "Asteroid field (navigation challenge)",
+          "Alien artifact (rare, legendary encounter)"
+        ]
+      }
+    },
+    "station_management": {
+      "location_generator": "Uses 20+ locations from WORLDBUILD.json",
+      "crisis_scenarios": [
+        "Life support failure requiring emergency repairs",
+        "Corporate blockade cutting off supplies",
+        "Terrorist attack on critical infrastructure",
+        "Economic collapse affecting station funding",
+        "Alien contact through station communications",
+        "AI uprising in station control systems"
+      ]
+    }
+  },
+  "enhanced_npc_tools": {
+    "instant_npc_generator": {
+      "method": "Combine NPC_ARCHETYPES + NPC_NAME_GENERATOR + lifepath elements",
+      "generation_time": "30 seconds for full NPC with motivations",
+      "integration_points": [
+        "Automatic faction assignment",
+        "Relationship web creation",
+        "Goal and motivation assignment",
+        "Personality trait selection",
+        "Professional background"
+      ]
+    },
+    "npc_relationship_matrix": {
+      "description": "Quick reference for NPC interactions",
+      "relationship_types": [
+        "Ally (+3 to +5): Actively helps player",
+        "Friend (+1 to +2): Generally supportive",
+        "Neutral (0): Professional relationship",
+        "Rival (-1 to -2): Competition but not hostile",
+        "Enemy (-3 to -5): Actively opposes player"
+      ],
+      "modification_triggers": [
+        "Successful mission completion: +1 to +2",
+        "Failed mission: -1 to -3 depending on consequences",
+        "Personal favor: +1 to +2",
+        "Betrayal or abandonment: -3 to -5",
+        "Shared danger/triumph: +2 to +3"
+      ]
+    }
+  },
+  "sandbox_balancing": {
+    "player_influence_scaling": {
+      "tier_0_nobody": {
+        "scope": "Personal problems, local crime",
+        "opposition": "Street thugs, corrupt officials",
+        "resources": "Basic equipment, small loans",
+        "consequences": "Local reputation changes"
+      },
+      "tier_1_local": {
+        "scope": "Station politics, small corporate jobs",
+        "opposition": "Corporate security, rival teams",
+        "resources": "Professional equipment, corporate backing",
+        "consequences": "Regional reputation, faction attention"
+      },
+      "tier_2_regional": {
+        "scope": "Planetary conflicts, major corporate wars",
+        "opposition": "Corporate armies, government agents",
+        "resources": "Military hardware, intelligence networks",
+        "consequences": "System-wide changes, political shifts"
+      },
+      "tier_3_system": {
+        "scope": "Inter-planetary crises, system politics",
+        "opposition": "Faction militaries, government fleets",
+        "resources": "Strategic assets, massive funding",
+        "consequences": "Historical events, system transformation"
+      }
+    },
+    "dynamic_difficulty": {
+      "heat_escalation": {
+        "low_heat_1_5": "Local security interest",
+        "medium_heat_6_15": "Corporate investigation",
+        "high_heat_16_30": "System-wide bounty",
+        "extreme_heat_31_plus": "Multi-faction manhunt"
+      },
+      "opposition_scaling": {
+        "player_resources": "Opposition scales to player capabilities",
+        "faction_backing": "Stronger factions provide stronger enemies",
+        "reputation": "Fame attracts more dangerous opponents",
+        "influence": "Higher tier unlocks legendary antagonists"
+      }
+    }
+  },
+  "rapid_scene_creation": {
+    "location_templates": {
+      "corporate_facility": {
+        "elements": [
+          "High security",
+          "Sterile environment",
+          "Advanced tech"
+        ],
+        "npcs": [
+          "Security chief",
+          "Lead researcher",
+          "Corporate executive"
+        ],
+        "complications": [
+          "Security breach",
+          "Research accident",
+          "Corporate espionage"
+        ],
+        "opportunities": [
+          "Data theft",
+          "Sabotage",
+          "Recruitment"
+        ]
+      },
+      "space_station": {
+        "elements": [
+          "Diverse population",
+          "Multiple levels",
+          "Central hub"
+        ],
+        "npcs": [
+          "Station administrator",
+          "Dock worker",
+          "Information broker"
+        ],
+        "complications": [
+          "System failure",
+          "Criminal activity",
+          "Political unrest"
+        ],
+        "opportunities": [
+          "Trade deals",
+          "Information gathering",
+          "Safe haven"
+        ]
+      },
+      "asteroid_mining": {
+        "elements": [
+          "Industrial machinery",
+          "Dangerous environment",
+          "Isolated location"
+        ],
+        "npcs": [
+          "Mining foreman",
+          "Equipment operator",
+          "Union representative"
+        ],
+        "complications": [
+          "Equipment failure",
+          "Labor dispute",
+          "Claim jumping"
+        ],
+        "opportunities": [
+          "Resource acquisition",
+          "Worker recruitment",
+          "Hidden discoveries"
+        ]
+      }
+    }
+  },
+  "improvisation_tools": {
+    "quick_decision_tables": {
+      "npc_motivation_d20": [
+        "1-4: Financial gain",
+        "5-8: Personal revenge",
+        "9-12: Professional duty",
+        "13-16: Ideological belief",
+        "17-20: Family/relationship protection"
+      ],
+      "complication_severity_d6": [
+        "1-2: Minor inconvenience",
+        "3-4: Moderate problem",
+        "5-6: Major crisis requiring immediate attention"
+      ],
+      "faction_response_d8": [
+        "1-2: Ignore completely",
+        "3-4: Send agents to investigate",
+        "5-6: Direct intervention",
+        "7-8: Full organizational response"
+      ]
+    },
+    "pacing_tools": {
+      "tension_escalation": [
+        "Introduce time pressure",
+        "Add personal stakes",
+        "Reveal hidden connections",
+        "Force difficult choices",
+        "Bring back past consequences"
+      ],
+      "tension_relief": [
+        "Provide safe harbor",
+        "Offer humor moment",
+        "Grant small victory",
+        "Introduce helpful ally",
+        "Allow planning time"
+      ]
+    }
+  },
+  "technology_breakthrough_generator": {
+    "breakthrough_categories": {
+      "quantum_computing": {
+        "impact": "Revolutionary encryption and AI capabilities",
+        "factions_interested": [
+          "Tech megacorps",
+          "Government agencies",
+          "Research labs"
+        ],
+        "consequences": [
+          "Obsolete security systems",
+          "New hacking possibilities",
+          "AI revolution"
+        ],
+        "timeline": "6-18 months for full implementation"
+      },
+      "faster_than_light": {
+        "impact": "Interstellar travel becomes possible",
+        "factions_interested": [
+          "All major powers",
+          "Exploration companies",
+          "Military organizations"
+        ],
+        "consequences": [
+          "Complete paradigm shift",
+          "Resource rush",
+          "First contact likelihood"
+        ],
+        "timeline": "Years to decades for widespread adoption"
+      },
+      "consciousness_transfer": {
+        "impact": "Digital immortality achieved",
+        "factions_interested": [
+          "Elite wealthy",
+          "Medical corporations",
+          "Religious groups"
+        ],
+        "consequences": [
+          "Social upheaval",
+          "Identity questions",
+          "New forms of existence"
+        ],
+        "timeline": "Gradual adoption over decades"
+      }
+    }
+  }
+}

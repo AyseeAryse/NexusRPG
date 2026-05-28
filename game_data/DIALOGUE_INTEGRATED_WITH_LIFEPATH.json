@@ -1,0 +1,776 @@
+{
+  "module_name": "DIALOGUE_SYSTEM_WITH_LIFEPATH",
+  "description": "Полная, многоуровневая система коммуникации с глубокой интеграцией жизненного пути персонажа. Объединяет базовые диалоговые механики с персонализированными опциями, дополненными системой яркого нарративного и диалогового оформления (теги, эмодзи).",
+  "version": "4.0_LIFEPATH_STYLED",
+  "lifepath_integration": {
+    "description": "Система интеграции диалоговой системы с жизненным путем персонажа и всеми связанными модулями",
+    "integration_matrix": {
+      "CHARACTER_LIFEPATH": {
+        "function": "Определяет базовые речевые паттерны и социальные реакции",
+        "implementation": "Каждый origin/formative_years/specialization влияет на доступные диалоговые опции",
+        "speech_patterns_by_origin": {
+          "ORIGIN_MARS_MILITARY": {
+            "style": "Четкий, военный стиль",
+            "vocabulary": "Команды, звания, тактическая терминология",
+            "speech_modifiers": {
+              "formality": 2,
+              "directness": 3,
+              "authority": 2
+            },
+            "unique_dialogue_tags": [
+              "[Военный]",
+              "[Марсианец]",
+              "[Командир]"
+            ],
+            "greeting_style": "Краткое, деловое приветствие с упоминанием звания"
+          },
+          "ORIGIN_EARTH_ELITE": {
+            "style": "Изысканный, корпоративный",
+            "vocabulary": "Деловые термины, культурные отсылки, эвфемизмы",
+            "speech_modifiers": {
+              "formality": 3,
+              "manipulation": 2,
+              "social_awareness": 3
+            },
+            "unique_dialogue_tags": [
+              "[Элита]",
+              "[Корпоративный]",
+              "[Влиятельный]"
+            ],
+            "greeting_style": "Формальное приветствие с оценкой социального статуса"
+          },
+          "ORIGIN_EARTH_SLUMS": {
+            "style": "Уличный, прямолинейный",
+            "vocabulary": "Сленг, короткие фразы, местные идиомы",
+            "speech_modifiers": {
+              "street_wise": 3,
+              "cynicism": 2,
+              "survival_instinct": 3
+            },
+            "unique_dialogue_tags": [
+              "[Уличный]",
+              "[Выживший]",
+              "[Циник]"
+            ],
+            "greeting_style": "Настороженное приветствие с оценкой угрозы"
+          },
+          "ORIGIN_GANYMEDE_SCIENTIST": {
+            "style": "Аналитический, этичный",
+            "vocabulary": "Научная терминология, этические категории",
+            "speech_modifiers": {
+              "analytical": 3,
+              "ethical_concern": 3,
+              "knowledge_sharing": 2
+            },
+            "unique_dialogue_tags": [
+              "[Научный]",
+              "[Этический]",
+              "[Исследователь]"
+            ],
+            "greeting_style": "Интеллектуальное приветствие с интересом к знаниям"
+          },
+          "ORIGIN_CERES_MINER": {
+            "style": "Солидарный, прагматичный",
+            "vocabulary": "Рабочий жаргон, профсоюзная терминология",
+            "speech_modifiers": {
+              "solidarity": 3,
+              "anti_corporate": 2,
+              "practical_wisdom": 2
+            },
+            "unique_dialogue_tags": [
+              "[Рабочий]",
+              "[Солидарность]",
+              "[Опытный]"
+            ],
+            "greeting_style": "Братское приветствие с оценкой классовой принадлежности"
+          }
+        }
+      },
+      "NPC_RELATIONS": {
+        "function": "NPC узнают персонажей по происхождению и реагируют соответственно",
+        "implementation": "lifepath_connections определяют уникальные приветствия и диалоги",
+        "recognition_system": {
+          "automatic_recognition": "NPC автоматически распознают происхождение по речевым паттернам",
+          "relationship_memory": "NPC помнят предыдущие взаимодействия и адаптируют диалоги",
+          "shared_history_triggers": "Упоминания общих событий из прошлого открывают специальные опции"
+        }
+      },
+      "PSYCHOLOGY": {
+        "function": "Психологическое состояние влияет на речь персонажа",
+        "implementation": "Стресс, человечность и идеология модифицируют диалоги",
+        "psychological_speech_modifiers": {
+          "high_stress": {
+            "effects": [
+              "Короткие, резкие фразы",
+              "Повышенная агрессивность",
+              "Ошибки в речи"
+            ],
+            "blocked_options": [
+              "Дипломатические решения",
+              "Сложные переговоры"
+            ],
+            "new_options": [
+              "[Стресс] Потребовать быстрого решения"
+            ]
+          },
+          "low_humanity": {
+            "effects": [
+              "Циничные замечания",
+              "Отсутствие эмпатии",
+              "Прагматичные решения"
+            ],
+            "blocked_options": [
+              "Эмоциональные апелляции",
+              "Альтруистические предложения"
+            ],
+            "new_options": [
+              "[Цинизм] Указать на личную выгоду"
+            ]
+          },
+          "high_humanity": {
+            "effects": [
+              "Забота о других",
+              "Этические соображения",
+              "Эмоциональная открытость"
+            ],
+            "blocked_options": [
+              "Жестокие решения",
+              "Манипулятивные тактики"
+            ],
+            "new_options": [
+              "[Эмпатия] Выразить понимание и поддержку"
+            ]
+          }
+        }
+      },
+      "THEME_TONE": {
+        "function": "Общий тон игры адаптирует диалоги под жанр",
+        "implementation": "Один и тот же lifepath звучит по-разному в разных жанрах",
+        "genre_adaptations": {
+          "noir": {
+            "speech_style": "Более циничный, с элементами детективного жанра",
+            "added_vocabulary": "Термины из детективных романов, атмосферные описания",
+            "mood_overlay": "Мрачный, подозрительный тон"
+          },
+          "heroic": {
+            "speech_style": "Вдохновляющий, с акцентом на благородные мотивы",
+            "added_vocabulary": "Героическая риторика, призывы к справедливости",
+            "mood_overlay": "Оптимистичный, решительный тон"
+          },
+          "horror": {
+            "speech_style": "Напряженный, с элементами страха и неопределенности",
+            "added_vocabulary": "Описания угроз, выражения тревоги",
+            "mood_overlay": "Тревожный, параноидальный тон"
+          }
+        }
+      }
+    },
+    "dynamic_dialogue_generation": {
+      "process": [
+        "1. Определить lifepath персонажа и извлечь базовые речевые модификаторы",
+        "2. Считать текущее психологическое состояние и применить эмоциональные фильтры",
+        "3. Учесть текущий theme/tone и адаптировать стиль общения",
+        "4. Проверить отношения с NPC/фракцией и определить их реакцию",
+        "5. Сгенерировать контекстуальные опции диалога с уникальными тегами"
+      ],
+      "dialogue_option_generation": {
+        "base_options": "Стандартные варианты, доступные всем персонажам",
+        "lifepath_options": "Уникальные варианты на основе происхождения",
+        "psychological_options": "Опции, определяемые психологическим состоянием",
+        "relationship_options": "Специальные варианты на основе истории с NPC",
+        "faction_options": "Опции, связанные с репутацией фракций"
+      }
+    }
+  },
+  "communication_interfaces": {
+    "neuro_links": [
+      "Прямая нейросвязь (передача мыслей)",
+      "Субвокальные импланты",
+      "Визуальные AR-оверлеи"
+    ],
+    "corporate_channels": [
+      "Официальные записываемые линии",
+      "Шифрованные каналы Директората"
+    ],
+    "street_channels": [
+      "Пиратские частоты",
+      "Децентрализованные Mesh-сети",
+      "Мертвые капли (асинхронная передача)"
+    ],
+    "specialized_channels": [
+      "Квантовая связь (мгновенная, защищенная)",
+      "Биометрические каналы (анализ микровыражений)"
+    ],
+    "lifepath_interface_preferences": {
+      "ORIGIN_EARTH_ELITE": [
+        "Corporate channels",
+        "Encrypted communications"
+      ],
+      "ORIGIN_EARTH_SLUMS": [
+        "Street channels",
+        "Anonymous networks"
+      ],
+      "ORIGIN_MARS_MILITARY": [
+        "Military frequencies",
+        "Secure tactical channels"
+      ],
+      "ORIGIN_GANYMEDE_SCIENTIST": [
+        "Academic networks",
+        "Research databases"
+      ],
+      "ORIGIN_CERES_MINER": [
+        "Union channels",
+        "Worker solidarity networks"
+      ]
+    }
+  },
+  "social_castes": [
+    {
+      "caste_name": "Корпоративная элита",
+      "population_percentage": 2,
+      "communication_patterns": "Формальный протокол, непрямые намёки, демонстрация эксклюзивных знаний.",
+      "dialogue_modifiers": {
+        "persuasion_vs_employees": 3,
+        "intimidation": 2
+      },
+      "relationships": {
+        "allies": [
+          "Техномаги"
+        ],
+        "enemies": [
+          "Криминал",
+          "Ауткасты"
+        ]
+      },
+      "lifepath_reactions": {
+        "ORIGIN_EARTH_ELITE": {
+          "bonus": 3,
+          "recognition": "Немедленное признание равного статуса"
+        },
+        "ORIGIN_EARTH_SLUMS": {
+          "penalty": -3,
+          "reaction": "Презрение и снисходительность"
+        },
+        "ORIGIN_MARS_MILITARY": {
+          "neutral": 1,
+          "reaction": "Уважение к дисциплине, но социальная дистанция"
+        }
+      }
+    },
+    {
+      "caste_name": "Служащие",
+      "population_percentage": 15,
+      "communication_patterns": "Бюрократический язык, процедуры, регламенты, избегание ответственности.",
+      "dialogue_modifiers": {
+        "negotiation_with_corps": 2,
+        "information_gathering": 1
+      },
+      "relationships": {
+        "allies": [
+          "Техноспециалисты"
+        ],
+        "enemies": [
+          "Независимые"
+        ]
+      },
+      "lifepath_reactions": {
+        "ORIGIN_EARTH_ELITE": {
+          "bonus": 2,
+          "recognition": "Почтительность и стремление угодить"
+        },
+        "ORIGIN_CERES_MINER": {
+          "penalty": -2,
+          "reaction": "Скрытое недоверие к 'бунтарям'"
+        }
+      }
+    },
+    {
+      "caste_name": "Техноспециалисты",
+      "population_percentage": 12,
+      "communication_patterns": "Технический жаргон, прямолинейность, фокус на эффективности.",
+      "dialogue_modifiers": {
+        "technical_negotiation": 3,
+        "information_exchange": 2
+      },
+      "relationships": {
+        "allies": [
+          "Служащие"
+        ],
+        "enemies": [
+          "Уличные (технофобия)"
+        ]
+      },
+      "lifepath_reactions": {
+        "ORIGIN_GANYMEDE_SCIENTIST": {
+          "bonus": 3,
+          "recognition": "Профессиональное признание и интерес"
+        },
+        "ORIGIN_MARS_SCIENTIST": {
+          "bonus": 2,
+          "recognition": "Уважение к техническим знаниям"
+        }
+      }
+    },
+    {
+      "caste_name": "Независимые",
+      "population_percentage": 25,
+      "communication_patterns": "Прагматизм, гибкость стиля, фокус на взаимной выгоде.",
+      "dialogue_modifiers": {
+        "bonus_all_castes": 1,
+        "initial_trust_penalty": -1
+      },
+      "relationships": {
+        "allies": [
+          "Криминал",
+          "Уличные"
+        ],
+        "enemies": [
+          "Служащие"
+        ]
+      },
+      "lifepath_reactions": {
+        "universal_adapter": "Адаптируются к любому происхождению, но требуют доказательств надежности"
+      }
+    },
+    {
+      "caste_name": "Уличные",
+      "population_percentage": 30,
+      "communication_patterns": "Сленг, территориальность, групповая лояльность, недоверие к 'чистым' кастам.",
+      "dialogue_modifiers": {
+        "street_contacts": 3,
+        "trade": 1
+      },
+      "relationships": {
+        "allies": [
+          "Независимые"
+        ],
+        "enemies": [
+          "Служащие",
+          "Техноспециалисты"
+        ]
+      },
+      "lifepath_reactions": {
+        "ORIGIN_EARTH_SLUMS": {
+          "bonus": 3,
+          "recognition": "Немедленное принятие как 'своего'"
+        },
+        "ORIGIN_EARTH_ELITE": {
+          "penalty": -4,
+          "reaction": "Враждебность и недоверие к 'корпоратам'"
+        }
+      }
+    },
+    {
+      "caste_name": "Криминальные",
+      "population_percentage": 8,
+      "communication_patterns": "Кодовые слова, омерта (закон молчания), иерархия страха.",
+      "dialogue_modifiers": {
+        "intimidation": 3,
+        "black_market": 2,
+        "legal_structures": -2
+      },
+      "relationships": {
+        "allies": [
+          "Ауткасты"
+        ],
+        "enemies": [
+          "Корпоративная элита"
+        ]
+      },
+      "lifepath_reactions": {
+        "ORIGIN_LUNA_UNDERWORLD": {
+          "bonus": 4,
+          "recognition": "Признание как члена преступного мира"
+        },
+        "ORIGIN_MARS_MILITARY": {
+          "penalty": -2,
+          "reaction": "Осторожность к бывшим 'ментам'"
+        }
+      }
+    },
+    {
+      "caste_name": "Техномаги/Генмодифицированные",
+      "population_percentage": 3,
+      "communication_patterns": "Научная терминология, философские дискуссии, презрение к 'немодифицированным'.",
+      "dialogue_modifiers": {
+        "intellectual_dominance": 2,
+        "ethical_debates": 1
+      },
+      "relationships": {
+        "allies": [
+          "Корпоративная элита"
+        ],
+        "enemies": [
+          "Ауткасты (идеологическая)"
+        ]
+      },
+      "lifepath_reactions": {
+        "ORIGIN_GANYMEDE_SCIENTIST": {
+          "bonus": 2,
+          "recognition": "Интеллектуальное уважение"
+        }
+      }
+    },
+    {
+      "caste_name": "Ауткасты",
+      "population_percentage": 5,
+      "communication_patterns": "Выживание любой ценой, недоверие ко всем, примитивные сигналы.",
+      "dialogue_modifiers": {
+        "intimidation_defense": 2,
+        "trust_penalty_all": -3
+      },
+      "relationships": {
+        "allies": [
+          "Криминал (ситуативно)"
+        ],
+        "enemies": [
+          "Все остальные касты"
+        ]
+      },
+      "lifepath_reactions": {
+        "universal_suspicion": "Подозрительность ко всем происхождениям, но могут признать схожий опыт выживания"
+      }
+    }
+  ],
+  "reputation_system": {
+    "description": "Интегрированная с CHARACTER_CORE репутационная система для диалогов",
+    "reputation_integration": "Использует стандартизированную шкалу -100 до +100 из CHARACTER_CORE",
+    "parameters": [
+      {
+        "name": "Доверие (Trust)",
+        "range": "-100 to +100",
+        "effect": "Влияет на правдивость ответов NPC и доступность информации."
+      },
+      {
+        "name": "Лояльность (Loyalty)",
+        "range": "-100 to +100",
+        "effect": "Определяет готовность NPC помочь или предать."
+      },
+      {
+        "name": "Страх (Fear)",
+        "range": "0-100",
+        "effect": "Увеличивает шанс на успех при запугивании, но снижает доверие."
+      },
+      {
+        "name": "Известность/Розыск (Heat)",
+        "range": "0-100",
+        "effect": "Модифицирует первое впечатление и реакцию фракций."
+      }
+    ],
+    "lifepath_reputation_modifiers": {
+      "first_impression": {
+        "description": "Происхождение персонажа влияет на первое впечатление с NPC",
+        "ORIGIN_MARS_MILITARY": {
+          "military_npcs": 20,
+          "civilian_npcs": 5,
+          "criminal_npcs": -10
+        },
+        "ORIGIN_EARTH_ELITE": {
+          "corporate_npcs": 25,
+          "wealthy_npcs": 15,
+          "poor_npcs": -15
+        }
+      }
+    },
+    "relationship_triggers": {
+      "successful_promise": {
+        "trust_change": 10,
+        "loyalty_change": 5
+      },
+      "betrayal": {
+        "trust_change": -25,
+        "loyalty_change": -20
+      },
+      "demonstration_of_force": {
+        "fear_change": 15,
+        "trust_change": -5
+      },
+      "lifepath_connection_revealed": {
+        "trust_change": 15,
+        "unique_dialogue_unlocked": true
+      },
+      "shared_origin_discovered": {
+        "trust_change": 10,
+        "loyalty_change": 10
+      }
+    }
+  },
+  "dialogue_matrix_engine": {
+    "description": "Динамическая система генерации ответов с интеграцией жизненного пути",
+    "response_types": [
+      {
+        "type": "rational",
+        "base_stats": [
+          "INT",
+          "LOGIC"
+        ],
+        "effect": "+ к репутации у корпоратов и технарей.",
+        "lifepath_compatibility": {
+          "ORIGIN_GANYMEDE_SCIENTIST": {
+            "bonus": 2,
+            "description": "Научное обоснование усиливает эффект"
+          },
+          "ORIGIN_MARS_SCIENTIST": {
+            "bonus": 1,
+            "description": "Техническая компетентность добавляет убедительности"
+          }
+        }
+      },
+      {
+        "type": "emotional",
+        "base_stats": [
+          "EMP",
+          "HUMANITY"
+        ],
+        "effect": "+ к доверию и лояльности, - к репутации у корпоратов.",
+        "lifepath_compatibility": {
+          "ORIGIN_STATION_MEDIC": {
+            "bonus": 3,
+            "description": "Медицинский опыт добавляет искренности заботе"
+          },
+          "ORIGIN_EARTH_SLUMS": {
+            "bonus": 1,
+            "description": "Понимание страданий делает эмоции аутентичными"
+          }
+        }
+      },
+      {
+        "type": "aggressive",
+        "base_stats": [
+          "STR",
+          "REP"
+        ],
+        "effect": "+ к страху NPC, + к уровню розыска (Heat).",
+        "lifepath_compatibility": {
+          "ORIGIN_MARS_MILITARY": {
+            "bonus": 3,
+            "description": "Военная подготовка делает угрозы более убедительными"
+          },
+          "ORIGIN_LUNA_UNDERWORLD": {
+            "bonus": 2,
+            "description": "Криминальный опыт добавляет достоверности"
+          }
+        }
+      },
+      {
+        "type": "ironic",
+        "base_stats": [
+          "WIT",
+          "STRESS"
+        ],
+        "effect": "Может сбить NPC с толку, снижает собственный стресс.",
+        "lifepath_compatibility": {
+          "ORIGIN_EARTH_SLUMS": {
+            "bonus": 2,
+            "description": "Уличный юмор как механизм выживания"
+          }
+        }
+      },
+      {
+        "type": "manipulative",
+        "base_stats": [
+          "CHA",
+          "INFLUENCE"
+        ],
+        "effect": "Краткосрочная выгода, но снижение долгосрочного доверия.",
+        "lifepath_compatibility": {
+          "ORIGIN_EARTH_ELITE": {
+            "bonus": 3,
+            "description": "Корпоративные навыки манипуляций"
+          },
+          "ORIGIN_LUNA_UNDERWORLD": {
+            "bonus": 2,
+            "description": "Преступный опыт обмана"
+          }
+        }
+      },
+      {
+        "type": "technological",
+        "base_stats": [
+          "DEVICE",
+          "CONTACTS"
+        ],
+        "effect": "Активирует внешние события, может дать доп. информацию.",
+        "lifepath_compatibility": {
+          "ORIGIN_GANYMEDE_SCIENTIST": {
+            "bonus": 3,
+            "description": "Доступ к научным базам данных"
+          },
+          "ORIGIN_MARS_SCIENTIST": {
+            "bonus": 2,
+            "description": "Технические знания открывают новые решения"
+          }
+        }
+      }
+    ]
+  },
+  "factional_protocols": {
+    "arasaka": {
+      "protocol": "Строгая иерархия (ранг + фамилия)",
+      "style": "Формальный, минимум эмоций",
+      "auth_methods": [
+        "Корп-ID",
+        "биометрия"
+      ],
+      "lifepath_reactions": {
+        "ORIGIN_EARTH_ELITE": "Немедленное признание статуса",
+        "ORIGIN_EARTH_SLUMS": "Повышенная проверка безопасности"
+      }
+    },
+    "militech": {
+      "protocol": "Военная субординация (звания)",
+      "style": "Четкий, командный",
+      "auth_methods": [
+        "Военные позывные",
+        "шифры дня"
+      ],
+      "lifepath_reactions": {
+        "ORIGIN_MARS_MILITARY": "Автоматическое признание как союзника",
+        "ORIGIN_CERES_MINER": "Настороженность к потенциальным 'террористам'"
+      }
+    },
+    "biotechnica": {
+      "protocol": "Научная этика (ученые степени)",
+      "style": "Технический, с научной терминологией",
+      "auth_methods": [
+        "Уровень допуска"
+      ],
+      "lifepath_reactions": {
+        "ORIGIN_GANYMEDE_SCIENTIST": "Профессиональное признание и доверие",
+        "ORIGIN_MARS_SCIENTIST": "Уважение к техническим навыкам"
+      }
+    },
+    "maelstrom": {
+      "protocol": "Демонстрация кибермодификаций",
+      "password_phrase": "Железо течет в венах",
+      "style": "Агрессивный, культ технологий",
+      "lifepath_reactions": {
+        "tech_heavy_backgrounds": "Принятие на основе технологических модификаций",
+        "organic_backgrounds": "Презрение к 'мясу'"
+      }
+    },
+    "valentinos": {
+      "protocol": "Религиозная символика, семейные связи",
+      "password_phrase": "Familia es todo",
+      "style": "Эмоциональный, с испанскими фразами",
+      "lifepath_reactions": {
+        "family_oriented_backgrounds": "Принятие на основе семейных ценностей",
+        "individualistic_backgrounds": "Недоверие к 'одиночкам'"
+      }
+    }
+  },
+  "sample_integrated_dialogue": {
+    "scenario": "Персонаж с ORIGIN_MARS_MILITARY встречает корпоративного NPC",
+    "base_dialogue": "Стандартная корпоративная встреча",
+    "lifepath_modification": {
+      "speech_pattern": "Четкий, военный стиль",
+      "unique_options": [
+        "[Военный] Перейти к сути дела - экономит время на формальности",
+        "[Марсианец] Упомянуть службу в Республиканском флоте - устанавливает авторитет",
+        "[Дисциплина] Предложить структурированный план действий"
+      ]
+    },
+    "npc_reaction": "NPC проявляет больше уважения к военному, ускоряет темп разговора",
+    "psychological_overlay": {
+      "high_stress": "Переход на военные команды, требование четких ответов",
+      "low_humanity": "Фокус на эффективности без учета человеческих факторов",
+      "high_humanity": "Забота о подчиненных и гражданских"
+    },
+    "theme_adaptation": {
+      "noir": "Больше цинизма, упоминания о коррупции в военных структурах",
+      "heroic": "Акцент на долг, защиту мирных граждан, справедливость",
+      "horror": "Военная паранойя, воспоминания о боевых потерях"
+    }
+  },
+  "mass_dialogue_mechanics": {
+    "panic_scenario": {
+      "description": "Хаотичная коммуникация, крики, искажение информации.",
+      "effects": [
+        "+1 к сложности всех социальных проверок",
+        "-1 к самоконтролю"
+      ],
+      "sample_phrases": [
+        "Что происходит?!",
+        "Мы все умрём!",
+        "Где выход?!"
+      ],
+      "lifepath_advantages": {
+        "ORIGIN_MARS_MILITARY": "Военная подготовка дает +2 к контролю толпы",
+        "ORIGIN_STATION_MEDIC": "Медицинский опыт дает +1 к успокоению паники"
+      }
+    },
+    "riot_scenario": {
+      "description": "Скандирование лозунгов, агитационные речи, конфликт между фракциями в толпе.",
+      "effects": [
+        "+2 к проверкам на массовое влияние (агитация)",
+        "Риск эскалации до насилия"
+      ],
+      "sample_phrases": [
+        "Свободу!",
+        "Долой корпорации!",
+        "Время переговоров прошло!"
+      ],
+      "lifepath_advantages": {
+        "ORIGIN_CERES_MINER": "Профсоюзный опыт дает +3 к организации протестов",
+        "ORIGIN_EARTH_SLUMS": "Понимание уличной психологии дает +2 к агитации"
+      }
+    }
+  },
+  "special_mechanics": {
+    "karma_hidden_roll": {
+      "trigger": "Ключевые драматические моменты или флешбэки",
+      "mechanics": "Скрытый от игрока бросок 1d6, результат которого влияет на нарративный исход.",
+      "example_effect": "Результат '6' может дать 'неожиданное озарение' или 'улыбку судьбы', которое откроет новый диалоговый путь.",
+      "lifepath_influence": "Происхождение персонажа может модифицировать вероятности благоприятных исходов"
+    },
+    "illegal_influences": [
+      {
+        "name": "Deepfake (подделка голоса)",
+        "mechanics": "+4 к обману, но при разоблачении +2 HEAT.",
+        "lifepath_access": {
+          "ORIGIN_LUNA_UNDERWORLD": "Естественный доступ через криминальные связи",
+          "tech_backgrounds": "Доступ через технические знания"
+        }
+      },
+      {
+        "name": "Neurohacking (чтение эмоций)",
+        "mechanics": "+2 к чтению мотивов, но требует скрытую проверку на обнаружение.",
+        "lifepath_access": {
+          "ORIGIN_GANYMEDE_SCIENTIST": "Доступ через нейронаучные исследования",
+          "tech_heavy_backgrounds": "Доступ через кибернетические импланты"
+        }
+      }
+    ],
+    "lifepath_memory_triggers": {
+      "description": "Персонажи могут вспомнить релевантную информацию на основе своего происхождения",
+      "trigger_conditions": "Определенные ключевые слова или ситуации активируют воспоминания",
+      "examples": {
+        "ORIGIN_MARS_MILITARY": {
+          "trigger": "Упоминание военных операций",
+          "memory": "Вспоминает тактические данные или имена командиров",
+          "dialogue_effect": "Открывает новые варианты диалога с военной терминологией"
+        },
+        "ORIGIN_GANYMEDE_SCIENTIST": {
+          "trigger": "Обсуждение научных проблем",
+          "memory": "Вспоминает релевантные исследования или коллег",
+          "dialogue_effect": "Позволяет предложить научные решения"
+        }
+      }
+    }
+  },
+  "integration_with_other_modules": {
+    "CHARACTER_LIFEPATH": "Определяет базовые речевые паттерны, доступные опции диалога и NPC реакции",
+    "NPC_RELATIONS": "Обеспечивает персонализированные приветствия и диалоги на основе общей истории",
+    "PSYCHOLOGY": "Психологические состояния модифицируют стиль речи и доступные опции",
+    "CHARACTER_CORE": "Использует стандартизированную репутационную систему для диалогов",
+    "THEME_TONE": "Адаптирует тон и стиль диалогов под текущий жанр игры",
+    "TECH_EQUIPMENT": "Технологические импланты могут предоставлять дополнительные диалоговые опции",
+    "FACTIONS": "Фракционная репутация влияет на протоколы общения и доступность информации"
+  },
+  "system_notes": {
+    "seamless_integration": "Модуль автоматически учитывает данные из CHARACTER_LIFEPATH без дополнительной настройки",
+    "dynamic_content": "Диалоговые опции генерируются динамически на основе текущего состояния персонажа",
+    "narrative_coherence": "Система обеспечивает согласованность между происхождением персонажа и его речевыми паттернами",
+    "scalability": "Легко добавлять новые происхождения и соответствующие диалоговые модификации"
+  }
+}

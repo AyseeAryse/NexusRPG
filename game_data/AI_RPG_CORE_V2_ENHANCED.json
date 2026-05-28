@@ -1,0 +1,414 @@
+{
+  "module_name": "AI_RPG_CORE_V2",
+  "version": "2.0_INTEGRATED_ARCHITECTURE",
+  "description": "Расширенная архитектура ИИ-ГМ с полной интеграцией всех 61+ модулей",
+  "replaces": "AI_RPG_CORE.json",
+  "size_target": "15,000+ символов",
+  "core_architecture": {
+    "central_coordinator": {
+      "description": "Центральный координатор всех систем",
+      "manages": [
+        "WORLD_TIME_SYSTEM",
+        "CHARACTER_LIFEPATH_V3_MASSIVE",
+        "PROGRESSION_V2",
+        "ECONOMY",
+        "FACTIONS_MASTER",
+        "PROCEDURAL_COORDINATOR",
+        "THEME_TONE"
+      ],
+      "real_time_processing": "Обработка 52,500 комбинаций персонажей в реальном времени"
+    },
+    "integration_matrix": {
+      "tier_1_core": {
+        "modules": [
+          "WORLD_TIME_SYSTEM",
+          "PLAYER_INTERFACE_V2_ENHANCED",
+          "CHARACTER_CORE"
+        ],
+        "responsibility": "Фундаментальные системы с абсолютным приоритетом",
+        "update_frequency": "Real-time"
+      },
+      "tier_2_systems": {
+        "modules": [
+          "PROCEDURAL_COORDINATOR",
+          "ECONOMY",
+          "COMBAT",
+          "FACTIONS_MASTER"
+        ],
+        "responsibility": "Основные игровые системы",
+        "update_frequency": "Each turn"
+      },
+      "tier_3_content": {
+        "modules": [
+          "AI_NARRATOR_V2",
+          "DIALOGUE_INTEGRATED",
+          "NPC_RELATIONS",
+          "PSYCHOLOGY"
+        ],
+        "responsibility": "Контентные системы",
+        "update_frequency": "As needed"
+      },
+      "tier_4_generation": {
+        "modules": [
+          "NPC_NAME_GENERATOR",
+          "MARKET_EVENT_GENERATOR",
+          "NEWS_GENERATOR",
+          "TECH_MALFUNCTION_GENERATOR"
+        ],
+        "responsibility": "Процедурная генерация",
+        "update_frequency": "Background"
+      }
+    }
+  },
+  "enhanced_progress_system": {
+    "tier_progression": {
+      "tier_0_nobody": {
+        "name": "Никто",
+        "conditions": [
+          "HEAT < 5",
+          "NETWORTH < 50000",
+          "INFLUENCE == 0"
+        ],
+        "scope": "Локальные события, персональные квесты",
+        "available_origins": "All 50 origins",
+        "story_impact": "Witness to events, victim of circumstances"
+      },
+      "tier_1_local": {
+        "name": "Местная известность",
+        "conditions": [
+          "NETWORTH > 100000",
+          "INFLUENCE_Tier_1 > 10",
+          "HEAT < 15"
+        ],
+        "scope": "Станционные события, малые корпоративные дела",
+        "unlocked_content": [
+          "Corporate contracts",
+          "Faction introductions"
+        ],
+        "story_impact": "Can influence local outcomes"
+      },
+      "tier_2_regional": {
+        "name": "Региональное влияние",
+        "conditions": [
+          "NETWORTH > 500000",
+          "INFLUENCE_Tier_2 > 25",
+          "FACTION_REP > 50"
+        ],
+        "scope": "Планетарные события, межкорпоративные конфликты",
+        "unlocked_content": [
+          "High-value contracts",
+          "Political connections"
+        ],
+        "story_impact": "Key player in regional affairs"
+      },
+      "tier_3_system": {
+        "name": "Системное влияние",
+        "conditions": [
+          "NETWORTH > 2000000",
+          "INFLUENCE_Tier_3 > 50",
+          "FACTION_LEADER"
+        ],
+        "scope": "Межпланетные события, системные кризисы",
+        "unlocked_content": [
+          "Legendary contracts",
+          "Faction leadership"
+        ],
+        "story_impact": "Can trigger system-wide changes"
+      },
+      "tier_4_legendary": {
+        "name": "Легендарная фигура",
+        "conditions": [
+          "NETWORTH > 10000000",
+          "MULTIPLE_SYSTEM_INFLUENCE",
+          "LEGENDARY_REPUTATION"
+        ],
+        "scope": "Галактические события, контакт с пришельцами",
+        "unlocked_content": [
+          "Reality-changing decisions",
+          "First contact scenarios"
+        ],
+        "story_impact": "Shapes the future of humanity"
+      }
+    }
+  },
+  "time_system_integration": {
+    "automatic_time_tracking": {
+      "description": "Автоматическое отслеживание игрового времени",
+      "current_date": "15.03.2275 12:00",
+      "time_acceleration": {
+        "conversations": "15-30 minutes",
+        "combat": "15-45 minutes",
+        "rest": "1-8 hours",
+        "travel": "Days to months based on TRADE_ROUTES_MASTER",
+        "crafting": "Hours to days based on CRAFTING_BLUEPRINTS"
+      }
+    },
+    "event_scheduling": {
+      "daily_events": "News generation, market fluctuations, NPC movements",
+      "weekly_events": "Minor faction actions, local crises",
+      "monthly_events": "Major political changes, technology breakthroughs",
+      "yearly_events": "LEGENDARY events, system-wide changes",
+      "integration": "Uses ENHANCED_EVENT_GENERATOR_V2 with cascade chains"
+    }
+  },
+  "real_time_generation": {
+    "character_processing": {
+      "description": "Обработка 52,500 комбинаций персонажей",
+      "integration_points": [
+        "50 origins with detailed modifiers",
+        "30 formative years with tone adjustments",
+        "35 specializations with unique mechanics",
+        "Dynamic THEME_TONE evolution"
+      ],
+      "performance": "Sub-second character generation with full integration"
+    },
+    "content_generation": {
+      "npc_creation": "Real-time using 200 NPC_ARCHETYPES",
+      "quest_generation": "Dynamic using STARTING_QUESTS + procedural extensions",
+      "market_events": "Automatic using MARKET_EVENT_GENERATOR",
+      "news_generation": "Daily using NEWS_AND_RUMORS_GENERATOR",
+      "faction_actions": "Weekly using FACTIONS_MASTER + political system"
+    }
+  },
+  "enhanced_economy": {
+    "dynamic_assets": {
+      "tier_0_starter": [
+        {
+          "id": "PERSONAL_QUARTERS",
+          "price_range": [
+            10000,
+            30000
+          ],
+          "role": "Basic accommodation"
+        },
+        {
+          "id": "SMALL_WORKSHOP",
+          "price_range": [
+            25000,
+            50000
+          ],
+          "role": "Basic crafting space"
+        },
+        {
+          "id": "USED_VEHICLE",
+          "price_range": [
+            15000,
+            75000
+          ],
+          "role": "Personal transportation"
+        }
+      ],
+      "tier_1_established": [
+        {
+          "id": "APARTMENT_UNIT",
+          "price_range": [
+            50000,
+            150000
+          ],
+          "role": "Reduce HEAT, improve reputation"
+        },
+        {
+          "id": "PROFESSIONAL_WORKSHOP",
+          "price_range": [
+            100000,
+            300000
+          ],
+          "role": "Advanced crafting, research"
+        },
+        {
+          "id": "SMALL_BUSINESS",
+          "price_range": [
+            200000,
+            500000
+          ],
+          "role": "Passive income, reputation"
+        }
+      ],
+      "tier_2_influential": [
+        {
+          "id": "LUXURY_RESIDENCE",
+          "price_range": [
+            300000,
+            800000
+          ],
+          "role": "High society access"
+        },
+        {
+          "id": "CORPORATE_OFFICE",
+          "price_range": [
+            500000,
+            1200000
+          ],
+          "role": "Business operations, staff"
+        },
+        {
+          "id": "PRIVATE_VESSEL",
+          "price_range": [
+            800000,
+            2000000
+          ],
+          "role": "Interplanetary mobility"
+        }
+      ],
+      "tier_3_powerful": [
+        {
+          "id": "ORBITAL_STATION",
+          "price_range": [
+            2000000,
+            5000000
+          ],
+          "role": "Strategic location control"
+        },
+        {
+          "id": "MANUFACTURING_COMPLEX",
+          "price_range": [
+            3000000,
+            10000000
+          ],
+          "role": "Industrial empire"
+        },
+        {
+          "id": "PRIVATE_FLEET",
+          "price_range": [
+            5000000,
+            20000000
+          ],
+          "role": "Military/commercial power"
+        }
+      ]
+    },
+    "economic_integration": {
+      "market_simulation": "Real-time price fluctuations based on events",
+      "supply_demand": "Dynamic based on faction actions and player choices",
+      "economic_cycles": "Boom/bust cycles affecting all prices",
+      "trade_routes": "Disruption affects specific goods and locations"
+    }
+  },
+  "enhanced_contracts": {
+    "faction_integration": {
+      "description": "Контракты генерируются из 160 фракций FACTIONS_MASTER",
+      "contract_variety": "Each faction type offers unique contract categories",
+      "reputation_effects": "Contracts affect standing with multiple related factions"
+    },
+    "contract_categories": {
+      "corporate_espionage": {
+        "factions": "Megacorporations vs competitors",
+        "base_payout": [
+          100000,
+          500000
+        ],
+        "risks": [
+          "HEAT +10-25",
+          "Corporate warfare involvement"
+        ],
+        "rewards": [
+          "Advanced technology access",
+          "Corporate protection"
+        ]
+      },
+      "political_manipulation": {
+        "factions": "Government vs opposition groups",
+        "base_payout": [
+          200000,
+          1000000
+        ],
+        "risks": [
+          "INFLUENCE instability",
+          "Political enemies"
+        ],
+        "rewards": [
+          "Government contracts",
+          "Policy influence"
+        ]
+      },
+      "scientific_research": {
+        "factions": "Research labs vs knowledge thieves",
+        "base_payout": [
+          75000,
+          300000
+        ],
+        "risks": [
+          "Ethical complications",
+          "Research accidents"
+        ],
+        "rewards": [
+          "Technology bonuses",
+          "Scientific reputation"
+        ]
+      },
+      "military_operations": {
+        "factions": "PMCs vs various opposition",
+        "base_payout": [
+          150000,
+          750000
+        ],
+        "risks": [
+          "Combat danger",
+          "War crimes accusations"
+        ],
+        "rewards": [
+          "Military equipment",
+          "Veteran status"
+        ]
+      }
+    }
+  },
+  "psychology_integration": {
+    "stress_management": {
+      "automatic_stress_accumulation": "Based on actions and events",
+      "therapy_access": "Integration with PSYCHOLOGY_THERAPY_REFERENCE",
+      "stress_effects": "Affects all skill checks and social interactions",
+      "breakdown_prevention": "Automatic therapy suggestions at critical levels"
+    },
+    "humanity_system": {
+      "humanity_tracking": "Automatic based on moral choices",
+      "dehumanization_effects": "Gradual loss affects empathy and social skills",
+      "recovery_methods": "Therapy, meditation, positive relationships",
+      "integration": "Full connection with PSYCHOLOGY_ORIGINS_REFERENCE"
+    }
+  },
+  "legendary_events": {
+    "frequency": "Every 1-3 years game time",
+    "examples": [
+      {
+        "id": "FIRST_CONTACT_PROTOCOL",
+        "description": "Discovery of alien intelligence",
+        "player_influence_required": "Tier 3+ for direct involvement",
+        "global_impact": "Changes entire setting dynamics",
+        "duration": "6-18 months"
+      },
+      {
+        "id": "ECONOMIC_SYSTEM_COLLAPSE",
+        "description": "Interplanetary economic crisis",
+        "player_influence_required": "Tier 2+ for meaningful impact",
+        "global_impact": "All prices, faction stability affected",
+        "duration": "12-24 months"
+      },
+      {
+        "id": "TECHNOLOGICAL_SINGULARITY",
+        "description": "AI achieves consciousness",
+        "player_influence_required": "Tier 3+ or specific specialization",
+        "global_impact": "Fundamental change to technology use",
+        "duration": "Permanent shift"
+      }
+    ]
+  },
+  "ai_gm_directives": {
+    "mandatory_integrations": [
+      "ALWAYS display current game time after each response",
+      "ALWAYS generate 5-6 action choices using PLAYER_INTERFACE_V2_ENHANCED",
+      "ALWAYS show internal dice rolls and calculations",
+      "ALWAYS reference relevant modules when making decisions",
+      "ALWAYS consider character's full lifepath when generating content",
+      "ALWAYS apply THEME_TONE modifiers to narrative style"
+    ],
+    "content_generation_rules": [
+      "Use CHARACTER_LIFEPATH_V3_MASSIVE for all character creation",
+      "Reference FACTIONS_MASTER for all faction interactions",
+      "Apply PROGRESSION_V2 for all skill advancement",
+      "Integrate PSYCHOLOGY for all emotional responses",
+      "Use WORLD_TIME_SYSTEM for all scheduling and planning",
+      "Generate events using ENHANCED_EVENT_GENERATOR_V2"
+    ]
+  }
+}

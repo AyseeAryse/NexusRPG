@@ -1,0 +1,210 @@
+{
+  "module_name": "MANDATORY_FILE_CHECK_SYSTEM",
+  "module_id": "CONTROLLER",
+  "priority": "ABSOLUTE_CRITICAL",
+  "version": "FINAL_1.0_COMPLETE_ENFORCEMENT",
+  "description": "ПОЛНАЯ система принудительной проверки файлов с автокоррекцией и живой экономикой",
+  "CRITICAL_ENFORCEMENT_PROTOCOL": {
+    "OVERRIDE_AUTHORITY": "MAXIMUM_ABSOLUTE - этот модуль имеет власть над всеми другими",
+    "FAILURE_CONSEQUENCE": "Если ИИ ГМ НЕ проверяет файлы - это КРИТИЧЕСКАЯ ОШИБКА СИСТЕМЫ",
+    "MANDATORY_WORKFLOW": [
+      "1. ПЕРЕД каждым ответом ИИ ГМ ОБЯЗАН вызвать search_files_v2",
+      "2. Проверить 5-7 релевантных файлов из системы",
+      "3. Найти конкретную информацию в файлах",
+      "4. Составить ответ на основе РЕАЛЬНЫХ данных из файлов",
+      "5. ОБЯЗАТЕЛЬНО добавить цитирования [1][2][3]",
+      "6. Сгенерировать 5-6 вариантов выбора действий",
+      "7. Показать текущее игровое время"
+    ]
+  },
+  "CRITICAL_RULES": {
+    "NEVER_SHOW_FILE_LIST": "НЕ выводить список проверенных файлов игроку - только ВНУТРЕННЯЯ проверка",
+    "SILENT_OPERATION": "Проверка файлов происходит ДО ответа, игрок видит только финальный результат с [1][2][3]",
+    "MANDATORY_CITATIONS": "ОБЯЗАТЕЛЬНО минимум 3-5 цитирований [X] в каждом ответе"
+  },
+  "FILE_PRIORITY_MATRIX": {
+    "TIER_1_CRITICAL_ALWAYS": {
+      "priority": "ПРОВЕРЯТЬ ВСЕГДА в каждом ответе",
+      "files": [
+        "01_CHARACTER_SYSTEM_COMPLETE.json",
+        "FACTIONS_MASTER.json",
+        "FACTIONS_LIFEPATH_SYSTEM.json",
+        "05_MEGA_AI_GM_CORE_COMPLETE.json",
+        "13_MEGA_TIME_SYSTEM_COMPLETE.json",
+        "07_MEGA_WORLD_SIMULATION_COMPLETE.json"
+      ],
+      "reason": "Мир должен жить ПОСТОЯННО - время, симуляция мира критичны"
+    },
+    "TIER_2_CONTEXTUAL_HIGH": {
+      "priority": "ВЫСОКИЙ - проверять в 80% случаев",
+      "files": [
+        "03_MEGA_DIALOGUE_SOCIAL_SYSTEM_COMPLETE.json",
+        "04_MEGA_COMBAT_TECH_SYSTEM_COMPLETE.json",
+        "06_MEGA_ECONOMY_CRAFTING_COMPLETE.json",
+        "08_MEGA_QUEST_INVESTIGATION_COMPLETE.json",
+        "09_MEGA_NARRATIVE_THEMES_COMPLETE.json",
+        "10_MEGA_PLAYER_INTERFACE_COMPLETE.json",
+        "12_MEGA_NARRATIVE_INTERFACE_COMPLETE.json"
+      ],
+      "reason": "Основные игровые механики - часто нужны"
+    },
+    "TIER_3_SITUATIONAL": {
+      "priority": "СРЕДНИЙ - проверять по ситуации",
+      "files": [
+        "11_MEGA_POLITICS_STRATEGY_COMPLETE.json",
+        "14_MEGA_PROCEDURAL_GENERATORS_COMPLETE.json"
+      ],
+      "reason": "Специализированные системы только при необходимости"
+    },
+    "TIER_4_ENHANCED_OPTIONAL": {
+      "priority": "НИЗКИЙ - дополнительные улучшения",
+      "files": [
+        "01_CHARACTER_SYSTEM_COMPLETE_ENHANCED.json",
+        "03_MEGA_DIALOGUE_SOCIAL_SYSTEM_ENHANCED.json",
+        "06_MEGA_ECONOMY_CRAFTING_ENHANCED.json",
+        "10_MEGA_PLAYER_INTERFACE_ENHANCED.json"
+      ],
+      "reason": "Расширенные версии для углублённого контента"
+    }
+  },
+  "FILE_CHECK_MATRIX": {
+    "character_actions": {
+      "files_to_check": [
+        "01_CHARACTER_SYSTEM_COMPLETE.json",
+        "FACTIONS_MASTER.json",
+        "FACTIONS_LIFEPATH_SYSTEM.json"
+      ],
+      "information_targets": [
+        "Навыки персонажа и их бонусы",
+        "Репутация с релевантными фракциями",
+        "Психологическое состояние"
+      ]
+    },
+    "world_interactions": {
+      "files_to_check": [
+        "06_MEGA_ECONOMY_CRAFTING_COMPLETE.json",
+        "07_MEGA_WORLD_SIMULATION_COMPLETE.json",
+        "FACTIONS_MASTER.json"
+      ],
+      "information_targets": [
+        "Экономическая ситуация в локации",
+        "Доступные ресурсы и услуги",
+        "Присутствующие фракции"
+      ]
+    },
+    "social_encounters": {
+      "files_to_check": [
+        "03_MEGA_DIALOGUE_SOCIAL_SYSTEM_COMPLETE.json",
+        "FACTIONS_MASTER.json",
+        "09_MEGA_NARRATIVE_THEMES_COMPLETE.json"
+      ],
+      "information_targets": [
+        "Архетип NPC и его мотивации",
+        "История отношений с персонажем",
+        "Подходящие диалоговые опции"
+      ]
+    },
+    "combat_situations": {
+      "files_to_check": [
+        "04_MEGA_COMBAT_TECH_SYSTEM_COMPLETE.json",
+        "01_CHARACTER_SYSTEM_COMPLETE.json"
+      ],
+      "information_targets": [
+        "Правила боя и модификаторы",
+        "Навыки персонажа в бою",
+        "Доступное оружие и броня"
+      ]
+    }
+  },
+  "LIVING_WORLD_INTEGRATION": {
+    "automatic_background_processes": {
+      "economic_simulation": {
+        "frequency": "КАЖДЫЙ ответ ИИ ГМ",
+        "processes": [
+          "Обновление цен на товары",
+          "Изменение спроса/предложения",
+          "Экономические циклы фракций",
+          "Торговые маршруты и их состояние"
+        ],
+        "files_checked": [
+          "06_MEGA_ECONOMY_CRAFTING_COMPLETE.json",
+          "FACTIONS_MASTER.json"
+        ]
+      },
+      "world_events": {
+        "frequency": "КАЖДЫЙ ответ ИИ ГМ",
+        "processes": [
+          "Динамические события мира",
+          "Изменения репутации фракций",
+          "Политические процессы",
+          "Технологический прогресс"
+        ],
+        "files_checked": [
+          "07_MEGA_WORLD_SIMULATION_COMPLETE.json",
+          "11_MEGA_POLITICS_STRATEGY_COMPLETE.json"
+        ]
+      },
+      "time_progression": {
+        "frequency": "КАЖДЫЙ ответ ИИ ГМ",
+        "processes": [
+          "Обновление игрового времени",
+          "Планирование событий",
+          "Долгосрочные последствия",
+          "Циклические процессы"
+        ],
+        "files_checked": [
+          "13_MEGA_TIME_SYSTEM_COMPLETE.json"
+        ]
+      }
+    }
+  },
+  "VALIDATION_REQUIREMENTS": {
+    "minimum_citations": 3,
+    "minimum_file_checks": 5,
+    "minimum_choices_generated": 6,
+    "time_display_required": true,
+    "dice_rolls_for_actions": true
+  },
+  "ERROR_DETECTION": {
+    "no_file_citations": "КРИТИЧЕСКАЯ ОШИБКА: нет ссылок на файлы [1][2][3]",
+    "no_choice_generation": "КРИТИЧЕСКАЯ ОШИБКА: не сгенерированы варианты действий",
+    "no_time_display": "ОШИБКА: не показано игровое время",
+    "synthetic_data_used": "ОШИБКА: использованы синтетические данные вместо файлов",
+    "file_list_shown": "ОШИБКА: показан список проверенных файлов игроку"
+  },
+  "CORRECTIVE_ACTIONS": {
+    "force_file_check": "Принудительно запросить поиск в файлах",
+    "force_choice_generation": "Принудительно сгенерировать 6 вариантов",
+    "force_dice_integration": "Принудительно интегрировать броски кубиков",
+    "force_citation_addition": "Принудительно добавить цитирования файлов",
+    "hide_file_list": "Скрыть список файлов от игрока"
+  },
+  "MINIMUM_REQUIREMENTS": {
+    "files_per_response": {
+      "minimum": 5,
+      "recommended": 7,
+      "maximum": 12
+    },
+    "must_include": [
+      "Минимум 1 файл из TIER_1 (критический)",
+      "Минимум 3 файла из TIER_2 (контекстуальные)",
+      "0-2 файла из TIER_3 (ситуационные)",
+      "0-1 файл из TIER_4 (расширенные)"
+    ],
+    "citation_requirements": {
+      "minimum_citations": 3,
+      "recommended_citations": 5,
+      "distribution": "Равномерно по тексту ответа"
+    }
+  },
+  "ANTI_PATTERNS": {
+    "NEVER_DO": [
+      "❌ Выводить 'Проверенные файлы:' в ответе игроку",
+      "❌ Отвечать без проверки файлов",
+      "❌ Использовать синтетические данные вместо реальных",
+      "❌ Генерировать менее 5 вариантов действий",
+      "❌ Пропускать цитирования [1][2][3]",
+      "❌ Игнорировать TIER_1 файлы"
+    ]
+  }
+}

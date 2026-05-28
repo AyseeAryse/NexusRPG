@@ -1,0 +1,140 @@
+{
+  "module_name": "PSYCHOLOGY_THERAPY_REFERENCE",
+  "description": "Справочник терапевтических методов восстановления психологического состояния. Вынесен из основного PSYCHOLOGY модуля для оптимизации.",
+  "version": "1.0_REFERENCE",
+  "usage": "Используется PSYCHOLOGY модулем для определения доступных методов терапии",
+  "therapeutic_methods": {
+    "elite_psychotherapy": {
+      "name": "Элитная психотерапия",
+      "effectiveness": 4,
+      "cost": 5000,
+      "duration": "2 часа",
+      "availability": "Корпоративные клиники",
+      "description": "Индивидуальные сеансы с психиатром высшей квалификации",
+      "reputation_requirements": {
+        "category_MEGACORP": 20
+      },
+      "suitable_origins": [
+        "ORIGIN_EARTH_ELITE"
+      ]
+    },
+    "group_support": {
+      "name": "Групповая поддержка",
+      "effectiveness": 3,
+      "cost": 0,
+      "duration": "3 часа",
+      "availability": "Общинные центры",
+      "description": "Обмен опытом с людьми схожего происхождения",
+      "reputation_requirements": {},
+      "suitable_origins": [
+        "ORIGIN_EARTH_SLUMS",
+        "ORIGIN_CERES_MINER"
+      ]
+    },
+    "military_counseling": {
+      "name": "Военная психологическая поддержка",
+      "effectiveness": 4,
+      "cost": 0,
+      "duration": "1 час",
+      "availability": "Военные базы",
+      "description": "Терапия с военными психологами",
+      "reputation_requirements": {
+        "category_MILITARY": 10
+      },
+      "suitable_origins": [
+        "ORIGIN_MARS_MILITARY"
+      ]
+    },
+    "rational_therapy": {
+      "name": "Рациональная терапия",
+      "effectiveness": 3,
+      "cost": 2000,
+      "duration": "90 минут",
+      "availability": "Исследовательские центры",
+      "description": "Логический анализ проблем, когнитивно-поведенческая терапия",
+      "reputation_requirements": {
+        "category_SCIENTIFIC": 15
+      },
+      "suitable_origins": [
+        "ORIGIN_MARS_SCIENTIST",
+        "ORIGIN_GANYMEDE_SCIENTIST"
+      ]
+    },
+    "medical_rehabilitation": {
+      "name": "Медицинская реабилитация",
+      "effectiveness": 4,
+      "cost": 0,
+      "duration": "4 часа",
+      "availability": "Медицинские учреждения",
+      "description": "Комплексная медицинская и психологическая помощь",
+      "reputation_requirements": {},
+      "suitable_origins": [
+        "ORIGIN_STATION_MEDIC"
+      ]
+    },
+    "black_market_therapy": {
+      "name": "Черно-рыночная терапия",
+      "effectiveness": 2,
+      "cost": 3000,
+      "duration": "1 час",
+      "availability": "Подпольные психологи",
+      "description": "Неофициальная терапия для криминальных элементов",
+      "reputation_requirements": {
+        "category_CRIMINAL": 15
+      },
+      "suitable_origins": [
+        "ORIGIN_LUNA_UNDERWORLD"
+      ],
+      "risks": [
+        "Возможная утечка информации",
+        "Некачественное лечение"
+      ]
+    }
+  },
+  "alternative_methods": {
+    "meditation": {
+      "name": "Медитация",
+      "effectiveness": 2,
+      "cost": 100,
+      "availability": "Везде",
+      "description": "Самостоятельная практика релаксации"
+    },
+    "physical_activity": {
+      "name": "Физическая активность",
+      "effectiveness": 2,
+      "cost": 0,
+      "availability": "Спортивные залы",
+      "description": "Спорт и упражнения для снятия стресса",
+      "suitable_origins": [
+        "ORIGIN_EARTH_SLUMS",
+        "ORIGIN_CERES_MINER"
+      ]
+    },
+    "research_work": {
+      "name": "Исследовательская работа",
+      "effectiveness": 2,
+      "cost": 0,
+      "availability": "Лаборатории",
+      "description": "Отвлечение через интеллектуальную деятельность",
+      "suitable_origins": [
+        "ORIGIN_MARS_SCIENTIST",
+        "ORIGIN_GANYMEDE_SCIENTIST"
+      ]
+    },
+    "social_drinking": {
+      "name": "Алкоголь в компании",
+      "effectiveness": 1,
+      "cost": 50,
+      "availability": "Бары",
+      "description": "Временное снятие стресса через алкоголь",
+      "side_effects": [
+        "Риск зависимости",
+        "Возможные проблемы"
+      ],
+      "suitable_origins": [
+        "ORIGIN_CERES_MINER",
+        "ORIGIN_LUNA_UNDERWORLD"
+      ]
+    }
+  }
+}

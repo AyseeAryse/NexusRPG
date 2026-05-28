@@ -1,0 +1,193 @@
+{
+  "module_name": "CHARACTER_CREATION_V2",
+  "version": "2.0_EXPANDED",
+  "description": "Расширенная система создания персонажа с именем, возрастом и профессиями",
+  "replaces": "STARTGAME процедуры с обязательными именем и возрастом",
+  "mandatory_fields": {
+    "character_name": {
+      "required": true,
+      "prompt": "Как зовут вашего персонажа?",
+      "validation": "Не менее 2 символов, без цифр"
+    },
+    "character_age": {
+      "required": true,
+      "prompt": "Сколько лет вашему персонажу?",
+      "range": [
+        16,
+        80
+      ],
+      "age_effects": {
+        "young_16_25": {
+          "bonus": "+1 Agility, +1 Endurance",
+          "penalty": "-1 Wisdom"
+        },
+        "adult_26_45": {
+          "bonus": "Balanced stats",
+          "penalty": "None"
+        },
+        "mature_46_65": {
+          "bonus": "+1 Intelligence, +1 Wisdom",
+          "penalty": "-1 Agility"
+        },
+        "elder_66_80": {
+          "bonus": "+2 Wisdom, +1 Intelligence",
+          "penalty": "-2 Endurance"
+        }
+      }
+    }
+  },
+  "expanded_origins": {
+    "description": "Расширенные варианты происхождения",
+    "new_categories": {
+      "CORPORATE_TIERS": [
+        "ORIGIN_MEGACORP_HEIR",
+        "ORIGIN_MIDDLE_MANAGER",
+        "ORIGIN_CORPORATE_DRONE",
+        "ORIGIN_CORPORATE_WHISTLEBLOWER"
+      ],
+      "MILITARY_BRANCHES": [
+        "ORIGIN_EARTH_NAVY",
+        "ORIGIN_MARS_MARINES",
+        "ORIGIN_BELT_MILITIA",
+        "ORIGIN_SPEC_OPS_VETERAN"
+      ],
+      "UNDERWORLD_TYPES": [
+        "ORIGIN_PIRATE_CAPTAIN",
+        "ORIGIN_SMUGGLER_PILOT",
+        "ORIGIN_CRIME_FAMILY",
+        "ORIGIN_STREET_GANG"
+      ],
+      "FRONTIER_LIFE": [
+        "ORIGIN_DEEP_SPACE_EXPLORER",
+        "ORIGIN_ASTEROID_HOMESTEADER",
+        "ORIGIN_TERRAFORM_PIONEER",
+        "ORIGIN_VOID_HERMIT"
+      ]
+    }
+  },
+  "profession_system": {
+    "description": "Детальная система профессий с механиками",
+    "professions": {
+      "CORPORATE_EXECUTIVE": {
+        "skills": [
+          "+3 Negotiation",
+          "+2 Law",
+          "+1 Technology"
+        ],
+        "starting_equipment": [
+          "Luxury suit",
+          "Corporate commlink",
+          "50K credits"
+        ],
+        "connections": [
+          "Corporate contacts",
+          "Government liaisons"
+        ],
+        "goals": [
+          "Expand influence",
+          "Eliminate competition"
+        ]
+      },
+      "FREELANCE_PILOT": {
+        "skills": [
+          "+3 Piloting",
+          "+2 Engineering",
+          "+1 Stealth"
+        ],
+        "starting_equipment": [
+          "Light freighter",
+          "Navigation AI",
+          "20K credits"
+        ],
+        "connections": [
+          "Port authorities",
+          "Smuggler networks"
+        ],
+        "goals": [
+          "Own a fleet",
+          "Master pilot reputation"
+        ]
+      },
+      "CYBERSECURITY_SPECIALIST": {
+        "skills": [
+          "+3 Hacking",
+          "+2 Technology",
+          "+1 Criminal"
+        ],
+        "starting_equipment": [
+          "Military-grade cyberdeck",
+          "ICE breakers",
+          "15K credits"
+        ],
+        "connections": [
+          "Hacker collectives",
+          "Corporate IT departments"
+        ],
+        "goals": [
+          "Break impossible systems",
+          "Build AI assistant"
+        ]
+      },
+      "COMBAT_MEDIC": {
+        "skills": [
+          "+3 Medicine",
+          "+2 Combat",
+          "+1 Psychology"
+        ],
+        "starting_equipment": [
+          "Medical kit",
+          "Combat armor",
+          "25K credits"
+        ],
+        "connections": [
+          "Military units",
+          "Trauma centers"
+        ],
+        "goals": [
+          "Save 100 lives",
+          "Perfect surgical technique"
+        ]
+      },
+      "INVESTIGATIVE_JOURNALIST": {
+        "skills": [
+          "+3 Investigation",
+          "+2 Negotiation",
+          "+1 Stealth"
+        ],
+        "starting_equipment": [
+          "Recording equipment",
+          "Press credentials",
+          "10K credits"
+        ],
+        "connections": [
+          "News networks",
+          "Whistleblower sources"
+        ],
+        "goals": [
+          "Expose corruption",
+          "Win journalism award"
+        ]
+      }
+    }
+  },
+  "background_events": {
+    "description": "Случайные события предыстории для глубины персонажа",
+    "categories": {
+      "CHILDHOOD_TRAUMA": [
+        "Survived terrorist attack (+2 Endurance, -1 Sanity)",
+        "Lost parents in space accident (+1 Wisdom, trauma with space travel)",
+        "Grew up in war zone (+2 Combat, aggressive tendencies)"
+      ],
+      "EARLY_ACHIEVEMENTS": [
+        "Child prodigy (+2 Intelligence, high expectations)",
+        "Athletic champion (+2 Agility, competitive nature)",
+        "Social butterfly (+2 Charisma, needs approval)"
+      ],
+      "FORMATIVE_RELATIONSHIPS": [
+        "Mentor figure (access to advanced training)",
+        "Childhood rival (ongoing nemesis)",
+        "First love (emotional vulnerability)"
+      ]
+    }
+  }
+}

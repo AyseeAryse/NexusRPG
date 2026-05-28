@@ -1,0 +1,662 @@
+{
+  "module_name": "CHARACTER_SPECIALIZATIONS_V3_MASSIVE",
+  "version": "3.0_35_SPECIALIZATIONS",
+  "description": "35 специализаций для определения роли персонажа с THEME_TONE интеграцией",
+  "specializations_expansion": {
+    "total_count": 35,
+    "existing_count": 10,
+    "new_count": 25,
+    "new_specializations": {
+      "SPEC_CORPORATE_ASSASSIN": {
+        "title": "Корпоративный убийца",
+        "description": "Профессиональный киллер на службе мегакорпораций",
+        "effects": {
+          "stealth": 3,
+          "combat": 2,
+          "technology": 1
+        },
+        "starting_equipment": [
+          "Silenced weapon",
+          "Corporate credentials",
+          "Poison kit"
+        ],
+        "tone_modifiers": {
+          "cynicism": 8,
+          "sophistication": 6,
+          "violence": 9,
+          "hope": 2
+        },
+        "context_tags": [
+          "Corporate",
+          "Violence",
+          "Stealth",
+          "Professional"
+        ]
+      },
+      "SPEC_VOID_PRIEST": {
+        "title": "Жрец Пустоты",
+        "description": "Духовный лидер космических культов и мистических сект",
+        "effects": {
+          "charisma": 3,
+          "psychology": 2,
+          "occult": 2
+        },
+        "starting_equipment": [
+          "Religious artifacts",
+          "Ceremonial robes",
+          "Meditation drugs"
+        ],
+        "tone_modifiers": {
+          "cynicism": 3,
+          "sophistication": 7,
+          "violence": 4,
+          "hope": 7
+        },
+        "context_tags": [
+          "Religion",
+          "Leadership",
+          "Mysticism",
+          "Influence"
+        ]
+      },
+      "SPEC_GENE_SCULPTOR": {
+        "title": "Генный скульптор",
+        "description": "Мастер генетических модификаций и биологического дизайна",
+        "effects": {
+          "medicine": 3,
+          "technology": 2,
+          "science": 2
+        },
+        "starting_equipment": [
+          "Genetic scanner",
+          "Bio-modification lab",
+          "Gene samples"
+        ],
+        "tone_modifiers": {
+          "cynicism": 5,
+          "sophistication": 9,
+          "violence": 3,
+          "hope": 6
+        },
+        "context_tags": [
+          "Science",
+          "Biology",
+          "Modification",
+          "Future"
+        ]
+      },
+      "SPEC_QUANTUM_HACKER": {
+        "title": "Квантовый хакер",
+        "description": "Специалист по квантовым компьютерам и криптографии",
+        "effects": {
+          "hacking": 4,
+          "technology": 3,
+          "science": 1
+        },
+        "starting_equipment": [
+          "Quantum computer",
+          "Encryption keys",
+          "Neural interface"
+        ],
+        "tone_modifiers": {
+          "cynicism": 6,
+          "sophistication": 8,
+          "violence": 3,
+          "hope": 5
+        },
+        "context_tags": [
+          "Technology",
+          "Quantum",
+          "Digital",
+          "Advanced"
+        ]
+      },
+      "SPEC_MEMORY_THIEF": {
+        "title": "Похититель воспоминаний",
+        "description": "Эксперт по извлечению и изменению человеческих воспоминаний",
+        "effects": {
+          "psychology": 3,
+          "technology": 2,
+          "medicine": 2
+        },
+        "starting_equipment": [
+          "Memory extractor",
+          "Neural drugs",
+          "Mind scanner"
+        ],
+        "tone_modifiers": {
+          "cynicism": 8,
+          "sophistication": 7,
+          "violence": 5,
+          "hope": 3
+        },
+        "context_tags": [
+          "Psychology",
+          "Memory",
+          "Manipulation",
+          "Dark"
+        ]
+      },
+      "SPEC_ASTEROID_WRANGLER": {
+        "title": "Укротитель астероидов",
+        "description": "Специалист по захвату и перемещению астероидов",
+        "effects": {
+          "piloting": 3,
+          "engineering": 2,
+          "physics": 2
+        },
+        "starting_equipment": [
+          "Mining ship",
+          "Gravity manipulator",
+          "Asteroid scanner"
+        ],
+        "tone_modifiers": {
+          "cynicism": 5,
+          "sophistication": 6,
+          "violence": 4,
+          "hope": 7
+        },
+        "context_tags": [
+          "Space",
+          "Engineering",
+          "Asteroids",
+          "Adventure"
+        ]
+      },
+      "SPEC_BIOWEAPON_DESIGNER": {
+        "title": "Конструктор биооружия",
+        "description": "Создатель смертоносных биологических агентов",
+        "effects": {
+          "medicine": 3,
+          "science": 3,
+          "chemistry": 2
+        },
+        "starting_equipment": [
+          "Bio lab",
+          "Pathogen samples",
+          "Containment suits"
+        ],
+        "tone_modifiers": {
+          "cynicism": 9,
+          "sophistication": 8,
+          "violence": 7,
+          "hope": 2
+        },
+        "context_tags": [
+          "Science",
+          "Weapons",
+          "Biology",
+          "Dangerous"
+        ]
+      },
+      "SPEC_SOCIAL_ENGINEER": {
+        "title": "Социальный инженер",
+        "description": "Мастер манипуляций и психологического влияния",
+        "effects": {
+          "negotiation": 3,
+          "psychology": 3,
+          "charisma": 2
+        },
+        "starting_equipment": [
+          "Identity documents",
+          "Social network access",
+          "Psychological profiles"
+        ],
+        "tone_modifiers": {
+          "cynicism": 7,
+          "sophistication": 8,
+          "violence": 2,
+          "hope": 4
+        },
+        "context_tags": [
+          "Psychology",
+          "Manipulation",
+          "Social",
+          "Influence"
+        ]
+      },
+      "SPEC_VOID_WALKER": {
+        "title": "Путешественник Пустоты",
+        "description": "Исследователь межзвездного пространства и темной материи",
+        "effects": {
+          "survival": 3,
+          "piloting": 2,
+          "physics": 2
+        },
+        "starting_equipment": [
+          "Deep space suit",
+          "Long-range scanner",
+          "Exotic matter detector"
+        ],
+        "tone_modifiers": {
+          "cynicism": 4,
+          "sophistication": 7,
+          "violence": 3,
+          "hope": 8
+        },
+        "context_tags": [
+          "Space",
+          "Exploration",
+          "Science",
+          "Discovery"
+        ]
+      },
+      "SPEC_EMOTION_DEALER": {
+        "title": "Торговец эмоциями",
+        "description": "Поставщик синтетических эмоций и переживаний",
+        "effects": {
+          "psychology": 2,
+          "negotiation": 2,
+          "chemistry": 2
+        },
+        "starting_equipment": [
+          "Emotion synthesizer",
+          "Mood drugs",
+          "Neural interfaces"
+        ],
+        "tone_modifiers": {
+          "cynicism": 6,
+          "sophistication": 6,
+          "violence": 3,
+          "hope": 5
+        },
+        "context_tags": [
+          "Psychology",
+          "Drugs",
+          "Emotions",
+          "Trade"
+        ]
+      },
+      "SPEC_GRAVITY_DANCER": {
+        "title": "Танцор гравитации",
+        "description": "Артист, выступающий с гравитационными полями",
+        "effects": {
+          "dexterity": 3,
+          "entertainment": 3,
+          "physics": 1
+        },
+        "starting_equipment": [
+          "Gravity manipulator",
+          "Performance costume",
+          "Anti-grav boots"
+        ],
+        "tone_modifiers": {
+          "cynicism": 3,
+          "sophistication": 9,
+          "violence": 1,
+          "hope": 8
+        },
+        "context_tags": [
+          "Art",
+          "Performance",
+          "Gravity",
+          "Beauty"
+        ]
+      },
+      "SPEC_DREAM_ARCHITECT": {
+        "title": "Архитектор снов",
+        "description": "Дизайнер виртуальных реальностей и осознанных сновидений",
+        "effects": {
+          "technology": 3,
+          "psychology": 2,
+          "creativity": 3
+        },
+        "starting_equipment": [
+          "VR design suite",
+          "Neural headsets",
+          "Dream recorder"
+        ],
+        "tone_modifiers": {
+          "cynicism": 4,
+          "sophistication": 8,
+          "violence": 2,
+          "hope": 7
+        },
+        "context_tags": [
+          "Technology",
+          "Dreams",
+          "Virtual",
+          "Creativity"
+        ]
+      },
+      "SPEC_CORPORATE_SAMURAI": {
+        "title": "Корпоративный самурай",
+        "description": "Элитный телохранитель высшего руководства корпораций",
+        "effects": {
+          "combat": 4,
+          "loyalty": 3,
+          "honor": 2
+        },
+        "starting_equipment": [
+          "Ceremonial sword",
+          "Combat armor",
+          "Honor code"
+        ],
+        "tone_modifiers": {
+          "cynicism": 4,
+          "sophistication": 7,
+          "violence": 6,
+          "hope": 6
+        },
+        "context_tags": [
+          "Combat",
+          "Honor",
+          "Corporate",
+          "Elite"
+        ]
+      },
+      "SPEC_PSYCHIC_INVESTIGATOR": {
+        "title": "Экстрасенсорный детектив",
+        "description": "Следователь, использующий психические способности",
+        "effects": {
+          "investigation": 3,
+          "psychology": 2,
+          "occult": 3
+        },
+        "starting_equipment": [
+          "Psychic amplifier",
+          "Evidence scanner",
+          "Mental shields"
+        ],
+        "tone_modifiers": {
+          "cynicism": 7,
+          "sophistication": 6,
+          "violence": 4,
+          "hope": 5
+        },
+        "context_tags": [
+          "Investigation",
+          "Psychic",
+          "Mystery",
+          "Supernatural"
+        ]
+      },
+      "SPEC_NANO_SURGEON": {
+        "title": "Нанохирург",
+        "description": "Врач, использующий нанотехнологии для лечения",
+        "effects": {
+          "medicine": 4,
+          "technology": 3,
+          "precision": 2
+        },
+        "starting_equipment": [
+          "Nano-medical kit",
+          "Microscopic robots",
+          "Surgical AI"
+        ],
+        "tone_modifiers": {
+          "cynicism": 3,
+          "sophistication": 9,
+          "violence": 2,
+          "hope": 8
+        },
+        "context_tags": [
+          "Medicine",
+          "Technology",
+          "Healing",
+          "Precision"
+        ]
+      },
+      "SPEC_REALITY_HACKER": {
+        "title": "Хакер реальности",
+        "description": "Манипулятор физических законов через квантовые поля",
+        "effects": {
+          "hacking": 3,
+          "physics": 3,
+          "willpower": 2
+        },
+        "starting_equipment": [
+          "Reality modifier",
+          "Quantum field generator",
+          "Physics scanner"
+        ],
+        "tone_modifiers": {
+          "cynicism": 5,
+          "sophistication": 9,
+          "violence": 4,
+          "hope": 6
+        },
+        "context_tags": [
+          "Physics",
+          "Reality",
+          "Quantum",
+          "Power"
+        ]
+      },
+      "SPEC_EMOTION_SCULPTOR": {
+        "title": "Скульптор эмоций",
+        "description": "Художник, создающий эмоциональные переживания",
+        "effects": {
+          "psychology": 3,
+          "entertainment": 2,
+          "empathy": 3
+        },
+        "starting_equipment": [
+          "Emotion projector",
+          "Feeling synthesizer",
+          "Empathy amplifier"
+        ],
+        "tone_modifiers": {
+          "cynicism": 2,
+          "sophistication": 8,
+          "violence": 1,
+          "hope": 9
+        },
+        "context_tags": [
+          "Art",
+          "Emotions",
+          "Psychology",
+          "Beauty"
+        ]
+      },
+      "SPEC_VOID_MERCHANT": {
+        "title": "Торговец Пустоты",
+        "description": "Коммерсант, торгующий экзотическими товарами из глубокого космоса",
+        "effects": {
+          "negotiation": 3,
+          "piloting": 2,
+          "economics": 3
+        },
+        "starting_equipment": [
+          "Trading ship",
+          "Exotic goods",
+          "Market analyzer"
+        ],
+        "tone_modifiers": {
+          "cynicism": 5,
+          "sophistication": 7,
+          "violence": 3,
+          "hope": 6
+        },
+        "context_tags": [
+          "Trade",
+          "Space",
+          "Exotic",
+          "Adventure"
+        ]
+      },
+      "SPEC_DIGITAL_GHOST": {
+        "title": "Цифровой призрак",
+        "description": "Хакер, существующий только в цифровом пространстве",
+        "effects": {
+          "hacking": 4,
+          "stealth": 3,
+          "technology": 2
+        },
+        "starting_equipment": [
+          "Quantum computer",
+          "Digital hideout",
+          "Virtual identity"
+        ],
+        "tone_modifiers": {
+          "cynicism": 8,
+          "sophistication": 7,
+          "violence": 4,
+          "hope": 3
+        },
+        "context_tags": [
+          "Digital",
+          "Stealth",
+          "Technology",
+          "Invisible"
+        ]
+      },
+      "SPEC_GRAVITY_ENGINEER": {
+        "title": "Гравитационный инженер",
+        "description": "Специалист по созданию и управлению гравитационными полями",
+        "effects": {
+          "engineering": 4,
+          "physics": 3,
+          "mathematics": 2
+        },
+        "starting_equipment": [
+          "Gravity generator",
+          "Field manipulator",
+          "Physics scanner"
+        ],
+        "tone_modifiers": {
+          "cynicism": 4,
+          "sophistication": 9,
+          "violence": 3,
+          "hope": 7
+        },
+        "context_tags": [
+          "Engineering",
+          "Gravity",
+          "Physics",
+          "Advanced"
+        ]
+      },
+      "SPEC_MIND_ARCHAEOLOGIST": {
+        "title": "Археолог сознания",
+        "description": "Исследователь древних воспоминаний и забытых знаний",
+        "effects": {
+          "psychology": 3,
+          "investigation": 2,
+          "history": 3
+        },
+        "starting_equipment": [
+          "Memory scanner",
+          "Ancient data",
+          "Consciousness mapper"
+        ],
+        "tone_modifiers": {
+          "cynicism": 5,
+          "sophistication": 8,
+          "violence": 2,
+          "hope": 6
+        },
+        "context_tags": [
+          "Psychology",
+          "History",
+          "Memory",
+          "Discovery"
+        ]
+      },
+      "SPEC_QUANTUM_ASSASSIN": {
+        "title": "Квантовый убийца",
+        "description": "Киллер, использующий квантовые эффекты для невидимости",
+        "effects": {
+          "combat": 3,
+          "physics": 3,
+          "stealth": 3
+        },
+        "starting_equipment": [
+          "Quantum cloak",
+          "Phase weapon",
+          "Probability manipulator"
+        ],
+        "tone_modifiers": {
+          "cynicism": 9,
+          "sophistication": 8,
+          "violence": 9,
+          "hope": 1
+        },
+        "context_tags": [
+          "Combat",
+          "Quantum",
+          "Stealth",
+          "Deadly"
+        ]
+      },
+      "SPEC_CONSCIOUSNESS_TRADER": {
+        "title": "Торговец сознанием",
+        "description": "Коммерсант, покупающий и продающий человеческие сознания",
+        "effects": {
+          "negotiation": 3,
+          "psychology": 3,
+          "technology": 2
+        },
+        "starting_equipment": [
+          "Consciousness extractor",
+          "Mind storage",
+          "Neural marketplace"
+        ],
+        "tone_modifiers": {
+          "cynicism": 9,
+          "sophistication": 6,
+          "violence": 5,
+          "hope": 2
+        },
+        "context_tags": [
+          "Trade",
+          "Consciousness",
+          "Dark",
+          "Controversial"
+        ]
+      },
+      "SPEC_TIME_DILATOR": {
+        "title": "Дилататор времени",
+        "description": "Специалист по манипуляциям временными потоками",
+        "effects": {
+          "physics": 4,
+          "technology": 3,
+          "perception": 2
+        },
+        "starting_equipment": [
+          "Time dilation field",
+          "Temporal scanner",
+          "Chronometer"
+        ],
+        "tone_modifiers": {
+          "cynicism": 6,
+          "sophistication": 9,
+          "violence": 3,
+          "hope": 5
+        },
+        "context_tags": [
+          "Time",
+          "Physics",
+          "Technology",
+          "Advanced"
+        ]
+      },
+      "SPEC_DIMENSIONAL_SCOUT": {
+        "title": "Разведчик измерений",
+        "description": "Исследователь параллельных реальностей и альтернативных измерений",
+        "effects": {
+          "survival": 3,
+          "physics": 3,
+          "courage": 3
+        },
+        "starting_equipment": [
+          "Dimensional scanner",
+          "Reality anchor",
+          "Multiverse map"
+        ],
+        "tone_modifiers": {
+          "cynicism": 4,
+          "sophistication": 8,
+          "violence": 4,
+          "hope": 7
+        },
+        "context_tags": [
+          "Dimensions",
+          "Exploration",
+          "Physics",
+          "Discovery"
+        ]
+      }
+    }
+  }
+}

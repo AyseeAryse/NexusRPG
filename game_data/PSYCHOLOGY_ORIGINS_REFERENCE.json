@@ -1,0 +1,298 @@
+{
+  "module_name": "PSYCHOLOGY_ORIGINS_REFERENCE",
+  "description": "Справочник психологических профилей по происхождениям персонажей. Вынесен из основного PSYCHOLOGY модуля для оптимизации.",
+  "version": "1.0_REFERENCE",
+  "usage": "Используется PSYCHOLOGY модулем для определения базовых психологических параметров",
+  "origin_base_values": {
+    "ORIGIN_EARTH_ELITE": {
+      "stress": 2,
+      "humanity": 6,
+      "ideology_base": {
+        "order_chaos": 3,
+        "freedom_control": -2,
+        "progress_tradition": 2
+      },
+      "psychological_profile": "Высокофункциональный, но склонный к паранойе и контролю",
+      "core_fears": [
+        "Потеря статуса",
+        "Публичное унижение",
+        "Бедность"
+      ],
+      "stress_tolerance": "Средняя - привык к давлению, но не к физическим угрозам",
+      "unique_stress_triggers": [
+        {
+          "cause": "Публичное унижение или потеря статуса",
+          "value": 3
+        },
+        {
+          "cause": "Финансовые потери свыше 100k кредитов",
+          "value": 2
+        }
+      ],
+      "therapeutic_preferences": {
+        "method": "Элитная психотерапия",
+        "effectiveness": 4,
+        "cost": 5000,
+        "location": "Корпоративные клиники"
+      }
+    },
+    "ORIGIN_EARTH_SLUMS": {
+      "stress": 4,
+      "humanity": 5,
+      "ideology_base": {
+        "order_chaos": -2,
+        "freedom_control": 3,
+        "progress_tradition": -1
+      },
+      "psychological_profile": "Выносливый к стрессу, циничный, подозрительный к власти",
+      "core_fears": [
+        "Голод",
+        "Беспомощность",
+        "Предательство близких"
+      ],
+      "stress_tolerance": "Высокая - адаптирован к постоянной угрозе",
+      "unique_stress_triggers": [
+        {
+          "cause": "Нахождение в роскошной обстановке (дискомфорт)",
+          "value": 1
+        },
+        {
+          "cause": "Взаимодействие с корпоративной безопасностью",
+          "value": 2
+        }
+      ],
+      "therapeutic_preferences": {
+        "method": "Групповая поддержка",
+        "effectiveness": 3,
+        "cost": 0,
+        "location": "Общинные центры"
+      }
+    },
+    "ORIGIN_MARS_MILITARY": {
+      "stress": 3,
+      "humanity": 7,
+      "ideology_base": {
+        "order_chaos": 4,
+        "freedom_control": -1,
+        "progress_tradition": 2
+      },
+      "psychological_profile": "Дисциплинированный, лояльный, иерархичный",
+      "core_fears": [
+        "Трусость",
+        "Провал миссии",
+        "Предательство командования"
+      ],
+      "stress_tolerance": "Высокая - военная подготовка",
+      "unique_stress_triggers": [
+        {
+          "cause": "Неподчинение прямому приказу",
+          "value": 3
+        },
+        {
+          "cause": "Потеря военного товарища в бою",
+          "value": 3
+        }
+      ],
+      "therapeutic_preferences": {
+        "method": "Военная психологическая поддержка",
+        "effectiveness": 4,
+        "cost": 0,
+        "location": "Военные базы"
+      }
+    },
+    "ORIGIN_MARS_SCIENTIST": {
+      "stress": 2,
+      "humanity": 8,
+      "ideology_base": {
+        "order_chaos": 2,
+        "freedom_control": 1,
+        "progress_tradition": 4
+      },
+      "psychological_profile": "Аналитический, этичный, перфекционистский",
+      "core_fears": [
+        "Научные ошибки",
+        "Этические компромиссы",
+        "Невежество"
+      ],
+      "stress_tolerance": "Средняя - справляется через рационализацию",
+      "unique_stress_triggers": [
+        {
+          "cause": "Принуждение к неэтичным экспериментам",
+          "value": 4
+        },
+        {
+          "cause": "Потеря важных научных данных",
+          "value": 2
+        }
+      ],
+      "therapeutic_preferences": {
+        "method": "Рациональная терапия",
+        "effectiveness": 3,
+        "cost": 2000,
+        "location": "Исследовательские центры"
+      }
+    },
+    "ORIGIN_CERES_MINER": {
+      "stress": 4,
+      "humanity": 6,
+      "ideology_base": {
+        "order_chaos": -1,
+        "freedom_control": 3,
+        "progress_tradition": -1
+      },
+      "psychological_profile": "Солидарный, упорный, подозрительный к корпорациям",
+      "core_fears": [
+        "Взрыв в шахте",
+        "Корпоративное угнетение",
+        "Разделение коллектива"
+      ],
+      "stress_tolerance": "Очень высокая - опасная работа в суровых условиях",
+      "unique_stress_triggers": [
+        {
+          "cause": "Корпоративное угнетение или эксплуатация",
+          "value": 3
+        },
+        {
+          "cause": "Предательство профсоюзного товарища",
+          "value": 3
+        }
+      ],
+      "therapeutic_preferences": {
+        "method": "Профсоюзная поддержка",
+        "effectiveness": 3,
+        "cost": 0,
+        "location": "Профсоюзные центры"
+      }
+    },
+    "ORIGIN_GANYMEDE_SCIENTIST": {
+      "stress": 1,
+      "humanity": 9,
+      "ideology_base": {
+        "order_chaos": 2,
+        "freedom_control": 2,
+        "progress_tradition": 5
+      },
+      "psychological_profile": "Интеллектуально любопытный, этически развитый",
+      "core_fears": [
+        "Научная стагнация",
+        "Этические компромиссы",
+        "Потеря открытий"
+      ],
+      "stress_tolerance": "Низкая - чувствителен к моральным дилеммам",
+      "therapeutic_preferences": {
+        "method": "Этическая рефлексия",
+        "effectiveness": 4,
+        "cost": 3000,
+        "location": "Биоэтические центры"
+      }
+    },
+    "ORIGIN_STATION_MEDIC": {
+      "stress": 2,
+      "humanity": 9,
+      "ideology_base": {
+        "order_chaos": 1,
+        "freedom_control": 0,
+        "progress_tradition": 2
+      },
+      "psychological_profile": "Заботливый, ответственный, эмпатичный",
+      "core_fears": [
+        "Потеря пациента",
+        "Медицинские ошибки",
+        "Эпидемии"
+      ],
+      "stress_tolerance": "Средняя - эмоционально вовлечен в работу",
+      "therapeutic_preferences": {
+        "method": "Медицинская реабилитация",
+        "effectiveness": 4,
+        "cost": 0,
+        "location": "Медицинские учреждения"
+      }
+    },
+    "ORIGIN_LUNA_UNDERWORLD": {
+      "stress": 4,
+      "humanity": 3,
+      "ideology_base": {
+        "order_chaos": -4,
+        "freedom_control": 4,
+        "progress_tradition": 1
+      },
+      "psychological_profile": "Криминально адаптированный, циничный, предприимчивый",
+      "core_fears": [
+        "Предательство",
+        "Конкуренция",
+        "Легализация"
+      ],
+      "stress_tolerance": "Очень высокая - криминальная среда",
+      "therapeutic_preferences": {
+        "method": "Черно-рыночная терапия",
+        "effectiveness": 2,
+        "cost": 3000,
+        "location": "Подпольные психологи"
+      }
+    }
+  },
+  "formative_years_modifiers": {
+    "FY_MARS_ACADEMY": {
+      "stress_modifier": -1,
+      "humanity_modifier": 1,
+      "ideology_shift": {
+        "order_chaos": 2,
+        "freedom_control": -1
+      },
+      "acquired_fears": [
+        "Нарушение приказа",
+        "Трусость"
+      ],
+      "acquired_strengths": [
+        "Дисциплина",
+        "Командная работа"
+      ]
+    },
+    "FY_SLUMS_GANGWAR": {
+      "stress_modifier": 2,
+      "humanity_modifier": -2,
+      "ideology_shift": {
+        "order_chaos": -2,
+        "freedom_control": 1
+      },
+      "acquired_fears": [
+        "Предательство",
+        "Слабость"
+      ],
+      "acquired_strengths": [
+        "Боевая ярость",
+        "Уличные инстинкты"
+      ]
+    },
+    "FY_CORP_INTERNSHIP": {
+      "stress_modifier": -1,
+      "humanity_modifier": -1,
+      "ideology_shift": {
+        "order_chaos": 2,
+        "freedom_control": -2
+      },
+      "acquired_fears": [
+        "Корпоративная политика",
+        "Увольнение"
+      ],
+      "acquired_strengths": [
+        "Стрессоустойчивость в офисной среде"
+      ]
+    },
+    "FY_MARS_LAB_ASSISTANT": {
+      "stress_modifier": -2,
+      "humanity_modifier": 2,
+      "ideology_shift": {
+        "progress_tradition": 2
+      },
+      "acquired_fears": [
+        "Научные ошибки",
+        "Этические нарушения"
+      ],
+      "acquired_strengths": [
+        "Аналитическое мышление",
+        "Этическое чутье"
+      ]
+    }
+  }
+}

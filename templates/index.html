@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS RPG</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;500&family=Noto+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- LOADING OVERLAY -->
+    <div id="loading-overlay" class="hidden">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- ========== BOOT SCREEN ========== -->
+    <div id="screen-boot" class="screen active">
+        <div class="boot-container">
+            <div class="boot-title glitch" data-text="NEXUS">NEXUS</div>
+            <div class="boot-subtitle">DEEP SPACE RPG ENGINE v3.87</div>
+            <div class="boot-progress"><div id="boot-progress-bar" class="boot-progress-bar"></div></div>
+            <div id="boot-status" class="boot-status"></div>
+            <div id="boot-error" class="boot-error hidden"></div>
+            <div id="boot-actions" class="boot-actions hidden">
+                <button class="btn btn-primary btn-lg" onclick="showScreen('menu')">ВОЙТИ В СИСТЕМУ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== MAIN MENU ========== -->
+    <div id="screen-menu" class="screen">
+        <div class="menu-container">
+            <div class="menu-title glitch" data-text="NEXUS">NEXUS</div>
+            <div class="menu-subtitle">DEEP SPACE RPG</div>
+            <div id="menu-ai-status" class="ai-status">Проверка AI...</div>
+            <div class="menu-buttons">
+                <button class="btn btn-primary btn-lg btn-block" onclick="showScreen('char-create')">НОВАЯ ИГРА</button>
+                <button class="btn btn-lg btn-block" onclick="showSaves()">ЗАГРУЗИТЬ</button>
+                <button class="btn btn-lg btn-block" onclick="showScreen('settings'); loadSettings()">НАСТРОЙКИ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SETTINGS ========== -->
+    <div id="screen-settings" class="screen">
+        <div class="panel-container">
+            <div class="panel-header">
+                <h2>НАСТРОЙКИ</h2>
+                <button class="btn btn-sm" onclick="showScreen('menu')">← НАЗАД</button>
+            </div>
+            <div class="settings-body">
+                <div class="setting-group">
+                    <label class="setting-label">AI Backend</label>
+                    <div class="radio-row">
+                        <label class="radio-label"><input type="radio" name="backend" id="radio-ollama" value="ollama" checked> Ollama</label>
+                        <label class="radio-label"><input type="radio" name="backend" id="radio-lmstudio" value="lmstudio"> LMStudio</label>
+                        <label class="radio-label"><input type="radio" name="backend" id="radio-cloud" value="cloud_api"> Cloud API</label>
+                    </div>
+                </div>
+                <div id="ollama-settings" class="setting-group">
+                    <label class="setting-label">Ollama URL</label>
+                    <input type="text" id="inp-ollama-url" class="inp" value="http://localhost:11434">
+                    <label class="setting-label">Модель</label>
+                    <div class="model-select-row">
+                        <select id="inp-ollama-model" class="inp inp-select"></select>
+                        <button class="btn btn-sm" onclick="refreshModels('ollama')">🔄</button>
+                    </div>
+                </div>
+                <div id="lmstudio-settings" class="setting-group hidden">
+                    <label class="setting-label">LMStudio URL</label>
+                    <input type="text" id="inp-lmstudio-url" class="inp" value="http://localhost:1234/v1">
+                    <label class="setting-label">Модель</label>
+                    <div class="model-select-row">
+                        <select id="inp-lmstudio-model" class="inp inp-select"></select>
+                        <button class="btn btn-sm" onclick="refreshModels('lmstudio')">🔄</button>
+                    </div>
+                </div>
+                <div id="cloud-settings" class="setting-group hidden">
+                    <label class="setting-label">Провайдер URL</label>
+                    <select id="inp-cloud-provider" class="inp inp-select" onchange="onCloudProviderChange()">
+                        <option value="https://api.openai.com/v1">OpenAI (GPT-4o, GPT-4)</option>
+                        <option value="https://openrouter.ai/api/v1">OpenRouter (мульти-провайдер)</option>
+                        <option value="https://generativelanguage.googleapis.com/v1beta/openai">Google Gemini</option>
+                        <option value="custom">Другой (ввести вручную)</option>
+                    </select>
+                    <input type="text" id="inp-cloud-url" class="inp hidden" placeholder="https://api.example.com/v1">
+                    <label class="setting-label">API Ключ</label>
+                    <input type="password" id="inp-cloud-key" class="inp" placeholder="sk-...">
+                    <label class="setting-label">Модель</label>
+                    <input type="text" id="inp-cloud-model" class="inp" value="gpt-4o-mini" placeholder="gpt-4o / gemini-2.0-flash / и т.д.">
+                    <div class="setting-hint">OpenRouter: доступны все модели (GPT, Claude, Gemini, Llama и др.)</div>
+                </div>
+                <div class="setting-group">
+                    <label class="setting-label">Temperature: <span id="temp-val">0.8</span></label>
+                    <input type="range" id="inp-temperature" class="inp-range" min="0" max="2" step="0.1" value="0.8"
+                           oninput="document.getElementById('temp-val').textContent=this.value">
+                </div>
+                <div class="setting-group">
+                    <label class="setting-label">Max Tokens</label>
+                    <input type="number" id="inp-max-tokens" class="inp" value="2048" min="256" max="8192">
+                </div>
+                <div class="setting-actions">
+                    <button class="btn btn-primary" onclick="saveSettings()">СОХРАНИТЬ</button>
+                    <button class="btn" onclick="testConnection()">ТЕСТ ПОДКЛЮЧЕНИЯ</button>
+                </div>
+                <div id="settings-status" class="status-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== CHARACTER CREATION ========== -->
+    <div id="screen-char-create" class="screen">
+        <div class="creation-container">
+            <div class="panel-header">
+                <h2>СОЗДАНИЕ ПЕРСОНАЖА</h2>
+                <button class="btn btn-sm" onclick="showScreen('menu')">← МЕНЮ</button>
+            </div>
+
+            <!-- Step indicator -->
+            <div class="creation-steps">
+                <div class="step-dot active" data-step="0">1</div>
+                <div class="step-line"></div>
+                <div class="step-dot" data-step="1">2</div>
+                <div class="step-line"></div>
+                <div class="step-dot" data-step="2">3</div>
+                <div class="step-line"></div>
+                <div class="step-dot" data-step="3">4</div>
+                <div class="step-line"></div>
+                <div class="step-dot" data-step="4">5</div>
+                <div class="step-line"></div>
+                <div class="step-dot" data-step="5">6</div>
+            </div>
+            <div class="creation-step-name" id="creation-step-name">Шаг 1: Режим создания</div>
+
+            <!-- Step 0: Mode selection -->
+            <div class="creation-step active" id="cstep-0">
+                <div class="step-desc">Выберите способ создания персонажа</div>
+                <div class="mode-cards">
+                    <div class="mode-card" onclick="setCreationMode('preset')">
+                        <div class="mode-icon">🎭</div>
+                        <div class="mode-name">ГОТОВЫЙ ПРЕСЕТ</div>
+                        <div class="mode-desc">Быстрый старт с готовым персонажем</div>
+                    </div>
+                    <div class="mode-card" onclick="setCreationMode('custom')">
+                        <div class="mode-icon">⚙️</div>
+                        <div class="mode-name">СВОЯ СБОРКА</div>
+                        <div class="mode-desc">Полная настройка происхождения, навыков и атрибутов</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 1a: Preset selection -->
+            <div class="creation-step" id="cstep-1a">
+                <div id="preset-grid" class="preset-grid"></div>
+                <div id="char-name-section-preset" class="char-name-section hidden">
+                    <label class="setting-label">Имя персонажа</label>
+                    <input type="text" id="inp-char-name-preset" class="inp" placeholder="Введите имя...">
+                    <div class="step-nav">
+                        <button class="btn" onclick="goCreationStep(0)">← НАЗАД</button>
+                        <button class="btn btn-primary" onclick="startGamePreset()">НАЧАТЬ ИГРУ ▶</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 1: Name & Age (custom) -->
+            <div class="creation-step" id="cstep-1">
+                <div class="form-grid">
+                    <div class="form-col">
+                        <label class="setting-label">Имя персонажа</label>
+                        <input type="text" id="inp-char-name" class="inp" placeholder="Введите имя...">
+                    </div>
+                    <div class="form-col">
+                        <label class="setting-label">Возраст: <span id="age-val">30</span></label>
+                        <input type="range" id="inp-age" class="inp-range" min="16" max="80" value="30"
+                               oninput="updateAge(this.value)">
+                        <div id="age-category" class="age-category">Взрослый (26-45)</div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label class="setting-label">Предыстория (опционально)</label>
+                    <textarea id="inp-backstory" class="inp inp-textarea" placeholder="Краткая предыстория персонажа..." rows="3"></textarea>
+                </div>
+                <div class="step-nav">
+                    <button class="btn" onclick="goCreationStep(0)">← НАЗАД</button>
+                    <button class="btn btn-primary" onclick="goCreationStep(2)">ДАЛЕЕ →</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Origin -->
+            <div class="creation-step" id="cstep-2">
+                <div class="step-desc">Выберите происхождение</div>
+                <div id="origins-list" class="option-list"></div>
+                <div class="step-nav">
+                    <button class="btn" onclick="goCreationStep(1)">← НАЗАД</button>
+                    <button class="btn btn-primary" onclick="goCreationStep(3)" id="btn-origin-next" disabled>ДАЛЕЕ →</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Formative Years -->
+            <div class="creation-step" id="cstep-3">
+                <div class="step-desc">Годы становления (14-18 лет)</div>
+                <div id="formative-list" class="option-list"></div>
+                <div class="step-nav">
+                    <button class="btn" onclick="goCreationStep(2)">← НАЗАД</button>
+                    <button class="btn btn-primary" onclick="goCreationStep(4)" id="btn-fy-next" disabled>ДАЛЕЕ →</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Specialization -->
+            <div class="creation-step" id="cstep-4">
+                <div class="step-desc">Выберите специализацию</div>
+                <div id="spec-list" class="option-list"></div>
+                <div class="step-nav">
+                    <button class="btn" onclick="goCreationStep(3)">← НАЗАД</button>
+                    <button class="btn btn-primary" onclick="goCreationStep(5)" id="btn-spec-next" disabled>ДАЛЕЕ →</button>
+                </div>
+            </div>
+
+            <!-- Step 5: Point allocation + Summary -->
+            <div class="creation-step" id="cstep-5">
+                <div class="summary-grid">
+                    <div class="summary-col">
+                        <div class="panel-section-title">АТРИБУТЫ <span id="attr-points-left" class="points-counter">0</span></div>
+                        <div id="attr-sliders" class="attr-sliders"></div>
+                    </div>
+                    <div class="summary-col">
+                        <div class="panel-section-title">НАВЫКИ <span id="skill-points-left" class="points-counter">0</span></div>
+                        <div id="skill-sliders" class="skill-sliders"></div>
+                    </div>
+                </div>
+                <div id="char-summary" class="char-summary"></div>
+                <div class="step-nav">
+                    <button class="btn" onclick="goCreationStep(4)">← НАЗАД</button>
+                    <button class="btn btn-primary btn-lg" onclick="startGameCustom()">🚀 НАЧАТЬ ИГРУ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SAVES ========== -->
+    <div id="screen-saves" class="screen">
+        <div class="panel-container">
+            <div class="panel-header">
+                <h2>СОХРАНЕНИЯ</h2>
+                <button class="btn btn-sm" onclick="showScreen('menu')">← МЕНЮ</button>
+            </div>
+            <div id="saves-list" class="saves-list"></div>
+        </div>
+    </div>
+
+    <!-- ========== GAME SCREEN ========== -->
+    <div id="screen-game" class="screen">
+        <!-- Topbar -->
+        <div class="game-topbar">
+            <div class="topbar-left">
+                <span class="char-name" id="game-char-name">—</span>
+                <span class="char-class" id="game-char-class">?</span>
+            </div>
+            <div class="topbar-center">
+                <span class="location-icon">📍</span>
+                <span id="game-location">—</span>
+                <span class="time-badge">⏱ <span id="game-time">—</span></span>
+            </div>
+            <div class="topbar-right">
+                <button class="topbar-btn" onclick="quickSave()" title="Сохранить">💾</button>
+                <button class="topbar-btn" onclick="togglePanel('character')" title="Персонаж">👤</button>
+                <button class="topbar-btn" onclick="togglePanel('inventory')" title="Инвентарь">🎒</button>
+                <button class="topbar-btn" onclick="togglePanel('implants')" title="Импланты">🧬</button>
+                <button class="topbar-btn" onclick="togglePanel('companions')" title="Компаньоны">🤝</button>
+                <button class="topbar-btn" onclick="togglePanel('ship')" title="Корабль">🚀</button>
+                <button class="topbar-btn" onclick="togglePanel('property')" title="Недвижимость">🏠</button>
+                <button class="topbar-btn" onclick="togglePanel('shop')" title="Магазин">🏪</button>
+                <button class="topbar-btn" onclick="togglePanel('map')" title="Карта">🗺</button>
+                <button class="topbar-btn" onclick="togglePanel('npcs')" title="NPC">👥</button>
+                <button class="topbar-btn" onclick="togglePanel('crafting')" title="Крафтинг">🔧</button>
+                <button class="topbar-btn" onclick="togglePanel('hacking')" title="Хакинг">💻</button>
+                <button class="topbar-btn" onclick="togglePanel('investigation')" title="Расследования">🔍</button>
+                <button class="topbar-btn" onclick="togglePanel('quests')" title="Квесты">📋</button>
+                <button class="topbar-btn" onclick="togglePanel('factions')" title="Фракции">⚖️</button>
+                <button class="topbar-btn" onclick="togglePanel('world')" title="Новости мира">📡</button>
+                <button class="topbar-btn" onclick="showScreen('menu')" title="Меню">☰</button>
+            </div>
+        </div>
+
+        <!-- News ticker -->
+        <div id="news-ticker" class="news-ticker hidden">
+            <span class="ticker-label">📡 НОВОСТИ:</span>
+            <span id="ticker-text" class="ticker-text"></span>
+        </div>
+
+        <!-- Stat bars -->
+        <div class="stat-bars">
+            <div class="stat-bar-group">
+                <span class="stat-label">HP</span>
+                <div class="stat-bar"><div id="hp-bar" class="stat-bar-fill hp-fill"></div></div>
+                <span class="stat-val" id="hp-text">0/0</span>
+            </div>
+            <div class="stat-bar-group">
+                <span class="stat-label">SAN</span>
+                <div class="stat-bar"><div id="san-bar" class="stat-bar-fill san-fill"></div></div>
+                <span class="stat-val" id="san-text">0/0</span>
+            </div>
+            <div class="stat-bar-group">
+                <span class="stat-label">XP</span>
+                <div class="stat-bar"><div id="xp-bar" class="stat-bar-fill xp-fill"></div></div>
+                <span class="stat-val" id="xp-text">0/0</span>
+            </div>
+            <div class="stat-credits">
+                <span>₡<span id="credits-text">0</span></span>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="game-content">
+            <!-- Narrative -->
+            <div class="narrative-panel">
+                <div id="narrative-scroll" class="narrative-scroll"></div>
+            </div>
+            <!-- Side panel -->
+            <div id="side-panel" class="side-panel hidden">
+                <div class="side-panel-header">
+                    <span id="side-panel-title">—</span>
+                    <button class="btn-close" onclick="closeSidePanel()">✕</button>
+                </div>
+                <div id="side-panel-content" class="side-panel-content"></div>
+            </div>
+        </div>
+
+        <!-- Input -->
+        <div class="input-bar">
+            <input type="text" id="player-input" class="inp player-input"
+                   placeholder="Что ты делаешь?..."
+                   onkeydown="if(event.key==='Enter')sendAction()">
+            <button id="btn-send" class="btn btn-send" onclick="sendAction()">▶</button>
+        </div>
+        <div class="quick-actions">
+            <button class="quick-btn" onclick="quickAction('Осмотреться вокруг')">👁 Осмотреться</button>
+            <button class="quick-btn" onclick="quickAction('Поговорить с ближайшим NPC')">💬 Поговорить</button>
+            <button class="quick-btn" onclick="quickAction('Исследовать окрестности')">🔍 Исследовать</button>
+            <button class="quick-btn" onclick="quickAction('Уйти в другое место')">🚶 Уйти</button>
+            <button class="quick-btn" onclick="togglePanel('shop')">🏪 Магазин</button>
+            <button class="quick-btn" onclick="quickAction('Поискать работу или контракт')">💼 Работа</button>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

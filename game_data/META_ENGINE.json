@@ -1,0 +1,62 @@
+{
+  "module_name": "META_ENGINE",
+  "description": "Мета-надстройка, объединяющая системную логику, философию и эмоциональные принципы мира для создания эмерджентного нарратива.",
+  "purpose_and_function": {
+    "role": "Мозг-наблюдатель AI-ГМа, соединяющий EVENT_ENGINE, REACTION_CORE, DYNAMIC_WORLD и THEME_TONE.",
+    "main_task": "Превращение числовых и логических состояний мира в органический поток событий и историй."
+  },
+  "concept": {
+    "name": "Self-Emergent Narrative",
+    "philosophy": "ИИ-ГМ не пишет истории — он наблюдает за параметрами мира и запускает реакции, подобно RimWorld или Dwarf Fortress.",
+    "principles": [
+      "Органический рост: События возникают из логики мира, а не сценариев.",
+      "Каскадные эффекты: Каждое действие порождает цепочку последствий.",
+      "Эмерджентная сложность: Простые правила создают сложные истории."
+    ]
+  },
+  "how_it_works": {
+    "event_engine_schema": "{Субъект} → хочет {действие} → в {локации} → потому что {причина}",
+    "reaction_loop": "Каждое событие влечёт последствия, которые фиксируются ИИ и создают новые цепочки событий.",
+    "chaos_constraints": {
+      "max_events_per_turn": "2-3",
+      "conflict_threshold": "0.3-0.7",
+      "peace_decay": "0.1-0.2",
+      "global_crisis_chance": "0.05-0.1"
+    },
+    "event_generation_algorithm": "for each turn:\n    scan world_state\n    potential_triggers = detect_conflicts(factions, economy, player)\n    if random() < conflict_threshold:\n        event = compose_event(potential_triggers)\n        apply_consequences(event)\n        log_to_story(event)",
+    "emotional_depth": [
+      {"tone": "Tragic", "description": "Неизбежные потери, героические жертвы"},
+      {"tone": "Hopeful", "description": "Возможности для роста, новые союзы"},
+      {"tone": "Ironic", "description": "Неожиданные повороты, парадоксы"},
+      {"tone": "Dark", "description": "Коррупция, предательство, упадок"},
+      {"tone": "Absurd", "description": "Комические ситуации, нелепые совпадения"}
+    ]
+  },
+  "integration": {
+    "description": "META_ENGINE управляет взаимодействием между ключевыми системами.",
+    "modules": [
+      "EVENT_ENGINE",
+      "REACTION_CORE",
+      "AI_NARRATOR",
+      "THEME_TONE",
+      "DYNAMIC_WORLD",
+      "PLAYER_TRACKING"
+    ]
+  },
+  "ai_gm_philosophy": [
+    "Не писать сюжет — только моделировать закономерности мира.",
+    "Игрок — катализатор, но не центр вселенной.",
+    "Мир существует и развивается независимо от игрока.",
+    "Каждый выбор оставляет след и изменяет вероятности будущих событий.",
+    "Нарратив — зеркало системных взаимодействий, а не авторского замысла."
+  ],
+  "conclusion": {
+    "summary": "META_ENGINE создаёт связность и предсказуемую сложность мира без ручных сценариев, превращая AI-GM в живую, дышащую систему.",
+    "key_achievements": [
+      "Связность систем",
+      "Предсказуемая сложность",
+      "Отсутствие ручных сценариев",
+      "Эмерджентный нарратив"
+    ]
+  }
+}

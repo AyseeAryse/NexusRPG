@@ -1,0 +1,442 @@
+{
+  "module_name": "WORLD_SIM_V2",
+  "version": "2.0_LIVING_UNIVERSE",
+  "description": "Живая симуляция вселенной с полной интеграцией времени и межпланетных отношений",
+  "replaces": "WORLD_SIM.json",
+  "size_target": "12,000+ символов",
+  "temporal_integration": {
+    "world_time_sync": {
+      "current_date": "15.03.2275 12:00",
+      "time_scale_effects": {
+        "minutes": "Minor NPC activities, conversation outcomes",
+        "hours": "NPC schedule changes, local market fluctuations",
+        "days": "News generation, faction minor actions, reputation decay",
+        "weeks": "Economic cycles, political developments, technology progress",
+        "months": "Major faction movements, seasonal changes, birth/death cycles",
+        "years": "Generational changes, technological paradigm shifts, historical events"
+      }
+    },
+    "dynamic_event_scheduling": {
+      "personal_events": {
+        "frequency": "Daily",
+        "triggers": [
+          "Player actions",
+          "NPC relationships",
+          "Random encounters"
+        ],
+        "examples": [
+          "Meeting old contacts",
+          "Receiving job offers",
+          "Personal crises"
+        ]
+      },
+      "local_events": {
+        "frequency": "Weekly",
+        "scope": "Station/city level",
+        "examples": [
+          "Dock worker strikes",
+          "Security crackdowns",
+          "Festival celebrations",
+          "Technical failures"
+        ]
+      },
+      "regional_events": {
+        "frequency": "Monthly",
+        "scope": "Planet/asteroid cluster level",
+        "examples": [
+          "Political elections",
+          "Natural disasters",
+          "Economic booms/busts",
+          "Military conflicts"
+        ]
+      },
+      "system_events": {
+        "frequency": "Quarterly",
+        "scope": "Entire solar system",
+        "examples": [
+          "Interplanetary treaties",
+          "Technological breakthroughs",
+          "Trade route changes",
+          "Alien contact"
+        ]
+      }
+    }
+  },
+  "interplanetary_relations": {
+    "relationship_matrix": {
+      "earth_government": {
+        "mars_colonies": {
+          "status": -25,
+          "trend": "deteriorating",
+          "issues": [
+            "Independence movements",
+            "Resource taxation"
+          ]
+        },
+        "belt_miners": {
+          "status": -15,
+          "trend": "stable",
+          "issues": [
+            "Worker rights",
+            "Safety regulations"
+          ]
+        },
+        "jupiter_system": {
+          "status": 35,
+          "trend": "improving",
+          "issues": [
+            "Trade agreements",
+            "Scientific cooperation"
+          ]
+        },
+        "saturn_system": {
+          "status": 10,
+          "trend": "neutral",
+          "issues": [
+            "Territorial disputes",
+            "Mining rights"
+          ]
+        },
+        "corporate_interests": {
+          "status": 50,
+          "trend": "very stable",
+          "issues": [
+            "Regulatory compliance",
+            "Tax policy"
+          ]
+        }
+      },
+      "mars_independence": {
+        "earth_government": {
+          "status": -35,
+          "trend": "worsening",
+          "issues": [
+            "Colonial taxation",
+            "Political autonomy"
+          ]
+        },
+        "belt_alliance": {
+          "status": 45,
+          "trend": "strengthening",
+          "issues": [
+            "Mutual defense",
+            "Trade cooperation"
+          ]
+        },
+        "corporate_neutrality": {
+          "status": 15,
+          "trend": "cautious",
+          "issues": [
+            "Investment security",
+            "Political stability"
+          ]
+        }
+      },
+      "belt_miners_union": {
+        "earth_corporations": {
+          "status": -40,
+          "trend": "hostile",
+          "issues": [
+            "Worker exploitation",
+            "Safety violations"
+          ]
+        },
+        "mars_solidarity": {
+          "status": 35,
+          "trend": "growing",
+          "issues": [
+            "Labor rights",
+            "Colonial solidarity"
+          ]
+        },
+        "pirate_tolerance": {
+          "status": -20,
+          "trend": "deteriorating",
+          "issues": [
+            "Route security",
+            "Protection rackets"
+          ]
+        }
+      }
+    },
+    "diplomatic_events": {
+      "trade_negotiations": {
+        "frequency": "Quarterly",
+        "participants": "Any 2+ factions with economic interests",
+        "outcomes": [
+          "New trade routes",
+          "Tariff changes",
+          "Economic partnerships",
+          "Trade wars"
+        ]
+      },
+      "territorial_disputes": {
+        "frequency": "Yearly",
+        "focus": "Asteroid mining rights, orbital space claims",
+        "escalation": [
+          "Diplomatic protests",
+          "Economic sanctions",
+          "Military posturing",
+          "Armed conflict"
+        ]
+      },
+      "technological_treaties": {
+        "frequency": "Every 2-3 years",
+        "subjects": [
+          "AI development limits",
+          "Genetic modification ethics",
+          "Weapons technology",
+          "Space exploration"
+        ]
+      }
+    }
+  },
+  "procedural_economy": {
+    "dynamic_market_simulation": {
+      "base_commodities": {
+        "raw_materials": [
+          "Iron ore",
+          "Rare metals",
+          "Silicon",
+          "Carbon composites"
+        ],
+        "energy_sources": [
+          "Fusion fuel",
+          "Solar cells",
+          "Antimatter",
+          "Quantum batteries"
+        ],
+        "life_support": [
+          "Water",
+          "Oxygen",
+          "Food",
+          "Medical supplies"
+        ],
+        "technology": [
+          "Computer components",
+          "Weapons",
+          "Ship parts",
+          "Communication gear"
+        ]
+      },
+      "price_drivers": {
+        "supply_factors": [
+          "Mining output",
+          "Manufacturing capacity",
+          "Trade route security",
+          "Political stability"
+        ],
+        "demand_factors": [
+          "Population growth",
+          "Military conflicts",
+          "Technological advancement",
+          "Natural disasters"
+        ],
+        "speculation": [
+          "Market rumors",
+          "Political uncertainty",
+          "Technological breakthroughs",
+          "War threats"
+        ]
+      }
+    },
+    "economic_cycles": {
+      "boom_periods": {
+        "duration": "2-4 years",
+        "characteristics": [
+          "High employment",
+          "Rapid growth",
+          "Easy credit",
+          "Technological investment"
+        ],
+        "triggers": [
+          "New resource discoveries",
+          "Technological breakthroughs",
+          "Trade route openings",
+          "Peace treaties"
+        ]
+      },
+      "recession_periods": {
+        "duration": "1-2 years",
+        "characteristics": [
+          "High unemployment",
+          "Reduced spending",
+          "Credit contraction",
+          "Social unrest"
+        ],
+        "triggers": [
+          "Resource depletion",
+          "Trade disruptions",
+          "Military conflicts",
+          "Political instability"
+        ]
+      },
+      "recovery_periods": {
+        "duration": "1-3 years",
+        "characteristics": [
+          "Cautious optimism",
+          "Gradual investment",
+          "Employment growth",
+          "Infrastructure rebuilding"
+        ]
+      }
+    }
+  },
+  "technological_evolution": {
+    "research_progression": {
+      "quantum_computing": {
+        "current_level": 7,
+        "advancement_rate": "0.5 levels per year",
+        "breakthrough_threshold": 10,
+        "impact": "Revolutionary AI capabilities, obsolete encryption"
+      },
+      "fusion_technology": {
+        "current_level": 8,
+        "advancement_rate": "0.3 levels per year",
+        "breakthrough_threshold": 10,
+        "impact": "Unlimited clean energy, space colonization boom"
+      },
+      "genetic_engineering": {
+        "current_level": 6,
+        "advancement_rate": "0.4 levels per year",
+        "breakthrough_threshold": 9,
+        "impact": "Human enhancement, disease elimination, ethical debates"
+      },
+      "faster_than_light": {
+        "current_level": 2,
+        "advancement_rate": "0.1 levels per year",
+        "breakthrough_threshold": 8,
+        "impact": "Interstellar travel, contact with alien civilizations"
+      }
+    },
+    "breakthrough_consequences": {
+      "economic_disruption": "Entire industries become obsolete overnight",
+      "political_realignment": "Power shifts to technology controllers",
+      "social_upheaval": "Mass unemployment and lifestyle changes",
+      "military_implications": "New weapons and defense systems",
+      "philosophical_questions": "Fundamental questions about humanity and reality"
+    }
+  },
+  "faction_dynamics": {
+    "power_shifts": {
+      "corporate_consolidation": {
+        "trend": "Megacorps absorbing smaller companies",
+        "timeline": "Ongoing over 5-10 years",
+        "resistance": "Government antitrust, worker unions, startup innovation",
+        "consequences": "Monopolistic control, reduced competition, higher prices"
+      },
+      "political_fragmentation": {
+        "trend": "Government authority declining",
+        "timeline": "Accelerating over next decade",
+        "causes": [
+          "Colonial independence movements",
+          "Corporate influence",
+          "Technological disruption"
+        ],
+        "consequences": [
+          "Regional autonomy",
+          "Corporate governance",
+          "Anarchic zones"
+        ]
+      },
+      "technological_supremacy": {
+        "trend": "AI and quantum tech dominance",
+        "timeline": "Next 5-15 years",
+        "leaders": [
+          "Research labs",
+          "Tech megacorps",
+          "Military R&D"
+        ],
+        "consequences": [
+          "Technological gap",
+          "Digital divide",
+          "AI governance"
+        ]
+      }
+    },
+    "alliance_formation": {
+      "anti_corporate_coalition": {
+        "members": [
+          "Mars Independence",
+          "Belt Miners Union",
+          "Worker Rights Groups"
+        ],
+        "goals": [
+          "Corporate regulation",
+          "Worker protection",
+          "Democratic governance"
+        ],
+        "challenges": [
+          "Funding limitations",
+          "Internal disagreements",
+          "Corporate infiltration"
+        ]
+      },
+      "technological_partnership": {
+        "members": [
+          "Research Labs",
+          "Tech Megacorps",
+          "Government Science Agencies"
+        ],
+        "goals": [
+          "Accelerated R&D",
+          "Patent sharing",
+          "Technological leadership"
+        ],
+        "tensions": [
+          "Profit vs progress",
+          "Military applications",
+          "Ethical boundaries"
+        ]
+      }
+    }
+  },
+  "conflict_simulation": {
+    "war_types": {
+      "economic_warfare": {
+        "methods": [
+          "Trade blockades",
+          "Corporate espionage",
+          "Market manipulation",
+          "Resource hoarding"
+        ],
+        "participants": "Corporations, governments, trade unions",
+        "duration": "Months to years",
+        "resolution": "Economic treaties, mergers, regulatory intervention"
+      },
+      "information_warfare": {
+        "methods": [
+          "Propaganda campaigns",
+          "Data theft",
+          "Network attacks",
+          "Social manipulation"
+        ],
+        "participants": "Intelligence agencies, hackers, media corporations",
+        "duration": "Ongoing background activity",
+        "escalation": "Physical sabotage, assassination, conventional conflict"
+      },
+      "territorial_conflict": {
+        "methods": [
+          "Military occupation",
+          "Naval blockades",
+          "Guerrilla warfare",
+          "Civilian displacement"
+        ],
+        "participants": "Government militaries, PMCs, independence movements",
+        "duration": "Weeks to decades",
+        "resolution": "Diplomatic negotiations, military victory, international intervention"
+      },
+      "technological_warfare": {
+        "methods": [
+          "AI attacks",
+          "Quantum disruption",
+          "Reality manipulation",
+          "Consciousness hacking"
+        ],
+        "participants": "Advanced tech factions, AI entities, reality hackers",
+        "duration": "Minutes to months",
+        "consequences": "Paradigm shifts, reality restructuring, existential threats"
+      }
+    }
+  }
+}

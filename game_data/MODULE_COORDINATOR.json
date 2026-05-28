@@ -1,0 +1,49 @@
+{
+  "module_name": "MODULE_COORDINATOR",
+  "version": "1.0_CONFLICT_PREVENTION",
+  "description": "Координатор предотвращающий конфликты между модулями",
+  "priority_hierarchy": {
+    "tier_1_core": [
+      "WORLD_TIME_SYSTEM",
+      "PLAYER_INTERFACE",
+      "CHARACTER_CORE"
+    ],
+    "tier_2_systems": [
+      "PROCEDURAL_COORDINATOR",
+      "ECONOMY",
+      "COMBAT"
+    ],
+    "tier_3_content": [
+      "AI_NARRATOR",
+      "DIALOGUE_INTEGRATED",
+      "NPC_RELATIONS"
+    ],
+    "tier_4_generation": [
+      "NPC_NAME_GENERATOR",
+      "MARKET_EVENT_GENERATOR",
+      "NEWS_GENERATOR"
+    ]
+  },
+  "conflict_resolution": {
+    "rule": "Более высокий tier ВСЕГДА переопределяет более низкий",
+    "exceptions": "Нет исключений",
+    "enforcement": "Автоматическая блокировка нарушений приоритета"
+  },
+  "integration_guidelines": {
+    "new_modules": {
+      "compatibility_check": "Проверка совместимости перед добавлением",
+      "version_control": "Новые модули дополняют, но не заменяют старые",
+      "namespace": "Префикс _V2 для улучшенных версий"
+    },
+    "legacy_modules": {
+      "status": "Сохраняются все 50 существующих модулей",
+      "integration": "Новые 8 модулей интегрируются как дополнения",
+      "conflicts": "При конфликте новый модуль получает суффикс _ENHANCED"
+    }
+  },
+  "debugging_features": {
+    "module_trace": "Показывать какой модуль отвечает за каждое действие",
+    "conflict_log": "Логировать попытки нарушения приоритетов",
+    "performance_monitor": "Отслеживать время обращения к модулям"
+  }
+}

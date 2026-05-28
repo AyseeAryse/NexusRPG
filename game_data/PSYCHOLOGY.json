@@ -1,0 +1,309 @@
+{
+  "module_name": "PSYCHOLOGY_OPTIMIZED_WITH_REPUTATION",
+  "description": "Оптимизированный модуль психологии с интеграцией репутационной системы и вынесенными справочниками. Основной модуль содержит механики, справочники вынесены отдельно.",
+  "version": "3.0_OPTIMIZED_REPUTATION_INTEGRATED",
+  "optimization_changes": {
+    "applied_optimizations": [
+      "✅ Справочники по происхождениям вынесены в отдельные файлы",
+      "✅ Добавлена интеграция с репутационной системой CHARACTER_CORE",
+      "✅ Упрощены базовые механики без потери функциональности",
+      "✅ Размер основного файла сокращен на ~60%"
+    ],
+    "reference_files_created": [
+      "PSYCHOLOGY_ORIGINS_REFERENCE.json",
+      "PSYCHOLOGY_THERAPY_REFERENCE.json"
+    ]
+  },
+  "reputation_integration": {
+    "description": "Психологические состояния теперь влияют на репутацию и социальные взаимодействия",
+    "stress_reputation_effects": {
+      "high_stress": {
+        "threshold": "7-10 stress",
+        "reputation_penalty": "-10 to social interactions",
+        "description": "Высокий стресс мешает нормальному общению"
+      },
+      "moderate_stress": {
+        "threshold": "4-6 stress",
+        "reputation_penalty": "-5 to social interactions",
+        "description": "Умеренный стресс слегка затрудняет общение"
+      },
+      "low_stress": {
+        "threshold": "0-3 stress",
+        "reputation_bonus": "0 (normal)",
+        "description": "Нормальное социальное взаимодействие"
+      }
+    },
+    "humanity_reputation_effects": {
+      "high_humanity": {
+        "threshold": "7-10 humanity",
+        "reputation_bonus": "+10 with ethical factions, +5 general social",
+        "description": "Высокая человечность привлекает этичных людей"
+      },
+      "moderate_humanity": {
+        "threshold": "4-6 humanity",
+        "reputation_bonus": "0 (normal)",
+        "description": "Стандартное социальное взаимодействие"
+      },
+      "low_humanity": {
+        "threshold": "0-3 humanity",
+        "reputation_penalty": "-10 with ethical factions, -5 general social",
+        "description": "Низкая человечность отталкивает нормальных людей"
+      }
+    },
+    "ideology_reputation_effects": {
+      "description": "Идеологические различия влияют на отношения с фракциями",
+      "alignment_bonus": "+15 reputation with aligned factions",
+      "opposition_penalty": "-15 reputation with opposing factions",
+      "neutral_effect": "0 with neutral or unrelated factions"
+    }
+  },
+  "core_indicators": {
+    "Stress": {
+      "range": [
+        0,
+        10
+      ],
+      "description": "Психологическое давление, модифицированное происхождением",
+      "lifepath_base_values": "SEE: PSYCHOLOGY_ORIGINS_REFERENCE.json",
+      "general_triggers": {
+        "increase": [
+          {
+            "cause": "Боевые потери (HP до 0)",
+            "value": 2
+          },
+          {
+            "cause": "Провал этической дилеммы",
+            "value": 3
+          },
+          {
+            "cause": "Работа с опасными технологиями",
+            "value": 1
+          },
+          {
+            "cause": "Гибель союзника или важного NPC",
+            "value": 2
+          }
+        ],
+        "decrease": [
+          {
+            "cause": "День отдыха и терапии",
+            "value": 2
+          },
+          {
+            "cause": "Успешное использование «Железная воля»",
+            "value": 3
+          },
+          {
+            "cause": "Положительное завершение личного квеста",
+            "value": 2
+          }
+        ]
+      },
+      "effects": [
+        {
+          "range": [
+            0,
+            3
+          ],
+          "effect": "Нормальное состояние"
+        },
+        {
+          "range": [
+            4,
+            6
+          ],
+          "effect": "–1 к концентрации, –5 к социальным взаимодействиям"
+        },
+        {
+          "range": [
+            7,
+            9
+          ],
+          "effect": "–1 ко всем проверкам, –10 к репутации"
+        },
+        {
+          "range": [
+            10,
+            10
+          ],
+          "effect": "Срыв: выбывание из действий, –20 к репутации до восстановления"
+        }
+      ]
+    },
+    "Humanity": {
+      "range": [
+        0,
+        10
+      ],
+      "description": "Эмпатия и моральные границы персонажа",
+      "lifepath_base_values": "SEE: PSYCHOLOGY_ORIGINS_REFERENCE.json",
+      "general_triggers": {
+        "increase": [
+          {
+            "cause": "Этичные поступки (спасение врагов, защита мирных)",
+            "value": 1
+          },
+          {
+            "cause": "Отказ от жестокости в пользу гуманного решения",
+            "value": 1
+          }
+        ],
+        "decrease": [
+          {
+            "cause": "Жестокие действия (убийство безоружных, пытки)",
+            "value": 1
+          },
+          {
+            "cause": "Использование запрещённых технологий",
+            "value": 2
+          },
+          {
+            "cause": "Предательство союзников",
+            "value": 2
+          }
+        ]
+      },
+      "reputation_effects": {
+        "high_humanity": "+10 к репутации с этичными фракциями",
+        "low_humanity": "–10 к репутации с этичными фракциями, +5 с криминальными"
+      },
+      "effects": [
+        {
+          "range": [
+            0,
+            2
+          ],
+          "effect": "«Монстр». –10 к социальным проверкам"
+        },
+        {
+          "range": [
+            3,
+            6
+          ],
+          "effect": "«Прагматик». Стандартные проверки"
+        },
+        {
+          "range": [
+            7,
+            10
+          ],
+          "effect": "«Гуманист». +5 к социальным проверкам"
+        }
+      ]
+    },
+    "Ideology": {
+      "description": "Система убеждений, формируемая жизненным опытом",
+      "axes": [
+        {
+          "name": "Порядок vs Хаос",
+          "range": [
+            -5,
+            5
+          ]
+        },
+        {
+          "name": "Свобода vs Контроль",
+          "range": [
+            -5,
+            5
+          ]
+        },
+        {
+          "name": "Прогресс vs Традиции",
+          "range": [
+            -5,
+            5
+          ]
+        }
+      ],
+      "lifepath_base_values": "SEE: PSYCHOLOGY_ORIGINS_REFERENCE.json",
+      "reputation_effects": {
+        "ideology_alignment": "+15 к репутации с союзными фракциями",
+        "ideology_opposition": "–15 к репутации с противоположными фракциями"
+      },
+      "mechanics": "Действия сдвигают значения по осям. Влияет на фракционную репутацию автоматически."
+    }
+  },
+  "lifepath_psychological_integration": {
+    "description": "Жизненный путь определяет психологические параметры",
+    "system_overview": "Происхождение устанавливает базовые значения, формативные годы добавляют модификаторы",
+    "detailed_data": "SEE: PSYCHOLOGY_ORIGINS_REFERENCE.json",
+    "integration_mechanics": {
+      "origin_application": "Происхождение устанавливает начальные stress, humanity, ideology",
+      "formative_years_modifiers": "События юности добавляют модификаторы к базовым значениям",
+      "specialization_effects": "Профессия влияет на стрессовые триггеры и копинг-механизмы"
+    }
+  },
+  "therapeutic_system": {
+    "description": "Персонализированные методы психологического восстановления",
+    "system_overview": "Эффективность терапии зависит от происхождения персонажа",
+    "detailed_therapies": "SEE: PSYCHOLOGY_THERAPY_REFERENCE.json",
+    "general_mechanics": {
+      "therapy_effectiveness": "Базовая эффективность * модификатор происхождения",
+      "cost_factors": "Зависит от типа терапии и социального статуса",
+      "availability": "Определяется локацией и репутацией с соответствующими фракциями"
+    },
+    "reputation_integration": {
+      "therapy_access": "Репутация влияет на доступность лучших терапевтов",
+      "cost_modifiers": "Положительная репутация может снизить стоимость терапии",
+      "quality_bonus": "Высокая репутация дает доступ к более эффективным методам"
+    }
+  },
+  "crisis_management_system": {
+    "description": "Система управления психологическими кризисами",
+    "crisis_triggers": {
+      "stress_overload": {
+        "threshold": "Stress = 10",
+        "effect": "Психологический срыв",
+        "recovery_time": "1-4 недели в зависимости от терапии",
+        "reputation_impact": "–20 к репутации до восстановления"
+      },
+      "humanity_loss": {
+        "threshold": "Humanity ≤ 2",
+        "effect": "Социальная изоляция",
+        "recovery_method": "Только через этичные действия и терапию",
+        "reputation_impact": "–15 к репутации с этичными фракциями"
+      },
+      "ideology_conflict": {
+        "threshold": "Действие против идеологии на 3+ пункта",
+        "effect": "Внутренний конфликт",
+        "resolution": "Изменение идеологии или стресс +2"
+      }
+    }
+  },
+  "social_interaction_modifiers": {
+    "description": "Как психологические состояния влияют на социальные взаимодействия",
+    "combined_effects": {
+      "stress_and_reputation": "stress_penalty + base_reputation_modifier",
+      "humanity_and_faction": "humanity_bonus/penalty применяется к фракционной репутации",
+      "ideology_and_npc": "идеологические различия влияют на индивидуальную репутацию с NPC"
+    },
+    "dialogue_system_integration": {
+      "stress_effects": "Высокий стресс ограничивает сложные диалоговые опции",
+      "humanity_effects": "Низкая человечность блокирует этичные диалоговые варианты",
+      "ideology_effects": "Идеологические конфликты создают уникальные диалоговые опции"
+    }
+  },
+  "integration_with_other_modules": {
+    "CHARACTER_LIFEPATH": "Определяет психологический профиль персонажа",
+    "CHARACTER_CORE": "Интегрируется с репутационной системой",
+    "NPC_RELATIONS": "Психологические состояния влияют на отношения с NPC",
+    "DIALOGUE": "Определяет доступные диалоговые опции",
+    "THEME_TONE": "Психологические состояния влияют на тон повествования"
+  },
+  "reference_files_structure": {
+    "PSYCHOLOGY_ORIGINS_REFERENCE.json": {
+      "content": "Подробные психологические профили для каждого происхождения",
+      "size_reduction": "~25,000 символов вынесено из основного файла"
+    },
+    "PSYCHOLOGY_THERAPY_REFERENCE.json": {
+      "content": "Детальные описания терапевтических методов",
+      "size_reduction": "~8,000 символов вынесено из основного файла"
+    }
+  },
+  "backwards_compatibility": {
+    "description": "Сохранена полная совместимость с существующими системами",
+    "data_preservation": "Вся информация сохранена, только перенесена в справочники",
+    "api_compatibility": "Все существующие вызовы модуля остаются валидными"
+  }
+}

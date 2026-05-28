@@ -1,0 +1,123 @@
+{
+  "module_name": "MECHANICS_V2",
+  "version": "2.0_INTEGRATED_SYSTEMS",
+  "description": "Расширенные игровые механики с интеграцией всех систем",
+  "replaces": "MECHANICS.json",
+  "size_target": "8,000+ символов",
+  "progression_integration": {
+    "skill_advancement": {
+      "experience_sources": {
+        "usage_based": "Automatic XP for successful skill use (+0.5-2 XP)",
+        "training_based": "Formal training sessions (+5-10 XP per session)",
+        "study_based": "Learning from books/databases (+3-5 XP per session)",
+        "mentorship": "Learning from NPC mentors (x2 XP multiplier)",
+        "critical_success": "Exceptional performance (+50% XP bonus)",
+        "high_difficulty": "Challenging tasks (DC 20+) provide +25% XP"
+      },
+      "skill_degradation": {
+        "unused_skills": "Skills 5+ lose 1 XP per 6 months without use",
+        "protected_skills": "Lifepath skills immune to degradation",
+        "maintenance_training": "Minimum monthly use prevents degradation",
+        "reactivation": "Lost skills regain faster than initial learning"
+      }
+    },
+    "specialization_mechanics": {
+      "integration": "Full connection with 35 CHARACTER_SPECIALIZATIONS_V3",
+      "unique_abilities": "Each specialization unlocks exclusive capabilities",
+      "equipment_synergy": "Specializations provide bonuses with related equipment",
+      "progression_paths": "Advanced specialization options unlock at higher tiers"
+    }
+  },
+  "mentor_system": {
+    "finding_mentors": {
+      "npc_integration": "Uses NPC_ARCHETYPES to identify potential mentors",
+      "skill_requirements": "Mentors must have skill levels 3+ above student",
+      "relationship_building": "Reputation and personal relationships affect mentor availability",
+      "faction_connections": "Faction standing provides access to specialized mentors"
+    },
+    "mentorship_benefits": {
+      "learning_speed": "x2 XP gain for mentored skills",
+      "advanced_techniques": "Access to rare perks and abilities",
+      "networking": "Introduction to mentor's professional contacts",
+      "equipment_access": "Borrowing/purchasing mentor's specialized equipment"
+    },
+    "mentorship_costs": {
+      "time_investment": "Regular training sessions required",
+      "financial_payment": "Most mentors charge for advanced training",
+      "favor_obligations": "Mentors may request assistance with personal projects",
+      "loyalty_expectations": "Some mentors expect long-term professional loyalty"
+    }
+  },
+  "temporal_mechanics": {
+    "activity_time_costs": {
+      "skill_training": "1-4 hours per session",
+      "equipment_maintenance": "30 minutes - 8 hours based on complexity",
+      "research_activities": "2-8 hours per research session",
+      "social_interactions": "15 minutes - 4 hours based on complexity",
+      "rest_and_recovery": "6-12 hours for full rest cycle"
+    },
+    "space_travel_integration": {
+      "journey_planning": "Uses TRADE_ROUTES_MASTER for route optimization",
+      "time_calculation": "Automatic calculation based on distance and vessel speed",
+      "travel_activities": "Skill training, research, and social interaction during travel",
+      "random_encounters": "Probability based on route danger and travel time"
+    }
+  },
+  "psychological_mechanics": {
+    "stress_system": {
+      "stress_sources": {
+        "combat_encounters": "+2-5 stress based on danger level",
+        "moral_conflicts": "+1-4 stress for ethical dilemmas",
+        "social_pressure": "+1-3 stress for high-stakes negotiations",
+        "time_pressure": "+1-2 stress for urgent deadlines",
+        "isolation": "+1 stress per week of extended solitude"
+      },
+      "stress_effects": {
+        "low_stress_0_25": "No mechanical effects, minor RP flavor",
+        "moderate_stress_26_50": "-1 to all skill rolls, anxiety symptoms",
+        "high_stress_51_75": "-2 to all skill rolls, panic attacks possible",
+        "extreme_stress_76_100": "-3 to all skill rolls, breakdown risk"
+      }
+    },
+    "therapy_integration": {
+      "therapy_access": "Full integration with PSYCHOLOGY_THERAPY_REFERENCE",
+      "treatment_options": "Multiple therapy types with different costs and effectiveness",
+      "therapist_finding": "Uses NPC_ARCHETYPES for therapist generation",
+      "recovery_mechanics": "Stress reduction based on therapy type and duration"
+    }
+  },
+  "space_age_mechanics": {
+    "environmental_hazards": {
+      "vacuum_exposure": "Immediate danger requiring emergency procedures",
+      "radiation_exposure": "Cumulative damage affecting long-term health",
+      "micro_gravity": "Affects combat, movement, and skill use",
+      "atmospheric_differences": "Various breathing apparatus and adaptation needs"
+    },
+    "space_combat": {
+      "personal_combat_in_space": "Modified combat rules for zero-g environment",
+      "environmental_factors": "Limited movement, weapon behavior changes",
+      "life_support_considerations": "Suit integrity becomes critical tactical factor",
+      "emergency_procedures": "Rapid decompression, suit failure, medical emergency"
+    },
+    "space_exploration": {
+      "survey_procedures": "Systematic exploration of new locations",
+      "discovery_mechanics": "Random generation of resources, anomalies, dangers",
+      "mapping_benefits": "Improved navigation and resource location",
+      "first_contact_protocols": "Procedures for encountering unknown life or intelligence"
+    }
+  },
+  "faction_mechanics": {
+    "reputation_effects": {
+      "access_levels": "Faction standing determines available services and information",
+      "pricing_modifications": "Reputation affects costs of goods and services",
+      "exclusive_opportunities": "High reputation unlocks special missions and equipment",
+      "hostility_consequences": "Negative reputation creates obstacles and dangers"
+    },
+    "influence_projection": {
+      "tier_based_influence": "Higher player tier allows greater faction influence",
+      "decision_participation": "Ability to influence faction policies and actions",
+      "resource_access": "Faction resources become available for player use",
+      "leadership_opportunities": "Potential for faction leadership roles"
+    }
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "module_name": "FACTIONS_LIFEPATH_INTEGRATION_SYSTEM",
+  "description": "Автоматическая система определения отношений между 140+ фракциями и жизненными путями персонажей через категории и правила.",
+  
+  "faction_categories": {
+    "description": "Все фракции автоматически группируются по типам для определения базовых отношений",
+    "categories": {
+      "MEGACORP": {
+        "examples": ["Protogen", "Arasaka Corp.", "Weyland-Yutani", "Tycho Corporation"],
+        "lifepath_relations": {
+          "ORIGIN_EARTH_ELITE": {"base_rep": 25, "modifier": "Corporate Heritage", "special_access": true},
+          "ORIGIN_EARTH_MIDDLE": {"base_rep": 5, "modifier": "Potential Employee"},
+          "ORIGIN_EARTH_SLUMS": {"base_rep": -15, "modifier": "Security Risk", "restrictions": ["High-security areas"]},
+          "ORIGIN_EARTH_HOMELESS": {"base_rep": -25, "modifier": "Undesirable", "restrictions": ["All corporate facilities"]},
+          "FY_CORP_INTERNSHIP": {"base_rep": 15, "modifier": "Former Intern", "special_access": true},
+          "FY_CORP_SABOTAGE": {"base_rep": -30, "modifier": "Known Saboteur", "heat_bonus": 20}
+        }
+      },
+      
+      "MILITARY": {
+        "examples": ["Mars Fleet", "Earth Defense Force", "Belt Defense Coalition"],
+        "lifepath_relations": {
+          "ORIGIN_MARS_MILITARY": {"base_rep": 30, "modifier": "Brother in Arms", "rank_recognition": true},
+          "ORIGIN_EARTH_ELITE": {"base_rep": 10, "modifier": "Valuable Contact"},
+          "ORIGIN_CERES_MINER": {"base_rep": 5, "modifier": "Honest Worker"},
+          "ORIGIN_CERES_SMUGGLER": {"base_rep": -20, "modifier": "Criminal Record"},
+          "FY_MARS_ACADEMY": {"base_rep": 20, "modifier": "Military Training", "officer_recognition": true},
+          "FY_SLUMS_GANGWAR": {"base_rep": -10, "modifier": "Street Violence History"}
+        }
+      },
+
+      "CRIMINAL": {
+        "examples": ["Yakuza", "Black Sun Syndicate", "Belt Raiders", "Street Gangs"],
+        "lifepath_relations": {
+          "ORIGIN_EARTH_SLUMS": {"base_rep": 20, "modifier": "Street Credibility", "insider_access": true},
+          "ORIGIN_EARTH_HOMELESS": {"base_rep": 15, "modifier": "Nothing to Lose"},
+          "ORIGIN_CERES_SMUGGLER": {"base_rep": 25, "modifier": "Professional Criminal", "job_priority": true},
+          "ORIGIN_LUNA_UNDERWORLD": {"base_rep": 30, "modifier": "Underworld Connection"},
+          "ORIGIN_MARS_MILITARY": {"base_rep": -15, "modifier": "Law Enforcement Background"},
+          "ORIGIN_EARTH_ELITE": {"base_rep": -20, "modifier": "Too High Profile", "extortion_target": true},
+          "FY_SLUMS_GANGWAR": {"base_rep": 25, "modifier": "Battle Tested", "respect_bonus": true},
+          "FY_MARS_BLACK_MARKET": {"base_rep": 20, "modifier": "Black Market Experience"}
+        }
+      },
+
+      "SCIENTIFIC": {
+        "examples": ["Genesis Bioworks", "Titan Research Institute", "Protogen Labs"],
+        "lifepath_relations": {
+          "ORIGIN_MARS_SCIENTIST": {"base_rep": 25, "modifier": "Academic Peer", "research_access": true},
+          "ORIGIN_JOVIAN_SCIENTIST": {"base_rep": 20, "modifier": "Research Colleague"},
+          "ORIGIN_GANYMEDE_SCIENTIST": {"base_rep": 20, "modifier": "Fellow Researcher"},
+          "FY_MARS_LAB_ASSISTANT": {"base_rep": 15, "modifier": "Lab Experience", "junior_position_priority": true},
+          "ORIGIN_EARTH_ELITE": {"base_rep": 10, "modifier": "Potential Funding Source"},
+          "ORIGIN_EARTH_SLUMS": {"base_rep": -5, "modifier": "Educational Gap"},
+          "ORIGIN_REBEL_HIDEOUT": {"base_rep": -15, "modifier": "Anti-Establishment Views"}
+        }
+      },
+
+      "WORKERS_UNION": {
+        "examples": ["OPA", "Martian Miners Union", "Station Workers Coalition"],
+        "lifepath_relations": {
+          "ORIGIN_CERES_MINER": {"base_rep": 35, "modifier": "Working Class Hero", "leadership_potential": true},
+          "ORIGIN_MARS_FARMER": {"base_rep": 25, "modifier": "Fellow Worker"},
+          "ORIGIN_LUNA_COLONY": {"base_rep": 20, "modifier": "Colonial Solidarity"},
+          "ORIGIN_EARTH_ELITE": {"base_rep": -30, "modifier": "Class Enemy", "strike_target": true},
+          "ORIGIN_EARTH_MIDDLE": {"base_rep": -5, "modifier": "Corporate Collaborator"},
+          "ORIGIN_EARTH_SLUMS": {"base_rep": 15, "modifier": "Oppressed Solidarity"},
+          "FY_BELTER_PIRACY": {"base_rep": 10, "modifier": "Anti-Corporate Actions"}
+        }
+      },
+
+      "GOVERNMENT": {
+        "examples": ["Earth UN", "Mars Republic", "Lunar Authority"],
+        "lifepath_relations": {
+          "ORIGIN_EARTH_ELITE": {"base_rep": 20, "modifier": "Political Connections", "fast_track_permits": true},
+          "ORIGIN_MARS_MILITARY": {"base_rep": 15, "modifier": "Service Record"},
+          "ORIGIN_EARTH_MIDDLE": {"base_rep": 5, "modifier": "Law Abiding Citizen"},
+          "ORIGIN_CERES_SMUGGLER": {"base_rep": -25, "modifier": "Criminal Record", "wanted_status": true},
+          "ORIGIN_REBEL_HIDEOUT": {"base_rep": -35, "modifier": "Political Dissident", "surveillance_target": true},
+          "FY_CORP_INTERNSHIP": {"base_rep": 10, "modifier": "Corporate Experience"},
+          "FY_SLUMS_GANGWAR": {"base_rep": -10, "modifier": "Violence History"}
+        }
+      },
+
+      "RELIGIOUS": {
+        "examples": ["Church of Humanity", "Martian Orthodox", "Belter Spiritualists"],
+        "lifepath_relations": {
+          "ORIGIN_CULT_SECT": {"base_rep": 15, "modifier": "Spiritual Background", "theological_discussions": true},
+          "ORIGIN_EARTH_ELITE": {"base_rep": 5, "modifier": "Potential Patron"},
+          "ORIGIN_MARS_SCIENTIST": {"base_rep": -5, "modifier": "Scientific Skepticism"},
+          "ORIGIN_CERES_MINER": {"base_rep": 10, "modifier": "Simple Faith"},
+          "ORIGIN_REBEL_HIDEOUT": {"base_rep": -10, "modifier": "Anti-Authoritarian Views"}
+        }
+      },
+
+      "TRADER_MERCHANT": {
+        "examples": ["Independent Traders", "Merchant Guilds", "Cargo Cooperatives"],
+        "lifepath_relations": {
+          "ORIGIN_COLONY_EXPAT": {"base_rep": 20, "modifier": "Frontier Experience", "supply_priority": true},
+          "ORIGIN_SCOUT_RANGER": {"base_rep": 15, "modifier": "Route Knowledge"},
+          "ORIGIN_LUNA_UNDERWORLD": {"base_rep": 10, "modifier": "Black Market Connections"},
+          "ORIGIN_CERES_SMUGGLER": {"base_rep": 5, "modifier": "Cargo Experience", "no_questions_policy": true},
+          "ORIGIN_EARTH_ELITE": {"base_rep": 10, "modifier": "Wealthy Client"},
+          "FY_MARS_BLACK_MARKET": {"base_rep": 15, "modifier": "Underground Trading"}
+        }
+      }
+    }
+  },
+
+  "automatic_relationship_calculation": {
+    "description": "Алгоритм автоматического определения отношений любой фракции к любому lifepath",
+    "process": [
+      "1. Определить категорию фракции по её description и tags",
+      "2. Применить базовые модификаторы из category_rules",
+      "3. Добавить специфические бонусы/штрафы из lifepath_modifiers",
+      "4. Учесть региональные факторы (Mars factions + Mars origins = bonus)",
+      "5. Применить идеологические конфликты (Corporate vs Anti-Corporate)",
+      "6. Генерировать уникальные диалоговые опции и квесты"
+    ],
+    "special_modifiers": {
+      "regional_bonus": {
+        "description": "Бонус +5 rep для фракций и происхождений с одной планеты",
+        "examples": {
+          "Mars faction + ORIGIN_MARS_*": "+5 regional solidarity",
+          "Luna faction + ORIGIN_LUNA_*": "+5 shared hardships",
+          "Belt faction + ORIGIN_*_MINER": "+5 frontier bond"
+        }
+      },
+      "ideological_conflict": {
+        "description": "Конфликты мировоззрений дают штрафы",
+        "examples": {
+          "Corporate faction + Anti-Corporate origin": "-10 ideological opposition",
+          "Military faction + Pacifist origin": "-5 philosophical difference",
+          "Religious faction + Atheist scientist": "-5 worldview clash"
+        }
+      }
+    }
+  },
+
+  "dynamic_content_generation": {
+    "description": "Система генерации уникального контента для каждой комбинации фракция-lifepath",
+    "greeting_templates": {
+      "MEGACORP_to_ORIGIN_EARTH_ELITE": [
+        "Приветствуем наследника уважаемой корпоративной династии!",
+        "Ваша семья всегда была ценным партнёром нашей корпорации.",
+        "Полагаю, вы здесь по семейным делам?"
+      ],
+      "CRIMINAL_to_ORIGIN_EARTH_SLUMS": [
+        "Ещё один выходец из нижних уровней. Уважаю.",
+        "Вижу, что вы знаете цену выживания на улицах.",
+        "У нас может найтись работа для такого, как вы."
+      ],
+      "MILITARY_to_ORIGIN_MARS_MILITARY": [
+        "Солдат! Рад видеть товарища по оружию.",
+        "Марсианская академия, если не ошибаюсь? Хорошая школа.",
+        "В какой части служили?"
+      ]
+    },
+    "quest_templates": {
+      "MEGACORP_for_ELITE": {
+        "type": "Diplomatic mission",
+        "description": "Представлять интересы корпорации в переговорах",
+        "reward_modifier": "x1.5 (family connections)"
+      },
+      "CRIMINAL_for_SLUMS": {
+        "type": "Street operation",
+        "description": "Использовать знание улиц для операции",
+        "success_bonus": "+2 (local knowledge)"
+      }
+    }
+  },
+
+  "implementation_guide": {
+    "for_new_factions": {
+      "step_1": "Определить category новой фракции",
+      "step_2": "Автоматически применить все relationship_rules для этой категории",
+      "step_3": "При необходимости добавить уникальные exceptions",
+      "step_4": "Система сама сгенерирует диалоги и квесты"
+    },
+    "for_new_lifepath": {
+      "step_1": "Добавить новое происхождение в CHARACTER_LIFEPATH",
+      "step_2": "Определить его социальные tags (Corporate, Criminal, Military, etc.)",
+      "step_3": "Все 140+ фракций автоматически получат корректные отношения",
+      "step_4": "Уникальные случаи описать в exceptions"
+    }
+  },
+
+  "examples": {
+    "automatic_calculation": {
+      "faction": "Helios Energy Corp. (Category: MEGACORP)",
+      "character_lifepath": "ORIGIN_EARTH_SLUMS + FY_SLUMS_GANGWAR",
+      "calculated_relationship": {
+        "base_reputation": -15,
+        "modifiers": [
+          "Security Risk: -15",
+          "Violence History: -5",
+          "No Corporate Education: -5"
+        ],
+        "final_reputation": -25,
+        "restrictions": ["Corporate facilities", "High-security zones"],
+        "available_jobs": ["Low-level security", "Maintenance work"],
+        "dialogue_tone": "Suspicious, condescending"
+      }
+    }
+  }
+}

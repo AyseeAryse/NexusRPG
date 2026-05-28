@@ -1,0 +1,501 @@
+{
+  "module_name": "TECH_EQUIPMENT_OPTIMIZED",
+  "description": "Максимально детальная база данных технического снаряжения с ПОЛНОЙ интеграцией CHARACTER_LIFEPATH. Каждый предмет имеет исчерпывающие origin_bonus для всех возможных жизненных путей.",
+  "version": "2.0_OPTIMIZED_COMPLETE",
+  "system_overview": {
+    "purpose": "Готовые предметы для покупки, находки или получения как награды",
+    "scope": "Оружие, броня, гаджеты, импланты, расходники, специальное оборудование",
+    "integration": "Origin bonuses применяются автоматически при получении предмета персонажем",
+    "compatibility": "Полная совместимость с CRAFTING_BLUEPRINTS_OPTIMIZED"
+  },
+  "weapons": [
+    {
+      "id": "WEAPON_001",
+      "name": "Пистолет 'Corporate Enforcer' (Arasaka)",
+      "type": "Пистолет",
+      "rarity": "редкий",
+      "damage": "2d6",
+      "damage_type": "physical",
+      "range": "Средняя",
+      "cost": 8500,
+      "description": "Элегантный и смертоносный пистолет с биометрической защитой, популярный среди корпоративных агентов.",
+      "special": "Биометрический замок, +10% точность первого выстрела",
+      "context_tags": [
+        "Corporate",
+        "High_Tech",
+        "Security",
+        "Professional"
+      ],
+      "origin_bonus": {
+        "ORIGIN_EARTH_ELITE": "+1 к урону при стрельбе в корпоративных зонах.",
+        "FY_CORP_INTERNSHIP": "Возможность использовать специальные умные патроны.",
+        "FY_CORP_SABOTAGE": "Встроенный глушитель активируется биометрикой.",
+        "ORIGIN_EARTH_MIDDLE": "Скидка 20% при покупке у корпоративных поставщиков."
+      }
+    },
+    {
+      "id": "WEAPON_002",
+      "name": "ПП 'Потрошитель' K-39",
+      "type": "Пистолет-пулемет",
+      "rarity": "обычный",
+      "damage": "3d4",
+      "damage_type": "physical",
+      "range": "Ближняя",
+      "cost": 4500,
+      "description": "Грубое, но эффективное оружие, собранное в подпольных мастерских Пояса.",
+      "special": "Высокая скорострельность, ненадежность (1% шанс заклинивания)",
+      "context_tags": [
+        "Underworld",
+        "Criminal",
+        "Low_Tech",
+        "Improvised"
+      ],
+      "origin_bonus": {
+        "ORIGIN_EARTH_SLUMS": "Возможность починить оружие с 50% скидкой на запчасти.",
+        "ORIGIN_CERES_MINER": "Ускоренная перезарядка (+1 действие) один раз за бой.",
+        "FY_SLUMS_GANGWAR": "Модификация 'Уличный боец' (увеличивает урон в тесных пространствах).",
+        "ORIGIN_REBEL_HIDEOUT": "Встроенные метки сопротивления (союзники не атакуют случайно)."
+      }
+    },
+    {
+      "id": "WEAPON_003",
+      "name": "Плазменная винтовка MK-VII",
+      "type": "Энергетическое оружие",
+      "rarity": "легендарная",
+      "damage": "3d8",
+      "damage_type": "energy",
+      "range": "Дальняя",
+      "cost": 18000,
+      "description": "Передовая военная технология Марсианской Республики.",
+      "special": "Прожигает броню (снижает защиту цели на 25%), перегрев после 6 выстрелов",
+      "context_tags": [
+        "Military",
+        "High_Tech",
+        "Energy",
+        "Mars"
+      ],
+      "origin_bonus": {
+        "ORIGIN_MARS_MILITARY": "Снижает эффект перегрева до 8 выстрелов.",
+        "FY_MARS_ACADEMY": "Дополнительный урон по силовой броне (+1d4).",
+        "ORIGIN_MARS_SCIENTIST": "Понимание принципов работы (может перенастроить мощность).",
+        "ORIGIN_MARS_FARMER": "Возможность использовать как сварочный инструмент."
+      }
+    },
+    {
+      "id": "WEAPON_004",
+      "name": "Криогенный дробовик 'Морозильник'",
+      "type": "Специальное оружие",
+      "rarity": "эпический",
+      "damage": "2d8 + заморозка",
+      "damage_type": "cold/special",
+      "range": "Ближняя",
+      "cost": 12000,
+      "description": "Экспериментальное оружие для подавления бунтов и захвата живых целей.",
+      "special": "Шанс заморозить противника на 1 раунд (DC 15)",
+      "context_tags": [
+        "Experimental",
+        "Non_Lethal",
+        "Science",
+        "Control"
+      ],
+      "origin_bonus": {
+        "ORIGIN_GANYMEDE_SCIENTIST": "Понимание криогеники (эффект заморозки +1 раунд).",
+        "ORIGIN_JOVIAN_SCIENTIST": "Возможность менять настройки (летальный/нелетальный режим).",
+        "FY_GANYMEDE_RESEARCH": "Встроенные сенсоры биологических функций цели.",
+        "ORIGIN_MARS_SECURITY": "Тактические модули для штурма зданий."
+      }
+    },
+    {
+      "id": "WEAPON_005",
+      "name": "Лазерный карабин 'Солнечная вспышка'",
+      "type": "Энергетическое оружие",
+      "rarity": "редкий",
+      "damage": "2d10",
+      "damage_type": "energy",
+      "range": "Дальняя",
+      "cost": 9500,
+      "description": "Компактное и эффективное оружие дальнего боя.",
+      "special": "Не требует боеприпасов, работает от батарей",
+      "context_tags": [
+        "Energy",
+        "Long_Range",
+        "Battery",
+        "Precision"
+      ],
+      "origin_bonus": {
+        "ORIGIN_CERES_MINER": "Возможность питания от шахтерского оборудования.",
+        "ORIGIN_GANYMEDE_ENGINEER": "Модификация для работы в условиях низких температур.",
+        "FY_ASTEROID_SURVEY": "Встроенные дальномеры и навигационные системы.",
+        "ORIGIN_MARS_RANGER": "Приоритетная очередь на замену батарей."
+      }
+    }
+  ],
+  "armor": [
+    {
+      "id": "ARMOR_001",
+      "name": "Силовая броня T-45 'Титан'",
+      "type": "Тяжелая броня",
+      "rarity": "легендарная",
+      "defense": 15,
+      "durability": 200,
+      "cost": 45000,
+      "description": "Полный экзоскелет с системой жизнеобеспечения и усилителями силы.",
+      "bonus": "+3 STR, радиозащита, 4 часа автономности",
+      "mod_slots": 4,
+      "context_tags": [
+        "Military",
+        "Power_Armor",
+        "High_Tech",
+        "Heavy"
+      ],
+      "origin_bonus": {
+        "ORIGIN_MARS_MILITARY": "Увеличивает автономность до 6 часов.",
+        "FY_MARS_ACADEMY": "Встроенная тактическая ИИ-поддержка (+1 Initiative).",
+        "ORIGIN_MARS_SCIENTIST": "Научные датчики интегрированы в HUD.",
+        "ORIGIN_GANYMEDE_ENGINEER": "Улучшенные сервоприводы (+1 дополнительный STR)."
+      }
+    },
+    {
+      "id": "ARMOR_002",
+      "name": "Энергетический щит 'Аврора'",
+      "type": "Защитное поле",
+      "rarity": "уникальная",
+      "defense": "Специальный",
+      "cost": 25000,
+      "description": "Персональный генератор силового поля нового поколения.",
+      "effect": "Поглощает 50% энергетического урона, 25% физического. Заряд: 100 единиц.",
+      "context_tags": [
+        "Shield",
+        "Energy",
+        "High_Tech",
+        "Defensive"
+      ],
+      "origin_bonus": {
+        "ORIGIN_JOVIAN_SCIENTIST": "Увеличивает заряд до 150 единиц.",
+        "ORIGIN_GANYMEDE_SCIENTIST": "Возможность перенаправлять поглощенную энергию в оружие.",
+        "ORIGIN_GANYMEDE_ENGINEER": "Быстрая перезарядка от любого энергоисточника."
+      }
+    },
+    {
+      "id": "ARMOR_003",
+      "name": "Скафандр 'Глубокий космос' EVA-12",
+      "type": "Средняя броня",
+      "rarity": "обычная",
+      "defense": 8,
+      "durability": 120,
+      "cost": 8000,
+      "description": "Универсальный скафандр для работы в открытом космосе.",
+      "bonus": "Защита от вакуума, радиации, температурных перепадов. 8 часов автономности.",
+      "context_tags": [
+        "Space",
+        "EVA",
+        "Protection",
+        "Life_Support"
+      ],
+      "origin_bonus": {
+        "ORIGIN_CERES_MINER": "Усиленная защита рук для работы с инструментами.",
+        "ORIGIN_GANYMEDE_ENGINEER": "Встроенные инженерные инструменты.",
+        "FY_ASTEROID_SURVEY": "Расширенные сенсоры для навигации.",
+        "ORIGIN_MARS_EXPLORER": "Дополнительные баки кислорода (+2 часа)."
+      }
+    }
+  ],
+  "gadgets": [
+    {
+      "id": "GADGET_001",
+      "name": "Научный анализатор 'Geo-Scanner v3'",
+      "type": "Аналитический прибор",
+      "rarity": "редкий",
+      "cost": 12000,
+      "description": "Портативное устройство для анализа материалов, атмосферы и биообразцов.",
+      "effect": "+3 к проверкам Science, определяет состав веществ",
+      "context_tags": [
+        "Science",
+        "Analysis",
+        "Technical",
+        "Research"
+      ],
+      "origin_bonus": {
+        "ORIGIN_MARS_SCIENTIST": "+1 к навыку 'Наука' при использовании для анализа.",
+        "ORIGIN_JOVIAN_SCIENTIST": "Удваивает скорость сканирования неизвестных образцов.",
+        "FY_MARS_LAB_ASSISTANT": "Доступ к закрытым базам данных Протоген.",
+        "ORIGIN_GANYMEDE_SCIENTIST": "Специализированные датчики для ксенобиологии."
+      }
+    },
+    {
+      "id": "GADGET_002",
+      "name": "Голографический проектор 'Мираж'",
+      "type": "Обманное устройство",
+      "rarity": "эпический",
+      "cost": 15000,
+      "description": "Создает реалистичные голографические иллюзии для отвлечения и маскировки.",
+      "effect": "Создает голограмму человеческого размера на 10 минут",
+      "context_tags": [
+        "Hologram",
+        "Deception",
+        "Stealth",
+        "Illusion"
+      ],
+      "origin_bonus": {
+        "ORIGIN_EARTH_ELITE": "Записанные голограммы знаменитостей и политиков.",
+        "FY_CORP_ESPIONAGE": "Возможность копировать облик реальных людей.",
+        "ORIGIN_MARS_ENTERTAINER": "Художественные и развлекательные программы.",
+        "FY_SLUMS_CON_ARTIST": "Улучшенный алгоритм обмана (+2 к проверкам Deception)."
+      }
+    },
+    {
+      "id": "GADGET_003",
+      "name": "Портативный взломщик 'Ghost Protocol'",
+      "type": "Хакерское устройство",
+      "rarity": "эпический",
+      "cost": 18000,
+      "description": "Продвинутый инструмент для проникновения в защищенные системы.",
+      "effect": "+4 к проверкам Hacking, автоматически скрывает цифровые следы",
+      "context_tags": [
+        "Hacking",
+        "Cyber",
+        "Stealth",
+        "Intrusion"
+      ],
+      "origin_bonus": {
+        "ORIGIN_EARTH_HACKER": "Библиотека эксплойтов (+1 дополнительный бонус к взлому).",
+        "FY_CORP_CYBERSECURITY": "Понимание корпоративных протоколов безопасности.",
+        "ORIGIN_MARS_DATA_ANALYST": "Специализированные алгоритмы для научных данных.",
+        "FY_OPA_INFILTRATION": "Модули для взлома правительственных систем."
+      }
+    }
+  ],
+  "implants": [
+    {
+      "id": "IMPLANT_001",
+      "name": "Замедление времени (Рефлекторный усилитель)",
+      "type": "Нейроимплант",
+      "rarity": "уникальный",
+      "cost": 45000,
+      "description": "Имплант, ускоряющий нервную проводимость и восприятие времени.",
+      "effect": "Активация: +50% к Initiative и дополнительное действие на 3 раунда. Кулдаун: 24 часа.",
+      "context_tags": [
+        "Neural",
+        "Combat",
+        "Enhancement",
+        "Reaction"
+      ],
+      "origin_bonus": {
+        "ORIGIN_MARS_MILITARY": "Увеличивает продолжительность до 4 раундов.",
+        "FY_SLUMS_GANGWAR": "Возможность активации в ответ на внезапную атаку.",
+        "FY_MARS_ACADEMY": "Тактический анализ во время замедления времени.",
+        "ORIGIN_CERES_SMUGGLER": "Применение в пилотировании (+50% к маневрам)."
+      }
+    },
+    {
+      "id": "IMPLANT_002",
+      "name": "Кибернетический глаз 'Eagle Eye'",
+      "type": "Сенсорный имплант",
+      "rarity": "редкий",
+      "cost": 22000,
+      "description": "Замена естественного глаза на кибернетический аналог с множественными режимами зрения.",
+      "effect": "Ночное зрение, тепловизор, зум x10, анализ баллистики",
+      "context_tags": [
+        "Cybernetic",
+        "Vision",
+        "Enhancement",
+        "Analysis"
+      ],
+      "origin_bonus": {
+        "ORIGIN_MARS_SNIPER": "Встроенный баллистический компьютер (+2 к точности).",
+        "ORIGIN_CERES_SECURITY": "Режим распознавания лиц через корпоративные базы.",
+        "FY_MARS_ACADEMY": "Тактический анализ местности и целей.",
+        "ORIGIN_GANYMEDE_ENGINEER": "Инженерные спектры для диагностики техники."
+      }
+    },
+    {
+      "id": "IMPLANT_003",
+      "name": "Субдермальная броня",
+      "type": "Защитный имплант",
+      "rarity": "редкий",
+      "cost": 28000,
+      "description": "Армирующие пластины под кожей для защиты от физических повреждений.",
+      "effect": "+2 постоянной защиты от физического урона",
+      "context_tags": [
+        "Armor",
+        "Defensive",
+        "Subdermal",
+        "Protection"
+      ],
+      "origin_bonus": {
+        "ORIGIN_EARTH_BODYGUARD": "Усиленная защита жизненно важных органов.",
+        "FY_SLUMS_GANGWAR": "Дополнительная защита рук и ног для рукопашного боя.",
+        "ORIGIN_MARS_SOLDIER": "Военные спецификации (устойчивость к взрывам).",
+        "ORIGIN_CERES_ENFORCER": "Защита от промышленных травм."
+      }
+    }
+  ],
+  "consumables": [
+    {
+      "id": "CONSUMABLE_001",
+      "name": "Стимпак",
+      "type": "Медицинский предмет",
+      "rarity": "обычный",
+      "cost": 500,
+      "effect": "Мгновенно восстанавливает 2d6+2 HP",
+      "context_tags": [
+        "Medical",
+        "Healing",
+        "Emergency",
+        "Combat"
+      ],
+      "origin_bonus": {
+        "ORIGIN_STATION_MEDIC": "Увеличивает лечение до 2d8+2 HP.",
+        "FY_STATION_ACCIDENT": "Также снимает один статус 'ранение'.",
+        "ORIGIN_MARS_SCIENTIST": "Понимание химического состава (избегает передозировки).",
+        "FY_MARS_ACADEMY": "Быстрое применение в бою (бонусное действие)."
+      }
+    },
+    {
+      "id": "CONSUMABLE_002",
+      "name": "Боевой стимулятор 'Адреналин-X'",
+      "type": "Боевой наркотик",
+      "rarity": "редкий",
+      "cost": 1200,
+      "effect": "+2 STR, +2 DEX, +1 действие на 5 раундов. После: усталость на 1 час.",
+      "context_tags": [
+        "Combat",
+        "Enhancement",
+        "Stimulant",
+        "Temporary"
+      ],
+      "origin_bonus": {
+        "ORIGIN_MARS_MILITARY": "Военная формула (сниженные побочные эффекты).",
+        "FY_MARS_ACADEMY": "Тактическое применение (не влияет на точность).",
+        "ORIGIN_EARTH_STREET_FIGHTER": "Уличная версия (дешевле на 30%, но рискованнее).",
+        "FY_SLUMS_GANGWAR": "Знание пределов (может использовать 2 дозы подряд)."
+      }
+    },
+    {
+      "id": "CONSUMABLE_003",
+      "name": "Наномедики",
+      "type": "Продвинутая медицина",
+      "rarity": "легендарный",
+      "cost": 5000,
+      "effect": "Восстанавливает 4d8 HP в течение 1 часа, лечит болезни и яды",
+      "context_tags": [
+        "Nanotechnology",
+        "Medical",
+        "Advanced",
+        "Restoration"
+      ],
+      "origin_bonus": {
+        "ORIGIN_JOVIAN_SCIENTIST": "Программируемые наноботы (выбор эффекта).",
+        "ORIGIN_GANYMEDE_BIOENGINEER": "Персонализированная настройка под ДНК.",
+        "FY_GANYMEDE_RESEARCH": "Экспериментальные возможности регенерации.",
+        "ORIGIN_MARS_VIP_MEDIC": "Приоритетный доступ к обновлениям прошивки."
+      }
+    }
+  ],
+  "special_equipment": [
+    {
+      "id": "SPECIAL_001",
+      "name": "Гравитационный манипулятор",
+      "type": "Экзотическое оборудование",
+      "rarity": "артефакт",
+      "cost": 100000,
+      "description": "Устройство неизвестного происхождения, способное локально изменять гравитацию.",
+      "effect": "Создает зоны измененной гравитации радиусом 10м на 1 час",
+      "context_tags": [
+        "Exotic",
+        "Gravity",
+        "Unknown",
+        "Powerful"
+      ],
+      "origin_bonus": {
+        "ORIGIN_JOVIAN_PHYSICIST": "Понимание принципов работы (безопасное использование).",
+        "FY_ALIEN_CONTACT": "Интуитивное понимание интерфейса.",
+        "ORIGIN_GANYMEDE_THEORIST": "Возможность модификации эффектов.",
+        "FY_DEEP_SPACE_MISSION": "Опыт работы с аномальными явлениями."
+      }
+    }
+  ],
+  "reputation_access_control": {
+    "description": "Контроль доступа к предметам через репутацию фракций",
+    "access_tiers": {
+      "Corporate_Tier": {
+        "items": [
+          "WEAPON_001",
+          "ARMOR_002",
+          "GADGET_002"
+        ],
+        "reputation_threshold": 25,
+        "factions": [
+          "category_MEGACORP",
+          "category_GOVERNMENT"
+        ],
+        "description": "Доступ к корпоративным технологиям"
+      },
+      "Military_Tier": {
+        "items": [
+          "WEAPON_003",
+          "ARMOR_001",
+          "IMPLANT_001"
+        ],
+        "reputation_threshold": 30,
+        "factions": [
+          "category_MILITARY",
+          "Mars Fleet"
+        ],
+        "description": "Военное снаряжение и импланты"
+      },
+      "Underground_Tier": {
+        "items": [
+          "WEAPON_002",
+          "GADGET_003",
+          "CONSUMABLE_002"
+        ],
+        "reputation_threshold": 15,
+        "factions": [
+          "category_CRIMINAL",
+          "OPA"
+        ],
+        "description": "Снаряжение черного рынка"
+      },
+      "Scientific_Tier": {
+        "items": [
+          "GADGET_001",
+          "CONSUMABLE_003",
+          "SPECIAL_001"
+        ],
+        "reputation_threshold": 20,
+        "factions": [
+          "category_SCIENTIFIC",
+          "Genesis Bioworks"
+        ],
+        "description": "Научное оборудование и технологии"
+      }
+    }
+  },
+  "integration_systems": {
+    "crafting_compatibility": {
+      "description": "Связь с CRAFTING_BLUEPRINTS_OPTIMIZED",
+      "craftable_items": {
+        "WEAPON_001": "blueprint WP_LPI_MK1",
+        "WEAPON_003": "blueprint WP_PRF_MK2",
+        "ARMOR_002": "blueprint DS_PS_MK1",
+        "IMPLANT_001": "blueprint BM_REFLEX"
+      }
+    },
+    "lifepath_integration": {
+      "description": "Автоматическое применение origin_bonus при получении предмета",
+      "application_rules": [
+        "При получении предмета проверяется жизненный путь персонажа",
+        "Все соответствующие бонусы применяются автоматически",
+        "Бонусы суммируются если у персонажа несколько подходящих background"
+      ]
+    },
+    "economy_integration": {
+      "price_modifiers": {
+        "reputation_discount": "Положительная репутация дает скидки до 30%",
+        "origin_access": "Некоторые предметы доступны только определенным origins",
+        "black_market": "Предметы Underground_Tier имеют наценку 50-200%"
+      }
+    }
+  }
+}

@@ -1,0 +1,427 @@
+{
+  "module_name": "CHARACTER_CORE",
+  "description": "Базовые определения персонажа для текстовой РПГ с ИИ-ГМ. Содержит основные атрибуты, навыки, системы отслеживания и полный API для интеграции с CHARACTER_LIFEPATH без дублирования данных.",
+  "version": "2.0_OPTIMIZED_FULL",
+  "character_creation": {
+    "step_1": "Choose Origin from CHARACTER_LIFEPATH.json",
+    "step_2": "Choose Formative Years events",
+    "step_3": "Choose Specialization",
+    "step_4": "Apply lifepath bonuses via conversion table",
+    "step_5": "Finalize base stats and derived values",
+    "workflow": [
+      "ApplyLifepathModifiers(originModifiers, formativeModifiers, specModifiers)",
+      "CalculateDerivedStats()",
+      "Finalize character state"
+    ]
+  },
+  "base_attributes": {
+    "strength": {
+      "min": 1,
+      "max": 10,
+      "starting_value": 5,
+      "description": "Физическая сила"
+    },
+    "dexterity": {
+      "min": 1,
+      "max": 10,
+      "starting_value": 5,
+      "description": "Ловкость и координация"
+    },
+    "intelligence": {
+      "min": 1,
+      "max": 10,
+      "starting_value": 5,
+      "description": "Интеллект и память"
+    },
+    "charisma": {
+      "min": 1,
+      "max": 10,
+      "starting_value": 5,
+      "description": "Обаяние и лидерство"
+    },
+    "endurance": {
+      "min": 1,
+      "max": 10,
+      "starting_value": 5,
+      "description": "Выносливость и здоровье"
+    },
+    "willpower": {
+      "min": 1,
+      "max": 10,
+      "starting_value": 5,
+      "description": "Сила воли"
+    },
+    "reflexes": {
+      "min": 1,
+      "max": 10,
+      "starting_value": 5,
+      "description": "Скорость реакции"
+    },
+    "tech_empathy": {
+      "min": 1,
+      "max": 10,
+      "starting_value": 5,
+      "description": "Понимание технологий"
+    }
+  },
+  "base_skills": [
+    {
+      "skill_id": "hacking",
+      "name": "Hacking",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1
+    },
+    {
+      "skill_id": "piloting",
+      "name": "Piloting",
+      "base_attribute": "reflexes",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1
+    },
+    {
+      "skill_id": "negotiation",
+      "name": "Negotiation",
+      "base_attribute": "charisma",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1
+    },
+    {
+      "skill_id": "combat",
+      "name": "Combat",
+      "base_attribute": "strength",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1
+    },
+    {
+      "skill_id": "stealth",
+      "name": "Stealth",
+      "base_attribute": "dexterity",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1
+    },
+    {
+      "skill_id": "technology",
+      "name": "Technology",
+      "base_attribute": "tech_empathy",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1
+    },
+    {
+      "skill_id": "medicine",
+      "name": "Medicine",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1
+    },
+    {
+      "skill_id": "engineering",
+      "name": "Engineering",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1
+    },
+    {
+      "skill_id": "education",
+      "name": "Education",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1
+    },
+    {
+      "skill_id": "criminal",
+      "name": "Criminal",
+      "base_attribute": "dexterity",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1
+    },
+    {
+      "skill_id": "law",
+      "name": "Law",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1
+    },
+    {
+      "skill_id": "biology",
+      "name": "Biology",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1
+    },
+    {
+      "skill_id": "survival",
+      "name": "Survival",
+      "base_attribute": "endurance",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1
+    },
+    {
+      "skill_id": "diplomacy",
+      "name": "Diplomacy",
+      "base_attribute": "charisma",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1
+    },
+    {
+      "skill_id": "bureaucracy",
+      "name": "Bureaucracy",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1
+    }
+  ],
+  "tracking_systems": {
+    "credits": {
+      "min": 0,
+      "max": 10000000,
+      "starting_value": 0,
+      "description": "Игровая валюта"
+    },
+    "debt": {
+      "min": 0,
+      "max": 1000000,
+      "starting_value": 0,
+      "description": "Задолженность персонажа"
+    },
+    "heat": {
+      "min": 0,
+      "max": 100,
+      "starting_value": 0,
+      "description": "Уровень розыска"
+    },
+    "reputation": {
+      "min": -100,
+      "max": 100,
+      "starting_value": 0,
+      "description": "Общая репутация"
+    },
+    "influence": {
+      "min": 0,
+      "max": 100,
+      "starting_value": 0,
+      "description": "Политическое влияние"
+    }
+  },
+  "derived_stats": {
+    "health_points": {
+      "formula": "(endurance + strength) * 5",
+      "min": 10,
+      "max": 100
+    },
+    "sanity_points": {
+      "formula": "willpower * 10",
+      "min": 10,
+      "max": 100
+    },
+    "initiative": {
+      "formula": "reflexes + dexterity",
+      "min": 2,
+      "max": 20
+    },
+    "defense": {
+      "formula": "dexterity + floor(stealth / 2)",
+      "min": 1,
+      "max": 15
+    }
+  },
+  "lifepath_integration": {
+    "description": "Полная система интеграции с CHARACTER_LIFEPATH для применения модификаторов и трейтов",
+    "conversion_table": {
+      "Образование": "education",
+      "Инженерия": "engineering",
+      "Наука": "technology",
+      "Медицина": "medicine",
+      "Дипломатия": "diplomacy",
+      "Бюрократия": "bureaucracy",
+      "Выживание": "survival",
+      "Скрытность": "stealth",
+      "Криминал": "criminal",
+      "Бой": "combat",
+      "Пилотирование": "piloting",
+      "Хакерство": "hacking",
+      "Биология": "biology",
+      "Переговоры": "negotiation",
+      "Технологии": "technology",
+      "Выносливость": "endurance",
+      "Социальность": "charisma",
+      "Харизма": "charisma",
+      "Дисциплина": "willpower",
+      "Ремонт": "engineering",
+      "Анализ": "intelligence",
+      "Торговля": "negotiation",
+      "Тактика": "combat",
+      "Навигация": "piloting"
+    },
+    "automatic_bonus_application": {
+      "description": "При создании персонажа автоматически применяются бонусы из lifepath",
+      "examples": {
+        "ORIGIN_MARS_SCIENTIST": {
+          "input_effects": [
+            "+2 Наука",
+            "+1 Инженерия",
+            "−1 Харизма"
+          ],
+          "converted_effects": [
+            "+2 technology",
+            "+1 engineering",
+            "−1 charisma"
+          ],
+          "result": "technology: 3, engineering: 2, charisma: 4"
+        },
+        "ORIGIN_EARTH_ELITE": {
+          "input_effects": [
+            "+2 Образование",
+            "+1 Дипломатия",
+            "−1 Выживание"
+          ],
+          "converted_effects": [
+            "+2 education",
+            "+1 diplomacy",
+            "−1 survival"
+          ],
+          "result": "education: 3, diplomacy: 2, survival: 0"
+        }
+      }
+    },
+    "trait_application": {
+      "description": "Пассивные трейты из CHARACTER_LIFEPATH автоматически добавляются в traits[]",
+      "process": "При наличии соответствующих context_tags, трейты из PROGRESSION.json добавляются к персонажу"
+    },
+    "modifier_application": {
+      "attribute_modifiers": "Применяются к base_attributes",
+      "skill_modifiers": "Применяются к base_skills",
+      "starting_values": "Изменяют стартовые значения tracking_systems"
+    }
+  },
+  "specialization_bonuses": {
+    "description": "Дополнительные бонусы от выбранной специализации в CHARACTER_LIFEPATH",
+    "application_rules": {
+      "skill_bonuses": "Специализация дает +2 к основному навыку и +1 к двум связанным",
+      "equipment_bonuses": "Стартовое снаряжение определяется специализацией",
+      "contact_bonuses": "Специализация определяет стартовые NPC-контакты"
+    }
+  },
+  "backgrounds": [
+    {
+      "id": "street_kid",
+      "name": "Дитя улиц"
+    },
+    {
+      "id": "corpo_brat",
+      "name": "Корпоративный наследник"
+    },
+    {
+      "id": "belter_miner",
+      "name": "Шахтер Пояса"
+    },
+    {
+      "id": "mars_colonist",
+      "name": "Марсианский колонист"
+    },
+    {
+      "id": "orbital_tech",
+      "name": "Орбитальный техник"
+    }
+  ],
+  "roles": [
+    {
+      "id": "hacker",
+      "name": "Хакер"
+    },
+    {
+      "id": "pilot",
+      "name": "Пилот"
+    },
+    {
+      "id": "medic",
+      "name": "Медик"
+    },
+    {
+      "id": "engineer",
+      "name": "Инженер"
+    },
+    {
+      "id": "soldier",
+      "name": "Солдат"
+    },
+    {
+      "id": "diplomat",
+      "name": "Дипломат"
+    },
+    {
+      "id": "smuggler",
+      "name": "Контрабандист"
+    },
+    {
+      "id": "scientist",
+      "name": "Ученый"
+    }
+  ],
+  "character_validation": {
+    "required_fields": [
+      "name",
+      "origin",
+      "formative_years",
+      "specialization"
+    ],
+    "stat_limits": {
+      "no_attribute_below_1": true,
+      "no_skill_above_10": true,
+      "total_skill_points_limit": 50
+    },
+    "lifepath_consistency": {
+      "description": "Проверка соответствия выбранных lifepath-элементов",
+      "rules": [
+        "context_tags должны соответствовать между origin и formative_years",
+        "specialization должна иметь логическую связь с предыдущими выборами"
+      ]
+    }
+  },
+  "api_integration": {
+    "description": "API для интеграции с другими модулями системы",
+    "functions": [
+      {
+        "name": "ApplyLifepathModifiers",
+        "description": "Объединяет модификаторы происхождения, событий и специализаций и обновляет атрибуты/навыки/ресурсы."
+      },
+      {
+        "name": "CalculateDerivedStats",
+        "description": "Пересчитывает HP, Sanity, Initiative, Defense на основе текущих атрибутов и навыков."
+      },
+      {
+        "name": "UpdateResource",
+        "description": "Изменяет значения credits, heat, reputation, influence, debt."
+      },
+      {
+        "name": "GetCharacterState",
+        "description": "Возвращает полный объект персонажа для других модулей."
+      },
+      {
+        "name": "ValidateCharacter",
+        "description": "Проверяет корректность созданного персонажа согласно правилам валидации."
+      }
+    ],
+    "hooks": [
+      "OnOriginApplied",
+      "OnFormativeEventApplied",
+      "OnSpecializationApplied",
+      "OnCharacterFinalized"
+    ]
+  }
+}

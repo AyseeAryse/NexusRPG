@@ -1,0 +1,104 @@
+{
+  "library_name": "CHARACTER_ATTRIBUTES",
+  "version": "1.0",
+  "description": "Библиотека базовых атрибутов персонажа и производных характеристик",
+
+  "base_attributes": {
+    "strength": {
+      "min": 1,
+      "max": 10,
+      "starting_value": 5,
+      "description": "Физическая сила",
+      "increase_rule": "Каждые 5 уровней в Combat или Piloting даёт +1"
+    },
+    "dexterity": {
+      "min": 1,
+      "max": 10,
+      "starting_value": 5,
+      "description": "Ловкость и координация",
+      "increase_rule": "Каждые 75 XP в Stealth или Acrobatics даёт +1"
+    },
+    "intelligence": {
+      "min": 1,
+      "max": 10,
+      "starting_value": 5,
+      "description": "Интеллект и память",
+      "increase_rule": "Каждые 100 XP в Hacking или Technology даёт +1"
+    },
+    "charisma": {
+      "min": 1,
+      "max": 10,
+      "starting_value": 5,
+      "description": "Обаяние и лидерство",
+      "increase_rule": "Каждые 50 XP в Negotiation или Persuasion даёт +1"
+    },
+    "endurance": {
+      "min": 1,
+      "max": 10,
+      "starting_value": 5,
+      "description": "Выносливость и здоровье",
+      "increase_rule": "Каждые 10 часов в Escort/Delivery даёт +1"
+    },
+    "willpower": {
+      "min": 1,
+      "max": 10,
+      "starting_value": 5,
+      "description": "Сила воли",
+      "increase_rule": "Каждые 80 XP в Medicine или Law даёт +1"
+    },
+    "reflexes": {
+      "min": 1,
+      "max": 10,
+      "starting_value": 5,
+      "description": "Скорость реакции"
+    },
+    "tech_empathy": {
+      "min": 1,
+      "max": 10,
+      "starting_value": 5,
+      "description": "Понимание технологий"
+    }
+  },
+
+  "derived_stats": {
+    "health_points": {
+      "formula": "(endurance + strength) * 5",
+      "min": 10,
+      "max": 100
+    },
+    "sanity_points": {
+      "formula": "willpower * 10",
+      "min": 10,
+      "max": 100
+    },
+    "initiative": {
+      "formula": "reflexes + dexterity",
+      "min": 2,
+      "max": 20
+    },
+    "defense": {
+      "formula": "dexterity + floor(stealth / 2)",
+      "min": 1,
+      "max": 15
+    }
+  },
+
+  "age_effects": {
+    "young_16_25": {
+      "bonus": { "agility": 1, "endurance": 1 },
+      "penalty": { "wisdom": -1 }
+    },
+    "adult_26_45": {
+      "bonus": "Сбалансированные характеристики",
+      "penalty": "Нет"
+    },
+    "mature_46_65": {
+      "bonus": { "intelligence": 1, "wisdom": 1 },
+      "penalty": { "agility": -1 }
+    },
+    "elder_66_80": {
+      "bonus": { "wisdom": 2, "intelligence": 1 },
+      "penalty": { "endurance": -2 }
+    }
+  }
+}

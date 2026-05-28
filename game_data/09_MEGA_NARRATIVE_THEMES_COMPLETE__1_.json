@@ -1,0 +1,1288 @@
+{
+  "module_name": "09_MEGA_NARRATIVE_THEMES_COMPLETE",
+  "module_id": "09",
+  "priority": "CRITICAL",
+  "version": "1.0_UNIFIED_COMPREHENSIVE",
+  "description": "Полная система нарративных тем и тональности - объединение жанровой системы, генераторов событий, новостей, слухов и космических встреч для создания живого, атмосферного игрового мира",
+  "source_files": [
+    "THEME_TONE.json (22,703 символа) - основная система тем и тона игры с интеграцией lifepath",
+    "THEME_TONE_V2_ADDITIONS.json (5,292 символа) - дополнения к системе тем и тона V2",
+    "ENHANCED_EVENT_GENERATOR_V2.json (4,124 символа) - улучшенный генератор событий V2",
+    "NEWS_AND_RUMORS_GENERATOR.json (3,987 символов) - генератор новостей и слухов",
+    "ENHANCED_EVENT_GENERATOR.json (3,229 символов) - улучшенный генератор событий",
+    "SPACE_ENCOUNTER_GENERATOR.json (3,089 символов) - генератор космических встреч"
+  ],
+  "total_size": "42,424 символа - полностью сохранено",
+  "integration_status": "COMPLETE_NO_LOSS",
+  "dependencies": [
+    "CHARACTER_LIFEPATH",
+    "07_MEGA_WORLD_SIMULATION",
+    "FACTIONS_MASTER",
+    "08_MEGA_QUEST_INVESTIGATION",
+    "NPC_RELATIONS"
+  ],
+  "comprehensive_theme_tone_system": {
+    "module_name": "THEME_TONE",
+    "description": "Система жанров, тональностей и тематик для создания целостного игрового опыта с возможностью динамического смешения стилей. Полная интеграция с CHARACTER_LIFEPATH для персонализированных тематических акцентов.",
+    "version": "3.0_LIFEPATH_INTEGRATED",
+    "universal_approach": "Все жанры и стили одновременно активны и сочетаемы, ГМ может переключаться между ними по сценам, создавая уникальный игровой опыт. Жизненный путь персонажа влияет на доминирующие жанры и эмоциональную окраску.",
+    "core_genres": [
+      {
+        "name": "Киберпанк",
+        "parameters": {
+          "theme": "Корпоративная власть vs человечность",
+          "tone": "Мрачная, циничная, неоновая",
+          "light_shadow_ratio": "20% свет / 80% тень",
+          "pathos_level": "Средний (личные драмы на фоне системы)"
+        },
+        "narrative_guide": {
+          "key_motifs": [
+            "Корпоративный контроль",
+            "технологическое неравенство",
+            "цифровое сознание"
+          ],
+          "external_markers": [
+            "Неон",
+            "дождь",
+            "мегаполисы",
+            "импланты",
+            "хакерские интерфейсы"
+          ],
+          "game_feelings": [
+            "Паранойя",
+            "отчуждение",
+            "борьба против системы"
+          ],
+          "example_scene": "Взлом корпоративной базы данных в дождливом Нео-Токио."
+        },
+        "lifepath_adaptations": {
+          "ORIGIN_EARTH_ELITE": "Взгляд сверху: корпоративные интриги и падение с высоты",
+          "ORIGIN_EARTH_SLUMS": "Взгляд снизу: борьба против системы, уличный киберпанк",
+          "ORIGIN_EARTH_MIDDLE": "Офисный киберпанк: отчуждение среднего класса, корпоративное рабство"
+        }
+      },
+      {
+        "name": "Космоопера",
+        "parameters": {
+          "theme": "Эпические конфликты, судьба галактики",
+          "tone": "Героическая, масштабная, романтизированная",
+          "light_shadow_ratio": "60% свет / 40% тень",
+          "pathos_level": "Высокий (грандиозные речи и поступки)"
+        },
+        "narrative_guide": {
+          "key_motifs": [
+            "Галактические империи",
+            "эпические конфликты",
+            "судьба цивилизаций"
+          ],
+          "external_markers": [
+            "Звездолеты",
+            "планетарные пейзажи",
+            "инопланетные расы",
+            "энергетическое оружие"
+          ],
+          "game_feelings": [
+            "Величие",
+            "героизм",
+            "масштабность вселенной"
+          ],
+          "example_scene": "Дипломатические переговоры на орбитальной станции перед решающей битвой."
+        },
+        "lifepath_adaptations": {
+          "ORIGIN_MARS_MILITARY": "Военная космоопера: флотские баталии за честь Марса",
+          "ORIGIN_JOVIAN_STATION": "Философская космоопера: размышления о месте человечества во вселенной",
+          "ORIGIN_SCOUT_RANGER": "Исследовательская космоопера: первопроходцы новых миров"
+        }
+      },
+      {
+        "name": "Антиутопия",
+        "parameters": {
+          "theme": "Контроль системы vs свобода личности",
+          "tone": "Подавляющая, безнадежная, клаустрофобная",
+          "light_shadow_ratio": "10% свет / 90% тень",
+          "pathos_level": "Низкий (обыденность ужаса)"
+        },
+        "narrative_guide": {
+          "key_motifs": [
+            "Тотальный контроль",
+            "подавление личности",
+            "ложная утопия"
+          ],
+          "external_markers": [
+            "Серые города",
+            "камеры наблюдения",
+            "униформа",
+            "пропаганда"
+          ],
+          "game_feelings": [
+            "Клаустрофобия",
+            "безнадежность",
+            "желание свободы"
+          ],
+          "example_scene": "Тайная встреча диссидентов в заброшенном метро."
+        },
+        "lifepath_adaptations": {
+          "ORIGIN_EARTH_MIDDLE": "Корпоративная антиутопия: офисные клетки и потеря индивидуальности",
+          "ORIGIN_CERES_MINER": "Рабочая антиутопия: эксплуатация труда в космических шахтах",
+          "ORIGIN_REBEL_HIDEOUT": "Антиутопия сопротивления: подпольная борьба против системы"
+        }
+      },
+      {
+        "name": "Технотриллер",
+        "parameters": {
+          "theme": "Технологии как угроза и спасение",
+          "tone": "Напряженная, параноидальная, динамичная",
+          "light_shadow_ratio": "30% свет / 70% тень",
+          "pathos_level": "Средний (личная борьба с системой)"
+        },
+        "narrative_guide": {
+          "key_motifs": [
+            "Технологические угрозы",
+            "гонка со временем",
+            "научные дилеммы"
+          ],
+          "external_markers": [
+            "Лаборатории",
+            "компьютерные интерфейсы",
+            "высокотехнологичное оборудование"
+          ],
+          "game_feelings": [
+            "Напряжение",
+            "срочность",
+            "интеллектуальный вызов"
+          ],
+          "example_scene": "Предотвращение кибератаки на энергосеть города за считанные минуты до коллапса."
+        },
+        "lifepath_adaptations": {
+          "ORIGIN_MARS_SCIENTIST": "Этический технотриллер: последствия научных открытий",
+          "ORIGIN_GANYMEDE_ENGINEER": "Инженерный технотриллер: технические катастрофы и их предотвращение",
+          "ORIGIN_EARTH_ELITE": "Корпоративный технотриллер: технологии как инструмент власти"
+        }
+      },
+      {
+        "name": "Исследовательский триллер",
+        "parameters": {
+          "theme": "Поиск истины vs сокрытие тайн",
+          "tone": "Загадочная, тревожная, интеллектуальная",
+          "light_shadow_ratio": "40% свет / 60% тень",
+          "pathos_level": "Низкий (реализм расследования)"
+        },
+        "narrative_guide": {
+          "key_motifs": [
+            "Неизвестные территории",
+            "научные тайны",
+            "первый контакт"
+          ],
+          "external_markers": [
+            "Исследовательские станции",
+            "неизведанные планеты",
+            "загадочные артефакты"
+          ],
+          "game_feelings": [
+            "Любопытство",
+            "тревога неизвестности",
+            "научное возбуждение"
+          ],
+          "example_scene": "Расшифровка сигнала с заброшенной инопланетной базы на далекой луне."
+        },
+        "lifepath_adaptations": {
+          "ORIGIN_JOVIAN_SCIENTIST": "Ксенобиологический триллер: исследование неизвестных форм жизни",
+          "ORIGIN_SCOUT_RANGER": "Пионерский триллер: освоение неизведанных территорий",
+          "ORIGIN_MARS_SCIENTIST": "Научный триллер: этические дилеммы исследований"
+        }
+      },
+      {
+        "name": "Мистика",
+        "parameters": {
+          "theme": "Непознанное vs рациональное",
+          "tone": "Атмосферная, жуткая, неопределенная",
+          "light_shadow_ratio": "25% свет / 75% тень",
+          "pathos_level": "Переменный (от обыденности к ужасу)"
+        },
+        "narrative_guide": {
+          "key_motifs": [
+            "Сверхъестественные силы",
+            "древние тайны",
+            "паранормальные явления"
+          ],
+          "external_markers": [
+            "Туман",
+            "мистические символы",
+            "аномальные зоны",
+            "тишина"
+          ],
+          "game_feelings": [
+            "Мистический ужас",
+            "благоговение",
+            "неопределенность реальности"
+          ],
+          "example_scene": "Исследование заброшенного корабля, экипаж которого бесследно исчез, оставив работающие системы."
+        },
+        "lifepath_adaptations": {
+          "ORIGIN_CULT_SECT": "Религиозная мистика: пророчества и священные тайны",
+          "ORIGIN_JOVIAN_STATION": "Космическая мистика: ужас бесконечности",
+          "ORIGIN_GANYMEDE_SCIENTIST": "Научная мистика: непонятные феномены"
+        }
+      },
+      {
+        "name": "Военный эпос",
+        "parameters": {
+          "theme": "Честь против прагматизма в боевых условиях",
+          "tone": "Драматическая, героическая, трагическая",
+          "light_shadow_ratio": "45% свет / 55% тень",
+          "pathos_level": "Высокий (героическое самопожертвование)"
+        },
+        "narrative_guide": {
+          "key_motifs": [
+            "Братство по оружию",
+            "цена победы",
+            "военная честь"
+          ],
+          "external_markers": [
+            "Поля битв",
+            "военная техника",
+            "униформа",
+            "награды"
+          ],
+          "game_feelings": [
+            "Героизм",
+            "товарищество",
+            "жертвенность"
+          ],
+          "example_scene": "Последняя оборона стратегически важной станции против превосходящих сил."
+        },
+        "lifepath_adaptations": {
+          "ORIGIN_MARS_MILITARY": "Классический военный эпос: честь флота и долг перед Республикой",
+          "ORIGIN_BELT_FIGHTER": "Партизанский эпос: борьба за свободу Пояса",
+          "ORIGIN_MERCENARY": "Профессиональный военный: война как ремесло"
+        }
+      },
+      {
+        "name": "Романтическая драма",
+        "parameters": {
+          "theme": "Любовь vs долг/обстоятельства",
+          "tone": "Эмоциональная, интимная, страстная",
+          "light_shadow_ratio": "70% свет / 30% тень",
+          "pathos_level": "Высокий (эмоциональные переживания)"
+        },
+        "narrative_guide": {
+          "key_motifs": [
+            "Запретная любовь",
+            "разлука",
+            "воссоединение"
+          ],
+          "external_markers": [
+            "Интимные пространства",
+            "личные вещи",
+            "письма",
+            "встречи"
+          ],
+          "game_feelings": [
+            "Страсть",
+            "тоска",
+            "надежда"
+          ],
+          "example_scene": "Тайная встреча влюбленных с разных сторон межпланетного конфликта."
+        },
+        "lifepath_adaptations": {
+          "ORIGIN_EARTH_ELITE": "Аристократический роман: социальные барьеры и семейные ожидания",
+          "ORIGIN_SPACER": "Космический роман: любовь через расстояния",
+          "ORIGIN_ARTIST": "Богемный роман: искусство как язык любви"
+        }
+      },
+      {
+        "name": "Социальная сатира",
+        "parameters": {
+          "theme": "Критика общественных пороков через иронию",
+          "tone": "Ироническая, саркастическая, абсурдная",
+          "light_shadow_ratio": "50% свет / 50% тень",
+          "pathos_level": "Низкий (интеллектуальная дистанция)"
+        },
+        "narrative_guide": {
+          "key_motifs": [
+            "Общественное лицемерие",
+            "абсурд бюрократии",
+            "пустота потребления"
+          ],
+          "external_markers": [
+            "Карикатурные ситуации",
+            "бюрократические процедуры",
+            "модные тренды"
+          ],
+          "game_feelings": [
+            "Ирония",
+            "отстраненность",
+            "интеллектуальное превосходство"
+          ],
+          "example_scene": "Бесконечные согласования для получения разрешения на дыхание на корпоративной станции."
+        },
+        "lifepath_adaptations": {
+          "ORIGIN_BUREAUCRAT": "Бюрократическая сатира: абсурд административных процедур",
+          "ORIGIN_MEDIA": "Медиа-сатира: манипуляции общественным мнением",
+          "ORIGIN_ACADEMIC": "Академическая сатира: интеллектуальное высокомерие"
+        }
+      }
+    ],
+    "tone_dynamics": {
+      "description": "Динамическое изменение тона и жанра в зависимости от действий и развития персонажа",
+      "core_tone_parameters": {
+        "cynicism": {
+          "description": "Уровень цинизма и недоверия к системе",
+          "range": "0-10",
+          "effects": [
+            "Изменяет диалоги NPC",
+            "Влияет на доступные варианты действий",
+            "Модифицирует восприятие событий"
+          ]
+        },
+        "sophistication": {
+          "description": "Интеллектуальная и культурная сложность",
+          "range": "0-10",
+          "effects": [
+            "Усложняет диалоги",
+            "Открывает академические и культурные варианты",
+            "Влияет на понимание сложных ситуаций"
+          ]
+        },
+        "violence": {
+          "description": "Склонность к силовым решениям",
+          "range": "0-10",
+          "effects": [
+            "Доступность боевых опций",
+            "Реакции NPC на угрозы",
+            "Эскалация конфликтов"
+          ]
+        },
+        "hope": {
+          "description": "Оптимизм и вера в лучшее будущее",
+          "range": "0-10",
+          "effects": [
+            "Доступ к идеалистическим решениям",
+            "Способность вдохновлять других",
+            "Сопротивляемость депрессии"
+          ]
+        }
+      },
+      "lifepath_tone_modifiers": {
+        "ORIGIN_EARTH_ELITE": {
+          "cynicism": 4,
+          "sophistication": 8,
+          "violence": 2,
+          "hope": 6
+        },
+        "ORIGIN_EARTH_SLUMS": {
+          "cynicism": 8,
+          "sophistication": 3,
+          "violence": 7,
+          "hope": 4
+        },
+        "ORIGIN_MARS_MILITARY": {
+          "cynicism": 5,
+          "sophistication": 6,
+          "violence": 8,
+          "hope": 7
+        },
+        "ORIGIN_MARS_SCIENTIST": {
+          "cynicism": 3,
+          "sophistication": 9,
+          "violence": 2,
+          "hope": 8
+        },
+        "ORIGIN_CERES_MINER": {
+          "cynicism": 7,
+          "sophistication": 4,
+          "violence": 6,
+          "hope": 5
+        }
+      }
+    },
+    "genre_blending_mechanics": {
+      "description": "Система смешения жанров для создания уникального опыта",
+      "blending_rules": {
+        "primary_genre": "Доминирующий жанр сцены (60-70% влияния)",
+        "secondary_genre": "Поддерживающий жанр (20-30% влияния)",
+        "flavor_elements": "Элементы других жанров (10% влияния)"
+      },
+      "common_blends": [
+        {
+          "name": "Нуар-киберпанк",
+          "combination": "Киберпанк + Исследовательский триллер",
+          "description": "Мрачные расследования в корпоративном мире",
+          "example": "Детектив ищет убийцу среди корпоративных элит"
+        },
+        {
+          "name": "Военная мелодрама",
+          "combination": "Военный эпос + Романтическая драма",
+          "description": "Любовь во время войны",
+          "example": "Офицеры противоборствующих флотов влюбляются друг в друга"
+        },
+        {
+          "name": "Сатирическая космоопера",
+          "combination": "Космоопера + Социальная сатира",
+          "description": "Эпические события с иронической подачей",
+          "example": "Галактическая война из-за патентных прав на рецепт кофе"
+        }
+      ]
+    }
+  },
+  "expanded_lifepath_tone_profiles": {
+    "module_name": "THEME_TONE_V2_ADDITIONS",
+    "version": "2.0_MASSIVE_EXPANSION_ADDITIONS",
+    "description": "Дополнения к THEME_TONE для новых 29 origins и 25 специализаций",
+    "new_origins_tone_profiles": {
+      "ORIGIN_EARTH_TECH_MOGUL": {
+        "tone_modifiers": {
+          "cynicism": 3,
+          "sophistication": 8,
+          "violence": 2,
+          "hope": 9
+        },
+        "preferred_genres": [
+          "technological_singularity",
+          "corporate_empire",
+          "innovation_drama"
+        ],
+        "narrative_voice": "Confident, visionary, technology-focused",
+        "dialogue_style": "Authoritative, forward-thinking, solution-oriented"
+      },
+      "ORIGIN_MARS_GENETIC_EXPERIMENT": {
+        "tone_modifiers": {
+          "cynicism": 8,
+          "sophistication": 7,
+          "violence": 4,
+          "hope": 3
+        },
+        "preferred_genres": [
+          "body_horror",
+          "scientific_thriller",
+          "identity_crisis"
+        ],
+        "narrative_voice": "Uncertain, scientifically curious, existentially troubled",
+        "dialogue_style": "Analytical, questioning, somewhat detached"
+      },
+      "ORIGIN_BELT_PIRATE_PRINCE": {
+        "tone_modifiers": {
+          "cynicism": 6,
+          "sophistication": 5,
+          "violence": 8,
+          "hope": 6
+        },
+        "preferred_genres": [
+          "space_opera",
+          "adventure_thriller",
+          "political_intrigue"
+        ],
+        "narrative_voice": "Bold, charismatic, danger-seeking",
+        "dialogue_style": "Commanding, theatrical, romantically adventurous"
+      },
+      "ORIGIN_PLUTO_RESEARCH_STATION": {
+        "tone_modifiers": {
+          "cynicism": 5,
+          "sophistication": 9,
+          "violence": 2,
+          "hope": 6
+        },
+        "preferred_genres": [
+          "hard_science_fiction",
+          "isolation_thriller",
+          "discovery_drama"
+        ],
+        "narrative_voice": "Methodical, contemplative, isolation-adapted",
+        "dialogue_style": "Precise, thoughtful, occasionally philosophical"
+      }
+    },
+    "new_specializations_tone_profiles": {
+      "SPEC_QUANTUM_HACKER": {
+        "tone_modifiers": {
+          "cynicism": 6,
+          "sophistication": 8,
+          "violence": 3,
+          "hope": 5
+        },
+        "preferred_genres": [
+          "quantum_thriller",
+          "digital_mystery",
+          "reality_bending"
+        ],
+        "narrative_voice": "Technically brilliant, reality-questioning, digitally native",
+        "unique_elements": [
+          "Quantum probability descriptions",
+          "Multi-dimensional thinking",
+          "Digital-physical boundary confusion"
+        ]
+      },
+      "SPEC_MEMORY_THIEF": {
+        "tone_modifiers": {
+          "cynicism": 8,
+          "sophistication": 7,
+          "violence": 5,
+          "hope": 3
+        },
+        "preferred_genres": [
+          "psychological_thriller",
+          "identity_horror",
+          "mind_crime"
+        ],
+        "narrative_voice": "Invasive, psychologically aware, morally complex",
+        "unique_elements": [
+          "Memory-focused descriptions",
+          "Identity confusion themes",
+          "Psychological manipulation techniques"
+        ]
+      },
+      "SPEC_VOID_PRIEST": {
+        "tone_modifiers": {
+          "cynicism": 3,
+          "sophistication": 7,
+          "violence": 4,
+          "hope": 7
+        },
+        "preferred_genres": [
+          "mystical_space_opera",
+          "spiritual_journey",
+          "cosmic_horror"
+        ],
+        "narrative_voice": "Spiritually guided, cosmically aware, philosophically deep",
+        "unique_elements": [
+          "Spiritual metaphors",
+          "Cosmic perspective",
+          "Faith-based decision making"
+        ]
+      },
+      "SPEC_REALITY_HACKER": {
+        "tone_modifiers": {
+          "cynicism": 5,
+          "sophistication": 9,
+          "violence": 4,
+          "hope": 6
+        },
+        "preferred_genres": [
+          "reality_bending",
+          "physics_manipulation",
+          "god_mode_sci_fi"
+        ],
+        "narrative_voice": "Reality-manipulating, physics-defying, god-like perspective",
+        "unique_elements": [
+          "Physics violation descriptions",
+          "Reality distortion effects",
+          "Dimensional perspective shifts"
+        ]
+      }
+    },
+    "dynamic_tone_evolution": {
+      "major_life_events": {
+        "first_kill": {
+          "cynicism": 2,
+          "violence": 1,
+          "hope": -1
+        },
+        "betrayal_by_ally": {
+          "cynicism": 3,
+          "hope": -2,
+          "sophistication": 1
+        },
+        "saving_innocent_lives": {
+          "hope": 2,
+          "cynicism": -1,
+          "sophistication": 1
+        },
+        "discovering_conspiracy": {
+          "cynicism": 2,
+          "sophistication": 2,
+          "hope": -1
+        },
+        "falling_in_love": {
+          "hope": 2,
+          "cynicism": -1,
+          "violence": -1
+        }
+      },
+      "career_progression": {
+        "corporate_success": {
+          "sophistication": 1,
+          "cynicism": 1,
+          "hope": 1
+        },
+        "criminal_descent": {
+          "cynicism": 2,
+          "violence": 2,
+          "sophistication": -1
+        },
+        "scientific_breakthrough": {
+          "hope": 2,
+          "sophistication": 2,
+          "cynicism": -1
+        },
+        "political_power": {
+          "sophistication": 2,
+          "cynicism": 1,
+          "violence": 1
+        }
+      }
+    }
+  },
+  "enhanced_event_generation_system": {
+    "base_event_generator": {
+      "module_name": "ENHANCED_EVENT_GENERATOR",
+      "description": "Расширение для DYNAMIC_WORLD. Добавляет локационно-специфические и каскадные цепи событий для создания более живого и реактивного мира.",
+      "location_specific_events": {
+        "EARTH": [
+          {
+            "id": "EVENT_EARTH_01",
+            "name": "Политический кризис в ООН",
+            "type": "Political",
+            "triggers": [
+              "Low_Faction_Loyalty_UN",
+              "Failed_Diplomatic_Mission"
+            ],
+            "description": "Один из блоков Генеральной Ассамблеи ООН инициирует вотум недоверия, парализуя работу правительства.",
+            "effects": [
+              "Замораживание торговых разрешений (-50% к скорости всех маршрутов с Земли).",
+              "Рост влияния конкурирующих фракций (+10% INFLUENCE для Марса и OPA).",
+              "Активация каскадного события EVENT_GLOBAL_02 (Экономическая нестабильность)."
+            ]
+          }
+        ],
+        "MARS": [
+          {
+            "id": "EVENT_MARS_01",
+            "name": "Мобилизация флота",
+            "type": "Military",
+            "triggers": [
+              "High_Tension_with_OPA",
+              "Piracy_Spike_in_Sol_Corridor"
+            ],
+            "description": "Марсианская Республика объявляет о полной мобилизации своего флота в ответ на угрозы в системе.",
+            "effects": [
+              "Резкое повышение цен на топливо и боеприпасы на Марсе (+30%).",
+              "Блокировка гражданских маршрутов в марсианском секторе.",
+              "Рост параметра 'HEAT' для всех игроков с криминальным статусом в секторе."
+            ]
+          }
+        ],
+        "GANYMEDE": [
+          {
+            "id": "EVENT_GANYMEDE_01",
+            "name": "Вспышка 'Ржавчины Зерна'",
+            "type": "Biological/Economic",
+            "triggers": [
+              "Random_Low_Chance",
+              "Failed_Quarantine_Check"
+            ],
+            "description": "Агрессивный грибок поражает ключевые гидропонные фермы Ганимеда, угрожая продовольственной безопасности всей системы.",
+            "effects": [
+              "Снижение производства пищи на Ганимеде (-40%).",
+              "Активация каскадного события EVENT_GLOBAL_03 (Продовольственный кризис).",
+              "Резкий рост стоимости контрактов на доставку продовольствия."
+            ]
+          }
+        ],
+        "CERES": [
+          {
+            "id": "EVENT_CERES_01",
+            "name": "Всеобщая забастовка шахтеров",
+            "type": "Social/Economic",
+            "triggers": [
+              "Low_Worker_Loyalty",
+              "OPA_Agitation"
+            ],
+            "description": "Подстрекаемые OPA, шахтеры Цереры прекращают работу, требуя улучшения условий труда.",
+            "effects": [
+              "Полная остановка добычи металлов и воды на Церере (-90%).",
+              "Рост цен на металлы по всей системе (+25%).",
+              "Рост параметра 'HEAT' и влияния OPA в Поясе."
+            ]
+          }
+        ]
+      },
+      "cascading_chains": [
+        {
+          "id": "CHAIN_ECONOMIC_COLLAPSE",
+          "description": "Цепочка событий, ведущая к системному экономическому кризису.",
+          "steps": [
+            "1. EVENT_EARTH_01 (Политический кризис)",
+            "2. EVENT_GLOBAL_02 (Экономическая нестабильность)",
+            "3. EVENT_MARS_01 (Мобилизация флота)",
+            "4. EVENT_GLOBAL_04 (Системная война)"
+          ]
+        }
+      ]
+    },
+    "expanded_event_generator": {
+      "module_name": "ENHANCED_EVENT_GENERATOR_V2",
+      "description": "Расширение ENHANCED_EVENT_GENERATOR для всех 20+ локаций из WORLDBUILD",
+      "version": "2.0_ALL_LOCATIONS",
+      "new_location_events": {
+        "LUNA_COLONY": [
+          {
+            "id": "EVENT_LUNA_01",
+            "name": "Кризис систем жизнеобеспечения",
+            "type": "Technical",
+            "triggers": [
+              "Equipment_Failure",
+              "Sabotage_Attempt"
+            ],
+            "description": "Отказ основных систем переработки воздуха угрожает жизни всей колонии",
+            "effects": [
+              "Эвакуация гражданского персонала (+20% к стоимости транспорта)",
+              "Экстренные закупки оборудования (+300% цена на системы жизнеобеспечения)",
+              "Репутационные потери для ответственных корпораций (-15 MEGACORP)"
+            ]
+          },
+          {
+            "id": "EVENT_LUNA_02",
+            "name": "Открытие подземных туннелей",
+            "type": "Discovery",
+            "triggers": [
+              "Mining_Operation",
+              "Random_Discovery"
+            ],
+            "description": "Обнаружена сеть естественных пещер с возможными ресурсами",
+            "effects": [
+              "Новые возможности добычи (новые торговые контракты)",
+              "Научный интерес (+10 SCIENTIFIC репутации)",
+              "Территориальные споры между корпорациями"
+            ]
+          }
+        ],
+        "JOVIAN_STATIONS": [
+          {
+            "id": "EVENT_JOVIAN_01",
+            "name": "Шторм в атмосфере Юпитера",
+            "type": "Natural",
+            "triggers": [
+              "Weather_Pattern",
+              "Orbital_Mechanics"
+            ],
+            "description": "Мощный атмосферный шторм нарушает добычу гелия-3",
+            "effects": [
+              "Перебои в поставках энергии (+150% цена на энергоэлементы)",
+              "Опасность для добывающих платформ",
+              "Возможности для контрабанды во время хаоса"
+            ]
+          }
+        ],
+        "BELT_STATIONS": [
+          {
+            "id": "EVENT_BELT_01",
+            "name": "Астероид-убийца",
+            "type": "Hazard",
+            "triggers": [
+              "Navigation_Error",
+              "Sabotage"
+            ],
+            "description": "Крупный астероид меняет орбиту, угрожая станции",
+            "effects": [
+              "Экстренная эвакуация населения",
+              "Мобилизация всех доступных кораблей",
+              "Возможность героических действий для игрока"
+            ]
+          },
+          {
+            "id": "EVENT_BELT_02",
+            "name": "Обнаружение богатого астероида",
+            "type": "Discovery",
+            "triggers": [
+              "Prospecting_Success",
+              "Lucky_Find"
+            ],
+            "description": "Найден астероид с редкими металлами стоимостью в миллиарды",
+            "effects": [
+              "Золотая лихорадка в Поясе",
+              "Конфликты между старателями",
+              "Корпоративные войны за контроль"
+            ]
+          }
+        ],
+        "DEEP_SPACE": [
+          {
+            "id": "EVENT_DEEP_01",
+            "name": "Сигнал из межзвездного пространства",
+            "type": "Mystery",
+            "triggers": [
+              "Scientific_Discovery",
+              "Random_Event"
+            ],
+            "description": "Получен загадочный сигнал неизвестного происхождения",
+            "effects": [
+              "Мобилизация научного сообщества",
+              "Секретные правительственные проекты",
+              "Паника среди религиозных групп",
+              "Возможность первого контакта"
+            ]
+          }
+        ]
+      },
+      "event_chains": {
+        "description": "Каскадные события распространяющиеся между локациями",
+        "ECONOMIC_CASCADE": {
+          "trigger": "Major_Economic_Crisis",
+          "progression": [
+            "EVENT_EARTH_ECONOMIC_CRASH",
+            "EVENT_MARS_SUPPLY_SHORTAGE",
+            "EVENT_BELT_MINING_BOOM",
+            "EVENT_OUTER_SYSTEM_INDEPENDENCE_MOVEMENT"
+          ],
+          "total_duration": "6-18 months game time"
+        },
+        "TECHNOLOGY_CASCADE": {
+          "trigger": "Breakthrough_Discovery",
+          "progression": [
+            "EVENT_DISCOVERY_ANNOUNCEMENT",
+            "EVENT_CORPORATE_ESPIONAGE_WAR",
+            "EVENT_PROTOTYPE_THEFT",
+            "EVENT_TECHNOLOGICAL_REVOLUTION"
+          ],
+          "total_duration": "3-12 months game time"
+        }
+      }
+    }
+  },
+  "news_and_media_simulation": {
+    "module_name": "NEWS_AND_RUMORS_GENERATOR",
+    "description": "Процедурная генерация новостей, слухов и медиа-контента",
+    "version": "1.0_MEDIA_SIMULATION",
+    "news_categories": {
+      "politics_d12": [
+        "Выборы на [LOCATION] принесли неожиданные результаты",
+        "Дипломатический скандал между [FACTION_1] и [FACTION_2]",
+        "Новый закон о [RANDOM_TOPIC] вызвал протесты",
+        "Лидер [FACTION] подал в отставку после коррупционного скандала",
+        "Переговоры о торговом соглашении зашли в тупик",
+        "Территориальный спор из-за [LOCATION] обостряется",
+        "Массовые демонстрации в [LOCATION] требуют реформ",
+        "Военные учения [FACTION] вызвали напряженность",
+        "Экономические санкции против [FACTION] ужесточены",
+        "Мирные переговоры завершились подписанием соглашения",
+        "Политический кризис парализует работу правительства",
+        "Новый альянс между [FACTION_1] и [FACTION_2] объявлен"
+      ],
+      "technology_d10": [
+        "Прорыв в технологии [TECH_TYPE] обещает революцию",
+        "Новый тип двигателя сократит время полетов на 40%",
+        "ИИ нового поколения прошел тест Тьюринга",
+        "Обнаружен способ продления человеческой жизни до 200 лет",
+        "Квантовые компьютеры стали доступны для коммерческого использования",
+        "Телепортация малых объектов успешно продемонстрирована",
+        "Новые солнечные панели эффективнее в 10 раз",
+        "Революционная медицинская технология излечивает рак",
+        "Breakthrough в области искусственной гравитации",
+        "Первый успешный эксперимент по терраформированию"
+      ],
+      "crime_d15": [
+        "Дерзкое ограбление банка на [LOCATION]",
+        "Корпоративный шпионаж: украдены секретные чертежи",
+        "Пиратские атаки в системе [LOCATION] участились",
+        "Контрабанда [CONTRABAND_TYPE] пресечена таможней",
+        "Кибератака парализовала системы [FACTION]",
+        "Похищение известного ученого [NPC_NAME]",
+        "Взрыв на заводе: теракт или несчастный случай?",
+        "Коррупционная схема в правительстве [LOCATION] раскрыта",
+        "Торговец оружием арестован с крупной партией",
+        "Мошенничество с инвестициями: миллионы пропали",
+        "Убийство корпоративного руководителя расследуется",
+        "Подделка документов в иммиграционной службе",
+        "Наркотрафик через [LOCATION] набирает обороты",
+        "Кража произведений искусства из музея",
+        "Финансовая пирамида обрушилась, тысячи пострадавших"
+      ]
+    },
+    "rumors_d20": [
+      "Говорят, что [FACTION] разрабатывает секретное оружие",
+      "Ходят слухи о находке древних артефактов на [LOCATION]",
+      "[NPC_NAME] якобы связан с преступными группировками",
+      "Возможно, корпорация [FACTION] готовит враждебное поглощение",
+      "Шепчут, что правительство скрывает контакт с пришельцами",
+      "Поговаривают о скором открытии нового торгового маршрута",
+      "[LOCATION] может быть продана частной корпорации",
+      "Есть информация о готовящемся военном перевороте",
+      "Якобы найден способ мгновенного перемещения в пространстве",
+      "Ходят разговоры о тайном альянсе между [FACTION_1] и [FACTION_2]",
+      "Говорят, что [NPC_NAME] не тот, за кого себя выдает",
+      "Возможно, эпидемия на [LOCATION] была искусственной",
+      "Поступила информация о скором повышении налогов",
+      "Ходят слухи о забастовке в [INDUSTRY] сфере",
+      "Шепчут о том, что [LOCATION] будет закрыта для гражданских",
+      "Возможно, [FACTION] готовится к банкротству",
+      "Говорят о планах терраформирования [PLANET]",
+      "Есть слухи о новом смертельном вирусе в лабораториях",
+      "Поговаривают, что война неизбежна в ближайшие месяцы",
+      "Ходят разговоры о революционном открытии в физике"
+    ],
+    "media_reaction": {
+      "player_actions": [
+        "Неизвестный герой спас пассажиров корабля",
+        "Загадочная личность помешала корпоративной сделке",
+        "Храбрец предотвратил катастрофу на [LOCATION]",
+        "Кто такой таинственный благодетель с [LOCATION]?",
+        "Местный житель стал знаменитостью после [ACTION]"
+      ]
+    },
+    "media_ecosystem": {
+      "news_outlets": {
+        "Sol_System_News": {
+          "bias": "Earth-centric, pro-establishment",
+          "reach": "System-wide",
+          "reliability": "High for official news, low for Belt coverage"
+        },
+        "Mars_Tribune": {
+          "bias": "Mars independence, military-focused",
+          "reach": "Inner system",
+          "reliability": "High for military news, moderate for economics"
+        },
+        "Belt_Free_Press": {
+          "bias": "Pro-OPA, anti-corporate",
+          "reach": "Outer system primarily",
+          "reliability": "High for labor issues, questionable for science"
+        },
+        "Corporate_Weekly": {
+          "bias": "Pro-business, technology optimism",
+          "reach": "Corporate networks",
+          "reliability": "High for business news, biased for political coverage"
+        }
+      },
+      "information_flow": {
+        "official_channels": "Government announcements, corporate press releases",
+        "underground_networks": "OPA communications, criminal information networks",
+        "social_networks": "Civilian information sharing, rumor propagation",
+        "scientific_journals": "Research publications, academic discourse"
+      }
+    }
+  },
+  "space_encounter_system": {
+    "module_name": "SPACE_ENCOUNTER_GENERATOR",
+    "description": "Случайные встречи во время космических путешествий",
+    "version": "1.0_INFINITE_TRAVEL",
+    "encounter_frequency": {
+      "safe_routes": "5% chance per day of travel",
+      "dangerous_routes": "15% chance per day of travel",
+      "unexplored_space": "25% chance per day of travel"
+    },
+    "encounters_d20": [
+      {
+        "id": 1,
+        "name": "Пиратская засада",
+        "type": "combat",
+        "consequence": "Потеря груза или бой",
+        "theme_integration": "Усиливает киберпанк или военный эпос в зависимости от подхода"
+      },
+      {
+        "id": 2,
+        "name": "Сломанный корабль",
+        "type": "rescue",
+        "consequence": "Спасение или игнорирование",
+        "theme_integration": "Может стать романтической драмой или моральной дилеммой"
+      },
+      {
+        "id": 3,
+        "name": "Торговец в космосе",
+        "type": "trade",
+        "consequence": "Редкие товары или обман",
+        "theme_integration": "Социальная сатира торговых отношений"
+      },
+      {
+        "id": 4,
+        "name": "Военный патруль",
+        "type": "inspection",
+        "consequence": "Проверка документов",
+        "theme_integration": "Антиутопия контроля или военная процедура"
+      },
+      {
+        "id": 5,
+        "name": "Космический мусор",
+        "type": "obstacle",
+        "consequence": "Повреждения корабля",
+        "theme_integration": "Технотриллер навигационных опасностей"
+      },
+      {
+        "id": 6,
+        "name": "Радиовызов о помощи",
+        "type": "mystery",
+        "consequence": "Ловушка или настоящая беда",
+        "theme_integration": "Исследовательский триллер или мистика"
+      },
+      {
+        "id": 7,
+        "name": "Астероидное поле",
+        "type": "navigation",
+        "consequence": "Обход или риск",
+        "theme_integration": "Космоопера навигационного мастерства"
+      },
+      {
+        "id": 8,
+        "name": "Заброшенная станция",
+        "type": "exploration",
+        "consequence": "Сокровища или опасность",
+        "theme_integration": "Мистика покинутых мест"
+      },
+      {
+        "id": 9,
+        "name": "Корабль беженцев",
+        "type": "humanitarian",
+        "consequence": "Помощь или отказ",
+        "theme_integration": "Социальная драма и моральный выбор"
+      },
+      {
+        "id": 10,
+        "name": "Контрабандисты",
+        "type": "criminal",
+        "consequence": "Сделка или доносительство",
+        "theme_integration": "Киберпанк преступного мира"
+      },
+      {
+        "id": 11,
+        "name": "Научная экспедиция",
+        "type": "research",
+        "consequence": "Сотрудничество или конфликт",
+        "theme_integration": "Исследовательский триллер научных открытий"
+      },
+      {
+        "id": 12,
+        "name": "Солнечная буря",
+        "type": "hazard",
+        "consequence": "Укрытие или повреждения",
+        "theme_integration": "Технотриллер природных опасностей"
+      },
+      {
+        "id": 13,
+        "name": "Неизвестный сигнал",
+        "type": "mystery",
+        "consequence": "Исследование или игнорирование",
+        "theme_integration": "Мистика неизвестного"
+      },
+      {
+        "id": 14,
+        "name": "Корпоративный транспорт",
+        "type": "corporate",
+        "consequence": "Сотрудничество или саботаж",
+        "theme_integration": "Киберпанк корпоративной власти"
+      },
+      {
+        "id": 15,
+        "name": "Горняцкий корабль",
+        "type": "industrial",
+        "consequence": "Торговля ресурсами",
+        "theme_integration": "Социальная драма рабочего класса"
+      },
+      {
+        "id": 16,
+        "name": "Дипломатическая миссия",
+        "type": "political",
+        "consequence": "Почетный эскорт",
+        "theme_integration": "Космоопера политических интриг"
+      },
+      {
+        "id": 17,
+        "name": "Пиратская база",
+        "type": "location",
+        "consequence": "Избежать или штурмовать",
+        "theme_integration": "Военный эпос или космоопера приключений"
+      },
+      {
+        "id": 18,
+        "name": "Космическое кладбище",
+        "type": "exploration",
+        "consequence": "Исследование руин",
+        "theme_integration": "Мистика мертвых кораблей"
+      },
+      {
+        "id": 19,
+        "name": "Чужой артефакт",
+        "type": "discovery",
+        "consequence": "Изучение или продажа",
+        "theme_integration": "Исследовательский триллер первого контакта"
+      },
+      {
+        "id": 20,
+        "name": "Временная аномалия",
+        "type": "supernatural",
+        "consequence": "Магический эффект",
+        "theme_integration": "Мистика временных парадоксов"
+      }
+    ],
+    "encounter_complexity_scaling": {
+      "description": "Встречи становятся сложнее в зависимости от опыта персонажа и репутации",
+      "novice_encounters": "Простые торговые предложения, базовые опасности",
+      "experienced_encounters": "Сложные дилеммы, многосторонние конфликты",
+      "veteran_encounters": "Политические интриги, крупные заговоры, исторически значимые события"
+    }
+  },
+  "unified_narrative_integration": {
+    "theme_event_synthesis": {
+      "description": "Интеграция тематической системы с генераторами событий",
+      "event_theme_mapping": {
+        "political_events": "Усиливают киберпанк и антиутопию элементы",
+        "military_events": "Активируют военный эпос и космооперу",
+        "scientific_discoveries": "Подчеркивают исследовательский триллер и технотриллер",
+        "economic_crises": "Усиливают социальную сатиру и антиутопию",
+        "natural_disasters": "Активируют элементы выживания и технотриллера"
+      },
+      "cascading_theme_effects": {
+        "theme_momentum": "Повторяющиеся события одного типа усиливают соответствующий жанр",
+        "genre_fatigue": "Слишком много событий одного жанра снижает их эффективность",
+        "contrast_effects": "Резкая смена жанра создает драматический эффект"
+      }
+    },
+    "media_theme_integration": {
+      "description": "Новости и слухи отражают и усиливают текущую тематику игры",
+      "theme_news_generation": {
+        "cyberpunk_active": "Больше новостей о корпоративных скандалах и технологическом неравенстве",
+        "space_opera_active": "Фокус на эпических конфликтах и героических поступках",
+        "dystopia_active": "Новости о правительственном контроле и ограничении свобод",
+        "tech_thriller_active": "Сообщения о технологических угрозах и научных прорывах"
+      },
+      "rumor_authenticity_system": {
+        "true_rumors": "20% слухов основаны на реальных событиях",
+        "partially_true": "40% содержат зерно истины с искажениями",
+        "false_rumors": "40% полностью ложные, но могут стать самоисполняющимися пророчествами"
+      }
+    },
+    "encounter_narrative_depth": {
+      "description": "Космические встречи адаптируются под текущую тематику и развитие персонажа",
+      "theme_encounter_modification": {
+        "cyberpunk_filter": "Встречи приобретают элементы корпоративных интриг и технологического неравенства",
+        "romance_filter": "Потенциальные романтические подтексты в подходящих встречах",
+        "mystery_filter": "Дополнительные слои загадочности и скрытых мотивов",
+        "satire_filter": "Ироническое представление серьезных ситуаций"
+      },
+      "character_reputation_effects": {
+        "hero_reputation": "Больше просьб о помощи и спасательных миссий",
+        "criminal_reputation": "Встречи с правоохранительными органами и конкурентами",
+        "corporate_reputation": "Деловые предложения и корпоративные интриги",
+        "scientific_reputation": "Приглашения к исследовательским проектам"
+      }
+    }
+  },
+  "dynamic_atmosphere_engine": {
+    "description": "Система динамического создания атмосферы на основе множественных факторов",
+    "atmosphere_components": {
+      "visual_style": {
+        "lighting": "От неонового киберпанка до эпических просторов космооперы",
+        "color_palette": "Адаптируется под доминирующий жанр сцены",
+        "environmental_details": "Фокус на деталях, соответствующих тематике"
+      },
+      "audio_landscape": {
+        "ambient_sounds": "Фоновые звуки, соответствующие жанру и локации",
+        "music_selection": "Динамический выбор музыкального сопровождения",
+        "sound_effects": "Акцентирование важных моментов звуковыми эффектами"
+      },
+      "narrative_voice": {
+        "description_style": "Стиль описаний адаптируется под жанр",
+        "dialogue_flavoring": "Окраска диалогов согласно тематике",
+        "internal_monologue": "Мысли персонажа отражают его тональные модификаторы"
+      }
+    },
+    "contextual_adaptation": {
+      "location_atmosphere": "Каждая локация имеет базовую атмосферу, модифицируемую событиями",
+      "time_of_day_effects": "Время влияет на восприятие событий и их эмоциональную окраску",
+      "weather_and_conditions": "Космические условия влияют на настроение сцен",
+      "social_context": "Присутствие определенных NPC изменяет атмосферу взаимодействий"
+    },
+    "emotional_progression": {
+      "scene_emotional_arc": "Каждая сцена имеет эмоциональную динамику",
+      "tension_management": "Контроль нарастания и разрядки напряжения",
+      "cathartic_moments": "Планирование эмоциональных кульминаций",
+      "quiet_interludes": "Моменты отдыха между интенсивными событиями"
+    }
+  },
+  "system_apis": {
+    "theme_management": [
+      {
+        "name": "GetCurrentTheme",
+        "description": "Определение доминирующей темы на основе недавних событий",
+        "parameters": "recent_events, character_lifepath, current_location"
+      },
+      {
+        "name": "ApplyGenreFilter",
+        "description": "Применение жанрового фильтра к событию или сцене",
+        "parameters": "base_content, primary_genre, secondary_genre, intensity"
+      },
+      {
+        "name": "UpdateToneModifiers",
+        "description": "Обновление тональных модификаторов персонажа",
+        "parameters": "character_id, life_event, magnitude, duration"
+      }
+    ],
+    "event_generation": [
+      {
+        "name": "GenerateLocationEvent",
+        "description": "Создание события, специфичного для локации",
+        "parameters": "location_id, event_type, complexity_level, faction_involvement"
+      },
+      {
+        "name": "TriggerEventChain",
+        "description": "Запуск каскадной цепи событий",
+        "parameters": "initial_event, chain_type, duration, scope"
+      },
+      {
+        "name": "GenerateNews",
+        "description": "Создание новостного сюжета на основе недавних событий",
+        "parameters": "event_source, news_outlet_bias, reach, reliability"
+      }
+    ],
+    "encounter_systems": [
+      {
+        "name": "GenerateSpaceEncounter",
+        "description": "Создание случайной встречи в космосе",
+        "parameters": "route_danger_level, character_reputation, active_themes"
+      },
+      {
+        "name": "AdaptEncounterToTheme",
+        "description": "Адаптация встречи под текущую тематику",
+        "parameters": "base_encounter, dominant_genre, character_tone_modifiers"
+      }
+    ],
+    "atmosphere_control": [
+      {
+        "name": "SetSceneAtmosphere",
+        "description": "Установка атмосферы для конкретной сцены",
+        "parameters": "location, characters_present, dominant_theme, emotional_target"
+      },
+      {
+        "name": "TransitionAtmosphere",
+        "description": "Плавный переход между атмосферными настройками",
+        "parameters": "current_atmosphere, target_atmosphere, transition_speed"
+      }
+    ]
+  },
+  "usage_guidelines": {
+    "for_game_masters": [
+      "Используйте тональные модификаторы для создания персонализированного опыта",
+      "Смешивайте жанры для создания уникальных сцен",
+      "Позвольте событиям естественно влиять на атмосферу игры",
+      "Используйте новости и слухи для создания живого мира",
+      "Адаптируйте космические встречи под развитие сюжета"
+    ],
+    "for_players": [
+      "Ваши действия влияют на тональность будущих сцен",
+      "Обращайте внимание на новости и слухи - они могут содержать важную информацию",
+      "Происхождение персонажа определяет его восприятие событий",
+      "Космические путешествия могут принести неожиданные встречи",
+      "Репутация влияет на типы событий, с которыми вы сталкиваетесь"
+    ]
+  },
+  "integration_mechanics": {
+    "lifepath_theme_integration": {
+      "origin_theme_influence": "Происхождение определяет предпочтительные жанры и тональность",
+      "specialization_narrative_voice": "Специализация влияет на описание действий и мыслей",
+      "formative_events_impact": "События формативных лет создают тематические якоря"
+    },
+    "world_event_theme_coupling": {
+      "event_theme_amplification": "События усиливают соответствующие тематические элементы",
+      "theme_event_generation": "Доминирующие темы влияют на типы генерируемых событий",
+      "feedback_loops": "Тематические петли усиления между событиями и атмосферой"
+    },
+    "faction_narrative_influence": {
+      "faction_genre_associations": "Каждая фракция связана с определенными жанрами",
+      "reputation_theme_modification": "Отношения с фракциями изменяют тематическое восприятие",
+      "faction_news_bias": "Фракции влияют на освещение событий в медиа"
+    }
+  },
+  "system_parameters": {
+    "theme_change_frequency": "Доминирующая тема может меняться каждые 3-5 сессий",
+    "tone_modifier_bounds": "Тональные модификаторы ограничены диапазоном 0-10",
+    "event_generation_rate": "1-3 крупных события на локацию в месяц игрового времени",
+    "news_cycle_duration": "Новости остаются актуальными 1-2 недели игрового времени",
+    "encounter_complexity_scaling": "Сложность встреч растет с репутацией и опытом персонажа"
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "module_name": "AUTOMATION_V2",
+  "version": "2.0_COMPREHENSIVE_AUTOMATION",
+  "description": "Комплексная система автоматизации для ИИ-ГМ с полной интеграцией модулей",
+  "replaces": "AUTOMATION.json",
+  "time_automation": {
+    "automatic_time_progression": {
+      "description": "Автоматическое продвижение игрового времени",
+      "integration": "WORLD_TIME_SYSTEM + AI_RPG_CORE_V2",
+      "rules": [
+        "Dialogue: auto-advance 15-30 minutes",
+        "Combat: auto-advance based on rounds (15-45 minutes)",
+        "Rest: player chooses 1-8 hours, auto-advance",
+        "Travel: auto-calculate using TRADE_ROUTES_MASTER",
+        "Crafting: auto-advance based on CRAFTING_BLUEPRINTS"
+      ]
+    },
+    "event_scheduling": {
+      "daily_automation": [
+        "Generate news using NEWS_AND_RUMORS_GENERATOR",
+        "Update market prices using MARKET_EVENT_GENERATOR",
+        "Move NPCs using NPC_ARCHETYPES schedules",
+        "Process reputation decay",
+        "Check for random encounters"
+      ],
+      "weekly_automation": [
+        "Generate minor events using ENHANCED_EVENT_GENERATOR_V2",
+        "Update faction relations using FACTIONS_MASTER",
+        "Process skill degradation if unused",
+        "Generate new rumors and conspiracy developments"
+      ],
+      "monthly_automation": [
+        "Major political events using POLITICS.json",
+        "Economic cycle updates using ECONOMY.json",
+        "Technology breakthroughs and patents",
+        "Large-scale faction movements"
+      ],
+      "yearly_automation": [
+        "Check for LEGENDARY events (1-3 year frequency)",
+        "System-wide political changes",
+        "Technological paradigm shifts",
+        "Generational changes in NPC leadership"
+      ]
+    }
+  },
+  "npc_automation": {
+    "procedural_npc_generation": {
+      "frequency": "As needed + daily background generation",
+      "sources": [
+        "NPC_ARCHETYPES (200 types)",
+        "NPC_NAME_GENERATOR",
+        "CHARACTER_LIFEPATH_V3_MASSIVE"
+      ],
+      "automation_rules": [
+        "Auto-generate names using regional tables",
+        "Auto-assign personality from archetypes",
+        "Auto-calculate relationships with existing NPCs",
+        "Auto-determine faction affiliations",
+        "Auto-generate goals and motivations"
+      ]
+    },
+    "npc_behavior_automation": {
+      "daily_schedules": "Auto-generate based on profession and personality",
+      "relationship_updates": "Auto-process reputation changes",
+      "goal_pursuit": "NPCs auto-advance their personal agendas",
+      "faction_loyalty": "Auto-adjust based on faction events",
+      "aging_and_death": "Long-term NPC lifecycle management"
+    }
+  },
+  "economic_automation": {
+    "market_fluctuations": {
+      "price_updates": "Daily automatic price changes",
+      "supply_demand": "Auto-calculate based on events and trade routes",
+      "economic_cycles": "Boom/bust cycles with 3-7 year periods",
+      "crisis_response": "Auto-adjust all prices during economic events"
+    },
+    "trade_automation": {
+      "route_efficiency": "Auto-calculate based on political stability",
+      "pirate_activity": "Random disruptions affecting specific routes",
+      "cargo_generation": "Auto-generate valuable cargo opportunities",
+      "market_opportunities": "Auto-identify arbitrage possibilities"
+    }
+  },
+  "reputation_automation": {
+    "automatic_reputation_tracking": {
+      "individual_relationships": "Auto-update NPC opinions based on actions",
+      "faction_standing": "Auto-calculate cascade effects across related factions",
+      "reputation_decay": "Gradual decrease if no interaction for months",
+      "reputation_bonuses": "Auto-apply lifepath bonuses and penalties"
+    },
+    "influence_calculation": {
+      "tier_progression": "Auto-check conditions for tier advancement",
+      "influence_spheres": "Track influence in different regions/sectors",
+      "network_effects": "Auto-calculate influence through connections",
+      "influence_decay": "Gradual loss without active maintenance"
+    }
+  },
+  "content_automation": {
+    "quest_generation": {
+      "personal_quests": "Auto-generate based on character lifepath",
+      "faction_missions": "Auto-create based on faction needs and conflicts",
+      "random_encounters": "Auto-generate during travel and exploration",
+      "conspiracy_development": "Long-term plot threads that evolve automatically"
+    },
+    "news_automation": {
+      "daily_news": "Auto-generate using political events and faction actions",
+      "rumor_propagation": "Auto-spread rumors based on truth and distance",
+      "media_reactions": "Auto-generate media response to player actions",
+      "propaganda_campaigns": "Auto-manage faction PR efforts"
+    }
+  },
+  "travel_automation": {
+    "journey_calculation": {
+      "route_planning": "Auto-calculate optimal routes using TRADE_ROUTES_MASTER",
+      "time_estimation": "Precise travel time based on vessel and route",
+      "random_encounters": "Auto-generate space encounters during travel",
+      "fuel_consumption": "Auto-calculate costs and requirements"
+    },
+    "travel_events": {
+      "pirate_attacks": "Probability based on route danger level",
+      "mechanical_failures": "Based on vessel condition and journey length",
+      "discovery_opportunities": "Rare events for exploration and profit",
+      "passenger_interactions": "Social encounters during long journeys"
+    }
+  },
+  "skill_automation": {
+    "experience_tracking": {
+      "automatic_xp_awards": "Auto-award XP for successful skill use",
+      "critical_success_bonus": "+50% XP for critical successes",
+      "difficulty_bonus": "+25% XP for high difficulty (DC 20+)",
+      "teaching_bonus": "+10% XP when teaching others"
+    },
+    "skill_degradation": {
+      "unused_skills": "Level 5+ skills lose 1 XP per 6 months without use",
+      "lifepath_protection": "Lifepath skills immune to degradation",
+      "maintenance_training": "Auto-suggest training to prevent loss"
+    }
+  },
+  "psychological_automation": {
+    "stress_accumulation": {
+      "combat_stress": "Auto-add stress for violent encounters",
+      "moral_stress": "Auto-add stress for ethical violations",
+      "isolation_stress": "Auto-add stress for extended solitude",
+      "responsibility_stress": "Auto-add stress for leadership decisions"
+    },
+    "therapy_suggestions": {
+      "critical_stress": "Auto-suggest therapy at 80%+ stress",
+      "available_therapists": "Auto-reference PSYCHOLOGY_THERAPY_REFERENCE",
+      "treatment_scheduling": "Auto-calculate therapy duration and cost",
+      "recovery_tracking": "Auto-monitor mental health improvements"
+    }
+  },
+  "notification_system": {
+    "automatic_alerts": [
+      "🕐 Time advancement notifications",
+      "💰 Market opportunity alerts",
+      "📈 Reputation change notifications",
+      "⚠️ Stress level warnings",
+      "🎯 Mission deadline reminders",
+      "📰 Relevant news updates",
+      "🤝 Relationship status changes",
+      "⭐ Skill advancement opportunities"
+    ],
+    "priority_system": {
+      "critical": "Immediate player attention required",
+      "high": "Important but not urgent",
+      "medium": "Beneficial to know",
+      "low": "Background information"
+    }
+  }
+}
