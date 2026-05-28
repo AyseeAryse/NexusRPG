@@ -1,0 +1,19 @@
+# NexusRPG Dependencies
+# Install with: pip install -r requirements.txt
+
+# Web Framework
+Flask>=3.0.0
+
+# HTTP Client for AI API calls
+requests>=2.31.0
+
+# Optional: For better async support
+# aiohttp>=3.9.0
+
+# Optional: For enhanced logging
+# colorama>=0.4.6
+
+# Development dependencies (optional)
+# pytest>=7.4.0
+# black>=23.0.0
+# flake8>=6.0.0
