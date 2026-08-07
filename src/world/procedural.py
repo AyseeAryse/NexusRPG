@@ -567,7 +567,7 @@ class WorldTicker:
 
     def _get_tiered_manager(self):
         if self._tiered_manager is None:
-            from content_expansion_v4 import TieredEventManager
+            from src.content.v4_legacy import TieredEventManager
             self._tiered_manager = TieredEventManager()
         return self._tiered_manager
 
@@ -596,7 +596,7 @@ class WorldTicker:
         game_time = getattr(game_state, 'game_time', None) or {"year": 2387, "month": 3, "day": 15, "hour": 8}
 
         # === LEGACY template events (also cooldown-based now) ===
-        from content_expansion_v4 import _game_time_to_hours
+        from src.content.v4_legacy import _game_time_to_hours
         current_hours = _game_time_to_hours(game_time)
         legacy_elapsed = current_hours - self._last_legacy_hours
 

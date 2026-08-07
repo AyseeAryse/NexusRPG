@@ -9,34 +9,34 @@ import uuid
 import math
 from datetime import datetime
 from typing import Dict, List, Optional, Any, Tuple
-from knowledge_base import KnowledgeBase
-from ai_connector import AIConnector
-from creation_data import ORIGINS, FORMATIVE_YEARS, SPECIALIZATIONS
-from content_expansion_v4 import (
+from src.ai.knowledge_base import KnowledgeBase
+from src.ai.connector import AIConnector
+from src.content.creation_data import ORIGINS, FORMATIVE_YEARS, SPECIALIZATIONS
+from src.content.v4_legacy import (
     get_all_origins_v4, get_all_formative_years_v4, get_all_specializations_v4,
 )
-from content_expansion_v3 import get_all_shop_items_v3
-from world_sim import WorldSimulator
-from npc_registry import NPCRegistry, SPEECH_STYLES
-from galaxy_map import GalaxyMap
-from game_systems import (QuestTracker, FactionSystem, PsychologySystem,
-                          PerkSystem, LevelUpSystem, CraftingSystem,
-                          LocationEvents)
-from procedural_engine import ProceduralQuestGenerator, WorldTicker, ConsequenceTracker
-from subsystems import HackingSystem, InvestigationSystem, CompanionSystem, ShipSystem, PropertySystem
-from content_expansion_v2 import get_all_shop_items  # kept for compat
+from src.content.v3_legacy import get_all_shop_items_v3
+from src.world.simulation import WorldSimulator
+from src.world.npc_registry import NPCRegistry, SPEECH_STYLES
+from src.world.galaxy import GalaxyMap
+from src.systems.game_systems import (QuestTracker, FactionSystem, PsychologySystem,
+                                      PerkSystem, LevelUpSystem, CraftingSystem,
+                                      LocationEvents)
+from src.world.procedural import ProceduralQuestGenerator, WorldTicker, ConsequenceTracker
+from src.systems.subsystems import HackingSystem, InvestigationSystem, CompanionSystem, ShipSystem, PropertySystem
+from src.content.v2_legacy import get_all_shop_items  # kept for compat
 # V5: Quest chains, companions, unique NPCs, auto-reputation, world effects
-from quest_chains import QUEST_CHAINS, get_available_chains, get_chain_stage
-from companions import COMPANIONS, get_available_companions, get_companion_by_id, get_loyalty_level, get_companion_combat_bonus
-from content_expansion_v5 import (UNIQUE_NPCS, WorldEffectsManager,
+from src.systems.quests import QUEST_CHAINS, get_available_chains, get_chain_stage
+from src.systems.companions import COMPANIONS, get_available_companions, get_companion_by_id, get_loyalty_level, get_companion_combat_bonus
+from src.content.v5_legacy import (UNIQUE_NPCS, WorldEffectsManager,
     calculate_auto_reputation, apply_reputation_changes, get_reputation_summary)
 # V6: Hard mechanics — buy/sell, travel, property income, conversation management
-from mechanics import (ShopMechanics, TravelSystem, PropertyIncomeManager,
+from src.systems.mechanics import (ShopMechanics, TravelSystem, PropertyIncomeManager,
     ConversationManager, detect_mechanical_action)
 # V7: Combat engine, fail-forward, level up, subsystem triggers
-from combat_engine import (CombatEngine, pick_enemies_for_encounter, apply_defeat,
+from src.systems.combat import (CombatEngine, pick_enemies_for_encounter, apply_defeat,
     process_xp_gain, detect_subsystem_trigger)
-import config
+from src import config
 
 
 # ══════════ BALANCE CONSTANTS ══════════
@@ -455,7 +455,7 @@ class GameEngine:
         if world_events:
             self.state.world_context["world_events"] = world_events
             # V5: Apply event effects to world (prices, lockdowns, etc.)
-            from content_expansion_v4 import _game_time_to_hours
+            from src.content.v4_legacy import _game_time_to_hours
             current_h = _game_time_to_hours(self.state.game_time)
             for we in world_events:
                 self.world_effects.apply_event_effects(we, current_h)
@@ -473,13 +473,13 @@ class GameEngine:
             self.state.world_context["rep_changes"] = get_reputation_summary(rep_changes)
 
         # === V5: WORLD EFFECTS CONTEXT — active price mods, lockdowns ===
-        from content_expansion_v4 import _game_time_to_hours as _gth
+        from src.content.v4_legacy import _game_time_to_hours as _gth
         active_fx = self.world_effects.get_active_effects_summary(_gth(self.state.game_time))
         if active_fx:
             self.state.world_context["active_world_effects"] = active_fx
 
         # === V5: QUEST CHAIN — check if player should be offered one ===
-        from content_expansion_v4 import _game_time_to_hours as _gth2
+        from src.content.v4_legacy import _game_time_to_hours as _gth2
         current_hours = _gth2(self.state.game_time)
         # Offer every 5-10 game-days (120-240 hours)
         if not hasattr(self, '_last_chain_offer_h'):
@@ -941,7 +941,7 @@ class GameEngine:
 
         if action_type == "buy":
             # Get shop items for current location
-            from content_expansion_v4 import _game_time_to_hours
+            from src.content.v4_legacy import _game_time_to_hours
             event_mods = {}
             for cat in ["weapons", "armor", "implants", "gadgets", "consumables"]:
                 mod = self.get_shop_price_modifier(cat)
@@ -1173,7 +1173,7 @@ class GameEngine:
 
         elif sys_type == "crafting":
             target = subsystem.get("target", "")
-            from game_systems import CraftingSystem
+            from src.systems.game_systems import CraftingSystem
             recipes = CraftingSystem.get_recipes()
             # Find matching recipe
             matched = None
@@ -1532,7 +1532,7 @@ class GameEngine:
         self.active_chain = save_data.get("v5_active_chain", {})
         self.completed_chains = save_data.get("v5_completed_chains", [])
         # Restore world effects
-        from content_expansion_v5 import WorldEffectsManager, ActiveWorldEffect
+        from src.content.v5_legacy import WorldEffectsManager, ActiveWorldEffect
         self.world_effects = WorldEffectsManager()
         for we_data in save_data.get("v5_world_effects", []):
             self.world_effects.active_effects.append(ActiveWorldEffect(
@@ -1775,11 +1775,11 @@ class GameEngine:
 
     def get_shop_price_modifier(self, category: str = "all") -> float:
         """Get current price modifier from active world effects."""
-        from content_expansion_v4 import _game_time_to_hours
+        from src.content.v4_legacy import _game_time_to_hours
         return self.world_effects.get_price_modifier(
             category, _game_time_to_hours(self.state.game_time))
 
     def get_world_effects_summary(self) -> list:
-        from content_expansion_v4 import _game_time_to_hours
+        from src.content.v4_legacy import _game_time_to_hours
         return self.world_effects.get_active_effects_summary(
             _game_time_to_hours(self.state.game_time))

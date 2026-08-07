@@ -4,15 +4,15 @@ Covers: quests, factions, psychology, perks, crafting, leveling, location-events
 """
 import random
 from typing import Dict, List, Optional, Tuple
-from content_expansion import (
+from src.content.base import (
     EXPANDED_PERKS, EXPANDED_RECIPES, EXPANDED_MATERIALS,
     EXPANDED_TRAVEL_EVENTS, EXPANDED_SPACE_EVENTS,
 )
-from content_expansion_v2 import (
+from src.content.v2_legacy import (
     V2_PERKS, V2_RECIPES, V2_TRAVEL_EVENTS, V2_SPACE_EVENTS,
     get_all_perks, get_all_recipes, get_all_travel_events, get_all_space_events,
 )
-from content_expansion_v3 import get_all_perks_v3
+from src.content.v3_legacy import get_all_perks_v3
 
 
 # ════════════════════════════════════════════════════════════

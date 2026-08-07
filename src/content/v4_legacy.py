@@ -171,7 +171,7 @@ def load_json_specializations():
 
 def get_all_origins_v4():
     """V3 code origins + JSON origins, deduped."""
-    from content_expansion_v3 import get_all_origins
+    from src.content.v3_legacy import get_all_origins
     merged = {o["id"]: o for o in get_all_origins()}
     for o in load_json_origins():
         if o["id"] not in merged:
@@ -181,7 +181,7 @@ def get_all_origins_v4():
 
 def get_all_formative_years_v4():
     """V3 code + JSON formative years."""
-    from content_expansion_v3 import get_all_formative_years
+    from src.content.v3_legacy import get_all_formative_years
     merged = {f["id"]: f for f in get_all_formative_years()}
     for f in load_json_formative_years():
         if f["id"] not in merged:
@@ -191,7 +191,7 @@ def get_all_formative_years_v4():
 
 def get_all_specializations_v4():
     """V3 code + JSON specializations."""
-    from content_expansion_v3 import get_all_specializations
+    from src.content.v3_legacy import get_all_specializations
     merged = {s["id"]: s for s in get_all_specializations()}
     for s in load_json_specializations():
         if s["id"] not in merged:

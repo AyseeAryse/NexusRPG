@@ -414,7 +414,7 @@ class CompanionSystem:
 
     def get_available_recruits(self, location = None) -> List[Dict]:
         """Get companions available at current location."""
-        from companions import COMPANIONS
+        from src.systems.companions import COMPANIONS
 
         recruited_ids = {c.get("template_id") for c in self.companions}
         dismissed_ids = {c.get("template_id") for c in self.dismissed}
