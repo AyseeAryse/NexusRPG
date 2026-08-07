@@ -451,7 +451,7 @@ class GameEngine:
         if world_events:
             self.state.world_context["world_events"] = world_events
             # V5: Apply event effects to world (prices, lockdowns, etc.)
-            from content_expansion_v4 import _game_time_to_hours
+            from src.content.v4_legacy import _game_time_to_hours
             current_h = _game_time_to_hours(self.state.game_time)
             for we in world_events:
                 self.world_effects.apply_event_effects(we, current_h)
@@ -469,13 +469,13 @@ class GameEngine:
             self.state.world_context["rep_changes"] = get_reputation_summary(rep_changes)
 
         # === V5: WORLD EFFECTS CONTEXT — active price mods, lockdowns ===
-        from content_expansion_v4 import _game_time_to_hours as _gth
+        from src.content.v4_legacy import _game_time_to_hours as _gth
         active_fx = self.world_effects.get_active_effects_summary(_gth(self.state.game_time))
         if active_fx:
             self.state.world_context["active_world_effects"] = active_fx
 
         # === V5: QUEST CHAIN — check if player should be offered one ===
-        from content_expansion_v4 import _game_time_to_hours as _gth2
+        from src.content.v4_legacy import _game_time_to_hours as _gth2
         current_hours = _gth2(self.state.game_time)
         # Offer every 5-10 game-days (120-240 hours)
         if not hasattr(self, '_last_chain_offer_h'):
@@ -937,7 +937,7 @@ class GameEngine:
 
         if action_type == "buy":
             # Get shop items for current location
-            from content_expansion_v4 import _game_time_to_hours
+            from src.content.v4_legacy import _game_time_to_hours
             event_mods = {}
             for cat in ["weapons", "armor", "implants", "gadgets", "consumables"]:
                 mod = self.get_shop_price_modifier(cat)
@@ -1169,7 +1169,7 @@ class GameEngine:
 
         elif sys_type == "crafting":
             target = subsystem.get("target", "")
-            from game_systems import CraftingSystem
+            from src.systems.game_systems import CraftingSystem
             recipes = CraftingSystem.get_recipes()
             # Find matching recipe
             matched = None
@@ -1528,7 +1528,7 @@ class GameEngine:
         self.active_chain = save_data.get("v5_active_chain", {})
         self.completed_chains = save_data.get("v5_completed_chains", [])
         # Restore world effects
-        from content_expansion_v5 import WorldEffectsManager, ActiveWorldEffect
+        from src.content.v5_legacy import WorldEffectsManager, ActiveWorldEffect
         self.world_effects = WorldEffectsManager()
         for we_data in save_data.get("v5_world_effects", []):
             self.world_effects.active_effects.append(ActiveWorldEffect(
@@ -1771,11 +1771,11 @@ class GameEngine:
 
     def get_shop_price_modifier(self, category: str = "all") -> float:
         """Get current price modifier from active world effects."""
-        from content_expansion_v4 import _game_time_to_hours
+        from src.content.v4_legacy import _game_time_to_hours
         return self.world_effects.get_price_modifier(
             category, _game_time_to_hours(self.state.game_time))
 
     def get_world_effects_summary(self) -> list:
-        from content_expansion_v4 import _game_time_to_hours
+        from src.content.v4_legacy import _game_time_to_hours
         return self.world_effects.get_active_effects_summary(
             _game_time_to_hours(self.state.game_time))

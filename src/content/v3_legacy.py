@@ -707,7 +707,7 @@ V3_SHOP_ITEMS = {
 
 def get_all_origins():
     """Merges base ORIGINS + V3_ORIGINS."""
-    from creation_data import ORIGINS
+    from src.content.creation_data import ORIGINS
     merged = {o["id"]: o for o in ORIGINS}
     for o in V3_ORIGINS:
         if o["id"] not in merged:
@@ -716,7 +716,7 @@ def get_all_origins():
 
 def get_all_formative_years():
     """Merges base FORMATIVE_YEARS + V3."""
-    from creation_data import FORMATIVE_YEARS
+    from src.content.creation_data import FORMATIVE_YEARS
     merged = {f["id"]: f for f in FORMATIVE_YEARS}
     for f in V3_FORMATIVE_YEARS:
         if f["id"] not in merged:
@@ -725,7 +725,7 @@ def get_all_formative_years():
 
 def get_all_specializations():
     """Merges base SPECIALIZATIONS + V3."""
-    from creation_data import SPECIALIZATIONS
+    from src.content.creation_data import SPECIALIZATIONS
     merged = {s["id"]: s for s in SPECIALIZATIONS}
     for s in V3_SPECIALIZATIONS:
         if s["id"] not in merged:
@@ -734,7 +734,7 @@ def get_all_specializations():
 
 def get_all_perks_v3():
     """Returns merged V1 + V2 + V3 perks."""
-    from content_expansion_v2 import get_all_perks
+    from src.content.v2_legacy import get_all_perks
     merged = {p["id"]: p for p in get_all_perks()}
     for p in V3_PERKS:
         if p["id"] not in merged:
@@ -743,7 +743,7 @@ def get_all_perks_v3():
 
 def get_all_shop_items_v3():
     """Merges V1 + V2 + V3 shop items."""
-    from content_expansion_v2 import get_all_shop_items
+    from src.content.v2_legacy import get_all_shop_items
     base = get_all_shop_items()
     for cat, items in V3_SHOP_ITEMS.items():
         if cat not in base:

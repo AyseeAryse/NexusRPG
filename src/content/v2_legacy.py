@@ -618,7 +618,7 @@ V2_SPACE_EVENTS = [
 
 def get_all_perks():
     """Returns merged V1 + V2 perks, deduped by id."""
-    from content_expansion import EXPANDED_PERKS
+    from src.content.base import EXPANDED_PERKS
     merged = {p["id"]: p for p in EXPANDED_PERKS}
     for p in V2_PERKS:
         if p["id"] not in merged:
@@ -626,7 +626,7 @@ def get_all_perks():
     return list(merged.values())
 
 def get_all_recipes():
-    from content_expansion import EXPANDED_RECIPES
+    from src.content.base import EXPANDED_RECIPES
     merged = {r["id"]: r for r in EXPANDED_RECIPES}
     for r in V2_RECIPES:
         if r["id"] not in merged:
@@ -634,16 +634,16 @@ def get_all_recipes():
     return list(merged.values())
 
 def get_all_travel_events():
-    from content_expansion import EXPANDED_TRAVEL_EVENTS
+    from src.content.base import EXPANDED_TRAVEL_EVENTS
     return EXPANDED_TRAVEL_EVENTS + V2_TRAVEL_EVENTS
 
 def get_all_space_events():
-    from content_expansion import EXPANDED_SPACE_EVENTS
+    from src.content.base import EXPANDED_SPACE_EVENTS
     return EXPANDED_SPACE_EVENTS + V2_SPACE_EVENTS
 
 def get_all_shop_items():
     """Merges V1 BASE_SHOP_ITEMS + V2_SHOP_ITEMS, deduped by id."""
-    from world_sim import BASE_SHOP_ITEMS
+    from src.world.simulation import BASE_SHOP_ITEMS
     merged = {}
     for cat in set(list(BASE_SHOP_ITEMS.keys()) + list(V2_SHOP_ITEMS.keys())):
         v1 = {i["id"]: i for i in BASE_SHOP_ITEMS.get(cat, [])}

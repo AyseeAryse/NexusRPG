@@ -529,9 +529,9 @@ def launch_game():
     else:
         game_dir = os.path.dirname(os.path.abspath(__file__))
 
-    server_path = os.path.join(game_dir, "server.py")
+    server_path = os.path.join(game_dir, "src", "server", "app.py")
     if not os.path.exists(server_path):
-        status("✗", f"Файл server.py не найден в {game_dir}", Colors.RED)
+        status("✗", f"Файл src/server/app.py не найден в {game_dir}", Colors.RED)
         return False
 
     port = LAUNCHER_CONFIG["game_port"]
@@ -588,7 +588,7 @@ def launch_game():
     else:
         # === DEV MODE: запускаем как subprocess ===
         try:
-            subprocess.run([sys.executable, server_path], cwd=game_dir)
+            subprocess.run([sys.executable, "-m", "src.server.app"], cwd=game_dir)
         except KeyboardInterrupt:
             print(f"\n\n  {Colors.YELLOW}Игра остановлена. До встречи, пилот!{Colors.RESET}\n")
         except Exception as e:
@@ -610,13 +610,13 @@ def check_game_files():
         game_dir = os.path.dirname(os.path.abspath(__file__))
 
     critical_files = [
-        "server.py",
-        "game_engine.py",
-        "config.py",
-        "ai_connector.py",
-        "combat_engine.py",
-        "galaxy_map.py",
-        "subsystems.py",
+        "src/server/app.py",
+        "src/core/engine.py",
+        "src/config.py",
+        "src/ai/connector.py",
+        "src/systems/combat.py",
+        "src/world/galaxy.py",
+        "src/systems/subsystems.py",
         "templates/index.html",
         "static/app.js",
         "static/style.css",

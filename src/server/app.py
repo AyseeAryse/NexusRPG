@@ -4,14 +4,20 @@ AI RPG Server - Flask web application.
 import json
 import os
 import random
+from pathlib import Path
 from flask import Flask, render_template, request, jsonify, Response, stream_with_context
-from game_engine import GameEngine
-from game_systems import (QuestTracker, FactionSystem, PsychologySystem,
-                          PerkSystem, LevelUpSystem, CraftingSystem,
-                          LocationEvents)
-import config
+from src.core.engine import GameEngine
+from src.systems.game_systems import (QuestTracker, FactionSystem, PsychologySystem,
+                                      PerkSystem, LevelUpSystem, CraftingSystem,
+                                      LocationEvents)
+from src import config
 
-app = Flask(__name__, template_folder="templates", static_folder="static")
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+app = Flask(
+    __name__,
+    template_folder=str(PROJECT_ROOT / "templates"),
+    static_folder=str(PROJECT_ROOT / "static"),
+)
 
 import logging, traceback
 logging.basicConfig(filename="server_errors.log", level=logging.ERROR,
@@ -104,7 +110,8 @@ def api_settings():
     if "max_tokens" in data:
         config.AI_MAX_TOKENS = int(data["max_tokens"])
 
-    engine.ai = __import__("ai_connector").AIConnector()
+    from src.ai.connector import AIConnector
+    engine.ai = AIConnector()
     return jsonify({"status": "ok"})
 
 # ---- API: Character Creation ----
@@ -160,7 +167,7 @@ def api_action_stream():
         return jsonify(result)
 
     # === V7: SUBSYSTEM TRIGGER (hacking/investigation/crafting/combat) ===
-    from combat_engine import detect_subsystem_trigger
+    from src.systems.combat import detect_subsystem_trigger
     subsystem = detect_subsystem_trigger(action)
     subsystem_result = None
     if subsystem:
@@ -169,7 +176,7 @@ def api_action_stream():
             return jsonify(subsystem_result)
 
     # === V6: MECHANICAL ACTIONS (buy/sell/travel) ===
-    from mechanics import detect_mechanical_action
+    from src.systems.mechanics import detect_mechanical_action
     mech_action = detect_mechanical_action(action)
     mech_action_result = None
     if mech_action:
@@ -179,7 +186,7 @@ def api_action_stream():
     dice_result = engine._check_mechanical_action(action)
 
     # === CONVERSATION MANAGEMENT ===
-    from game_engine import ConversationManager
+    from src.systems.mechanics import ConversationManager
     ConversationManager.manage_history(engine.state.conversation_history)
 
     # === WORLD SIMULATION TICK ===
@@ -192,7 +199,7 @@ def api_action_stream():
     world_events = engine.world_ticker.tick(engine.state)
     if world_events:
         engine.state.world_context["world_events"] = world_events
-        from content_expansion_v4 import _game_time_to_hours
+        from src.content.v4_legacy import _game_time_to_hours
         current_h = _game_time_to_hours(engine.state.game_time)
         for we in world_events:
             engine.world_effects.apply_event_effects(we, current_h)
@@ -204,26 +211,26 @@ def api_action_stream():
         engine.state.world_context["consequences"] = triggered_consequences
 
     # === V5: AUTO-REPUTATION ===
-    from content_expansion_v5 import calculate_auto_reputation, apply_reputation_changes, get_reputation_summary
+    from src.content.v5_legacy import calculate_auto_reputation, apply_reputation_changes, get_reputation_summary
     rep_changes = calculate_auto_reputation(action, engine.state.faction_reputation)
     if rep_changes:
         apply_reputation_changes(engine.state.faction_reputation, rep_changes)
         engine.state.world_context["rep_changes"] = get_reputation_summary(rep_changes)
 
     # === V5: WORLD EFFECTS ===
-    from content_expansion_v4 import _game_time_to_hours as _gth
+    from src.content.v4_legacy import _game_time_to_hours as _gth
     active_fx = engine.world_effects.get_active_effects_summary(_gth(engine.state.game_time))
     if active_fx:
         engine.state.world_context["active_world_effects"] = active_fx
 
     # === V5: QUEST CHAIN OFFER ===
-    from content_expansion_v4 import _game_time_to_hours as _gth2
+    from src.content.v4_legacy import _game_time_to_hours as _gth2
     current_hours = _gth2(engine.state.game_time)
     if not hasattr(engine, '_last_chain_offer_h'):
         engine._last_chain_offer_h = current_hours - random.randint(100, 200)
     chain_cooldown = random.randint(120, 240)
     if not engine.active_chain and (current_hours - engine._last_chain_offer_h) >= chain_cooldown:
-        from quest_chains import get_available_chains
+        from src.systems.quests import get_available_chains
         available = get_available_chains(
             engine.state.character.get("level", 1),
             engine.state.character.get("credits", 0),
@@ -293,14 +300,14 @@ def api_action_stream():
         engine._advance_time(minutes=time_mins)
 
         # === V7: XP → LEVEL UP ===
-        from combat_engine import process_xp_gain
+        from src.systems.combat import process_xp_gain
         xp_to_add = parsed.get("state_changes", {}).get("_xp_to_add", 0)
         level_up_info = None
         if xp_to_add and xp_to_add > 0:
             level_up_info = process_xp_gain(engine.state.character, xp_to_add)
 
         # === V7: HP=0 DEFEAT (fail-forward) ===
-        from combat_engine import apply_defeat
+        from src.systems.combat import apply_defeat
         defeat_result = None
         if engine.state.character.get("current_hp", 1) <= 0:
             defeat_result = apply_defeat(
@@ -464,7 +471,7 @@ def api_shop_sell():
         return jsonify({"error": "Предмет не найден в инвентаре"}), 404
     item = engine.state.inventory[inv_index]
     # Find base price
-    from world_sim import BASE_SHOP_ITEMS
+    from src.world.simulation import BASE_SHOP_ITEMS
     base_price = 0
     for cat, items in BASE_SHOP_ITEMS.items():
         for bi in items:
@@ -600,7 +607,7 @@ def api_implant_install():
         surgery_dc += SELF_SURGERY_DC_PENALTY  # Self-surgery is harder
 
     # Surgery check: medicine skill + intelligence
-    from game_engine import DiceRoller
+    from src.core.engine import DiceRoller
     med_skill = engine.state.character.get("skills", {}).get("medicine", 0)
     intel = engine.state.character.get("attributes", {}).get("intelligence", 5)
 
@@ -1297,16 +1304,16 @@ def api_property_store():
 @app.route("/api/content/stats", methods=["GET"])
 def api_content_stats():
     """Return total content counts for debugging/display."""
-    from game_systems import PERK_DATABASE, CRAFTING_RECIPES, TRAVEL_EVENTS, SPACE_EVENTS
-    from world_sim import BASE_SHOP_ITEMS
-    from procedural_engine import QUEST_TEMPLATES, WORLD_EVENT_TEMPLATES
-    from content_expansion_v4 import (
+    from src.systems.game_systems import PERK_DATABASE, CRAFTING_RECIPES, TRAVEL_EVENTS, SPACE_EVENTS
+    from src.world.simulation import BASE_SHOP_ITEMS
+    from src.world.procedural import QUEST_TEMPLATES, WORLD_EVENT_TEMPLATES
+    from src.content.v4_legacy import (
         get_all_origins_v4, get_all_formative_years_v4,
         get_all_specializations_v4, get_total_tiered_events,
     )
-    from quest_chains import QUEST_CHAINS
-    from companions import COMPANIONS
-    from content_expansion_v5 import UNIQUE_NPCS
+    from src.systems.quests import QUEST_CHAINS
+    from src.systems.companions import COMPANIONS
+    from src.content.v5_legacy import UNIQUE_NPCS
     total_shop = sum(len(v) for v in BASE_SHOP_ITEMS.values())
     chain_stages = sum(len(c["stages"]) for c in QUEST_CHAINS)
     return jsonify({

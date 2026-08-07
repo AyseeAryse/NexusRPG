@@ -1,0 +1,41 @@
+{
+  "module_name": "AUTOMATION",
+  "description": "Система автоматизации подсчётов, трекинга ресурсов и управления данными для ускорения игрового процесса.",
+  "application_scopes": [
+    "Вероятности и статистика",
+    "Управление ресурсами (здоровье, мана, боеприпасы)",
+    "Трекинг снабжения",
+    "Долгосрочные проекты",
+    "Коллективные броски",
+    "Автоматизация состояния фракций"
+  ],
+  "digital_tool_examples": {
+    "online_dicers": ["Roll20 macros", "Dice Parser", "Random generators"],
+    "resource_trackers": ["Initiative trackers", "HP/Status trackers", "Inventory managers"],
+    "checklists_and_tickers": ["Session checklists", "Event timers", "Milestone trackers"],
+    "automation_templates": ["Google Sheets", "Notion Databases"],
+    "discord_bots": ["Dice bots", "Character bots", "Reminder bots"]
+  },
+  "typical_automations_d20": [
+    {"range": "1-2", "automation_type": "Генерация персонажей"},
+    {"range": "3-4", "automation_type": "Управление инициативой"},
+    {"range": "5-6", "automation_type": "Расчёт урона"},
+    {"range": "7-8", "automation_type": "Отслеживание ресурсов"},
+    {"range": "9-10", "automation_type": "Генерация контента"},
+    {"range": "11-12", "automation_type": "Управление состояниями"},
+    {"range": "13-14", "automation_type": "Экономические расчёты"},
+    {"range": "15-16", "automation_type": "Социальные взаимодействия"},
+    {"range": "17-18", "automation_type": "Временные процессы"},
+    {"range": "19-20", "automation_type": "Интеграция систем"}
+  ],
+  "macro_examples": {
+    "roll20_attack_advantage": "&{template:default} {{name=Атака с преимуществом}} {{Бросок=[[2d20kh1+@{selected|strength_mod}+@{selected|pb}]]}} {{Урон=[[1d8+@{selected|strength_mod}]]}}",
+    "automatic_healing": "!modattr --sel --hp|[[1d8+3]]"
+  },
+  "conditional_triggers": [
+    "При HP < 25%: Автоматическое уведомление о критическом состоянии.",
+    "При использовании заклинания: Автоматическое списание слота.",
+    "При смене локации: Загрузка соответствующей карты и музыки.",
+    "При наступлении нового дня: Восстановление ресурсов персонажей."
+  ]
+}

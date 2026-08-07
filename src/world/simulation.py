@@ -156,9 +156,9 @@ ATMOSPHERE = {
 # ЭКОНОМИКА — МАГАЗИНЫ И ЦЕНЫ
 # ═══════════════════════════════════════
 
-from content_expansion import EXPANDED_SHOP_ITEMS, EXPANDED_MATERIALS
-from content_expansion_v2 import V2_SHOP_ITEMS
-from content_expansion_v3 import V3_SHOP_ITEMS
+from src.content.base import EXPANDED_SHOP_ITEMS, EXPANDED_MATERIALS
+from src.content.v2_legacy import V2_SHOP_ITEMS
+from src.content.v3_legacy import V3_SHOP_ITEMS
 
 BASE_SHOP_ITEMS = EXPANDED_SHOP_ITEMS
 
