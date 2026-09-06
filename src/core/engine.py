@@ -24,6 +24,7 @@ from src.systems import (QuestTracker, FactionSystem, PsychologySystem,
 from src.world.procedural import ProceduralQuestGenerator, WorldTicker, ConsequenceTracker
 from src.world.world_tick_service import WorldTickService
 from src.ai.system_prompt_service import SystemPromptService
+from src.systems.player_action_service import PlayerActionService
 from src.world.player_tiers import compute_player_tier, compute_net_worth, TIER_NAMES_RU
 from src.systems.subsystems import HackingSystem, InvestigationSystem, CompanionSystem, ShipSystem, PropertySystem
 from src.systems.subsystems import HackingSystem, InvestigationSystem, CompanionSystem, ShipSystem, PropertySystem
@@ -280,6 +281,31 @@ class GameEngine:
             world_effects=self.world_effects,
             get_player_tier=self.get_player_influence_tier,
             format_game_time=self._format_game_time,
+        )
+        # Phase 30 шаг 3: оркестрация хода игрока вынесена в PlayerActionService.
+        # Внутренняя логика combat/mechanical/subsystem-триггеров и т.д. остаётся
+        # в engine.py как callback-методы — отдельный долг.
+        self.player_action_service = PlayerActionService(
+            state=self.state,
+            get_ai=lambda: self.ai,
+            prompt_builder=self.prompt_builder,
+            combat_engine=self.combat_engine,
+            profession_abilities=self.profession_abilities,
+            quest_generator=self.quest_generator,
+            property_income=self.property_income,
+            property=self.property,
+            world_effects=self.world_effects,
+            world_tick_service=self.world_tick_service,
+            process_combat_turn=self._process_combat_turn,
+            handle_subsystem_trigger=self._handle_subsystem_trigger,
+            check_mechanical_action=self._check_mechanical_action,
+            handle_mechanical_action=self._handle_mechanical_action,
+            parse_ai_response=self._parse_ai_response,
+            get_client_state=self._get_client_state,
+            advance_time=self._advance_time,
+            planet_hook_factions=self._planet_hook_factions,
+            get_active_chain=lambda: self.active_chain,
+            get_completed_chains=lambda: self.completed_chains,
         )
         print(f"[Engine] Init. Data: {len(self.kb.files)} files.")
 
@@ -682,175 +708,9 @@ class GameEngine:
     # ========== GAME ACTIONS ==========
 
     def process_player_action(self, action: str) -> Dict:
-        self.state.conversation_history.append({"role": "user", "content": action})
-
-        # === V7: COMBAT ROUTING — if in combat, handle combat turn ===
-        if self.combat_engine.in_combat:
-            return self._process_combat_turn(action)
-
-        # === ФАЗА 20d: активные способности семейств профессий ===
-        ability_id = self.profession_abilities.detect(action)
-        if ability_id:
-            ctx = {"location_name": self.state.current_location.get("district"),
-                   "allies": (self.combat_engine.combat or {}).get("allies", [])
-                              if self.combat_engine.in_combat else [],
-                   "in_combat": self.combat_engine.in_combat}
-            ability_result = self.profession_abilities.execute(self, ability_id, ctx)
-            if ability_result and not ability_result.get("not_applicable"):
-                return {"narrative": ability_result.get("text", ""),
-                        "ability_result": ability_result,
-                        "in_combat": self.state.in_combat}
-
-        # === V7: SUBSYSTEM TRIGGER — detect hacking/investigation/crafting/combat ===
-        subsystem = detect_subsystem_trigger(action)
-        subsystem_result = None
-        if subsystem:
-            subsystem_result = self._handle_subsystem_trigger(subsystem, action)
-            # If combat was started, route to combat
-            if subsystem_result and subsystem_result.get("combat_started"):
-                return subsystem_result
-
-        mechanical_result = self._check_mechanical_action(action)
-
-        # === V6: DETECT BUY/SELL/TRAVEL MECHANICAL ACTIONS ===
-        mech_action = detect_mechanical_action(action)
-        mech_action_result = None
-        if mech_action:
-            mech_action_result = self._handle_mechanical_action(mech_action)
-
-        # === V6: CONVERSATION MANAGEMENT — compress old history ===
-        ConversationManager.manage_history(self.state.conversation_history)
-
-        # === WORLD SIMULATION TICK (А2: единый метод, вызывается и фоново) ===
-        self.state.world_context = self._world_tick()
-
-        # === V5: AUTO-REPUTATION — analyze action for faction impact ===
-        rep_changes = calculate_auto_reputation(action, self.state.faction_reputation)
-        if rep_changes:
-            apply_reputation_changes(self.state.faction_reputation, rep_changes)
-            self.state.world_context["rep_changes"] = get_reputation_summary(rep_changes)
-
-        # === V5: WORLD EFFECTS CONTEXT — active price mods, lockdowns ===
-        from src.content.v4_legacy import _game_time_to_hours as _gth
-        active_fx = self.world_effects.get_active_effects_summary(_gth(self.state.game_time))
-        if active_fx:
-            self.state.world_context["active_world_effects"] = active_fx
-
-        # === V5: QUEST CHAIN — check if player should be offered one ===
-        from src.content.v4_legacy import _game_time_to_hours as _gth2
-        current_hours = _gth2(self.state.game_time)
-        # Offer every 5-10 game-days (120-240 hours)
-        if not hasattr(self, '_last_chain_offer_h'):
-            self._last_chain_offer_h = current_hours - random.randint(100, 200)
-        chain_cooldown = random.randint(120, 240)
-        if not self.active_chain and (current_hours - self._last_chain_offer_h) >= chain_cooldown:
-            available = get_available_chains(
-                self.state.character.get("level", 1),
-                self.state.character.get("credits", 0),
-                self.state.faction_reputation)
-            # Filter out completed chains
-            available = [c for c in available if c["id"] not in self.completed_chains]
-            if available:
-                offer = random.choice(available)
-                self.state.world_context["chain_offer"] = offer
-                self._last_chain_offer_h = current_hours
-
-        # === Maybe generate procedural quest (every 2-5 game-days) ===
-        if not hasattr(self, '_last_quest_gen_h'):
-            self._last_quest_gen_h = current_hours - random.randint(30, 80)
-        quest_cooldown_h = random.randint(48, 120)  # 2-5 days
-        if (current_hours - self._last_quest_gen_h) >= quest_cooldown_h and len(self.state.active_quests) < 5:
-            # Backlog#3: ~25% — квест из plot_hook случайной фракции текущей планеты
-            hook_quest = None
-            if random.random() < 0.25:
-                planet = self.state.current_location.get("planet", "")
-                candidates = [
-                    f["name"] for f in
-                    getattr(self.quest_generator, "_hook_factions_cache", None)
-                    or self._planet_hook_factions(planet)]
-                if not hasattr(self.quest_generator, "_hook_factions_cache"):
-                    self.quest_generator._hook_factions_cache = candidates
-                if candidates:
-                    import random as _r
-                    hook_quest = self.quest_generator.generate_quest_from_hook(
-                        _r.choice(candidates),
-                        player_level=self.state.character.get("level", 1))
-                    if "error" in hook_quest:
-                        hook_quest = None
-            pq = hook_quest or self.quest_generator.generate_quest(
-                player_level=self.state.character.get("level", 1),
-                location=self.state.current_location,
-                faction_standings=self.state.faction_reputation,
-            )
-            self.state.active_quests.append(pq)
-            self._last_quest_gen_h = current_hours
-            self.state.world_context["new_quest"] = pq
-
-        # === V6: PROPERTY INCOME — collect rent on time tick ===
-        income_result = self.property_income.tick(current_hours, self.property,
-                                                   self.state.character)
-        if income_result:
-            self.state.world_context["property_income"] = income_result
-
-        # Phase 26: собираем scene_meta с Karmic Dice + Director's Notes через prompt_builder
-        scene_meta = self.prompt_builder.build_action_meta(
-            action=action,
-            dice_result=mechanical_result,
-            mechanical_changes=subsystem_result,
-        )
-        if self.state.current_location:
-            scene_meta["location"] = self.state.current_location
-        # Сохраняем последний karmic roll для отладки/тестов
-        self.state.last_karmic_roll = scene_meta.get("karmic_roll")
-
-        # Phase 26: генерируем system_prompt через prompt_builder.
-        # Фаза 3: маскировка убрана — сбой сборки промпта обязан падать с трейсбеком,
-        # а не тихо откатываться на legacy _build_system_prompt.
-        system_prompt = self.prompt_builder.build(
-            tone_profile=self.state.tone_profile,
-            scene_meta=scene_meta,
-        )
-        ai_response = self.ai.generate(system_prompt=system_prompt, messages=self.state.conversation_history[-12:])
-        parsed = self._parse_ai_response(ai_response)
-        self.state.conversation_history.append({"role": "assistant", "content": parsed["narrative"]})
-        self.state.session_events.append({
-            "time": dict(self.state.game_time),
-            "action": action[:100], "result": parsed["narrative"][:100],
-        })
-        # Use AI-determined time if available, else random
-        time_mins = parsed.get("state_changes", {}).get("_custom_time", random.randint(5, 30))
-        self._advance_time(minutes=time_mins)
-
-        # === V7: PROPER XP → LEVEL UP ===
-        xp_to_add = parsed.get("state_changes", {}).get("_xp_to_add", 0)
-        level_up_info = None
-        if xp_to_add and xp_to_add > 0:
-            level_up_info = process_xp_gain(self.state.character, xp_to_add)
-
-        # === V7: HP=0 DEFEAT CHECK (fail-forward, no permadeath) ===
-        defeat_result = None
-        if self.state.character.get("current_hp", 1) <= 0:
-            defeat_result = apply_defeat(
-                self.state.character, self.state.inventory,
-                self.state.game_time, self.state.current_location
-            )
-
-        return {
-            "narrative": parsed["narrative"],
-            "dice_results": mechanical_result,
-            "state_changes": parsed.get("state_changes", {}),
-            "game_state": self._get_client_state(),
-            "world_events": [e.get("text","") for e in (self.state.world_context.get("world_events") or [])],
-            "consequences": [c.get("text","") for c in (self.state.world_context.get("consequences") or [])],
-            "new_quest": self.state.world_context.get("new_quest"),
-            "rep_changes": self.state.world_context.get("rep_changes", ""),
-            "chain_offer": self.state.world_context.get("chain_offer"),
-            "mechanical_action": mech_action_result,
-            "property_income": self.state.world_context.get("property_income"),
-            "defeat": defeat_result,
-            "level_up": level_up_info,
-            "subsystem": subsystem_result,
-        }
+        """Phase 30 шаг 3: оркестрация хода игрока вынесена в PlayerActionService.
+        Сигнатура публичного API не изменилась; routes/gameplay.py не тронут."""
+        return self.player_action_service.run(action)
 
     def universal_skill_check(self, character: Dict, skill_id: str,
                               difficulty: int = 10) -> Optional[Dict]:
