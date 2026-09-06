@@ -428,26 +428,48 @@ def _load_vehicles_catalog() -> list:
     # Phase 31 H4: переводы сырых EN-значений каталога на русский.
     SUBTYPE_RU = {
         "personal_spacecraft": "личный транспорт",
+        "personal craft": "личный транспорт",
+        "personal_space": "личный транспорт",
+        "personal_yacht": "личная яхта",
+        "yacht": "яхта",
+        "shuttle": "шаттл",
+        "light freighter": "лёгкий грузовик",
+        "super_freighter": "сверхтяжёлый грузовик",
+        "freighter": "грузовой корабль",
+        "passenger_liner": "пассажирский лайнер",
+        "luxury liner": "люкс-лайнер",
+        "patrol boat": "патрульный катер",
+        "mining_platform": "добывающая платформа",
         "commercial_spacecraft": "коммерческий транспорт",
+        "commercial_space": "коммерческий транспорт",
         "industrial_spacecraft": "промышленный транспорт",
+        "industrial_space": "промышленный транспорт",
+        "industrial": "промышленный",
         "exploration": "исследовательский",
         "exploration_craft": "исследовательский",
+        "exploration_vessel": "исследовательское судно",
+        "exploration_space": "исследовательский",
         "military_spacecraft": "военный корабль",
+        "military_space": "военный корабль",
     }
     CATEGORY_RU = {
         "civilian": "гражданский",
+        "personal": "личный",
         "commercial": "коммерческий",
         "industrial": "промышленный",
         "military": "военный",
         "luxury": "люкс",
         "utility": "утилитарный",
+        "exploration": "исследовательский",
     }
     def _ru(value: str, mapping: dict) -> str:
         if not value or not isinstance(value, str):
             return value or ""
         v = value.strip().lower()
+        words = v.replace("_", " ").split()
         for key, ru in mapping.items():
-            if key in v:
+            # совпадение по любому слову ключа (personal_spacecraft → personal)
+            if any(w in words for w in key.replace("_", " ").split()) or key in v:
                 return ru
         return value
     result = []

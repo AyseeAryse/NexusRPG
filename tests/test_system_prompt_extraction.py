@@ -35,12 +35,13 @@ def _last_commit_touching(path: str) -> str:
 
 
 ROOT = Path(__file__).resolve().parent.parent
-# BASELINE_COMMIT — коммит, в котором зафиксирован эталонный текст промпта.
-# Phase 31 H3 легитимно расширил [STATE]-шаблон (строка place: ...) — это
-# документированное изменение промпта, а не расхождение логики. При любом
-# будущем ИЗМЕНЕНИИ ТЕКСТА промпта: закоммить и обнови BASELINE_COMMIT на
-# коммит с новым эталоном. Изменения ЛОГИКИ (не текста) тест ловит автоматически.
-BASELINE_COMMIT = _last_commit_touching("src/ai/system_prompt_service.py")
+# BASELINE_COMMIT — коммит, где эталонное ТЕЛО промпт-метода последний раз
+# содержало полную логику сборки ('parts = [...]'). После Phase 30 шаг 2 тело
+# живёт в src/ai/system_prompt_service.py (engine.py — делегат), поэтому
+# эталон сравнивается с СЕРВИСОМ, а BASELINE_COMMIT пиннится к шагу 2.
+# Легитимные изменения ТЕКСТА промпта (Phase 31 H3: строка place в [STATE]-шаблоне)
+# нормализуются в _norm_prompt_text ниже; изменение ЛОГИКИ тест ловит автоматически.
+BASELINE_COMMIT = "e88250c"
 SERVICE_FILE = ROOT / "src" / "ai" / "system_prompt_service.py"
 
 
@@ -84,20 +85,33 @@ def test_build_system_prompt_signature_preserved():
 # 2. Посимвольная идентичность: делегат vs pre-refactor тело из git
 # ═══════════════════════════════════════════════════════════════
 
-def _git_baseline_engine_source() -> str:
+def _git_baseline_service_source() -> str:
+    """Эталон — system_prompt_service.py из baseline-коммита (Phase 30 шаг 2),
+    где метод build() содержит полную логику сборки промпта."""
     result = subprocess.run(
-        ["git", "show", f"{BASELINE_COMMIT}:src/core/engine.py"],
+        ["git", "show", f"{BASELINE_COMMIT}:src/ai/system_prompt_service.py"],
         cwd=ROOT, capture_output=True, text=True, encoding="utf-8",
     )
     assert result.returncode == 0, f"git show failed: {result.stderr[:200]}"
     return result.stdout
 
 
-def _extract_method_body(source: str, method_name: str) -> str:
-    """AST-извлечение тела метода GameEngine.<method> (без def-строки и docstring)."""
+def _norm_prompt_text(text: str) -> str:
+    """Нормализация легитимных документированных правок текста промпта.
+    Phase 31 H3: строка place-инструкции в [STATE]-шаблоне добавлена
+    осознанно — вырезаем её на обеих сторонах сравнения."""
+    marker = "place:"
+    lines = [l for l in text.split("\n")
+             if not (marker in l and "название заведения" in l)]
+    return "\n".join(lines)
+
+
+def _extract_method_body(source: str, method_name: str,
+                         class_name: str = "GameEngine") -> str:
+    """AST-извлечение тела метода class_name.<method> (без def-строки и docstring)."""
     tree = ast.parse(source)
     cls = next(n for n in tree.body
-               if isinstance(n, ast.ClassDef) and n.name == "GameEngine")
+               if isinstance(n, ast.ClassDef) and n.name == class_name)
     method = next(n for n in cls.body
                   if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef))
                   and n.name == method_name)
@@ -111,9 +125,10 @@ def _extract_method_body(source: str, method_name: str) -> str:
 
 
 def _make_reference_method(engine):
-    """Собрать из git-блоба тела функцию, исполняемую в контролируемом
-    namespace: self → привязан к engine, module-level имена — из engine."""
-    body = _extract_method_body(_git_baseline_engine_source(), "_build_system_prompt")
+    """Собрать из git-блоба (service.py @ BASELINE_COMMIT) тела build() функцию,
+    исполняемую в контролируемом namespace: self → привязан к engine,
+    module-level имена — из service."""
+    body = _extract_method_body(_git_baseline_service_source(), "build", class_name="SystemPromptService")
     body = textwrap_indent(body)
     ns = {}
     # module-level зависимости оригинального метода
@@ -129,11 +144,15 @@ def _make_reference_method(engine):
     })
     # body — statements метода; оборачиваем в функцию с self-параметром
     wrapper_src = (
-        "def _reference(self, action, dice_result=None, mech_result=None, subsystem_result=None):\n"
+        "def _reference(self, action, dice_result=None, mech_result=None, subsystem_result=None, active_chain=None, active_companions=None):\n"
         + textwrap_indent(body, "    ")
     )
     exec(compile(wrapper_src, "<baseline reference>", "exec"), ns)
     ref = ns["_reference"]
+    # baseline service.build вызывает self._get_player_tier / self._format_game_time —
+    # в текущей архитектуре они DI-поля сервиса. Для reference, привязанного к engine,
+    # пробрасываем движковые аналоги как атрибуты тестовой обёртки.
+    engine._get_player_tier = engine.get_player_influence_tier
     return ref.__get__(engine)  # bound method поверх реального engine
 
 
@@ -152,12 +171,11 @@ def test_system_prompt_output_identical_to_baseline_body(engine):
     # Тело baseline-метода = тело ПЕРЕД выносом? Нет: baseline af7d7c0 создан
     # ПОСЛЕ выноса _world_tick, но ДО выноса _build_system_prompt —
     # значит в нём лежит исходное тело промпт-метода. Проверим это явно:
-    baseline_src = _git_baseline_engine_source()
-    baseline_body = _extract_method_body(baseline_src, "_build_system_prompt")
+    baseline_src = _git_baseline_service_source()
+    baseline_body = _extract_method_body(baseline_src, "build", class_name="SystemPromptService")
     assert "parts = [" in baseline_body, (
         "В baseline тело промпт-метода неожиданно оказалось делегатом"
     )
-    assert "system_prompt_service" not in baseline_body
 
     reference = _make_reference_method(engine)
 
@@ -169,9 +187,13 @@ def test_system_prompt_output_identical_to_baseline_body(engine):
         subsystem_result=None,
     )
     out_delegate = engine._build_system_prompt(**args)
-    out_reference = reference(**args)
+    out_reference = reference(
+        **args,
+        active_chain=engine.active_chain,
+        active_companions=engine.active_companions,
+    )
 
-    assert out_delegate == out_reference, (
+    assert _norm_prompt_text(out_delegate) == _norm_prompt_text(out_reference), (
         "Промпт делегата отличается от baseline-тела "
         f"(len delegate={len(out_delegate)}, len reference={len(out_reference)})"
     )

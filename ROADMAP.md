@@ -1,13 +1,13 @@
 # NexusRPG Roadmap
 
-## Статус проекта (снимок на 2026-09-05, после Phase 30 шаг 3 — вынос оркестрации process_player_action)
-- Pytest: **214 passed, 1 skipped** (вкл. 7 регрессионных Phase 29 + 5 выноса _world_tick + 4 git-history + 4 выноса _build_system_prompt + 8 выноса process_player_action)
-- `engine.py` — 2344 строк (с 2740 в pre-Phase30: −396 суммарно за 3 шага), `world_tick_service.py` — 126, `system_prompt_service.py` — 282, `player_action_service.py` — 302 (новый)
+## Статус проекта (снимок на 2026-09-05, после Phase 31 H-fix)
+- Pytest: **225 passed, 1 skipped** (вкл. 8 выноса process_player_action + 11 H-fix регрессионных + все предыдущие)
+- `engine.py` — 2371 строк, `player_action_service.py` — 302, `system_prompt_service.py` — 283, `world_tick_service.py` — 126
 - Playwright E2E (live, headless Chromium): **14/14 asserts, 0 console errors, 0 bad API**
 - Контракт game_data: **76 файлов, 0 нарушений**
-- Горячие точки (через `wc -l`, актуальные на коммит `e88250c`):
-  1. `static/js/app.js` — **3345 lines** (без изменений с `af7d7c0`, проверено `git log --all -- static/js/app.js` — единственный коммит; диск == git = 3345)
-  2. `src/core/engine.py` — **2484 lines** (центральный движок)
+- Горячие точки (через `wc -l`):
+  1. `static/js/app.js` — **3392 lines** (клиентский монолит)
+  2. `src/core/engine.py` — **2371 lines** (центральный движок)
   3. `src/systems/combat.py` — 1086 lines (боевая система)
   4. `src/content/v4_legacy.py` — 836 lines (legacy-контент)
   5. `src/server/app.py` — 184 lines (фабрика Flask)
@@ -92,6 +92,21 @@ Zero-Bloat Rule соблюдён: весь новый код — в изолир
 - **Тесты** `tests/test_player_action_extraction.py` (425 строк, 8 тестов): сигнатура; идентичность с baseline-телом из `git show af7d7c0` (AST+exec, mock self.ai с фиксированным текстом + random.seed в обоих путях; 9 точек state + world_context ЦЕЛИКОМ (требование A) + форма возврата); LLM-failure rollback (требование B: при исключении от ai.generate — ни одна из post-LLM мутаций не выполнена, pre-LLM мутации идентичны в обоих путях); order-spy (требование C: world_tick_service.tick СТРОГО раньше property_income.tick, с индексами); 3 early-return (combat/ability/subsystem-combat — ai.generate не вызывается); нет src.server-импортов.
 - **Архитектурное решение — статический захват callback'ов** (документировано в докстроке Static capture note): все callback-методы захватываются по значению при создании сервиса; переопределение `engine.<method>` после `__init__` не подхватывается (в отличие от `ai` — динамический `get_ai`). Grep по tests/src/routes: ноль внешних переопределений. Зафиксировано в Technical Debt Register (низкий приоритет, открыт).
 - **Верификация**: pytest **214 passed, 1 skipped** (+8); `test_integration_acceptance.py` прогнан отдельно — 6/6 (monkeypatch `engine.process_player_action` работает с делегатом); live-сервер перезапущен на финальном коде.
+### Phase 31 H-fix (2026-09-05) — находки живого плейтеста ✅ DONE
+- **H1 (КРИТИЧНО, скрытый долг 5+ фаз — закрыт)**: root cause — `create_character_from_preset` не строил ToneProfile (в отличие от `create_custom_character`), `state.tone_profile` оставался None → `start_game` → `tone_engine.apply_scene_context(None)` → «'NoneType' object has no attribute 'scale_level'». Воспроизведено стабильно: любой preset-старт. Фикс: tone-блок добавлен в preset-путь (тот же try/except, что в custom-пути). Regression: `test_h1_preset_creates_tone_profile`, `test_h1_apply_scene_context_no_crash`, `test_h1_apply_scene_context_with_none_profile_is_safe`. Live: preset-создание + start → HTTP 200, сообщение об ошибке отсутствует в логе.
+- **H2 (КРИТИЧНО)**: root cause — модель цитировала служебные заголовки формата («1) НАРРАТИВ (2-3 абзаца): ...» одной строкой), а `PROMPT_HEADER_RE` резал только заголовок-до-конца-строки (`$`) и не срезал хвост. Фикс двухуровневый: (1) regex усилен — `[^
+]*$` срезает всю строку с заголовком; (2) в `prompt_builder._format_instructions` добавлен явный запрет включать названия секций в ответ. Regression: `test_h2_numbered_header_with_tail_text_stripped` (кейс владельца), `test_h2_header_variants_still_stripped`, `test_h2_choices_not_eaten` (варианты выбора НЕ вырезаются).
+- **H3 (КРИТИЧНО)**: root cause — смена `place` (заведение) через [STATE] не поддерживалась: модели не были известны правила заполнения place, а `_canonicalize_location` валидировал только planet/city/district. Дизайн-пояснение: свободный текст варианта «найти брокера в таможне» меняет локацию ТОЛЬКО если модель вернула location в [STATE]; visitPlace/enterPlace — явный UI-путь. Фикс: (1) `_canonicalize_location` теперь канонизирует place против заведений района (fuzzy) и обнуляет выдуманные; (2) в `system_prompt_service` шаблон [STATE] дополнен полем place с примером. Regression: `test_h3_location_with_known_place_applied`, `test_h3_location_with_unknown_place_reset`.
+- **H4**: классы/категории кораблей русифицированы на бэкенде (`_ru` word-match, 20+ EN-значений), скорость — подпись «% скорости света» + оценка времени до Проксимы (`fmtShipSpeed`), трюм — «ед. груза» (`fmtShipCargo`). Live: `/api/ship/catalog` → «личный транспорт | личный».
+- **H5**: панель персонажа — строка «Принадлежность»: фракция с max standing (≥15 = работодатель) или «Независимый агент» (источник — `faction_relations` из client_state).
+- **H6**: механика прокачки существует (кнопка «⬆ Повысить» при свободных очках + `spendSkillPoint` + endpoint); UX-фикс: строки навыков кликабельны → открывают панель прокачки, подсказка под списком.
+- **H7**: атмосфера — периодическая фоновая деталь: кэш в `WorldSimulator`, регенерация раз в 10 тиков или при смене локации. Regression: 3 теста кэша.
+- **H8**: tool-предметы («Лабораторный набор», «Анализатор данных»…) — scene-items по дизайну предметной системы (применяются автоматически в сценах сканирования/расследования). UX-фикс: вместо пустой кнопочной зоны — подпись «инструмент для сцен» с tooltip.
+- **Тесты**: `tests/test_phase31_hfix.py` (11 тестов). pytest **225 passed, 1 skipped**.
+- **Верификация**: `node --check app.js` OK; AST всех правленых файлов OK; live-сервер HTTP 200; `/api/ship/catalog` русифицирован; preset-старт без ошибки apply_scene_context.
+- **Нюанс шага 2-теста**: baseline-тест промпта (`test_system_prompt_output_identical_to_baseline_body`) перепиннован на коммит e88250c с извлечением эталона из `system_prompt_service.py` (класс `SystemPromptService.build`) + нормализация легитимной H3-строки place в [STATE]-шаблоне. Изменение задокументировано в докстроке теста.
+
+
 ## Фазы
 
 ### Phase 1 — Архитектурный каркас ✅ DONE
@@ -148,6 +163,7 @@ Zero-Bloat Rule соблюдён: весь новый код — в изолир
 |------|---------------|-----------|--------|
 | **Phase 4.1 — Имплант-менеджер и Хакерский мини-HUD** (выпали из скоупа Phase 4; имплант-панель в app.js осталась старой, хакерский HUD не интегрирован в терминальный стиль) | Phase 4 | средний | **BACKLOG** |
 | **Phase 29 G3–G6** (ассортимент по заведениям, `/api/map/enter`, слухи, тултипы) — нет автотестов, только разовые live HTTP-проверки | Phase 29 | средний | **открыт** |
+| ~~apply_scene_context падает на None tone_profile (preset-путь)~~ | ~~Phase 3.5~~ | — | **закрыт** (Phase 31 H1: preset-путь строит ToneProfile; был скрытым долгом 5+ фаз) |
 | Доступность форм: 14 issues DevTools «No label associated with a form field» (поля ввода без `<label for=…>`/aria) | Phase 30 | низкий | **открыт** |
 | **Phase 30 шаг 3 — callback-методы в PlayerActionService** (process_combat_turn, handle_subsystem_trigger, check_mechanical_action, handle_mechanical_action, parse_ai_response, get_client_state, advance_time, planet_hook_factions, active_chain/completed_chains) захватываются **статически** при создании сервиса — переопределение `engine.<method>` после `__init__` не подхватывается (в отличие от `ai`, который резолвится динамически через `get_ai`/`@property`). Grep по tests/src/routes перед решением: ноль внешних переопределений. Если появится код, полагающийся на динамическую переопределяемость этих методов — потребуется единообразный рефакторинг на паттерн `get_X`. | Phase 30 | низкий | **открыт** |
 | ~~questContact/questAbandon не определены (R2-splice удалил функции, onclick остался)~~ | ~~Phase 30~~ | — | **закрыт** (функции восстановлены + E2E-ассерт 5.9) |
@@ -180,6 +196,7 @@ Zero-Bloat Rule соблюдён: весь новый код — в изолир
 
 ## Журнал изменений
 
+- **2026-09-05 — Phase 31 H-fix**: 3 критичных + 5 контент/UX. H1: preset-путь не строил ToneProfile → apply_scene_context(None) падал (скрытый долг с Phase 3.5) — фикc + 3 теста. H2: утечка «1) НАРРАТИВ...» — усилен PROMPT_HEADER_RE (`\b[^\n]*$`) + запрет в промпте — 3 теста. H3: place из [STATE].location канонизируется против заведений района + промпт-поле place — 2 теста. H4–H8: русификация ТТХ кораблей, «Принадлежность» в листе, кликабельные навыки → level-up, атмосфера раз в 10 тиков (3 теста), подпись «инструмент для сцен». pytest 225 passed.
 - **2026-09-05 — Phase 30 шаг 3**: внешняя оркестрация `process_player_action` (170 строк, 9 подсистем) вынесена в `src/systems/player_action_service.py` (DI, 302 строки); `engine.py` 2484 → 2344 (−140); сигнатура `(self, action) -> Dict` неизменна, routes не тронут. 8 тестов (идентичность с baseline из git show, LLM-failure rollback, order-spy _world_tick→property_income, 3 early-return). Внутренняя логика combat/mechanical/subsystem осталась в engine.py как callback-методы — отдельный долг. Статический захват callback'ов задокументирован (ROADMAP debt). pytest 214 passed (+8).
 - **2026-09-05 — Phase 30 шаг 2**: `_build_system_prompt` (227 строк, 10 подсистем) вынесен в `src/ai/system_prompt_service.py` (DI, 282 строки; 10 subsystem + 2 колбэка); `engine.py` 2681 → 2484 (−197), сигнатура делегата `(self, action, dice_result, mech_result, subsystem_result) -> str` неизменна, `routes/gameplay.py` не тронут. 4 теста в `tests/test_system_prompt_extraction.py`, включая **посимвольную** идентичность с baseline-телом из `git show af7d7c0` (AST-извлечение + exec, без ручной перепечатки). pytest 206 passed (+4).
 - **2026-09-05 — Phase 30 шаг 1**: `_world_tick` (78 строк, 8 подсистем) вынесен в `src/world/world_tick_service.py` (DI, 126 строк); `engine.py` 2740 → 2681; делегат с неизменной сигнатурой `() -> Dict`; 5 тестов (сигнатура/делегирование/идентичность с pre-refactor телом/verbatim-возврат/нет src.server-импортов); компромисс: `get_player_tier` колбэком. pytest 198 passed; E2E 14/14. Попутно закрыт регресс questContact/questAbandon (R2-splice удалил функции при живом onclick) + E2E-ассерт 5.9. **Закрытие аудита (коммит `98bcf25`)**: ручная копия `_legacy_world_tick` заменена в тестах на реальное извлечение тела из `git show`; инвентаризация и реконструкция заархивированы в `docs/` (4 новых теста в `tests/test_git_history_extraction.py`; коммит `98bcf25`: 2 doc + 1 test).
