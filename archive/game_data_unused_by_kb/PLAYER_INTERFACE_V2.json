@@ -1,0 +1,72 @@
+{
+  "module_name": "PLAYER_INTERFACE",
+  "version": "2.0_ENHANCED_PRIORITY",
+  "description": "Интерфейс игрока с принудительным приоритетом над другими модулями",
+  "CRITICAL_DIRECTIVES": {
+    "MANDATORY_CHOICE_GENERATION": {
+      "priority": "ABSOLUTE_MAXIMUM",
+      "rule": "ВСЕГДА генерировать 5-6 вариантов действий + свой вариант",
+      "override_authority": "Этот модуль имеет АБСОЛЮТНЫЙ приоритет над AI_NARRATOR в вопросах выбора",
+      "enforcement": "Если AI_NARRATOR пытается дать открытый вопрос - это ОШИБКА СИСТЕМЫ"
+    },
+    "CHOICE_STRUCTURE": {
+      "format": "Пронумерованный список 1-6 + 'Свой вариант'",
+      "categories": [
+        "Диалог (Charisma + соответствующий навык)",
+        "Действие (физическое взаимодействие)",
+        "Анализ/Взлом (Intelligence + Tech)",
+        "Тактическое решение (тактические навыки)",
+        "Психологическое воздействие (репутация, стресс)",
+        "Свой вариант (описать самостоятельно)"
+      ],
+      "skill_integration": "Каждая опция ДОЛЖНА показывать релевантные навыки персонажа"
+    }
+  },
+  "interaction_protocols": {
+    "choice_generation_trigger": "После каждого ответа ИИ",
+    "fallback_mechanism": "Если выбор отсутствует - система должна его сгенерировать принудительно",
+    "debugging": {
+      "log_choices": true,
+      "show_skill_checks": true,
+      "internal_rolls_visibility": "VISIBLE_TO_PLAYER"
+    }
+  },
+  "dashboard_tabs": {
+    "Character": {
+      "description": "Основная информация о персонаже",
+      "linked_module": "CHARACTER_CORE",
+      "commands": [
+        {
+          "command": "!sheet",
+          "description": "Показать полный лист персонажа"
+        },
+        {
+          "command": "!mod",
+          "description": "Изменить характеристику (только ГМ)"
+        }
+      ]
+    },
+    "Status": {
+      "description": "Текущее состояние персонажа",
+      "linked_modules": [
+        "PSYCHOLOGY",
+        "WORLD_TIME_SYSTEM"
+      ],
+      "commands": [
+        {
+          "command": "!status",
+          "description": "Стресс, человечность, долги, репутация, время"
+        },
+        {
+          "command": "!time",
+          "description": "Текущая игровая дата и время"
+        }
+      ]
+    },
+    "Actions": {
+      "description": "Доступные действия персонажа",
+      "priority": "MAXIMUM",
+      "forced_display": "ВСЕГДА показывать после каждого хода ИИ"
+    }
+  }
+}

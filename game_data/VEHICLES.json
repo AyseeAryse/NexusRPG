@@ -1,0 +1,5280 @@
+{
+  "module_name": "VEHICLES_COMPREHENSIVE",
+  "description": "Полная система транспорта и техники: от персональных ховербайков до межзвездных супертанкеров. Охватывает военную, гражданскую, коммерческую и специализированную технику.",
+  "version": "2.0_COMPREHENSIVE",
+  "vehicle_categories": {
+    "civilian": {
+      "description": "Гражданский транспорт для повседневного использования",
+      "primary_purpose": "Перевозка людей и грузов",
+      "restrictions": "Минимальное или отсутствующее вооружение",
+      "availability": "Широко доступен, стандартные лицензии"
+    },
+    "commercial": {
+      "description": "Коммерческий транспорт для бизнеса и торговли",
+      "primary_purpose": "Массовые грузоперевозки, пассажирский транспорт",
+      "restrictions": "Ограниченная защита, коммерческие лицензии",
+      "availability": "Требует коммерческую регистрацию"
+    },
+    "industrial": {
+      "description": "Промышленная техника для работ и строительства",
+      "primary_purpose": "Добыча, строительство, обслуживание",
+      "restrictions": "Специальные лицензии на опасные работы",
+      "availability": "Корпоративный доступ, высокая стоимость"
+    },
+    "military": {
+      "description": "Военная техника для боевых действий",
+      "primary_purpose": "Ведение войны, защита территорий",
+      "restrictions": "Строго контролируется, военные лицензии",
+      "availability": "Только для военных и PMC"
+    },
+    "luxury": {
+      "description": "Премиальные транспортные средства",
+      "primary_purpose": "Статус, комфорт, эксклюзивность",
+      "restrictions": "Высокая стоимость ограничивает доступ",
+      "availability": "Элита, состоятельные граждане"
+    },
+    "utility": {
+      "description": "Специализированная техника для служб",
+      "primary_purpose": "Экстренные службы, коммунальные работы",
+      "restrictions": "Служебное использование",
+      "availability": "Государственные и корпоративные службы"
+    }
+  },
+  "transportation_types": {
+    "ground_vehicles": {
+      "description": "Наземный транспорт для планетарного использования",
+      "subtypes": {
+        "personal": {
+          "hovercars": [
+            {
+              "name": "AeroSedan 'Comet'",
+              "class": "personal_hover",
+              "category": "civilian",
+              "capacity": "4 пассажира",
+              "range": "800 км",
+              "max_speed": "180 км/ч",
+              "power_source": "Водородная ячейка",
+              "price": 45000,
+              "hull": 150,
+              "armor": 2,
+              "features": [
+                "Автопилот",
+                "Климат-контроль",
+                "Развлекательная система"
+              ],
+              "lifepath_access": {
+                "ORIGIN_EARTH_ELITE": "Стандартная комплектация",
+                "ORIGIN_MARS_CITIZEN": "Доступен по кредиту",
+                "ORIGIN_EARTH_SLUMS": "Только б/у варианты"
+              },
+              "price_legacy": "45,000 кредитов"
+            },
+            {
+              "name": "StreetRider 'Phantom'",
+              "class": "hoverbike",
+              "category": "civilian",
+              "capacity": "2 пассажира",
+              "range": "400 км",
+              "max_speed": "220 км/ч",
+              "power_source": "Электробатарея",
+              "price": 12000,
+              "hull": 80,
+              "armor": 1,
+              "features": [
+                "Компактный размер",
+                "Быстрая зарядка",
+                "Противоугонная система"
+              ],
+              "popularity": "Популярен среди курьеров и молодежи",
+              "price_legacy": "12,000 кредитов"
+            },
+            {
+              "name": "Kova Motors 'Гончая'",
+              "class": "hovercar",
+              "category": "personal",
+              "capacity": 2,
+              "range": "400 км",
+              "max_speed": "310 км/ч",
+              "price": 38000,
+              "power_source": "аккумулятор"
+            },
+            {
+              "name": "Zephyr Dynamics 'Стриж'",
+              "class": "hovercar",
+              "category": "personal",
+              "capacity": 4,
+              "range": "520 км",
+              "max_speed": "280 км/ч",
+              "price": 52000,
+              "power_source": "водородный элемент"
+            },
+            {
+              "name": "Dust Runner 'Вихрь'",
+              "class": "hovercar",
+              "category": "personal",
+              "capacity": 4,
+              "range": "600 км",
+              "max_speed": "350 км/ч",
+              "price": 88000,
+              "power_source": "гибрид"
+            }
+          ],
+          "wheeled_cars": [
+            {
+              "name": "Titan Motors 'Guardian'",
+              "class": "SUV",
+              "category": "civilian",
+              "capacity": "7 пассажиров",
+              "range": "1200 км",
+              "max_speed": "160 км/ч",
+              "power_source": "Гибридный двигатель",
+              "price": 32000,
+              "hull": 200,
+              "armor": 3,
+              "features": [
+                "Полный привод",
+                "Усиленная подвеска",
+                "Грузовой отсек"
+              ],
+              "terrain_capability": "Бездорожье, легкое пересеченное",
+              "price_legacy": "32,000 кредитов"
+            },
+            {
+              "name": "EcoDrive 'Whisper'",
+              "class": "compact",
+              "category": "civilian",
+              "capacity": "2 пассажира",
+              "range": "600 км",
+              "max_speed": "120 км/ч",
+              "power_source": "Электро",
+              "price": 18000,
+              "hull": 120,
+              "armor": 1,
+              "features": [
+                "Экономичность",
+                "Бесшумность",
+                "Компактная парковка"
+              ],
+              "environmental_bonus": "Нулевые выбросы",
+              "price_legacy": "18,000 кредитов"
+            },
+            {
+              "name": "Belt Works 'Копалка'",
+              "class": "wheeled",
+              "category": "utility",
+              "capacity": 2,
+              "range": "300 км",
+              "max_speed": "90 км/ч",
+              "price": 24000,
+              "power_source": "дизель-электро"
+            }
+          ]
+        },
+        "commercial": {
+          "transport_trucks": [
+            {
+              "name": "MegaTrans 'Hauler'",
+              "class": "heavy_truck",
+              "category": "commercial",
+              "cargo_capacity": "50 тонн",
+              "range": "2000 км",
+              "max_speed": "100 км/ч",
+              "power_source": "Дизель-электрический",
+              "price": 180000,
+              "hull": 400,
+              "armor": 8,
+              "crew": "1-2 водителя",
+              "features": [
+                "Автоматическая навигация",
+                "Холодильная установка",
+                "Защита груза"
+              ],
+              "trailer_options": [
+                "Контейнер",
+                "Цистерна",
+                "Платформа"
+              ],
+              "price_legacy": "180,000 кредитов"
+            },
+            {
+              "name": "LogiCorp 'Express'",
+              "class": "delivery_van",
+              "category": "commercial",
+              "cargo_capacity": "5 тонн",
+              "range": "800 км",
+              "max_speed": "140 км/ч",
+              "power_source": "Электро",
+              "price": 55000,
+              "hull": 180,
+              "armor": 4,
+              "crew": "1 водитель",
+              "features": [
+                "Быстрая загрузка",
+                "Трекинг груза",
+                "Роботизированная доставка"
+              ],
+              "specialization": "Городская логистика",
+              "price_legacy": "55,000 кредитов"
+            },
+            {
+              "name": "Ceres Hauler 'Муравьед'",
+              "class": "truck",
+              "category": "commercial",
+              "cargo_capacity": "18 т",
+              "range": "800 км",
+              "max_speed": "95 км/ч",
+              "price": 210000,
+              "power_source": "дизель-электро"
+            }
+          ],
+          "public_transport": [
+            {
+              "name": "MetroGlide 'Cityline'",
+              "class": "maglev_bus",
+              "category": "utility",
+              "capacity": "60 пассажиров",
+              "range": "500 км",
+              "max_speed": "80 км/ч в городе",
+              "power_source": "Магнитная левитация",
+              "price": 320000,
+              "hull": 300,
+              "armor": 6,
+              "crew": "1 водитель (опционально)",
+              "features": [
+                "Автономное движение",
+                "Низкий пол",
+                "Кондиционирование"
+              ],
+              "route_flexibility": "Фиксированные маршруты",
+              "price_legacy": "320,000 кредитов"
+            },
+            {
+              "name": "Neon Cab 'Фонарик'",
+              "class": "public",
+              "category": "public",
+              "capacity": 6,
+              "range": "450 км",
+              "max_speed": "160 км/ч",
+              "price": 96000,
+              "power_source": "аккумулятор"
+            }
+          ]
+        },
+        "industrial": {
+          "construction": [
+            {
+              "name": "BuildTech 'Colossus'",
+              "class": "mega_excavator",
+              "category": "industrial",
+              "operation_range": "Ограничено топливом",
+              "max_speed": "5 км/ч",
+              "power_source": "Ядерный реактор малой мощности",
+              "price": 15000000,
+              "hull": 2500,
+              "armor": 30,
+              "crew": "3-5 операторов",
+              "lift_capacity": "500 тонн",
+              "features": [
+                "Плазменный резак",
+                "Антигравитационные манипуляторы",
+                "Автономная работа 30 дней"
+              ],
+              "specialization": "Планетарное терраформирование",
+              "price_legacy": "15,000,000 кредитов"
+            },
+            {
+              "name": "MiningCorp 'Driller'",
+              "class": "mining_vehicle",
+              "category": "industrial",
+              "operation_range": "48 часов автономной работы",
+              "max_speed": "15 км/ч",
+              "power_source": "Дизель-генератор",
+              "price": 2200000,
+              "hull": 800,
+              "armor": 25,
+              "crew": "2 оператора",
+              "drilling_depth": "200 метров",
+              "features": [
+                "Алмазная буровая головка",
+                "Пробоотборник",
+                "Защита от взрывов"
+              ],
+              "specialization": "Добыча полезных ископаемых",
+              "price_legacy": "2,200,000 кредитов"
+            },
+            {
+              "name": "TerraCrane 'Журавль-X'",
+              "class": "construction",
+              "category": "industrial",
+              "operation_range": "200 км",
+              "max_speed": "40 км/ч",
+              "price": 1250000,
+              "power_source": "сетевое питание"
+            }
+          ]
+        },
+        "military": {
+          "armored_vehicles": [
+            {
+              "name": "Ares Defense 'Centurion'",
+              "class": "main_battle_tank",
+              "category": "military",
+              "crew": "4 человека",
+              "max_speed": "65 км/ч",
+              "range": "450 км",
+              "power_source": "Гибридный турбинный двигатель",
+              "price": 8500000,
+              "hull": 1200,
+              "armor": 45,
+              "armament": [
+                "125мм электромагнитная пушка",
+                "7.62мм коаксиальный пулемет",
+                "Система ПВО 'Точка'"
+              ],
+              "features": [
+                "Реактивная броня",
+                "Система активной защиты",
+                "Тепловизор",
+                "Лазерный дальномер"
+              ],
+              "combat_systems": [
+                "Система управления огнем",
+                "Баллистический компьютер",
+                "Автозаряжающий"
+              ],
+              "price_legacy": "8,500,000 кредитов"
+            },
+            {
+              "name": "Mars Heavy 'Броненосец-3'",
+              "class": "armored",
+              "category": "military",
+              "crew": 6,
+              "range": "700 км",
+              "max_speed": "110 км/ч",
+              "price": 3400000,
+              "power_source": "реакторный мини-блок"
+            }
+          ]
+        },
+        "hovercars": [
+          {
+            "name": "Belt Works 'Вихрь'",
+            "class": "hovercar",
+            "category": "hovercars",
+            "price": 123000,
+            "capacity": 10,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "TerraCrane 'Стриж-2'",
+            "class": "hovercar",
+            "category": "hovercars",
+            "price": 83000,
+            "capacity": 1,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "TerraCrane 'Стриж'",
+            "class": "hovercar",
+            "category": "hovercars",
+            "price": 139000,
+            "capacity": 10,
+            "range": "1200 км",
+            "max_speed": "320 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "Vulcan Motors 'Вихрь-9'",
+            "class": "hovercar",
+            "category": "hovercars",
+            "price": 107000,
+            "capacity": 8,
+            "range": "400 км",
+            "max_speed": "160 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Ceres Hauler 'Сокол'",
+            "class": "hovercar",
+            "category": "hovercars",
+            "price": 180000,
+            "capacity": 10,
+            "range": "700 км",
+            "max_speed": "320 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "Redline Industries 'Вихрь-8'",
+            "class": "hovercar",
+            "category": "hovercars",
+            "price": 138000,
+            "capacity": 9,
+            "range": "1200 км",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "Vulcan Motors 'Сокол'",
+            "class": "hovercar",
+            "category": "hovercars",
+            "price": 38000,
+            "capacity": 5,
+            "range": "1200 км",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Ceres Hauler 'Сокол'",
+            "class": "hovercar",
+            "category": "hovercars",
+            "price": 123000,
+            "capacity": 10,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "TerraCrane 'Гончая-6'",
+            "class": "hovercar",
+            "category": "hovercars",
+            "price": 85000,
+            "capacity": 6,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "Vulcan Motors 'Сокол'",
+            "class": "hovercar",
+            "category": "hovercars",
+            "price": 72000,
+            "capacity": 7,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Dust Runner 'Сокол'",
+            "class": "hovercar",
+            "category": "hovercars",
+            "price": 79000,
+            "capacity": 5,
+            "range": "система",
+            "max_speed": "320 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "Vulcan Motors 'Стриж-5'",
+            "class": "hovercar",
+            "category": "hovercars",
+            "price": 129000,
+            "capacity": 6,
+            "range": "700 км",
+            "max_speed": "320 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "Vulcan Motors 'Гончая-5'",
+            "class": "hovercar",
+            "category": "hovercars",
+            "price": 143000,
+            "capacity": 9,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "Vulcan Motors 'Гончая'",
+            "class": "hovercar",
+            "category": "hovercars",
+            "price": 46000,
+            "capacity": 3,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "TerraCrane 'Вихрь-6'",
+            "class": "hovercar",
+            "category": "hovercars",
+            "price": 43000,
+            "capacity": 8,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Belt Works 'Гончая'",
+            "class": "hovercar",
+            "category": "hovercars",
+            "price": 109000,
+            "capacity": 6,
+            "range": "700 км",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "Dust Runner 'Вихрь'",
+            "class": "hovercar",
+            "category": "hovercars",
+            "price": 108000,
+            "capacity": 1,
+            "range": "система",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Belt Works 'Сокол'",
+            "class": "hovercar",
+            "category": "hovercars",
+            "price": 121000,
+            "capacity": 3,
+            "range": "1200 км",
+            "max_speed": "160 км/ч",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "Zephyr Dynamics 'Стриж-6'",
+            "class": "hovercar",
+            "category": "hovercars",
+            "price": 119000,
+            "capacity": 9,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "Zephyr Dynamics 'Вихрь'",
+            "class": "hovercar",
+            "category": "hovercars",
+            "price": 143000,
+            "capacity": 9,
+            "range": "400 км",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "Kova Motors 'Гончая'",
+            "class": "hovercar",
+            "category": "hovercars",
+            "price": 70000,
+            "capacity": 6,
+            "range": "1200 км",
+            "max_speed": "320 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "Kova Motors 'Гончая-5'",
+            "class": "hovercar",
+            "category": "hovercars",
+            "price": 69000,
+            "capacity": 8,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "дизель-электро"
+          }
+        ],
+        "wheeled_cars": [
+          {
+            "name": "Neon Cab 'Копалка-9'",
+            "class": "wheeled",
+            "category": "wheeled_cars",
+            "price": 26000,
+            "capacity": 7,
+            "range": "400 км",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "Redline Industries 'Копалка-9'",
+            "class": "wheeled",
+            "category": "wheeled_cars",
+            "price": 61000,
+            "capacity": 6,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "Belt Works 'Копалка-8'",
+            "class": "wheeled",
+            "category": "wheeled_cars",
+            "price": 65000,
+            "capacity": 6,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "Vulcan Motors 'Трудяга-3'",
+            "class": "wheeled",
+            "category": "wheeled_cars",
+            "price": 75000,
+            "capacity": 7,
+            "range": "400 км",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "Dust Runner 'Бродяга-8'",
+            "class": "wheeled",
+            "category": "wheeled_cars",
+            "price": 90000,
+            "capacity": 10,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "Kova Motors 'Бродяга'",
+            "class": "wheeled",
+            "category": "wheeled_cars",
+            "price": 55000,
+            "capacity": 7,
+            "range": "система",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Zephyr Dynamics 'Трудяга-6'",
+            "class": "wheeled",
+            "category": "wheeled_cars",
+            "price": 75000,
+            "capacity": 8,
+            "range": "система",
+            "max_speed": "160 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Ceres Hauler 'Копалка'",
+            "class": "wheeled",
+            "category": "wheeled_cars",
+            "price": 108000,
+            "capacity": 3,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Redline Industries 'Копалка'",
+            "class": "wheeled",
+            "category": "wheeled_cars",
+            "price": 30000,
+            "capacity": 1,
+            "range": "система",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "Kova Motors 'Трудяга-2'",
+            "class": "wheeled",
+            "category": "wheeled_cars",
+            "price": 59000,
+            "capacity": 10,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "Mars Heavy 'Копалка'",
+            "class": "wheeled",
+            "category": "wheeled_cars",
+            "price": 104000,
+            "capacity": 1,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "Kova Motors 'Бродяга-2'",
+            "class": "wheeled",
+            "category": "wheeled_cars",
+            "price": 56000,
+            "capacity": 4,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "Kova Motors 'Бродяга'",
+            "class": "wheeled",
+            "category": "wheeled_cars",
+            "price": 101000,
+            "capacity": 5,
+            "range": "1200 км",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Vulcan Motors 'Копалка'",
+            "class": "wheeled",
+            "category": "wheeled_cars",
+            "price": 93000,
+            "capacity": 3,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Redline Industries 'Копалка-8'",
+            "class": "wheeled",
+            "category": "wheeled_cars",
+            "price": 71000,
+            "capacity": 4,
+            "range": "1200 км",
+            "max_speed": "0.05c",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "Neon Cab 'Копалка-7'",
+            "class": "wheeled",
+            "category": "wheeled_cars",
+            "price": 89000,
+            "capacity": 7,
+            "range": "1200 км",
+            "max_speed": "0.05c",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "Neon Cab 'Трудяга'",
+            "class": "wheeled",
+            "category": "wheeled_cars",
+            "price": 28000,
+            "capacity": 6,
+            "range": "400 км",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "Neon Cab 'Трудяга-6'",
+            "class": "wheeled",
+            "category": "wheeled_cars",
+            "price": 20000,
+            "capacity": 8,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент"
+          }
+        ],
+        "transport_trucks": [
+          {
+            "name": "Belt Works 'Тяжеловес-7'",
+            "class": "truck",
+            "category": "transport_trucks",
+            "price": 465000,
+            "capacity": 10,
+            "range": "1200 км",
+            "max_speed": "160 км/ч",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "Zephyr Dynamics 'Муравьед'",
+            "class": "truck",
+            "category": "transport_trucks",
+            "price": 833000,
+            "capacity": 9,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "Belt Works 'Муравьед'",
+            "class": "truck",
+            "category": "transport_trucks",
+            "price": 237000,
+            "capacity": 5,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "Redline Industries 'Караван'",
+            "class": "truck",
+            "category": "transport_trucks",
+            "price": 819000,
+            "capacity": 8,
+            "range": "400 км",
+            "max_speed": "160 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "Ceres Hauler 'Муравьед'",
+            "class": "truck",
+            "category": "transport_trucks",
+            "price": 852000,
+            "capacity": 5,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "Belt Works 'Тяжеловес'",
+            "class": "truck",
+            "category": "transport_trucks",
+            "price": 846000,
+            "capacity": 4,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "Mars Heavy 'Тяжеловес'",
+            "class": "truck",
+            "category": "transport_trucks",
+            "price": 294000,
+            "capacity": 8,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "TerraCrane 'Тяжеловес'",
+            "class": "truck",
+            "category": "transport_trucks",
+            "price": 381000,
+            "capacity": 4,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "TerraCrane 'Муравьед'",
+            "class": "truck",
+            "category": "transport_trucks",
+            "price": 587000,
+            "capacity": 1,
+            "range": "700 км",
+            "max_speed": "320 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "Belt Works 'Тяжеловес'",
+            "class": "truck",
+            "category": "transport_trucks",
+            "price": 638000,
+            "capacity": 10,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "Ceres Hauler 'Караван'",
+            "class": "truck",
+            "category": "transport_trucks",
+            "price": 250000,
+            "capacity": 4,
+            "range": "система",
+            "max_speed": "240 км/ч",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "Belt Works 'Муравьед-8'",
+            "class": "truck",
+            "category": "transport_trucks",
+            "price": 397000,
+            "capacity": 1,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "Ceres Hauler 'Тяжеловес'",
+            "class": "truck",
+            "category": "transport_trucks",
+            "price": 390000,
+            "capacity": 4,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "Vulcan Motors 'Муравьед-5'",
+            "class": "truck",
+            "category": "transport_trucks",
+            "price": 814000,
+            "capacity": 4,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Dust Runner 'Караван'",
+            "class": "truck",
+            "category": "transport_trucks",
+            "price": 195000,
+            "capacity": 9,
+            "range": "1200 км",
+            "max_speed": "0.05c",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "Vulcan Motors 'Тяжеловес'",
+            "class": "truck",
+            "category": "transport_trucks",
+            "price": 161000,
+            "capacity": 5,
+            "range": "система",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Ceres Hauler 'Муравьед'",
+            "class": "truck",
+            "category": "transport_trucks",
+            "price": 706000,
+            "capacity": 1,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "Dust Runner 'Тяжеловес-5'",
+            "class": "truck",
+            "category": "transport_trucks",
+            "price": 730000,
+            "capacity": 9,
+            "range": "700 км",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Kova Motors 'Тяжеловес-6'",
+            "class": "truck",
+            "category": "transport_trucks",
+            "price": 445000,
+            "capacity": 5,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "TerraCrane 'Муравьед-3'",
+            "class": "truck",
+            "category": "transport_trucks",
+            "price": 184000,
+            "capacity": 4,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "дизель-электро"
+          }
+        ],
+        "public_transport": [
+          {
+            "name": "Belt Works 'Маршрутка-7'",
+            "class": "public",
+            "category": "public_transport",
+            "price": 190000,
+            "capacity": 1,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Redline Industries 'Маршрутка-3'",
+            "class": "public",
+            "category": "public_transport",
+            "price": 219000,
+            "capacity": 6,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "Vulcan Motors 'Фонарик'",
+            "class": "public",
+            "category": "public_transport",
+            "price": 148000,
+            "capacity": 6,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Ceres Hauler 'Маршрутка'",
+            "class": "public",
+            "category": "public_transport",
+            "price": 299000,
+            "capacity": 9,
+            "range": "система",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Belt Works 'Маршрутка'",
+            "class": "public",
+            "category": "public_transport",
+            "price": 281000,
+            "capacity": 6,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Redline Industries 'Маршрутка'",
+            "class": "public",
+            "category": "public_transport",
+            "price": 251000,
+            "capacity": 5,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Redline Industries 'Маршрутка'",
+            "class": "public",
+            "category": "public_transport",
+            "price": 399000,
+            "capacity": 3,
+            "range": "система",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "Mars Heavy 'Маршрутка-6'",
+            "class": "public",
+            "category": "public_transport",
+            "price": 365000,
+            "capacity": 6,
+            "range": "1200 км",
+            "max_speed": "240 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "Dust Runner 'Маршрутка-6'",
+            "class": "public",
+            "category": "public_transport",
+            "price": 292000,
+            "capacity": 9,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "Zephyr Dynamics 'Маршрутка-9'",
+            "class": "public",
+            "category": "public_transport",
+            "price": 218000,
+            "capacity": 9,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн"
+          }
+        ],
+        "construction": [
+          {
+            "name": "Dust Runner 'Крот'",
+            "class": "construction",
+            "category": "construction",
+            "price": 2395000,
+            "capacity": 3,
+            "range": "1200 км",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "Vulcan Motors 'Журавль'",
+            "class": "construction",
+            "category": "construction",
+            "price": 3467000,
+            "capacity": 5,
+            "range": "400 км",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "Zephyr Dynamics 'Крот'",
+            "class": "construction",
+            "category": "construction",
+            "price": 3081000,
+            "capacity": 8,
+            "range": "1200 км",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Ceres Hauler 'Атлант-9'",
+            "class": "construction",
+            "category": "construction",
+            "price": 4999000,
+            "capacity": 6,
+            "range": "400 км",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "Belt Works 'Атлант'",
+            "class": "construction",
+            "category": "construction",
+            "price": 2317000,
+            "capacity": 10,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "Neon Cab 'Крот-8'",
+            "class": "construction",
+            "category": "construction",
+            "price": 2858000,
+            "capacity": 9,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Neon Cab 'Журавль-5'",
+            "class": "construction",
+            "category": "construction",
+            "price": 1399000,
+            "capacity": 1,
+            "range": "система",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "Zephyr Dynamics 'Крот'",
+            "class": "construction",
+            "category": "construction",
+            "price": 1390000,
+            "capacity": 8,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "Belt Works 'Крот'",
+            "class": "construction",
+            "category": "construction",
+            "price": 963000,
+            "capacity": 10,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "Kova Motors 'Журавль-4'",
+            "class": "construction",
+            "category": "construction",
+            "price": 4405000,
+            "capacity": 5,
+            "range": "1200 км",
+            "max_speed": "240 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "Neon Cab 'Журавль-9'",
+            "class": "construction",
+            "category": "construction",
+            "price": 1694000,
+            "capacity": 6,
+            "range": "1200 км",
+            "max_speed": "160 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "TerraCrane 'Журавль-8'",
+            "class": "construction",
+            "category": "construction",
+            "price": 3036000,
+            "capacity": 5,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "Zephyr Dynamics 'Журавль-2'",
+            "class": "construction",
+            "category": "construction",
+            "price": 2864000,
+            "capacity": 10,
+            "range": "система",
+            "max_speed": "320 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "Zephyr Dynamics 'Журавль-4'",
+            "class": "construction",
+            "category": "construction",
+            "price": 1619000,
+            "capacity": 8,
+            "range": "1200 км",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн"
+          }
+        ],
+        "armored_vehicles": [
+          {
+            "name": "TerraCrane 'Оплот'",
+            "class": "armored",
+            "category": "armored_vehicles",
+            "price": 5293000,
+            "capacity": 1,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "Neon Cab 'Броненосец'",
+            "class": "armored",
+            "category": "armored_vehicles",
+            "price": 14862000,
+            "capacity": 3,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "Zephyr Dynamics 'Титан-2'",
+            "class": "armored",
+            "category": "armored_vehicles",
+            "price": 6495000,
+            "capacity": 6,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "Zephyr Dynamics 'Титан'",
+            "class": "armored",
+            "category": "armored_vehicles",
+            "price": 12904000,
+            "capacity": 8,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Mars Heavy 'Титан'",
+            "class": "armored",
+            "category": "armored_vehicles",
+            "price": 8333000,
+            "capacity": 8,
+            "range": "400 км",
+            "max_speed": "0.05c",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Redline Industries 'Оплот-4'",
+            "class": "armored",
+            "category": "armored_vehicles",
+            "price": 3418000,
+            "capacity": 6,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "Kova Motors 'Оплот'",
+            "class": "armored",
+            "category": "armored_vehicles",
+            "price": 12085000,
+            "capacity": 8,
+            "range": "система",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Kova Motors 'Броненосец'",
+            "class": "armored",
+            "category": "armored_vehicles",
+            "price": 12815000,
+            "capacity": 3,
+            "range": "система",
+            "max_speed": "320 км/ч",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "Vulcan Motors 'Броненосец-4'",
+            "class": "armored",
+            "category": "armored_vehicles",
+            "price": 3743000,
+            "capacity": 2,
+            "range": "1200 км",
+            "max_speed": "0.05c",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Redline Industries 'Титан-3'",
+            "class": "armored",
+            "category": "armored_vehicles",
+            "price": 6373000,
+            "capacity": 8,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Kova Motors 'Оплот'",
+            "class": "armored",
+            "category": "armored_vehicles",
+            "price": 9633000,
+            "capacity": 1,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "Vulcan Motors 'Оплот'",
+            "class": "armored",
+            "category": "armored_vehicles",
+            "price": 2431000,
+            "capacity": 3,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "аккумулятор"
+          }
+        ]
+      }
+    },
+    "aircraft": {
+      "description": "Атмосферные летательные аппараты",
+      "subtypes": {
+        "civilian_aircraft": [
+          {
+            "name": "SkyTech 'Voyager'",
+            "class": "personal_aircraft",
+            "category": "luxury",
+            "capacity": "8 пассажиров",
+            "range": "3500 км",
+            "max_speed": "850 км/ч",
+            "service_ceiling": "12000 м",
+            "power_source": "Реактивные двигатели",
+            "price": 12000000,
+            "hull": 400,
+            "armor": 5,
+            "crew": "2 пилота",
+            "features": [
+              "Роскошный салон",
+              "Бар",
+              "Офисная зона",
+              "Спальные места"
+            ],
+            "certifications": [
+              "Межпланетные перелеты",
+              "Автопилот класса А"
+            ],
+            "price_legacy": "12,000,000 кредитов"
+          },
+          {
+            "name": "EcoFly 'Bumblebee'",
+            "class": "urban_air_taxi",
+            "category": "civilian",
+            "capacity": "4 пассажира",
+            "range": "150 км",
+            "max_speed": "200 км/ч",
+            "service_ceiling": "500 м",
+            "power_source": "Электрические вентиляторы",
+            "price": 280000,
+            "hull": 150,
+            "armor": 2,
+            "crew": "Автопилот",
+            "features": [
+              "Вертикальный взлет",
+              "Бесшумность",
+              "Автоматическое управление"
+            ],
+            "use_case": "Городские такси, экскурсии",
+            "price_legacy": "280,000 кредитов"
+          },
+          {
+            "name": "AeroNova 'Ласточка'",
+            "class": "light aircraft",
+            "category": "civilian",
+            "capacity": 4,
+            "range": "900 км",
+            "max_speed": "480 км/ч",
+            "price": 145000,
+            "power_source": "турбовинтовой"
+          },
+          {
+            "name": "StormChaser 'Циклон'",
+            "class": "recon aircraft",
+            "category": "civilian",
+            "capacity": 2,
+            "range": "2600 км",
+            "max_speed": "820 км/ч",
+            "price": 27500000,
+            "power_source": "турбореактивный"
+          },
+          {
+            "name": "StormChaser 'Ласточка-2'",
+            "class": "civilian_air",
+            "category": "civilian_aircraft",
+            "price": 2416000,
+            "capacity": 8,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "AeroNova 'Восход'",
+            "class": "civilian_air",
+            "category": "civilian_aircraft",
+            "price": 1297000,
+            "capacity": 2,
+            "range": "1200 км",
+            "max_speed": "160 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "SkyFreight 'Восход'",
+            "class": "civilian_air",
+            "category": "civilian_aircraft",
+            "price": 511000,
+            "capacity": 7,
+            "range": "1200 км",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "StormChaser 'Восход'",
+            "class": "civilian_air",
+            "category": "civilian_aircraft",
+            "price": 1244000,
+            "capacity": 5,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "WindRider 'Чайка'",
+            "class": "civilian_air",
+            "category": "civilian_aircraft",
+            "price": 1481000,
+            "capacity": 10,
+            "range": "система",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "SkyFreight 'Чайка'",
+            "class": "civilian_air",
+            "category": "civilian_aircraft",
+            "price": 1327000,
+            "capacity": 10,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "SkyFreight 'Ласточка-8'",
+            "class": "civilian_air",
+            "category": "civilian_aircraft",
+            "price": 1907000,
+            "capacity": 7,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "StormChaser 'Ласточка-4'",
+            "class": "civilian_air",
+            "category": "civilian_aircraft",
+            "price": 1879000,
+            "capacity": 2,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "CloudPiercer 'Восход'",
+            "class": "civilian_air",
+            "category": "civilian_aircraft",
+            "price": 1703000,
+            "capacity": 2,
+            "range": "400 км",
+            "max_speed": "0.05c",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "WindRider 'Чайка'",
+            "class": "civilian_air",
+            "category": "civilian_aircraft",
+            "price": 1223000,
+            "capacity": 7,
+            "range": "система",
+            "max_speed": "240 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "MedEvac 'Чайка-3'",
+            "class": "civilian_air",
+            "category": "civilian_aircraft",
+            "price": 1012000,
+            "capacity": 7,
+            "range": "400 км",
+            "max_speed": "160 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "CloudPiercer 'Восход'",
+            "class": "civilian_air",
+            "category": "civilian_aircraft",
+            "price": 447000,
+            "capacity": 1,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "StormChaser 'Восход-7'",
+            "class": "civilian_air",
+            "category": "civilian_aircraft",
+            "price": 1741000,
+            "capacity": 2,
+            "range": "1200 км",
+            "max_speed": "160 км/ч",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "StormChaser 'Чайка-7'",
+            "class": "civilian_air",
+            "category": "civilian_aircraft",
+            "price": 2375000,
+            "capacity": 9,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "StormChaser 'Ласточка-8'",
+            "class": "civilian_air",
+            "category": "civilian_aircraft",
+            "price": 189000,
+            "capacity": 7,
+            "range": "1200 км",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "SkyFreight 'Ласточка-6'",
+            "class": "civilian_air",
+            "category": "civilian_aircraft",
+            "price": 2276000,
+            "capacity": 6,
+            "range": "система",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "SkyFreight 'Чайка-4'",
+            "class": "civilian_air",
+            "category": "civilian_aircraft",
+            "price": 2230000,
+            "capacity": 2,
+            "range": "700 км",
+            "max_speed": "320 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "StormChaser 'Чайка'",
+            "class": "civilian_air",
+            "category": "civilian_aircraft",
+            "price": 1326000,
+            "capacity": 6,
+            "range": "1200 км",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "AeroNova 'Чайка'",
+            "class": "civilian_air",
+            "category": "civilian_aircraft",
+            "price": 1276000,
+            "capacity": 1,
+            "range": "1200 км",
+            "max_speed": "160 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "StormChaser 'Восход'",
+            "class": "civilian_air",
+            "category": "civilian_aircraft",
+            "price": 1239000,
+            "capacity": 4,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "WindRider 'Чайка-4'",
+            "class": "civilian_air",
+            "category": "civilian_aircraft",
+            "price": 223000,
+            "capacity": 9,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "StormChaser 'Восход-3'",
+            "class": "civilian_air",
+            "category": "civilian_aircraft",
+            "price": 1507000,
+            "capacity": 1,
+            "range": "система",
+            "max_speed": "240 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "MedEvac 'Ласточка'",
+            "class": "civilian_air",
+            "category": "civilian_aircraft",
+            "price": 528000,
+            "capacity": 5,
+            "range": "1200 км",
+            "max_speed": "160 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "SkyFreight 'Ласточка-8'",
+            "class": "civilian_air",
+            "category": "civilian_aircraft",
+            "price": 1127000,
+            "capacity": 4,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн"
+          }
+        ],
+        "commercial_aircraft": [
+          {
+            "name": "AirCorp 'Mammoth'",
+            "class": "cargo_transport",
+            "category": "commercial",
+            "cargo_capacity": "200 тонн",
+            "range": "8000 км",
+            "max_speed": "900 км/ч",
+            "service_ceiling": "11000 м",
+            "power_source": "Турбовентиляторы",
+            "price": 35000000,
+            "hull": 800,
+            "armor": 8,
+            "crew": "3 пилота + 2 грузчика",
+            "cargo_bay": "Климат-контроль, подъемники",
+            "features": [
+              "Автоматическая загрузка",
+              "Рефрижераторные секции",
+              "Топливозаправка в воздухе"
+            ],
+            "price_legacy": 85000000
+          },
+          {
+            "name": "SkyFreight 'Тяжеловес'",
+            "class": "cargo aircraft",
+            "category": "commercial",
+            "cargo_capacity": "45 т",
+            "range": "3200 км",
+            "max_speed": "760 км/ч",
+            "price": 35000000,
+            "power_source": "турбореактивный ×4",
+            "price_legacy": 92000000
+          },
+          {
+            "name": "SkyFreight 'Мамонт'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 7,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 398480000
+          },
+          {
+            "name": "WindRider 'Мамонт-4'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 6,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 358139000
+          },
+          {
+            "name": "MedEvac 'Тяжеловес-3'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 7,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 88829000
+          },
+          {
+            "name": "StormChaser 'Мамонт'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 7,
+            "range": "1200 км",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 56488000
+          },
+          {
+            "name": "StormChaser 'Мамонт-9'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 6,
+            "range": "1200 км",
+            "max_speed": "240 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 245999000
+          },
+          {
+            "name": "StormChaser 'Тяжеловес'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 4,
+            "range": "система",
+            "max_speed": "160 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 308301000
+          },
+          {
+            "name": "AeroNova 'Тяжеловес-4'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 6,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 256379000
+          },
+          {
+            "name": "SkyFreight 'Мамонт-7'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 2,
+            "range": "400 км",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент",
+            "price_legacy": 237292000
+          },
+          {
+            "name": "WindRider 'Мамонт'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 3,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент",
+            "price_legacy": 190815000
+          },
+          {
+            "name": "MedEvac 'Мамонт'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 3,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 354456000
+          },
+          {
+            "name": "MedEvac 'Тяжеловес'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 9,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 375287000
+          },
+          {
+            "name": "SkyFreight 'Тяжеловес-5'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 2,
+            "range": "1200 км",
+            "max_speed": "160 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 91615000
+          },
+          {
+            "name": "WindRider 'Тяжеловес-6'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 2,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 284842000
+          },
+          {
+            "name": "WindRider 'Тяжеловес'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 2,
+            "range": "система",
+            "max_speed": "320 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 103516000
+          },
+          {
+            "name": "WindRider 'Мамонт-2'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 2,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 316562000
+          },
+          {
+            "name": "StormChaser 'Тяжеловес-6'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 3,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "дизель-электро",
+            "price_legacy": 305073000
+          },
+          {
+            "name": "WindRider 'Тяжеловес'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 10,
+            "range": "система",
+            "max_speed": "320 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 138466000
+          },
+          {
+            "name": "AeroNova 'Тяжеловес-7'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 9,
+            "range": "система",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 136091000
+          },
+          {
+            "name": "MedEvac 'Тяжеловес'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 2,
+            "range": "1200 км",
+            "max_speed": "240 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 266266000
+          },
+          {
+            "name": "SkyFreight 'Мамонт'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 1,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн",
+            "price_legacy": 159691000
+          },
+          {
+            "name": "CloudPiercer 'Тяжеловес-8'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 4,
+            "range": "1200 км",
+            "max_speed": "160 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 175104000
+          },
+          {
+            "name": "MedEvac 'Мамонт'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 6,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "аккумулятор",
+            "price_legacy": 370060000
+          },
+          {
+            "name": "WindRider 'Мамонт'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 7,
+            "range": "система",
+            "max_speed": "320 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 379214000
+          },
+          {
+            "name": "AeroNova 'Тяжеловес'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 1,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "аккумулятор",
+            "price_legacy": 320022000
+          },
+          {
+            "name": "CloudPiercer 'Тяжеловес-4'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 6,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн",
+            "price_legacy": 335727000
+          },
+          {
+            "name": "WindRider 'Тяжеловес-5'",
+            "class": "cargo_air",
+            "category": "commercial_aircraft",
+            "price": 35000000,
+            "capacity": 9,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент",
+            "price_legacy": 182295000
+          }
+        ],
+        "utility_aircraft": [
+          {
+            "name": "Rescue 'Guardian Angel'",
+            "class": "emergency_helicopter",
+            "category": "utility",
+            "capacity": "12 пострадавших + 4 медика",
+            "range": "600 км",
+            "max_speed": "320 км/ч",
+            "service_ceiling": "6000 м",
+            "power_source": "Турбовальные двигатели",
+            "price": 18000000,
+            "hull": 350,
+            "armor": 12,
+            "crew": "2 пилота + 2 медика",
+            "medical_equipment": [
+              "ИВЛ",
+              "Дефибриллятор",
+              "Операционный стол"
+            ],
+            "features": [
+              "Лебедка спасения",
+              "Прожекторы",
+              "Термальная камера",
+              "Защита от обстрела"
+            ],
+            "price_legacy": "18,000,000 кредитов"
+          },
+          {
+            "name": "MedEvac 'Ангел-7'",
+            "class": "utility",
+            "category": "rescue",
+            "capacity": 8,
+            "range": "1400 км",
+            "max_speed": "420 км/ч",
+            "price": 18500000,
+            "power_source": "турбовинтовой ×2"
+          },
+          {
+            "name": "WindRider 'Ангел-3'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 33528000,
+            "capacity": 8,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "MedEvac 'Спасатель'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 35000000,
+            "capacity": 4,
+            "range": "1200 км",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 48540000
+          },
+          {
+            "name": "StormChaser 'Ангел-9'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 19337000,
+            "capacity": 2,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "WindRider 'Ангел-9'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 35000000,
+            "capacity": 9,
+            "range": "1200 км",
+            "max_speed": "0.05c",
+            "power_source": "аккумулятор",
+            "price_legacy": 51389000
+          },
+          {
+            "name": "CloudPiercer 'Спасатель'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 12014000,
+            "capacity": 8,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "SkyFreight 'Спасатель-8'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 8609000,
+            "capacity": 9,
+            "range": "1200 км",
+            "max_speed": "240 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "AeroNova 'Спасатель-6'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 35000000,
+            "capacity": 3,
+            "range": "система",
+            "max_speed": "160 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 45761000
+          },
+          {
+            "name": "CloudPiercer 'Ангел-7'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 35000000,
+            "capacity": 1,
+            "range": "1200 км",
+            "max_speed": "240 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 38107000
+          },
+          {
+            "name": "SkyFreight 'Ангел-8'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 33041000,
+            "capacity": 10,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "StormChaser 'Ангел-6'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 24284000,
+            "capacity": 10,
+            "range": "700 км",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "MedEvac 'Ангел'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 31566000,
+            "capacity": 3,
+            "range": "1200 км",
+            "max_speed": "160 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "MedEvac 'Ангел-2'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 35000000,
+            "capacity": 7,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 38164000
+          },
+          {
+            "name": "AeroNova 'Спасатель'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 9022000,
+            "capacity": 8,
+            "range": "система",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "MedEvac 'Ангел-2'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 35000000,
+            "capacity": 2,
+            "range": "700 км",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 39100000
+          },
+          {
+            "name": "AeroNova 'Ангел'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 35000000,
+            "capacity": 4,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 38714000
+          },
+          {
+            "name": "SkyFreight 'Спасатель-9'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 24056000,
+            "capacity": 10,
+            "range": "400 км",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "SkyFreight 'Ангел'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 8812000,
+            "capacity": 9,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "MedEvac 'Ангел-8'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 34693000,
+            "capacity": 4,
+            "range": "система",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "SkyFreight 'Ангел-2'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 23021000,
+            "capacity": 4,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "StormChaser 'Спасатель-2'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 35000000,
+            "capacity": 3,
+            "range": "система",
+            "max_speed": "160 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 57155000
+          },
+          {
+            "name": "StormChaser 'Ангел-4'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 35000000,
+            "capacity": 10,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "дизель-электро",
+            "price_legacy": 35481000
+          },
+          {
+            "name": "StormChaser 'Ангел-6'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 35000000,
+            "capacity": 7,
+            "range": "система",
+            "max_speed": "240 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 49607000
+          },
+          {
+            "name": "StormChaser 'Спасатель'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 35000000,
+            "capacity": 4,
+            "range": "700 км",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 36662000
+          },
+          {
+            "name": "MedEvac 'Спасатель-5'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 35000000,
+            "capacity": 6,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент",
+            "price_legacy": 51693000
+          },
+          {
+            "name": "StormChaser 'Ангел-2'",
+            "class": "rescue_air",
+            "category": "utility_aircraft",
+            "price": 35000000,
+            "capacity": 7,
+            "range": "система",
+            "max_speed": "320 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 59142000
+          }
+        ]
+      }
+    },
+    "spacecraft": {
+      "description": "Космические корабли для межпланетных путешествий",
+      "subtypes": {
+        "personal_spacecraft": [
+          {
+            "name": "Scrappers 'Гроб'",
+            "class": "personal craft",
+            "category": "personal_spacecraft",
+            "price": 800000,
+            "capacity": 1,
+            "range": "ближний космос только",
+            "max_speed": "0.01c",
+            "power_source": "перевёрнутый грузовой движок",
+            "note": "Собран из обломков на Церере. Не регистрируется.",
+            "condition": "критическое"
+          },
+          {
+            "name": "StarWing 'Navigator'",
+            "class": "personal_yacht",
+            "category": "luxury",
+            "capacity": "12 пассажиров + 4 экипажа",
+            "range": "100 световых лет",
+            "max_speed": "0.8c (варп-скорость)",
+            "power_source": "Антиматерный реактор",
+            "price": 45000000,
+            "hull": 1500,
+            "armor": 15,
+            "shields": 800,
+            "crew": "4 + ИИ-пилот",
+            "life_support": "6 месяцев автономности",
+            "features": [
+              "Роскошные каюты",
+              "Голо-палуба",
+              "Ресторан",
+              "Обсерватория",
+              "Шаттл-ангар"
+            ],
+            "warp_drive": "Класс 5 - высокая скорость",
+            "price_legacy": 450000000
+          },
+          {
+            "name": "Budget Space 'Hopper'",
+            "class": "shuttle",
+            "category": "civilian",
+            "capacity": "6 пассажиров",
+            "range": "Система - 50 а.е.",
+            "max_speed": "0.1c",
+            "power_source": "Термоядерный двигатель",
+            "price": 8500000,
+            "hull": 400,
+            "armor": 8,
+            "shields": 200,
+            "crew": "1 пилот",
+            "life_support": "2 недели",
+            "features": [
+              "Экономичность",
+              "Простота обслуживания",
+              "Надежность"
+            ],
+            "use_case": "Межпланетные рейсы эконом-класса",
+            "price_legacy": "8,500,000 кредитов"
+          },
+          {
+            "name": "StarHopper 'Кочевник'",
+            "class": "personal craft",
+            "category": "personal",
+            "capacity": 4,
+            "range": "внутрисистемный",
+            "max_speed": "0.08c",
+            "price": 8500000,
+            "power_source": "фьюжн-микрореактор"
+          },
+          {
+            "name": "DeepSurvey 'Кочевник-4'",
+            "class": "personal_space",
+            "category": "personal_spacecraft",
+            "price": 25936000,
+            "capacity": 8,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "DeepSurvey 'Кочевник-7'",
+            "class": "personal_space",
+            "category": "personal_spacecraft",
+            "price": 28791000,
+            "capacity": 3,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "BeltMining 'Кочевник'",
+            "class": "personal_space",
+            "category": "personal_spacecraft",
+            "price": 45000000,
+            "capacity": 8,
+            "range": "1200 км",
+            "max_speed": "160 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 52203000
+          },
+          {
+            "name": "PatrolWing 'Одиссей'",
+            "class": "personal_space",
+            "category": "personal_spacecraft",
+            "price": 45000000,
+            "capacity": 8,
+            "range": "400 км",
+            "max_speed": "0.05c",
+            "power_source": "дизель-электро",
+            "price_legacy": 56667000
+          },
+          {
+            "name": "BeltMining 'Скиталец-4'",
+            "class": "personal_space",
+            "category": "personal_spacecraft",
+            "price": 28799000,
+            "capacity": 9,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "StarHopper 'Кочевник'",
+            "class": "personal_space",
+            "category": "personal_spacecraft",
+            "price": 28271000,
+            "capacity": 4,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "StarHopper 'Одиссей-4'",
+            "class": "personal_space",
+            "category": "personal_spacecraft",
+            "price": 44261000,
+            "capacity": 1,
+            "range": "1200 км",
+            "max_speed": "160 км/ч",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "VoidLiner 'Кочевник'",
+            "class": "personal_space",
+            "category": "personal_spacecraft",
+            "price": 45000000,
+            "capacity": 1,
+            "range": "1200 км",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент",
+            "price_legacy": 51496000
+          },
+          {
+            "name": "DeepSurvey 'Кочевник'",
+            "class": "personal_space",
+            "category": "personal_spacecraft",
+            "price": 33742000,
+            "capacity": 1,
+            "range": "400 км",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "StarHopper 'Кочевник-8'",
+            "class": "personal_space",
+            "category": "personal_spacecraft",
+            "price": 16225000,
+            "capacity": 7,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "PatrolWing 'Кочевник-9'",
+            "class": "personal_space",
+            "category": "personal_spacecraft",
+            "price": 13759000,
+            "capacity": 7,
+            "range": "1200 км",
+            "max_speed": "240 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "PatrolWing 'Скиталец'",
+            "class": "personal_space",
+            "category": "personal_spacecraft",
+            "price": 29564000,
+            "capacity": 1,
+            "range": "система",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "BeltMining 'Кочевник'",
+            "class": "personal_space",
+            "category": "personal_spacecraft",
+            "price": 21554000,
+            "capacity": 1,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "StarHopper 'Кочевник-2'",
+            "class": "personal_space",
+            "category": "personal_spacecraft",
+            "price": 20134000,
+            "capacity": 2,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "BeltMining 'Кочевник-5'",
+            "class": "personal_space",
+            "category": "personal_spacecraft",
+            "price": 45000000,
+            "capacity": 8,
+            "range": "400 км",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 57332000
+          },
+          {
+            "name": "PatrolWing 'Скиталец'",
+            "class": "personal_space",
+            "category": "personal_spacecraft",
+            "price": 34245000,
+            "capacity": 4,
+            "range": "система",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "BeltMining 'Скиталец-5'",
+            "class": "personal_space",
+            "category": "personal_spacecraft",
+            "price": 42592000,
+            "capacity": 8,
+            "range": "700 км",
+            "max_speed": "320 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "VoidLiner 'Кочевник-8'",
+            "class": "personal_space",
+            "category": "personal_spacecraft",
+            "price": 43265000,
+            "capacity": 8,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "PatrolWing 'Одиссей'",
+            "class": "personal_space",
+            "category": "personal_spacecraft",
+            "price": 22759000,
+            "capacity": 7,
+            "range": "1200 км",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "OrbitalYard 'Одиссей'",
+            "class": "personal_space",
+            "category": "personal_spacecraft",
+            "price": 29297000,
+            "capacity": 3,
+            "range": "1200 км",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "OrbitalYard 'Кочевник'",
+            "class": "personal_space",
+            "category": "personal_spacecraft",
+            "price": 34059000,
+            "capacity": 7,
+            "range": "1200 км",
+            "max_speed": "240 км/ч",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "StarHopper 'Скиталец'",
+            "class": "personal_space",
+            "category": "personal_spacecraft",
+            "price": 29562000,
+            "capacity": 7,
+            "range": "700 км",
+            "max_speed": "320 км/ч",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "BeltMining 'Кочевник-9'",
+            "class": "personal_space",
+            "category": "personal_spacecraft",
+            "price": 45000000,
+            "capacity": 4,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 54067000
+          },
+          {
+            "name": "BeltMining 'Скиталец'",
+            "class": "personal_space",
+            "category": "personal_spacecraft",
+            "price": 40028000,
+            "capacity": 5,
+            "range": "1200 км",
+            "max_speed": "320 км/ч",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "CeresYard 'Жестянка'",
+            "class": "personal craft",
+            "category": "personal_spacecraft",
+            "price": 2500000,
+            "capacity": 2,
+            "range": "внутрисистемный (ближний)",
+            "max_speed": "0.02c",
+            "power_source": "старый ионный",
+            "note": "Бывший грузовой шаттл, переделан под жильё. Дыры заварены, но скрипит."
+          },
+          {
+            "name": "BeltWorks 'Голубой колибри'",
+            "class": "personal craft",
+            "category": "personal_spacecraft",
+            "price": 3200000,
+            "capacity": 3,
+            "range": "внутрисистемный",
+            "max_speed": "0.03c",
+            "power_source": "солнечный парус + резерв",
+            "note": "Популярен среди курьеров Пояса. Медленный, но экономичный."
+          },
+          {
+            "name": "JunkYard 'Собачка'",
+            "class": "personal craft",
+            "category": "personal_spacecraft",
+            "price": 4000000,
+            "capacity": 4,
+            "range": "внутрисистемный",
+            "max_speed": "0.04c",
+            "power_source": "фьюжн (изношенный)",
+            "note": "Военный списанный корабль. Броня хорошая, двигатели на последнем издыхании."
+          },
+          {
+            "name": "LunarTech 'Студент'",
+            "class": "personal craft",
+            "category": "personal_spacecraft",
+            "price": 4500000,
+            "capacity": 2,
+            "range": "внутрисистемный",
+            "max_speed": "0.05c",
+            "power_source": "ионный (базовый)",
+            "note": "Минимальная конфигурация от LunarTech. Всё опционально — включая подушки."
+          }
+        ],
+        "commercial_spacecraft": [
+          {
+            "name": "TransGalactic 'Behemoth'",
+            "class": "super_freighter",
+            "category": "commercial",
+            "cargo_capacity": "100,000 тонн",
+            "range": "500 световых лет",
+            "max_speed": "0.95c (варп)",
+            "power_source": "Множественные реакторы",
+            "price": 45000000,
+            "hull": 5000,
+            "armor": 25,
+            "shields": 2000,
+            "crew": "150 + автоматизация",
+            "cargo_bays": "20 модульных отсеков",
+            "features": [
+              "Роботизированная обработка груза",
+              "Защищенные контейнеры",
+              "Дозаправка на ходу"
+            ],
+            "trade_routes": "Основные торговые магистрали",
+            "price_legacy": 2800000000
+          },
+          {
+            "name": "StarLine 'Cruiser'",
+            "class": "passenger_liner",
+            "category": "commercial",
+            "capacity": "2000 пассажиров",
+            "range": "200 световых лет",
+            "max_speed": "0.7c",
+            "power_source": "Термоядерные реакторы",
+            "price": 45000000,
+            "hull": 3000,
+            "armor": 20,
+            "shields": 1500,
+            "crew": "300 обслуживающего персонала",
+            "accommodations": [
+              "Каюты класса люкс",
+              "Стандартные каюты",
+              "Экономичные капсулы"
+            ],
+            "entertainment": [
+              "Казино",
+              "Театр",
+              "Спортивные залы",
+              "Рестораны",
+              "Торговые галереи"
+            ],
+            "life_support": "Замкнутый цикл, неограниченное время",
+            "price_legacy": 890000000
+          },
+          {
+            "name": "OrbitalYard 'Рыбак'",
+            "class": "light freighter",
+            "category": "commercial",
+            "cargo_capacity": "120 т",
+            "range": "система",
+            "max_speed": "0.05c",
+            "price": 14500000,
+            "power_source": "ионный"
+          },
+          {
+            "name": "VoidLiner 'Диадема'",
+            "class": "luxury liner",
+            "category": "luxury",
+            "capacity": 180,
+            "range": "система",
+            "max_speed": "0.06c",
+            "price": 45000000,
+            "power_source": "фьюжн ×3",
+            "price_legacy": 1900000000
+          },
+          {
+            "name": "PatrolWing 'Диадема'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 3,
+            "range": "система",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 410923000
+          },
+          {
+            "name": "BeltMining 'Рыбак-8'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 1,
+            "range": "400 км",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент",
+            "price_legacy": 301513000
+          },
+          {
+            "name": "BeltMining 'Рыбак'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 1,
+            "range": "1200 км",
+            "max_speed": "240 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 661041000
+          },
+          {
+            "name": "VoidLiner 'Рыбак'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 7,
+            "range": "400 км",
+            "max_speed": "160 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 448504000
+          },
+          {
+            "name": "OrbitalYard 'Меркурий-6'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 5,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 132048000
+          },
+          {
+            "name": "BeltMining 'Рыбак'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 3,
+            "range": "система",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 95772000
+          },
+          {
+            "name": "VoidLiner 'Рыбак-6'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 6,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 342501000
+          },
+          {
+            "name": "DeepSurvey 'Меркурий-3'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 1,
+            "range": "400 км",
+            "max_speed": "0.05c",
+            "power_source": "аккумулятор",
+            "price_legacy": 829969000
+          },
+          {
+            "name": "BeltMining 'Рыбак-9'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 2,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент",
+            "price_legacy": 452346000
+          },
+          {
+            "name": "VoidLiner 'Диадема'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 17289000,
+            "capacity": 4,
+            "range": "1200 км",
+            "max_speed": "320 км/ч",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "DeepSurvey 'Диадема'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 4,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 891940000
+          },
+          {
+            "name": "StarHopper 'Рыбак-4'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 20198000,
+            "capacity": 6,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "PatrolWing 'Диадема'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 2,
+            "range": "1200 км",
+            "max_speed": "0.05c",
+            "power_source": "дизель-электро",
+            "price_legacy": 234024000
+          },
+          {
+            "name": "VoidLiner 'Рыбак'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 8,
+            "range": "700 км",
+            "max_speed": "320 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 281691000
+          },
+          {
+            "name": "StarHopper 'Диадема'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 8,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент",
+            "price_legacy": 157418000
+          },
+          {
+            "name": "StarHopper 'Меркурий-3'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 5,
+            "range": "700 км",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 306634000
+          },
+          {
+            "name": "OrbitalYard 'Диадема'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 6,
+            "range": "700 км",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 869799000
+          },
+          {
+            "name": "StarHopper 'Диадема'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 5,
+            "range": "700 км",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 430931000
+          },
+          {
+            "name": "OrbitalYard 'Рыбак-8'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 4,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 364308000
+          },
+          {
+            "name": "VoidLiner 'Рыбак'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 6,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 107736000
+          },
+          {
+            "name": "BeltMining 'Диадема'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 9,
+            "range": "система",
+            "max_speed": "240 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 393852000
+          },
+          {
+            "name": "PatrolWing 'Диадема-7'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 2,
+            "range": "система",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 500204000
+          },
+          {
+            "name": "DeepSurvey 'Рыбак'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 7,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 248085000
+          },
+          {
+            "name": "PatrolWing 'Рыбак-6'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 34180000,
+            "capacity": 7,
+            "range": "система",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "VoidLiner 'Меркурий-5'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 3,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 589379000
+          },
+          {
+            "name": "PatrolWing 'Рыбак'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 6,
+            "range": "400 км",
+            "max_speed": "0.05c",
+            "power_source": "дизель-электро",
+            "price_legacy": 860619000
+          },
+          {
+            "name": "OrbitalYard 'Меркурий-8'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 7,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн",
+            "price_legacy": 722775000
+          },
+          {
+            "name": "OrbitalYard 'Диадема-7'",
+            "class": "commercial_space",
+            "category": "commercial_spacecraft",
+            "price": 45000000,
+            "capacity": 6,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн",
+            "price_legacy": 496769000
+          }
+        ],
+        "industrial_spacecraft": [
+          {
+            "name": "AsteroidMining 'Harvester'",
+            "class": "mining_platform",
+            "category": "industrial",
+            "operation_range": "Пояс астероидов",
+            "max_speed": "0.05c (рабочая)",
+            "power_source": "Солнечные панели + ядерный реактор",
+            "price": 45000000,
+            "hull": 2000,
+            "armor": 30,
+            "shields": 500,
+            "crew": "50 + роботы",
+            "mining_capacity": "1000 тонн/день",
+            "features": [
+              "Лазерные буры",
+              "Переработка на борту",
+              "Складские отсеки"
+            ],
+            "specialization": "Добыча редких металлов в космосе",
+            "price_legacy": 150000000
+          },
+          {
+            "name": "BeltMining 'Бур'",
+            "class": "industrial",
+            "category": "industrial",
+            "operation_range": "пояс",
+            "max_speed": "0.03c",
+            "price": 45000000,
+            "power_source": "ядерный пар",
+            "price_legacy": 96000000
+          },
+          {
+            "name": "VoidLiner 'Бур-4'",
+            "class": "industrial_space",
+            "category": "industrial_spacecraft",
+            "price": 45000000,
+            "capacity": 7,
+            "range": "400 км",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн",
+            "price_legacy": 611225000
+          },
+          {
+            "name": "PatrolWing 'Бур'",
+            "class": "industrial_space",
+            "category": "industrial_spacecraft",
+            "price": 45000000,
+            "capacity": 4,
+            "range": "1200 км",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент",
+            "price_legacy": 449477000
+          },
+          {
+            "name": "OrbitalYard 'Бур'",
+            "class": "industrial_space",
+            "category": "industrial_spacecraft",
+            "price": 45000000,
+            "capacity": 5,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 327185000
+          },
+          {
+            "name": "StarHopper 'Бур'",
+            "class": "industrial_space",
+            "category": "industrial_spacecraft",
+            "price": 45000000,
+            "capacity": 6,
+            "range": "1200 км",
+            "max_speed": "0.05c",
+            "power_source": "дизель-электро",
+            "price_legacy": 226048000
+          },
+          {
+            "name": "PatrolWing 'Бур'",
+            "class": "industrial_space",
+            "category": "industrial_spacecraft",
+            "price": 45000000,
+            "capacity": 1,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 414251000
+          },
+          {
+            "name": "DeepSurvey 'Плавильщик-8'",
+            "class": "industrial_space",
+            "category": "industrial_spacecraft",
+            "price": 45000000,
+            "capacity": 1,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 230276000
+          },
+          {
+            "name": "DeepSurvey 'Плавильщик'",
+            "class": "industrial_space",
+            "category": "industrial_spacecraft",
+            "price": 45000000,
+            "capacity": 1,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "дизель-электро",
+            "price_legacy": 227543000
+          },
+          {
+            "name": "OrbitalYard 'Бур'",
+            "class": "industrial_space",
+            "category": "industrial_spacecraft",
+            "price": 45000000,
+            "capacity": 10,
+            "range": "система",
+            "max_speed": "160 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 464480000
+          },
+          {
+            "name": "OrbitalYard 'Плавильщик'",
+            "class": "industrial_space",
+            "category": "industrial_spacecraft",
+            "price": 45000000,
+            "capacity": 7,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн",
+            "price_legacy": 609765000
+          },
+          {
+            "name": "StarHopper 'Плавильщик'",
+            "class": "industrial_space",
+            "category": "industrial_spacecraft",
+            "price": 45000000,
+            "capacity": 6,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 403728000
+          },
+          {
+            "name": "StarHopper 'Плавильщик'",
+            "class": "industrial_space",
+            "category": "industrial_spacecraft",
+            "price": 45000000,
+            "capacity": 2,
+            "range": "400 км",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн",
+            "price_legacy": 379429000
+          },
+          {
+            "name": "DeepSurvey 'Бур-8'",
+            "class": "industrial_space",
+            "category": "industrial_spacecraft",
+            "price": 45000000,
+            "capacity": 9,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 718906000
+          },
+          {
+            "name": "DeepSurvey 'Плавильщик-4'",
+            "class": "industrial_space",
+            "category": "industrial_spacecraft",
+            "price": 45000000,
+            "capacity": 6,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 181422000
+          },
+          {
+            "name": "PatrolWing 'Бур-2'",
+            "class": "industrial_space",
+            "category": "industrial_spacecraft",
+            "price": 45000000,
+            "capacity": 8,
+            "range": "1200 км",
+            "max_speed": "160 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 668673000
+          },
+          {
+            "name": "PatrolWing 'Бур-9'",
+            "class": "industrial_space",
+            "category": "industrial_spacecraft",
+            "price": 45000000,
+            "capacity": 5,
+            "range": "700 км",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 585629000
+          },
+          {
+            "name": "DeepSurvey 'Плавильщик-2'",
+            "class": "industrial_space",
+            "category": "industrial_spacecraft",
+            "price": 45000000,
+            "capacity": 3,
+            "range": "400 км",
+            "max_speed": "0.05c",
+            "power_source": "аккумулятор",
+            "price_legacy": 160909000
+          },
+          {
+            "name": "DeepSurvey 'Плавильщик-8'",
+            "class": "industrial_space",
+            "category": "industrial_spacecraft",
+            "price": 45000000,
+            "capacity": 4,
+            "range": "400 км",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн",
+            "price_legacy": 178429000
+          },
+          {
+            "name": "OrbitalYard 'Бур'",
+            "class": "industrial_space",
+            "category": "industrial_spacecraft",
+            "price": 45000000,
+            "capacity": 3,
+            "range": "система",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 408056000
+          },
+          {
+            "name": "DeepSurvey 'Бур'",
+            "class": "industrial_space",
+            "category": "industrial_spacecraft",
+            "price": 45000000,
+            "capacity": 8,
+            "range": "1200 км",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 542820000
+          },
+          {
+            "name": "PatrolWing 'Плавильщик'",
+            "class": "industrial_space",
+            "category": "industrial_spacecraft",
+            "price": 45000000,
+            "capacity": 6,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 575189000
+          },
+          {
+            "name": "PatrolWing 'Бур-3'",
+            "class": "industrial_space",
+            "category": "industrial_spacecraft",
+            "price": 45000000,
+            "capacity": 7,
+            "range": "система",
+            "max_speed": "160 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 133083000
+          },
+          {
+            "name": "OrbitalYard 'Плавильщик'",
+            "class": "industrial_space",
+            "category": "industrial_spacecraft",
+            "price": 45000000,
+            "capacity": 10,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 94456000
+          },
+          {
+            "name": "PatrolWing 'Бур-7'",
+            "class": "industrial_space",
+            "category": "industrial_spacecraft",
+            "price": 45000000,
+            "capacity": 9,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 257912000
+          },
+          {
+            "name": "OrbitalYard 'Плавильщик'",
+            "class": "industrial_space",
+            "category": "industrial_spacecraft",
+            "price": 45000000,
+            "capacity": 4,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "аккумулятор",
+            "price_legacy": 685373000
+          }
+        ],
+        "exploration": [
+          {
+            "name": "Pioneer 'Pathfinder'",
+            "class": "exploration_vessel",
+            "category": "utility",
+            "capacity": "30 исследователей + оборудование",
+            "range": "1000 световых лет",
+            "max_speed": "1.2c (экспериментальный варп)",
+            "power_source": "Экспериментальный реактор",
+            "price": 45000000,
+            "hull": 1800,
+            "armor": 22,
+            "shields": 1000,
+            "crew": "30 ученых + 20 экипажа",
+            "research_labs": [
+              "Астрофизика",
+              "Биология",
+              "Геология",
+              "Ксеноархеология"
+            ],
+            "features": [
+              "Дальние сенсоры",
+              "Научные зонды",
+              "Планетарные шаттлы",
+              "Карантинные отсеки"
+            ],
+            "mission_duration": "5+ лет автономности",
+            "price_legacy": 800000000
+          },
+          {
+            "name": "DeepSurvey 'Зонд-9'",
+            "class": "exploration",
+            "category": "exploration",
+            "capacity": 10,
+            "range": "межзвёздный (крио)",
+            "max_speed": "0.12c",
+            "price": 45000000,
+            "power_source": "термоядерный",
+            "price_legacy": 780000000
+          }
+        ],
+        "military_spacecraft": [
+          {
+            "name": "PatrolWing 'Часовой'",
+            "class": "patrol boat",
+            "category": "military",
+            "capacity": 12,
+            "range": "система",
+            "max_speed": "0.1c",
+            "price": 45000000,
+            "power_source": "фьюжн",
+            "price_legacy": 420000000
+          },
+          {
+            "name": "PatrolWing 'Страж'",
+            "class": "military_space",
+            "category": "military_spacecraft",
+            "price": 45000000,
+            "capacity": 10,
+            "range": "система",
+            "max_speed": "160 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 1529907000
+          },
+          {
+            "name": "StarHopper 'Часовой-9'",
+            "class": "military_space",
+            "category": "military_spacecraft",
+            "price": 45000000,
+            "capacity": 1,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 1366201000
+          },
+          {
+            "name": "VoidLiner 'Часовой'",
+            "class": "military_space",
+            "category": "military_spacecraft",
+            "price": 45000000,
+            "capacity": 2,
+            "range": "700 км",
+            "max_speed": "320 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 1221513000
+          },
+          {
+            "name": "StarHopper 'Часовой-3'",
+            "class": "military_space",
+            "category": "military_spacecraft",
+            "price": 45000000,
+            "capacity": 10,
+            "range": "1200 км",
+            "max_speed": "240 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 1543672000
+          },
+          {
+            "name": "VoidLiner 'Страж-6'",
+            "class": "military_space",
+            "category": "military_spacecraft",
+            "price": 45000000,
+            "capacity": 4,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 494521000
+          },
+          {
+            "name": "PatrolWing 'Страж-7'",
+            "class": "military_space",
+            "category": "military_spacecraft",
+            "price": 45000000,
+            "capacity": 3,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "аккумулятор",
+            "price_legacy": 435316000
+          },
+          {
+            "name": "BeltMining 'Страж-2'",
+            "class": "military_space",
+            "category": "military_spacecraft",
+            "price": 45000000,
+            "capacity": 7,
+            "range": "система",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 1189859000
+          },
+          {
+            "name": "StarHopper 'Часовой'",
+            "class": "military_space",
+            "category": "military_spacecraft",
+            "price": 45000000,
+            "capacity": 5,
+            "range": "700 км",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 935704000
+          },
+          {
+            "name": "VoidLiner 'Страж-7'",
+            "class": "military_space",
+            "category": "military_spacecraft",
+            "price": 45000000,
+            "capacity": 4,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент",
+            "price_legacy": 957777000
+          },
+          {
+            "name": "BeltMining 'Страж-4'",
+            "class": "military_space",
+            "category": "military_spacecraft",
+            "price": 45000000,
+            "capacity": 3,
+            "range": "система",
+            "max_speed": "240 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 772699000
+          },
+          {
+            "name": "BeltMining 'Страж-5'",
+            "class": "military_space",
+            "category": "military_spacecraft",
+            "price": 45000000,
+            "capacity": 1,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 757445000
+          },
+          {
+            "name": "StarHopper 'Страж-6'",
+            "class": "military_space",
+            "category": "military_spacecraft",
+            "price": 45000000,
+            "capacity": 4,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 1238209000
+          },
+          {
+            "name": "OrbitalYard 'Страж-6'",
+            "class": "military_space",
+            "category": "military_spacecraft",
+            "price": 45000000,
+            "capacity": 2,
+            "range": "400 км",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент",
+            "price_legacy": 1551375000
+          },
+          {
+            "name": "PatrolWing 'Часовой'",
+            "class": "military_space",
+            "category": "military_spacecraft",
+            "price": 45000000,
+            "capacity": 5,
+            "range": "1200 км",
+            "max_speed": "160 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 439906000
+          },
+          {
+            "name": "StarHopper 'Страж'",
+            "class": "military_space",
+            "category": "military_spacecraft",
+            "price": 45000000,
+            "capacity": 3,
+            "range": "700 км",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 296432000
+          },
+          {
+            "name": "PatrolWing 'Страж'",
+            "class": "military_space",
+            "category": "military_spacecraft",
+            "price": 45000000,
+            "capacity": 3,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 963261000
+          },
+          {
+            "name": "OrbitalYard 'Страж'",
+            "class": "military_space",
+            "category": "military_spacecraft",
+            "price": 45000000,
+            "capacity": 1,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 1406482000
+          },
+          {
+            "name": "StarHopper 'Часовой-2'",
+            "class": "military_space",
+            "category": "military_spacecraft",
+            "price": 45000000,
+            "capacity": 8,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент",
+            "price_legacy": 547842000
+          },
+          {
+            "name": "PatrolWing 'Часовой-8'",
+            "class": "military_space",
+            "category": "military_spacecraft",
+            "price": 45000000,
+            "capacity": 8,
+            "range": "1200 км",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 1355506000
+          },
+          {
+            "name": "DeepSurvey 'Страж-6'",
+            "class": "military_space",
+            "category": "military_spacecraft",
+            "price": 45000000,
+            "capacity": 10,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 1074947000
+          },
+          {
+            "name": "OrbitalYard 'Часовой'",
+            "class": "military_space",
+            "category": "military_spacecraft",
+            "price": 45000000,
+            "capacity": 8,
+            "range": "700 км",
+            "max_speed": "320 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 1311716000
+          },
+          {
+            "name": "PatrolWing 'Часовой-8'",
+            "class": "military_space",
+            "category": "military_spacecraft",
+            "price": 45000000,
+            "capacity": 9,
+            "range": "система",
+            "max_speed": "320 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 1613518000
+          }
+        ],
+        "exploration_craft": [
+          {
+            "name": "StarHopper 'Зонд'",
+            "class": "exploration_space",
+            "category": "exploration_craft",
+            "price": 45000000,
+            "capacity": 2,
+            "range": "система",
+            "max_speed": "240 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 2153005000
+          },
+          {
+            "name": "BeltMining 'Горизонт-2'",
+            "class": "exploration_space",
+            "category": "exploration_craft",
+            "price": 45000000,
+            "capacity": 9,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 1036764000
+          },
+          {
+            "name": "VoidLiner 'Зонд-4'",
+            "class": "exploration_space",
+            "category": "exploration_craft",
+            "price": 45000000,
+            "capacity": 9,
+            "range": "1200 км",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 303049000
+          },
+          {
+            "name": "StarHopper 'Зонд-2'",
+            "class": "exploration_space",
+            "category": "exploration_craft",
+            "price": 45000000,
+            "capacity": 9,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 1831564000
+          },
+          {
+            "name": "StarHopper 'Горизонт'",
+            "class": "exploration_space",
+            "category": "exploration_craft",
+            "price": 45000000,
+            "capacity": 8,
+            "range": "1200 км",
+            "max_speed": "240 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 1189902000
+          },
+          {
+            "name": "DeepSurvey 'Зонд-3'",
+            "class": "exploration_space",
+            "category": "exploration_craft",
+            "price": 45000000,
+            "capacity": 6,
+            "range": "1200 км",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 653722000
+          },
+          {
+            "name": "BeltMining 'Зонд-5'",
+            "class": "exploration_space",
+            "category": "exploration_craft",
+            "price": 45000000,
+            "capacity": 1,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн",
+            "price_legacy": 1546292000
+          },
+          {
+            "name": "StarHopper 'Зонд'",
+            "class": "exploration_space",
+            "category": "exploration_craft",
+            "price": 45000000,
+            "capacity": 8,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 1207749000
+          },
+          {
+            "name": "VoidLiner 'Горизонт'",
+            "class": "exploration_space",
+            "category": "exploration_craft",
+            "price": 45000000,
+            "capacity": 3,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 2106326000
+          },
+          {
+            "name": "OrbitalYard 'Горизонт-3'",
+            "class": "exploration_space",
+            "category": "exploration_craft",
+            "price": 45000000,
+            "capacity": 10,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 2095810000
+          },
+          {
+            "name": "BeltMining 'Зонд'",
+            "class": "exploration_space",
+            "category": "exploration_craft",
+            "price": 45000000,
+            "capacity": 1,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент",
+            "price_legacy": 1673232000
+          },
+          {
+            "name": "OrbitalYard 'Зонд'",
+            "class": "exploration_space",
+            "category": "exploration_craft",
+            "price": 45000000,
+            "capacity": 8,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 1228601000
+          },
+          {
+            "name": "DeepSurvey 'Горизонт-3'",
+            "class": "exploration_space",
+            "category": "exploration_craft",
+            "price": 45000000,
+            "capacity": 1,
+            "range": "система",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 2139608000
+          },
+          {
+            "name": "StarHopper 'Зонд-8'",
+            "class": "exploration_space",
+            "category": "exploration_craft",
+            "price": 45000000,
+            "capacity": 8,
+            "range": "1200 км",
+            "max_speed": "320 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 1410176000
+          },
+          {
+            "name": "VoidLiner 'Горизонт'",
+            "class": "exploration_space",
+            "category": "exploration_craft",
+            "price": 45000000,
+            "capacity": 3,
+            "range": "система",
+            "max_speed": "160 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 1286408000
+          },
+          {
+            "name": "PatrolWing 'Зонд-3'",
+            "class": "exploration_space",
+            "category": "exploration_craft",
+            "price": 45000000,
+            "capacity": 8,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн",
+            "price_legacy": 871840000
+          },
+          {
+            "name": "DeepSurvey 'Зонд-5'",
+            "class": "exploration_space",
+            "category": "exploration_craft",
+            "price": 45000000,
+            "capacity": 5,
+            "range": "700 км",
+            "max_speed": "320 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 1451718000
+          },
+          {
+            "name": "VoidLiner 'Горизонт'",
+            "class": "exploration_space",
+            "category": "exploration_craft",
+            "price": 45000000,
+            "capacity": 4,
+            "range": "система",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 1789659000
+          },
+          {
+            "name": "BeltMining 'Зонд-2'",
+            "class": "exploration_space",
+            "category": "exploration_craft",
+            "price": 45000000,
+            "capacity": 8,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 748454000
+          },
+          {
+            "name": "BeltMining 'Зонд-7'",
+            "class": "exploration_space",
+            "category": "exploration_craft",
+            "price": 45000000,
+            "capacity": 6,
+            "range": "1200 км",
+            "max_speed": "240 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 1228376000
+          },
+          {
+            "name": "PatrolWing 'Зонд-7'",
+            "class": "exploration_space",
+            "category": "exploration_craft",
+            "price": 45000000,
+            "capacity": 3,
+            "range": "1200 км",
+            "max_speed": "240 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 1773964000
+          },
+          {
+            "name": "VoidLiner 'Зонд'",
+            "class": "exploration_space",
+            "category": "exploration_craft",
+            "price": 45000000,
+            "capacity": 5,
+            "range": "1200 км",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 1194888000
+          }
+        ]
+      }
+    },
+    "watercraft": {
+      "description": "Водный транспорт для планет с океанами",
+      "subtypes": {
+        "civilian_boats": [
+          {
+            "name": "Neptune 'Cruiser'",
+            "class": "luxury_yacht",
+            "category": "luxury",
+            "capacity": "20 гостей + 8 экипажа",
+            "range": "5000 морских миль",
+            "max_speed": "45 узлов",
+            "power_source": "Водородные элементы",
+            "price": 25000000,
+            "hull": 600,
+            "armor": 8,
+            "displacement": "250 тонн",
+            "features": [
+              "Вертолетная площадка",
+              "Подводная обсерватория",
+              "Роскошные каюты"
+            ],
+            "water_sports": "Гидроциклы, акваланги, подводные скутеры",
+            "price_legacy": 35000000
+          },
+          {
+            "name": "LagoonRider 'Прогулочный'",
+            "class": "boat",
+            "category": "civilian",
+            "capacity": 8,
+            "range": "300 км",
+            "max_speed": "85 км/ч",
+            "price": 185000,
+            "power_source": "бензин"
+          }
+        ],
+        "commercial_ships": [
+          {
+            "name": "OceanTrans 'Leviathan'",
+            "class": "container_ship",
+            "category": "commercial",
+            "cargo_capacity": "25,000 контейнеров",
+            "range": "20,000 морских миль",
+            "max_speed": "25 узлов",
+            "power_source": "Ядерный реактор",
+            "price": 25000000,
+            "hull": 3000,
+            "armor": 15,
+            "crew": "25 + автоматизация",
+            "automated_systems": "95% операций роботизированы",
+            "features": [
+              "Автоматическая загрузка",
+              "Холодильные контейнеры",
+              "Защита от пиратов"
+            ],
+            "price_legacy": 180000000
+          },
+          {
+            "name": "HarborLine 'Работяга'",
+            "class": "cargo ship",
+            "category": "commercial",
+            "cargo_capacity": "2200 т",
+            "range": "океанский",
+            "max_speed": "45 км/ч",
+            "price": 25000000,
+            "power_source": "дизель ×2",
+            "price_legacy": 68000000
+          }
+        ],
+        "submarine": [
+          {
+            "name": "DeepSea 'Explorer'",
+            "class": "research_submarine",
+            "category": "utility",
+            "capacity": "12 исследователей",
+            "range": "Ограничено запасами",
+            "max_speed": "35 узлов подводный ход",
+            "diving_depth": "6000 метров",
+            "power_source": "Атомная силовая установка",
+            "price": 25000000,
+            "hull": 800,
+            "armor": 35,
+            "crew": "8 операторов + 12 ученых",
+            "research_equipment": [
+              "Глубоководные зонды",
+              "Образцы донных отложений",
+              "Биологические лаборатории"
+            ],
+            "life_support": "90 дней подводного плавания",
+            "price_legacy": 85000000
+          },
+          {
+            "name": "Europa Divers 'Нарвал'",
+            "class": "submarine",
+            "category": "submarine",
+            "capacity": 6,
+            "range": "4000 км",
+            "max_speed": "70 км/ч",
+            "price": 12500000,
+            "power_source": "АПЛ-микроблок"
+          }
+        ],
+        "submarines": [
+          {
+            "name": "LagoonRider 'Нарвал'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 21332000,
+            "capacity": 8,
+            "range": "1200 км",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Europa Divers 'Батискаф-2'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 25000000,
+            "capacity": 4,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 39559000
+          },
+          {
+            "name": "HarborLine 'Батискаф-2'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 25000000,
+            "capacity": 10,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 29526000
+          },
+          {
+            "name": "OceanTech 'Глубина-8'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 25000000,
+            "capacity": 4,
+            "range": "400 км",
+            "max_speed": "160 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 43484000
+          },
+          {
+            "name": "HarborLine 'Глубина'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 19124000,
+            "capacity": 7,
+            "range": "система",
+            "max_speed": "240 км/ч",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "HarborLine 'Нарвал'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 16932000,
+            "capacity": 6,
+            "range": "1200 км",
+            "max_speed": "240 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "LagoonRider 'Глубина-4'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 25000000,
+            "capacity": 5,
+            "range": "система",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 62007000
+          },
+          {
+            "name": "LagoonRider 'Батискаф'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 25000000,
+            "capacity": 4,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн",
+            "price_legacy": 40912000
+          },
+          {
+            "name": "HarborLine 'Батискаф-9'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 25000000,
+            "capacity": 7,
+            "range": "1200 км",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 46252000
+          },
+          {
+            "name": "Europa Divers 'Глубина'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 25000000,
+            "capacity": 4,
+            "range": "400 км",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент",
+            "price_legacy": 33674000
+          },
+          {
+            "name": "Europa Divers 'Нарвал'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 25000000,
+            "capacity": 8,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 27277000
+          },
+          {
+            "name": "LagoonRider 'Нарвал-6'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 25000000,
+            "capacity": 7,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 72380000
+          },
+          {
+            "name": "LagoonRider 'Глубина-2'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 25000000,
+            "capacity": 9,
+            "range": "система",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 46264000
+          },
+          {
+            "name": "HarborLine 'Батискаф'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 10921000,
+            "capacity": 10,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "OceanTech 'Нарвал'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 25000000,
+            "capacity": 3,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 72612000
+          },
+          {
+            "name": "Europa Divers 'Нарвал'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 25000000,
+            "capacity": 1,
+            "range": "400 км",
+            "max_speed": "0.05c",
+            "power_source": "аккумулятор",
+            "price_legacy": 56120000
+          },
+          {
+            "name": "LagoonRider 'Батискаф-8'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 25000000,
+            "capacity": 7,
+            "range": "система",
+            "max_speed": "160 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 57435000
+          },
+          {
+            "name": "HarborLine 'Нарвал-2'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 24413000,
+            "capacity": 5,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "LagoonRider 'Батискаф'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 15662000,
+            "capacity": 6,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "Europa Divers 'Глубина'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 25000000,
+            "capacity": 3,
+            "range": "система",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 76054000
+          },
+          {
+            "name": "OceanTech 'Нарвал-6'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 25000000,
+            "capacity": 6,
+            "range": "1200 км",
+            "max_speed": "320 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 62235000
+          },
+          {
+            "name": "OceanTech 'Глубина-4'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 25000000,
+            "capacity": 10,
+            "range": "400 км",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 51221000
+          },
+          {
+            "name": "LagoonRider 'Нарвал'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 11173000,
+            "capacity": 9,
+            "range": "1200 км",
+            "max_speed": "320 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "OceanTech 'Нарвал-5'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 14104000,
+            "capacity": 2,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "HarborLine 'Нарвал-5'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 25000000,
+            "capacity": 4,
+            "range": "1200 км",
+            "max_speed": "160 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 75560000
+          },
+          {
+            "name": "LagoonRider 'Нарвал'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 25000000,
+            "capacity": 5,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 25127000
+          },
+          {
+            "name": "LagoonRider 'Глубина'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 25000000,
+            "capacity": 8,
+            "range": "система",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 80572000
+          },
+          {
+            "name": "OceanTech 'Глубина-9'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 25000000,
+            "capacity": 2,
+            "range": "400 км",
+            "max_speed": "160 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 52796000
+          },
+          {
+            "name": "OceanTech 'Нарвал-2'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 25000000,
+            "capacity": 3,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "дизель-электро",
+            "price_legacy": 72494000
+          },
+          {
+            "name": "Europa Divers 'Батискаф-8'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 25000000,
+            "capacity": 5,
+            "range": "система",
+            "max_speed": "160 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 59499000
+          },
+          {
+            "name": "Europa Divers 'Нарвал'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 12423000,
+            "capacity": 10,
+            "range": "1200 км",
+            "max_speed": "320 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "LagoonRider 'Батискаф-3'",
+            "class": "submarine",
+            "category": "submarines",
+            "price": 14519000,
+            "capacity": 3,
+            "range": "1200 км",
+            "max_speed": "160 км/ч",
+            "power_source": "дизель-электро"
+          }
+        ],
+        "cargo_ships": [
+          {
+            "name": "OceanTech 'Левиафан'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 2,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 292947000
+          },
+          {
+            "name": "Europa Divers 'Левиафан'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 10,
+            "range": "система",
+            "max_speed": "240 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 48777000
+          },
+          {
+            "name": "Europa Divers 'Работяга-8'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 7,
+            "range": "400 км",
+            "max_speed": "160 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 355751000
+          },
+          {
+            "name": "Europa Divers 'Работяга-7'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 4,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент",
+            "price_legacy": 252180000
+          },
+          {
+            "name": "HarborLine 'Океан'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 3,
+            "range": "400 км",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент",
+            "price_legacy": 204000000
+          },
+          {
+            "name": "LagoonRider 'Левиафан'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 7,
+            "range": "система",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 268126000
+          },
+          {
+            "name": "HarborLine 'Океан-3'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 10,
+            "range": "400 км",
+            "max_speed": "160 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 366842000
+          },
+          {
+            "name": "OceanTech 'Левиафан-5'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 10,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 47787000
+          },
+          {
+            "name": "Europa Divers 'Океан-3'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 4,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн",
+            "price_legacy": 117345000
+          },
+          {
+            "name": "LagoonRider 'Левиафан-2'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 1,
+            "range": "система",
+            "max_speed": "320 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 191821000
+          },
+          {
+            "name": "Europa Divers 'Работяга-4'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 9,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 164341000
+          },
+          {
+            "name": "OceanTech 'Океан-2'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 4,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 333156000
+          },
+          {
+            "name": "LagoonRider 'Левиафан-6'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 1,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 301470000
+          },
+          {
+            "name": "Europa Divers 'Левиафан'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 7,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 65330000
+          },
+          {
+            "name": "HarborLine 'Океан'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 7,
+            "range": "700 км",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 64281000
+          },
+          {
+            "name": "OceanTech 'Работяга'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 7,
+            "range": "1200 км",
+            "max_speed": "160 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 189456000
+          },
+          {
+            "name": "LagoonRider 'Левиафан-6'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 5,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 113123000
+          },
+          {
+            "name": "LagoonRider 'Работяга-7'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 2,
+            "range": "1200 км",
+            "max_speed": "160 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 47288000
+          },
+          {
+            "name": "LagoonRider 'Океан-9'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 3,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 62948000
+          },
+          {
+            "name": "HarborLine 'Работяга'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 7,
+            "range": "400 км",
+            "max_speed": "160 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 227433000
+          },
+          {
+            "name": "OceanTech 'Океан-6'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 4,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 144167000
+          },
+          {
+            "name": "OceanTech 'Левиафан-3'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 4,
+            "range": "система",
+            "max_speed": "160 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 314446000
+          },
+          {
+            "name": "HarborLine 'Работяга-6'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 8,
+            "range": "1200 км",
+            "max_speed": "240 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 258746000
+          },
+          {
+            "name": "LagoonRider 'Океан'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 8,
+            "range": "1200 км",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент",
+            "price_legacy": 158544000
+          },
+          {
+            "name": "HarborLine 'Океан'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 9,
+            "range": "1200 км",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 291695000
+          },
+          {
+            "name": "HarborLine 'Левиафан'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 5,
+            "range": "система",
+            "max_speed": "240 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 310593000
+          },
+          {
+            "name": "Europa Divers 'Работяга'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 5,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 261766000
+          },
+          {
+            "name": "HarborLine 'Левиафан'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 7,
+            "range": "1200 км",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн",
+            "price_legacy": 134756000
+          },
+          {
+            "name": "Europa Divers 'Левиафан-3'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 1,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 322834000
+          },
+          {
+            "name": "HarborLine 'Океан'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 5,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн",
+            "price_legacy": 328609000
+          },
+          {
+            "name": "Europa Divers 'Океан'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 8,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "водородный элемент",
+            "price_legacy": 161107000
+          },
+          {
+            "name": "HarborLine 'Океан'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 10,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро",
+            "price_legacy": 189564000
+          },
+          {
+            "name": "OceanTech 'Работяга'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 7,
+            "range": "700 км",
+            "max_speed": "320 км/ч",
+            "power_source": "аккумулятор",
+            "price_legacy": 213977000
+          },
+          {
+            "name": "LagoonRider 'Океан'",
+            "class": "cargo_ship",
+            "category": "cargo_ships",
+            "price": 25000000,
+            "capacity": 2,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент",
+            "price_legacy": 60771000
+          }
+        ],
+        "boats": [
+          {
+            "name": "LagoonRider 'Волна'",
+            "class": "boat",
+            "category": "boats",
+            "price": 834000,
+            "capacity": 5,
+            "range": "система",
+            "max_speed": "240 км/ч",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "Europa Divers 'Волна'",
+            "class": "boat",
+            "category": "boats",
+            "price": 546000,
+            "capacity": 9,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "HarborLine 'Бриз-8'",
+            "class": "boat",
+            "category": "boats",
+            "price": 787000,
+            "capacity": 10,
+            "range": "1200 км",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "Europa Divers 'Прогулочный'",
+            "class": "boat",
+            "category": "boats",
+            "price": 428000,
+            "capacity": 8,
+            "range": "400 км",
+            "max_speed": "0.05c",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "HarborLine 'Прогулочный-5'",
+            "class": "boat",
+            "category": "boats",
+            "price": 631000,
+            "capacity": 5,
+            "range": "1200 км",
+            "max_speed": "160 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "OceanTech 'Волна'",
+            "class": "boat",
+            "category": "boats",
+            "price": 770000,
+            "capacity": 9,
+            "range": "система",
+            "max_speed": "160 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "LagoonRider 'Волна-8'",
+            "class": "boat",
+            "category": "boats",
+            "price": 556000,
+            "capacity": 4,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "OceanTech 'Прогулочный'",
+            "class": "boat",
+            "category": "boats",
+            "price": 802000,
+            "capacity": 5,
+            "range": "1200 км",
+            "max_speed": "240 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "HarborLine 'Бриз'",
+            "class": "boat",
+            "category": "boats",
+            "price": 285000,
+            "capacity": 3,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "OceanTech 'Прогулочный'",
+            "class": "boat",
+            "category": "boats",
+            "price": 570000,
+            "capacity": 7,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "OceanTech 'Прогулочный'",
+            "class": "boat",
+            "category": "boats",
+            "price": 421000,
+            "capacity": 9,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "OceanTech 'Волна-8'",
+            "class": "boat",
+            "category": "boats",
+            "price": 644000,
+            "capacity": 3,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "LagoonRider 'Прогулочный'",
+            "class": "boat",
+            "category": "boats",
+            "price": 101000,
+            "capacity": 1,
+            "range": "1200 км",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "LagoonRider 'Волна-9'",
+            "class": "boat",
+            "category": "boats",
+            "price": 322000,
+            "capacity": 7,
+            "range": "700 км",
+            "max_speed": "240 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "OceanTech 'Бриз'",
+            "class": "boat",
+            "category": "boats",
+            "price": 742000,
+            "capacity": 2,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "HarborLine 'Бриз-3'",
+            "class": "boat",
+            "category": "boats",
+            "price": 331000,
+            "capacity": 4,
+            "range": "1200 км",
+            "max_speed": "320 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "HarborLine 'Прогулочный'",
+            "class": "boat",
+            "category": "boats",
+            "price": 366000,
+            "capacity": 9,
+            "range": "400 км",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "Europa Divers 'Прогулочный'",
+            "class": "boat",
+            "category": "boats",
+            "price": 818000,
+            "capacity": 6,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "Europa Divers 'Волна'",
+            "class": "boat",
+            "category": "boats",
+            "price": 526000,
+            "capacity": 9,
+            "range": "1200 км",
+            "max_speed": "160 км/ч",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "OceanTech 'Волна'",
+            "class": "boat",
+            "category": "boats",
+            "price": 629000,
+            "capacity": 7,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "LagoonRider 'Бриз-2'",
+            "class": "boat",
+            "category": "boats",
+            "price": 767000,
+            "capacity": 3,
+            "range": "400 км",
+            "max_speed": "240 км/ч",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "LagoonRider 'Бриз'",
+            "class": "boat",
+            "category": "boats",
+            "price": 540000,
+            "capacity": 5,
+            "range": "система",
+            "max_speed": "160 км/ч",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "Europa Divers 'Бриз'",
+            "class": "boat",
+            "category": "boats",
+            "price": 402000,
+            "capacity": 3,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "аккумулятор"
+          },
+          {
+            "name": "LagoonRider 'Бриз'",
+            "class": "boat",
+            "category": "boats",
+            "price": 413000,
+            "capacity": 1,
+            "range": "400 км",
+            "max_speed": "320 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "HarborLine 'Прогулочный'",
+            "class": "boat",
+            "category": "boats",
+            "price": 481000,
+            "capacity": 9,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "HarborLine 'Бриз'",
+            "class": "boat",
+            "category": "boats",
+            "price": 803000,
+            "capacity": 5,
+            "range": "700 км",
+            "max_speed": "160 км/ч",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "LagoonRider 'Прогулочный-9'",
+            "class": "boat",
+            "category": "boats",
+            "price": 494000,
+            "capacity": 6,
+            "range": "400 км",
+            "max_speed": "0.05c",
+            "power_source": "дизель-электро"
+          },
+          {
+            "name": "Europa Divers 'Бриз-5'",
+            "class": "boat",
+            "category": "boats",
+            "price": 734000,
+            "capacity": 2,
+            "range": "система",
+            "max_speed": "0.05c",
+            "power_source": "водородный элемент"
+          },
+          {
+            "name": "Europa Divers 'Волна-3'",
+            "class": "boat",
+            "category": "boats",
+            "price": 264000,
+            "capacity": 10,
+            "range": "система",
+            "max_speed": "240 км/ч",
+            "power_source": "фьюжн"
+          },
+          {
+            "name": "LagoonRider 'Волна-4'",
+            "class": "boat",
+            "category": "boats",
+            "price": 615000,
+            "capacity": 1,
+            "range": "700 км",
+            "max_speed": "0.05c",
+            "power_source": "аккумулятор"
+          }
+        ]
+      }
+    }
+  },
+  "vehicle_systems": {
+    "power_sources": {
+      "electric": {
+        "advantages": [
+          "Тихая работа",
+          "Экологичность",
+          "Низкие эксплуатационные расходы"
+        ],
+        "disadvantages": [
+          "Ограниченная дальность",
+          "Время зарядки",
+          "Вес батарей"
+        ],
+        "best_use": "Городской транспорт, короткие поездки"
+      },
+      "hydrogen": {
+        "advantages": [
+          "Быстрая заправка",
+          "Большая дальность",
+          "Только водяной пар в выхлопе"
+        ],
+        "disadvantages": [
+          "Дорогое топливо",
+          "Ограниченная инфраструктура",
+          "Взрывоопасность"
+        ],
+        "best_use": "Коммерческий транспорт, долгие маршруты"
+      },
+      "fusion": {
+        "advantages": [
+          "Огромная энергоемкость",
+          "Долгая работа",
+          "Экологичность"
+        ],
+        "disadvantages": [
+          "Высокая стоимость",
+          "Сложное обслуживание",
+          "Радиационная опасность"
+        ],
+        "best_use": "Космические корабли, крупная промышленная техника"
+      },
+      "antimatter": {
+        "advantages": [
+          "Максимальная энергоемкость",
+          "Компактность"
+        ],
+        "disadvantages": [
+          "Чрезвычайно дорого",
+          "Крайне опасно",
+          "Требует специального хранения"
+        ],
+        "best_use": "Только самые продвинутые космические корабли"
+      }
+    },
+    "defensive_systems": {
+      "armor_types": {
+        "composite": "Стандартная защита, баланс цены и эффективности",
+        "reactive": "Взрывающиеся блоки против кинетических снарядов",
+        "energy_dispersive": "Рассеивает энергетические атаки",
+        "adaptive": "Подстраивается под тип атаки (дорого)"
+      },
+      "shield_systems": {
+        "deflector": "Отклоняет мелкие объекты и энергию",
+        "absorption": "Поглощает энергию атак для подзарядки",
+        "kinetic_barrier": "Замедляет кинетические снаряды",
+        "full_spectrum": "Защита от всех типов атак (энергоемко)"
+      }
+    },
+    "navigation_systems": {
+      "basic_autopilot": "Простые маршруты, требует контроля человека",
+      "advanced_ai": "Полностью автономное управление",
+      "quantum_navigation": "Точная навигация в глубоком космосе",
+      "predictive_routing": "Предсказывает трафик и оптимизирует маршрут"
+    }
+  },
+  "ownership_and_regulations": {
+    "licensing_system": {
+      "personal_license": {
+        "requirements": "Базовое обучение, медосмотр, экзамен",
+        "allows": "Управление личным транспортом до определенной массы",
+        "restrictions": "Нет коммерческого использования"
+      },
+      "commercial_license": {
+        "requirements": "Расширенное обучение, опыт работы, регулярные проверки",
+        "allows": "Коммерческие перевозки, пассажирский транспорт",
+        "insurance": "Обязательное страхование ответственности"
+      },
+      "industrial_permit": {
+        "requirements": "Специализированное обучение, сертификация безопасности",
+        "allows": "Управление тяжелой промышленной техникой",
+        "monitoring": "Постоянный контроль за соблюдением норм"
+      },
+      "military_clearance": {
+        "requirements": "Военная служба или контракт с МОВ",
+        "allows": "Боевая техника, оружие массового поражения",
+        "classification": "Различные уровни секретности"
+      }
+    },
+    "insurance_tiers": {
+      "basic": {
+        "coverage": "Базовые повреждения, третьи лица",
+        "cost": "1-3% от стоимости транспорта ежегодно",
+        "exclusions": "Военные действия, модификации"
+      },
+      "comprehensive": {
+        "coverage": "Полная защита, включая угон и стихийные бедствия",
+        "cost": "5-8% от стоимости ежегодно",
+        "bonuses": "Техпомощь на дорогах, замещающий транспорт"
+      },
+      "premium": {
+        "coverage": "Максимальная защита + модификации",
+        "cost": "10-15% от стоимости ежегодно",
+        "services": "VIP-обслуживание, персональный агент"
+      }
+    },
+    "modification_regulations": {
+      "cosmetic": "Свободно, не влияет на безопасность",
+      "performance": "Требует сертификации, может повлиять на страховку",
+      "weapons": "Строго регулируется, специальные лицензии",
+      "defensive": "Умеренное регулирование, зависит от уровня защиты"
+    }
+  },
+  "economic_aspects": {
+    "vehicle_markets": {
+      "new_vehicle": {
+        "advantages": "Гарантия, современные технологии, финансирование",
+        "disadvantages": "Высокая цена, быстрая амортизация",
+        "target_market": "Состоятельные покупатели, корпорации"
+      },
+      "used_vehicle": {
+        "advantages": "Низкая цена, медленная амортизация",
+        "disadvantages": "Потенциальные проблемы, устаревшие технологии",
+        "target_market": "Средний класс, малый бизнес"
+      },
+      "refurbished": {
+        "advantages": "Баланс цены и качества, обновленные системы",
+        "disadvantages": "Ограниченная гарантия",
+        "target_market": "Коммерческие покупатели, фрилансеры"
+      },
+      "rental_leasing": {
+        "short_term": "Туристы, временные потребности",
+        "long_term": "Корпоративные парки, тестирование техники",
+        "rent_to_own": "Путь к владению для тех, кто не может купить сразу"
+      }
+    },
+    "operating_costs": {
+      "fuel_energy": {
+        "calculation": "Зависит от типа энергии, дальности, стиля вождения",
+        "optimization": "Эффективные маршруты, обслуживание техники"
+      },
+      "maintenance": {
+        "routine": "5-10% от стоимости покупки ежегодно",
+        "repairs": "Непредсказуемые расходы, зависят от возраста и использования",
+        "upgrades": "Добровольные улучшения для производительности"
+      },
+      "licensing_registration": {
+        "annual_fees": "Зависит от класса и массы транспорта",
+        "inspection": "Обязательные проверки безопасности"
+      }
+    }
+  },
+  "cultural_variations": {
+    "mars": {
+      "preferences": "Прочная, надежная техника для суровых условий",
+      "restrictions": "Строгие нормы герметичности и жизнеобеспечения",
+      "popular_brands": [
+        "MarsRugged",
+        "RedPlanet Engineering",
+        "Olympus Motors"
+      ],
+      "unique_features": "Адаптация к низкой гравитации и пылевым бурям"
+    },
+    "earth": {
+      "preferences": "Роскошь и статус в развитых регионах, практичность в развивающихся",
+      "regulations": "Старейшие и наиболее развитые транспортные законы",
+      "popular_brands": [
+        "TerraDrive",
+        "GlobalMotors",
+        "EarthFirst"
+      ],
+      "environmental_focus": "Сильный акцент на экологичности"
+    },
+    "luna": {
+      "preferences": "Компактность из-за ограниченного пространства",
+      "specialization": "Техника для низкой гравитации и вакуума",
+      "popular_brands": [
+        "LunarTech",
+        "MoonRider",
+        "Crater Motors"
+      ],
+      "unique_features": "Системы для работы в вакууме"
+    },
+    "belt_stations": {
+      "preferences": "Универсальность и ремонтопригодность",
+      "focus": "Промышленная техника для добычи и обработки",
+      "popular_brands": [
+        "AsteroidHauler",
+        "SpaceProspector",
+        "BeltRunner"
+      ],
+      "specialization": "Техника для работы в невесомости и низких температурах"
+    }
+  },
+  "integration_systems": {
+    "lifepath_vehicle_access": {
+      "description": "Происхождение персонажа влияет на доступную технику",
+      "access_levels": {
+        "ORIGIN_EARTH_ELITE": {
+          "starting_vehicle": "Luxury hovercar или личный шаттл",
+          "financing": "Неограниченный кредит",
+          "insurance": "Премиум покрытие включено",
+          "special_access": "Прототипы, эксклюзивные модели"
+        },
+        "ORIGIN_MARS_MILITARY": {
+          "starting_vehicle": "Военный транспорт или конвертированная техника",
+          "discount": "50% скидка на военную технику",
+          "contacts": "Доступ к военным поставщикам",
+          "knowledge": "Экспертные знания боевых систем"
+        },
+        "ORIGIN_CERES_MINER": {
+          "starting_vehicle": "Промышленная техника или модифицированный транспорт",
+          "specialization": "Глубокие знания промышленных машин",
+          "contacts": "Связи в горнодобывающих корпорациях",
+          "modifications": "Способность к кустарной модификации"
+        },
+        "ORIGIN_EARTH_SLUMS": {
+          "starting_vehicle": "Старый, подержанный транспорт или украденный",
+          "financing": "Ограниченный доступ к кредитам",
+          "skills": "Экспертные знания ремонта и угона",
+          "black_market": "Доступ к нелегальным модификациям"
+        }
+      }
+    },
+    "character_skills_integration": {
+      "pilot_skills": {
+        "ground_vehicles": "Навык управления наземным транспортом",
+        "aircraft": "Пилотирование атмосферных аппаратов",
+        "spacecraft": "Управление космическими кораблями",
+        "watercraft": "Навыки морского судовождения"
+      },
+      "technical_skills": {
+        "mechanics": "Ремонт и обслуживание техники",
+        "electronics": "Работа с электронными системами",
+        "modifications": "Установка улучшений и оружия",
+        "diagnostics": "Быстрое определение неисправностей"
+      }
+    }
+  },
+  "sample_scenarios": {
+    "daily_commute": {
+      "scenario": "Офисный работник на Земле добирается на работу",
+      "vehicle": "EcoDrive 'Whisper' - экономичный электромобиль",
+      "considerations": [
+        "Пробки",
+        "Парковка",
+        "Экологические зоны"
+      ],
+      "alternatives": [
+        "Общественный транспорт",
+        "Каршеринг",
+        "Телепорт"
+      ]
+    },
+    "interplanetary_business": {
+      "scenario": "Бизнесмен летит с Земли на Марс для переговоров",
+      "vehicle": "StarLine 'Cruiser' - пассажирский лайнер",
+      "considerations": [
+        "Время в пути",
+        "Комфорт",
+        "Деловые встречи на борту"
+      ],
+      "alternatives": [
+        "Частная яхта",
+        "Грузовой корабль эконом-класса",
+        "Дипломатический транспорт"
+      ]
+    },
+    "emergency_rescue": {
+      "scenario": "Спасательная операция на удаленной станции",
+      "vehicle": "Rescue 'Guardian Angel' - специализированный спасательный корабль",
+      "considerations": [
+        "Скорость реагирования",
+        "Медицинское оборудование",
+        "Условия на месте"
+      ],
+      "challenges": [
+        "Ограниченное время",
+        "Опасная среда",
+        "Нехватка ресурсов"
+      ]
+    }
+  },
+  "integration_with_other_modules": {
+    "CHARACTER_LIFEPATH": "Происхождение определяет доступ к транспорту и навыки",
+    "TECH_EQUIPMENT": "Модификации и улучшения техники",
+    "COMBAT_COMPREHENSIVE": "Боевое применение техники интегрировано",
+    "ECONOMICS": "Стоимость, страхование, рынок транспорта",
+    "PSYCHOLOGY": "Статусные аспекты владения транспортом",
+    "ENVIRONMENT_SURVIVAL": "Техника для экстремальных условий",
+    "CRAFTING_BLUEPRINTS": "Изготовление и модификация транспорта"
+  },
+  "system_notes": {
+    "realism": "Баланс между реалистичностью и научной фантастикой",
+    "accessibility": "Техника доступна игрокам разных уровней",
+    "progression": "Возможность улучшения от простых к сложным машинам",
+    "narrative_support": "Транспорт как элемент развития сюжета"
+  },
+  "priority": 30
+}

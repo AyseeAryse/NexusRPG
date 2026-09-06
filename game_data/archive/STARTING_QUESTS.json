@@ -1,0 +1,432 @@
+{
+  "module_name": "STARTING_QUESTS",
+  "description": "Модуль стартовых квестов, полностью интегрированный с CHARACTER_LIFEPATH. Каждый жизненный путь открывает уникальные квесты с персонализированными диалогами и связями с игровым миром.",
+  "lifepath_quest_assignments": {
+    "description": "Автоматическое назначение стартовых квестов на основе происхождения, событий и специализации персонажа",
+    "rules": {
+      "each_character_gets": "2-3 квеста: 1 обязательный (lifepath), 1 случайный (локальный), 1 специализация",
+      "priority_order": ["origin_quest", "formative_years_quest", "specialization_quest", "local_quest"]
+    }
+  },
+  "origin_quests": [
+    {
+      "quest_id": "SQ_ORIGIN_001",
+      "title": "Долги элиты",
+      "required_lifepath": ["ORIGIN_EARTH_ELITE"],
+      "type": "Investigation",
+      "priority": "Обязательный",
+      "location": "earth:newtokyo:government_sector",
+      "quest_giver": "Финансовый советник семьи",
+      "description": "Семейные инвестиции в Protogen пошли под откос после скандала. Нужно тихо ликвидировать связи и спасти репутацию.",
+      "objectives": [
+        "Встретиться с представителем Protogen в Нью-Токио",
+        "Получить секретные финансовые документы",
+        "Уничтожить компрометирующие записи",
+        "Найти козла отпущения среди младших партнёров"
+      ],
+      "rewards": {
+        "credits": 50000,
+        "influence_gain": "+15 Protogen",
+        "influence_loss": "-5 Earth UN",
+        "special": "Доступ к элитным корпоративным контактам"
+      },
+      "complications": [
+        "Earth UN Investigations может вмешаться",
+        "Конкурирующие семьи элиты могут попытаться шантажировать"
+      ],
+      "dialogue_hooks": {
+        "intimidate": "\"Моя семья владеет половиной акций этой станции. Вы хотите оказаться в шлюзе без скафандра?\"",
+        "persuade": "\"Послушайте, мы оба знаем, что корпорации правят миром. Давайте найдём взаимовыгодное решение.\"",
+        "charm": "\"В высшем обществе репутация значит всё. Помогите мне, и я обеспечу вам место за правильным столом.\"",
+        "context_bonus": "ORIGIN_EARTH_ELITE дает +2 к дипломатии с корпоративными NPC"
+      },
+      "integration": {
+        "worldbuild_connections": ["earth:newtokyo:government_sector"],
+        "faction_involvement": ["Protogen", "Earth UN"],
+        "npc_contacts": ["Corporate Executive Victoria Chang"]
+      }
+    },
+    {
+      "quest_id": "SQ_ORIGIN_002", 
+      "title": "Побег из трущоб",
+      "required_lifepath": ["ORIGIN_EARTH_SLUMS"],
+      "type": "Survival",
+      "priority": "Обязательный",
+      "location": "earth:megacity:lower_levels",
+      "quest_giver": "Старый знакомый из банды",
+      "description": "Ваша старая банда попала под раздачу. Корпоративная безопасность зачищает район. Нужно убраться, пока не поздно.",
+      "objectives": [
+        "Предупредить оставшихся друзей о рейде",
+        "Собрать тайник с оружием в заброшенном заводе",
+        "Пробиться через блокпосты к транспортному узлу",
+        "Найти способ покинуть Землю"
+      ],
+      "rewards": {
+        "credits": 5000,
+        "equipment": "Уличное оружие и броня",
+        "contacts": "Контрабандист на транспортном узле",
+        "heat": "+10 HEAT (Earth)"
+      },
+      "complications": [
+        "Бывшие товарищи могут предать за вознаграждение",
+        "Корпоративная безопасность усиливает патрули"
+      ],
+      "dialogue_hooks": {
+        "intimidate": "\"Я выжил в этих трущобах 20 лет. Ты думаешь, твоя форма корпоративной охраны меня пугает?\"",
+        "streetwise": "\"В нижних уровнях свои правила, брат. Здесь кредиты не решают - решает кровь.\"", 
+        "survival": "\"Знаешь, как долго я могу прожить на одной банке питательной пасты? Дольше, чем ты думаешь.\"",
+        "context_bonus": "ORIGIN_EARTH_SLUMS дает +2 к переговорам с криминалом и +5 к скрытности в городских трущобах"
+      },
+      "integration": {
+        "worldbuild_connections": ["earth:megacity:lower_levels"],
+        "faction_involvement": ["Corporate Security", "Street Gangs"],
+        "npc_contacts": ["Smuggler 'Falcon' Murdoch"]
+      }
+    },
+    {
+      "quest_id": "SQ_ORIGIN_003",
+      "title": "Честь Марса",
+      "required_lifepath": ["ORIGIN_MARS_MILITARY"],
+      "type": "Military",
+      "priority": "Обязательный", 
+      "location": "mars:newboston:orbital_ring",
+      "quest_giver": "Адмирал Карл Ван Дирк",
+      "description": "Пиратские рейды на марсианские конвои участились. Флот нуждается в опытных офицерах для специальной операции возмездия.",
+      "objectives": [
+        "Собрать разведданные о базе Belt Raiders",
+        "Сформировать штурмовую группу",
+        "Провести скрытую атаку на пиратский аванпост",
+        "Захватить главаря для допроса"
+      ],
+      "rewards": {
+        "credits": 25000,
+        "rank": "Повышение в звании",
+        "equipment": "Марсианская силовая броня",
+        "loyalty": "+20 Mars Fleet"
+      },
+      "complications": [
+        "OPA может вмешаться в качестве посредника",
+        "Пираты могут иметь предупреждение о нападении"
+      ],
+      "dialogue_hooks": {
+        "military": "\"Для Марса! Каждый пират, который грабит наши конвои, плюёт в лицо всем колонистам!\"",
+        "honor": "\"Я служил в Республиканском флоте 15 лет. Честь означает больше, чем деньги или власть.\"",
+        "tactical": "\"Анализируя их схемы атак, я вижу закономерность. Их база находится в секторе Джуно-7.\"",
+        "context_bonus": "ORIGIN_MARS_MILITARY дает +3 к лидерству и тактике, +1 к репутации с военными фракциями"
+      },
+      "integration": {
+        "worldbuild_connections": ["mars:newboston:orbital_ring"],
+        "faction_involvement": ["Mars Fleet", "Belt Raiders", "OPA"],
+        "npc_contacts": ["Admiral Karl Van Dirk"]
+      }
+    },
+    {
+      "quest_id": "SQ_ORIGIN_004",
+      "title": "Утечка данных",
+      "required_lifepath": ["ORIGIN_MARS_SCIENTIST"],
+      "type": "Investigation",
+      "priority": "Обязательный",
+      "location": "mars:newboston:biodome_renaissance", 
+      "quest_giver": "Д-р София Кендрик",
+      "description": "Секретные исследования протомолекулы утекли к конкурентам. Нужно найти источник утечки среди коллег.",
+      "objectives": [
+        "Проанализировать логи доступа к исследовательским данным",
+        "Допросить подозрительных сотрудников лаборатории",
+        "Выследить цифровые следы в корпоративной сети",
+        "Противостоять предателю и его нанимателям"
+      ],
+      "rewards": {
+        "credits": 30000,
+        "influence": "+15 Genesis Bioworks",
+        "access": "Закрытые научные архивы",
+        "equipment": "Продвинутый анализатор"
+      },
+      "complications": [
+        "Протоген может послать ликвидаторов",
+        "Утечка может оказаться санкционированной сверху"
+      ],
+      "dialogue_hooks": {
+        "scientific": "\"Понимаете, молекулярная структура этого образца указывает на внеземное происхождение...\"",
+        "ethical": "\"Наука должна служить человечеству, а не корпоративным интересам!\"",
+        "analytical": "\"Логически рассуждая, единственное объяснение этих данных - саботаж изнутри.\"",
+        "context_bonus": "ORIGIN_MARS_SCIENTIST дает +3 к науке и анализу, +2 к репутации с исследовательскими группами"
+      },
+      "integration": {
+        "worldbuild_connections": ["mars:newboston:biodome_renaissance", "ganymede:technohub:bioethical_center"],
+        "faction_involvement": ["Genesis Bioworks", "Protogen", "BioCore Labs"],
+        "npc_contacts": ["Dr. Sofia Kendrick"]
+      }
+    },
+    {
+      "quest_id": "SQ_ORIGIN_005",
+      "title": "Последний груз",
+      "required_lifepath": ["ORIGIN_CERES_MINER"], 
+      "type": "Survival",
+      "priority": "Обязательный",
+      "location": "ceres:deep:miners_quarter",
+      "quest_giver": "Председатель Надя Простова",
+      "description": "Ceres Mining Consortium приостановила операции на астероиде X-47. 200 шахтёров остались без работы и средств на эвакуацию.",
+      "objectives": [
+        "Организовать последний сбор ценных минералов",
+        "Договориться с контрабандистами о транспорте",
+        "Противостоять корпоративным наёмникам",
+        "Доставить шахтёров в безопасность"
+      ],
+      "rewards": {
+        "credits": 15000,
+        "loyalty": "+25 OPA",
+        "equipment": "Шахтёрский экзоскелет",
+        "access": "Карты скрытых месторождений"
+      },
+      "complications": [
+        "Star Helix может прислать патруль",
+        "Среди шахтёров может быть корпоративный шпион"
+      ],
+      "dialogue_hooks": {
+        "solidarity": "\"Мы, шахтёры, должны держаться вместе. Корпорации видят в нас только расходный материал.\"",
+        "practical": "\"20 лет в шахтах научили меня - если оборудование может сломаться, оно сломается.\"",
+        "determined": "\"Этот астероид - наш дом. Мы не бросаем своих!\"",
+        "context_bonus": "ORIGIN_CERES_MINER дает +3 к выживанию в космосе, +2 к работе с горным оборудованием"
+      },
+      "integration": {
+        "worldbuild_connections": ["ceres:deep:miners_quarter"],
+        "faction_involvement": ["OPA", "Ceres Mining Consortium", "Star Helix"],
+        "npc_contacts": ["Chairman Nadya Prostova"]
+      }
+    }
+  ],
+  "formative_years_quests": [
+    {
+      "quest_id": "SQ_FY_001",
+      "title": "Призраки академии",
+      "required_lifepath": ["FY_MARS_ACADEMY"],
+      "type": "Investigation",
+      "priority": "Личный",
+      "location": "mars:newboston:military_academy",
+      "quest_giver": "Бывший однокурсник",
+      "description": "Ваш бывший инструктор по тактике исчез при загадочных обстоятельствах. Официально - несчастный случай, но вы знаете лучше.",
+      "objectives": [
+        "Изучить последние записи инструктора",
+        "Найти свидетелей его последнего дня", 
+        "Проследить связи с подпольными операциями",
+        "Раскрыть правду о его судьбе"
+      ],
+      "rewards": {
+        "credits": 20000,
+        "loyalty": "+10 Mars Fleet (если раскрыта правда)",
+        "information": "Компромат на высокопоставленного офицера"
+      },
+      "dialogue_hooks": {
+        "academy_bond": "\"Помните, как инструктор Чен говорил: 'Тактика без чести - это просто убийство'?\"",
+        "military_code": "\"В академии нас учили никогда не бросать товарищей. Это касается и мёртвых.\"",
+        "context_bonus": "FY_MARS_ACADEMY дает +2 к получению информации от военных NPC"
+      },
+      "integration": {
+        "worldbuild_connections": ["mars:newboston:military_academy"],
+        "faction_involvement": ["Mars Fleet", "Mars Grey Syndicate"],
+        "npc_contacts": ["Admiral Karl Van Dirk"]
+      }
+    },
+    {
+      "quest_id": "SQ_FY_002",
+      "title": "Корпоративные игры",
+      "required_lifepath": ["FY_CORP_INTERNSHIP"],
+      "type": "Espionage", 
+      "priority": "Личный",
+      "location": "earth:newtokyo:protogen_tower",
+      "quest_giver": "Бывший наставник",
+      "description": "Ваш наставник по стажировке попал в опалу после провала крупного проекта. Он просит помочь восстановить репутацию.",
+      "objectives": [
+        "Получить доступ к архивам проекта 'Phoenix'",
+        "Найти доказательства саботажа конкурентов",
+        "Нейтрализовать компромат на наставника",
+        "Помочь ему вернуть былое влияние"
+      ],
+      "rewards": {
+        "credits": 35000,
+        "influence": "+20 Protogen OR +15 конкурирующая корпорация",
+        "access": "Корпоративные секреты высокого уровня"
+      },
+      "dialogue_hooks": {
+        "corporate_speak": "\"В корпоративном мире важно не что ты знаешь, а что ты можешь доказать.\"",
+        "insider_knowledge": "\"Во время стажировки я видел документы, которые могли бы многих удивить...\"",
+        "context_bonus": "FY_CORP_INTERNSHIP дает +3 к хакингу корпоративных систем и +2 к дипломатии с корпорациями"
+      },
+      "integration": {
+        "worldbuild_connections": ["earth:newtokyo:protogen_tower"],
+        "faction_involvement": ["Protogen", "Helios Energy Corp.", "Shadow Consortium"],
+        "npc_contacts": ["Executive Director Victoria Chang"]
+      }
+    },
+    {
+      "quest_id": "SQ_FY_003",
+      "title": "Кровь и пыль",
+      "required_lifepath": ["FY_SLUMS_GANGWAR"],
+      "type": "Combat",
+      "priority": "Личный",
+      "location": "earth:megacity:lower_levels",
+      "quest_giver": "Выживший соратник",
+      "description": "Война банд закончилась, но один из боссов решил свести старые счёты. Ваша голова оценена в 50,000 кредитов.",
+      "objectives": [
+        "Выяснить, кто заказал вашу смерть",
+        "Собрать союзников среди старых друзей", 
+        "Нанести превентивный удар по киллерам",
+        "Разрешить конфликт раз и навсегда"
+      ],
+      "rewards": {
+        "credits": 15000,
+        "heat": "-10 HEAT (local) при мирном решении, +15 при силовом",
+        "contacts": "Связи в криминальном мире"
+      },
+      "dialogue_hooks": {
+        "street_tough": "\"На улице уважают силу и верность. Предателей здесь не забывают и не прощают.\"",
+        "survival_instinct": "\"Я научился спать с одним открытым глазом. В трущобах это единственный способ проснуться.\"",
+        "context_bonus": "FY_SLUMS_GANGWAR дает +2 к запугиванию и +3 к уличным контактам"
+      },
+      "integration": {
+        "worldbuild_connections": ["earth:megacity:lower_levels"],
+        "faction_involvement": ["Street Gangs", "Corporate Security"],
+        "npc_contacts": ["Various Gang Leaders"]
+      }
+    }
+  ],
+  "specialization_quests": [
+    {
+      "quest_id": "SQ_SPEC_001",
+      "title": "Первый взлом",
+      "required_specialization": "Хакер",
+      "type": "Hacking",
+      "priority": "Профессиональный",
+      "location": "variable_by_origin",
+      "quest_giver": "Анонимный заказчик",
+      "description": "Простая работа для начинающего хакера - получить финансовые данные небольшой корпорации.",
+      "objectives": [
+        "Изучить цифровые защиты цели",
+        "Найти точку входа в корпоративную сеть",
+        "Извлечь данные без обнаружения", 
+        "Доставить информацию заказчику"
+      ],
+      "rewards": {
+        "credits": 12000,
+        "equipment": "Продвинутое хакерское ПО",
+        "reputation": "Первая запись в андерграунде"
+      },
+      "complications": [
+        "Цель может оказаться приманкой", 
+        "ИИ безопасности современнее, чем ожидалось"
+      ],
+      "dialogue_hooks": {
+        "tech_speak": "\"Их шифрование 256-битное, но у меня есть квантовый декриптор...\"",
+        "hacker_ethics": "\"Информация хочет быть свободной, но за свободу всегда приходится платить.\"",
+        "context_bonus": "Специализация Хакер дает +3 к взлому и +2 к техническим диалогам"
+      }
+    },
+    {
+      "quest_id": "SQ_SPEC_002",
+      "title": "Девичий рейс",
+      "required_specialization": "Пилот",
+      "type": "Transport",
+      "priority": "Профессиональный",
+      "location": "variable_by_origin",
+      "quest_giver": "Брокер по фрахту",
+      "description": "Доставить небольшой груз между станциями. Простая работа для начинающего пилота.",
+      "objectives": [
+        "Получить груз на отправной станции",
+        "Проложить безопасный маршрут",
+        "Избежать патрулей или пиратов",
+        "Доставить груз в срок"
+      ],
+      "rewards": {
+        "credits": 8000,
+        "ship_upgrade": "Улучшенный навигационный компьютер",
+        "contacts": "Брокеры по фрахту"
+      },
+      "complications": [
+        "Груз может оказаться контрабандой",
+        "Конкуренты могут попытаться перехватить"
+      ],
+      "dialogue_hooks": {
+        "pilot_confidence": "\"Я могу провести корабль через астероидное поле с закрытыми глазами.\"",
+        "navigation": "\"Знаю короткий путь через Сектор-7, но там иногда крутятся пираты...\"",
+        "context_bonus": "Специализация Пилот дает +2 к пилотированию и +1 к навигации"
+      }
+    }
+  ],
+  "local_quests": [
+    {
+      "quest_id": "SQ_LOCAL_001",
+      "title": "Пропавшие в Нью-Токио",
+      "available_locations": ["earth:newtokyo:government_sector", "earth:newtokyo:protogen_tower"],
+      "type": "Investigation",
+      "priority": "Побочный",
+      "quest_giver": "Обеспокоенный гражданин",
+      "description": "Несколько человек пропали в правительственном секторе. Официальные службы неэффективны.",
+      "objectives": [
+        "Опросить свидетелей последнего появления пропавших",
+        "Изучить камеры наблюдения",
+        "Проследить до места исчезновения",
+        "Выяснить правду"
+      ],
+      "rewards": {
+        "credits": 10000,
+        "influence": "+5 местная репутация"
+      }
+    }
+  ],
+  "dialogue_integration": {
+    "description": "Интеграция с DIALOGUE.json для персонализированных реплик",
+    "lifepath_dialogue_modifiers": {
+      "ORIGIN_EARTH_ELITE": {
+        "aristocrat_speak": "Изысканная речь с отсылками к высшему обществу",
+        "corporate_connections": "Упоминания влиятельных знакомых и семейных связей",
+        "condescension": "Едва скрываемое презрение к 'простолюдинам'"
+      },
+      "ORIGIN_EARTH_SLUMS": {
+        "street_slang": "Грубый жаргон нижних уровней",
+        "survival_wisdom": "Практические советы по выживанию в городе",
+        "class_resentment": "Враждебность к корпорациям и элите"
+      },
+      "ORIGIN_MARS_MILITARY": {
+        "military_bearing": "Чёткая, дисциплинированная речь",
+        "tactical_thinking": "Стратегический подход к проблемам",
+        "honor_code": "Упоминания чести, долга и товарищества"
+      },
+      "ORIGIN_MARS_SCIENTIST": {
+        "technical_jargon": "Научная терминология и логический анализ",
+        "ethical_concerns": "Размышления о морали науки",
+        "curiosity": "Постоянные вопросы и стремление понять"
+      },
+      "ORIGIN_CERES_MINER": {
+        "belter_dialect": "Поясной акцент и специфические выражения",
+        "worker_solidarity": "Упор на коллективизм и справедливость",
+        "anti_corporate": "Недоверие к 'звёздным корпорациям'"
+      }
+    },
+    "context_reactions": {
+      "description": "NPC реагируют на происхождение персонажа",
+      "examples": {
+        "corporate_npc_to_slums_origin": "\"Хм, интересно видеть... такого человека... в наших офисах.\"",
+        "belter_npc_to_mars_military": "\"Ещё один марсианский сапог? Что ты здесь забыл, солдат?\"",
+        "scientist_npc_to_elite_origin": "\"Ах, наследник корпоративной династии. Надеюсь, вы здесь не для того, чтобы покупать результаты исследований.\""
+      }
+    }
+  },
+  "technical_implementation": {
+    "quest_selection_algorithm": {
+      "step_1": "Определить lifepath персонажа (origin + formative_years + specialization)",
+      "step_2": "Найти совпадающие квесты по required_lifepath",
+      "step_3": "Выбрать 1 обязательный квест с наивысшим приоритетом",
+      "step_4": "Добавить 1-2 дополнительных квеста (личный/профессиональный)",
+      "step_5": "Добавить 1 случайный локальный квест"
+    },
+    "dialogue_system_hooks": {
+      "description": "Связь с DIALOGUE.json через context_tags",
+      "process": "Когда персонаж говорит с NPC, система проверяет его lifepath и предлагает соответствующие диалоговые опции",
+      "example": "Персонаж с ORIGIN_MARS_MILITARY получает опцию 'Military Honor' при разговоре с другими военными"
+    },
+    "dynamic_quest_generation": {
+      "description": "Генерация дополнительных квестов на основе lifepath",
+      "template": "Использует шаблоны из quest_templates и заполняет их данными из WORLDBUILD.json и FACTIONS_MASTER.json"
+    }
+  }
+}

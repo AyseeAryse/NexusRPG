@@ -1,0 +1,2743 @@
+{
+  "created_at": "2026-02-06T22:40:13.368560",
+  "version": "7.7.0",
+  "files": {
+    "01_CHARACTER_SYSTEM_COMPLETE.json": {
+      "file_name": "01_CHARACTER_SYSTEM_COMPLETE.json",
+      "category": "CHARACTER",
+      "entities": [
+        "Character",
+        "Faction",
+        "Item"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "stats",
+        "attributes",
+        "skills"
+      ],
+      "depends_on": [
+        "AI_GM_CORE",
+        "FACTIONS_MASTER",
+        "PSYCHOLOGY",
+        "THEME_TONE",
+        "NPC_RELATIONS"
+      ],
+      "summary": "Полная система персонажей, объединяющая создание, атрибуты, навыки и прогрессию без потерь. Зависит от AI_GM_CORE, FACTIONS_MASTER и других систем.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T22:41:53.648191",
+      "file_size": 47962
+    },
+    "01_CHARACTER_SYSTEM_COMPLETE_ENHANCED.json": {
+      "file_name": "01_CHARACTER_SYSTEM_COMPLETE_ENHANCED.json",
+      "category": "CHARACTER",
+      "build_version": "NEW",
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "entities": [
+        "Character",
+        "Faction",
+        "Item",
+        "DiceRoll"
+      ],
+      "data_count": 15,
+      "key_fields": [
+        "id",
+        "name",
+        "age",
+        "stats",
+        "dice_expression",
+        "rolls",
+        "success",
+        "critical_success"
+      ],
+      "depends_on": [
+        "AI_GM_CORE",
+        "FACTIONS_MASTER",
+        "PSYCHOLOGY",
+        "THEME_TONE",
+        "NPC_RELATIONS"
+      ],
+      "summary": "Полная система персонажей с обязательной системой бросков кубиков. Включает комплексный процесс создания персонажа и нарративную генерацию результатов.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T22:43:40.689230",
+      "file_size": 12773
+    },
+    "03_MEGA_DIALOGUE_SOCIAL_SYSTEM_COMPLETE.json": {
+      "file_name": "03_MEGA_DIALOGUE_SOCIAL_SYSTEM_COMPLETE.json",
+      "category": "MECHANICS",
+      "entities": [
+        "NPC",
+        "Dialogue",
+        "PsychologyProfile",
+        "Faction"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "origin",
+        "speech_patterns"
+      ],
+      "depends_on": [
+        "CHARACTER_SYSTEM",
+        "AI_GM_CORE",
+        "FACTIONS_MASTER",
+        "PSYCHOLOGY"
+      ],
+      "summary": "Полная система диалогов и социальных взаимодействий с интеграцией жизненного пути персонажа, включающая 200 архетипов NPC, психологические профили и модуль отношений.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T22:45:15.591895",
+      "file_size": 68895
+    },
+    "03_MEGA_DIALOGUE_SOCIAL_SYSTEM_ENHANCED.json": {
+      "file_name": "03_MEGA_DIALOGUE_SOCIAL_SYSTEM_ENHANCED.json",
+      "category": "NARRATIVE",
+      "build_version": "NEW",
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "entities": [
+        "Character",
+        "NPC",
+        "Dialogue",
+        "Narrative"
+      ],
+      "data_count": 15,
+      "key_fields": [
+        "id",
+        "name",
+        "deep_narrative",
+        "speech_patterns",
+        "personality_traits"
+      ],
+      "depends_on": [
+        "CHARACTER_SYSTEM",
+        "AI_GM_CORE",
+        "FACTIONS_MASTER",
+        "PSYCHOLOGY"
+      ],
+      "summary": "Система диалогов с интеграцией жизненных путей и атмосферных нарративов. Содержит глубокие предыстории персонажей, уникальные стили речи и динамические игровые сообщения.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T22:46:09.609138",
+      "file_size": 8086
+    },
+    "04_MEGA_COMBAT_TECH_SYSTEM_COMPLETE.json": {
+      "file_name": "04_MEGA_COMBAT_TECH_SYSTEM_COMPLETE.json",
+      "category": "COMBAT",
+      "build_version": "NEW",
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "entities": [
+        "Character",
+        "Vehicle",
+        "Equipment",
+        "Faction"
+      ],
+      "data_count": 15,
+      "key_fields": [
+        "id",
+        "name",
+        "damage",
+        "health",
+        "initiative",
+        "mods"
+      ],
+      "depends_on": [
+        "CHARACTER_SYSTEM",
+        "AI_GM_CORE",
+        "FACTIONS_MASTER",
+        "PSYCHOLOGY"
+      ],
+      "summary": "Полная боевая и техническая система, объединяющая 8 компонентов: от личного боя до стратегических операций с поддержкой всех уровней техники и модификаций.",
+      "problems": [
+        "TODO: Добавить поддержку квантового хакинга",
+        "Placeholder: Система дронов",
+        "Пустые поля в разделе модификаций",
+        "Некоторые ссылки устарели (V1 вместо V2)"
+      ],
+      "analyzed_at": "2026-02-06T22:47:24.873051",
+      "file_size": 68055
+    },
+    "05_MEGA_AI_GM_CORE_COMPLETE.json": {
+      "file_name": "05_MEGA_AI_GM_CORE_COMPLETE.json",
+      "category": "AI",
+      "entities": [
+        "Character",
+        "Faction",
+        "Narrator",
+        "Engine"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "stats"
+      ],
+      "depends_on": [
+        "ALL_SYSTEMS"
+      ],
+      "summary": "Полная система ИИ-Мастера игры, объединяющая протоколы запуска, нарративные компоненты и инструменты управления для создания иммерсивного RPG-опыта.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T22:48:21.879594",
+      "file_size": 57529
+    },
+    "06_MEGA_ECONOMY_CRAFTING_ENHANCED.json": {
+      "file_name": "06_MEGA_ECONOMY_CRAFTING_ENHANCED.json",
+      "category": "ECONOMY",
+      "entities": [
+        "EconomicMechanics",
+        "Planet",
+        "City",
+        "District",
+        "Faction"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "version",
+        "population",
+        "coordinates"
+      ],
+      "depends_on": [
+        "FACTIONS_MASTER.json",
+        "CHARACTER_LIFEPATH.json",
+        "AI_GM_CORE.json",
+        "WORLD_ENVIRONMENT.json"
+      ],
+      "summary": "Полная экономическая система с детализированными мирами, городами и экономическими механиками, интегрированная с фракциями и мировой средой.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T22:49:27.209084",
+      "file_size": 14286
+    },
+    "07_MEGA_WORLD_SIMULATION_COMPLETE.json": {
+      "file_name": "07_MEGA_WORLD_SIMULATION_COMPLETE.json",
+      "category": "WORLD",
+      "entities": [
+        "Planet",
+        "City",
+        "District",
+        "Establishment",
+        "Faction"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "type",
+        "population",
+        "faction_control"
+      ],
+      "depends_on": [
+        "06_MEGA_ECONOMY_CRAFTING",
+        "FACTIONS_MASTER",
+        "CHARACTER_LIFEPATH",
+        "AI_GM_CORE"
+      ],
+      "summary": "Полная симуляция живой вселенной с детализацией от планеты до отдельных заведений, включая фракционное управление, риски и сюжетные хуксы для динамических событий.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T22:50:43.147716",
+      "file_size": 69161
+    },
+    "08_MEGA_QUEST_INVESTIGATION_COMPLETE.json": {
+      "file_name": "08_MEGA_QUEST_INVESTIGATION_COMPLETE.json",
+      "category": "MECHANICS",
+      "build_version": "NEW",
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "entities": [
+        "Quest",
+        "Investigation",
+        "NPC",
+        "Faction",
+        "Character"
+      ],
+      "data_count": 15,
+      "key_fields": [
+        "id",
+        "name",
+        "description",
+        "type",
+        "requirements",
+        "variables",
+        "structure"
+      ],
+      "depends_on": [
+        "07_MEGA_WORLD_SIMULATION",
+        "FACTIONS_MASTER",
+        "CHARACTER_LIFEPATH",
+        "NPC_RELATIONS",
+        "DYNAMIC_WORLD"
+      ],
+      "summary": "Полная система квестов и расследований, объединяющая процедурную генерацию заданий, стартовые квесты и детективные механики с интеграцией в глобальный мир и NPC отношения.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T22:51:50.742459",
+      "file_size": 73132
+    },
+    "10_MEGA_PLAYER_INTERFACE_COMPLETE.json": {
+      "file_name": "10_MEGA_PLAYER_INTERFACE_COMPLETE.json",
+      "category": "INTERFACE",
+      "build_version": "NEW",
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "entities": [
+        "Character",
+        "Faction",
+        "Item",
+        "NPC"
+      ],
+      "data_count": 15,
+      "key_fields": [
+        "id",
+        "name",
+        "stats"
+      ],
+      "depends_on": [
+        "CHARACTER_LIFEPATH",
+        "CHARACTER_CORE",
+        "PSYCHOLOGY",
+        "09_MEGA_NARRATIVE_THEMES",
+        "NPC_RELATIONS",
+        "07_MEGA_WORLD_SIMULATION"
+      ],
+      "summary": "Полная система пользовательского интерфейса, объединяющая игровые механики, психотерапевтические справочники и адаптеры представления для взаимодействия игрока с миром",
+      "problems": [
+        "Фрагмент файла ограничен первыми 6000 символами, полный контент недоступен"
+      ],
+      "analyzed_at": "2026-02-06T22:53:34.887644",
+      "file_size": 45348
+    },
+    "10_MEGA_PLAYER_INTERFACE_ENHANCED.json": {
+      "file_name": "10_MEGA_PLAYER_INTERFACE_ENHANCED.json",
+      "category": "INTERFACE",
+      "entities": [
+        "Player",
+        "Choice",
+        "Action",
+        "NPC"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "description",
+        "options",
+        "emoji"
+      ],
+      "depends_on": [
+        "CHARACTER_LIFEPATH",
+        "CHARACTER_CORE",
+        "PSYCHOLOGY",
+        "NARRATIVE_THEMES",
+        "NPC_RELATIONS",
+        "WORLD_SIMULATION"
+      ],
+      "summary": "Полная система интерфейса игрока с обязательной генерацией 5-6 вариантов действий после каждого ответа ИИ ГМ. Адаптируется под навыки, происхождение персонажа и контекст ситуации.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T22:54:34.378144",
+      "file_size": 11866
+    },
+    "11_MEGA_POLITICS_STRATEGY_COMPLETE.json": {
+      "file_name": "11_MEGA_POLITICS_STRATEGY_COMPLETE.json",
+      "category": "MECHANICS",
+      "build_version": "UNKNOWN",
+      "entities": [
+        "PoliticalMechanic",
+        "GovernmentType",
+        "InfluenceSystem",
+        "PropagandaCampaign",
+        "StrategicOperation"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "description",
+        "bonuses",
+        "penalties"
+      ],
+      "depends_on": [
+        "FACTIONS_MASTER",
+        "CHARACTER_LIFEPATH",
+        "07_MEGA_WORLD_SIMULATION",
+        "10_MEGA_PLAYER_INTERFACE",
+        "09_MEGA_NARRATIVE_THEMES",
+        "ECONOMY"
+      ],
+      "summary": "Полная система политических механик, стратегического командования флотами и технологического влияния с генераторами событий, системой влияния и пропаганды",
+      "problems": [
+        "Обрыв строки в поле 'resource_raids' (последний пример)"
+      ],
+      "analyzed_at": "2026-02-06T22:56:01.327265",
+      "file_size": 55140
+    },
+    "12_MEGA_NARRATIVE_INTERFACE_COMPLETE.json": {
+      "file_name": "12_MEGA_NARRATIVE_INTERFACE_COMPLETE.json",
+      "category": "NARRATIVE",
+      "entities": [
+        "Character",
+        "Faction",
+        "NPC",
+        "Dialogue"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "description",
+        "version",
+        "dependencies",
+        "provides"
+      ],
+      "depends_on": [
+        "09_MEGA_NARRATIVE_THEMES",
+        "10_MEGA_PLAYER_INTERFACE",
+        "11_MEGA_POLITICS_STRATEGY",
+        "CHARACTER_LIFEPATH",
+        "NPC_ARCHETYPES",
+        "FACTIONS_MASTER"
+      ],
+      "summary": "Полная система нарративного интерфейса, объединяющая адаптивное повествование, визуальный движок и навигацию по игровым данным для преобразования технической информации в живое повествование.",
+      "problems": [
+        "optimization_needed: Add social_type and motive indexes for NPC_ARCHETYPES"
+      ],
+      "analyzed_at": "2026-02-06T22:57:18.912113",
+      "file_size": 50733
+    },
+    "13_MEGA_TIME_SYSTEM_COMPLETE.json": {
+      "file_name": "13_MEGA_TIME_SYSTEM_COMPLETE.json",
+      "category": "MECHANICS",
+      "entities": [
+        "GameCalendar",
+        "TimeFlow",
+        "ActivityModifiers",
+        "SpaceTravel"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "description",
+        "time_flow",
+        "calendar_system",
+        "travel_routes"
+      ],
+      "depends_on": [
+        "12_MEGA_NARRATIVE_INTERFACE",
+        "10_MEGA_PLAYER_INTERFACE",
+        "07_MEGA_WORLD_SIMULATION",
+        "11_MEGA_POLITICS_STRATEGY",
+        "AI_NARRATOR_V2"
+      ],
+      "summary": "Комплексная система управления временем, объединяющая мировое время, логирование сессий и отображение времени для хронологического контроля и исторической достоверности. Включает детальные настройки календаря, механики течения времени и временных модификаторов для различных активностей.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T22:58:51.066288",
+      "file_size": 35812
+    },
+    "14_MEGA_PROCEDURAL_GENERATORS_COMPLETE.json": {
+      "file_name": "14_MEGA_PROCEDURAL_GENERATORS_COMPLETE.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Character",
+        "Faction",
+        "Item"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "stats"
+      ],
+      "depends_on": [
+        "13_MEGA_TIME_SYSTEM",
+        "12_MEGA_NARRATIVE_INTERFACE",
+        "CHARACTER_LIFEPATH",
+        "NPC_ARCHETYPES",
+        "FACTIONS_MASTER",
+        "AI_NARRATOR_V2"
+      ],
+      "summary": "Полная система процедурной генерации контента с генератором имен NPC, координатором процессов и интеграцией с другими системами. Содержит множество культурных и региональных таблиц имен.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T22:59:41.986137",
+      "file_size": 42742
+    },
+    "AI_NARRATOR_OLD.json": {
+      "file_name": "AI_NARRATOR_OLD.json",
+      "category": "NARRATIVE",
+      "entities": [
+        "NarrativeSystem",
+        "GameMechanic",
+        "AIDirective"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "description",
+        "action",
+        "triggers"
+      ],
+      "depends_on": [],
+      "summary": "Финальная версия ядра нарратива с системой фасилитации выбора, генерации контекста и скрытыми механиками вроде karmic_dice. Содержит принципы state-driven GM и sandbox-подхода.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:00:53.928608",
+      "file_size": 3459
+    },
+    "AI_NARRATOR_V2.json": {
+      "file_name": "AI_NARRATOR_V2.json",
+      "category": "NARRATIVE",
+      "entities": [],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "module_name",
+        "version",
+        "description",
+        "narrative_principles",
+        "internal_mechanics"
+      ],
+      "depends_on": [
+        "PLAYER_INTERFACE.json",
+        "WORLD_TIME_SYSTEM.json",
+        "CHARACTER_CORE.json"
+      ],
+      "summary": "ИИ-рассказчик с системой приоритетов, обеспечивающий нарративное взаимодействие с игроком через прозрачные расчеты, структурированные выборы и защиту игровых механик от нарушений",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:02:21.553291",
+      "file_size": 1972
+    },
+    "AI_RPG_CORE.json": {
+      "file_name": "AI_RPG_CORE.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Metric",
+        "Asset",
+        "Faction",
+        "Contract"
+      ],
+      "data_count": 22,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "tier",
+        "price_range",
+        "conditions"
+      ],
+      "depends_on": [],
+      "summary": "Единый источник правил по экономике, активам, контрактам и прогрессии. Описывает метрики игрока, условия тайеров, типы активов и логику оплаты миссий.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:03:46.348476",
+      "file_size": 7066
+    },
+    "AI_RPG_CORE_V2_ENHANCED.json": {
+      "file_name": "AI_RPG_CORE_V2_ENHANCED.json",
+      "category": "MECHANICS",
+      "build_version": "NEW",
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "entities": [
+        "Character",
+        "Faction",
+        "NPC",
+        "Quest",
+        "Event",
+        "Item"
+      ],
+      "data_count": 15,
+      "key_fields": [
+        "id",
+        "name",
+        "description",
+        "conditions",
+        "price_range"
+      ],
+      "depends_on": [
+        "WORLD_TIME_SYSTEM",
+        "CHARACTER_LIFEPATH_V3_MASSIVE",
+        "PROGRESSION_V2",
+        "ECONOMY",
+        "FACTIONS_MASTER",
+        "PROCEDURAL_COORDINATOR",
+        "THEME_TONE"
+      ],
+      "summary": "Расширенная архитектура ИИ-ГМ с центральным координатором и иерархической интеграцией игровых систем. Включает систему прогрессии, динамическую экономику, генерацию контента и управление временем в реальном времени.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:04:59.032827",
+      "file_size": 12646
+    },
+    "AUTOMATION.json": {
+      "file_name": "AUTOMATION.json",
+      "category": "MECHANICS",
+      "build_version": "UNKNOWN",
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "entities": [],
+      "data_count": 15,
+      "key_fields": [
+        "name",
+        "description",
+        "automation_type"
+      ],
+      "depends_on": [],
+      "summary": "Система автоматизации подсчётов, трекинга ресурсов и управления данными для ускорения игрового процесса.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:06:15.351033",
+      "file_size": 2399
+    },
+    "AUTOMATION_V2_COMPREHENSIVE.json": {
+      "file_name": "AUTOMATION_V2_COMPREHENSIVE.json",
+      "category": "MECHANICS",
+      "entities": [
+        "NPC",
+        "Faction",
+        "Event",
+        "Quest",
+        "Item",
+        "TravelRoute",
+        "Skill"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "description",
+        "rules",
+        "sources",
+        "automation_rules"
+      ],
+      "depends_on": [
+        "WORLD_TIME_SYSTEM.json",
+        "NPC_ARCHETYPES.json",
+        "MARKET_EVENT_GENERATOR.json",
+        "FACTIONS_MASTER.json",
+        "CHARACTER_LIFEPATH_V3_MASSIVE.json",
+        "TRADE_ROUTES_MASTER.json",
+        "ENHANCED_EVENT_GENERATOR_V2.json",
+        "CRAFTING_BLUEPRINTS.json"
+      ],
+      "summary": "Комплексная система автоматизации для ИИ-ГМ с модулями: управление временем, генерация NPC, экономические процессы, репутация, квесты и путешествия. Полная интеграция с другими системами игры.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:06:55.790131",
+      "file_size": 7261
+    },
+    "balanced_character_presets.json": {
+      "file_name": "balanced_character_presets.json",
+      "category": "CHARACTER",
+      "entities": [
+        "Character",
+        "Lifepath",
+        "Stats",
+        "Reputation"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "attributes",
+        "skills",
+        "starting_resources"
+      ],
+      "depends_on": [],
+      "summary": "Файл содержит 15 балансированных пресетов персонажей с уникальными характеристиками, навыками, стартовыми ресурсами и рольплейными нотами для ролевой игры",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:07:33.818609",
+      "file_size": 7380
+    },
+    "CHARACTER_CORE.json": {
+      "file_name": "CHARACTER_CORE.json",
+      "category": "CHARACTER",
+      "entities": [
+        "Character",
+        "Skill",
+        "TrackingSystem"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "attributes",
+        "skills"
+      ],
+      "depends_on": [
+        "CHARACTER_LIFEPATH.json"
+      ],
+      "summary": "Базовая система персонажа с атрибутами, навыками, системами отслеживания и производными статами. Полная интеграция с системой жизненных путей.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:08:40.157915",
+      "file_size": 10621
+    },
+    "CHARACTER_CORE_REPUTATION_STANDARDIZED.json": {
+      "file_name": "CHARACTER_CORE_REPUTATION_STANDARDIZED.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Faction",
+        "Character",
+        "NPC"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "reputation",
+        "category",
+        "effects"
+      ],
+      "depends_on": [],
+      "summary": "Единая система репутации от -100 до +100 с 6 категориями и динамическими эффектами. Включает фракционную, личную и профессиональную репутацию с конвертацией старых значений.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:09:21.131443",
+      "file_size": 4502
+    },
+    "CHARACTER_CREATION_V2.json": {
+      "file_name": "CHARACTER_CREATION_V2.json",
+      "category": "CHARACTER",
+      "build_version": "NEW",
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "entities": [
+        "Character",
+        "Profession",
+        "Origin",
+        "BackgroundEvent"
+      ],
+      "data_count": 15,
+      "key_fields": [
+        "character_name",
+        "character_age",
+        "profession",
+        "origin",
+        "skills",
+        "equipment"
+      ],
+      "depends_on": [],
+      "summary": "Расширенная система создания персонажа с обязательными полями имя и возраст, 4 категориями происхождения, 5 профессиями и системой предысторий через случайные события.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:09:57.131993",
+      "file_size": 5077
+    },
+    "CHARACTER_LIFEPATH.json": {
+      "file_name": "CHARACTER_LIFEPATH.json",
+      "category": "CHARACTER",
+      "entities": [
+        "Character",
+        "Faction",
+        "Item"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "effects",
+        "modifiers",
+        "context_tags"
+      ],
+      "depends_on": [
+        "CHARACTER_CORE.json",
+        "PSYCHOLOGY.json",
+        "FACTIONS_MASTER.json",
+        "NPC_RELATIONS.json",
+        "TECH_EQUIPMENT.json",
+        "THEME_TONE.json"
+      ],
+      "summary": "Модуль жизненного пути с системой модификаторов, определяющий характеристики персонажа в зависимости от происхождения. Интегрируется с основными системами RPG для создания уникальных персонажей и взаимодействия с фракциями.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:11:17.491014",
+      "file_size": 40848
+    },
+    "CHARACTER_LIFEPATH_V3_MASSIVE_PART1.json": {
+      "file_name": "CHARACTER_LIFEPATH_V3_MASSIVE_PART1.json",
+      "category": "CHARACTER",
+      "build_version": "NEW",
+      "entities": [
+        "Origin"
+      ],
+      "data_count": 29,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "title",
+        "description",
+        "rarity",
+        "tone_modifiers"
+      ],
+      "depends_on": [
+        "CHARACTER_LIFEPATH.json",
+        "THEME_TONE.json"
+      ],
+      "summary": "Массивное расширение системы созданий персонажей с динамическим изменением тона. Содержит 29 новых происхождений (оригинов) с уникальными характеристиками, навыками и модификаторами тона.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:12:00.878274",
+      "file_size": 33286
+    },
+    "CHARACTER_SPECIALIZATIONS_V3_MASSIVE.json": {
+      "file_name": "CHARACTER_SPECIALIZATIONS_V3_MASSIVE.json",
+      "category": "CHARACTER",
+      "build_version": "NEW",
+      "quality": "MEDIUM",
+      "duplicate_of": null,
+      "entities": [
+        "Character"
+      ],
+      "data_count": 35,
+      "key_fields": [
+        "id",
+        "title",
+        "description",
+        "effects",
+        "starting_equipment"
+      ],
+      "depends_on": [],
+      "summary": "35 специализаций персонажей с эффектами, начальным снаряжением и тоновыми модификаторами для определения ролей в мире",
+      "problems": [
+        "Данные обрезаны в фрагменте, неизвестно полнота описания",
+        "Некоторые поля могут быть незаполнены (проверить полный файл)",
+        "Версия указана как 3.0_35, что не соответствует стандартному формату версий"
+      ],
+      "analyzed_at": "2026-02-06T23:12:48.324131",
+      "file_size": 16848
+    },
+    "COMBAT.json": {
+      "file_name": "COMBAT.json",
+      "category": "COMBAT",
+      "entities": [
+        "Character",
+        "Vehicle",
+        "Faction"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "stats",
+        "damage_types",
+        "status_effects",
+        "combat_scales",
+        "initiative_system",
+        "health_damage_system",
+        "combat_maneuvers",
+        "team_tactics",
+        "round_structure_sec",
+        "encounter_types",
+        "critical_hits",
+        "location_system",
+        "special_conditions"
+      ],
+      "depends_on": [],
+      "summary": "Полная система боевых действий от личных стычек до масштабных флотских операций. Объединяет тактическую, стратегическую и техническую составляющие боя.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:13:56.118588",
+      "file_size": 32421
+    },
+    "CRAFTING_BLUEPRINTS.json": {
+      "file_name": "CRAFTING_BLUEPRINTS.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Item",
+        "Resource",
+        "Workshop"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "difficulty",
+        "cost",
+        "requirements"
+      ],
+      "depends_on": [
+        "TECH_EQUIPMENT_COMPLETE_OPTIMIZED"
+      ],
+      "summary": "Система создания и модификации предметов с механиками успеха/неудачи, требованиями к навыкам и ресурсам. Включает шкалу сложности, последствия неудач и интеграцию с жизненным путем персонажа.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:14:47.173593",
+      "file_size": 23290
+    },
+    "DYNAMIC_WORLD.json": {
+      "file_name": "DYNAMIC_WORLD.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Faction",
+        "Event",
+        "World"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "type",
+        "effect",
+        "date",
+        "priority"
+      ],
+      "depends_on": [
+        "WORLD_DATA.json",
+        "FRACTION_SYSTEM.json",
+        "EVENT_SYSTEM.json"
+      ],
+      "summary": "Система динамических изменений мира с генератором событий, механизмами реагирования фракций и игроков, а также шаблонами для записи исторических событий.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:15:35.743017",
+      "file_size": 2914
+    },
+    "ECONOMY.json": {
+      "file_name": "ECONOMY.json",
+      "category": "ECONOMY",
+      "entities": [
+        "Resource",
+        "Currency",
+        "Bank",
+        "Corporation",
+        "Faction",
+        "Contraband"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "value",
+        "rate",
+        "price",
+        "risk"
+      ],
+      "depends_on": [],
+      "summary": "Полная экономическая система колонизированной солнечной системы с механиками производства, торговли, банковского сектора, корпоративных финансов и экономических кризисов.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:16:50.725397",
+      "file_size": 31359
+    },
+    "ENHANCED_EVENT_GENERATOR.json": {
+      "file_name": "ENHANCED_EVENT_GENERATOR.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Event",
+        "Location",
+        "Faction"
+      ],
+      "data_count": 5,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "type",
+        "triggers",
+        "effects"
+      ],
+      "depends_on": [
+        "DYNAMIC_WORLD.json",
+        "GLOBAL_EVENTS.json"
+      ],
+      "summary": "Содержит локационно-специфические события и каскадные цепи событий для создания динамичного игрового мира с взаимодействующими системами.",
+      "problems": [
+        "Смесь русского и английского языка в описаниях эффектов",
+        "Некоторые эффекты имеют неформализованный текстовый формат",
+        "Отсутствуют технические детали реализации событий"
+      ],
+      "analyzed_at": "2026-02-06T23:17:50.781811",
+      "file_size": 3273
+    },
+    "ENHANCED_EVENT_GENERATOR_V2.json": {
+      "file_name": "ENHANCED_EVENT_GENERATOR_V2.json",
+      "category": "NARRATIVE",
+      "build_version": "NEW",
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "entities": [
+        "Corporation",
+        "ScientificCommunity",
+        "ReligiousGroup",
+        "Prospector"
+      ],
+      "data_count": 8,
+      "key_fields": [
+        "id",
+        "name",
+        "type",
+        "triggers",
+        "effects"
+      ],
+      "depends_on": [
+        "ENHANCED_EVENT_GENERATOR.json"
+      ],
+      "summary": "Расширенный генератор событий для 20+ локаций с каскадными экономическими и технологическими цепочками, включающий 6 основных событий и 2 типовых каскадов.",
+      "problems": [
+        "Некоторые эффекты слишком абстрактны (например, 'Паника среди религиозных групп')",
+        "Отсутствуют конкретные механики реализации эффектов"
+      ],
+      "analyzed_at": "2026-02-06T23:19:05.877095",
+      "file_size": 4124
+    },
+    "ENVIRONMENT_SURVIVAL.json": {
+      "file_name": "ENVIRONMENT_SURVIVAL.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Environment",
+        "Threat",
+        "Resource",
+        "StatusEffect",
+        "SurvivalEquipment"
+      ],
+      "data_count": 15,
+      "quality": "MEDIUM",
+      "duplicate_of": null,
+      "key_fields": [
+        "type",
+        "threats",
+        "resources",
+        "modifiers",
+        "effect"
+      ],
+      "depends_on": [],
+      "summary": "Модуль описывает механику выживания в экстремальных средах, включая 8 типов локаций, 5 типов угроз, систему проверок и статус-эффекты. Содержит полную механику влияния условий на персонажей.",
+      "problems": [
+        "В разделе 'anomalies' указано 'Переменные, зависят от типа аномалии' вместо конкретных данных",
+        "Некоторые значения модификаторов могут требовать дополнительной проработки",
+        "Отсутствуют примеры реализации механики в коде"
+      ],
+      "analyzed_at": "2026-02-06T23:19:49.148194",
+      "file_size": 7244
+    },
+    "FACTIONS_LIFEPATH_SYSTEM.json": {
+      "file_name": "FACTIONS_LIFEPATH_SYSTEM.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Faction",
+        "Lifepath",
+        "Relation"
+      ],
+      "data_count": 28,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "faction_category",
+        "lifepath_type",
+        "base_rep",
+        "modifier",
+        "restrictions"
+      ],
+      "depends_on": [
+        "LIFEPATHS.json",
+        "FACTIONS_CATEGORIES.json"
+      ],
+      "summary": "Система автоматического определения отношений между фракциями и жизненными путями персонажей с базовой репутацией, модификаторами и ограничениями.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:20:38.601233",
+      "file_size": 13059
+    },
+    "GM_TOOLKIT.json": {
+      "file_name": "GM_TOOLKIT.json",
+      "category": "MECHANICS",
+      "entities": [
+        "NPC",
+        "Faction",
+        "Event",
+        "Resource",
+        "GM_Tool"
+      ],
+      "data_count": 15,
+      "quality": "MEDIUM",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "description",
+        "type",
+        "effect"
+      ],
+      "depends_on": [],
+      "summary": "Набор инструментов, таблиц и генераторов для помощи Game Master в создании динамичного игрового мира, включая сюжетные повороты, управление конфликтами и иммерсию.",
+      "problems": [
+        "TODO: Расширить до полных 100 вариантов с детализацией механических эффектов",
+        "Некоторые поля могут быть незаполненными или упрощенными",
+        "Отсутствуют реальные механические эффекты для большинства сюжетных поворотов"
+      ],
+      "analyzed_at": "2026-02-06T23:22:08.233401",
+      "file_size": 3944
+    },
+    "GM_TOOLKIT_V2_COMPREHENSIVE.json": {
+      "file_name": "GM_TOOLKIT_V2_COMPREHENSIVE.json",
+      "category": "NARRATIVE",
+      "build_version": "NEW",
+      "quality": "HIGH",
+      "duplicate_of": "GM_TOOLKIT.json",
+      "entities": [
+        "PlotTwist",
+        "Conspiracy",
+        "Faction",
+        "SpaceStation",
+        "Location"
+      ],
+      "data_count": 15,
+      "key_fields": [
+        "roll",
+        "twist",
+        "type",
+        "effect",
+        "location"
+      ],
+      "depends_on": [
+        "WORLDBUILD.json",
+        "POLITICS.json"
+      ],
+      "summary": "Полный инструментарий ГМ с 100 поворотами сюжета, генератором заговоров и космическими механиками. Интегрирует системы для создания динамичных историй и взаимодействия с фракциями.",
+      "problems": [
+        "Фрагментарное содержимое (6000/13113 символов)",
+        "Нет указания на полный список 160 фракций"
+      ],
+      "analyzed_at": "2026-02-06T23:23:14.347657",
+      "file_size": 13113
+    },
+    "HACKING.json": {
+      "file_name": "HACKING.json",
+      "category": "MECHANICS",
+      "build_version": "NEW",
+      "entities": [
+        "HackingMechanic",
+        "CyberAttack",
+        "Vulnerability"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "name",
+        "description",
+        "attack_types",
+        "defense_layers"
+      ],
+      "depends_on": [],
+      "summary": "Система правил для кибервойны, включающая механики взлома, атаки на системы и уязвимости.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:24:17.579614",
+      "file_size": 1495
+    },
+    "HACKING_V2_QUANTUM_AGE.json": {
+      "file_name": "HACKING_V2_QUANTUM_AGE.json",
+      "category": "MECHANICS",
+      "entities": [
+        "corporate_networks",
+        "government_systems",
+        "ai_systems",
+        "hacker_specializations"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "level",
+        "difficulty",
+        "countermeasures",
+        "rewards",
+        "consequences"
+      ],
+      "depends_on": [
+        "CHARACTER_SPECIALIZATIONS_V3.json"
+      ],
+      "summary": "Комплексная система взлома с тремя категориями (корпоративные сети, правительственные системы, ИИ) и разными уровнями сложности и последствий.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:24:49.665204",
+      "file_size": 12022
+    },
+    "INVESTIGATION.json": {
+      "file_name": "INVESTIGATION.json",
+      "category": "MECHANICS",
+      "build_version": "UNKNOWN",
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "entities": [
+        "Clue",
+        "Case",
+        "InvestigationLine",
+        "PlayerRole",
+        "Obstacle"
+      ],
+      "data_count": 15,
+      "key_fields": [
+        "name",
+        "description",
+        "mechanics",
+        "skills"
+      ],
+      "depends_on": [],
+      "summary": "Система детективных сценариев с механизмами сбора улик, анализа данных и управления расследованием. Включает роли игроков, типы задач и инструменты для ГМ.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:25:32.788680",
+      "file_size": 3016
+    },
+    "INVESTIGATION_V2_GALACTIC_DETECTIVE.json": {
+      "file_name": "INVESTIGATION_V2_GALACTIC_DETECTIVE.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Faction",
+        "Conspiracy",
+        "Investigation"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "category",
+        "faction_involvement"
+      ],
+      "depends_on": [
+        "FACTIONS_MASTER.json"
+      ],
+      "summary": "Система космических расследований с 4 типами заговоров, генератором заговоров и уникальными космическими вызовами. Интегрирует 160 фракций и механики юридической сложности.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:26:33.531263",
+      "file_size": 11178
+    },
+    "lore_chronology.json": {
+      "file_name": "lore_chronology.json",
+      "category": "WORLD",
+      "entities": [
+        "Era",
+        "Section",
+        "Event",
+        "CulturalImpact",
+        "GameReference"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "title",
+        "period",
+        "key_events",
+        "cultural_impact"
+      ],
+      "depends_on": [],
+      "summary": "Хронология событий от 1900 до 2150 года, описывающая технологическое развитие, климатические кризисы, колонизацию космоса и культурные изменения в мире игры.",
+      "problems": [
+        "Фрагмент файла обрезан (последняя секция обрывается на 'p')",
+        "Неполные данные в разделе 'key_events' для некоторых секций"
+      ],
+      "analyzed_at": "2026-02-06T23:27:17.037605",
+      "file_size": 10342
+    },
+    "MANDATORY_FILE_CHECK_SYSTEM_FINAL.json": {
+      "file_name": "MANDATORY_FILE_CHECK_SYSTEM_FINAL.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Character",
+        "Faction",
+        "Item",
+        "Event"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "priority",
+        "files"
+      ],
+      "depends_on": [
+        "01_CHARACTER_SYSTEM_COMPLETE.json",
+        "FACTIONS_MASTER.json",
+        "06_MEGA_ECONOMY_CRAFTING_COMPLETE.json",
+        "07_MEGA_WORLD_SIMULATION_COMPLETE.json",
+        "13_MEGA_TIME_SYSTEM_COMPLETE.json"
+      ],
+      "summary": "Система принудительной проверки файлов с автокоррекцией и живой экономикой, обеспечивающая соответствие правилам и генерацию контента. Включает матрицу приоритетов, протоколы проверки и интеграцию с игровым миром.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:27:55.179265",
+      "file_size": 7424
+    },
+    "MARKET_EVENT_GENERATOR.json": {
+      "file_name": "MARKET_EVENT_GENERATOR.json",
+      "category": "ECONOMY",
+      "entities": [
+        "MarketEvent",
+        "TradingOpportunity"
+      ],
+      "data_count": 24,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "event",
+        "effect",
+        "duration"
+      ],
+      "depends_on": [],
+      "summary": "Генератор рыночных событий с 12 динамическими событиями и 12 торговых возможностями (контрабанда и высокомаржинальные товары)",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:29:16.337268",
+      "file_size": 2461
+    },
+    "MECHANICS.json": {
+      "file_name": "MECHANICS.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Dice",
+        "Mechanic",
+        "RollTable"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "die",
+        "name",
+        "usage",
+        "description",
+        "range"
+      ],
+      "depends_on": [],
+      "summary": "Содержит систему игровых механик: типы кубов, систему проверок с DC, таблицы случайных событий и философию обработки провалов. Полный набор инструментов для игрового процесса.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:29:56.161429",
+      "file_size": 4801
+    },
+    "MECHANICS_V2_INTEGRATED_SYSTEMS.json": {
+      "file_name": "MECHANICS_V2_INTEGRATED_SYSTEMS.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Skill",
+        "Faction",
+        "NPC",
+        "Equipment"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "name",
+        "type",
+        "effects",
+        "requirements"
+      ],
+      "depends_on": [
+        "NPC_ARCHETYPES.json",
+        "PSYCHOLOGY_THERAPY_REFERENCE.json",
+        "TRADE_ROUTES_MASTER.json"
+      ],
+      "summary": "Расширенные игровые механики с интеграцией навыков, наставничества, временных и психологических систем для создания глубокого игрового опыта",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:30:33.738984",
+      "file_size": 6240
+    },
+    "META_ENGINE.json": {
+      "file_name": "META_ENGINE.json",
+      "category": "MECHANICS",
+      "entities": [],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "role",
+        "main_task",
+        "principles",
+        "event_generation_algorithm",
+        "ai_gm_philosophy"
+      ],
+      "depends_on": [
+        "EVENT_ENGINE.json",
+        "REACTION_CORE.json",
+        "DYNAMIC_WORLD.json",
+        "THEME_TONE.json"
+      ],
+      "summary": "Мета-надстройка, объединяющая системную логику и философию мира для создания эмерджентного нарратива через алгоритмы генерации событий и каскадных реакций.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:31:33.457683",
+      "file_size": 3087
+    },
+    "MODIFICATION.json": {
+      "file_name": "MODIFICATION.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Weapon",
+        "Armor",
+        "Cybernetics",
+        "Modification"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "name",
+        "effect",
+        "requirements",
+        "slot_type"
+      ],
+      "depends_on": [],
+      "summary": "Содержит правила крафта и модификации оружия, брони и имплантов с примерами эффектов и требований к навыкам и ресурсам.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:32:04.783380",
+      "file_size": 1582
+    },
+    "MODIFICATION_V2_QUANTUM_BIOTECH.json": {
+      "file_name": "MODIFICATION_V2_QUANTUM_BIOTECH.json",
+      "category": "MECHANICS",
+      "build_version": "NEW",
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "entities": [
+        "Modification",
+        "Character",
+        "Faction"
+      ],
+      "data_count": 15,
+      "key_fields": [
+        "id",
+        "name",
+        "description",
+        "effects",
+        "requirements",
+        "risks"
+      ],
+      "depends_on": [
+        "TECH_EQUIPMENT.json",
+        "HACKING_V2.json"
+      ],
+      "summary": "Комплексная система модификаций персонажа, включающая кибернетические импланты, биологические улучшения и квантовые технологии с влиянием на характеристики и навыки.",
+      "problems": [
+        "Раздел 'risks' содержит общие формулировки без конкретики",
+        "Некоторые требования и эффекты повторяют друг друга",
+        "Отсутствуют уникальные идентификаторы (ID) для модификаций"
+      ],
+      "analyzed_at": "2026-02-06T23:33:14.459114",
+      "file_size": 9933
+    },
+    "MODULE_COORDINATOR.json": {
+      "file_name": "MODULE_COORDINATOR.json",
+      "category": "MECHANICS",
+      "entities": [],
+      "data_count": 0,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "module_name",
+        "version",
+        "priority_hierarchy",
+        "conflict_resolution"
+      ],
+      "depends_on": [],
+      "summary": "Координатор модулей с иерархией приоритетов, правилами разрешения конфликтов и руководством по интеграции новых систем",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:33:56.564894",
+      "file_size": 1543
+    },
+    "module_examples.json": {
+      "file_name": "module_examples.json",
+      "category": "MECHANICS",
+      "build_version": "UNKNOWN",
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "entities": [
+        "Character",
+        "Faction"
+      ],
+      "data_count": 4,
+      "key_fields": [
+        "purpose",
+        "example_usage",
+        "key_benefits"
+      ],
+      "depends_on": [],
+      "summary": "Содержит примеры реализации игровых механик: происхождение персонажа, система психологии, боевые механики и взаимодействие с фракциями.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:34:25.829242",
+      "file_size": 1563
+    },
+    "NARRATIVE_INTERFACE.json": {
+      "file_name": "NARRATIVE_INTERFACE.json",
+      "category": "NARRATIVE",
+      "build_version": "NEW",
+      "entities": [],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "rule",
+        "module_name",
+        "description",
+        "operational_flow"
+      ],
+      "depends_on": [],
+      "summary": "Модуль-обертка, преобразующий технические данные в нарративное описание и генерирующий варианты действий для игрока.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:35:32.200659",
+      "file_size": 1374
+    },
+    "NARRATIVE_INTERFACE_V2_ADAPTIVE.json": {
+      "file_name": "NARRATIVE_INTERFACE_V2_ADAPTIVE.json",
+      "category": "NARRATIVE",
+      "build_version": "NEW",
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "entities": [
+        "NPC",
+        "Faction",
+        "Dialogue",
+        "Atmosphere"
+      ],
+      "data_count": 15,
+      "key_fields": [
+        "tone_tracking",
+        "narrative_voice",
+        "dialogue_parameters",
+        "atmospheric_elements"
+      ],
+      "depends_on": [
+        "NPC_ARCHETYPES.json",
+        "PLAYER_STATISTICS.json"
+      ],
+      "summary": "Адаптивный интерфейс нарратива с динамическим изменением тона, стиля и атмосферы в зависимости от параметров игрока и контекста взаимодействия",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:36:32.317600",
+      "file_size": 4159
+    },
+    "NEWS_AND_RUMORS_GENERATOR.json": {
+      "file_name": "NEWS_AND_RUMORS_GENERATOR.json",
+      "category": "NARRATIVE",
+      "entities": [
+        "Faction",
+        "Location",
+        "NPC",
+        "Industry",
+        "Planet",
+        "TechnologyType",
+        "ContrabandType"
+      ],
+      "data_count": 62,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "text",
+        "category",
+        "variables"
+      ],
+      "depends_on": [],
+      "summary": "Процедурный генератор новостей, слухов и медиа-контента с динамическими переменными для иммерсивного сюжетного наполнения мира",
+      "problems": [],
+      "analyzed_at": "2026-02-07T00:12:03.207487",
+      "file_size": 3987
+    },
+    "NPC_ARCHETYPES.json": {
+      "file_name": "NPC_ARCHETYPES.json",
+      "category": "CHARACTER",
+      "entities": [
+        "Character"
+      ],
+      "data_count": 200,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "motive",
+        "game_function"
+      ],
+      "depends_on": [],
+      "summary": "База данных из 200 архетипов NPC с психологически и социально достоверными характеристиками, мотивациями и игровыми функциями для создания живых персонажей в RPG-среде.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:39:22.979917",
+      "file_size": 50738
+    },
+    "NPC_NAME_GENERATOR.json": {
+      "file_name": "NPC_NAME_GENERATOR.json",
+      "category": "CHARACTER",
+      "build_version": "NEW",
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "entities": [
+        "NPC",
+        "NameTable",
+        "Appearance"
+      ],
+      "data_count": 80,
+      "key_fields": [
+        "name",
+        "appearance",
+        "origin"
+      ],
+      "depends_on": [
+        "NPC_ARCHETYPES.json",
+        "FAC_TIONS.json",
+        "LIFE_PATHS.json"
+      ],
+      "summary": "Генератор имен и внешности для NPC с таблицами имен по локациям и описаниями физических характеристик. Интегрируется с архетипами, фракциями и жизненными путями.",
+      "problems": [
+        "Missing IDs",
+        "No explicit origins",
+        "Lack of usage examples"
+      ],
+      "analyzed_at": "2026-02-06T23:40:05.773948",
+      "file_size": 2769
+    },
+    "NPC_RELATIONS.json": {
+      "file_name": "NPC_RELATIONS.json",
+      "category": "CHARACTER",
+      "entities": [
+        "Character",
+        "NPC",
+        "Faction"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "npc_id",
+        "name",
+        "relationship_status",
+        "quest_chain"
+      ],
+      "depends_on": [
+        "NPC_RELATIONS_REPUTATION_STANDARDIZED.json"
+      ],
+      "summary": "Модуль управления отношениями NPC с интеграцией жизненных путей, квестов и внешней репутационной системы.",
+      "build_version": "NEW",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:40:59.601506",
+      "file_size": 16405
+    },
+    "NPC_RELATIONS_REPUTATION_STANDARDIZED_FINAL.json": {
+      "file_name": "NPC_RELATIONS_REPUTATION_STANDARDIZED_FINAL.json",
+      "category": "MECHANICS",
+      "entities": [
+        "NPC",
+        "Reputation",
+        "LifepathConnection",
+        "Quest"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "npc_id",
+        "reputation_score",
+        "lifepath_reference",
+        "relationship_type"
+      ],
+      "depends_on": [
+        "CHARACTER_CORE.json",
+        "LIFEPATH_SYSTEM.json"
+      ],
+      "summary": "Файл содержит стандартизированную репутационную систему NPC с интеграцией жизненных путей. Включает данные о 2 основных NPC, их отношениях, квестах и модификаторах репутации в единой шкале -100/+100.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:41:55.140254",
+      "file_size": 11770
+    },
+    "PLAYER_INTERFACE.json": {
+      "file_name": "PLAYER_INTERFACE.json",
+      "category": "INTERFACE",
+      "entities": [
+        "DashboardTab",
+        "Command",
+        "Parameter"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "command",
+        "name",
+        "description",
+        "parameters"
+      ],
+      "depends_on": [
+        "CHARACTER_CORE",
+        "ECONOMY",
+        "DYNAMIC_WORLD",
+        "PSYCHOLOGY",
+        "PLAYER_TRACKING"
+      ],
+      "summary": "Описывает структуру игрового интерфейса с вкладками: Статистика, Состояние, Инвентарь, Миссии, Команды. Включает 15+ команд для взаимодействия с миром, персонажем и системой.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:42:28.873843",
+      "file_size": 4092
+    },
+    "PLAYER_INTERFACE_V2.json": {
+      "file_name": "PLAYER_INTERFACE_V2.json",
+      "category": "INTERFACE",
+      "build_version": "NEW",
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "entities": [
+        "Character",
+        "Module",
+        "Action"
+      ],
+      "data_count": 15,
+      "key_fields": [
+        "name",
+        "description",
+        "commands",
+        "linked_module"
+      ],
+      "depends_on": [
+        "CHARACTER_CORE.json",
+        "PSYCHOLOGY.json",
+        "WORLD_TIME_SYSTEM.json",
+        "AI_NARRATOR.json"
+      ],
+      "summary": "Интерфейс игрока с системой генерации вариантов действий, принудительным приоритетом и панелью управления с тремя основными вкладками: Персонаж, Статус, Действия",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:43:17.918142",
+      "file_size": 2395
+    },
+    "PLAYER_INTERFACE_V2_ENHANCED.json": {
+      "file_name": "PLAYER_INTERFACE_V2_ENHANCED.json",
+      "category": "INTERFACE",
+      "build_version": "NEW",
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "entities": [],
+      "data_count": 15,
+      "key_fields": [
+        "module_name",
+        "version",
+        "description",
+        "dashboard_tabs"
+      ],
+      "depends_on": [
+        "PLAYER_INTERFACE_V2.json"
+      ],
+      "summary": "Улучшенный интерфейс игрока с отображением игрового времени и командами управления активностями. Включает критические директивы для обязательного отображения времени и генерации вариантов действий.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:44:09.731915",
+      "file_size": 1350
+    },
+    "PLAYER_VIEW_ADAPTER.json": {
+      "file_name": "PLAYER_VIEW_ADAPTER.json",
+      "category": "INTERFACE",
+      "entities": [
+        "Character"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "title",
+        "description",
+        "prompt",
+        "options"
+      ],
+      "depends_on": [
+        "CHARACTER_LIFEPATH.json"
+      ],
+      "summary": "Адаптер для конвертации STARTGAME протокола в человеко-читаемый формат с выбором тона, происхождения и формирующих лет. Поддерживает динамическое отображение и обработку пользовательских вводов.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:44:40.992054",
+      "file_size": 3098
+    },
+    "POLITICS.json": {
+      "file_name": "POLITICS.json",
+      "category": "MECHANICS",
+      "entities": [
+        "GovernmentType",
+        "PoliticalTerm",
+        "InfluenceSystem",
+        "PropagandaTool"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "description",
+        "effects",
+        "mechanics"
+      ],
+      "depends_on": [],
+      "summary": "Полное описание политических систем, включающее глоcсарий терминов, типы правительств, систему влияния и инструменты пропаганды с механиками взаимодействия.",
+      "analyzed_at": "2026-02-06T23:46:12.002326",
+      "file_size": 12002
+    },
+    "PROCEDURAL_COORDINATOR.json": {
+      "file_name": "PROCEDURAL_COORDINATOR.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Event",
+        "Faction",
+        "NPC"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "trigger_type",
+        "frequency",
+        "event_types"
+      ],
+      "depends_on": [],
+      "summary": "Центральный координатор процедурной генерации событий синхронизированный с мировым временем. Определяет расписание и масштаб событий в зависимости от влияния игрока и локальных условий.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:47:03.953707",
+      "file_size": 2296
+    },
+    "PROGRESSION.json": {
+      "file_name": "PROGRESSION.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Skill",
+        "Attribute",
+        "Perk"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "skill",
+        "attribute",
+        "methods",
+        "rule",
+        "xp_to_level"
+      ],
+      "depends_on": [
+        "COMBAT.json",
+        "NEXUS_PHARMA_TOWER.json",
+        "BELT_RAIDERS.json"
+      ],
+      "summary": "Файл содержит механику прогрессии персонажа: правила повышения навыков, увеличения атрибутов и дерево перков с уникальными умениями и пассивными чертами.",
+      "problems": [
+        "Обрыв данных в конце файла (последний перк не завершен)",
+        "Нет явных ссылок на другие файлы в структуре данных",
+        "Некоторые источники (Nexus Pharma Tower) могут быть дубликатами"
+      ],
+      "analyzed_at": "2026-02-06T23:47:57.035816",
+      "file_size": 27332
+    },
+    "PROGRESSION_V2.json": {
+      "file_name": "PROGRESSION_V2.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Skill",
+        "Mentor",
+        "Specialization",
+        "Faction"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "stats"
+      ],
+      "depends_on": [
+        "WORLD_TIME_SYSTEM.json",
+        "NPC_ARCHETYPES.json",
+        "ECONOMY.json"
+      ],
+      "summary": "Система прогрессии с интеграцией игрового времени, автоматическим учетом тренировок и бонусами за использование навыков. Поддерживает систему наставников и глубокие специализации внутри навыков.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:48:52.037443",
+      "file_size": 2082
+    },
+    "PSYCHOLOGY.json": {
+      "file_name": "PSYCHOLOGY.json",
+      "category": "MECHANICS",
+      "build_version": "NEW",
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "entities": [
+        "Stress",
+        "Humanity",
+        "Ideology"
+      ],
+      "data_count": 15,
+      "key_fields": [
+        "id",
+        "name",
+        "stats"
+      ],
+      "depends_on": [
+        "PSYCHOLOGY_ORIGINS_REFERENCE.json",
+        "PSYCHOLOGY_THERAPY_REFERENCE.json",
+        "CHARACTER_CORE.json"
+      ],
+      "summary": "Оптимизированный модуль психологии с механиками Stress, Humanity и Ideology. Включает диапазоны, эффекты, триггеры изменений и интеграцию с репутационной системой.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:49:47.748564",
+      "file_size": 10612
+    },
+    "PSYCHOLOGY_ORIGINS_REFERENCE.json": {
+      "file_name": "PSYCHOLOGY_ORIGINS_REFERENCE.json",
+      "category": "CHARACTER",
+      "build_version": "UNKNOWN",
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "entities": [
+        "CharacterOrigin",
+        "PsychologicalProfile"
+      ],
+      "data_count": 15,
+      "key_fields": [
+        "id",
+        "name",
+        "stats"
+      ],
+      "depends_on": [],
+      "summary": "Справочник психологических профилей по происхождениям персонажей. Содержит базовые параметры, страхи, триггеры стресса и предпочтения терапии для 7 типов происхождений.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:50:45.572636",
+      "file_size": 8160
+    },
+    "PSYCHOLOGY_THERAPY_REFERENCE.json": {
+      "file_name": "PSYCHOLOGY_THERAPY_REFERENCE.json",
+      "category": "MECHANICS",
+      "entities": [
+        "TherapeuticMethod",
+        "ReputationRequirement",
+        "Origin"
+      ],
+      "data_count": 10,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "name",
+        "effectiveness",
+        "cost",
+        "duration",
+        "availability"
+      ],
+      "depends_on": [
+        "PSYCHOLOGY_module.json"
+      ],
+      "summary": "Справочник терапевтических методов восстановления психологического состояния. Содержит 10 методов с указанием эффективности, стоимости, продолжительности и требований к репутации и происхождению.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:51:42.344335",
+      "file_size": 4152
+    },
+    "QUEST_SYSTEM_INFINITE.json": {
+      "file_name": "QUEST_SYSTEM_INFINITE.json",
+      "category": "MECHANICS",
+      "build_version": "NEW",
+      "entities": [
+        "Quest",
+        "NPC",
+        "Faction",
+        "Location"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "template_id",
+        "structure",
+        "variables"
+      ],
+      "depends_on": [
+        "DYNAMIC_WORLD.json"
+      ],
+      "summary": "Система процедурной генерации бесконечных квестов с использованием шаблонов, адаптации под локацию, фракции и личность персонажа. Включает 5-этапный процесс создания и множество вариативных сценариев.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:52:48.115054",
+      "file_size": 24051
+    },
+    "QUICK_REFERENCE_example.json": {
+      "file_name": "QUICK_REFERENCE_example.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Character",
+        "Faction",
+        "Skill",
+        "Attribute"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "source_file",
+        "path",
+        "stats"
+      ],
+      "depends_on": [
+        "CHARACTER_CORE.json",
+        "CHARACTER_LIFEPATH.json",
+        "FACTIONS_MASTER.json",
+        "NPC_ARCHETYPES.json",
+        "TECH_EQUIPMENT.json"
+      ],
+      "summary": "Справочный файл с общими данными системы, частыми запросами и их обработчиками. Содержит ссылки на основные файлы персонажей, фракций и оборудования.",
+      "problems": [
+        "AI GM создает синтетические данные вместо использования файлов",
+        "FACTIONS_MASTER.json слишком большой (158KB)",
+        "NPC_ARCHETYPES.json lacks indexing",
+        "COMBAT.json смешивает разные масштабы"
+      ],
+      "analyzed_at": "2026-02-06T23:53:37.072944",
+      "file_size": 2953
+    },
+    "RULEBOOK.json": {
+      "file_name": "RULEBOOK.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Rule",
+        "Mechanic",
+        "Procedure"
+      ],
+      "data_count": 20,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "module_name",
+        "section",
+        "rule_id",
+        "description"
+      ],
+      "depends_on": [],
+      "summary": "Единая справочная база правил, механик и процедур для ИИ и игроков. Содержит структурированные разделы по основным механикам, примеры действий, таблицы бросков и процедуры разрешения споров.",
+      "problems": [
+        "Некоторые разделы (house_rules) содержат только заголовки без деталей",
+        "Таблица бросков имеет ограниченный диапазон (1-20)",
+        "Отсутствуют примеры реализации некоторых механик"
+      ],
+      "analyzed_at": "2026-02-06T23:54:42.343758",
+      "file_size": 3260
+    },
+    "SESSION_LOG.json": {
+      "file_name": "SESSION_LOG.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Event",
+        "Faction",
+        "NPC",
+        "Player"
+      ],
+      "data_count": 0,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "date",
+        "event",
+        "participants",
+        "status"
+      ],
+      "depends_on": [],
+      "summary": "Файл определяет архитектуру логирования игровой сессии, включая структуру хранения, правила записи событий и принципы необратимости истории.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:55:34.444534",
+      "file_size": 1226
+    },
+    "SPACE_ENCOUNTER_GENERATOR.json": {
+      "file_name": "SPACE_ENCOUNTER_GENERATOR.json",
+      "category": "MECHANICS",
+      "build_version": "NEW",
+      "entities": [],
+      "data_count": 20,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "type",
+        "consequence"
+      ],
+      "depends_on": [],
+      "summary": "Генератор случайных космических встреч с 20 типами событий, включая боевые инциденты, торговые возможности и экзотические аномалии",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:56:21.814668",
+      "file_size": 3089
+    },
+    "STARTING_QUESTS.json": {
+      "file_name": "STARTING_QUESTS.json",
+      "category": "NARRATIVE",
+      "build_version": "NEW",
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "entities": [
+        "Quest",
+        "Lifepath",
+        "Faction",
+        "Location",
+        "NPC"
+      ],
+      "data_count": 15,
+      "key_fields": [
+        "quest_id",
+        "title",
+        "required_lifepath",
+        "location",
+        "rewards"
+      ],
+      "depends_on": [
+        "CHARACTER_LIFEPATH.json",
+        "WORLD_LOCATIONS.json",
+        "FACTIONS.json"
+      ],
+      "summary": "Модуль стартовых квестов, автоматически назначаемых на основе жизненного пути персонажа. Каждый квест включает уникальные цели, награды, сложности и интеграцию с игровым миром и фракциями.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:57:13.908025",
+      "file_size": 20288
+    },
+    "STRATEGIC_COMMAND.json": {
+      "file_name": "STRATEGIC_COMMAND.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Fleet",
+        "CommandHierarchy",
+        "OperationScenario",
+        "ManagementResource"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "type",
+        "characteristics"
+      ],
+      "depends_on": [],
+      "summary": "Система управления флотами и стратегических операций, включающая иерархию командования, типы флотов, сценарии операций и механизмы управления ресурсами.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:58:17.886171",
+      "file_size": 6454
+    },
+    "system_architecture_analysis.json": {
+      "file_name": "system_architecture_analysis.json",
+      "category": "MECHANICS",
+      "build_version": "UNKNOWN",
+      "entities": [
+        "Character",
+        "Faction",
+        "Reputation",
+        "Dialogue",
+        "Quest"
+      ],
+      "data_count": 15,
+      "quality": "MEDIUM",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "stats",
+        "reputation",
+        "dialogue_style",
+        "quests"
+      ],
+      "depends_on": [
+        "CORE",
+        "REPUTATION",
+        "DIALOGUE",
+        "STARTING_QUESTS",
+        "FACTIONS_MASTER"
+      ],
+      "summary": "Анализ архитектуры системы с описанием модульности, связности, масштабируемости и баланса игровых механик. Включает проблемы и рекомендации по улучшению.",
+      "problems": [
+        "Высокая сложность интеграции модулей",
+        "Риск циклических зависимостей",
+        "Отсутствие математической модели кривых роста",
+        "Перегруженность правилами боевой системы",
+        "Неясность влияния стресса на игровой процесс"
+      ],
+      "analyzed_at": "2026-02-06T23:59:04.551645",
+      "file_size": 2222
+    },
+    "SYSTEM_INDEX_example.json": {
+      "file_name": "SYSTEM_INDEX_example.json",
+      "category": "AI",
+      "entities": [
+        "System",
+        "Module",
+        "Dependency"
+      ],
+      "data_count": 0,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "dependencies"
+      ],
+      "depends_on": [],
+      "summary": "Системный индекс проекта с описанием модулей, зависимостей и протоколов ИИ-ГМ. Содержит карту системы и рекомендации по использованию.",
+      "problems": [],
+      "analyzed_at": "2026-02-06T23:59:34.618062",
+      "file_size": 4183
+    },
+    "TECHNOLOGY.json": {
+      "file_name": "TECHNOLOGY.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Technology",
+        "Research",
+        "Prototype",
+        "PlayerRole"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "name",
+        "tier",
+        "rd_cost",
+        "effect"
+      ],
+      "depends_on": [],
+      "summary": "Модуль описывает систему научного прогресса, включающую дерево технологий, процесс разработки прототипов, научные направления и механики исследований с возможностью генерации событий.",
+      "problems": [],
+      "analyzed_at": "2026-02-07T00:00:57.299325",
+      "file_size": 5352
+    },
+    "TECH_EQUIPMENT.json": {
+      "file_name": "TECH_EQUIPMENT.json",
+      "category": "COMBAT",
+      "entities": [
+        "Weapon",
+        "Armor"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "type",
+        "rarity",
+        "damage",
+        "cost"
+      ],
+      "depends_on": [
+        "CRAFTING_BLUEPRINTS_OPTIMIZED.json",
+        "CHARACTER_LIFEPATH.json"
+      ],
+      "summary": "База данных технического снаряжения с полной интеграцией жизненных путей. Включает оружие, броню, гаджеты и специальное оборудование с уникальными бонусами в зависимости от происхождения персонажа.",
+      "problems": [
+        "Обрезанные данные в разделе armor",
+        "Незавершенные записи",
+        "Неполные описания в фрагменте"
+      ],
+      "analyzed_at": "2026-02-07T00:02:09.400988",
+      "file_size": 18011
+    },
+    "TECH_MALFUNCTION_GENERATOR.json": {
+      "file_name": "TECH_MALFUNCTION_GENERATOR.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Malfunction",
+        "Modification"
+      ],
+      "data_count": 32,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "type",
+        "effect",
+        "repair_cost"
+      ],
+      "depends_on": [],
+      "summary": "Система случайных поломок и полезных модификаций технологического оборудования с разной частотой возникновения и эффектами. Содержит 20 типов поломок и 12 полезных модификаций с вероятностью применения при ремонте.",
+      "problems": [],
+      "analyzed_at": "2026-02-07T00:03:10.324459",
+      "file_size": 5239
+    },
+    "THEME_TONE_V2_ADDITIONS.json": {
+      "file_name": "THEME_TONE_V2_ADDITIONS.json",
+      "category": "CHARACTER",
+      "entities": [
+        "Origin",
+        "Specialization",
+        "ToneProfile"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "tone_modifiers",
+        "preferred_genres"
+      ],
+      "depends_on": [
+        "THEME_TONE.json"
+      ],
+      "summary": "Дополнения к тональному профилю с 4 новыми профилями происхождения и 4 специализациями, включая их тоновые модификаторы, предпочтительные жанры и уникальные элементы стиля повествования",
+      "problems": [],
+      "analyzed_at": "2026-02-07T00:03:54.488540",
+      "file_size": 5292
+    },
+    "TIME_DISPLAY_SYSTEM.json": {
+      "file_name": "TIME_DISPLAY_SYSTEM.json",
+      "category": "MECHANICS",
+      "entities": [],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "display_format",
+        "auto_display_triggers",
+        "integration"
+      ],
+      "depends_on": [
+        "PLAYER_INTERFACE_V2.json",
+        "WORLD_TIME_SYSTEM.json",
+        "AI_NARRATOR_V2.json"
+      ],
+      "summary": "Система отображения игрового времени в чате с поддержкой различных форматов и автоматических триггеров на основе игровых событий",
+      "problems": [],
+      "analyzed_at": "2026-02-07T00:04:29.573450",
+      "file_size": 1112
+    },
+    "TRADE_ROUTES_MASTER.json": {
+      "file_name": "TRADE_ROUTES_MASTER.json",
+      "category": "ECONOMY",
+      "entities": [
+        "Route",
+        "Location",
+        "DynamicFactor"
+      ],
+      "data_count": 5,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "base_travel_time_days",
+        "base_fuel_cost",
+        "base_risk_level"
+      ],
+      "depends_on": [
+        "POLITICAL_FACTORS.json",
+        "ECONOMIC_EVENTS.json",
+        "RISK_FACTORS.json"
+      ],
+      "summary": "Мастер-модуль торговых маршрутов с динамической системой расчета времени, стоимости и рисков, учитывающей игровые события и факторы.",
+      "problems": [],
+      "analyzed_at": "2026-02-07T00:05:11.452896",
+      "file_size": 2501
+    },
+    "VEHICLES.json": {
+      "file_name": "VEHICLES.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Vehicle",
+        "Category",
+        "TransportationType"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "name",
+        "category",
+        "price",
+        "range",
+        "max_speed"
+      ],
+      "depends_on": [],
+      "summary": "Полная система классификации транспорта с поддержкой гражданского, коммерческого, военного и специализированного транспорта. Включает характеристики, цены, запас хода и другие параметры.",
+      "problems": [],
+      "analyzed_at": "2026-02-07T00:06:18.089832",
+      "file_size": 31565
+    },
+    "VISUALS_ENGINE.json": {
+      "file_name": "VISUALS_ENGINE.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Art",
+        "Trigger",
+        "NPC"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "module_name",
+        "description",
+        "triggers"
+      ],
+      "depends_on": [
+        "AI_NARRATOR.json"
+      ],
+      "summary": "Визуальный движок, управляющий генерацией атмосферных артов и ограничивающий создание диаграмм. Основан на триггерах из нарратива для усиления погружения.",
+      "problems": [],
+      "analyzed_at": "2026-02-07T00:06:49.324513",
+      "file_size": 1108
+    },
+    "WORLDBUILD.json": {
+      "file_name": "WORLDBUILD.json",
+      "category": "WORLD",
+      "entities": [
+        "Planet",
+        "City",
+        "District",
+        "Establishment",
+        "Faction"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "type",
+        "description",
+        "security_level",
+        "population"
+      ],
+      "depends_on": [],
+      "summary": "Расширенная база локаций с детализацией по планетам, городам, районам и заведениям, включая управление, ресурсы, безопасность и сюжетные хуки.",
+      "problems": [],
+      "analyzed_at": "2026-02-07T00:08:13.724997",
+      "file_size": 18357
+    },
+    "WORLD_SIM.json": {
+      "file_name": "WORLD_SIM.json",
+      "category": "WORLD",
+      "entities": [
+        "Injury",
+        "TreatmentProtocol",
+        "MedicalPersonnel",
+        "Infrastructure",
+        "Complication"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "roll",
+        "type",
+        "complications",
+        "effect",
+        "consequence"
+      ],
+      "depends_on": [],
+      "summary": "Комплексная система симуляции медицины с таблицами травм, осложнений и протоколов лечения. Содержит динамические генераторы для медицинских событий.",
+      "problems": [
+        "Фрагмент данных обрезан (строка 11 в таблице treatment_consequences_d12)",
+        "Отсутствуют явные идентификаторы (id) для объектов",
+        "Некоторые поля могут быть неполными"
+      ],
+      "analyzed_at": "2026-02-07T00:09:15.315549",
+      "file_size": 9079
+    },
+    "WORLD_SIM_V2_LIVING_UNIVERSE.json": {
+      "file_name": "WORLD_SIM_V2_LIVING_UNIVERSE.json",
+      "category": "WORLD",
+      "build_version": "NEW",
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "entities": [
+        "Faction",
+        "NPC",
+        "Event",
+        "Relationship",
+        "Commodity"
+      ],
+      "data_count": 25,
+      "key_fields": [
+        "name",
+        "status",
+        "trend",
+        "frequency",
+        "scope",
+        "examples",
+        "issues"
+      ],
+      "depends_on": [
+        "WORLD_SIM.json"
+      ],
+      "summary": "Живая симуляция вселенной с интеграцией времени, динамическими отношениями между фракциями и процедурной экономикой. Содержит матрицу отношений, систему событий и рыночные механизмы.",
+      "problems": [
+        "Некоторые разделы обрезаны (например, price_drivers)",
+        "Отсутствует явное поле 'id' для идентификации объектов",
+        "Некоторые категории слишком абстрактны без конкретных примеров"
+      ],
+      "analyzed_at": "2026-02-07T00:10:29.156028",
+      "file_size": 12577
+    },
+    "WORLD_TIME_SYSTEM.json": {
+      "file_name": "WORLD_TIME_SYSTEM.json",
+      "category": "WORLD",
+      "entities": [],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "date",
+        "frequency",
+        "triggers",
+        "time_intervals"
+      ],
+      "depends_on": [],
+      "summary": "Система времени для синхронизации игровых модулей, включающая календарь, временные интервалы действий, маршруты перемещения и циклы событий.",
+      "problems": [],
+      "analyzed_at": "2026-02-07T00:11:13.044205",
+      "file_size": 2716
+    },
+    "CHARACTER_ATTRIBUTES.json": {
+      "file_name": "CHARACTER_ATTRIBUTES.json",
+      "category": "CHARACTER",
+      "entities": [
+        "Character"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "name",
+        "description",
+        "formula"
+      ],
+      "depends_on": [],
+      "summary": "Библиотека базовых атрибутов персонажа, производных характеристик и эффектов возраста с правилами увеличения и расчета.",
+      "problems": [],
+      "analyzed_at": "2026-02-07T00:50:39.056448",
+      "file_size": 2647
+    },
+    "CHARACTER_PERKS.json": {
+      "file_name": "CHARACTER_PERKS.json",
+      "category": "CHARACTER",
+      "entities": [
+        "Perk",
+        "Lifepath",
+        "Skill"
+      ],
+      "data_count": 31,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "id",
+        "name",
+        "description",
+        "level_required",
+        "required_lifepath"
+      ],
+      "depends_on": [],
+      "summary": "Библиотека перков для персонажей, включающая навыковые улучшения (хакинг, пилотирование, переговоры) и уникальные способности, связанные с жизненными путями",
+      "problems": [],
+      "analyzed_at": "2026-02-07T00:51:42.077903",
+      "file_size": 5107
+    },
+    "CHARACTER_SKILLS.json": {
+      "file_name": "CHARACTER_SKILLS.json",
+      "category": "MECHANICS",
+      "entities": [
+        "Skill",
+        "TrainingMethod"
+      ],
+      "data_count": 15,
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "key_fields": [
+        "skill_id",
+        "name",
+        "base_attribute",
+        "xp_to_level",
+        "training_methods"
+      ],
+      "depends_on": [
+        "COMBAT.json"
+      ],
+      "summary": "Библиотека базовых навыков персонажа с системой XP, включая методы прокачки и зависимости от других файлов.",
+      "problems": [],
+      "analyzed_at": "2026-02-07T00:52:26.343178",
+      "file_size": 7166
+    },
+    "project_map.json": {
+      "file_name": "project_map.json",
+      "category": "WORLD",
+      "build_version": "UNKNOWN",
+      "quality": "HIGH",
+      "duplicate_of": null,
+      "entities": [
+        "Project",
+        "File",
+        "System"
+      ],
+      "data_count": 7,
+      "key_fields": [
+        "file_name",
+        "category",
+        "dependencies"
+      ],
+      "depends_on": [],
+      "summary": "Карта проекта, содержащая структуру и зависимости всех файлов системы. Описывает 7 основных компонентов с их категориями и связями.",
+      "problems": [],
+      "analyzed_at": "2026-02-07T00:53:41.462249",
+      "file_size": 80092
+    }
+  },
+  "categories": {
+    "CHARACTER": [
+      "01_CHARACTER_SYSTEM_COMPLETE.json",
+      "01_CHARACTER_SYSTEM_COMPLETE_ENHANCED.json",
+      "balanced_character_presets.json",
+      "CHARACTER_CORE.json",
+      "CHARACTER_CREATION_V2.json",
+      "CHARACTER_LIFEPATH.json",
+      "CHARACTER_LIFEPATH_V3_MASSIVE_PART1.json",
+      "CHARACTER_SPECIALIZATIONS_V3_MASSIVE.json",
+      "NPC_ARCHETYPES.json",
+      "NPC_NAME_GENERATOR.json",
+      "NPC_RELATIONS.json",
+      "PSYCHOLOGY_ORIGINS_REFERENCE.json",
+      "THEME_TONE_V2_ADDITIONS.json",
+      "CHARACTER_ATTRIBUTES.json",
+      "CHARACTER_PERKS.json"
+    ],
+    "MECHANICS": [
+      "03_MEGA_DIALOGUE_SOCIAL_SYSTEM_COMPLETE.json",
+      "08_MEGA_QUEST_INVESTIGATION_COMPLETE.json",
+      "11_MEGA_POLITICS_STRATEGY_COMPLETE.json",
+      "13_MEGA_TIME_SYSTEM_COMPLETE.json",
+      "14_MEGA_PROCEDURAL_GENERATORS_COMPLETE.json",
+      "AI_RPG_CORE.json",
+      "AI_RPG_CORE_V2_ENHANCED.json",
+      "AUTOMATION.json",
+      "AUTOMATION_V2_COMPREHENSIVE.json",
+      "CHARACTER_CORE_REPUTATION_STANDARDIZED.json",
+      "CRAFTING_BLUEPRINTS.json",
+      "DYNAMIC_WORLD.json",
+      "ENHANCED_EVENT_GENERATOR.json",
+      "ENVIRONMENT_SURVIVAL.json",
+      "FACTIONS_LIFEPATH_SYSTEM.json",
+      "GM_TOOLKIT.json",
+      "HACKING.json",
+      "HACKING_V2_QUANTUM_AGE.json",
+      "INVESTIGATION.json",
+      "INVESTIGATION_V2_GALACTIC_DETECTIVE.json",
+      "MANDATORY_FILE_CHECK_SYSTEM_FINAL.json",
+      "MECHANICS.json",
+      "MECHANICS_V2_INTEGRATED_SYSTEMS.json",
+      "META_ENGINE.json",
+      "MODIFICATION.json",
+      "MODIFICATION_V2_QUANTUM_BIOTECH.json",
+      "MODULE_COORDINATOR.json",
+      "module_examples.json",
+      "NPC_RELATIONS_REPUTATION_STANDARDIZED_FINAL.json",
+      "POLITICS.json",
+      "PROCEDURAL_COORDINATOR.json",
+      "PROGRESSION.json",
+      "PROGRESSION_V2.json",
+      "PSYCHOLOGY.json",
+      "PSYCHOLOGY_THERAPY_REFERENCE.json",
+      "QUEST_SYSTEM_INFINITE.json",
+      "QUICK_REFERENCE_example.json",
+      "RULEBOOK.json",
+      "SESSION_LOG.json",
+      "SPACE_ENCOUNTER_GENERATOR.json",
+      "STRATEGIC_COMMAND.json",
+      "system_architecture_analysis.json",
+      "TECHNOLOGY.json",
+      "TECH_MALFUNCTION_GENERATOR.json",
+      "TIME_DISPLAY_SYSTEM.json",
+      "VEHICLES.json",
+      "VISUALS_ENGINE.json",
+      "CHARACTER_SKILLS.json"
+    ],
+    "NARRATIVE": [
+      "03_MEGA_DIALOGUE_SOCIAL_SYSTEM_ENHANCED.json",
+      "12_MEGA_NARRATIVE_INTERFACE_COMPLETE.json",
+      "AI_NARRATOR_OLD.json",
+      "AI_NARRATOR_V2.json",
+      "ENHANCED_EVENT_GENERATOR_V2.json",
+      "GM_TOOLKIT_V2_COMPREHENSIVE.json",
+      "NARRATIVE_INTERFACE.json",
+      "NARRATIVE_INTERFACE_V2_ADAPTIVE.json",
+      "STARTING_QUESTS.json",
+      "NEWS_AND_RUMORS_GENERATOR.json"
+    ],
+    "COMBAT": [
+      "04_MEGA_COMBAT_TECH_SYSTEM_COMPLETE.json",
+      "COMBAT.json",
+      "TECH_EQUIPMENT.json"
+    ],
+    "AI": [
+      "05_MEGA_AI_GM_CORE_COMPLETE.json",
+      "SYSTEM_INDEX_example.json"
+    ],
+    "ECONOMY": [
+      "06_MEGA_ECONOMY_CRAFTING_ENHANCED.json",
+      "ECONOMY.json",
+      "MARKET_EVENT_GENERATOR.json",
+      "TRADE_ROUTES_MASTER.json"
+    ],
+    "WORLD": [
+      "07_MEGA_WORLD_SIMULATION_COMPLETE.json",
+      "lore_chronology.json",
+      "WORLDBUILD.json",
+      "WORLD_SIM.json",
+      "WORLD_SIM_V2_LIVING_UNIVERSE.json",
+      "WORLD_TIME_SYSTEM.json",
+      "project_map.json"
+    ],
+    "INTERFACE": [
+      "10_MEGA_PLAYER_INTERFACE_COMPLETE.json",
+      "10_MEGA_PLAYER_INTERFACE_ENHANCED.json",
+      "PLAYER_INTERFACE.json",
+      "PLAYER_INTERFACE_V2.json",
+      "PLAYER_INTERFACE_V2_ENHANCED.json",
+      "PLAYER_VIEW_ADAPTER.json"
+    ]
+  },
+  "duplicates": [
+    {
+      "file": "GM_TOOLKIT_V2_COMPREHENSIVE.json",
+      "duplicate_of": "GM_TOOLKIT.json"
+    }
+  ],
+  "stats": {
+    "total_files": 95,
+    "processed": 0,
+    "skipped": 95,
+    "errors": 0,
+    "completed_at": "2026-02-07T00:53:42.190585"
+  },
+  "updated_at": "2026-02-07T00:53:42.190585"
+}

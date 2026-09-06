@@ -1,0 +1,2161 @@
+{
+  "version": "2.1_86_SKILLS_MERGE",
+  "description": "Библиотека базовых навыков персонажа с XP и методами прокачки | Фаза 20b: расширено до 87 навыков.",
+  "skills": [
+    {
+      "skill_id": "hacking",
+      "name": "Hacking",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Успешный взлом сложной системы",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Сессия у наставника на Technohub",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Чтение документации Nexus Pharma Tower",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "piloting",
+      "name": "Piloting",
+      "base_attribute": "reflexes",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1,
+      "xp_to_level": 120,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Час полёта",
+          "xp_gain": 1
+        },
+        {
+          "type": "training",
+          "description": "Тренировка с Omega Defense Systems",
+          "xp_gain": 10
+        },
+        {
+          "type": "study",
+          "description": "Изучение чертежей Titan Shipyards Collective",
+          "xp_gain": 4
+        }
+      ]
+    },
+    {
+      "skill_id": "negotiation",
+      "name": "Negotiation",
+      "base_attribute": "charisma",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1,
+      "xp_to_level": 80,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Успешная сделка в MarsGate Terminal",
+          "xp_gain": 1.5
+        },
+        {
+          "type": "training",
+          "description": "Мастер-класс у ООН",
+          "xp_gain": 6
+        },
+        {
+          "type": "study",
+          "description": "Изучение дипломатических протоколов",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "combat",
+      "name": "Combat",
+      "base_attribute": "strength",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1,
+      "xp_to_level": 110,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Каждый побеждённый враг",
+          "xp_gain": 2
+        },
+        {
+          "type": "training",
+          "description": "Стрельбы на Omega Range",
+          "xp_gain": 8
+        },
+        {
+          "type": "study",
+          "description": "Изучение тактик в COMBAT.json",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "stealth",
+      "name": "Stealth",
+      "base_attribute": "dexterity",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1,
+      "xp_to_level": 90,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Успешное скрытное действие",
+          "xp_gain": 1
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у Crimson Talons",
+          "xp_gain": 7
+        },
+        {
+          "type": "study",
+          "description": "Чтение документов OPA",
+          "xp_gain": 2
+        }
+      ]
+    },
+    {
+      "skill_id": "technology",
+      "name": "Technology",
+      "base_attribute": "tech_empathy",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1,
+      "xp_to_level": 130,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Использование лабораторного оборудования",
+          "xp_gain": 1.5
+        },
+        {
+          "type": "training",
+          "description": "Стажировка в Genesis Bioworks",
+          "xp_gain": 10
+        },
+        {
+          "type": "study",
+          "description": "Чтение протоколов Protogen Alpha Labs",
+          "xp_gain": 5
+        }
+      ],
+      "usage_rule": "Широкий техно-чек; узкие задачи — профильный навык даёт +2, когда применим."
+    },
+    {
+      "skill_id": "medicine",
+      "name": "Medicine",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Лечение NPC",
+          "xp_gain": 2
+        },
+        {
+          "type": "training",
+          "description": "Практика в Nexus Pharma Tower",
+          "xp_gain": 8
+        },
+        {
+          "type": "study",
+          "description": "Изучение медицинских отчётов",
+          "xp_gain": 4
+        }
+      ]
+    },
+    {
+      "skill_id": "engineering",
+      "name": "Engineering",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1,
+      "xp_to_level": 120,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Ремонт оборудования",
+          "xp_gain": 1
+        },
+        {
+          "type": "training",
+          "description": "Работа в Titan Shipyards Collective",
+          "xp_gain": 9
+        },
+        {
+          "type": "study",
+          "description": "Чтение чертежей Jovian Orbital Works",
+          "xp_gain": 4
+        }
+      ]
+    },
+    {
+      "skill_id": "law",
+      "name": "Law",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1,
+      "xp_to_level": 90,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Участие в слушаниях ООН",
+          "xp_gain": 1
+        },
+        {
+          "type": "training",
+          "description": "Практика в UN Assembly Hall",
+          "xp_gain": 7
+        },
+        {
+          "type": "study",
+          "description": "Изучение прецедентов Марсианской Республики",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "criminal",
+      "name": "Criminal",
+      "base_attribute": "dexterity",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1,
+      "xp_to_level": 95,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Успешная кража",
+          "xp_gain": 1.5
+        },
+        {
+          "type": "training",
+          "description": "Практика у Belt Raiders",
+          "xp_gain": 8
+        },
+        {
+          "type": "study",
+          "description": "Изучение криминального кодекса",
+          "xp_gain": 2
+        }
+      ]
+    },
+    {
+      "skill_id": "education",
+      "name": "Education",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1,
+      "usage_rule": "Широта знаний и образованность; добыча нового знания — навык research_method."
+    },
+    {
+      "skill_id": "biology",
+      "name": "Biology",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1
+    },
+    {
+      "skill_id": "survival",
+      "name": "Survival",
+      "base_attribute": "endurance",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1
+    },
+    {
+      "skill_id": "diplomacy",
+      "name": "Diplomacy",
+      "base_attribute": "charisma",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1
+    },
+    {
+      "skill_id": "bureaucracy",
+      "name": "Bureaucracy",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 1
+    },
+    {
+      "skill_id": "deception",
+      "name": "Обман",
+      "base_attribute": "charisma",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: обман",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: обман",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: обман",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "intimidation",
+      "name": "Запугивание",
+      "base_attribute": "strength",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: запугивание",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: запугивание",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: запугивание",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "streetwise",
+      "name": "Уличная интуиция",
+      "base_attribute": "charisma",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: уличная интуиция",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: уличная интуиция",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: уличная интуиция",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "etiquette",
+      "name": "Этикет высшего общества",
+      "base_attribute": "charisma",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: этикет высшего общества",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: этикет высшего общества",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: этикет высшего общества",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "leadership",
+      "name": "Лидерство",
+      "base_attribute": "willpower",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: лидерство",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: лидерство",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: лидерство",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "instruction",
+      "name": "Обучение других",
+      "base_attribute": "charisma",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: обучение других",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: обучение других",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: обучение других",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "interrogation",
+      "name": "Допрос",
+      "base_attribute": "willpower",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: допрос",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: допрос",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: допрос",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "performance",
+      "name": "Выступление",
+      "base_attribute": "charisma",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: выступление",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: выступление",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: выступление",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "seduction",
+      "name": "Обольщение",
+      "base_attribute": "charisma",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: обольщение",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: обольщение",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: обольщение",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "empathy_read",
+      "name": "Чтение людей",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: чтение людей",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: чтение людей",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: чтение людей",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "rumor_network",
+      "name": "Сеть слухов",
+      "base_attribute": "charisma",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: сеть слухов",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: сеть слухов",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: сеть слухов",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "public_speaking",
+      "name": "Публичные выступления",
+      "base_attribute": "charisma",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: публичные выступления",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: публичные выступления",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: публичные выступления",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "electronics_repair",
+      "name": "Ремонт электроники",
+      "base_attribute": "tech_empathy",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: ремонт электроники",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: ремонт электроники",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: ремонт электроники",
+          "xp_gain": 3
+        }
+      ],
+      "usage_rule": "Узкий ремонт: +2 к профильным задачам вместо technology."
+    },
+    {
+      "skill_id": "drones",
+      "name": "Дроны и рой",
+      "base_attribute": "tech_empathy",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: дроны и рой",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: дроны и рой",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: дроны и рой",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "network_security",
+      "name": "Сетевая безопасность",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: сетевая безопасность",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: сетевая безопасность",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: сетевая безопасность",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "crypto_analysis",
+      "name": "Криптоанализ",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: криптоанализ",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: криптоанализ",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: криптоанализ",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "ai_interface",
+      "name": "Интерфейсы ИИ",
+      "base_attribute": "tech_empathy",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: интерфейсы ии",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: интерфейсы ии",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: интерфейсы ии",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "robotics",
+      "name": "Робототехника",
+      "base_attribute": "tech_empathy",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: робототехника",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: робототехника",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: робототехника",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "demolition",
+      "name": "Подрывное дело и взрывчатка",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: подрывное дело",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: подрывное дело",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: подрывное дело",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "vehicle_maintenance",
+      "name": "Обслуживание транспорта",
+      "base_attribute": "tech_empathy",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: обслуживание транспорта",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: обслуживание транспорта",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: обслуживание транспорта",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "ship_systems",
+      "name": "Корабельные системы",
+      "base_attribute": "tech_empathy",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: корабельные системы",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: корабельные системы",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: корабельные системы",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "weapon_smithing",
+      "name": "Оружейное дело",
+      "base_attribute": "tech_empathy",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: оружейное дело",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: оружейное дело",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: оружейное дело",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "implant_surgery_calibration",
+      "name": "Калибровка имплантов",
+      "base_attribute": "tech_empathy",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: калибровка имплантов",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: калибровка имплантов",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: калибровка имплантов",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "sensor_operations",
+      "name": "Работа с сенсорами",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: работа с сенсорами",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: работа с сенсорами",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: работа с сенсорами",
+          "xp_gain": 3
+        }
+      ],
+      "usage_rule": "Узкая работа с сенсорами: +2 к профильным задачам вместо technology."
+    },
+    {
+      "skill_id": "comms_jamming",
+      "name": "Радиоперехват и глушение",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: радиоперехват и глушение",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: радиоперехват и глушение",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: радиоперехват и глушение",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "fabrication_3d",
+      "name": "3D-фабрикация",
+      "base_attribute": "tech_empathy",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: 3d-фабрикация",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: 3d-фабрикация",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: 3d-фабрикация",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "heavy_weapons",
+      "name": "Тяжёлое оружие",
+      "base_attribute": "strength",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: тяжёлое оружие",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: тяжёлое оружие",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: тяжёлое оружие",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "sniping",
+      "name": "Снайперская стрельба",
+      "base_attribute": "reflexes",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: снайперская стрельба",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: снайперская стрельба",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: снайперская стрельба",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "close_quarters",
+      "name": "Ближний бой CQB",
+      "base_attribute": "strength",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: ближний бой cqb",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: ближний бой cqb",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: ближний бой cqb",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "thrown_weapons",
+      "name": "Метательное оружие",
+      "base_attribute": "dexterity",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: метательное оружие",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: метательное оружие",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: метательное оружие",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "turret_gunnery",
+      "name": "Турельные установки",
+      "base_attribute": "reflexes",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: турельные установки",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: турельные установки",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: турельные установки",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "zero_g_combat",
+      "name": "Нуль-G бой",
+      "base_attribute": "endurance",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: нуль-g бой",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: нуль-g бой",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: нуль-g бой",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "boarding_tactics",
+      "name": "Абордажная тактика",
+      "base_attribute": "strength",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: абордажная тактика",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: абордажная тактика",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: абордажная тактика",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "first_aid_combat",
+      "name": "Боевая медицина",
+      "base_attribute": "dexterity",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: боевая медицина",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: боевая медицина",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: боевая медицина",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "armor_operation",
+      "name": "Тяжёлая броня",
+      "base_attribute": "endurance",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: тяжёлая броня",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: тяжёлая броня",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: тяжёлая броня",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "physics",
+      "name": "Физика",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: физика",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: физика",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: физика",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "chemistry",
+      "name": "Химия",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: химия",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: химия",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: химия",
+          "xp_gain": 3
+        }
+      ],
+      "usage_rule": "Теория и анализ веществ; производство предметов — навык brewing_chem_synthesis."
+    },
+    {
+      "skill_id": "astrophysics",
+      "name": "Астрофизика",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: астрофизика",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: астрофизика",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: астрофизика",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "xenobiology",
+      "name": "Ксенобиология",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: ксенобиология",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: ксенобиология",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: ксенобиология",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "genetics",
+      "name": "Генетика",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: генетика",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: генетика",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: генетика",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "mathematics",
+      "name": "Математика и криптография теории",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: математика и криптография теории",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: математика и криптография теории",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: математика и криптография теории",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "archaeology",
+      "name": "Археология (доколонизация)",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: археология (доколонизация)",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: археология (доколонизация)",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: археология (доколонизация)",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "pharmacology",
+      "name": "Фармакология",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: фармакология",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: фармакология",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: фармакология",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "protomolecule_theory",
+      "name": "Теория Протомолекулы",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: теория протомолекулы",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: теория протомолекулы",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: теория протомолекулы",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "planetology",
+      "name": "Планетология",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: планетология",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: планетология",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: планетология",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "quantum_theory",
+      "name": "Квантовая теория",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: квантовая теория",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: квантовая теория",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: квантовая теория",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "research_method",
+      "name": "Научный метод",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: научный метод",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: научный метод",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: научный метод",
+          "xp_gain": 3
+        }
+      ],
+      "usage_rule": "Добыча нового знания (исследование); широта знаний — навык education."
+    },
+    {
+      "skill_id": "cooking",
+      "name": "Кулинария",
+      "base_attribute": "tech_empathy",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: кулинария",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: кулинария",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: кулинария",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "tailoring_gear",
+      "name": "Снаряжение и экипировка",
+      "base_attribute": "dexterity",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: снаряжение и экипировка",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: снаряжение и экипировка",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: снаряжение и экипировка",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "mining",
+      "name": "Горное дело",
+      "base_attribute": "strength",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: горное дело",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: горное дело",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: горное дело",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "salvage_ops",
+      "name": "Салваж и разборка",
+      "base_attribute": "strength",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: салваж и разборка",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: салваж и разборка",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: салваж и разборка",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "agriculture_hydro",
+      "name": "Гидропоника",
+      "base_attribute": "tech_empathy",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: гидропоника",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: гидропоника",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: гидропоника",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "brewing_chem_synthesis",
+      "name": "Химический синтез",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: химический синтез",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: химический синтез",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: химический синтез",
+          "xp_gain": 3
+        }
+      ],
+      "usage_rule": "Производство/синтез предметов; теория и анализ — навык chemistry."
+    },
+    {
+      "skill_id": "art_design",
+      "name": "Искусство и дизайн",
+      "base_attribute": "charisma",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: искусство и дизайн",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: искусство и дизайн",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: искусство и дизайн",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "music_instrument",
+      "name": "Музыка",
+      "base_attribute": "dexterity",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: музыка",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: музыка",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: музыка",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "writing_journalism",
+      "name": "Журналистика и тексты",
+      "base_attribute": "charisma",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: журналистика и тексты",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: журналистика и тексты",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: журналистика и тексты",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "accounting_finance",
+      "name": "Финансы и учёт",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: финансы и учёт",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: финансы и учёт",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: финансы и учёт",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "logistics_planning",
+      "name": "Логистика",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: логистика",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: логистика",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: логистика",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "forgery_docs",
+      "name": "Подделка документов",
+      "base_attribute": "dexterity",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: подделка документов",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: подделка документов",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: подделка документов",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "vacuum_ops",
+      "name": "Работа в вакууме EVA",
+      "base_attribute": "endurance",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: работа в вакууме eva",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: работа в вакууме eva",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: работа в вакууме eva",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "navigation_astrogation",
+      "name": "Навигация и астрогация",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: навигация и астрогация",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: навигация и астрогация",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: навигация и астрогация",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "tracking",
+      "name": "Следопытство",
+      "base_attribute": "intelligence",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: следопытство",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: следопытство",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: следопытство",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "foraging",
+      "name": "Поиск еды и воды",
+      "base_attribute": "endurance",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: поиск еды и воды",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: поиск еды и воды",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: поиск еды и воды",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "radiation_handling",
+      "name": "Радиационная защита",
+      "base_attribute": "endurance",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: радиационная защита",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: радиационная защита",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: радиационная защита",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "climbing",
+      "name": "Скалолазание",
+      "base_attribute": "strength",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: скалолазание",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: скалолазание",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: скалолазание",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "swimming_diving",
+      "name": "Плавание и дайвинг",
+      "base_attribute": "endurance",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: плавание и дайвинг",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: плавание и дайвинг",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: плавание и дайвинг",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "cold_survival",
+      "name": "Холодовое выживание",
+      "base_attribute": "endurance",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: холодовое выживание",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: холодовое выживание",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: холодовое выживание",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "heat_survival",
+      "name": "Тепловое выживание",
+      "base_attribute": "endurance",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: тепловое выживание",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: тепловое выживание",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: тепловое выживание",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "piloting_atmospheric",
+      "name": "Пилотирование в атмосфере",
+      "base_attribute": "reflexes",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: пилотирование в атмосфере",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: пилотирование в атмосфере",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: пилотирование в атмосфере",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "evasion",
+      "name": "Уклонение",
+      "base_attribute": "reflexes",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: уклонение",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: уклонение",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: уклонение",
+          "xp_gain": 3
+        }
+      ]
+    },
+    {
+      "skill_id": "pain_tolerance",
+      "name": "Болевая стойкость",
+      "base_attribute": "willpower",
+      "min": 0,
+      "max": 10,
+      "starting_value": 0,
+      "xp_to_level": 100,
+      "training_methods": [
+        {
+          "type": "usage",
+          "description": "Практическое применение: болевая стойкость",
+          "xp_gain": 0.5
+        },
+        {
+          "type": "training",
+          "description": "Тренировка у наставника: болевая стойкость",
+          "xp_gain": 5
+        },
+        {
+          "type": "study",
+          "description": "Самостоятельное изучение: болевая стойкость",
+          "xp_gain": 3
+        }
+      ]
+    }
+  ],
+  "module_name": "CHARACTER_SKILLS",
+  "priority": 15
+}

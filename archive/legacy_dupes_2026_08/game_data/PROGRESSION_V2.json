@@ -1,0 +1,59 @@
+{
+  "module_name": "PROGRESSION_V2",
+  "version": "2.0_TIME_INTEGRATED",
+  "description": "Система прогрессии интегрированная с WORLD_TIME_SYSTEM",
+  "extends": "PROGRESSION.json (оригинал сохраняется)",
+  "time_integration": {
+    "auto_tracking": "Автоматический учет времени тренировок",
+    "skill_decay": {
+      "enabled": true,
+      "rule": "Навыки уровня 5+ теряют 1 XP каждые 6 месяцев без использования",
+      "exceptions": [
+        "lifepath_skills",
+        "passive_traits"
+      ]
+    }
+  },
+  "enhanced_skill_rules": {
+    "time_based_training": {
+      "description": "Тренировки теперь требуют реального игрового времени",
+      "basic_training": "1-4 часа в день, эффект через неделю",
+      "intensive_training": "8+ часов в день, эффект через 3 дня",
+      "master_training": "Требует наставника + месяцы времени"
+    },
+    "usage_tracking": {
+      "description": "Автоматическое начисление XP за использование навыков",
+      "frequency": "После каждой успешной проверки навыка",
+      "bonus_conditions": [
+        "Критический успех: +50% XP",
+        "Высокая сложность (DC 20+): +25% XP",
+        "Обучение других: +10% XP"
+      ]
+    }
+  },
+  "new_progression_paths": {
+    "mentor_system": {
+      "description": "NPC-наставники для ускоренного обучения",
+      "integration": "Использует NPC_ARCHETYPES для поиска учителей",
+      "benefits": [
+        "x2 скорость обучения",
+        "Доступ к эксклюзивным техникам",
+        "Lifepath-связи с наставниками"
+      ]
+    },
+    "specialization_trees": {
+      "description": "Глубокие специализации внутри навыков",
+      "examples": [
+        "Hacking → Corporate Systems, Military Networks, AI Protocols",
+        "Combat → Firearms, Melee, Tactics",
+        "Medicine → Surgery, Cybernetics, Biochemistry"
+      ]
+    }
+  },
+  "integration_apis": {
+    "world_time_sync": "Синхронизация с WORLD_TIME_SYSTEM",
+    "npc_integration": "Поиск наставников через NPC_ARCHETYPES",
+    "economy_integration": "Стоимость обучения через ECONOMY",
+    "faction_benefits": "Бонусы обучения от фракций"
+  }
+}

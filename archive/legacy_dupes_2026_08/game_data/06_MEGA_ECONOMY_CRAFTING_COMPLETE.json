@@ -1,0 +1,1532 @@
+{
+  "module_name": "06_MEGA_ECONOMY_CRAFTING_COMPLETE",
+  "module_id": "06",
+  "priority": "CRITICAL",
+  "version": "1.0_UNIFIED_COMPREHENSIVE",
+  "description": "Полная экономическая и производственная система - объединение торговли, крафтинга, рынков и финансов",
+  "source_files": [
+    "ECONOMY.json (32,294 символа) - комплексная экономическая система",
+    "CRAFTING_BLUEPRINTS.json (23,989 символов) - полная система крафтинга с чертежами",
+    "TRADE_ROUTES_MASTER.json (2,593 символа) - мастер торговых маршрутов",
+    "MARKET_EVENT_GENERATOR.json (2,461 символ) - генератор рыночных событий"
+  ],
+  "total_size": "61,337 символов - полностью сохранено",
+  "integration_status": "COMPLETE_NO_LOSS",
+  "dependencies": [
+    "FACTIONS_MASTER",
+    "CHARACTER_LIFEPATH",
+    "AI_GM_CORE",
+    "WORLD_ENVIRONMENT"
+  ],
+  "comprehensive_economy_system": {
+    "module_name": "ECONOMY",
+    "description": "Полная экономическая система колонизированной солнечной системы. Включает детальные механики производства, торговли, банковского сектора, корпоративных финансов, инвестиций, биржи, черного рынка и экономических кризисов.",
+    "version": "2.0_COMPREHENSIVE",
+    "glossary": [
+      {
+        "term": "Ресурс",
+        "definition": "Товар: вода, кислород, пища, гелий-3, металл, протомолекула, AI-чипы.",
+        "mechanics": "Измеряется в тоннах/кг; участвует в формулах производства и торговли."
+      },
+      {
+        "term": "Конвой",
+        "definition": "Группа транспортных судов.",
+        "mechanics": "Имеет вместимость, скорость и риск нападения, который зависит от контроля над маршрутом."
+      },
+      {
+        "term": "Валюта",
+        "definition": "Денежные единицы: EarthCred, MarsDebt, Cerereum.",
+        "mechanics": "Курсы меняются по биржевым индексам."
+      },
+      {
+        "term": "Кредитный рейтинг",
+        "definition": "Оценка кредитоспособности от AAA до D.",
+        "mechanics": "Влияет на процентные ставки и доступность займов."
+      },
+      {
+        "term": "Фракционный токен",
+        "definition": "Блокчейн-валюта конкретной фракции.",
+        "mechanics": "Используется для внутрифракционных транзакций."
+      },
+      {
+        "term": "Контрабанда",
+        "definition": "Нелегальная торговля запрещенными товарами.",
+        "mechanics": "Высокая прибыль, но риск конфискации и штрафов."
+      }
+    ],
+    "economic_mechanics": {
+      "formulas": {
+        "production": "P = (N × E × T) - C (где N - рабочие, E - эффективность, T - технологии, C - затраты)",
+        "consumption": "C_p = B × R × L (где B - базовая потребность, R - население, L - уровень жизни)",
+        "trade_income": "I = V × P × (1 - R/100) × M (где V - объём, P - цена, R - риск, M - маржа)",
+        "interest_rate": "R = Base_Rate + Risk_Premium + Inflation_Rate",
+        "market_volatility": "V = Historical_Volatility × Uncertainty_Factor × Event_Multiplier",
+        "corporate_value": "V = Assets + (Revenue × PE_Ratio) - Liabilities"
+      },
+      "contraband": {
+        "check": "1d20 + навык Контрабандиста vs Сложность зоны контроля (10-18)",
+        "profit": "Цена × Объём × (1 + Надбавка 10-50%)",
+        "penalty": "Потеря 10-30% груза при провале проверки.",
+        "heat_accumulation": "Каждая операция увеличивает 'Heat' - внимание правоохранителей",
+        "network_effects": "Связи в преступном мире снижают риск и увеличивают прибыль"
+      },
+      "taxation": {
+        "income_tax": "Прогрессивная шкала от 10% до 45% в зависимости от дохода",
+        "corporate_tax": "20-35% с прибыли корпораций",
+        "trade_tariffs": "5-25% на импорт в зависимости от товара и происхождения",
+        "luxury_tax": "Дополнительные 10-50% на предметы роскоши",
+        "resource_extraction_tax": "Роялти 5-15% с добытых ресурсов"
+      },
+      "inflation": {
+        "calculation": "Базовая инфляция 2-5% + События + Денежная политика",
+        "effects": "Обесценивание накоплений, рост цен на товары",
+        "hedging": "Инвестиции в недвижимость, драгметаллы, криптовалюты"
+      }
+    },
+    "banking_system": {
+      "description": "Многоуровневая банковская система от межпланетных гигантов до локальных кредитных союзов",
+      "bank_tiers": {
+        "tier_1_interplanetary": {
+          "examples": [
+            "Solar United Bank",
+            "Trans-System Financial",
+            "Belter Credit Union"
+          ],
+          "services": [
+            "Межпланетные переводы",
+            "Валютные операции",
+            "Корпоративное кредитование"
+          ],
+          "capital": "100+ млрд кредитов",
+          "interest_rates": {
+            "deposits": "1-3%",
+            "loans": "5-8%",
+            "mortgages": "3-6%"
+          }
+        },
+        "tier_2_planetary": {
+          "examples": [
+            "Mars Development Bank",
+            "Earth Heritage Trust",
+            "Ceres Mining Credit"
+          ],
+          "services": [
+            "Региональные операции",
+            "Малый бизнес",
+            "Частные займы"
+          ],
+          "capital": "1-100 млрд кредитов",
+          "interest_rates": {
+            "deposits": "2-4%",
+            "loans": "6-12%",
+            "mortgages": "4-8%"
+          }
+        },
+        "tier_3_local": {
+          "examples": [
+            "Station Credit Union",
+            "Mining Cooperative Bank",
+            "Trader's Mutual"
+          ],
+          "services": [
+            "Местные депозиты",
+            "Микрозаймы",
+            "Общинное кредитование"
+          ],
+          "capital": "10 млн - 1 млрд кредитов",
+          "interest_rates": {
+            "deposits": "3-6%",
+            "loans": "8-18%",
+            "mortgages": "6-12%"
+          }
+        }
+      },
+      "financial_products": {
+        "savings_accounts": {
+          "basic": "0.5-2% годовых, без комиссий",
+          "premium": "2-5% годовых, требует минимальный баланс",
+          "corporate": "1-3% годовых, для юридических лиц"
+        },
+        "loans": {
+          "personal": "8-25% в зависимости от кредитного рейтинга",
+          "business": "5-15% под залог активов или гарантии",
+          "mortgage": "3-8% на недвижимость, срок до 30 лет",
+          "ship_financing": "6-12% на космические корабли, срок до 20 лет"
+        },
+        "credit_cards": {
+          "standard": "15-22% APR, кредитный лимит до 50,000",
+          "premium": "10-18% APR, лимит до 500,000, привилегии",
+          "corporate": "8-15% APR, высокие лимиты, отчетность"
+        },
+        "investment_products": {
+          "mutual_funds": "Диверсифицированные портфели, комиссия 0.5-2%",
+          "bonds": "Государственные и корпоративные облигации, 3-8% доходность",
+          "derivatives": "Фьючерсы, опционы на товары и валюты",
+          "crypto_custody": "Хранение и торговля криптовалютами"
+        }
+      },
+      "regulatory_framework": {
+        "solar_banking_authority": "Межпланетный регулятор банковского сектора",
+        "reserve_requirements": "Банки должны держать 10-15% депозитов в резерве",
+        "capital_adequacy": "Минимальный коэффициент капитала 8-12%",
+        "consumer_protection": "Страхование депозитов до 250,000 кредитов"
+      }
+    },
+    "stock_exchange": {
+      "description": "Межпланетная биржевая система с множественными торговыми площадками",
+      "major_exchanges": {
+        "earth_stock_exchange": {
+          "location": "Нью-Йорк, Земля",
+          "focus": "Земные корпорации, сырьевые товары",
+          "trading_hours": "09:00-16:00 EST",
+          "market_cap": "50+ трлн кредитов",
+          "major_indices": [
+            "ESE-500",
+            "Earth Industrial",
+            "Terra Tech"
+          ]
+        },
+        "mars_commodity_exchange": {
+          "location": "Олимпия, Марс",
+          "focus": "Горнодобыча, промышленность, технологии",
+          "trading_hours": "08:00-15:00 MST",
+          "market_cap": "15+ трлн кредитов",
+          "major_indices": [
+            "Mars Mining Index",
+            "Red Planet Tech",
+            "MCE-100"
+          ]
+        },
+        "belt_resources_market": {
+          "location": "Церера",
+          "focus": "Добыча в поясе астероидов, редкие металлы",
+          "trading_hours": "24/7 (непрерывная торговля)",
+          "market_cap": "5+ трлн кредитов",
+          "major_indices": [
+            "Belt Resources",
+            "Asteroid Mining",
+            "BRM-50"
+          ]
+        },
+        "outer_system_exchange": {
+          "location": "Европа, Юпитер",
+          "focus": "Исследования, колонизация внешней системы",
+          "trading_hours": "12:00-19:00 JST",
+          "market_cap": "2+ трлн кредитов",
+          "major_indices": [
+            "Outer Frontier",
+            "Jupiter Colonization"
+          ]
+        }
+      },
+      "traded_instruments": {
+        "stocks": {
+          "blue_chips": "Крупные корпорации с рыночной капитализацией 1+ трлн",
+          "growth_stocks": "Быстрорастущие технологические компании",
+          "dividend_stocks": "Стабильные компании с регулярными дивидендами",
+          "penny_stocks": "Мелкие компании стоимостью менее 5 кредитов за акцию"
+        },
+        "commodities": {
+          "energy": "Гелий-3, водород, солнечная энергия",
+          "metals": "Железо, титан, платина, редкоземельные элементы",
+          "agriculture": "Пища, семена, биологические культуры",
+          "technology": "Процессоры, AI-чипы, квантовые компоненты"
+        },
+        "currencies": {
+          "major_pairs": "EarthCred/MarsDebt, EarthCred/Cerereum",
+          "exotic_pairs": "Криптовалюты, фракционные токены",
+          "commodity_currencies": "Валюты, привязанные к ресурсам"
+        },
+        "derivatives": {
+          "futures": "Контракты на будущую поставку товаров",
+          "options": "Права на покупку/продажу активов",
+          "swaps": "Обмен денежными потоками между сторонами",
+          "ETFs": "Фонды, торгуемые на бирже"
+        }
+      },
+      "market_mechanics": {
+        "trading_algorithms": "60% торгов ведется автоматизированными системами",
+        "market_makers": "Крупные банки обеспечивают ликвидность",
+        "circuit_breakers": "Торговля останавливается при падении на 10%, 20%, 30%",
+        "settlement": "T+2 расчеты (сделки исполняются через 2 дня)",
+        "margin_requirements": "50% начальная маржа для покупки акций в кредит"
+      }
+    },
+    "corporate_finance": {
+      "description": "Система корпоративного управления и финансирования",
+      "corporate_structures": {
+        "public_corporation": {
+          "ownership": "Акции торгуются публично",
+          "governance": "Совет директоров, акционеры",
+          "reporting": "Квартальные и годовые отчеты",
+          "access_to_capital": "Высокий, через IPO и дополнительные эмиссии"
+        },
+        "private_corporation": {
+          "ownership": "Ограниченный круг владельцев",
+          "governance": "Внутреннее управление",
+          "reporting": "Минимальные требования",
+          "access_to_capital": "Ограниченный, через банки и частных инвесторов"
+        },
+        "cooperative": {
+          "ownership": "Члены кооператива",
+          "governance": "Демократическое управление",
+          "reporting": "Отчеты перед членами",
+          "access_to_capital": "Через взносы членов и специальные программы"
+        },
+        "state_enterprise": {
+          "ownership": "Государственная собственность",
+          "governance": "Государственные назначенцы",
+          "reporting": "Публичная отчетность",
+          "access_to_capital": "Государственное финансирование"
+        }
+      },
+      "financing_methods": {
+        "equity_financing": {
+          "ipo": "Первичное публичное размещение акций",
+          "rights_offering": "Дополнительная эмиссия для существующих акционеров",
+          "private_placement": "Продажа акций ограниченному кругу инвесторов",
+          "venture_capital": "Инвестиции в стартапы и растущие компании"
+        },
+        "debt_financing": {
+          "bank_loans": "Традиционные банковские кредиты",
+          "corporate_bonds": "Облигации для привлечения капитала",
+          "convertible_debt": "Долг, который можно конвертировать в акции",
+          "asset_backed_securities": "Ценные бумаги под залог активов"
+        },
+        "hybrid_instruments": {
+          "preferred_stock": "Привилегированные акции с фиксированным дивидендом",
+          "mezzanine_financing": "Гибридное финансирование долг+капитал",
+          "warrants": "Права на покупку акций по фиксированной цене"
+        }
+      },
+      "mergers_acquisitions": {
+        "types": {
+          "horizontal": "Слияние конкурентов в одной отрасли",
+          "vertical": "Интеграция по цепочке поставок",
+          "conglomerate": "Объединение компаний из разных отраслей"
+        },
+        "process": {
+          "due_diligence": "Комплексная проверка финансов и рисков",
+          "valuation": "Оценка стоимости компании-цели",
+          "negotiation": "Переговоры о цене и условиях",
+          "regulatory_approval": "Получение разрешений антимонопольных органов",
+          "integration": "Объединение операций после сделки"
+        },
+        "financing": {
+          "cash_deals": "Оплата наличными или их эквивалентами",
+          "stock_deals": "Обмен акциями",
+          "leveraged_buyouts": "Покупка с использованием заемных средств"
+        }
+      }
+    },
+    "black_market": {
+      "description": "Теневая экономика с незаконными товарами и услугами",
+      "contraband_categories": {
+        "weapons": {
+          "examples": [
+            "Военное оружие",
+            "Кибер-импланты боевого класса",
+            "Взрывчатые вещества"
+          ],
+          "profit_margin": "200-500%",
+          "risk_level": "Очень высокий",
+          "penalties": "10-25 лет заключения"
+        },
+        "drugs_stimulants": {
+          "examples": [
+            "Боевые стимуляторы",
+            "Наркотики",
+            "Нейроусилители"
+          ],
+          "profit_margin": "300-800%",
+          "risk_level": "Высокий",
+          "penalties": "5-15 лет заключения"
+        },
+        "information": {
+          "examples": [
+            "Промышленный шпионаж",
+            "Персональные данные",
+            "Военные секреты"
+          ],
+          "profit_margin": "1000-5000%",
+          "risk_level": "Экстремальный",
+          "penalties": "Пожизненное заключение или смертная казнь"
+        },
+        "technology": {
+          "examples": [
+            "AI системы военного класса",
+            "Запрещенные импланты",
+            "Экспериментальные технологии"
+          ],
+          "profit_margin": "500-2000%",
+          "risk_level": "Очень высокий",
+          "penalties": "15-30 лет заключения"
+        },
+        "biologicals": {
+          "examples": [
+            "Протомолекулярные образцы",
+            "Генетические модификации",
+            "Биооружие"
+          ],
+          "profit_margin": "1000-10000%",
+          "risk_level": "Катастрофический",
+          "penalties": "Смертная казнь во всех юрисдикциях"
+        }
+      },
+      "criminal_organizations": {
+        "triads": {
+          "base": "Земля, Азиатский сектор",
+          "specialization": "Киберпреступность, торговля информацией",
+          "territory": "Городские центры Земли и Луны",
+          "estimated_revenue": "500+ млрд кредитов ежегодно"
+        },
+        "belter_pirates": {
+          "base": "Пояс астероидов, мобильные базы",
+          "specialization": "Грабеж конвоев, торговля оружием",
+          "territory": "Внешние торговые пути",
+          "estimated_revenue": "200+ млрд кредитов ежегодно"
+        },
+        "corporate_shadow_ops": {
+          "base": "Интегрированы в легальные корпорации",
+          "specialization": "Промышленный шпионаж, устранение конкурентов",
+          "territory": "Везде, где есть корпоративные интересы",
+          "estimated_revenue": "Неизвестно, скрыто в корпоративной отчетности"
+        }
+      },
+      "smuggling_routes": {
+        "the_transit": {
+          "route": "Земля → Марс через малые астероиды",
+          "security_level": "Средний",
+          "capacity": "До 1000 тонн груза",
+          "control": "Различные преступные группировки"
+        },
+        "belt_highway": {
+          "route": "Церера → Внешние планеты",
+          "security_level": "Низкий",
+          "capacity": "До 5000 тонн груза",
+          "control": "Belter Pirates Coalition"
+        },
+        "the_backdoor": {
+          "route": "Сеть коррумпированных официальных каналов",
+          "security_level": "Высокий (но с внутренней поддержкой)",
+          "capacity": "Ограничена осторожностью",
+          "control": "Коррумпированные чиновники"
+        }
+      },
+      "money_laundering": {
+        "shell_companies": "Фиктивные компании для сокрытия источников дохода",
+        "cryptocurrency_mixing": "Использование криптовалют для запутывания следов",
+        "art_antiquities": "Покупка дорогих произведений искусства",
+        "real_estate": "Инвестиции в недвижимость на разных планетах",
+        "casino_gambling": "Легализация через игорные заведения"
+      }
+    },
+    "economic_cycles": {
+      "description": "Циклические изменения в экономике солнечной системы",
+      "cycle_phases": {
+        "expansion": {
+          "duration": "3-7 лет",
+          "characteristics": [
+            "Рост ВВП",
+            "Низкая безработица",
+            "Высокие инвестиции"
+          ],
+          "triggers": [
+            "Технологические прорывы",
+            "Открытие новых ресурсов",
+            "Политическая стабильность"
+          ]
+        },
+        "peak": {
+          "duration": "6-18 месяцев",
+          "characteristics": [
+            "Максимальная экономическая активность",
+            "Инфляционное давление",
+            "Спекулятивные пузыри"
+          ],
+          "warning_signs": [
+            "Перегрев рынков",
+            "Избыточное кредитование",
+            "Рост неравенства"
+          ]
+        },
+        "recession": {
+          "duration": "1-3 года",
+          "characteristics": [
+            "Сокращение ВВП",
+            "Рост безработицы",
+            "Падение цен на активы"
+          ],
+          "triggers": [
+            "Финансовые кризисы",
+            "Военные конфликты",
+            "Природные катастрофы"
+          ]
+        },
+        "trough": {
+          "duration": "6-24 месяца",
+          "characteristics": [
+            "Дно экономической активности",
+            "Максимальная безработица",
+            "Дефляция"
+          ],
+          "recovery_factors": [
+            "Государственное вмешательство",
+            "Инновации",
+            "Восстановление доверия"
+          ]
+        }
+      },
+      "sector_cycles": {
+        "mining": "Зависит от цен на сырье и открытия месторождений",
+        "technology": "Быстрые циклы инноваций и морального устаревания",
+        "agriculture": "Зависит от климата и биологических циклов",
+        "manufacturing": "Средние циклы, связанные с обновлением оборудования",
+        "services": "Наиболее стабильный сектор с плавными колебаниями"
+      },
+      "planetary_variations": {
+        "earth": "Зрелая экономика с медленными, но стабильными циклами",
+        "mars": "Быстрорастущая экономика с высокой волатильностью",
+        "belt": "Экстремальные циклы, зависящие от горнодобычи",
+        "outer_system": "Ранняя стадия развития с непредсказуемыми циклами"
+      }
+    },
+    "resources": [
+      {
+        "name": "Вода",
+        "base_price": 1000,
+        "unit": "т",
+        "volatility": "Низкая",
+        "strategic_importance": "Критическая"
+      },
+      {
+        "name": "Кислород",
+        "base_price": 2000,
+        "unit": "т",
+        "volatility": "Низкая",
+        "strategic_importance": "Критическая"
+      },
+      {
+        "name": "Пища",
+        "base_price": 1500,
+        "unit": "т",
+        "volatility": "Средняя",
+        "strategic_importance": "Высокая"
+      },
+      {
+        "name": "Гелий-3",
+        "base_price": 50000,
+        "unit": "кг",
+        "volatility": "Высокая",
+        "strategic_importance": "Критическая"
+      },
+      {
+        "name": "Металл",
+        "base_price": 5000,
+        "unit": "т",
+        "volatility": "Средняя",
+        "strategic_importance": "Высокая"
+      },
+      {
+        "name": "Протомолекула",
+        "base_price": 500000,
+        "unit": "г",
+        "volatility": "Экстремальная",
+        "strategic_importance": "Неизвестная"
+      },
+      {
+        "name": "AI-чипы",
+        "base_price": 200000,
+        "unit": "шт",
+        "volatility": "Высокая",
+        "strategic_importance": "Высокая"
+      },
+      {
+        "name": "Квантовые процессоры",
+        "base_price": 1000000,
+        "unit": "шт",
+        "volatility": "Экстремальная",
+        "strategic_importance": "Стратегическая"
+      },
+      {
+        "name": "Редкоземельные элементы",
+        "base_price": 25000,
+        "unit": "кг",
+        "volatility": "Высокая",
+        "strategic_importance": "Высокая"
+      },
+      {
+        "name": "Биологические образцы",
+        "base_price": 75000,
+        "unit": "образец",
+        "volatility": "Высокая",
+        "strategic_importance": "Исследовательская"
+      }
+    ],
+    "logistics": {
+      "ship_stats": [
+        {
+          "class": "Лёгкий корвет",
+          "capacity_t": 50,
+          "speed_au": 3.0,
+          "defense": 2,
+          "fuel_consumption": 0.5,
+          "crew": 3,
+          "cost": "5М кредитов"
+        },
+        {
+          "class": "Средний фрегат",
+          "capacity_t": 200,
+          "speed_au": 2.0,
+          "defense": 5,
+          "fuel_consumption": 1.0,
+          "crew": 12,
+          "cost": "25М кредитов"
+        },
+        {
+          "class": "Тяжёлый линкор",
+          "capacity_t": 1000,
+          "speed_au": 1.0,
+          "defense": 8,
+          "fuel_consumption": 2.0,
+          "crew": 50,
+          "cost": "150М кредитов"
+        },
+        {
+          "class": "Супер-танкер",
+          "capacity_t": 10000,
+          "speed_au": 0.5,
+          "defense": 3,
+          "fuel_consumption": 5.0,
+          "crew": 25,
+          "cost": "500М кредитов"
+        },
+        {
+          "class": "Скоростной курьер",
+          "capacity_t": 10,
+          "speed_au": 5.0,
+          "defense": 1,
+          "fuel_consumption": 1.5,
+          "crew": 2,
+          "cost": "8М кредитов"
+        }
+      ],
+      "typical_routes": [
+        {
+          "route": "Церера–Марс",
+          "distance_au": 2.0,
+          "risk_percent": 10,
+          "base_income_per_t": 1000,
+          "transit_time": "2 недели"
+        },
+        {
+          "route": "Марс–Венера",
+          "distance_au": 1.2,
+          "risk_percent": 15,
+          "base_income_per_t": 1500,
+          "transit_time": "10 дней"
+        },
+        {
+          "route": "Венера–Земля",
+          "distance_au": 0.28,
+          "risk_percent": 5,
+          "base_income_per_t": 800,
+          "transit_time": "3 дня"
+        },
+        {
+          "route": "Земля–Луна",
+          "distance_au": 0.0026,
+          "risk_percent": 2,
+          "base_income_per_t": 500,
+          "transit_time": "6 часов"
+        },
+        {
+          "route": "Юпитер–Сатурн",
+          "distance_au": 4.3,
+          "risk_percent": 25,
+          "base_income_per_t": 3000,
+          "transit_time": "2 месяца"
+        }
+      ]
+    }
+  },
+  "complete_crafting_system": {
+    "module_name": "CRAFTING_BLUEPRINTS_COMPLETE_OPTIMIZED",
+    "description": "Полная система создания и модификации предметов с детальными чертежами, ресурсами, механиками и интеграцией с жизненным путем.",
+    "version": "2.0_COMPLETE_OPTIMIZED",
+    "system_overview": {
+      "purpose": "Создание и модификация предметов через систему ремесла",
+      "scope": "Чертежи, ресурсы, навыковые требования, механики успеха/неудачи, модификации",
+      "integration": "Создает предметы из TECH_EQUIPMENT_COMPLETE_OPTIMIZED",
+      "complexity": "Многоуровневая система от простых инструментов до экзотических артефактов"
+    },
+    "crafting_mechanics": {
+      "success_calculation": {
+        "formula": "Skill_Level + Tech_Knowledge + Equipment_Bonus + d20 vs Difficulty",
+        "modifiers": {
+          "lifepath_bonus": "Origin и Specialization могут давать +1 до +3",
+          "workshop_bonus": "Качество мастерской: 0 до +5",
+          "assistant_bonus": "Помощники: 1 за каждого (максимум +3)",
+          "time_bonus": "+1 за каждые дополнительные 50% времени"
+        },
+        "critical_success": "Nat 20: 25% к характеристикам предмета, экономия 20% материалов",
+        "critical_failure": "Nat 1: Потеря 75% материалов, 2d6 урона, возможно внимание враждебных фракций"
+      },
+      "difficulty_scale": {
+        "trivial": "DC 5 - Простой ремонт, базовые инструменты",
+        "easy": "DC 8 - Стандартное снаряжение, известные технологии",
+        "medium": "DC 12 - Продвинутое оборудование, специализированные детали",
+        "hard": "DC 16 - Военные технологии, редкие материалы",
+        "very_hard": "DC 20 - Экспериментальные устройства, экзотические ресурсы",
+        "extreme": "DC 25 - Артефакты, неизученные технологии"
+      },
+      "time_requirements": {
+        "simple_items": "2-6 часов (инструменты, простое оружие)",
+        "complex_items": "1-3 дня (продвинутое снаряжение, импланты)",
+        "legendary_items": "1-2 недели (силовая броня, экзотические устройства)",
+        "artifacts": "1-6 месяцев (артефакты, революционные технологии)"
+      },
+      "failure_consequences": {
+        "minor_failure": {
+          "description": "Неудача на 1-5 пунктов",
+          "effects": "Потеря 25% материалов, удвоенное время"
+        },
+        "major_failure": {
+          "description": "Неудача на 6-10 пунктов",
+          "effects": "Потеря 50% материалов, 1d6 урона, испорченное оборудование"
+        },
+        "critical_failure": {
+          "description": "Неудача на 11+ пунктов или Nat 1",
+          "effects": "Потеря всех материалов, 2d6 урона, взрыв/пожар, внимание властей"
+        },
+        "catastrophic_failure": {
+          "description": "Критическая неудача при создании артефактов",
+          "effects": "Разрушение мастерской, 4d6 урона, аномальные эффекты, расследование"
+        }
+      }
+    },
+    "resource_system": {
+      "basic_materials": {
+        "metal_alloy": {
+          "description": "Стандартный конструкционный материал",
+          "sources": [
+            "Ceres mining stations",
+            "Asteroid belt",
+            "Industrial recycling"
+          ],
+          "base_cost": 50,
+          "difficulty": "Easy",
+          "yield_per_expedition": "20-100 units",
+          "storage_requirements": "Standard warehouse"
+        },
+        "polymer_composite": {
+          "description": "Легкие композитные материалы",
+          "sources": [
+            "Chemical plants",
+            "Tech manufacturing",
+            "Corporate suppliers"
+          ],
+          "base_cost": 75,
+          "difficulty": "Easy",
+          "yield_per_expedition": "10-50 units"
+        },
+        "ceramic_plate": {
+          "description": "Высокопрочная керамика для брони",
+          "sources": [
+            "Specialized foundries",
+            "Military surplus",
+            "Industrial salvage"
+          ],
+          "base_cost": 120,
+          "difficulty": "Medium",
+          "yield_per_expedition": "5-20 units"
+        }
+      },
+      "advanced_materials": {
+        "energy_cell": {
+          "description": "Стандартные энергетические элементы",
+          "sources": [
+            "Tech markets",
+            "Corporate suppliers",
+            "Salvaged equipment"
+          ],
+          "base_cost": 200,
+          "difficulty": "Medium",
+          "yield_per_expedition": "2-15 units",
+          "special_note": "Могут быть перезаряжены при наличии соответствующего оборудования"
+        },
+        "plasma_core": {
+          "description": "Высокоэнергетические плазменные ядра",
+          "sources": [
+            "Military surplus",
+            "High-tech labs",
+            "Restricted zones"
+          ],
+          "base_cost": 2000,
+          "difficulty": "Hard",
+          "yield_per_expedition": "1-3 units",
+          "special_requirements": "Лицензия на обращение с опасными материалами"
+        },
+        "bio_gel": {
+          "description": "Биосовместимый гель для имплантов",
+          "sources": [
+            "Medical facilities",
+            "Research stations",
+            "Black market"
+          ],
+          "base_cost": 800,
+          "difficulty": "Medium",
+          "yield_per_expedition": "3-12 units",
+          "storage_requirements": "Холодильное оборудование"
+        },
+        "nano_fiber": {
+          "description": "Нанотехнологичные волокна",
+          "sources": [
+            "Advanced manufacturing",
+            "Corporate R&D",
+            "Jovian tech hubs"
+          ],
+          "base_cost": 1500,
+          "difficulty": "Hard",
+          "yield_per_expedition": "1-5 units"
+        }
+      },
+      "exotic_materials": {
+        "quantum_chip": {
+          "description": "Квантовые процессоры",
+          "sources": [
+            "Corporate R&D",
+            "Jovian tech hubs",
+            "Alien artifacts"
+          ],
+          "base_cost": 15000,
+          "difficulty": "Extreme",
+          "yield_per_expedition": "1 unit per major operation",
+          "special_requirements": "Quantum containment facility"
+        },
+        "graviton_matrix": {
+          "description": "Матрица гравитонных полей",
+          "sources": [
+            "Alien technology",
+            "Deep space anomalies",
+            "Theoretical physics labs"
+          ],
+          "base_cost": 50000,
+          "difficulty": "Legendary",
+          "yield_per_expedition": "1 unit per campaign arc",
+          "special_requirements": "Understanding of exotic physics"
+        },
+        "psi_crystal": {
+          "description": "Психоактивные кристаллы неизвестного происхождения",
+          "sources": [
+            "Alien ruins",
+            "Deep space expeditions",
+            "Psi-active individuals"
+          ],
+          "base_cost": 25000,
+          "difficulty": "Extreme",
+          "special_note": "Может вызывать психические аномалии при неправильном обращении"
+        }
+      },
+      "salvage_system": {
+        "description": "Разборка оборудования для получения материалов",
+        "salvage_categories": {
+          "civilian_tech": {
+            "yield": "20-40% от стоимости",
+            "common_materials": [
+              "metal_alloy",
+              "polymer_composite",
+              "energy_cell"
+            ],
+            "skill_requirement": "Engineering 2"
+          },
+          "military_hardware": {
+            "yield": "40-60% от стоимости",
+            "common_materials": [
+              "ceramic_plate",
+              "plasma_core",
+              "armor_plating"
+            ],
+            "skill_requirement": "Engineering 4, Combat 2"
+          },
+          "alien_technology": {
+            "yield": "10-80% от стоимости (непредсказуемо)",
+            "possible_materials": [
+              "quantum_chip",
+              "graviton_matrix",
+              "unknown_alloys"
+            ],
+            "skill_requirement": "Engineering 6, Technology 4",
+            "risks": "Возможные аномальные эффекты"
+          }
+        }
+      }
+    },
+    "blueprint_database": {
+      "weapons": [
+        {
+          "blueprint_id": "WP_CORP_PISTOL",
+          "creates_item": "Corporate Enforcer Pistol",
+          "creates_tech_equipment_id": "WEAPON_001",
+          "difficulty": 14,
+          "required_resources": {
+            "metal_alloy": 20,
+            "energy_cell": 3,
+            "polymer_composite": 8,
+            "bio_scanner": 1
+          },
+          "required_skills": {
+            "Engineering": 3,
+            "Combat": 2,
+            "Technology": 2
+          },
+          "required_tech_knowledge": 2,
+          "crafting_time": "8 hours",
+          "special_requirements": "Corporate-grade workshop, biometric programming equipment",
+          "origin_bonuses": {
+            "ORIGIN_EARTH_ELITE": "Доступ к премиальным биометрическим модулям",
+            "FY_CORP_INTERNSHIP": "Знание корпоративных стандартов (-20% время)",
+            "SPEC_ENGINEER": "Улучшенная эффективность сборки"
+          }
+        },
+        {
+          "blueprint_id": "WP_PLASMA_RIFLE",
+          "creates_item": "Plasma Rifle MK-VII",
+          "creates_tech_equipment_id": "WEAPON_003",
+          "difficulty": 20,
+          "required_resources": {
+            "metal_alloy": 50,
+            "plasma_core": 2,
+            "energy_cell": 15,
+            "ceramic_plate": 10,
+            "cooling_unit": 1
+          },
+          "required_skills": {
+            "Engineering": 5,
+            "Combat": 3,
+            "Technology": 4
+          },
+          "required_tech_knowledge": 4,
+          "crafting_time": "3 days",
+          "special_requirements": "Military-grade fabricator, plasma containment facility, clearance level 3",
+          "origin_bonuses": {
+            "ORIGIN_MARS_MILITARY": "Доступ к военным спецификациям",
+            "ORIGIN_MARS_SCIENTIST": "Понимание плазменной физики (+2 к созданию)",
+            "FY_MARS_ACADEMY": "Знание систем безопасности"
+          }
+        },
+        {
+          "blueprint_id": "WP_CRYO_SHOTGUN",
+          "creates_item": "Cryo Shotgun 'Freezer'",
+          "creates_tech_equipment_id": "WEAPON_004",
+          "difficulty": 18,
+          "required_resources": {
+            "metal_alloy": 30,
+            "cryo_gel": 15,
+            "pressure_tank": 2,
+            "thermal_insulation": 5
+          },
+          "required_skills": {
+            "Engineering": 4,
+            "Combat": 2,
+            "Technology": 3
+          },
+          "required_tech_knowledge": 3,
+          "crafting_time": "2 days",
+          "special_requirements": "Cryogenic workshop, pressure testing equipment",
+          "origin_bonuses": {
+            "ORIGIN_GANYMEDE_SCIENTIST": "Экспертиза в криогенике (+3 к созданию)",
+            "ORIGIN_JOVIAN_SCIENTIST": "Доступ к продвинутым охладителям"
+          }
+        }
+      ],
+      "armor": [
+        {
+          "blueprint_id": "AR_POWER_ARMOR",
+          "creates_item": "Power Armor T-45 'Titan'",
+          "creates_tech_equipment_id": "ARMOR_001",
+          "difficulty": 25,
+          "required_resources": {
+            "exo_alloy": 200,
+            "hydraulic_actuators": 25,
+            "servo_motors": 20,
+            "life_support_unit": 2,
+            "power_core": 1,
+            "armor_plating": 50
+          },
+          "required_skills": {
+            "Engineering": 6,
+            "Technology": 5,
+            "Combat": 3
+          },
+          "required_tech_knowledge": 5,
+          "crafting_time": "3 weeks",
+          "special_requirements": "Heavy fabrication facility, crane systems, clean room",
+          "origin_bonuses": {
+            "ORIGIN_MARS_MILITARY": "Доступ к военным схемам движения",
+            "ORIGIN_GANYMEDE_ENGINEER": "Опыт работы с экзоскелетами",
+            "FY_MARS_ACADEMY": "Знание тактических требований"
+          }
+        },
+        {
+          "blueprint_id": "AR_ENERGY_SHIELD",
+          "creates_item": "Energy Shield 'Aurora'",
+          "creates_tech_equipment_id": "ARMOR_002",
+          "difficulty": 22,
+          "required_resources": {
+            "energy_cell": 30,
+            "shield_generator": 1,
+            "quantum_chip": 1,
+            "focusing_lens": 4,
+            "energy_conductor": 10
+          },
+          "required_skills": {
+            "Technology": 5,
+            "Engineering": 4,
+            "Physics": 3
+          },
+          "required_tech_knowledge": 4,
+          "crafting_time": "4 days",
+          "special_requirements": "Quantum fabricator, electromagnetic shielding",
+          "origin_bonuses": {
+            "ORIGIN_JOVIAN_SCIENTIST": "Понимание энергетических полей",
+            "ORIGIN_GANYMEDE_SCIENTIST": "Опыт работы с защитными системами"
+          }
+        }
+      ],
+      "implants": [
+        {
+          "blueprint_id": "IM_REFLEX_BOOSTER",
+          "creates_item": "Reflex Booster Implant",
+          "creates_tech_equipment_id": "IMPLANT_001",
+          "difficulty": 20,
+          "required_resources": {
+            "bio_gel": 12,
+            "neural_interface": 2,
+            "micro_processors": 8,
+            "bio_compatible_alloy": 5
+          },
+          "required_skills": {
+            "Medicine": 4,
+            "Technology": 3,
+            "Biology": 3
+          },
+          "required_tech_knowledge": 4,
+          "crafting_time": "1 week",
+          "special_requirements": "Sterile bio-lab, surgical equipment, test subjects",
+          "origin_bonuses": {
+            "ORIGIN_STATION_MEDIC": "Медицинская экспертиза (+2 к безопасности)",
+            "ORIGIN_MARS_SCIENTIST": "Понимание нейрологии"
+          }
+        },
+        {
+          "blueprint_id": "IM_CYBER_EYE",
+          "creates_item": "Cybernetic Eye 'Eagle Eye'",
+          "creates_tech_equipment_id": "IMPLANT_002",
+          "difficulty": 18,
+          "required_resources": {
+            "optical_sensors": 5,
+            "micro_processors": 3,
+            "bio_gel": 8,
+            "titanium_casing": 2
+          },
+          "required_skills": {
+            "Medicine": 4,
+            "Technology": 4,
+            "Biology": 2
+          },
+          "required_tech_knowledge": 3,
+          "crafting_time": "5 days",
+          "special_requirements": "Precision optics workshop, surgical facility"
+        }
+      ],
+      "gadgets": [
+        {
+          "blueprint_id": "GD_GEO_SCANNER",
+          "creates_item": "Geo-Scanner v3",
+          "creates_tech_equipment_id": "GADGET_001",
+          "difficulty": 16,
+          "required_resources": {
+            "sensor_array": 3,
+            "quantum_chip": 1,
+            "energy_cell": 8,
+            "data_storage": 2
+          },
+          "required_skills": {
+            "Engineering": 3,
+            "Technology": 4,
+            "Science": 2
+          },
+          "required_tech_knowledge": 3,
+          "crafting_time": "2 days",
+          "special_requirements": "Electronics workshop, calibration equipment"
+        },
+        {
+          "blueprint_id": "GD_HOLO_PROJECTOR",
+          "creates_item": "Holographic Projector 'Mirage'",
+          "creates_tech_equipment_id": "GADGET_002",
+          "difficulty": 19,
+          "required_resources": {
+            "holo_emitters": 6,
+            "quantum_chip": 2,
+            "energy_cell": 12,
+            "processing_unit": 1
+          },
+          "required_skills": {
+            "Engineering": 4,
+            "Technology": 4,
+            "Computer": 3
+          },
+          "required_tech_knowledge": 4,
+          "crafting_time": "3 days",
+          "special_requirements": "Holographic workshop, advanced computing facility"
+        }
+      ],
+      "vehicles_and_mechs": [
+        {
+          "blueprint_id": "VH_LIGHT_MECH",
+          "creates_item": "Light Mecha Frame MK-I",
+          "difficulty": 28,
+          "required_resources": {
+            "exo_alloy": 300,
+            "hydraulic_actuators": 40,
+            "servo_motors": 30,
+            "cockpit_module": 1,
+            "weapon_hardpoints": 4,
+            "sensor_suite": 1
+          },
+          "required_skills": {
+            "Engineering": 7,
+            "Technology": 5,
+            "Piloting": 4,
+            "Combat": 3
+          },
+          "required_tech_knowledge": 6,
+          "crafting_time": "2 months",
+          "special_requirements": "Mech fabrication facility, heavy machinery, military clearance",
+          "origin_bonuses": {
+            "ORIGIN_MARS_MILITARY": "Доступ к военным схемам и тактикам",
+            "ORIGIN_GANYMEDE_ENGINEER": "Понимание механики экзоскелетов"
+          }
+        }
+      ]
+    },
+    "workshop_types": {
+      "basic_workshop": {
+        "cost": 25000,
+        "bonus": "+0",
+        "capabilities": "Простое оборудование, базовые инструменты"
+      },
+      "professional_workshop": {
+        "cost": 100000,
+        "bonus": "+2",
+        "capabilities": "Профессиональное оборудование, специализированные инструменты"
+      },
+      "advanced_fabrication": {
+        "cost": 500000,
+        "bonus": "+4",
+        "capabilities": "3D-принтеры, наномашинное производство"
+      },
+      "quantum_lab": {
+        "cost": 2000000,
+        "bonus": "+5",
+        "capabilities": "Квантовые технологии, экзотические материалы"
+      }
+    },
+    "modification_system": {
+      "weapon_modifications": [
+        {
+          "mod_name": "Extended Magazine",
+          "applicable_to": "Ballistic weapons",
+          "effect": "+50% ammo capacity",
+          "cost_multiplier": 1.2,
+          "difficulty_modifier": 2
+        },
+        {
+          "mod_name": "Plasma Infusion",
+          "applicable_to": "Energy weapons",
+          "effect": "+25% damage, -25% battery life",
+          "cost_multiplier": 2.0,
+          "difficulty_modifier": 8
+        },
+        {
+          "mod_name": "Smart Targeting",
+          "applicable_to": "All weapons",
+          "effect": "+2 accuracy bonus",
+          "cost_multiplier": 1.8,
+          "difficulty_modifier": 5
+        }
+      ],
+      "armor_modifications": [
+        {
+          "mod_name": "Reactive Plating",
+          "applicable_to": "Heavy armor",
+          "effect": "Reduces explosive damage by 50%",
+          "cost_multiplier": 1.6,
+          "difficulty_modifier": 4
+        },
+        {
+          "mod_name": "Stealth Coating",
+          "applicable_to": "Light/Medium armor",
+          "effect": "+3 stealth bonus",
+          "cost_multiplier": 2.2,
+          "difficulty_modifier": 6
+        },
+        {
+          "mod_name": "Environmental Sealing",
+          "applicable_to": "All armor",
+          "effect": "Immunity to gas/biological hazards",
+          "cost_multiplier": 1.4,
+          "difficulty_modifier": 3
+        }
+      ]
+    },
+    "economic_integration": {
+      "material_pricing": {
+        "base_material_cost": "Базовая стоимость всех материалов",
+        "transportation": "+10-50% для межпланетных поставок",
+        "faction_markup": "+0-200% в зависимости от отношений",
+        "rarity_multiplier": "x1.5 до x10 для редких материалов",
+        "market_volatility": "±25% случайные колебания цен"
+      }
+    }
+  },
+  "trade_routes_master_system": {
+    "module_name": "TRADE_ROUTES_MASTER",
+    "description": "Мастер-модуль торговых маршрутов с динамической системой расчета времени, стоимости и рисков, учитывающей игровые события.",
+    "calculation_principles": {
+      "base_formula": "FinalValue = BaseValue * (1 + PoliticalFactor + EconomicFactor + EventFactor)",
+      "variability_factor": "Всегда добавляется случайная вариативность в диапазоне ±5-15% к итоговому значению."
+    },
+    "routes": [
+      {
+        "id": "ROUTE-EM",
+        "name": "Земля ↔ Марс",
+        "start_point": "EARTH",
+        "end_point": "MARS",
+        "base_travel_time_days": 60,
+        "base_fuel_cost": 50000,
+        "base_risk_level": "Low",
+        "dynamic_factors": [
+          {
+            "factor": "PoliticalTension_UN_MCR",
+            "effect_on_cost": "+10-30%",
+            "effect_on_risk": "Medium"
+          },
+          {
+            "factor": "PiracyAlert_Sol_Corridor",
+            "effect_on_risk": "High"
+          }
+        ]
+      },
+      {
+        "id": "ROUTE-EG",
+        "name": "Земля ↔ Ганимед",
+        "start_point": "EARTH",
+        "end_point": "GANYMEDE",
+        "base_travel_time_days": 240,
+        "base_fuel_cost": 90000,
+        "base_risk_level": "Medium",
+        "dynamic_factors": [
+          {
+            "factor": "OPA_Blockade",
+            "effect_on_time": "+20-50%",
+            "effect_on_risk": "High"
+          }
+        ]
+      },
+      {
+        "id": "ROUTE-MC",
+        "name": "Марс ↔ Церера",
+        "start_point": "MARS",
+        "end_point": "CERES",
+        "base_travel_time_days": 100,
+        "base_fuel_cost": 35000,
+        "base_risk_level": "Medium",
+        "dynamic_factors": [
+          {
+            "factor": "AsteroidBelt_HighDensity",
+            "effect_on_risk": "High"
+          }
+        ]
+      },
+      {
+        "id": "ROUTE-LB",
+        "name": "Луна ↔ Пояс (Торговый Хаб)",
+        "start_point": "LUNA",
+        "end_point": "CERES",
+        "base_travel_time_days": 150,
+        "base_fuel_cost": 45000,
+        "base_risk_level": "High",
+        "dynamic_factors": [
+          {
+            "factor": "CriminalActivity_High",
+            "effect_on_risk": "Very High"
+          }
+        ]
+      },
+      {
+        "id": "ROUTE-GE",
+        "name": "Ганимед ↔ Земля (Продовольствие)",
+        "start_point": "GANYMEDE",
+        "end_point": "EARTH",
+        "base_travel_time_days": 240,
+        "base_fuel_cost": 120000,
+        "base_risk_level": "Medium",
+        "dynamic_factors": [
+          {
+            "factor": "FoodCrisis_Earth",
+            "effect_on_cost": "+50-100% (страховка и спрос)"
+          }
+        ]
+      }
+    ]
+  },
+  "market_event_generator_system": {
+    "module_name": "MARKET_EVENT_GENERATOR",
+    "description": "Генератор торговых возможностей и рыночных событий",
+    "version": "1.0_DYNAMIC_ECONOMY",
+    "market_events_d12": [
+      {
+        "id": 1,
+        "event": "Дефицит топлива на Церере",
+        "effect": "+200% цена на водород",
+        "duration": "2-4 недели"
+      },
+      {
+        "id": 2,
+        "event": "Урожай протеинов на Ганимеде",
+        "effect": "-50% цена на еду",
+        "duration": "1-2 месяца"
+      },
+      {
+        "id": 3,
+        "event": "Забастовка горняков",
+        "effect": "+150% цена на руду",
+        "duration": "1-3 недели"
+      },
+      {
+        "id": 4,
+        "event": "Новая торговая лицензия",
+        "effect": "Открытие нового маршрута",
+        "duration": "постоянно"
+      },
+      {
+        "id": 5,
+        "event": "Пиратские атаки",
+        "effect": "+100% цена на охранные услуги",
+        "duration": "1-6 месяцев"
+      },
+      {
+        "id": 6,
+        "event": "Технологический прорыв",
+        "effect": "-75% цена на электронику",
+        "duration": "3-6 месяцев"
+      },
+      {
+        "id": 7,
+        "event": "Военные закупки",
+        "effect": "+300% цена на оружие",
+        "duration": "2-8 недель"
+      },
+      {
+        "id": 8,
+        "event": "Корпоративная война",
+        "effect": "Волатильность всех цен",
+        "duration": "3-12 месяцев"
+      },
+      {
+        "id": 9,
+        "event": "Открытие месторождения",
+        "effect": "-80% цена на редкие металлы",
+        "duration": "6-18 месяцев"
+      },
+      {
+        "id": 10,
+        "event": "Эпидемия на станции",
+        "effect": "+500% цена на медикаменты",
+        "duration": "1-4 месяца"
+      },
+      {
+        "id": 11,
+        "event": "Дипломатический кризис",
+        "effect": "Торговые санкции",
+        "duration": "2-24 месяца"
+      },
+      {
+        "id": 12,
+        "event": "Черная пятница",
+        "effect": "-30% на все товары",
+        "duration": "1-3 дня"
+      }
+    ],
+    "trading_opportunities": {
+      "contraband_d6": [
+        "Запрещенные ИИ-чипы с Земли",
+        "Оружие времен Земной войны",
+        "Наркотические вещества с Титана",
+        "Украденные корпоративные данные",
+        "Нелегальные генетические модификации",
+        "Контрабандные произведения искусства"
+      ],
+      "legal_high_profit_d6": [
+        "Роскошная еда с Земли на Марс",
+        "Редкие металлы с Пояса в Систему",
+        "Высокотехнологичные медикаменты",
+        "Корпоративные лицензии и патенты",
+        "Антиквариат и произведения искусства",
+        "Эксклюзивная мода и аксессуары"
+      ]
+    }
+  },
+  "unified_integration_systems": {
+    "market_dynamics": {
+      "supply_demand_calculation": "Автоматический расчет на основе производства и потребления по планетам",
+      "price_volatility": "Динамические изменения цен на основе событий и политической ситуации",
+      "arbitrage_opportunities": "Автоматическое выявление выгодных торговых возможностей",
+      "seasonal_cycles": "Сезонные колебания для сельскохозяйственных и энергетических товаров"
+    },
+    "crafting_economics": {
+      "material_sourcing": "Интеграция с торговыми маршрутами для получения сырья",
+      "workshop_location_benefits": "Различные бонусы в зависимости от планетарного расположения",
+      "mass_production": "Экономия от масштаба при серийном производстве",
+      "custom_orders": "Система заказов от NPC и фракций"
+    },
+    "financial_integration": {
+      "business_loans": "Кредитование под залог мастерских и оборудования",
+      "insurance_products": "Страхование грузов и производственных мощностей",
+      "investment_opportunities": "Инвестиции в торговые пути и производственные проекты",
+      "currency_hedging": "Защита от валютных рисков при межпланетной торговле"
+    },
+    "faction_economics": {
+      "corporate_contracts": "Долгосрочные контракты с мегакорпорациями",
+      "government_subsidies": "Государственная поддержка стратегических отраслей",
+      "black_market_integration": "Связь между легальным и теневым секторами экономики",
+      "resource_conflicts": "Экономические войны за контроль над ресурсами"
+    }
+  },
+  "gameplay_integration": {
+    "player_interaction": {
+      "trading_commands": [
+        "trade - открыть торговое меню",
+        "market - показать цены и тренды",
+        "routes - доступные торговые маршруты",
+        "craft - открыть меню крафтинга",
+        "workshop - управление мастерской",
+        "invest - инвестиционные возможности"
+      ],
+      "economic_status": [
+        "portfolio - инвестиционный портфель",
+        "assets - принадлежащие активы",
+        "income - источники дохода",
+        "expenses - регулярные расходы",
+        "credit_rating - кредитная история"
+      ]
+    },
+    "ai_gm_integration": {
+      "automatic_market_updates": "ИИ-ГМ автоматически обновляет цены и события",
+      "dynamic_opportunities": "Генерация торговых возможностей на основе действий игрока",
+      "economic_consequences": "Экономические последствия политических и военных событий",
+      "npc_economic_behavior": "NPC торговцы и производители с собственными стратегиями"
+    },
+    "progression_rewards": {
+      "trade_mastery": "Развитие торговых навыков открывает новые возможности",
+      "crafting_expertise": "Мастерство в производстве снижает риски и увеличивает прибыль",
+      "financial_acumen": "Понимание финансов дает доступ к сложным инструментам",
+      "network_effects": "Связи с ключевыми фигурами открывают эксклюзивные сделки"
+    }
+  },
+  "system_apis": {
+    "economy_management": [
+      {
+        "name": "GetMarketPrices",
+        "description": "Получение текущих рыночных цен с учетом событий"
+      },
+      {
+        "name": "CalculateTradeProfit",
+        "description": "Расчет прибыльности торговых операций"
+      },
+      {
+        "name": "ProcessMarketEvent",
+        "description": "Обработка рыночных событий и их влияния"
+      }
+    ],
+    "crafting_system": [
+      {
+        "name": "CheckCraftingRequirements",
+        "description": "Проверка доступности ресурсов и навыков"
+      },
+      {
+        "name": "ExecuteCrafting",
+        "description": "Выполнение процесса создания предмета"
+      },
+      {
+        "name": "ApplyLifepathBonuses",
+        "description": "Применение бонусов от происхождения персонажа"
+      }
+    ],
+    "financial_operations": [
+      {
+        "name": "ProcessLoan",
+        "description": "Обработка кредитных операций"
+      },
+      {
+        "name": "UpdateCreditRating",
+        "description": "Обновление кредитного рейтинга"
+      },
+      {
+        "name": "CalculateInvestmentReturns",
+        "description": "Расчет доходности инвестиций"
+      }
+    ]
+  },
+  "advanced_features": {
+    "procedural_economy": {
+      "description": "Самоорганизующаяся экономическая система",
+      "market_emergence": "Новые рынки появляются на основе спроса и предложения",
+      "price_discovery": "Цены формируются естественным образом через торги",
+      "economic_bubbles": "Автоматическое формирование и лопание спекулятивных пузырей"
+    },
+    "complex_supply_chains": {
+      "description": "Многоуровневые цепочки поставок",
+      "resource_dependencies": "Сложные зависимости между различными товарами",
+      "bottleneck_analysis": "Выявление узких мест в производстве",
+      "supply_disruptions": "Каскадные эффекты от нарушения поставок"
+    },
+    "economic_warfare": {
+      "description": "Экономическая борьба между фракциями",
+      "trade_sanctions": "Экономические санкции как инструмент политики",
+      "currency_manipulation": "Валютные войны и их последствия",
+      "industrial_espionage": "Кража торговых секретов и технологий"
+    },
+    "technological_disruption": {
+      "description": "Влияние технологических прорывов на экономику",
+      "automation_effects": "Замещение рабочей силы автоматизацией",
+      "new_industries": "Появление принципиально новых отраслей",
+      "obsolescence_cycles": "Устаревание целых секторов экономики"
+    }
+  },
+  "backward_compatibility": {
+    "description": "Полная совместимость со всеми игровыми системами",
+    "character_integration": "Интеграция с системой персонажей и lifepath",
+    "faction_economics": "Связь с экономическими интересами фракций",
+    "world_events": "Реакция на глобальные события и изменения",
+    "ai_gm_support": "Поддержка автоматизации через ИИ-ГМ"
+  },
+  "usage_instructions": {
+    "for_players": [
+      "Изучите рыночные тренды перед крупными инвестициями",
+      "Используйте происхождение персонажа для получения бонусов при крафтинге",
+      "Диверсифицируйте торговые операции для снижения рисков",
+      "Следите за политическими событиями - они влияют на экономику",
+      "Развивайте связи с ключевыми торговцами и производителями"
+    ],
+    "for_gm": [
+      "Используйте генератор событий для создания динамичной экономики",
+      "Следите за балансом между разными источниками дохода игроков",
+      "Применяйте экономические последствия для политических решений",
+      "Создавайте квесты вокруг экономических возможностей",
+      "Используйте торговые маршруты как источник приключений"
+    ]
+  }
+}

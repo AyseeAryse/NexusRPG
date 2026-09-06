@@ -1,0 +1,1928 @@
+{
+  "module_name": "STARTING_QUESTS_COMPLETE",
+  "version": "2.1_UNIFIED_QUESTS",
+  "description": "Полный набор стартовых квестов для всех origins и specializations. Каждый персонаж получает 2-3 квеста при старте.",
+  "assignment_rules": {
+    "each_character_gets": "1 origin quest + 1 specialization quest + 1 universal quest",
+    "priority": [
+      "origin_quest",
+      "specialization_quest",
+      "universal_quest"
+    ]
+  },
+  "origin_quests": [
+    {
+      "quest_id": "SQ_ORIGIN_ELITE",
+      "title": "Долги элиты",
+      "origin": "ORIGIN_EARTH_ELITE",
+      "type": "Investigation",
+      "location": "earth:newtokyo:government",
+      "giver": "Финансовый советник семьи",
+      "description": "Семейные инвестиции в Protogen под угрозой после скандала. Нужно тихо ликвидировать связи.",
+      "stages": [
+        "Встретиться с представителем Protogen",
+        "Получить финансовые документы",
+        "Уничтожить компромат",
+        "Отчитаться советнику"
+      ],
+      "reward_credits": 5000,
+      "reward_xp": 200,
+      "reward_reputation": {
+        "Protogen": 10,
+        "Earth UN": -5
+      },
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_ORIGIN_SLUMS",
+      "title": "Побег из трущоб",
+      "origin": "ORIGIN_EARTH_SLUMS",
+      "type": "Survival",
+      "location": "earth:newtokyo:industrial",
+      "giver": "Старый знакомый из банды",
+      "description": "Корпоративная безопасность зачищает район. Нужно убраться и спасти тех, кого можешь.",
+      "stages": [
+        "Найти безопасный путь",
+        "Собрать припасы",
+        "Провести группу через блокпосты",
+        "Добраться до укрытия"
+      ],
+      "reward_credits": 1500,
+      "reward_xp": 250,
+      "reward_reputation": {
+        "OPA": 10
+      },
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_ORIGIN_MARS_MIL",
+      "title": "Честь Марса",
+      "origin": "ORIGIN_MARS_MILITARY",
+      "type": "Military",
+      "location": "mars:newboston:military",
+      "giver": "Сержант Рамирес",
+      "description": "Военный конвой пропал на маршруте. Командование хочет разобраться тихо.",
+      "stages": [
+        "Получить брифинг",
+        "Выследить маршрут конвоя",
+        "Обнаружить место нападения",
+        "Вернуть груз или данные"
+      ],
+      "reward_credits": 3000,
+      "reward_xp": 300,
+      "reward_reputation": {
+        "Mars Fleet": 15
+      },
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_ORIGIN_MARS_SCI",
+      "title": "Утечка данных",
+      "origin": "ORIGIN_MARS_SCIENTIST",
+      "type": "Investigation",
+      "location": "mars:newboston:research",
+      "giver": "Профессор Кимура",
+      "description": "Данные терраформирования утекают кому-то за пределы Марса. Нужно найти крота в лаборатории.",
+      "stages": [
+        "Проанализировать логи доступа",
+        "Опросить коллег",
+        "Установить ловушку с фальшивыми данными",
+        "Разоблачить крота"
+      ],
+      "reward_credits": 3500,
+      "reward_xp": 250,
+      "reward_reputation": {
+        "Mars Republic": 10
+      },
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_ORIGIN_CERES",
+      "title": "Последний груз",
+      "origin": "ORIGIN_CERES_MINER",
+      "type": "Survival",
+      "location": "belt:ceres:miners",
+      "giver": "Бригадир шахты",
+      "description": "Шахта обваливается. Нужно вытащить последнюю партию руды и людей до затопления.",
+      "stages": [
+        "Оценить состояние шахты",
+        "Организовать эвакуацию",
+        "Провести людей через опасные туннели",
+        "Спасти или бросить руду"
+      ],
+      "reward_credits": 2000,
+      "reward_xp": 300,
+      "reward_reputation": {
+        "OPA": 10
+      },
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_ORIGIN_BELT_MINER",
+      "title": "Чёрная жила",
+      "origin": "ORIGIN_BELT_MINER",
+      "type": "Exploration",
+      "location": "belt:ceres:miners",
+      "giver": "Старый шахтёр Карлос",
+      "description": "Обнаружена аномальная жила в заброшенном тоннеле. Странный минерал — то ли удача, то ли ловушка.",
+      "stages": [
+        "Исследовать заброшенный тоннель",
+        "Взять образцы минерала",
+        "Определить природу находки",
+        "Решить: доложить или скрыть"
+      ],
+      "reward_credits": 3000,
+      "reward_xp": 200,
+      "reward_items": [
+        {
+          "name": "Образец аномального минерала",
+          "type": "quest_item"
+        }
+      ]
+    },
+    {
+      "quest_id": "SQ_ORIGIN_BELT_NOMAD",
+      "title": "Потерянный корабль клана",
+      "origin": "ORIGIN_BELT_PIRATE_PRINCE",
+      "type": "Exploration",
+      "location": "belt:ceres:docks",
+      "giver": "Старейшина клана",
+      "description": "Ковчег твоего клана — тот, что не выходил на связь неделями — молчит из пустого астероида в секторе D-7. Отец говорил: кто нашёл маяк — тот и хозяин. Проверь, чей флаг там теперь.",
+      "stages": [
+        "Арендовать челнок без вопросов",
+        "Выйти на маяк в секторе D-7",
+        "Выяснить, кто взял ковчег",
+        "Вернуть клану то, что его — или отомстить"
+      ],
+      "reward_credits": 2500,
+      "reward_xp": 300,
+      "reward_reputation": {
+        "OPA": 5
+      },
+      "origin_legacy_id": "ORIGIN_BELT_NOMAD",
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_ORIGIN_BELT_SALVAGER",
+      "title": "Приз на орбите",
+      "origin": "ORIGIN_BELT_SALVAGER",
+      "type": "Exploration",
+      "location": "belt:ceres:docks",
+      "giver": "Координатор утилизации",
+      "description": "Заброшенный транспортник на нестабильной орбите. Кто первый доберётся — тому добыча.",
+      "stages": [
+        "Зарегистрировать заявку",
+        "Стыковаться с дрейфующим кораблём",
+        "Обыскать трюм и рубку",
+        "Вернуться с добычей"
+      ],
+      "reward_credits": 4000,
+      "reward_xp": 200,
+      "reward_items": [
+        {
+          "name": "Утилизированный компонент",
+          "type": "craft_material",
+          "qty": 3
+        }
+      ]
+    },
+    {
+      "quest_id": "SQ_ORIGIN_BELT_SMUGGLER",
+      "title": "Семейный маршрут",
+      "origin": "ORIGIN_BELT_SMUGGLER",
+      "type": "Stealth",
+      "location": "belt:ceres:bazaar",
+      "giver": "Тётя Марго",
+      "description": "Семейный контрабандный маршрут перехвачен. Нужно доставить последнюю партию вручную.",
+      "stages": [
+        "Забрать груз из тайника",
+        "Пройти таможенный контроль",
+        "Избежать патруль OPA",
+        "Доставить груз покупателю"
+      ],
+      "reward_credits": 4500,
+      "reward_xp": 250,
+      "reward_reputation": {
+        "Black Lotus Triad": 10
+      },
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_ORIGIN_BELT_TRADER",
+      "title": "Сделка века",
+      "origin": "ORIGIN_BELT_TRADER",
+      "type": "Negotiation",
+      "location": "belt:ceres:bazaar",
+      "giver": "Глава торговой гильдии",
+      "description": "Крупный контракт на поставку воды для Цереры. Конкуренты играют грязно.",
+      "stages": [
+        "Изучить условия контракта",
+        "Встретиться с конкурентами",
+        "Найти преимущество",
+        "Выиграть тендер"
+      ],
+      "reward_credits": 6000,
+      "reward_xp": 250
+    },
+    {
+      "quest_id": "SQ_ORIGIN_CORP_HEIR",
+      "title": "Наследство с подвохом",
+      "origin": "ORIGIN_EARTH_CORPORATE_HEIR",
+      "type": "Investigation",
+      "location": "earth:newtokyo:government",
+      "giver": "Семейный юрист",
+      "description": "Отец оставил пакет акций с условием. Внутри — данные, которые могут уничтожить корпорацию.",
+      "stages": [
+        "Получить пакет у нотариуса",
+        "Расшифровать содержимое",
+        "Решить: использовать или уничтожить",
+        "Разобраться с последствиями"
+      ],
+      "reward_credits": 8000,
+      "reward_xp": 300,
+      "reward_reputation": {
+        "LunarTech Industries": 15,
+        "OPA": -10
+      },
+      "origin_legacy_id": "ORIGIN_EARTH_CORP_HEIR",
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_ORIGIN_DIPLOMAT",
+      "title": "Инцидент на границе",
+      "origin": "ORIGIN_EARTH_DIPLOMAT",
+      "type": "Negotiation",
+      "location": "earth:newtokyo:government",
+      "giver": "Посол ООН Земли",
+      "description": "Марсианский корабль задержан у Земли. Обе стороны на грани. Нужен посредник.",
+      "stages": [
+        "Изучить досье инцидента",
+        "Встретиться с марсианской стороной",
+        "Найти компромисс",
+        "Представить резолюцию"
+      ],
+      "reward_credits": 4000,
+      "reward_xp": 350,
+      "reward_reputation": {
+        "Earth UN": 10,
+        "Mars Republic": 5
+      },
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_ORIGIN_HACKER",
+      "title": "Цифровой скелет",
+      "origin": "ORIGIN_EARTH_HACKER_COLLECTIVE",
+      "type": "Hacking",
+      "location": "earth:newtokyo:neon",
+      "giver": "Аноним в даркнете",
+      "description": "Старый друг из хакерского коллектива пропал. Его последнее сообщение — зашифрованный адрес.",
+      "stages": [
+        "Расшифровать сообщение",
+        "Проникнуть в корпоративную сеть",
+        "Найти следы друга",
+        "Спасти или отомстить"
+      ],
+      "reward_credits": 3000,
+      "reward_xp": 250,
+      "reward_reputation": {
+        "Клан «Теневые Пальцы»": 15
+      },
+      "origin_legacy_id": "ORIGIN_EARTH_HACKER",
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_ORIGIN_JOURNALIST",
+      "title": "Невозможное интервью",
+      "origin": "ORIGIN_EARTH_JOURNALIST",
+      "type": "Investigation",
+      "location": "earth:newtokyo:neon",
+      "giver": "Главный редактор",
+      "description": "Информатор обещает взрывной материал о связях корпораций с пиратами Пояса. Если это правда — Пулитцер.",
+      "stages": [
+        "Встретиться с информатором",
+        "Проверить факты",
+        "Собрать доказательства",
+        "Опубликовать или продать"
+      ],
+      "reward_credits": 3500,
+      "reward_xp": 300
+    },
+    {
+      "quest_id": "SQ_ORIGIN_MILITARY",
+      "title": "Отцовская медаль",
+      "origin": "ORIGIN_EARTH_MILITARY_BRAT",
+      "type": "Military",
+      "location": "earth:newtokyo:industrial",
+      "giver": "Бывший сослуживец отца",
+      "description": "Отец пропал во время секретной операции 10 лет назад. Его бывший напарник знает, где искать.",
+      "stages": [
+        "Встретиться со сослуживцем",
+        "Получить координаты",
+        "Добраться до места операции",
+        "Узнать правду"
+      ],
+      "reward_credits": 2500,
+      "reward_xp": 350,
+      "reward_items": [
+        {
+          "name": "Военный жетон отца",
+          "type": "quest_item"
+        }
+      ],
+      "origin_legacy_id": "ORIGIN_EARTH_MILITARY"
+    },
+    {
+      "quest_id": "SQ_ORIGIN_REFUGEE",
+      "title": "Голоса из лагеря",
+      "origin": "ORIGIN_EARTH_REFUGEE_CAMP",
+      "type": "Survival",
+      "location": "earth:newtokyo:industrial",
+      "giver": "Сестра из лагеря (по комму)",
+      "description": "В лагере беженцев эпидемия. Медикаменты перехватывают перекупщики. Нужно достать лекарства.",
+      "stages": [
+        "Найти источник медикаментов",
+        "Купить или украсть",
+        "Доставить в лагерь",
+        "Разобраться с перекупщиками"
+      ],
+      "reward_credits": 1000,
+      "reward_xp": 300,
+      "reward_reputation": {
+        "OPA": 10
+      },
+      "origin_legacy_id": "ORIGIN_EARTH_REFUGEE",
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_ORIGIN_MARS_ENG",
+      "title": "Саботаж на станции",
+      "origin": "ORIGIN_MARS_ATMOSPHERIC_ENGINEER",
+      "type": "Investigation",
+      "location": "mars:newboston:dome",
+      "giver": "Начальник станции",
+      "description": "Атмосферный процессор повреждён. Похоже на саботаж. Кому выгодно, чтобы купол задохнулся?",
+      "stages": [
+        "Осмотреть повреждения",
+        "Временно починить систему",
+        "Найти улики",
+        "Выявить саботажника"
+      ],
+      "reward_credits": 4000,
+      "reward_xp": 300,
+      "reward_reputation": {
+        "Mars Republic": 10
+      },
+      "origin_legacy_id": "ORIGIN_MARS_ENGINEER",
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_ORIGIN_MARS_REBEL",
+      "title": "Красная заря",
+      "origin": "ORIGIN_MARS_REBEL",
+      "type": "Espionage",
+      "location": "mars:newboston:dome",
+      "giver": "Командир ячейки",
+      "description": "Новая акция сопротивления. Нужно доставить манифест на все экраны Нью-Бостона.",
+      "stages": [
+        "Получить манифест",
+        "Проникнуть на медиа-станцию",
+        "Загрузить данные в систему",
+        "Уйти незамеченным"
+      ],
+      "reward_credits": 2000,
+      "reward_xp": 300,
+      "reward_reputation": {
+        "Mars Republic": 15,
+        "Mars Fleet": -10
+      },
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_ORIGIN_MARS_TUNNEL",
+      "title": "Шёпот глубин",
+      "origin": "ORIGIN_MARS_TUNNEL_RAT",
+      "type": "Exploration",
+      "location": "mars:newboston:tunnels",
+      "giver": "Старший крыс Борис",
+      "description": "В глубоких туннелях слышен странный звук. Последний, кто ходил проверять, не вернулся.",
+      "stages": [
+        "Подготовить снаряжение",
+        "Спуститься в глубокие туннели",
+        "Найти источник звука",
+        "Вернуться живым"
+      ],
+      "reward_credits": 2500,
+      "reward_xp": 350,
+      "reward_items": [
+        {
+          "name": "Странный артефакт из глубин",
+          "type": "quest_item"
+        }
+      ],
+      "origin_legacy_id": "ORIGIN_MARS_TUNNELER"
+    },
+    {
+      "quest_id": "SQ_ORIGIN_EUROPA",
+      "title": "Сигнал из-подо льда",
+      "origin": "ORIGIN_JOVIAN_SCIENTIST",
+      "type": "Exploration",
+      "location": "ganymede:galileo:research",
+      "giver": "Доктор Вальдез (видеосвязь)",
+      "description": "Глубоководный зонд на Европе поймал аномальный сигнал. Данные нужно забрать лично — передача перехватывается.",
+      "stages": [
+        "Получить координаты зонда",
+        "Найти способ добраться до Европы",
+        "Забрать данные",
+        "Доставить без перехвата"
+      ],
+      "reward_credits": 5000,
+      "reward_xp": 350,
+      "origin_legacy_id": "ORIGIN_OUTER_EUROPA"
+    },
+    {
+      "quest_id": "SQ_ORIGIN_GANYMEDE",
+      "title": "Тепличный кризис",
+      "origin": "ORIGIN_OUTER_GANYMEDE",
+      "type": "Investigation",
+      "location": "ganymede:galileo:agri",
+      "giver": "Директор теплиц",
+      "description": "Урожай гибнет от неизвестной болезни. Если Ганимед потеряет продовольствие — голод на весь Пояс.",
+      "stages": [
+        "Осмотреть теплицы",
+        "Взять образцы",
+        "Определить причину",
+        "Найти решение или виновного"
+      ],
+      "reward_credits": 4000,
+      "reward_xp": 300,
+      "reward_reputation": {
+        "OPA": 10
+      },
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_ORIGIN_TITAN",
+      "title": "Метановый шторм",
+      "origin": "ORIGIN_MARS_DUST_STORM_SURVIVOR",
+      "type": "Survival",
+      "location": "mars:newboston:dome",
+      "giver": "Координатор убежища",
+      "description": "Пыльная буря века рвёт купол Нью-Бостона. Груз медикаментов застрял на орбите, экипаж шаттла подает сигналы бедствия. Ты выжил в прошлую бурю — теперь вести спасателей должен ты.",
+      "stages": [
+        "Найти челнок для спасательной миссии",
+        "Провести колонну через бурю",
+        "Доставить медикаменты до падения купола"
+      ],
+      "reward_credits": 3500,
+      "reward_xp": 300,
+      "origin_legacy_id": "ORIGIN_OUTER_TITAN"
+    },
+    {
+      "quest_id": "SQ_ORIGIN_VESTA",
+      "title": "Пропавший караул",
+      "origin": "ORIGIN_OUTER_VESTA",
+      "type": "Military",
+      "location": "belt:ceres:docks",
+      "giver": "Офицер связи базы Веста",
+      "description": "Караульная смена на внешнем периметре не вышла на связь. Датчики показывают движение в запретной зоне.",
+      "stages": [
+        "Получить допуск и оружие",
+        "Проверить посты караула",
+        "Найти пропавших",
+        "Нейтрализовать угрозу"
+      ],
+      "reward_credits": 3000,
+      "reward_xp": 300,
+      "reward_reputation": {
+        "Mars Fleet": 10
+      },
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_ORIGIN_AI_CHILD",
+      "title": "Код создателя",
+      "origin": "ORIGIN_UNIQUE_AI_CHILD",
+      "type": "Investigation",
+      "location": "luna:armstrong:tech",
+      "giver": "Обрывок старого кода (в памяти)",
+      "description": "В глубинах нейросети проявляется фрагмент кода от создателя. Координаты указывают на лунную лабораторию.",
+      "stages": [
+        "Расшифровать фрагмент кода",
+        "Добраться до лаборатории на Луне",
+        "Найти наследие создателя",
+        "Решить: интегрировать или удалить"
+      ],
+      "reward_credits": 3000,
+      "reward_xp": 400,
+      "reward_items": [
+        {
+          "name": "Модуль памяти создателя",
+          "type": "quest_item"
+        }
+      ]
+    },
+    {
+      "quest_id": "SQ_ORIGIN_EXPERIMENT",
+      "title": "Протокол \"Генезис\"",
+      "origin": "ORIGIN_MARS_GENETIC_EXPERIMENT",
+      "type": "Survival",
+      "location": "earth:newtokyo:industrial",
+      "giver": "Анонимное сообщение",
+      "description": "Кто-то знает, кто ты. Сообщение: «Протокол Генезис активирован. Беги.» Лаборатория хочет тебя обратно.",
+      "stages": [
+        "Скрыться от первой группы захвата",
+        "Найти источник сообщения",
+        "Узнать правду о Протоколе",
+        "Решить: бежать или бороться"
+      ],
+      "reward_credits": 2000,
+      "reward_xp": 350,
+      "reward_reputation": {
+        "Genesis Bioworks": -20
+      },
+      "origin_legacy_id": "ORIGIN_UNIQUE_EXPERIMENT",
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_ORIGIN_MAGNATE",
+      "title": "Враждебное поглощение",
+      "origin": "ORIGIN_EARTH_TECH_MOGUL",
+      "type": "Negotiation",
+      "location": "earth:newtokyo:government",
+      "giver": "Личный ассистент ИИ",
+      "description": "Конкурент готовит рейдерский захват. У тебя 72 часа, чтобы защитить компанию или обернуть игру.",
+      "stages": [
+        "Изучить план захвата",
+        "Собрать союзников среди акционеров",
+        "Нанести контрудар",
+        "Завершить сделку"
+      ],
+      "reward_credits": 10000,
+      "reward_xp": 300,
+      "reward_reputation": {
+        "LunarTech Industries": 10
+      },
+      "origin_legacy_id": "ORIGIN_UNIQUE_MAGNATE",
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_ORIGIN_SPACE_NOMAD",
+      "title": "Зов пустоты",
+      "origin": "ORIGIN_SATURN_RING_RUNNER",
+      "type": "Exploration",
+      "location": "belt:ceres:docks",
+      "giver": "Старый контрабандист с колец",
+      "description": "В наследство от семьи осталась карта маршрутов колец Сатурна. Один маршрут помечен как «никому» — туда не летал никто, и вернувшихся тоже не было. Семейный долг: узнать почему.",
+      "stages": [
+        "Расшифровать семейную карту",
+        "Достать топливо тихо",
+        "Пройти маршрут «никому»",
+        "Решить, что делать с находкой"
+      ],
+      "reward_credits": 5000,
+      "reward_xp": 400,
+      "origin_legacy_id": "ORIGIN_UNIQUE_NOMAD"
+    },
+    {
+      "quest_id": "SQ_ORIGIN_CELEBRITY",
+      "title": "Папарацци мертвеца",
+      "origin": "ORIGIN_EARTH_CELEBRITY",
+      "type": "Investigation",
+      "location": "earth:newtokyo:neon",
+      "giver": "Бывший пресс-секретарь",
+      "description": "Таблоиды вышли с твоим некрологом. Проблема: ты жив. Кто заказал «смерть» — и зачем убивают твою репутацию раньше, чем тебя?",
+      "stages": [
+        "Выяснить источник некролога",
+        "Перехватить следующую «утку»",
+        "Выйти на заказчика"
+      ],
+      "reward_credits": 6000,
+      "reward_xp": 350,
+      "reward_reputation": {
+        "Конгломерат «МедиаСфера»": -5
+      },
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_ORIGIN_PIT_FIGHTER",
+      "title": "Клетка помнит",
+      "origin": "ORIGIN_EARTH_UNDERGROUND_FIGHTER",
+      "type": "Military",
+      "location": "earth:newtokyo:industrial",
+      "giver": "Старый промоутер боёв",
+      "description": "На подпольной арене появился боец, который побеждает твоим коронным приёмом. Ты ушёл из клеток — но приём твой, и долг за него не оплачен.",
+      "stages": [
+        "Найти подражателя",
+        "Пробиться к организаторам боёв",
+        "Задать вопрос лицом к лицу"
+      ],
+      "reward_credits": 3000,
+      "reward_xp": 250,
+      "reward_reputation": {
+        "Mars Grey Syndicate": 5
+      },
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_ORIGIN_DOME_ARCHITECT",
+      "title": "Трещина длиной в жизнь",
+      "origin": "ORIGIN_MARS_DOME_ARCHITECT",
+      "type": "Investigation",
+      "location": "mars:newboston:dome",
+      "giver": "Инженер по эксплуатации",
+      "description": "В куполе, который ты проектировал, появилась микротрещина не там, где может быть. По расчётам её вообще не существует. Но датчики врут редко.",
+      "stages": [
+        "Проверить расчёты купола",
+        "Осмотреть проблемный сектор",
+        "Найти, кто менял проект"
+      ],
+      "reward_credits": 5000,
+      "reward_xp": 300,
+      "reward_reputation": {
+        "TerraForm Union": 5
+      },
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_ORIGIN_INDEPENDENCE_CELL",
+      "title": "Имя из списка",
+      "origin": "ORIGIN_MARS_INDEPENDENCE_CELL",
+      "type": "Espionage",
+      "location": "mars:newboston:tunnels",
+      "giver": "Ячейка «Красный Марс» (шифровка)",
+      "description": "В ячейке стукач. Твой куратор прислал список из трёх имён — одно из них твоё прикрытие. До контакта осталось двенадцать часов.",
+      "stages": [
+        "Проверить три имени",
+        "Определить предателя",
+        "Решить его судьбу — тихо"
+      ],
+      "reward_credits": 4000,
+      "reward_xp": 320,
+      "reward_reputation": {
+        "OPA": 8,
+        "Earth UN": -5
+      },
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_ORIGIN_TERRAFORMER",
+      "title": "Дыхание Марса",
+      "origin": "ORIGIN_MARS_TERRAFORMER",
+      "type": "Survival",
+      "location": "mars:newboston:dome",
+      "giver": "Начальник атмосферной станции",
+      "description": "Генераторы кислорода вышли на пик — и начали падать. Если станция задохнётся, проект терраформирования отбросят на поколение назад.",
+      "stages": [
+        "Диагностировать падение мощности",
+        "Спуститься в сервисные шахты",
+        "Перезапустить генераторы до рассвета"
+      ],
+      "reward_credits": 4500,
+      "reward_xp": 300,
+      "reward_reputation": {
+        "TerraForm Union": 6
+      },
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_ORIGIN_WATER_THIEF",
+      "title": "Счётчик капель",
+      "origin": "ORIGIN_MARS_WATER_THIEF",
+      "type": "Hacking",
+      "location": "mars:newboston:tunnels",
+      "giver": "Сосед по секции",
+      "description": "У корпорации новый водный аудит, и твоя врезка вот-вот всплывёт в реестре. Хуже: кто-то уже скопировал схему и продаёт её как свою.",
+      "stages": [
+        "Замести следы врезки",
+        "Вычислить самозваного «изобретателя»",
+        "Обезопасить секцию навсегда"
+      ],
+      "reward_credits": 3200,
+      "reward_xp": 260,
+      "reward_reputation": {
+        "SaturnGas Solutions": -5,
+        "Mars Grey Syndicate": 5
+      },
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_ORIGIN_NEPTUNE_OUTCAST",
+      "title": "Тридцать световых минут тишины",
+      "origin": "ORIGIN_NEPTUNE_OUTCAST",
+      "type": "Exploration",
+      "location": "belt:ceres:docks",
+      "giver": "Лоцман-отшельник",
+      "description": "Твой маяк с окраин поймал повторяющийся сигнал: чей-то SOS, застрявший в шумах Нептуна двадцать лет назад. Отправитель всё ещё ждёт.",
+      "stages": [
+        "Очистить сигнал от шумов",
+        "Вычислить точку отправки",
+        "Решить: ответить или забыть"
+      ],
+      "reward_credits": 5500,
+      "reward_xp": 340,
+      "reward_reputation": {
+        "Scientific Assembly": 5
+      },
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_ORIGIN_PLUTO_EXPLORER",
+      "title": "Карта с обратной стороны",
+      "origin": "ORIGIN_PLUTO_EXPLORER",
+      "type": "Exploration",
+      "location": "belt:ceres:docks",
+      "giver": "Хранитель архива экспедиции",
+      "description": "Экспедиция, где ты потерял всё, оставила архив. В нём — координаты объекта за гелиопаузой, вычеркнутые из всех официальных отчётов.",
+      "stages": [
+        "Получить доступ к архиву",
+        "Собрать экипаж для рейса",
+        "Дойти туда и вернуться первым"
+      ],
+      "reward_credits": 9000,
+      "reward_xp": 420,
+      "reward_reputation": {
+        "Scientific Assembly": 8
+      },
+      "tier": 5
+    }
+  ],
+  "specialization_quests": [
+    {
+      "quest_id": "SQ_SPEC_HACKER",
+      "title": "Первый взлом",
+      "specialization": "SPEC_HACKER",
+      "description": "Подпольный форум предлагает 3000₡ за взлом базы данных охранной фирмы. Простая работа... в теории.",
+      "stages": [
+        "Принять заказ",
+        "Просканировать систему",
+        "Обойти ICE",
+        "Скачать данные"
+      ],
+      "reward_credits": 3000,
+      "reward_xp": 200
+    },
+    {
+      "quest_id": "SQ_SPEC_ENGINEER",
+      "title": "Авральный ремонт",
+      "specialization": "SPEC_ENGINEER",
+      "description": "Система жизнеобеспечения в секторе сбоит. У тебя есть 4 часа и куча хлама вместо запчастей.",
+      "stages": [
+        "Диагностировать поломку",
+        "Найти материалы",
+        "Собрать замену из подручных средств",
+        "Запустить систему"
+      ],
+      "reward_credits": 2500,
+      "reward_xp": 250
+    },
+    {
+      "quest_id": "SQ_SPEC_SCIENTIST",
+      "title": "Аномальный образец",
+      "specialization": "SPEC_SCIENTIST",
+      "description": "Лаборатория получила образец из Пояса. Под микроскопом он... двигается. Нужно понять, что это.",
+      "stages": [
+        "Провести первичный анализ",
+        "Задокументировать поведение",
+        "Определить природу",
+        "Написать отчёт (или скрыть данные)"
+      ],
+      "reward_credits": 3000,
+      "reward_xp": 300
+    },
+    {
+      "quest_id": "SQ_SPEC_QUANTUM",
+      "title": "Квантовый призрак",
+      "specialization": "SPEC_QUANTUM_HACKER",
+      "description": "В квантовой сети появился «призрак» — процесс, который никто не запускал. Он копирует себя.",
+      "stages": [
+        "Отследить квантовые аномалии",
+        "Изолировать процесс",
+        "Расшифровать его код",
+        "Уничтожить или изучить"
+      ],
+      "reward_credits": 4000,
+      "reward_xp": 300
+    },
+    {
+      "quest_id": "SQ_SPEC_SOLDIER",
+      "title": "Грязная работа",
+      "specialization": "SPEC_SOLDIER",
+      "description": "ЧВК набирает людей для зачистки заброшенного склада. Говорят, там просто мародёры. Говорят.",
+      "stages": [
+        "Явиться на брифинг",
+        "Зачистить внешний периметр",
+        "Войти в склад",
+        "Разобраться с тем, что внутри"
+      ],
+      "reward_credits": 3500,
+      "reward_xp": 250
+    },
+    {
+      "quest_id": "SQ_SPEC_ASSASSIN",
+      "title": "Тихий контракт",
+      "specialization": "SPEC_CORPORATE_ASSASSIN",
+      "description": "Цель — корпоративный менеджер среднего звена. Заказчик хочет, чтобы это выглядело как несчастный случай.",
+      "stages": [
+        "Изучить распорядок цели",
+        "Найти уязвимое окно",
+        "Выполнить контракт",
+        "Зачистить следы"
+      ],
+      "reward_credits": 5000,
+      "reward_xp": 200,
+      "reward_reputation": {
+        "Shadow Consortium": 10
+      },
+      "specialization_legacy_id": "SPEC_ASSASSIN",
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_SPEC_BOUNTY",
+      "title": "Первая голова",
+      "specialization": "SPEC_BOUNTY_HUNTER",
+      "description": "Беглый должник скрывается в трущобах. Награда: живым — 4000₡, мёртвым — 2000₡.",
+      "stages": [
+        "Получить досье на цель",
+        "Выследить в трущобах",
+        "Поймать или нейтрализовать",
+        "Доставить заказчику"
+      ],
+      "reward_credits": 4000,
+      "reward_xp": 250
+    },
+    {
+      "quest_id": "SQ_SPEC_NEGOTIATOR",
+      "title": "Спор о воде",
+      "specialization": "SPEC_NEGOTIATOR",
+      "description": "Два клана делят водяную скважину. Оба готовы стрелять. Нужен человек, который заставит их говорить.",
+      "stages": [
+        "Выслушать обе стороны",
+        "Найти общий интерес",
+        "Предложить компромисс",
+        "Закрепить соглашение"
+      ],
+      "reward_credits": 3000,
+      "reward_xp": 300,
+      "reward_reputation": {
+        "OPA": 5
+      },
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_SPEC_TRADER",
+      "title": "Маршрут прибыли",
+      "specialization": "SPEC_TRADER",
+      "description": "Слух: на Ганимеде дефицит электроники, а на Церере её с избытком. Кто первый доставит — озолотится.",
+      "stages": [
+        "Закупить электронику на Церере",
+        "Найти транспорт",
+        "Доставить на Ганимед",
+        "Продать с наценкой"
+      ],
+      "reward_credits": 6000,
+      "reward_xp": 200
+    },
+    {
+      "quest_id": "SQ_SPEC_ARTIST",
+      "title": "Запрещённый перформанс",
+      "specialization": "SPEC_EMOTION_SCULPTOR",
+      "description": "Подпольная арт-сцена приглашает на перформанс в военной зоне. Риск: арест. Награда: слава.",
+      "stages": [
+        "Подготовить выступление",
+        "Проникнуть в запретную зону",
+        "Выступить перед аудиторией",
+        "Уйти до появления охраны"
+      ],
+      "reward_credits": 2000,
+      "reward_xp": 250,
+      "specialization_legacy_id": "SPEC_ARTIST"
+    },
+    {
+      "quest_id": "SQ_SPEC_FIXER",
+      "title": "Три стороны сделки",
+      "specialization": "SPEC_SOCIAL_ENGINEER",
+      "description": "Клиент A хочет оружие у клиента B, но B не продаст A. Зато продаст тебе. Комиссия — 20%.",
+      "stages": [
+        "Встретиться с клиентом A",
+        "Договориться с клиентом B",
+        "Организовать передачу",
+        "Получить свою долю"
+      ],
+      "reward_credits": 4000,
+      "reward_xp": 200,
+      "specialization_legacy_id": "SPEC_FIXER"
+    },
+    {
+      "quest_id": "SQ_SPEC_PILOT",
+      "title": "Девичий рейс",
+      "specialization": "SPEC_PILOT",
+      "description": "Первый контракт: доставить груз с Цереры на Ганимед. Простой рейс. Если не считать пиратов на маршруте.",
+      "stages": [
+        "Принять груз",
+        "Проложить маршрут",
+        "Преодолеть опасный участок",
+        "Доставить в целости"
+      ],
+      "reward_credits": 3500,
+      "reward_xp": 250
+    },
+    {
+      "quest_id": "SQ_SPEC_SMUGGLER",
+      "title": "Под радаром",
+      "specialization": "SPEC_VOID_MERCHANT",
+      "description": "Партия медикаментов нужна на Марсе, но эмбарго. Заплатят тройную цену за доставку мимо таможни.",
+      "stages": [
+        "Забрать партию",
+        "Подготовить тайник на корабле",
+        "Пройти таможенный досмотр",
+        "Доставить получателю"
+      ],
+      "reward_credits": 5000,
+      "reward_xp": 250,
+      "specialization_legacy_id": "SPEC_SMUGGLER"
+    },
+    {
+      "quest_id": "SQ_SPEC_MEDIC",
+      "title": "Клятва Гиппократа",
+      "specialization": "SPEC_MEDIC",
+      "description": "Раненый человек у твоей двери. Огнестрельное. Если вызвать скорую — его арестуют. Если не вызвать — он умрёт.",
+      "stages": [
+        "Оценить ранение",
+        "Извлечь пулю",
+        "Стабилизировать пациента",
+        "Решить: отпустить или сдать"
+      ],
+      "reward_credits": 2000,
+      "reward_xp": 300
+    },
+    {
+      "quest_id": "SQ_SPEC_GENE",
+      "title": "Чёрный геном",
+      "specialization": "SPEC_GENE_SCULPTOR",
+      "description": "Клиент хочет нелегальную генетическую модификацию. Высокая оплата, но если узнают — тюрьма.",
+      "stages": [
+        "Встретиться с клиентом",
+        "Получить образец ДНК",
+        "Разработать модификацию",
+        "Провести процедуру"
+      ],
+      "reward_credits": 6000,
+      "reward_xp": 250,
+      "reward_reputation": {
+        "Genesis Bioworks": -5
+      },
+      "tier": 5
+    },
+    {
+      "quest_id": "SQ_SPEC_SPY",
+      "title": "Двойное дно",
+      "specialization": "SPEC_SPY",
+      "description": "Первое задание от куратора: внедриться на корпоративную вечеринку и скопировать данные с терминала CEO.",
+      "stages": [
+        "Получить приглашение (фальшивое)",
+        "Проникнуть на вечеринку",
+        "Добраться до терминала",
+        "Уйти не раскрытым"
+      ],
+      "reward_credits": 4000,
+      "reward_xp": 300
+    },
+    {
+      "quest_id": "SQ_SPEC_DETECTIVE",
+      "title": "Первое дело",
+      "specialization": "SPEC_PSYCHIC_INVESTIGATOR",
+      "description": "Женщина ищет пропавшего мужа. Полиция отказала. Последний раз его видели в Нижних Уровнях.",
+      "stages": [
+        "Опросить жену",
+        "Проверить последнее местоположение",
+        "Найти свидетелей",
+        "Раскрыть правду"
+      ],
+      "reward_credits": 2500,
+      "reward_xp": 300,
+      "specialization_legacy_id": "SPEC_INVESTIGATOR"
+    },
+    {
+      "quest_id": "SQ_SPEC_VOID_PRIEST",
+      "title": "Видение в пустоте",
+      "specialization": "SPEC_VOID_PRIEST",
+      "description": "Во время медитации — образ: горящая станция, число 2387, лицо. Кто-то просит о помощи через пустоту.",
+      "stages": [
+        "Медитировать для уточнения видения",
+        "Определить станцию",
+        "Добраться и найти человека",
+        "Понять смысл видения"
+      ],
+      "reward_credits": 2000,
+      "reward_xp": 400
+    },
+    {
+      "quest_id": "SQ_SPEC_MEMORY",
+      "title": "Украденное воспоминание",
+      "specialization": "SPEC_MEMORY_THIEF",
+      "description": "Клиент просит извлечь воспоминание умирающего — координаты спрятанного сокровища. Этично? Нет. Прибыльно? Да.",
+      "stages": [
+        "Встретиться с клиентом",
+        "Получить доступ к пациенту",
+        "Извлечь воспоминание",
+        "Решить: отдать клиенту или оставить себе"
+      ],
+      "reward_credits": 5000,
+      "reward_xp": 300
+    },
+    {
+      "quest_id": "SQ_SPEC_ASTEROID_WRANGLER",
+      "title": "Оседлать камень",
+      "specialization": "SPEC_ASTEROID_WRANGLER",
+      "description": "Частный клиент хочет астероид класса C, живой, не из реестра. Проблема: камень уже оседлан — пиратскими маяками.",
+      "stages": [
+        "Найти подходящий астероид",
+        "Обезвредить чужие маяки",
+        "Провести захват и доставку"
+      ],
+      "reward_credits": 7000,
+      "reward_xp": 320
+    },
+    {
+      "quest_id": "SQ_SPEC_BIOWEAPON",
+      "title": "Пробирка с адресатом",
+      "specialization": "SPEC_BIOWEAPON_DESIGNER",
+      "description": "Твой старый штамм всплыл на чёрном рынке в чужих руках. Тот, кто его украл, не знает одного: у тебя есть ключ к противоядию. Пока это твоё главное преимущество.",
+      "stages": [
+        "Подтвердить утечку по геном-метке",
+        "Выйти на продавца",
+        "Решить: уничтожить образец или перекупить"
+      ],
+      "reward_credits": 8000,
+      "reward_xp": 340
+    },
+    {
+      "quest_id": "SQ_SPEC_CONSC_TRADER",
+      "title": "Сознание с дефектом",
+      "specialization": "SPEC_CONSCIOUSNESS_TRADER",
+      "description": "Купленный на аукционе разум ведёт себя странно: он узнаёт тебя. И утверждает, что продан добровольно — чтобы ты нашёл его тело.",
+      "stages": [
+        "Проверить подлинность воспоминаний",
+        "Найти тело носителя",
+        "Исполнить или расторгнуть «добровольную» сделку"
+      ],
+      "reward_credits": 8500,
+      "reward_xp": 350
+    },
+    {
+      "quest_id": "SQ_SPEC_CORP_SAMURAI",
+      "title": "Церемония сопровождения",
+      "specialization": "SPEC_CORPORATE_SAMURAI",
+      "description": "Совет директоров летит на переговоры, и одна из сторон уже оплатила «инцидент». Контракт простой: довезти совет живым. Сложность тоже простая.",
+      "stages": [
+        "Проверить маршрут на засаду",
+        "Провести конвой через три контрольные точки",
+        "Ответить на инцидент по протоколу"
+      ],
+      "reward_credits": 9000,
+      "reward_xp": 360
+    },
+    {
+      "quest_id": "SQ_SPEC_DIGITAL_GHOST",
+      "title": "Я есть, меня нет",
+      "specialization": "SPEC_DIGITAL_GHOST",
+      "description": "Тебя стёрли из всех реестров: биометрия, кредитная история, даже школьные фото. Кто-то очень последовательно удаляет тебя из мира. Пора узнать — зачем оставили одну запись в морге.",
+      "stages": [
+        "Составить карту своих следов",
+        "Найти единственную нестертую запись",
+        "Перехватить процесс удаления"
+      ],
+      "reward_credits": 7500,
+      "reward_xp": 330
+    },
+    {
+      "quest_id": "SQ_SPEC_DIM_SCOUT",
+      "title": "Дверь номер ноль",
+      "specialization": "SPEC_DIMENSIONAL_SCOUT",
+      "description": "Разведзонд вернулся из прыжка с данными, которых не мог собрать: съёмка Земли до её основания. Координаты обратной двери стерты. Кроме одной копии — в твоей голове.",
+      "stages": [
+        "Стабилизировать фрагменты данных",
+        "Локализовать дверь номер ноль",
+        "Разведка первым заходом"
+      ],
+      "reward_credits": 10000,
+      "reward_xp": 380
+    },
+    {
+      "quest_id": "SQ_SPEC_DREAM_ARCH",
+      "title": "Спящий район",
+      "specialization": "SPEC_DREAM_ARCHITECT",
+      "description": "Жильцы одного блока не просыпаются третий день — все видят один и тот же город. Чужой архитектор строит сон поверх сна, и фундамент уже твой проект.",
+      "stages": [
+        "Войти в общий сон",
+        "Вычислить чужой каркас",
+        "Отстроить выход — для всех сразу"
+      ],
+      "reward_credits": 7800,
+      "reward_xp": 340
+    },
+    {
+      "quest_id": "SQ_SPEC_EMOTION_DEALER",
+      "title": "Партия страха",
+      "specialization": "SPEC_EMOTION_DEALER",
+      "description": "Синтетическая радость из твоей последней партии убила клиента. Полиция говорит — передозировка. Ты знаешь свою химию: в флаконе было что-то ещё.",
+      "stages": [
+        "Изъять партию до продажи",
+        "Провести анализ примеси",
+        "Найти, кто разбавил товар"
+      ],
+      "reward_credits": 6500,
+      "reward_xp": 310
+    },
+    {
+      "quest_id": "SQ_SPEC_GRAVITY_DANCER",
+      "title": "Последний дуэт",
+      "specialization": "SPEC_GRAVITY_DANCER",
+      "description": "Твой партнёр упал во время номера — гравигенераторы зала дают перегрузки случайными всплесками. Скачки начались ровно с того дня, как зал сменил владельца.",
+      "stages": [
+        "Задокументировать всплески",
+        "Добраться до машинного зала",
+        "Ставить прощальный номер на исправной сцене"
+      ],
+      "reward_credits": 6000,
+      "reward_xp": 300
+    },
+    {
+      "quest_id": "SQ_SPEC_GRAVITY_ENG",
+      "title": "Гравитация напрокат",
+      "specialization": "SPEC_GRAVITY_ENGINEER",
+      "description": "На доке Кереса коллапсирует гравитационная плита: грузы рвёт с креплений, счёт жертв идёт на часы. Официальные инженеры требуют эвакуации. Ты требуешь инструменты.",
+      "stages": [
+        "Локализовать разрыв поля",
+        "Стабилизировать плиту",
+        "Вычислить причину скачка"
+      ],
+      "reward_credits": 8200,
+      "reward_xp": 350
+    },
+    {
+      "quest_id": "SQ_SPEC_MIND_ARCH",
+      "title": "Памятник из памяти",
+      "specialization": "SPEC_MIND_ARCHAEOLOGIST",
+      "description": "В мозгу умершего пилота найден последний рейс — и он не совпадает с бортовым журналом. Заказчик хочет правду; покойник, кажется, тоже.",
+      "stages": [
+        "Синхронизироваться с архивом памяти",
+        "Сопоставить расхождение с журналом",
+        "Опубликовать или похоронить правду"
+      ],
+      "reward_credits": 7200,
+      "reward_xp": 330
+    },
+    {
+      "quest_id": "SQ_SPEC_NANO_SURGEON",
+      "title": "Пациент без имени",
+      "specialization": "SPEC_NANO_SURGEON",
+      "description": "В твою клинику принесли умирающего без документов: наниты в его крови — твоя разработка, украденная год назад. Он знает, кто их вынес.",
+      "stages": [
+        "Стабилизировать пациента",
+        "Считать лог нанитов",
+        "Выбрать: лечить дальше или сдать властям"
+      ],
+      "reward_credits": 7000,
+      "reward_xp": 320
+    },
+    {
+      "quest_id": "SQ_SPEC_QUANTUM_ASSASSIN",
+      "title": "Два выстрела в одном",
+      "specialization": "SPEC_QUANTUM_ASSASSIN",
+      "description": "Контракт странный: цель должна умереть вчера. Буквально — заказчик требует попадание в прошлое состояние цели. Квантовая механика такое умеет. Один раз.",
+      "stages": [
+        "Рассчитать окно суперпозиции",
+        "Подготовить двойное состояние",
+        "Исполнить контракт во времени"
+      ],
+      "reward_credits": 11000,
+      "reward_xp": 400
+    },
+    {
+      "quest_id": "SQ_SPEC_REALITY_HACKER",
+      "title": "Патч к вселенной",
+      "specialization": "SPEC_REALITY_HACKER",
+      "description": "В лаборатории «Аурелиус» физика даёт сбой: вода кипит при 4°C, свет падает вверх. Ты — тот, кто умеет откатывать такие патчи. Вопрос лишь, кто их ставил.",
+      "stages": [
+        "Зафиксировать границы аномалии",
+        "Найти источник изменения",
+        "Откатить реальность — аккуратно"
+      ],
+      "reward_credits": 9500,
+      "reward_xp": 370
+    },
+    {
+      "quest_id": "SQ_SPEC_TIME_DILATOR",
+      "title": "Минута за миллион",
+      "specialization": "SPEC_TIME_DILATOR",
+      "description": "Банк «Гелиос» горит — в замедленном времени. Внутри сейфовой ячейки застрял клиент: снаружи прошли сутки, у него — четыре секунды. Вытащи его, пока его время не кончилось.",
+      "stages": [
+        "Синхронизировать контур замедления",
+        "Войти в растянутую секунду",
+        "Вынести клиента до коллапса поля"
+      ],
+      "reward_credits": 10500,
+      "reward_xp": 390
+    },
+    {
+      "quest_id": "SQ_SPEC_VOID_WALKER",
+      "title": "Шёпот за гелиопаузой",
+      "specialization": "SPEC_VOID_WALKER",
+      "description": "Зонд на краю системы передал сорок секунд записи: не шум, не сигнал — ритм. Твой институт всё списал на помехи. Но помехи не повторяются с интервалом в человеческий пульс.",
+      "stages": [
+        "Получить полную запись",
+        "Согласовать рейс за гелиопаузу",
+        "Услышать источник — и вернуться"
+      ],
+      "reward_credits": 12000,
+      "reward_xp": 420
+    }
+  ],
+  "universal_quests": [
+    {
+      "quest_id": "SQ_UNI_DEBT",
+      "title": "Долг",
+      "description": "Ты должен 5000₡ неприятному человеку. Срок — 7 дней. Потом начнут отрезать пальцы.",
+      "stages": [
+        "Получить напоминание от кредитора",
+        "Найти способ заработать",
+        "Собрать сумму",
+        "Вернуть долг (или разобраться иначе)"
+      ],
+      "reward_credits": 0,
+      "reward_xp": 200,
+      "notes": "Этот квест создаёт давление: нужны деньги СЕЙЧАС. Толкает к действию."
+    },
+    {
+      "quest_id": "SQ_UNI_ROOMMATE",
+      "title": "Сосед по жилблоку",
+      "description": "Твой сосед не появляется уже 3 дня. В его комнате свет мигает по ночам.",
+      "stages": [
+        "Заглянуть в комнату",
+        "Обнаружить улики",
+        "Решить что делать",
+        "Разобраться с последствиями"
+      ],
+      "reward_credits": 1000,
+      "reward_xp": 150
+    },
+    {
+      "quest_id": "SQ_UNI_OFFER",
+      "title": "Предложение, от которого",
+      "description": "Незнакомец в баре. Конверт на столе. «Это адрес. Появись завтра в полночь. Будет выгодно.»",
+      "stages": [
+        "Решить: идти или нет",
+        "Появиться по адресу",
+        "Узнать суть предложения",
+        "Принять или отказаться"
+      ],
+      "reward_credits": 3000,
+      "reward_xp": 200,
+      "notes": "Точка входа в основной сюжет. Квестодатель может быть связан с любой фракцией."
+    },
+    {
+      "quest_id": "SQ_UNI_PACKAGE",
+      "title": "Доставка без вопросов",
+      "description": "Простая работа: отнести пакет из точки A в точку B. Не открывать. Не спрашивать. 1500₡.",
+      "stages": [
+        "Забрать пакет",
+        "Доставить по адресу",
+        "Получить оплату"
+      ],
+      "reward_credits": 1500,
+      "reward_xp": 100,
+      "notes": "Лёгкий стартовый квест для разогрева. Может осложниться."
+    },
+    {
+      "quest_id": "SQ_UNI_WITNESS",
+      "title": "Свидетель",
+      "description": "Ты видел, как человека затащили в фургон посреди бела дня. Номер фургона запомнил.",
+      "stages": [
+        "Решить: вмешаться или забыть",
+        "Если да: найти фургон по номеру",
+        "Выследить похитителей",
+        "Спасти или найти тело"
+      ],
+      "reward_credits": 2000,
+      "reward_xp": 250
+    }
+  ],
+  "formative_years_quests": [
+    {
+      "quest_id": "SQ_FY_GHOST_ACADEMY",
+      "title": "Призраки академии",
+      "required_lifepath": [
+        "FY_MARS_ACADEMY"
+      ],
+      "type": "Investigation",
+      "priority": "Личный",
+      "location": "mars:newboston:military_academy",
+      "quest_giver": "Бывший однокурсник",
+      "description": "Ваш бывший инструктор по тактике исчез при загадочных обстоятельствах. Официально - несчастный случай, но вы знаете лучше.",
+      "objectives": [
+        "Изучить последние записи инструктора",
+        "Найти свидетелей его последнего дня",
+        "Проследить связи с подпольными операциями",
+        "Раскрыть правду о его судьбе"
+      ],
+      "rewards": {
+        "credits": 20000,
+        "loyalty": "+10 Mars Fleet (если раскрыта правда)",
+        "information": "Компромат на высокопоставленного офицера"
+      },
+      "dialogue_hooks": {
+        "academy_bond": "\"Помните, как инструктор Чен говорил: 'Тактика без чести - это просто убийство'?\"",
+        "military_code": "\"В академии нас учили никогда не бросать товарищей. Это касается и мёртвых.\"",
+        "context_bonus": "FY_MARS_ACADEMY дает +2 к получению информации от военных NPC"
+      },
+      "integration": {
+        "worldbuild_connections": [
+          "mars:newboston:military_academy"
+        ],
+        "faction_involvement": [
+          "Mars Fleet",
+          "Mars Grey Syndicate"
+        ],
+        "npc_contacts": [
+          "Admiral Karl Van Dirk"
+        ]
+      },
+      "migrated_from": "SQ_FY_001"
+    },
+    {
+      "quest_id": "SQ_FY_CORP_GAMES",
+      "title": "Корпоративные игры",
+      "required_lifepath": [
+        "FY_CORP_INTERNSHIP"
+      ],
+      "type": "Espionage",
+      "priority": "Личный",
+      "location": "earth:newtokyo:protogen_tower",
+      "quest_giver": "Бывший наставник",
+      "description": "Ваш наставник по стажировке попал в опалу после провала крупного проекта. Он просит помочь восстановить репутацию.",
+      "objectives": [
+        "Получить доступ к архивам проекта 'Phoenix'",
+        "Найти доказательства саботажа конкурентов",
+        "Нейтрализовать компромат на наставника",
+        "Помочь ему вернуть былое влияние"
+      ],
+      "rewards": {
+        "credits": 35000,
+        "influence": "+20 Protogen OR +15 конкурирующая корпорация",
+        "access": "Корпоративные секреты высокого уровня"
+      },
+      "dialogue_hooks": {
+        "corporate_speak": "\"В корпоративном мире важно не что ты знаешь, а что ты можешь доказать.\"",
+        "insider_knowledge": "\"Во время стажировки я видел документы, которые могли бы многих удивить...\"",
+        "context_bonus": "FY_CORP_INTERNSHIP дает +3 к хакингу корпоративных систем и +2 к дипломатии с корпорациями"
+      },
+      "integration": {
+        "worldbuild_connections": [
+          "earth:newtokyo:protogen_tower"
+        ],
+        "faction_involvement": [
+          "Protogen",
+          "Helios Energy Corp.",
+          "Shadow Consortium"
+        ],
+        "npc_contacts": [
+          "Executive Director Victoria Chang"
+        ]
+      },
+      "migrated_from": "SQ_FY_002"
+    },
+    {
+      "quest_id": "SQ_FY_BLOOD_DUST",
+      "title": "Кровь и пыль",
+      "required_lifepath": [
+        "FY_SLUMS_GANGWAR"
+      ],
+      "type": "Combat",
+      "priority": "Личный",
+      "location": "earth:megacity:lower_levels",
+      "quest_giver": "Выживший соратник",
+      "description": "Война банд закончилась, но один из боссов решил свести старые счёты. Ваша голова оценена в 50,000 кредитов.",
+      "objectives": [
+        "Выяснить, кто заказал вашу смерть",
+        "Собрать союзников среди старых друзей",
+        "Нанести превентивный удар по киллерам",
+        "Разрешить конфликт раз и навсегда"
+      ],
+      "rewards": {
+        "credits": 15000,
+        "heat": "-10 HEAT (local) при мирном решении, +15 при силовом",
+        "contacts": "Связи в криминальном мире"
+      },
+      "dialogue_hooks": {
+        "street_tough": "\"На улице уважают силу и верность. Предателей здесь не забывают и не прощают.\"",
+        "survival_instinct": "\"Я научился спать с одним открытым глазом. В трущобах это единственный способ проснуться.\"",
+        "context_bonus": "FY_SLUMS_GANGWAR дает +2 к запугиванию и +3 к уличным контактам"
+      },
+      "integration": {
+        "worldbuild_connections": [
+          "earth:megacity:lower_levels"
+        ],
+        "faction_involvement": [
+          "Silver Serpents",
+          "Corporate Security"
+        ],
+        "npc_contacts": [
+          "Various Gang Leaders"
+        ]
+      },
+      "migrated_from": "SQ_FY_003"
+    }
+  ],
+  "local_quests": [
+    {
+      "quest_id": "SQ_LOCAL_NEW_TOKYO",
+      "title": "Пропавшие в Нью-Токио",
+      "available_locations": [
+        "earth:newtokyo:government_sector",
+        "earth:newtokyo:protogen_tower"
+      ],
+      "type": "Investigation",
+      "priority": "Побочный",
+      "quest_giver": "Обеспокоенный гражданин",
+      "description": "Несколько человек пропали в правительственном секторе. Официальные службы неэффективны.",
+      "objectives": [
+        "Опросить свидетелей последнего появления пропавших",
+        "Изучить камеры наблюдения",
+        "Проследить до места исчезновения",
+        "Выяснить правду"
+      ],
+      "rewards": {
+        "credits": 10000,
+        "influence": "+5 местная репутация"
+      },
+      "migrated_from": "SQ_LOCAL_001"
+    }
+  ],
+  "priority": 40,
+  "merged_from": {
+    "STARTING_QUESTS.json": "числовые id переведены на именные; 4 уникальных квеста перенесены"
+  },
+  "early_quests": [
+    {
+      "quest_id": "SQ_EARLY_WATER",
+      "title": "Долг за глоток",
+      "type": "Negotiation",
+      "location": "mars:newboston:tunnels",
+      "giver": "Сосед по секции Тед",
+      "origin": null,
+      "description": "Тед должен корпорации за воду для дочери. Отсрочка кончается завтра. Он просит одолжить — или пойти с ним «поговорить» с коллектором.",
+      "stages": [
+        "Выбрать: заплатить / пойти вместе / найти третий путь",
+        "Разобраться с коллектором",
+        "Получить последствия"
+      ],
+      "branches": [
+        {
+          "if": "заплатил сам",
+          "effect": {
+            "credits": -1200
+          },
+          "outcome": "Тед должен вам. Соседи заметили — репутация в секции растёт.",
+          "rep": {
+            "NF15": -3
+          }
+        },
+        {
+          "if": "пошёл вместе",
+          "skill_check": {
+            "skill": "negotiation",
+            "dc": 12
+          },
+          "outcome_success": "Коллектор списал долг, но запомнил лицо.",
+          "rep": {
+            "NF15": -8
+          }
+        },
+        {
+          "if": "провалили переговоры",
+          "effect": {
+            "hp": -5
+          },
+          "outcome": "Драка. Тед в больнице, долг вырос, вас ищут.",
+          "rep": {
+            "NF15": -12
+          }
+        }
+      ],
+      "reward_credits": 800,
+      "reward_xp": 150
+    },
+    {
+      "quest_id": "SQ_EARLY_CHIP",
+      "title": "Чужой чип",
+      "type": "Hacking",
+      "location": "earth:newtokyo:neon",
+      "giver": "Найден в кармане куртки с барахолки",
+      "origin": null,
+      "description": "В купленной куртке — чип с координатами и таймером на 48 часов. Кто-то очень хочет, чтобы кто-то пришёл по этим координатам. Может, вы.",
+      "stages": [
+        "Решить: идти / продать чип / вскрыть и изучить",
+        "Прибыть или избавиться",
+        "Разобраться с отправителем"
+      ],
+      "branches": [
+        {
+          "if": "пришёл по координатам",
+          "outcome": "Тайник курьера. Внутри — данные, за которыми уже пришли двое. Бой или бег."
+        },
+        {
+          "if": "продал чип",
+          "effect": {
+            "credits": 2500
+          },
+          "outcome": "Через сутки покупателя находят мёртвым. Продавец запомнил ваше лицо.",
+          "rep": {
+            "PMC1": -5
+          }
+        },
+        {
+          "if": "вскрыл чип",
+          "skill_check": {
+            "skill": "hacking",
+            "dc": 14
+          },
+          "outcome_success": "Трассировка отправителя: мелкий фиксёр из Нижних уровней.",
+          "rep": {
+            "NF22": 5
+          }
+        }
+      ],
+      "reward_credits": 1200,
+      "reward_xp": 180
+    },
+    {
+      "quest_id": "SQ_EARLY_MED",
+      "title": "Ночная смена",
+      "type": "Survival",
+      "location": "mars:newboston:dome",
+      "giver": "Дежурная медсестра Рита",
+      "origin": null,
+      "description": "В клинику после аварии грузовика привезли шестерых, а медикаментов на троих. Рита просит помочь — решать, кому достанется последний стимулятор, придётся вам.",
+      "stages": [
+        "Стабилизировать пациентов",
+        "Выбрать, кто получит препарат",
+        "Жить с выбором"
+      ],
+      "branches": [
+        {
+          "if": "спасли молодого шахтёра",
+          "outcome": "Он выживет и запомнит. Через неделю пришлёт подарок и наводку на работу.",
+          "rep": {
+            "NF7": 6
+          }
+        },
+        {
+          "if": "спасли корпоративного клерка",
+          "effect": {
+            "credits": 3000
+          },
+          "outcome": "Клерк благодарен деньгами. Медсестра — нет: она видела, кого вы выбрали.",
+          "rep": {
+            "SC12": -4
+          }
+        },
+        {
+          "if": "отказались выбирать",
+          "skill_check": {
+            "skill": "medicine",
+            "dc": 15
+          },
+          "outcome_success": "Врач успевает к третьему — все живы. Чудо, но теперь Рита знает, что вы умеете.",
+          "rep": {
+            "SC12": 8
+          }
+        }
+      ],
+      "reward_credits": 1000,
+      "reward_xp": 200
+    },
+    {
+      "quest_id": "SQ_EARLY_RUMOR",
+      "title": "Слух на три стороны",
+      "type": "Investigation",
+      "location": "belt:ceres:docks",
+      "giver": "Бармен «Пустой бочки»",
+      "origin": null,
+      "description": "Три человека за неделю спрашивали про один и тот же контейнер со сбитого дрона. Бармен продаёт их описания — всем. Включая вас.",
+      "stages": [
+        "Купить все три описания",
+        "Найти контейнер первым",
+        "Решить судьбу содержимого"
+      ],
+      "branches": [
+        {
+          "if": "контейнер с оружием",
+          "outcome": "Продать PMC22 (страховка не покроет) или сдать властям.",
+          "rep": {
+            "PMC22": 6,
+            "NF8": -4
+          }
+        },
+        {
+          "if": "контейнер с данными",
+          "outcome": "Данные о тайных маршрутах конвоев. Протокол заплатит за уничтожение, пираты — за копию.",
+          "rep": {
+            "PMC22": 4,
+            "NF10": -4
+          }
+        },
+        {
+          "if": "продали наводку всем троим",
+          "effect": {
+            "credits": 4000
+          },
+          "outcome": "Стрельба в доках — ваша вина формально. Совесть — ваша проблема.",
+          "rep": {
+            "NF7": -6
+          }
+        }
+      ],
+      "reward_credits": 1500,
+      "reward_xp": 220
+    },
+    {
+      "quest_id": "SQ_EARLY_LANDLORD",
+      "title": "Хозяин и крысы",
+      "type": "Investigation",
+      "location": "earth:newtokyo:lower_levels",
+      "giver": "Арендодатель Мось",
+      "origin": null,
+      "description": "В вашем доме пропала вода. Мось говорит: трубы, ремонт, все платят. Соседи шепчутся: Мось просто хочет выселить этаж и снести его под склад.",
+      "stages": [
+        "Проверить трубы самостоятельно",
+        "Найти документы на здание",
+        "Выбрать способ давления"
+      ],
+      "branches": [
+        {
+          "if": "нашли фальшивый акт осмотра",
+          "skill_check": {
+            "skill": "investigation",
+            "dc": 13
+          },
+          "outcome_success": "Акт подделан. С этим можно идти в муниципалитет — или шантажировать Мося.",
+          "rep": {
+            "CONG49": 0
+          }
+        },
+        {
+          "if": "шантаж",
+          "effect": {
+            "credits": 2000,
+            "rent_free_months": 3
+          },
+          "outcome": "Мось платит молча. Но люди, которые умеют стирать документы, узнали о вас.",
+          "rep": {
+            "CONG49": -6
+          }
+        },
+        {
+          "if": "официальный путь",
+          "outcome": "Медленно, скучно, вода вернулась. Соседи запомнили того, кто сделал по правилам.",
+          "rep": {
+            "NF17": 4
+          }
+        }
+      ],
+      "reward_credits": 900,
+      "reward_xp": 190
+    },
+    {
+      "quest_id": "SQ_EARLY_COURIER",
+      "title": "Посылка без вопросов",
+      "type": "Trade",
+      "location": "belt:ceres:docks",
+      "giver": "Диспетчер Лунн",
+      "origin": null,
+      "description": "Доставить запечатанный контейнер с дока 7 в отель «Гравий», не открывая. Оплата двойная. Вопросы не входят в тариф.",
+      "stages": [
+        "Забрать контейнер",
+        "Довести (сканеры на пути)",
+        "Получить оплату"
+      ],
+      "branches": [
+        {
+          "if": "доставил не открывая",
+          "outcome": "Чисто. Диспетчер доволен, вас внесли в список надёжных.",
+          "rep": {
+            "NF22": 6
+          }
+        },
+        {
+          "if": "сканер на доке — пронести мимо",
+          "skill_check": {
+            "skill": "stealth",
+            "dc": 13
+          },
+          "outcome_success": "Пронесли. Но охранник запомнил походку.",
+          "rep": {
+            "NF17": -3
+          }
+        },
+        {
+          "if": "открыл контейнер",
+          "outcome": "Внутри — живой организм в стазисе. Теперь вы знаете слишком много, и это меняет цену всего.",
+          "rep": {
+            "NF22": -10
+          }
+        }
+      ],
+      "reward_credits": 2000,
+      "reward_xp": 200
+    },
+    {
+      "quest_id": "SQ_EARLY_BLACKOUT",
+      "title": "Час темноты",
+      "type": "Hacking",
+      "location": "earth:newtokyo:industrial",
+      "giver": "Оператор подстанции Ким",
+      "origin": null,
+      "description": "Отключение света на 60 минут — плановое. Но Ким видит в сети чужую активность: кто-то готовит СВОЁ отключение внутри планового окна.",
+      "stages": [
+        "Найти чужой след в сети",
+        "Решить: мешать / помочь / использовать",
+        "Прожить час темноты"
+      ],
+      "branches": [
+        {
+          "if": "заблокировали чужой доступ",
+          "skill_check": {
+            "skill": "hacking",
+            "dc": 13
+          },
+          "outcome_success": "Ким благодарен. Свет горит, но кто-то запомнил ваш логин.",
+          "rep": {
+            "SC4": -5
+          }
+        },
+        {
+          "if": "помогали взлому",
+          "outcome": "В темноте ограбили склад корпоративных протезов. Ваша доля — молчание.",
+          "rep": {
+            "SC4": 6,
+            "MC1": -6
+          }
+        },
+        {
+          "if": "использовали хаос",
+          "effect": {
+            "credits": 3500
+          },
+          "outcome": "Вы обчистили ломбард в темноте. Камера на углу работала от батареи.",
+          "rep": {
+            "NF17": -5
+          }
+        }
+      ],
+      "reward_credits": 1600,
+      "reward_xp": 210
+    },
+    {
+      "quest_id": "SQ_EARLY_STRAY",
+      "title": "Собака без клички",
+      "type": "Survival",
+      "location": "mars:newboston:tunnels",
+      "giver": "Робо-псина без ошейника",
+      "origin": null,
+      "description": "Бродячий кибер-пёс следует за вами от самого шлюза. На его корпусе — военная маркировка и чужой логин владельца. Он голоден и напуган.",
+      "stages": [
+        "Накормить/починить",
+        "Найти владельца по маркировке",
+        "Решить судьбу пса"
+      ],
+      "branches": [
+        {
+          "if": "вернули владельцу",
+          "effect": {
+            "credits": 2500
+          },
+          "outcome": "Владелец — офицер Mars Fleet. Пёс был украден. Благодарность и номер связи.",
+          "rep": {
+            "NF4": 6
+          }
+        },
+        {
+          "if": "оставили себе",
+          "skill_check": {
+            "skill": "technology",
+            "dc": 12
+          },
+          "outcome_success": "Перепрошили. Теперь у вас есть пёс-компаньон с тактическим модулем.",
+          "rep": {}
+        },
+        {
+          "if": "продали на запчасти",
+          "effect": {
+            "credits": 1800
+          },
+          "outcome": "Пёс смотрел в глаза до конца. Бармен больше не наливает без комментариев.",
+          "rep": {
+            "SC29": -3
+          }
+        }
+      ],
+      "reward_credits": 700,
+      "reward_xp": 170
+    },
+    {
+      "quest_id": "SQ_EARLY_DEBT",
+      "title": "Чужой долг",
+      "type": "Negotiation",
+      "location": "belt:ceres:docks",
+      "giver": "Коллектор Аскольд",
+      "origin": null,
+      "description": "Ваш покойный сосед оставил долг — 8000 кредитов. По правилам станции долг переходит тому, кто забирает жильё. Жильё — ваше, если примете долг.",
+      "stages": [
+        "Принять или отказаться",
+        "Выплачивать / оспорить / обмануть",
+        "Закрыть вопрос навсегда"
+      ],
+      "branches": [
+        {
+          "if": "принял и выплатил",
+          "effect": {
+            "credits": -8000
+          },
+          "outcome": "Чистая репутация. Кредитная история улучшена, банк предлагает лимит.",
+          "rep": {
+            "MC1": 5
+          }
+        },
+        {
+          "if": "оспорил в арбитраже",
+          "skill_check": {
+            "skill": "negotiation",
+            "dc": 15
+          },
+          "outcome_success": "Долг признан недействительным: подпись соседа подделана. Кто-то очень хотел ваше жильё.",
+          "rep": {
+            "NF15": -6
+          }
+        },
+        {
+          "if": "сменил имя и скрылся",
+          "outcome": "Долг остался, но теперь он ничей. Живёте тихо, покупаете только за наличные.",
+          "rep": {
+            "MC1": -8
+          }
+        }
+      ],
+      "reward_credits": 0,
+      "reward_xp": 200
+    },
+    {
+      "quest_id": "SQ_EARLY_SIGNAL",
+      "title": "Ночной эфир",
+      "type": "Exploration",
+      "location": "earth:newtokyo:neon",
+      "giver": "Хакер-радиолюбитель Пташка",
+      "origin": null,
+      "description": "Пташка поймала коротковолновый сигнал: чей-то голос читает числа каждые ночь в 3:33. Она боится идти сама — и предлагает долю, если вы сходите на передатчик.",
+      "stages": [
+        "Триангулировать передатчик",
+        "Прийти в 3:33",
+        "Решить, что делать с источником"
+      ],
+      "branches": [
+        {
+          "if": "передатчик — ребёнок",
+          "outcome": "Мальчишка передаёт числа больной матери: ей так спокойнее. Помочь антенне или сообщить куда-то — ваше решение.",
+          "rep": {
+            "SC29": 4
+          }
+        },
+        {
+          "if": "передатчик — сеть Data Rebels",
+          "skill_check": {
+            "skill": "stealth",
+            "dc": 12
+          },
+          "outcome_success": "Вы нашли узел подпольной сети. Они предлагают дружбу или забвение.",
+          "rep": {
+            "Data Rebels": 8
+          }
+        },
+        {
+          "if": "сдали узел корпорации",
+          "effect": {
+            "credits": 5000
+          },
+          "outcome": "Передача прекратилась. Пташка больше не разговаривает.",
+          "rep": {
+            "MC1": 4,
+            "SC4": -10
+          }
+        }
+      ],
+      "reward_credits": 1100,
+      "reward_xp": 210
+    }
+  ]
+}

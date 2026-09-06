@@ -1,0 +1,716 @@
+{
+  "module_name": "THEME_TONE",
+  "description": "Система жанров, тональностей и тематик для создания целостного игрового опыта с возможностью динамического смешения стилей. Полная интеграция с CHARACTER_LIFEPATH для персонализированных тематических акцентов.",
+  "version": "3.0_LIFEPATH_INTEGRATED",
+  "universal_approach": "Все жанры и стили одновременно активны и сочетаемы, ГМ может переключаться между ними по сценам, создавая уникальный игровой опыт. Жизненный путь персонажа влияет на доминирующие жанры и эмоциональную окраску.",
+  "genres": [
+    {
+      "name": "Киберпанк",
+      "parameters": {
+        "theme": "Корпоративная власть vs человечность",
+        "tone": "Мрачная, циничная, неоновая",
+        "light_shadow_ratio": "20% свет / 80% тень",
+        "pathos_level": "Средний (личные драмы на фоне системы)"
+      },
+      "narrative_guide": {
+        "key_motifs": [
+          "Корпоративный контроль",
+          "технологическое неравенство",
+          "цифровое сознание"
+        ],
+        "external_markers": [
+          "Неон",
+          "дождь",
+          "мегаполисы",
+          "импланты",
+          "хакерские интерфейсы"
+        ],
+        "game_feelings": [
+          "Паранойя",
+          "отчуждение",
+          "борьба против системы"
+        ],
+        "example_scene": "Взлом корпоративной базы данных в дождливом Нео-Токио."
+      },
+      "lifepath_adaptations": {
+        "ORIGIN_EARTH_ELITE": "Взгляд сверху: корпоративные интриги и падение с высоты",
+        "ORIGIN_EARTH_SLUMS": "Взгляд снизу: борьба против системы, уличный киберпанк",
+        "ORIGIN_EARTH_MIDDLE": "Офисный киберпанк: отчуждение среднего класса, корпоративное рабство"
+      }
+    },
+    {
+      "name": "Космоопера",
+      "parameters": {
+        "theme": "Эпические конфликты, судьба галактики",
+        "tone": "Героическая, масштабная, романтизированная",
+        "light_shadow_ratio": "60% свет / 40% тень",
+        "pathos_level": "Высокий (грандиозные речи и поступки)"
+      },
+      "narrative_guide": {
+        "key_motifs": [
+          "Галактические империи",
+          "эпические конфликты",
+          "судьба цивилизаций"
+        ],
+        "external_markers": [
+          "Звездолеты",
+          "планетарные пейзажи",
+          "инопланетные расы",
+          "энергетическое оружие"
+        ],
+        "game_feelings": [
+          "Величие",
+          "героизм",
+          "масштабность вселенной"
+        ],
+        "example_scene": "Дипломатические переговоры на орбитальной станции перед решающей битвой."
+      },
+      "lifepath_adaptations": {
+        "ORIGIN_MARS_MILITARY": "Военная космоопера: флотские баталии за честь Марса",
+        "ORIGIN_JOVIAN_STATION": "Философская космоопера: размышления о месте человечества во вселенной",
+        "ORIGIN_SCOUT_RANGER": "Исследовательская космоопера: первопроходцы новых миров"
+      }
+    },
+    {
+      "name": "Антиутопия",
+      "parameters": {
+        "theme": "Контроль системы vs свобода личности",
+        "tone": "Подавляющая, безнадежная, клаустрофобная",
+        "light_shadow_ratio": "10% свет / 90% тень",
+        "pathos_level": "Низкий (обыденность ужаса)"
+      },
+      "narrative_guide": {
+        "key_motifs": [
+          "Тотальный контроль",
+          "подавление личности",
+          "ложная утопия"
+        ],
+        "external_markers": [
+          "Серые города",
+          "камеры наблюдения",
+          "униформа",
+          "пропаганда"
+        ],
+        "game_feelings": [
+          "Клаустрофобия",
+          "безнадежность",
+          "желание свободы"
+        ],
+        "example_scene": "Тайная встреча диссидентов в заброшенном метро."
+      },
+      "lifepath_adaptations": {
+        "ORIGIN_EARTH_MIDDLE": "Корпоративная антиутопия: офисные клетки и потеря индивидуальности",
+        "ORIGIN_CERES_MINER": "Рабочая антиутопия: эксплуатация труда в космических шахтах",
+        "ORIGIN_REBEL_HIDEOUT": "Антиутопия сопротивления: подпольная борьба против системы"
+      }
+    },
+    {
+      "name": "Технотриллер",
+      "parameters": {
+        "theme": "Технологии как угроза и спасение",
+        "tone": "Напряженная, параноидальная, динамичная",
+        "light_shadow_ratio": "30% свет / 70% тень",
+        "pathos_level": "Средний (личная борьба с системой)"
+      },
+      "narrative_guide": {
+        "key_motifs": [
+          "Технологические угрозы",
+          "гонка со временем",
+          "научные дилеммы"
+        ],
+        "external_markers": [
+          "Лаборатории",
+          "компьютерные интерфейсы",
+          "высокотехнологичное оборудование"
+        ],
+        "game_feelings": [
+          "Напряжение",
+          "срочность",
+          "интеллектуальный вызов"
+        ],
+        "example_scene": "Предотвращение кибератаки на энергосеть города за считанные минуты до коллапса."
+      },
+      "lifepath_adaptations": {
+        "ORIGIN_MARS_SCIENTIST": "Этический технотриллер: последствия научных открытий",
+        "ORIGIN_GANYMEDE_ENGINEER": "Инженерный технотриллер: технические катастрофы и их предотвращение",
+        "ORIGIN_EARTH_ELITE": "Корпоративный технотриллер: технологии как инструмент власти"
+      }
+    },
+    {
+      "name": "Исследовательский триллер",
+      "parameters": {
+        "theme": "Поиск истины vs сокрытие тайн",
+        "tone": "Загадочная, тревожная, интеллектуальная",
+        "light_shadow_ratio": "40% свет / 60% тень",
+        "pathos_level": "Низкий (реализм расследования)"
+      },
+      "narrative_guide": {
+        "key_motifs": [
+          "Неизвестные территории",
+          "научные тайны",
+          "первый контакт"
+        ],
+        "external_markers": [
+          "Исследовательские станции",
+          "неизведанные планеты",
+          "загадочные артефакты"
+        ],
+        "game_feelings": [
+          "Любопытство",
+          "тревога неизвестности",
+          "научное возбуждение"
+        ],
+        "example_scene": "Расшифровка сигнала с заброшенной инопланетной базы на далекой луне."
+      },
+      "lifepath_adaptations": {
+        "ORIGIN_JOVIAN_SCIENTIST": "Ксенобиологический триллер: исследование неизвестных форм жизни",
+        "ORIGIN_SCOUT_RANGER": "Пионерский триллер: освоение неизведанных территорий",
+        "ORIGIN_MARS_SCIENTIST": "Научный триллер: этические дилеммы исследований"
+      }
+    },
+    {
+      "name": "Мистика",
+      "parameters": {
+        "theme": "Непознанное vs рациональное",
+        "tone": "Атмосферная, жуткая, неопределенная",
+        "light_shadow_ratio": "25% свет / 75% тень",
+        "pathos_level": "Переменный (от обыденности к ужасу)"
+      },
+      "narrative_guide": {
+        "key_motifs": [
+          "Сверхъестественные силы",
+          "древние тайны",
+          "паранормальные явления"
+        ],
+        "external_markers": [
+          "Туман",
+          "мистические символы",
+          "аномальные зоны",
+          "тишина"
+        ],
+        "game_feelings": [
+          "Мистический ужас",
+          "благоговение",
+          "неопределенность реальности"
+        ],
+        "example_scene": "Исследование заброшенного корабля, экипаж которого бесследно исчез, оставив работающие системы."
+      },
+      "lifepath_adaptations": {
+        "ORIGIN_CULT_SECT": "Религиозная мистика: пророчества и священные тайны",
+        "ORIGIN_JOVIAN_STATION": "Космическая мистика: ужас бесконечности",
+        "ORIGIN_GANYMEDE_SCIENTIST": "Научная мистика: непонятные феномены"
+      }
+    },
+    {
+      "name": "Военный эпос",
+      "parameters": {
+        "theme": "Долг, честь, цена победы",
+        "tone": "Суровая, героическая, трагическая",
+        "light_shadow_ratio": "50% свет / 50% тень",
+        "pathos_level": "Высокий (подвиги и жертвы)"
+      },
+      "narrative_guide": {
+        "key_motifs": [
+          "Честь",
+          "долг",
+          "цена победы",
+          "братство по оружию"
+        ],
+        "external_markers": [
+          "Военная техника",
+          "поля сражений",
+          "униформа",
+          "ордена и знаки различия"
+        ],
+        "game_feelings": [
+          "Героизм",
+          "трагизм войны",
+          "товарищество",
+          "жертвенность"
+        ],
+        "example_scene": "Последний бой отряда, защищающего точку эвакуации мирных жителей под шквальным огнем."
+      },
+      "lifepath_adaptations": {
+        "ORIGIN_MARS_MILITARY": "Классический военный эпос: честь флота и долг перед Республикой",
+        "FY_MARS_ACADEMY": "Военная академия: формирование офицерской чести",
+        "ORIGIN_CERES_MINER": "Гражданский военный эпос: простые люди становятся героями"
+      }
+    }
+  ],
+  "lifepath_genre_influence": {
+    "description": "Жизненный путь персонажа определяет базовые жанровые склонности игры и влияет на динамическое смешение тем",
+    "origin_genre_mappings": {
+      "ORIGIN_EARTH_ELITE": {
+        "primary_genres": [
+          "Киберпанк",
+          "Технотриллер"
+        ],
+        "secondary_genres": [
+          "Мистика",
+          "Исследовательский триллер"
+        ],
+        "tone_modifiers": {
+          "base_cynicism": 6,
+          "base_sophistication": 9,
+          "base_violence": 3,
+          "base_hope": 4
+        },
+        "narrative_focus": "Власть, предательство, падение с высоты",
+        "emotional_palette": [
+          "Высокомерие",
+          "Паранойя",
+          "Потеря контроля",
+          "Ностальгия по власти"
+        ]
+      },
+      "ORIGIN_EARTH_SLUMS": {
+        "primary_genres": [
+          "Киберпанк",
+          "Антиутопия"
+        ],
+        "secondary_genres": [
+          "Военный эпос",
+          "Технотриллер"
+        ],
+        "tone_modifiers": {
+          "base_cynicism": 9,
+          "base_sophistication": 2,
+          "base_violence": 8,
+          "base_hope": 3
+        },
+        "narrative_focus": "Выживание, месть, восхождение снизу",
+        "emotional_palette": [
+          "Ярость",
+          "Отчаяние",
+          "Солидарность",
+          "Жажда справедливости"
+        ]
+      },
+      "ORIGIN_EARTH_MIDDLE": {
+        "primary_genres": [
+          "Киберпанк",
+          "Антиутопия"
+        ],
+        "secondary_genres": [
+          "Исследовательский триллер",
+          "Мистика"
+        ],
+        "tone_modifiers": {
+          "base_cynicism": 7,
+          "base_sophistication": 6,
+          "base_violence": 4,
+          "base_hope": 5
+        },
+        "narrative_focus": "Отчуждение, поиск смысла, корпоративное рабство",
+        "emotional_palette": [
+          "Скука",
+          "Тревога",
+          "Разочарование",
+          "Желание перемен"
+        ]
+      },
+      "ORIGIN_MARS_MILITARY": {
+        "primary_genres": [
+          "Военный эпос",
+          "Космоопера"
+        ],
+        "secondary_genres": [
+          "Технотриллер",
+          "Киберпанк"
+        ],
+        "tone_modifiers": {
+          "base_cynicism": 4,
+          "base_sophistication": 7,
+          "base_violence": 7,
+          "base_hope": 7
+        },
+        "narrative_focus": "Честь, долг, товарищество, жертва",
+        "emotional_palette": [
+          "Гордость",
+          "Долг",
+          "Вина выжившего",
+          "Боевое братство"
+        ]
+      },
+      "ORIGIN_MARS_SCIENTIST": {
+        "primary_genres": [
+          "Технотриллер",
+          "Исследовательский триллер"
+        ],
+        "secondary_genres": [
+          "Мистика",
+          "Космоопера"
+        ],
+        "tone_modifiers": {
+          "base_cynicism": 5,
+          "base_sophistication": 9,
+          "base_violence": 3,
+          "base_hope": 6
+        },
+        "narrative_focus": "Этика науки, открытия, последствия знания",
+        "emotional_palette": [
+          "Любопытство",
+          "Моральные дилеммы",
+          "Восхищение",
+          "Ужас познания"
+        ]
+      },
+      "ORIGIN_CERES_MINER": {
+        "primary_genres": [
+          "Антиутопия",
+          "Военный эпос"
+        ],
+        "secondary_genres": [
+          "Киберпанк",
+          "Космоопера"
+        ],
+        "tone_modifiers": {
+          "base_cynicism": 8,
+          "base_sophistication": 3,
+          "base_violence": 6,
+          "base_hope": 5
+        },
+        "narrative_focus": "Классовая борьба, солидарность, эксплуатация",
+        "emotional_palette": [
+          "Солидарность",
+          "Усталость",
+          "Гнев на систему",
+          "Гордость труда"
+        ]
+      },
+      "ORIGIN_LUNA_COLONY": {
+        "primary_genres": [
+          "Исследовательский триллер",
+          "Антиутопия"
+        ],
+        "secondary_genres": [
+          "Технотриллер",
+          "Мистика"
+        ],
+        "tone_modifiers": {
+          "base_cynicism": 6,
+          "base_sophistication": 7,
+          "base_violence": 4,
+          "base_hope": 4
+        },
+        "narrative_focus": "Изоляция, технологическая зависимость, новые границы",
+        "emotional_palette": [
+          "Одиночество",
+          "Клаустрофобия",
+          "Пионерский дух",
+          "Техно-тревога"
+        ]
+      },
+      "ORIGIN_JOVIAN_STATION": {
+        "primary_genres": [
+          "Мистика",
+          "Космоопера"
+        ],
+        "secondary_genres": [
+          "Исследовательский триллер",
+          "Технотриллер"
+        ],
+        "tone_modifiers": {
+          "base_cynicism": 7,
+          "base_sophistication": 8,
+          "base_violence": 3,
+          "base_hope": 3
+        },
+        "narrative_focus": "Космическое одиночество, философские вопросы, пустота пространства",
+        "emotional_palette": [
+          "Экзистенциальный кризис",
+          "Космическая тоска",
+          "Интеллектуальная гордыня",
+          "Ужас бесконечности"
+        ]
+      }
+    },
+    "formative_years_genre_modifiers": {
+      "FY_CORP_INTERNSHIP": {
+        "genre_shift": [
+          "+Киберпанк",
+          "+Технотриллер",
+          "-Антиутопия"
+        ],
+        "tone_adjustment": {
+          "sophistication": 2,
+          "cynicism": 1
+        }
+      },
+      "FY_SLUMS_GANGWAR": {
+        "genre_shift": [
+          "+Антиутопия",
+          "+Киберпанк",
+          "+Военный эпос",
+          "-Технотриллер"
+        ],
+        "tone_adjustment": {
+          "violence": 2,
+          "cynicism": 2,
+          "hope": -1
+        }
+      },
+      "FY_MARS_ACADEMY": {
+        "genre_shift": [
+          "+Военный эпос",
+          "+Космоопера"
+        ],
+        "tone_adjustment": {
+          "sophistication": 1,
+          "hope": 1,
+          "violence": 1
+        }
+      },
+      "FY_MARS_LAB_ASSISTANT": {
+        "genre_shift": [
+          "+Технотриллер",
+          "+Исследовательский триллер"
+        ],
+        "tone_adjustment": {
+          "sophistication": 2,
+          "cynicism": -1
+        }
+      },
+      "FY_BELTER_PIRACY": {
+        "genre_shift": [
+          "+Космоопера",
+          "+Антиутопия"
+        ],
+        "tone_adjustment": {
+          "violence": 2,
+          "cynicism": 1,
+          "hope": -1
+        }
+      },
+      "FY_STATION_ACCIDENT": {
+        "genre_shift": [
+          "+Исследовательский триллер",
+          "+Военный эпос"
+        ],
+        "tone_adjustment": {
+          "violence": 1,
+          "hope": 2
+        }
+      }
+    }
+  },
+  "lifepath_dialogue_adaptation": {
+    "description": "Диалоговые опции и тон речи адаптируются под происхождение и текущий жанр",
+    "genre_speech_patterns": {
+      "Киберпанк": {
+        "ORIGIN_EARTH_ELITE": {
+          "vocabulary": "Изысканный цинизм, скрытые угрозы, двусмысленности",
+          "sample_phrases": [
+            "В нашем мире, дорогой друг, невинность - это роскошь, которую могут позволить себе только мертвые.",
+            "Я видел достаточно теней, чтобы знать - свет всегда отбрасывает их.",
+            "Деньги не покупают счастье, но они прекрасно скрывают страдания."
+          ],
+          "tone_markers": [
+            "Холодная вежливость",
+            "Интеллектуальное превосходство",
+            "Скрытая угроза"
+          ]
+        },
+        "ORIGIN_EARTH_SLUMS": {
+          "vocabulary": "Грубый уличный реализм, циничные наблюдения, жесткие истины",
+          "sample_phrases": [
+            "На дне города нет героев, есть только те, кто выжил до утра.",
+            "Видел, как мечты умирают в неоновых лужах. Теперь я знаю их цену.",
+            "Правда - это роскошь для тех, у кого есть выбор. У нас его нет."
+          ],
+          "tone_markers": [
+            "Жестокий реализм",
+            "Уличная мудрость",
+            "Выживательский цинизм"
+          ]
+        },
+        "ORIGIN_MARS_MILITARY": {
+          "vocabulary": "Военная дисциплина с оттенком разочарования, честь в грязном мире",
+          "sample_phrases": [
+            "Служил за честь, а получил только счета на оплату похорон товарищей.",
+            "В армии говорили о долге. На улицах я узнал, что долг бывает разным.",
+            "Присяга не защитила нас от пуль. Теперь защищаю себя сам."
+          ],
+          "tone_markers": [
+            "Разочарованная честь",
+            "Военный реализм",
+            "Потерянные идеалы"
+          ]
+        }
+      },
+      "Военный эпос": {
+        "ORIGIN_MARS_MILITARY": {
+          "vocabulary": "Четкие команды, акцент на честь и долг, товарищество",
+          "sample_phrases": [
+            "За Марс и за всех, кто не может защитить себя сам!",
+            "Мы держимся вместе, или падаем поодиночке. Выбор за нами.",
+            "Честь требует действий, а не слов. Время показать, чего мы стоим."
+          ],
+          "tone_markers": [
+            "Непоколебимая решимость",
+            "Моральная ясность",
+            "Вдохновляющее лидерство"
+          ]
+        },
+        "ORIGIN_STATION_MEDIC": {
+          "vocabulary": "Забота о жизни, медицинская точность, гуманистические ценности",
+          "sample_phrases": [
+            "Каждая жизнь священна. Моя работа - это напоминать всем об этом.",
+            "В медицине нет врагов, есть только пациенты, которых нужно спасти.",
+            "Клятва Гиппократа действует даже в космосе. 'Не навреди' - это универсально."
+          ],
+          "tone_markers": [
+            "Сострадательная решимость",
+            "Профессиональная забота",
+            "Моральная чистота"
+          ]
+        }
+      },
+      "Технотриллер": {
+        "ORIGIN_EARTH_ELITE": {
+          "vocabulary": "Корпоративный жаргон, власть и влияние, интриги высшего уровня",
+          "sample_phrases": [
+            "В корпоративном мире репутация - это валюта, а секреты - это оружие.",
+            "Этот проект может изменить расстановку сил. Или уничтожить нас всех.",
+            "Совет директоров - это шахматная доска. Вопрос лишь в том, кто фигуры, а кто игроки."
+          ],
+          "tone_markers": [
+            "Холодная расчетливость",
+            "Интеллектуальная игра",
+            "Власть как наркотик"
+          ]
+        },
+        "ORIGIN_EARTH_MIDDLE": {
+          "vocabulary": "Офисная терминология с оттенком отчаяния, бюрократическая борьба",
+          "sample_phrases": [
+            "Тридцать лет в одном кубикле научили меня - система не сломается, пока ты в ней.",
+            "Корпоративная лестница? Это гильотина, где каждая ступенька - это чья-то голова.",
+            "Знаете, что такое средний класс? Это те, кто слишком богат, чтобы бунтовать, и слишком беден, чтобы убежать."
+          ],
+          "tone_markers": [
+            "Отчаявшийся конформизм",
+            "Средний управленец",
+            "Экзистенциальная тревога"
+          ]
+        }
+      }
+    }
+  },
+  "dynamic_genre_evolution": {
+    "description": "Жанры игры эволюционируют в зависимости от действий персонажа и развития его личности",
+    "character_growth_triggers": {
+      "social_mobility_up": {
+        "from_slums_to_corporate": {
+          "genre_transition": "Антиутопия → Киберпанк → Технотриллер",
+          "narrative_arc": "Corrupted by power",
+          "emotional_journey": "Гнев → Амбиции → Моральные компромиссы"
+        },
+        "from_worker_to_leader": {
+          "genre_transition": "Антиутопия → Военный эпос → Космоопера",
+          "narrative_arc": "Revolutionary ascent",
+          "emotional_journey": "Солидарность → Ответственность → Бремя лидерства"
+        }
+      },
+      "moral_degradation": {
+        "hero_to_villain": {
+          "genre_transition": "Военный эпос → Киберпанк → Антиутопия",
+          "narrative_arc": "Fall from grace",
+          "emotional_journey": "Идеализм → Разочарование → Цинизм → Месть"
+        }
+      },
+      "redemption_arcs": {
+        "criminal_to_hero": {
+          "genre_transition": "Киберпанк → Исследовательский триллер → Военный эпос",
+          "narrative_arc": "Second chances",
+          "emotional_journey": "Вина → Раскаяние → Действие → Искупление"
+        }
+      }
+    }
+  },
+  "environmental_genre_influence": {
+    "description": "Локации из WORLDBUILD влияют на жанровые акценты в зависимости от происхождения персонажа",
+    "location_genre_synergy": {
+      "earth:newtokyo:government_sector": {
+        "ORIGIN_EARTH_ELITE": "Технотриллер intensified - home advantage",
+        "ORIGIN_EARTH_SLUMS": "Fish out of water Киберпанк - social tension",
+        "ORIGIN_MARS_MILITARY": "Military vs civilian authority conflict"
+      },
+      "mars:newboston:biodome_renaissance": {
+        "ORIGIN_MARS_SCIENTIST": "Исследовательский триллер research drama - professional setting",
+        "ORIGIN_EARTH_ELITE": "Corporate bio-investment Технотриллер",
+        "ORIGIN_CERES_MINER": "Class conflict in sterile environment"
+      },
+      "ceres:deep:miners_quarter": {
+        "ORIGIN_CERES_MINER": "Working class solidarity Антиутопия - home turf",
+        "ORIGIN_EARTH_ELITE": "Slumming Киберпанк - dangerous tourism",
+        "ORIGIN_MARS_MILITARY": "Peacekeeping in hostile territory"
+      }
+    }
+  },
+  "narrative_voice_adaptation": {
+    "description": "Голос повествования адаптируется под происхождение главного персонажа",
+    "voice_patterns": {
+      "ORIGIN_EARTH_ELITE": {
+        "narrative_style": "Изысканный, с культурными отсылками",
+        "perspective": "Взгляд сверху вниз, но с пониманием цены власти",
+        "vocabulary_level": "Высокий, образованный"
+      },
+      "ORIGIN_EARTH_SLUMS": {
+        "narrative_style": "Прямой, без украшений, жесткий реализм",
+        "perspective": "Взгляд снизу вверх, критический к власти",
+        "vocabulary_level": "Простой, но выразительный"
+      },
+      "ORIGIN_MARS_SCIENTIST": {
+        "narrative_style": "Аналитический, с научными метафорами",
+        "perspective": "Исследовательский, этически осознанный",
+        "vocabulary_level": "Технический, точный"
+      }
+    }
+  },
+  "system_integration": {
+    "description": "Интеграция с другими модулями системы",
+    "module_connections": {
+      "PSYCHOLOGY.json": {
+        "stress_genre_impact": "Высокий стресс усиливает Киберпанк и Мистика элементы",
+        "humanity_tone_impact": "Низкая человечность сдвигает тон к cynical",
+        "ideology_theme_impact": "Идеология персонажа влияет на интерпретацию тем"
+      },
+      "NPC_RELATIONS.json": {
+        "relationship_genre_color": "Отношения с NPC окрашивают жанр сцен",
+        "conflict_escalation": "Напряженные отношения усиливают Технотриллер элементы"
+      },
+      "FACTIONS_MASTER.json": {
+        "faction_genre_influence": "Доминирующие фракции влияют на общий жанр кампании",
+        "reputation_tone_shift": "Репутация персонажа меняет тон взаимодействий"
+      }
+    }
+  },
+  "dynamic_adaptation_engine": {
+    "description": "Движок динамической адаптации жанра и тона",
+    "adaptation_triggers": {
+      "major_life_events": {
+        "death_of_ally": "Shift toward Военный эпос/revenge genres",
+        "betrayal": "Enhance Киберпанк/paranoia elements",
+        "major_success": "Introduce hubris/corruption themes",
+        "moral_compromise": "Deepen cynical tones"
+      },
+      "relationship_changes": {
+        "gaining_power": "Shift from street-level to Технотриллер intrigue",
+        "losing_status": "Move toward survival/redemption arcs",
+        "finding_love": "Introduce romantic subplot colors",
+        "making_enemies": "Escalate to Киберпанк/action genres"
+      },
+      "world_events": {
+        "war_outbreak": "Военный эпос/war genres take precedence",
+        "corporate_scandal": "Технотриллер elements intensify",
+        "discovery": "Исследовательский триллер/Мистика elements emerge",
+        "social_upheaval": "Антиутопия/revolution themes dominate"
+      }
+    },
+    "feedback_loops": {
+      "player_choice_reinforcement": "Genre adapts to reward player's preferred story direction",
+      "consequence_amplification": "Actions create genre-appropriate consequences",
+      "theme_deepening": "Repeated themes become more prominent over time"
+    }
+  }
+}

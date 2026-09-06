@@ -1,0 +1,168 @@
+# NexusRPG Roadmap
+
+## Статус проекта (снимок на 2026-09-05, после Phase 30 шаг 1 — вынос _world_tick)
+- Pytest: **198 passed, 1 skipped** (вкл. 7 регрессионных Phase 29 + 5 тестов выноса _world_tick)
+- `engine.py` — 2681 строк, `world_tick_service.py` — 126 строк (новый сервис)
+- Playwright E2E (live, headless Chromium): **14/14 asserts, 0 console errors, 0 bad API**
+- Контракт game_data: **76 файлов, 0 нарушений**
+- Горячие точки (через `wc -l`):
+  1. `static/js/app.js` — 3318 lines (клиентский монолит)
+  2. `src/core/engine.py` — **2740 lines** (центральный движок)
+  3. `src/systems/combat.py` — 1086 lines (боевая система)
+  4. `src/content/v4_legacy.py` — 836 lines (legacy-контент)
+  5. `src/server/app.py` — 184 lines (фабрика Flask)
+
+### Phase 27 R-fix (2026-09-05) — 7 исправлений UX и разрыва механик ✅ DONE
+1. **R1 — Мгновенное использование расходников**: `POST /api/inventory/use` (item_name/item_id) — детерминированная механика БЕЗ LLM: лечение по формуле каталога (2d6+2 для стимпака), списание, `{
+success, hp_healed, message}`. Кнопка «Использовать» в инвентаре обновляет HUD тихо (showToast), не спамит историю.
+2. **R2 — Потеря инвентаря**: root cause — отсутствие сброса `state.inventory` при повторном создании персонажа (дубли/призраки) + гонка двойной загрузки в `renderInventoryPanel`. Фикс: чистый старт в `create_*_character`; панель инвентаря = единственный источник `/api/inventory/slots`; продажа по имени (`sellItemByName`, `/api/shop/sell` принимает `name`) вместо битого индекса.
+3. **R3 — Контекстный магазин**: `/api/shop` возвращает `allowed=false` + подсказку, если в районе нет торгового заведения (тип market/shop/black_market/commercial/logistics или торговые services). Проверено: Правительственное ядро — запрет, Индустриальный коридор — 191 товар.
+4. **R4 — Модальные карточки кораблей**: компактная карточка (имя/класс/цена) + «Осмотреть» → модальный Datasheet (полные ТТХ: корпус/щиты/трюм/двигатель/дальность, кнопка Купить). Универсальный `showModal/closeModal`.
+5. **R5 — Чистая вкладка Локация**: лор-простыня удалена; терминальный вид — карточка района + ASCII-радар заведений + кнопки «Войти в заведение».
+6. **R6 — NPC-фильтрация и интерактив**: VIP (major/critical) не попадают в уличный список, если их база не в этом районе; кнопки «📞 Вызов» (только контакты, запускает сеанс связи) и «🧭 Маршрут» (переход к карте).
+7. **R7 — Зачистка заголовков промпта**: `PROMPT_HEADER_RE` срезает «1) НАРРАТИВ», «2) МЕХАНИЧЕСКИЕ ИЗМЕНЕНИЯ» (варианты: `###`, `**`, `1.`/`1)`) в `_parse_ai_response` и в `formatNarrative`. Проверено live: свежий нарратив чист.
+- Бэкап: `D:/NexusRPG-main_backup_redteam2_20260905/`.
+- Побочный фикс: `/api/map/move` — добавлен импорт `LocationEvents` (NameError при смене района).
+
+
+### Phase 4 — Киберпанк-HUD и клиентская интеграция ✅ DONE (2026-09-05)
+Zero-Bloat Rule соблюдён: весь новый код — в изолированных модулях; в `app.js` — только связующие вызовы (3 точки, ~5 строк).
+
+| Модуль | Строк | Содержимое |
+|---|---|---|
+| `static/css/terminal_hud.css` | 216 | CRT (scanlines overlay, vignette, text-glow, flicker), 3 палитры (Amber / Green Phosphor / Cyber Neon через `html.palette-*`), ASCII-рамки `.thud-frame`, стили доски контрактов `.cb-*`, анимация начисления награды |
+| `static/js/hud_terminal.js` | 140 | CRT-тумблер 📺 в тулбаре (localStorage `nexus_crt_enabled`), меню палитр 🎨 (localStorage `nexus_palette`), ASCII-хелперы `window.Ascii` (box ╔═╗, bar [████░░], divider) |
+| `static/js/contracts_board.js` | 178 | Доска контрактов: `GET /api/contracts/available` → карточки с ₡/XP, фракцией-заказчиком и **Dual-Path** визуализацией; «ВЗЯТЬ КОНТРАКТ» → `POST /api/contracts/accept` (+`game_state` в ответе для HUD); «✅ Сдать контракт» в панели квестов → `POST /api/contracts/complete` с анимацией награды |
+| `static/js/district_map.js` | 129 | SVG-радар района: заведения по кругу вокруг позиции игрока, цвет узла = уровень безопасности (High/Med/Low), статусная ASCII-панель (безопасность/цены/контроль), клик по сектору → `visitPlace()` |
+| `static/js/app.js` (врезка, счётчик на момент Phase 4) | 3179* | +5 строк: панель `contracts` в panels-map, вызов `DistrictMap.enhance` в renderMapPanel, кнопка «Сдать контракт» в квестах |
+\* счётчик зафиксирован на момент закрытия Phase 4; текущее значение — в шапке статуса (3318).
+
+**Бэкенд-доработка**: `/api/contracts/accept` и `/api/contracts/complete` возвращают `game_state` для мгновенного обновления HUD.
+
+**Верификация**: `node --check` × 3 модуля OK; Playwright E2E — **14 passed, 0 failed** (включая: доска открылась, контракт взят, квест в активных, контракт сдан, CRT вкл/выкл без падений, палитра Amber, SVG-радар 5 секторов, клик по сектору = вход); console errors 0; 4xx/5xx 0. Pytest: 186 passed, 1 skipped.
+
+#### Phase 4.1 — Имплант-менеджер и Хакерский терминал — BACKLOG
+- Имплант-менеджер: перенос существующей панели имплантов в терминальный стиль + хирургия/калибровка в HUD.
+- Хакерский мини-HUD: интеграция активного хака в CRT-стиль (текущий `active_hack` в клиенте не отображается терминально).
+- Статус: **не начато**, объявлять сделанным запрещено.
+
+### Phase 28 F-fix (2026-09-05) — пустые экраны, контентные дыры, сырые кубы ✅ DONE
+1. **F1 — зачистка служебных блоков**: `CODE_FENCE_RE`/`CODE_FENCE_OPEN_RE` срезают сырые ` ```json `/` ``` ` блоки; `PROMPT_INSTRUCTION_RE` — инструкции нумерации («4) 5-6 ПРОНУМЕРОВАННЫХ ВАРИАНТОВ ДЕЙСТВИЙ:», «СТРОГО в формате…», «Ролевые теги ВСЕГДА…» и др.). Зачистка синхронизирована backend (`_strip_telemetry`) и frontend (`formatNarrative`).
+2. **F2 — стартовая экипировка для ВСЕХ архетипов**: root cause пустого старта — spec-ID без префикса («SCIENTIST» vs «SPEC_SCIENTIST») не матчился. Добавлен `_spec_match()` + словарь `ARCHETYPE_KITS`: Учёный/Медик/Техник (датапад, биосканер, комбинезон, 2×стимпак, антидот), Корпорат/Дипломат (кевларовый костюм, премиальный коммуникатор, кредитный чип, шокер), Бродяга/Вор (самодельный нож, отмычки, декодер, куртка с капюшоном, синт-сигареты). Гарантия непустого старта — базовый набор выживания как last resort. Проверено live: research_scientist=3, corporate_fixer=7, street_hacker=8, belt_rebel=9, mars_veteran=9 предметов.
+3. **F3 — Ганимед и фоллбэк радара**: root cause «СЕКТОРОВ: 0» — `_set_starting_location` отправляла GANYMEDE-происхождения в город «Станция Юпитер-Прайм», отсутствующий в GALAXY_MAP. Город добавлен (район Торговые палубы, 5 заведений: Мед-отсек «БиоГеном», Бар «Ледяной Шторм», Терминал перекупщика, Склад био-образцов, Магазин «Ледяной компас-2»); Торговый квартал Технохаба расширен теми же 4. В `district_map.js` — процедурный фоллбэк: при 0 заведений радар строит 2-3 детерминированных сектора («Терминал связи», «Служебный отсек», «Пункт отдыха экипажа») с пометкой в статус-панели.
+4. **F4 — локализация времени суток**: «ВРЕМЯ СУТОК: morning» → литературное «Утро./День./Вечер./Ночь.»; технические ярлыки ПОГОДА:/ПЛАНЕТА: убраны из сводки атмосферы (`simulation.py::_generate_atmosphere`).
+5. **F5 — полный лист навыков**: `research: 'Исследования'` + 14 доп. русских имён в `SKILL_NAMES`; навыки с 0 больше не скрываются — рендерятся приглушённо (`.skill-zero`), отсортированы по убыванию; XP-прогресс-бар в листе персонажа + кнопка «⬆ Повысить характеристики / навыки (N АТР · M нав.)» при накопленных очках → `openLevelUpPanel()`.
+6. **F6 — нарративная обёртка бросков**: `diceOutcomeNarrative()` генерирует «✅ УСПЕХ: применение навыка «Хакинг» уверенно добилось цели» вместо голой математики; тумблер 🎲 в тулбаре (`nexus_dice_details` в localStorage) показывает/скрывает формулу `[6,3]=9+6=15 vs DC 7`.
+
+
+### Phase 29 G-fix (2026-09-05) — логика слотов, магазин и заведения ✅ DONE
+1. **G1 — слоты и кнопки по типу предмета**: root cause «винтовки в кармане» — `resolve_item` индексировал только TECH_EQUIPMENT, а купленная «Винтовка «Ястреб»» из магазинного каталога возвращала None → слот fallback «pocket». `equipment_lookup._load_index` теперь индексирует и `BASE_SHOP_ITEMS` (weapons/armor/implants/gadgets/consumables → kind). Фоллбэк-классификация в `/api/inventory/slots` использует и `type/category` записи. «Использовать» — только `consumable_heal/buff`; для weapon/armor — `POST /api/inventory/equip` (Экипировать/Снять, авто-снятие прежнего предмета слота, маркер ◆).
+2. **G2 — возврат кнопок выбора**: root cause — `[STATE]`-без-`[/STATE]` в СЕРЕДИНЕ ответа: ветка срезала всё после себя вместе с вариантами. `_parse_ai_response` теперь извлекает JSON балансом скобок и сохраняет текст после блока. `build_intro_action` дополнительно требует: «Что будешь делать?» → 6 вариантов → `7. Свой вариант`, `[STATE]` только в самом конце.
+3. **G3 — ассортимент по заведениям**: без `place` (не вошёл в точку) → `needs_place_selection: true` + список торговых точек района. В заведении — фильтр по профилю (`_sells()` по services/type/имени): Мед-отсек «БиоГеном» = consumables+implants (53 шт. вместо 191), Терминал перекупщика = consumables/craft/gadgets/property/ships (118). Оружие/броня — только оружейные и военные лавки.
+4. **G4 — «Войти в заведение»**: новый `POST /api/map/enter` фиксирует `current_location["place"]` (с проверкой существования заведения в районе) и возвращает реакцию окружения; `visitPlace()` вызывает `enterPlace()` — плашка «Текущее положение: Ганимед → Торговые палубы → Бар «Ледяной Шторм»» + ambience-строка в истории.
+5. **G5 — слухи и SCIENTIFIC**: `"SCIENTIFIC": 55` в пресете research_scientist канонизирован в `Genesis Bioworks` (FactionResolver-совместимое имя). `_generate_rumor(location, character)` — контекстные пулы: учёный слышит про гранты/утечки данных/био-образцы (60%), медик — про вспышки и контрабандные стимуляторы, уголовник — про заказы и чёрный рынок, военный — про ЧВК и полигоны; районы слухов — из текущей локации. `world_sim.tick()` принимает `character`.
+6. **G6 — тулбар-тултипы**: 🎲 «Детализация бросков кубов…», 📺 «Эффекты CRT-монитора…», 🎨 «Цветовая палитра терминала…».
+
+**Верификация**: pytest **193 passed, 1 skipped** (+7 регрессионных тестов `tests/test_phase29_regressions.py`: 4 на [STATE]-парсер, 3 на слоты/equip/roundtrip); Playwright E2E **14/14** (0 console errors, 0 bad API); live-проверки G1 (винтовка → weapon-слот, equip OK), G3 (Мед-отсек 53 / перекупщик 118 / needs_place_selection), G4 (place в state + ambience), G5 (SCIENTIFIC → Genesis Bioworks).
+
+### Phase 30 шаг 1 (2026-09-05) — вынос _world_tick в WorldTickService ✅ DONE
+- **Новый файл**: `src/world/world_tick_service.py` (126 строк). Класс `WorldTickService` получает через конструктор ссылки на объекты, созданные в `GameEngine.__init__` (state, world_effects, world_ticker, consequences, faction_sim, property_income, property, expenses) + `get_player_tier` колбэк. `tick() -> Dict` — логика перенесена 1:1.
+- **engine.py**: 2740 → 2681 строк; `_world_tick` стал тонким делегатом `return self.world_tick_service.tick()`; сигнатура `() -> Dict` не изменилась; `get_shop_price_modifier` / `get_world_effects_summary` не тронуты (отдельная задача).
+- **Красная линия соблюдена**: сервис не импортирует `src.server.*` (AST-проверка в тесте).
+- **Тесты**: `tests/test_world_tick_extraction.py` (260 строк, 5 тестов): сигнатура, делегирование (spy), побитовая идентичность с дословной копией pre-refactor тела (deep-copy state и симуляторов, один seed на путь), verbatim-возврат результата, отсутствие src.server-импортов.
+- **Осознанный архитектурный компромисс**: `get_player_tier` передаётся **колбэком** (bound-метод `GameEngine.get_player_influence_tier`) — сервис сохраняет транзитивную зависимость от property/ship через этот колбэк. Сервис НЕ полностью изолирован от движка; полное устранение требует выноса `compute_player_tier`-логики в отдельный сервис — **принятое решение**, не забытый долг.
+- **Сопутствующее изменение вне исходного scope**: `tests/test_backlog5_news_fame.py::eng_like` — стаб собирает движок через `GameEngine.__new__` (мимо `__init__`), после выноса ему потребовался `world_tick_service`; стаб дополнен созданием сервиса с теми же заглушками. Вызвано необходимостью, не самовольным расширением.
+- **Верификация**: pytest **198 passed, 1 skipped** (+5); E2E Playwright 14/14; routes/*.py не потребовали правок (подтверждено grep-обходом и E2E).
+
+## Фазы
+
+### Phase 1 — Архитектурный каркас ✅ DONE
+- Что сделано: app.py → 5 blueprints (73 эндпоинта сохранены), циклический импорт `engine ↔ app` развязан (`IMPLANT_SKILL_MAP` перенесён в `src/systems/equipment_lookup.py`).
+- Не сделано / перенесено: консолидация v2_legacy–v5_legacy (осознанно, transitive chain engine→v4→v3→v2 стабильна, не ломаем).
+- Приёмка: pytest 142 passed, контракт 76/0, readiness 18/18.
+
+### Phase 2 / 26 — ToneEngine + PromptBuilder ✅ DONE
+- Сделано: `ToneProfile` (15 полей: 4D-вектор, жанровый бленд, речевой профиль, mood_descriptors, scale_level, weirdness), `ToneEngine` (build_character_tone / apply_scene_context / apply_event_delta), `SystemPromptBuilder` (Core Persona + Director's Block + Karmic Dice 1d6 + формат ответа).
+- Эвристический fallback: для непокрытых origins/specs генерируются `narrative_voice`, `dialogue_style`, `unique_dialogue_tags` на основе top-2 атрибутов/навыков.
+- **ПОЛНАЯ интеграция**: `start_game` → `prompt_builder.build_intro_action()`, `process_player_action` → `prompt_builder.build()` (с `build_action_meta` + karmic_roll). `GameState.to_dict`/`from_dict` включают `tone_profile`. Fallback в `load_game` для старых сейвов.
+- Приёмка: pytest 142 passed, контракт 76/0, **integration tests добавлены в Phase 2.1**.
+
+### Phase 2.1 — Смычка и сериализация ✅ DONE (все блокеры закрыты)
+- Реальное подключение: `start_game` использует `prompt_builder.build_intro_action` (с Karmic Dice, voice hint), `process_player_action` использует `prompt_builder.build` с `build_action_meta`.
+- Сериализация: `GameState.to_dict`/`from_dict` сериализуют `tone_profile` (15 полей, roundtrip 1:1). `load_game` имеет fallback на `build_character_tone` для старых сейвов.
+- Эвристический fallback: `_apply_heuristic_fallback` в `ToneEngine` заполняет voice/dialogue/tags для всех непокрытых origins (на основе top-атрибутов и навыков).
+- **Blocker #1 (Phase 3 prep) — scene_context на move**: добавлен `_apply_tone_to_current_location()` в `engine.py` (после каждого `current_location = ...` в `process_player_action`-related travel) + единый вызов в конце `api_map_move()` в `routes/world.py`. Mood_descriptors (lighting/scent/audio) обновляются при смене локации. **Дубль устранён** (промежуточный вызов из planet-ветки удалён, остался единственный в конце обработчика).
+- **Blocker #2 (Phase 3 prep) — демонтаж маскировки**: убран `try/except` вокруг `self.prompt_builder.build(...)` в `process_player_action`. Сбой сборки промпта теперь падает с трейсбеком, а не тихо откатывается на legacy `_build_system_prompt`.
+- Интеграционные тесты приёмки: `tests/test_integration_acceptance.py` (**6 тестов**, +`test_scene_context_updates_on_movement`).
+- Приёмка: **pytest 148 passed**, контракт 76/0, save/load roundtrip 1:1, scene_context на move подтверждён.
+
+### Phase 3 — Living World — ✅ DONE (Backend Core & Contract Loop)
+- ✅ **Сделано (backend core)**:
+  - `src/world/faction_conflict_sim.py` (260 строк) — `FactionConflictSimulator` с Pacing Guard (throttling=4 тика) и Catastrophe Ceiling (P0–P1 → local only). 168 plot_hooks из `FACTIONS_MASTER.json` стали живыми.
+  - `src/systems/contract_generator.py` (270 строк) — `ContractGenerator` с Dual-Path Requirement (≥2 путей из HOOK_TYPE_PATHS), награды по тирам (P0: 1500–4500 ₡, +50 XP).
+  - `GameEngine._world_tick` подключён к `faction_sim.tick()` (price_modifier + heat + world_context["local_event"]).
+  - `GameEngine.__init__` инициализирует `self.faction_sim` и `self.contract_gen`.
+  - Endpoint `GET /api/contracts/available` зарегистрирован в `gameplay` blueprint.
+  - `tests/test_living_world.py` — **7 приёмочных тестов**.
+  - `src/world/faction_resolver.py` — `FactionResolver` (Phase 3 P0 fix): резолвит NPC.faction (id, name, CL{i}) → запись FACTIONS_MASTER.json. Интегрирован в NPCRegistry (`generate_npc` и `get_named_npc` нормализуют faction к каноничному id, добавляют faction_name/faction_valid).
+  - `tests/test_living_world.py` — **+4 теста NPC↔Faction binding** (10 случайных NPC резолвятся; resolver aliases; generate_npc всегда выдаёт валидный id; NPC без faction не роняют реестр). Итого **11 тестов** в `test_living_world.py`.
+  - `tests/test_world_basic.py::TestGameEngineTradeRoutesIntegration` — TRADE_ROUTES_MASTER.json подключён к `GameEngine.__init__` → `galaxy_map.load_routes_from_kb()`; тесты проверяют загрузку и доступность маршрутов после init (4 теста).
+- ✅ **Сделано (Phase 3 loop — backend core & contract loop)**:
+  - **Двусторонние маршруты** (`src/world/galaxy.py`): `GalaxyMap._ensure_reverse_route()` и `symmetrize_routes()` автоматически регистрируют обратный маршрут B→A для каждого A→B (если его нет). Вызывается из `__init__` (для hardcoded GALAXY_MAP) и из `load_routes_from_kb` (для TRADE_ROUTES_MASTER.json). Модульный `ROUTE_KEY_ALIAS` маппит destination-ключи вроде `"Церера"` → `"Пояс астероидов"` (географический объект).
+  - **Механика accept_contract** (`src/core/engine.py`): `GameEngine.accept_contract(contract_id)` берёт процедурный контракт из `get_available_contracts()` и добавляет в `state.active_quests` в формате стандартного квеста (`{id, title, description, giver, rewards: {credits, xp}, stages, status: "active", source: "contract_generator"}`). Идемпотентен: повторный вызов → `code="already_accepted"`.
+  - **Endpoint POST /api/contracts/accept** (`src/server/routes/gameplay.py`): принимает `{"contract_id": "..."}`, возвращает `{"success": True, "quest": {...}}` (HTTP 200), либо ошибку с HTTP 400 (invalid_id) / 404 (not_found, no_contracts, no_location) / 409 (already_accepted).
+  - `tests/test_living_world.py` — **+4 теста Contract Loop** (accept_contract_success/not_found/invalid_id + api_contracts_accept_endpoint). Итого **15 тестов** в `test_living_world.py`.
+  - `tests/test_world_basic.py::TestGalaxyBidirectionalRoutes` — **+5 тестов** двусторонних маршрутов (symmetric_after_init/engine_init, load_routes_from_kb_creates_reverse, ensure_reverse_route_idempotent, get_route_bidirectional_smoke).
+- ✅ **Сделано (Phase 3 final close — Contract Complete)**:
+  - **Механика complete_contract** (`src/core/engine.py`): `GameEngine.complete_contract(contract_id)` успешно завершает процедурный контракт — начисляет награды (credits в `state.character["credits"]`, xp через `add_xp` с обработкой level-up), переносит квест из `active_quests` в `completed_quests` с `status="completed"` + `completed_at` + `reward_credits_awarded` + `reward_xp_awarded`.
+  - **Детерминизм наград** (`src/systems/contract_generator.py`): новый метод `ContractGenerator.deterministic_reward(faction_id, hook_id, tier)` использует md5-seed для стабильной награды (вместо случайного `random.randint`). `get_available_contracts` теперь использует его — награды одинаковы между запросами available и accept.
+  - **Endpoint POST /api/contracts/complete** (`src/server/routes/gameplay.py`): HTTP 200 при успехе (с reward_credits/reward_xp/quest), HTTP 404 (not_found), HTTP 400 (invalid_id).
+  - `tests/test_living_world.py` — **+5 тестов Contract Complete** (test_complete_contract_flow/invalid_id/not_in_active + test_contract_save_load_roundtrip + test_api_contracts_complete_endpoint). Итого **20 тестов** в `test_living_world.py`.
+- ❌ **Не сделано (dead code, не блокирует frontend)**:
+  - `news_generator` для `NEWS_AND_RUMORS_GENERATOR.json` (27 живых категорий) — мёртвый груз.
+  - `event_chain_resolver` для `ENHANCED_EVENT_GENERATOR_V2.event_chains[3]` — мёртвый груз.
+  - `MARKET_EVENT_GENERATOR.json` (12 ценовых шоков) — мёртвый груз.
+  - `SPACE_ENCOUNTER_GENERATOR.json` (20 d20 энкаунтеров) — мёртвый груз (используется procedural fallback).
+- Приёмка (backend core & contract loop & complete): **pytest 186 passed, 1 skipped**, контракт 76/0, 20/20 living_world тестов, 35/35 world_basic тестов, двусторонние маршруты + accept loop + complete loop зелёные. Цикл контрактов замкнут end-to-end (available → accept → save/load → complete).
+
+## Реестр долгов (Technical Debt Register)
+| Долг | Фаза-источник | Приоритет | Статус |
+|------|---------------|-----------|--------|
+| **Phase 4.1 — Имплант-менеджер и Хакерский мини-HUD** (выпали из скоупа Phase 4; имплант-панель в app.js осталась старой, хакерский HUD не интегрирован в терминальный стиль) | Phase 4 | средний | **BACKLOG** |
+| **Phase 29 G3–G6** (ассортимент по заведениям, `/api/map/enter`, слухи, тултипы) — нет автотестов, только разовые live HTTP-проверки | Phase 29 | средний | **открыт** |
+| Доступность форм: 14 issues DevTools «No label associated with a form field» (поля ввода без `<label for=…>`/aria) | Phase 30 | низкий | **открыт** |
+| ~~questContact/questAbandon не определены (R2-splice удалил функции, onclick остался)~~ | ~~Phase 30~~ | — | **закрыт** (функции восстановлены + E2E-ассерт 5.9) |
+| legacy-консолидация v2-v5_legacy | Phase 1 | низкий | отложен (стабильно, не ломаем) |
+| dialogue_tags_by_origin покрытие ~2/31 origins | Phase 26 | средний | открыт (fallback смягчает) |
+| narrative_voice/dialogue_style покрытие ~8/41 origin+spec | Phase 26 | средний | открыт (fallback смягчает) |
+| `static/js/app.js` — монолит 2859 строк | Phase 1 | средний | открыт |
+| `src/core/engine.py` — 60+ методов, 18 subsystem-полей | Phase 1 | средний | открыт (планомерный рефакторинг) |
+| `atmosphere` коллизия: хим. состав vs mood | Phase 26 | низкий | обойден (mood_descriptors отдельно) |
+| ~~scene_context на move не подключён~~ | ~~Phase 2.1~~ | — | **закрыт** (helper `_apply_tone_to_current_location`) |
+| ~~маскировка ошибки в `prompt_builder.build`~~ | ~~Phase 2.1~~ | — | **закрыт** (try/except убран) |
+| B4: Баланс цен недвижимости относительно капиталов origin'ов | Phase 0-13 | низкий | открыт |
+| D4: Контекстные подсказки хакинга/расследования по локациям | Phase 0-13 | средний | открыт |
+| **P0: Разрыв связывания NAMED_NPCS (CL1..CL166) и FACTIONS_MASTER** | Phase 3 | высокий | **закрыт** (FactionResolver в `src/world/faction_resolver.py`, NPCRegistry нормализует faction к id; 4 новых теста в test_living_world.py) |
+| **P0: Несовпадение ключей TRADE_ROUTES_MASTER (`start_point` vs `from`)** | Phase 3 | высокий | **закрыт** (`load_routes_from_kb` в `src/world/galaxy.py` принимает любой формат + PLANET_ALIAS EN→RU; тесты TestGameEngineTradeRoutesIntegration в test_world_basic.py) |
+
+## История изменений
+- 2026-09-05 — **Phase 4 — Киберпанк-HUD и клиентская интеграция**: интерфейс переведён в терминальный стиль оператора. (1) `terminal_hud.css` (216 строк): CRT-эффекты (сканлайны, виньетка, text-glow, flicker) по классу `crt-on`, палитры Amber/Green Phosphor/Cyber Neon через `html.palette-*`, ASCII-рамки `.thud-frame`. (2) `hud_terminal.js` (139): тумблер CRT 📺 и меню палитр 🎨 в тулбаре (localStorage), ASCII-хелперы `window.Ascii`. (3) `contracts_board.js` (177): доска контрактов — `GET /api/contracts/available` с Dual-Path визуализацией, «ВЗЯТЬ КОНТРАКТ» → `/api/contracts/accept`, «Сдать контракт» в квестах → `/api/contracts/complete` с анимацией награды; оба эндпоинта дополнены полем `game_state`. (4) `district_map.js` (128): SVG-радар района (заведения вокруг игрока, цвет узла = безопасность High/Med/Low, клик = `visitPlace`). Zero-Bloat: в `app.js` только 3 точки связывания (+5 строк; 3179 lines на момент Phase 4). `node --check` ×3 OK; Playwright E2E **14/14** (доска, взятие, квест в активных, сдача, CRT-тумблер, палитра, радар, клик по сектору), console errors 0, 4xx/5xx 0; pytest 186 passed. Имплант-менеджер и хакерский мини-HUD в скоуп не вошли → Phase 4.1 BACKLOG (см. Реестр долгов).
+- 2026-09-05 — **Phase 3 final close — Contract Complete**: замкнут end-to-end цикл контрактов. (1) `GameEngine.complete_contract(contract_id)` начисляет credits/xp (через `add_xp` с level-up) и переносит квест в `completed_quests` с `status="completed"` + `completed_at`. (2) `ContractGenerator.deterministic_reward()` использует md5-seed для стабильных наград между запросами. (3) `POST /api/contracts/complete` endpoint (HTTP 200/404/400). (4) `test_contract_save_load_roundtrip` проверяет полный цикл save/load с сохранением всех полей. Тесты: 20/20 living_world (+5), 186 passed итого. Цикл контрактов готов к UI.
+- 2026-09-05 — **Phase 3 loop — Contract Loop**: замкнут цикл процедурных контрактов. (1) `GalaxyMap._ensure_reverse_route()` и `symmetrize_routes()` автоматически регистрируют обратный маршрут B→A для каждого A→B (вызываются из `__init__` и `load_routes_from_kb`). (2) `ROUTE_KEY_ALIAS` маппит destination-ключи вроде `"Церера"` → `"Пояс астероидов"`. (3) `GameEngine.accept_contract(contract_id)` берёт процедурный контракт в `state.active_quests` в формате квеста. (4) `POST /api/contracts/accept` endpoint зарегистрирован (HTTP 200/400/404/409). Тесты: 15/15 living_world (+4), 35/35 world_basic (+5). Phase 3 → DONE. pytest 181 passed.
+- 2026-09-05 — **Phase 3 P0 fix v2**: устранена подгонка теста под реализацию. (1) `PLANET_ALIAS` и `_normalize_planet_alias` перенесены в ядро `src/world/galaxy.py` (модульные константы); применяются в `get_planet`, `get_routes_from`, `get_route`, `load_routes_from_kb`, `_normalize_route_endpoint`. Тест `test_trade_routes_loaded_into_galaxy_map` теперь передаёт сырые значения из JSON напрямую в `get_route()`. (2) `test_named_npc_faction_resolves_to_factions_master` прогоняет ВСЕ 166 NPC из `NAMED_NPCS.json` с непустым faction. (3) ROADMAP.md: артефакты `|` в шапке убраны, точные метрики `172 passed, 1 skipped`, `engine.py — 2228 lines`. pytest 172 passed.
+- 2026-09-05 — **Phase 3 P0 fix**: закрыты оба P0 долга. (1) `FactionResolver` в `src/world/faction_resolver.py` нормализует NPC.faction (id/name/CL{i}) → запись FACTIONS_MASTER.json; интегрирован в NPCRegistry.generate_npc / get_named_npc. (2) `galaxy_map.load_routes_from_kb` в `src/world/galaxy.py` принимает start_point/end_point/planet_a/planet_b + PLANET_ALIAS EN→RU. Тесты: 11/11 living_world, 4/4 TestGameEngineTradeRoutesIntegration зелёные. ROADMAP обновлён.
+- 2026-09-05 — Phase 3 core: FactionConflictSimulator (Pacing Guard + Catastrophe Ceiling) + ContractGenerator (Dual-Path, 168 plot_hooks) подключены в GameEngine. Endpoint `/api/contracts/available` зарегистрирован. 6/6 приёмочных тестов в test_living_world.py зелёные. Phase 3 → IN PROGRESS (HTTP/NPC binding pending).
+- 2026-09-05 — Phase 2.1 Blocker-fix: scene_context на move подключён (engine.py + routes/world.py), маскировка `prompt_builder.build` снята, 6-й интеграционный тест добавлен. Phase 3 → READY TO START.
+- 2026-09-05 — Phase 2.1: завершена реальная смычка ToneEngine/PromptBuilder в start_game и process_player_action; tone_profile сериализуется в GameState; добавлен эвристический fallback для непокрытых origins; добавлены 5 интеграционных тестов приёмки.
+- 2026-09-04 — Phase 2/26: созданы ToneProfile, ToneEngine, SystemPromptBuilder; Phase 2.1 не выполнен (двигатель собран, но не подключён к колёсам).
+- 2026-09-04 — Phase 1: app.py → 5 blueprints; циклический импорт развязан; utils/region.py, utils/clinic.py созданы; tone_profile инициализирован в GameState.
+- 2026-08-25 — Phase 24c B5-3 (B5-4): фиксы P0 (перки, спам, новости), реализация роста атрибутов с миграцией старых сейвов.
+- 2026-08-23 — Phase 0-13: dice 2d6/DC≤20, 166 фракций, квесты 31+25+early, TECH_EQUIPMENT, транспорт numeric-only.
+
+## Журнал изменений
+
+- **2026-09-05 — Phase 30 шаг 1**: `_world_tick` (78 строк, 8 подсистем) вынесен в `src/world/world_tick_service.py` (DI, 126 строк); `engine.py` 2740 → 2681; делегат с неизменной сигнатурой `() -> Dict`; 5 тестов (сигнатура/делегирование/идентичность с pre-refactor телом/verbatim-возврат/нет src.server-импортов); компромисс: `get_player_tier` колбэком. pytest 198 passed; E2E 14/14. Попутно закрыт регресс questContact/questAbandon (R2-splice удалил функции при живом onclick) + E2E-ассерт 5.9.
+- **2026-09-05 — Phase 29 G-fix**: слот-классификация по магазинному каталогу + Экипировать/Снять; [STATE]-срез больше не убивает варианты выбора; ассортимент магазина по заведениям (needs_place_selection); visitPlace → /api/map/enter с фиксацией места и реакцией окружения; слухи по профессии/локации, SCIENTIFIC → Genesis Bioworks; тултипы тулбара. 193 passed (+7 регрессионных); E2E 14/14.
+- **2026-09-05 — Phase 28 F-fix**: 6 исправлений живого плейтеста — зачистка ```json и инструкций промпта, стартовые наборы всех архетипов (фикс SPEC_-префикса), город Станция Юпитер-Прайм + фоллбэк радара, локализация времени суток, все навыки в листе + level-up кнопка, нарративная обёртка кубов с тумблером 🎲. 186 passed; E2E 14/14.
+- **2026-09-05 — Phase 4 — Киберпанк-HUD**: терминальный UI (CRT/палитры/ASCII), доска контрактов с Dual-Path и циклом взять/сдать, SVG-радар района. Модули: terminal_hud.css, hud_terminal.js, contracts_board.js, district_map.js; app.js +5 строк. E2E 14/14; pytest 186 passed.
+- **2026-09-05 — Phase 27 R-fix**: 7 исправлений UX (R1-R7) + фикс NameError в /api/map/move; инвентарь-детерминизм, контекстный магазин, корабельные Datasheet-модалки, NPC-фильтрация, зачистка заголовков промпта. 186 passed; E2E 6/6.

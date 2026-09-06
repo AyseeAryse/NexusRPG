@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NexusRPG module contract",
+  "description": "Контракт верхнего уровня для всех игровых JSON-модулей game_data/. Version: semver X.Y или X.Y_СМЫСЛОВОЙ_СУФФИКС (ЗАГЛАВНЫЕ, A-Z0-9_). Priority: 1..50, чем выше — тем предпочтительнее при конфликте версий.",
+  "type": "object",
+  "required": ["module_name", "version", "priority"],
+  "additionalProperties": true,
+  "properties": {
+    "module_name": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_]*$",
+      "minLength": 3,
+      "maxLength": 64,
+      "description": "SCREAMING_SNAKE_CASE. Должен соответствовать имени файла (без расширения) — проверяет validate_contract.py."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+(_[A-Z0-9_]+)?$",
+      "description": "Semver-минор: '2.1' или '2.1_MASSIVE_UNIFIED'. Запрещены свободные тексты вроде FINAL_1.0_COMPLETE_ENFORCEMENT."
+    },
+    "priority": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 50,
+      "description": "1..50. Рекомендации: reference=5, generator=15, domain module=25, merged canon=30-40, AI core=45."
+    },
+    "description": { "type": "string" },
+    "extends": {
+      "type": "string",
+      "description": "Имя базового модуля, если это надстройка. После слияния надстроек поле удаляется."
+    },
+    "merged_from": {
+      "type": ["object", "array"],
+      "description": "Аудит-след слияния: какие файлы и версии влиты."
+    },
+    "canonical_note": { "type": "string" }
+  },
+  "examples": [
+    {
+      "module_name": "POLITICS",
+      "version": "2.1_RICH_MERGED",
+      "priority": 30
+    }
+  ]
+}

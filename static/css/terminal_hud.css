@@ -1,0 +1,215 @@
+/* ═══════════════════════════════════════════════════════════════
+   Phase 4: Terminal HUD — CRT effects, palettes, ASCII frames
+   Изолированный модуль. Не трогает style.css — только overlays
+   на html/body и классы с префиксом .thud- / .crt- / .palette-
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Палитры: переопределяют CSS-переменные на html.palette-* ── */
+
+/* Cyber Neon — дефолт (без изменений, сюда не пишем) */
+
+/* Amber: янтарный монохром */
+html.palette-amber {
+    --cyan: #ffb000;
+    --magenta: #ff8c00;
+    --gold: #ffc966;
+    --green: #ffb000;
+    --accent: #ffb000;
+    --red: #ff5533;
+    --orange: #ff9933;
+    --text: #ffd999;
+    --text2: #b3864d;
+    --border: #6b4a1e;
+    --bg: #0d0904;
+    --bg2: #140e06;
+    --bg3: #1c1308;
+    --bg4: #261a0b;
+}
+
+/* Green Phosphor: зелёный терминал */
+html.palette-green {
+    --cyan: #33ff66;
+    --magenta: #00cc55;
+    --gold: #88ffaa;
+    --green: #33ff66;
+    --accent: #33ff66;
+    --red: #ff6666;
+    --orange: #66ff99;
+    --text: #ccffdd;
+    --text2: #66aa77;
+    --border: #1e4a2a;
+    --bg: #040d06;
+    --bg2: #06140a;
+    --bg3: #0a1c10;
+    --bg4: #0f2616;
+}
+
+/* ── CRT-эффекты: включаются классом .crt-on на html ── */
+
+/* Сканлайны: повторяющиеся горизонтальные полосы поверх всего */
+html.crt-on body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10000;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0px,
+        rgba(0, 0, 0, 0) 2px,
+        rgba(0, 0, 0, 0.12) 3px,
+        rgba(0, 0, 0, 0) 4px
+    );
+    mix-blend-mode: multiply;
+}
+
+/* Виньетка + лёгкое кинескопное свечение экрана */
+html.crt-on body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    background:
+        radial-gradient(ellipse at center,
+            rgba(0, 0, 0, 0) 55%,
+            rgba(0, 0, 0, 0.28) 100%);
+    box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.45);
+}
+
+/* Кинескопное свечение текста: весь текст слегка светится своим цветом */
+html.crt-on .msg,
+html.crt-on .panel-section-title,
+html.crt-on .topbar,
+html.crt-on .topbar-btn,
+html.crt-on .char-info-val,
+html.crt-on .shop-item-name {
+    text-shadow:
+        0 0 4px currentColor,
+        0 0 12px rgba(0, 240, 255, 0.15);
+}
+
+/* Мягкое мерцание (flicker) — очень деликатное, отключаемо */
+html.crt-on .narrative-scroll {
+    animation: thud-flicker 6s infinite steps(1);
+}
+
+@keyframes thud-flicker {
+    0%, 100% { opacity: 1; }
+    92%      { opacity: 1; }
+    93%      { opacity: 0.96; }
+    94%      { opacity: 1; }
+    97%      { opacity: 0.98; }
+    98%      { opacity: 1; }
+}
+
+/* ── ASCII-рамки для заголовков модалок/карточек ──
+   Применение: <div class="thud-frame" data-title="ЗАГОЛОВОК"> */
+.thud-frame {
+    position: relative;
+    border: 1px solid var(--accent, var(--cyan));
+    padding: 14px 12px 10px;
+    margin: 6px 0;
+}
+.thud-frame::before {
+    content: "┌─" attr(data-title) "─┐";
+    position: absolute;
+    top: -0.75em;
+    left: 8px;
+    background: var(--bg2, #12121a);
+    padding: 0 6px;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.72em;
+    letter-spacing: 1px;
+    color: var(--accent, var(--cyan));
+    white-space: nowrap;
+    max-width: calc(100% - 16px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ASCII-статусная строка (доска контрактов, радар) */
+.thud-statusbar {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.78em;
+    color: var(--text2);
+    border: 1px dashed var(--border);
+    padding: 4px 8px;
+    margin: 6px 0;
+    letter-spacing: 0.5px;
+    white-space: pre-wrap;
+}
+
+/* ── Кнопки тумблеров CRT/палитры в тулбаре ── */
+.topbar-btn.thud-active {
+    color: var(--cyan);
+    text-shadow: 0 0 8px var(--cyan);
+    border-bottom: 2px solid var(--cyan);
+}
+
+/* Палитра-свотч в выпадающем меню */
+.thud-palette-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px;
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 10001;
+    min-width: 170px;
+}
+.thud-palette-menu.open { display: flex; }
+.thud-palette-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.85em;
+    color: var(--text);
+}
+.thud-palette-item:hover { background: var(--bg4); }
+.thud-palette-item.active { outline: 1px solid var(--cyan); }
+.thud-swatch {
+    width: 14px; height: 14px;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+}
+
+/* Анимация начисления награды (contracts_board) */
+@keyframes thud-reward-pop {
+    0%   { transform: scale(0.6); opacity: 0; }
+    40%  { transform: scale(1.15); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.thud-reward-flash {
+    animation: thud-reward-pop 0.6s ease-out;
+    color: var(--gold);
+    text-shadow: 0 0 10px var(--gold);
+    font-weight: 700;
+}
+
+
+/* ── Contracts Board ── */
+.cb-ascii-header { color: var(--accent, var(--cyan)); font-size: 0.72em; line-height: 1.15; margin: 2px 0 8px; }
+.cb-contract { margin-bottom: 12px; }
+.cb-title { font-weight: 700; color: var(--accent, var(--cyan)); font-size: 0.95em; margin-bottom: 2px; }
+.cb-giver { font-size: 0.8em; color: var(--text2); }
+.cb-desc { font-size: 0.85em; margin: 6px 0; color: var(--text); }
+.cb-paths { border-left: 2px solid var(--magenta, #ff00aa); padding-left: 8px; margin: 8px 0; }
+.cb-paths-title { font-size: 0.7em; letter-spacing: 1px; color: var(--magenta, #ff00aa); margin-bottom: 4px; }
+.cb-path { display: flex; gap: 6px; font-size: 0.8em; padding: 2px 0; align-items: baseline; }
+.cb-path-icon { flex: none; }
+.cb-path-text { color: var(--text2); }
+.cb-reqs { font-size: 0.72em; color: var(--orange, #ff8844); margin: 4px 0; }
+.cb-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; gap: 8px; }
+.cb-rewards { color: var(--gold, #ffd700); font-weight: 700; font-size: 0.9em; }
+.cb-accept { background: var(--accent, var(--cyan)); color: var(--bg); border: none; padding: 6px 12px;
+             border-radius: 4px; cursor: pointer; font-weight: 700; font-family: var(--font-display, sans-serif);
+             font-size: 0.75em; letter-spacing: 1px; }
+.cb-accept:hover { filter: brightness(1.2); box-shadow: 0 0 12px var(--accent, var(--cyan)); }

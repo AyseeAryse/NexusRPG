@@ -1,0 +1,2796 @@
+{
+  "schema_version": "1.0",
+  "source": "Фаза 19-20, авторские лидеры 166 фракций",
+  "module_name": "NAMED_NPCS",
+  "priority": 35,
+  "npcs": [
+    {
+      "npc_id": "MC1_LEADER",
+      "name": "Айрис Чжан",
+      "faction": "MC1",
+      "role": "CEO LunarTech Industries",
+      "location": "Орбита Луны",
+      "importance": "high",
+      "personal_goals": [
+        "Замкнуть монополию на жилые модули Луны",
+        "Скрыть провал первой партии куполов на Ганимеде"
+      ],
+      "knowledge": [
+        "Знает реальную причину аварии на станции 'Аркада' — не техническую, а саботаж конкурента"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_MARS_DOME_ARCHITECT"
+      ],
+      "quest_hook": "Нанимает игрока скрыть утечку данных об аварии до годового отчёта акционерам."
+    },
+    {
+      "npc_id": "MC2_LEADER",
+      "name": "Макс Эверард",
+      "faction": "MC2",
+      "role": "CEO Helios Energy Corp.",
+      "location": "Венера, солнечные станции",
+      "importance": "high",
+      "personal_goals": [
+        "Обогнать SolarFlare Propulsion в тендере на венерианскую сеть",
+        "Уйти от расследования по трудовым условиям на станциях"
+      ],
+      "knowledge": [
+        "Знает, что часть 'солнечных' станций питается ворованной энергией с чужих реакторов"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет 'независимых консультантов' для тихого решения проблемы с профсоюзом станции."
+    },
+    {
+      "npc_id": "MC3_LEADER",
+      "name": "Иэн Рид",
+      "faction": "MC3",
+      "role": "CEO Jovian Orbital Works",
+      "location": "Орбита Юпитера",
+      "importance": "medium",
+      "personal_goals": [
+        "Выиграть контракт на верфи Сатурна у Titan Shipyards Collective"
+      ],
+      "knowledge": [
+        "Знает слабое место в корпусах судов собственного производства — конструктивный дефект, который скрывают"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нужен сталкер-инженер для тихой ревизии дефектных судов прежде чем это всплывёт."
+    },
+    {
+      "npc_id": "MC4_LEADER",
+      "name": "Сатоши Танака",
+      "faction": "MC4",
+      "role": "CEO SaturnGas Solutions",
+      "location": "Кольца Сатурна",
+      "importance": "medium",
+      "personal_goals": [
+        "Удержать долю добычи гелия-3 против United Saturn Block"
+      ],
+      "knowledge": [
+        "Знает истинные объёмы истощения колец — цифры для инвесторов подделаны"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет способ скрыть падение добычи перед аудитом Solar Council."
+    },
+    {
+      "npc_id": "MC5_LEADER",
+      "name": "Клара Весс",
+      "faction": "MC5",
+      "role": "CEO TerraForm Union",
+      "location": "Марс, Венера",
+      "importance": "high",
+      "personal_goals": [
+        "Добиться госконтракта на терраформирование Марса от Mars Republic"
+      ],
+      "knowledge": [
+        "Знает, что технология терраформирования не окупает себя без бесконечных субсидий — держит это в секрете"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_MARS_TERRAFORMER"
+      ],
+      "quest_hook": "Ей нужен человек, способный 'подтвердить' успешность пилотного проекта перед комиссией."
+    },
+    {
+      "npc_id": "MC6_LEADER",
+      "name": "Эмилия Сун",
+      "faction": "MC6",
+      "role": "CEO BioCore Labs",
+      "location": "Церера",
+      "importance": "medium",
+      "personal_goals": [
+        "Заполучить эксклюзив на генетические патенты BioCore до истечения срока"
+      ],
+      "knowledge": [
+        "В курсе нелегальных экспериментов на станции 'подрядчика' — формально не её ответственность"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_MARS_GENETIC_EXPERIMENT"
+      ],
+      "quest_hook": "Просит найти пропавшего исследователя, который слишком много знал."
+    },
+    {
+      "npc_id": "MC7_LEADER",
+      "name": "Виктор Рейз",
+      "faction": "MC7",
+      "role": "CEO Nexus Pharmaceuticals",
+      "location": "Луна, Ново-Пекин",
+      "importance": "high",
+      "personal_goals": [
+        "Вывести на рынок препарат до окончания клинических испытаний"
+      ],
+      "knowledge": [
+        "Знает о побочных эффектах, которые скрыли от регулятора"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает 'решить проблему' с журналистом, который раскопал ранние отчёты."
+    },
+    {
+      "npc_id": "MC8_LEADER",
+      "name": "Селин Дюпон",
+      "faction": "MC8",
+      "role": "CEO Aetherium Dynamics",
+      "location": "Остров О'Нилла",
+      "importance": "medium",
+      "personal_goals": [
+        "Продать технологию квантовой связи военным раньше конкурентов"
+      ],
+      "knowledge": [
+        "В курсе, что технология частично украдена у Quantum Horizons"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет посредника для сделки, которая не должна засветиться в реестре патентов."
+    },
+    {
+      "npc_id": "MC9_LEADER",
+      "name": "Иван Курочкин",
+      "faction": "MC9",
+      "role": "CEO SolarFlare Propulsion",
+      "location": "Венера, термальный сектор",
+      "importance": "medium",
+      "personal_goals": [
+        "Обогнать Helios Energy в тендере на венерианскую сеть"
+      ],
+      "knowledge": [
+        "Знает о нештатных перегревах реакторов, которые держит в тайне от регулятора"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нужен инспектор, готовый подписать 'чистый' отчёт по безопасности."
+    },
+    {
+      "npc_id": "MC10_LEADER",
+      "name": "Лиана Хуанг",
+      "faction": "MC10",
+      "role": "CEO Quantum Horizons",
+      "location": "Ганимед-Технохаб",
+      "importance": "high",
+      "personal_goals": [
+        "Защитить квантовое шифрование компании от промышленного шпионажа Aetherium Dynamics"
+      ],
+      "knowledge": [
+        "Знает о утечке алгоритма к конкуренту — подозревает инсайдера"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_MARS_ATMOSPHERIC_ENGINEER"
+      ],
+      "quest_hook": "Нанимает найти крота внутри собственной компании."
+    },
+    {
+      "npc_id": "MC11_LEADER",
+      "name": "Декстер Рох",
+      "faction": "MC11",
+      "role": "CEO Omega Defense Systems",
+      "location": "Форт-Марс",
+      "importance": "high",
+      "personal_goals": [
+        "Продать новую систему ПВО одновременно Mars Republic и частным ЧВК"
+      ],
+      "knowledge": [
+        "Знает, что продажа обеим сторонам конфликта интересов нарушает контракт с Republic"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нужен человек для скрытной доставки образца системы 'неофициальному' покупателю."
+    },
+    {
+      "npc_id": "NPC_001",
+      "name": "Д-р София Кендрик",
+      "archetype": "Bioethicist",
+      "current_location": "ganymede:technohub:bioethical_center",
+      "relationship_status": "Neutral",
+      "personal_goals": [
+        "Защитить данные об этических экспериментах",
+        "Обнаружить шпиона среди коллег"
+      ],
+      "knowledge": [
+        "Секреты Protogen Alpha Labs",
+        "Биоданные уникального регенеративного протеза"
+      ],
+      "lifepath_connections": {
+        "ORIGIN_GANYMEDE_SCIENTIST": {
+          "relationship_type": "former_colleague",
+          "shared_history": "Работали в одной лаборатории 5 лет назад",
+          "greeting": "София: 'Боже мой, это же [имя]! Как дела в исследованиях?'",
+          "reputation_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.npc_definitions.NPC_001.lifepath_connections.ORIGIN_GANYMEDE_SCIENTIST.reputation_bonuses",
+          "unique_dialogue_options": [
+            "[Научный] Обсудить последние открытия в биоэтике",
+            "[Коллега] Попросить доступ к закрытым исследованиям",
+            "[Воспоминания] Вспомнить совместные проекты"
+          ]
+        },
+        "ORIGIN_MARS_SCIENTIST": {
+          "relationship_type": "academic_rival",
+          "shared_history": "Конкурировали за исследовательский грант 3 года назад",
+          "greeting": "София: 'Марсианская наука по-прежнему отстает от Ганимедской, [имя]?'",
+          "reputation_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.npc_definitions.NPC_001.lifepath_connections.ORIGIN_MARS_SCIENTIST.reputation_bonuses",
+          "unique_dialogue_options": [
+            "[Вызов] Доказать превосходство марсианских методов",
+            "[Соперничество] Предложить научное пари",
+            "[Уважение] Признать компетентность коллеги"
+          ]
+        },
+        "FY_MARS_LAB_ASSISTANT": {
+          "relationship_type": "recommending_mentor",
+          "shared_history": "София была вашим наставником во время стажировки",
+          "greeting": "София: 'Мой бывший студент! Надеюсь, ты помнишь, чему я тебя учила.'",
+          "reputation_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.npc_definitions.NPC_001.lifepath_connections.FY_MARS_LAB_ASSISTANT.reputation_bonuses",
+          "unique_dialogue_options": [
+            "[Ученик] Попросить совета по сложной проблеме",
+            "[Благодарность] Поблагодарить за наставничество",
+            "[Отчет] Рассказать о применении полученных знаний"
+          ]
+        }
+      },
+      "quest_chain": [
+        {
+          "quest_id": "Q_NPC001_01",
+          "title": "Утечка образцов",
+          "description": "Выяснить, кто похитил экспериментальные ткани из Genesis Bioworks HQ.",
+          "status": "Available",
+          "steps": [
+            "Найти свидетеля в Биоэтическом центре",
+            "Собрать записи камер",
+            "Допросить подозреваемого"
+          ],
+          "rewards": {
+            "influence": 10,
+            "access": "blueprint:regenerative_prosthesis"
+          },
+          "reputation_requirements_source": "NPC_RELATIONS_REPUTATION_STANDARDIZED.npc_definitions.NPC_001.quest_chain[0].reputation_requirements",
+          "lifepath_variations": {
+            "ORIGIN_GANYMEDE_SCIENTIST": {
+              "additional_step": "Использовать знания лаборатории для ускоренного поиска",
+              "bonus_reward": "+5 Scientific Reputation"
+            },
+            "FY_MARS_LAB_ASSISTANT": {
+              "difficulty_reduction": "Софии нужно меньше убеждений для доверия важной информации",
+              "bonus_reward": "Доступ к личным исследовательским архивам"
+            }
+          }
+        }
+      ],
+      "_source_file": "NAMED_NPCS.json",
+      "_is_named": true,
+      "faction": "MC12",
+      "importance": "critical",
+      "role_note": "CEO Genesis Bioworks (биоэтик)",
+      "quest_hook_ref": "NPC_RELATIONS.npc_definitions.NPC_001.quest_chain[0] («Утечка образцов»)"
+    },
+    {
+      "npc_id": "MC13_LEADER",
+      "name": "Анна Волкова",
+      "faction": "MC13",
+      "role": "CEO Vesta Industrial Union",
+      "location": "Веста, шахтёрские поселения",
+      "importance": "medium",
+      "personal_goals": [
+        "Подавить забастовку шахтёров без привлечения внимания Solar Council"
+      ],
+      "knowledge": [
+        "Знает реальные цифры смертности на шахтах — занижены в отчётах"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_BELT_MINER"
+      ],
+      "quest_hook": "Ищет 'переговорщика' для тихого урегулирования с профсоюзом."
+    },
+    {
+      "npc_id": "MC14_LEADER",
+      "name": "Кай Оландер",
+      "faction": "MC14",
+      "role": "CEO Titan Shipyards Collective",
+      "location": "Титан, орбитальные верфи",
+      "importance": "medium",
+      "personal_goals": [
+        "Выиграть контракт на верфи против Jovian Orbital Works"
+      ],
+      "knowledge": [
+        "Знает о срыве сроков поставки, которую скрывают от заказчика"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нужен курьер для доставки поддельной документации о готовности заказа."
+    },
+    {
+      "npc_id": "MC15_LEADER",
+      "name": "Джек Коронадо",
+      "faction": "MC15",
+      "role": "CEO Deep Belt Prospectors Guild",
+      "location": "Дальний Пояс, мобильные базы",
+      "importance": "medium",
+      "personal_goals": [
+        "Найти новое месторождение раньше конкурентов до истечения лицензии"
+      ],
+      "knowledge": [
+        "Знает координаты неучтённого астероида с редкими металлами"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_BELT_SALVAGER"
+      ],
+      "quest_hook": "Предлагает долю в находке в обмен на охрану экспедиции от пиратов."
+    },
+    {
+      "npc_id": "SC1_LEADER",
+      "name": "Лейла Амин",
+      "faction": "SC1",
+      "role": "Глава HydroDash",
+      "location": "Пояс, Церера→Веста",
+      "importance": "low",
+      "personal_goals": [
+        "Защитить маршрут доставки воды от вымогателей"
+      ],
+      "knowledge": [
+        "Знает, кто реально контролирует 'налог' на маршруте"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Просит эскорт для критически важной партии воды."
+    },
+    {
+      "npc_id": "SC2_LEADER",
+      "name": "Карлос Мендоза",
+      "faction": "SC2",
+      "role": "Глава SpaceFixers",
+      "location": "Марс, орбита",
+      "importance": "low",
+      "personal_goals": [
+        "Получить контракт на обслуживание флота Omega Defense Systems"
+      ],
+      "knowledge": [
+        "Знает о скрытых повреждениях судов клиента, за которые ему не платят"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нужен посредник для деликатного разговора с клиентом о неоплаченных счетах."
+    },
+    {
+      "npc_id": "SC3_LEADER",
+      "name": "Авика Рохит",
+      "faction": "SC3",
+      "role": "Глава NanoEdge",
+      "location": "Луна, Технохаб",
+      "importance": "low",
+      "personal_goals": [
+        "Расширить бизнес на строительство на Ганимеде"
+      ],
+      "knowledge": [
+        "Знает о дефекте в нанотехнологии, которую использует в строительстве"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет тихого способа заменить материал без огласки дефекта."
+    },
+    {
+      "npc_id": "SC4_LEADER",
+      "name": "Аксель Ван Дайк",
+      "faction": "SC4",
+      "role": "Глава ByteHack Collective",
+      "location": "Земля, Нью-Йорк",
+      "importance": "medium",
+      "personal_goals": [
+        "Не дать корпорациям выкупить коллектив хакеров"
+      ],
+      "knowledge": [
+        "Знает бэкдор в системах трёх мегакорпораций"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_EARTH_HACKER_COLLECTIVE"
+      ],
+      "quest_hook": "Предлагает работу по вскрытию корпоративной системы за долю в добыче."
+    },
+    {
+      "npc_id": "SC5_LEADER",
+      "name": "Маркус Ван Хельсинг",
+      "faction": "SC5",
+      "role": "Глава SpaceHotels Inc.",
+      "location": "Марс, отель «Кровь Марса»",
+      "importance": "low",
+      "personal_goals": [
+        "Скрыть серию странных исчезновений постояльцев отеля"
+      ],
+      "knowledge": [
+        "Знает, что исчезновения связаны с контрабандным туннелем под отелем"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает 'разобраться' с проблемой тихо, без полиции."
+    },
+    {
+      "npc_id": "SC6_LEADER",
+      "name": "Виктор Санчез",
+      "faction": "SC6",
+      "role": "Глава StellarMiner",
+      "location": "Пояс, Паллада",
+      "importance": "low",
+      "personal_goals": [
+        "Вернуть арендованную платформу, захваченную должником"
+      ],
+      "knowledge": [
+        "Знает, что должник связан с одним из Кланов Пояса"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет силовиков для возврата имущества без начала войны с кланом."
+    },
+    {
+      "npc_id": "SC7_LEADER",
+      "name": "Стивен Мун",
+      "faction": "SC7",
+      "role": "Глава Martian AgroCo",
+      "location": "Марс, Домен-3",
+      "importance": "low",
+      "personal_goals": [
+        "Защитить биофермы от саботажа конкурента"
+      ],
+      "knowledge": [
+        "Подозревает конкретного инсайдера в диверсиях с кислородными станциями"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Просит расследовать серию 'случайных' поломок оборудования."
+    },
+    {
+      "npc_id": "SC8_LEADER",
+      "name": "Омар Салем",
+      "faction": "SC8",
+      "role": "Глава SkyCharge Systems",
+      "location": "Орбита Юпитера",
+      "importance": "low",
+      "personal_goals": [
+        "Получить эксклюзивный контракт на станции ускорения от Jovian Orbital Works"
+      ],
+      "knowledge": [
+        "Знает о конфликте интересов у чиновника, распределяющего контракты"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет доказательства коррупции для использования в переговорах."
+    },
+    {
+      "npc_id": "SC9_LEADER",
+      "name": "Рут Чен",
+      "faction": "SC9",
+      "role": "Глава TerraLogistics",
+      "location": "Земля, Лондон",
+      "importance": "low",
+      "personal_goals": [
+        "Расширить грузовые контракты на маршруты Пояса"
+      ],
+      "knowledge": [
+        "Знает о пропавшем грузе, который её водитель тайно продал"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает найти пропавший груз до аудита страховой компании."
+    },
+    {
+      "npc_id": "SC10_LEADER",
+      "name": "Ариэль Слоун",
+      "faction": "SC10",
+      "role": "Глава StellarCourier",
+      "location": "Пояс–Марс маршрут",
+      "importance": "low",
+      "personal_goals": [
+        "Обогнать CometCourier в скорости доставки"
+      ],
+      "knowledge": [
+        "Знает короткий, но опасный маршрут через спорную зону"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет пилота, готового рискнуть маршрутом через территорию пиратов."
+    },
+    {
+      "npc_id": "SC11_LEADER",
+      "name": "Томас Ривера",
+      "faction": "SC11",
+      "role": "Глава AquaPure Tech",
+      "location": "Церера",
+      "importance": "low",
+      "personal_goals": [
+        "Доказать, что вода конкурента (HydroDash) хуже качеством"
+      ],
+      "knowledge": [
+        "Знает реальные результаты независимой экспертизы воды"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Просит распространить информацию о качестве воды конкурента — этично сомнительно."
+    },
+    {
+      "npc_id": "SC12_LEADER",
+      "name": "Д-р Айша Калах",
+      "faction": "SC12",
+      "role": "Глава MedLink",
+      "location": "Ганимед",
+      "importance": "low",
+      "personal_goals": [
+        "Получить лицензию на телемедицину на новых станциях"
+      ],
+      "knowledge": [
+        "Знает о нелегальной практике протезирования конкурента (CyberMedix)"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет доказательства нелегальной деятельности конкурента для регулятора."
+    },
+    {
+      "npc_id": "SC13_LEADER",
+      "name": "Хиро Танака",
+      "faction": "SC13",
+      "role": "Глава ForgeWorks",
+      "location": "Луна, Forge-5",
+      "importance": "low",
+      "personal_goals": [
+        "Защитить чертежи от промышленного шпионажа"
+      ],
+      "knowledge": [
+        "Подозревает, что чертежи уже украдены и проданы"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает найти источник утечки внутри собственного производства."
+    },
+    {
+      "npc_id": "SC14_LEADER",
+      "name": "Оливия Ченарес",
+      "faction": "SC14",
+      "role": "Глава ByteCourier",
+      "location": "Земля, Сан-Франкосити",
+      "importance": "low",
+      "personal_goals": [
+        "Обеспечить безопасность доставки критически важных данных клиента"
+      ],
+      "knowledge": [
+        "Знает, что один из курьеров скорее всего продаёт данные на сторону"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Просит выяснить, кто из курьеров утечка, без огласки."
+    },
+    {
+      "npc_id": "SC15_LEADER",
+      "name": "Хуан Лопес",
+      "faction": "SC15",
+      "role": "Глава DuneHarvest",
+      "location": "Марс, Каньон Дельта",
+      "importance": "low",
+      "personal_goals": [
+        "Пережить засуху сезона без потери урожая"
+      ],
+      "knowledge": [
+        "Знает о нелегальном отводе воды соседней биофермой"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет способ доказать воровство воды без прямой конфронтации."
+    },
+    {
+      "npc_id": "SC16_LEADER",
+      "name": "Мария Коваленко",
+      "faction": "SC16",
+      "role": "Глава AstroClean",
+      "location": "Орбита Земли",
+      "importance": "low",
+      "personal_goals": [
+        "Выиграть госконтракт на очистку орбиты от обломков"
+      ],
+      "knowledge": [
+        "Знает о заброшенном военном спутнике, который выгодно 'случайно' не находить"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Предлагает 'не заметить' ценный объект в обмен на долю."
+    },
+    {
+      "npc_id": "SC17_LEADER",
+      "name": "Алексей Сидоров",
+      "faction": "SC17",
+      "role": "Глава CometCourier",
+      "location": "Пояс–Юпитер трассы",
+      "importance": "low",
+      "personal_goals": [
+        "Обогнать StellarCourier на общих маршрутах"
+      ],
+      "knowledge": [
+        "Знает о засаде пиратов на конкурирующем маршруте — не предупредил"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет пилота для срочной доставки по опасному кратчайшему пути."
+    },
+    {
+      "npc_id": "SC18_LEADER",
+      "name": "Ленора Клей",
+      "faction": "SC18",
+      "role": "Глава MicroFusion",
+      "location": "Венера, пилотный участок",
+      "importance": "low",
+      "personal_goals": [
+        "Получить финансирование на масштабирование мини-реакторов"
+      ],
+      "knowledge": [
+        "Знает о нестабильности прототипа, которую скрывает от инвесторов"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет 'независимого эксперта' для благоприятного отзыва о безопасности."
+    },
+    {
+      "npc_id": "SC19_LEADER",
+      "name": "Виктория Далтон",
+      "faction": "SC19",
+      "role": "Глава OrbitalArts",
+      "location": "Орбита Луны",
+      "importance": "low",
+      "personal_goals": [
+        "Организовать культурное событие несмотря на угрозы саботажа"
+      ],
+      "knowledge": [
+        "Знает, кто угрожает событию и почему (конкурент по влиянию)"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает охрану для мероприятия под угрозой срыва."
+    },
+    {
+      "npc_id": "SC20_LEADER",
+      "name": "Д-р Самир Ахмед",
+      "faction": "SC20",
+      "role": "Глава BioHarbor",
+      "location": "Церера, биопорт",
+      "importance": "low",
+      "personal_goals": [
+        "Расширить биопереработку на соседние станции"
+      ],
+      "knowledge": [
+        "Знает о случае заражения на станции, который скрыли от властей"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет способ утилизировать зараженную партию без огласки."
+    },
+    {
+      "npc_id": "SC21_LEADER",
+      "name": "Лаура Чен",
+      "faction": "SC21",
+      "role": "Глава QuantumMeals",
+      "location": "Марс, купольная сеть",
+      "importance": "low",
+      "personal_goals": [
+        "Победить в тендере на поставку еды в новые купола"
+      ],
+      "knowledge": [
+        "Знает о поставщике сырья, который использует нелегальный труд"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет замену поставщику без разрыва производственной цепи."
+    },
+    {
+      "npc_id": "SC22_LEADER",
+      "name": "Д-р Юна Пак",
+      "faction": "SC22",
+      "role": "Глава AeroMedic",
+      "location": "Орбита Венеры",
+      "importance": "low",
+      "personal_goals": [
+        "Расширить экстренную медицинскую доставку на новые станции"
+      ],
+      "knowledge": [
+        "Знает о задержках медпомощи, которые скрывают от клиентов"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Просит доставить критический груз медикаментов через опасный участок."
+    },
+    {
+      "npc_id": "SC23_LEADER",
+      "name": "Инго Мюллер",
+      "faction": "SC23",
+      "role": "Глава EcoVac",
+      "location": "Орбита Сатурна",
+      "importance": "low",
+      "personal_goals": [
+        "Получить контракт на очистку колец от United Saturn Block"
+      ],
+      "knowledge": [
+        "Знает об экологическом ущербе от собственной техники, который скрывает"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет способ 'подчистить' данные перед экологической проверкой."
+    },
+    {
+      "npc_id": "SC24_LEADER",
+      "name": "Нина Воробьёва",
+      "faction": "SC24",
+      "role": "Глава LunarRecycle",
+      "location": "Луна, ремонтный сектор",
+      "importance": "low",
+      "personal_goals": [
+        "Найти новый источник металлолома после потери контракта"
+      ],
+      "knowledge": [
+        "Знает о заброшенных станциях с ценным металлом на дальних орбитах"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Предлагает долю в находке за помощь в разведке заброшенной станции."
+    },
+    {
+      "npc_id": "SC25_LEADER",
+      "name": "Патрик О'Коннор",
+      "faction": "SC25",
+      "role": "Глава StellarGardens",
+      "location": "Ганимед",
+      "importance": "low",
+      "personal_goals": [
+        "Восстановить биофермы после аварии с освещением"
+      ],
+      "knowledge": [
+        "Знает, что авария — саботаж, не техническая неполадка"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Просит выяснить, кто и почему устроил саботаж оранжерей."
+    },
+    {
+      "npc_id": "SC26_LEADER",
+      "name": "Хироко Такахаши",
+      "faction": "SC26",
+      "role": "Глава VoidMaps",
+      "location": "Глубокий космос",
+      "importance": "low",
+      "personal_goals": [
+        "Продать эксклюзивную карту нового маршрута лучшему покупателю"
+      ],
+      "knowledge": [
+        "Знает о неучтённом опасном участке на популярном маршруте"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет 'тестового' пилота проверить точность новой карты."
+    },
+    {
+      "npc_id": "SC27_LEADER",
+      "name": "Иван Тихонов",
+      "faction": "SC27",
+      "role": "Глава HydroHarvest",
+      "location": "Пояс, Веста→Паллада",
+      "importance": "low",
+      "personal_goals": [
+        "Отбить месторождение льда у конкурентов"
+      ],
+      "knowledge": [
+        "Знает координаты неучтённого ледяного тела"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нужна охрана для тихой разведки месторождения прежде конкурентов."
+    },
+    {
+      "npc_id": "SC28_LEADER",
+      "name": "Эмилио Гарсия",
+      "faction": "SC28",
+      "role": "Глава AstroRescue",
+      "location": "Марс, Луна",
+      "importance": "low",
+      "personal_goals": [
+        "Спасти репутацию после неудачной спасательной операции"
+      ],
+      "knowledge": [
+        "Знает, что провал был из-за урезанного бюджета, не человеческой ошибки"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет свидетелей, готовых подтвердить его версию событий."
+    },
+    {
+      "npc_id": "SC29_LEADER",
+      "name": "Пророк Айлін",
+      "faction": "SC29",
+      "role": "Глава CometCult",
+      "location": "Земля, религиозные базы",
+      "importance": "medium",
+      "personal_goals": [
+        "Расширить паству без привлечения внимания властей"
+      ],
+      "knowledge": [
+        "Знает, что 'пророчества' культа основаны на утечке данных из Scientific Assembly"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает 'достать' очередную порцию инсайдерской информации под видом откровения."
+    },
+    {
+      "npc_id": "SC30_LEADER",
+      "name": "Д-р Лейла Хабиб",
+      "faction": "SC30",
+      "role": "Глава NanoClinic",
+      "location": "Церера, медкорпус",
+      "importance": "low",
+      "personal_goals": [
+        "Получить разрешение на экспериментальную нанотерапию"
+      ],
+      "knowledge": [
+        "Знает о неудачном испытании, которое скрывает от пациентов"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет пациента-добровольца для 'неофициального' испытания."
+    },
+    {
+      "npc_id": "SC46_LEADER",
+      "name": "Д-р Итан Чоу",
+      "faction": "SC46",
+      "role": "Глава PlasmaPulse",
+      "location": "Орбита Юпитера",
+      "importance": "low",
+      "personal_goals": [
+        "Продать плазменные генераторы военным несмотря на запрет экспорта"
+      ],
+      "knowledge": [
+        "Знает обходной маршрут поставки через нейтральную зону"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет контрабандиста для доставки генераторов минуя эмбарго."
+    },
+    {
+      "npc_id": "SC47_LEADER",
+      "name": "Эллисон Вей",
+      "faction": "SC47",
+      "role": "Глава StarFleet Catering",
+      "location": "Марс, Орбита Земли",
+      "importance": "low",
+      "personal_goals": [
+        "Выиграть контракт на снабжение флота Mars Fleet"
+      ],
+      "knowledge": [
+        "Знает о просроченных продуктах, которые поставляла ранее конкурентам"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Просит замять инцидент с испорченной партией еды."
+    },
+    {
+      "npc_id": "SC48_LEADER",
+      "name": "Сёра Катаока",
+      "faction": "SC48",
+      "role": "Глава QuantumQuarters",
+      "location": "Луна, купола",
+      "importance": "low",
+      "personal_goals": [
+        "Расширить производство жилых модулей на новые купола"
+      ],
+      "knowledge": [
+        "Знает о структурном дефекте модулей первой партии"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет способ тихо заменить дефектные модули без компенсации жильцам."
+    },
+    {
+      "npc_id": "SC49_LEADER",
+      "name": "Амара Нг",
+      "faction": "SC49",
+      "role": "Глава BioBeacon",
+      "location": "Венера, орбита",
+      "importance": "low",
+      "personal_goals": [
+        "Продать сигнальные системы всем сторонам локального конфликта"
+      ],
+      "knowledge": [
+        "Знает, что продажа обеим сторонам создаёt конфликт интересов"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет посредника для нейтральной доставки оборудования."
+    },
+    {
+      "npc_id": "SC50_LEADER",
+      "name": "Лео Гонсалес",
+      "faction": "SC50",
+      "role": "Глава EnviroShield",
+      "location": "Сатурн, Марс",
+      "importance": "low",
+      "personal_goals": [
+        "Доказать эффективность экологических барьеров после провала теста"
+      ],
+      "knowledge": [
+        "Знает, что тест провалился из-за экономии на материалах"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает 'подправить' данные повторного теста."
+    },
+    {
+      "npc_id": "CL1_LEADER",
+      "name": "Вождь Хуан «Дракон» Ли",
+      "faction": "CL1",
+      "role": "Вождь клана «Дракон»",
+      "location": "Марс, орбита",
+      "importance": "high",
+      "personal_goals": [
+        "Удержать территорию от посягательств Клана «Золотой Клык»",
+        "Найти предателя в собственных рядах"
+      ],
+      "knowledge": [
+        "Знает о готовящемся перевороте одного из своих лейтенантов"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_MARS_REBEL"
+      ],
+      "quest_hook": "Нанимает выяснить, кто из его людей ведёт переговоры с врагом."
+    },
+    {
+      "npc_id": "CL2_LEADER",
+      "name": "Проф. Юмико Сато",
+      "faction": "CL2",
+      "role": "Глава Лаборатории «Эгида»",
+      "location": "Церера, биолаб",
+      "importance": "medium",
+      "personal_goals": [
+        "Довести до рынка персональные щиты раньше военных конкурентов"
+      ],
+      "knowledge": [
+        "Знает о нестабильности щитов при длительном использовании — скрывает"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет тестировщика для 'финальных испытаний' прототипа."
+    },
+    {
+      "npc_id": "CL3_LEADER",
+      "name": "Ген. Директор Эрик Ван Мэр",
+      "faction": "CL3",
+      "role": "Глава Конгломерата «Тессеракт»",
+      "location": "Луна, технохаб",
+      "importance": "high",
+      "personal_goals": [
+        "Скрыть провал квантового двигателя нового поколения от инвесторов"
+      ],
+      "knowledge": [
+        "Знает истинную причину серии аварий — не тестировали должным образом"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает 'разобраться' с инженером, готовым сообщить правду прессе."
+    },
+    {
+      "npc_id": "CL4_LEADER",
+      "name": "Вождь Ишам «Клык» Атар",
+      "faction": "CL4",
+      "role": "Вождь клана «Золотой Клык»",
+      "location": "Пояс, Веста",
+      "importance": "medium",
+      "personal_goals": [
+        "Отбить территорию у Клана «Дракон»"
+      ],
+      "knowledge": [
+        "Знает о слабом месте в обороне соперника"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_BELT_PIRATE_PRINCE"
+      ],
+      "quest_hook": "Предлагает союз против общего врага в обмен на долю добычи."
+    },
+    {
+      "npc_id": "CL5_LEADER",
+      "name": "Д-р Кэтрин Престон",
+      "faction": "CL5",
+      "role": "Глава Лаборатории «Артемида»",
+      "location": "Марс, биостанции",
+      "importance": "medium",
+      "personal_goals": [
+        "Завершить генетический проект прежде утечки финансирования"
+      ],
+      "knowledge": [
+        "Знает о неэтичных методах получения генетического материала"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_MARS_GENETIC_EXPERIMENT"
+      ],
+      "quest_hook": "Ищет 'донора' с редким генотипом, не спрашивая согласия напрямую."
+    },
+    {
+      "npc_id": "CL6_LEADER",
+      "name": "CEO Арман Сиско",
+      "faction": "CL6",
+      "role": "Глава Конгломерата «Гелиос»",
+      "location": "Венера, орбита",
+      "importance": "medium",
+      "personal_goals": [
+        "Заключить энергетический контракт с United Saturn Block"
+      ],
+      "knowledge": [
+        "Знает о подкупе, необходимом для победы в тендере"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет посредника для деликатной 'благодарности' чиновнику."
+    },
+    {
+      "npc_id": "CL7_LEADER",
+      "name": "Лидер Вито «Пальцы» Маркини",
+      "faction": "CL7",
+      "role": "Глава клана «Теневые Пальцы»",
+      "location": "Земля, Силиконовый Круг",
+      "importance": "high",
+      "personal_goals": [
+        "Продать украденные данные корпораций тому, кто больше заплатит"
+      ],
+      "knowledge": [
+        "Владеет компроматом на нескольких CEO мегакорпораций"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_EARTH_HACKER_COLLECTIVE"
+      ],
+      "quest_hook": "Нанимает 'курьера' для доставки украденных данных покупателю без следов."
+    },
+    {
+      "npc_id": "CL8_LEADER",
+      "name": "Д-р София Ланг",
+      "faction": "CL8",
+      "role": "Глава Лаборатории «Веста»",
+      "location": "Пояс, Веста",
+      "importance": "low",
+      "personal_goals": [
+        "Довести новый сплав до промышленного производства"
+      ],
+      "knowledge": [
+        "Знает о нестабильности сплава при экстремальных температурах"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет способ скрыть дефект перед демонстрацией инвесторам."
+    },
+    {
+      "npc_id": "CL9_LEADER",
+      "name": "Инж. Майкл «Эхо» Тан",
+      "faction": "CL9",
+      "role": "Глава Конгломерата «Эхо»",
+      "location": "Луна, акустический центр",
+      "importance": "low",
+      "personal_goals": [
+        "Продать звуковое оружие ЧВК несмотря на запрет"
+      ],
+      "knowledge": [
+        "Знает обходной канал продажи через подставную компанию"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет посредника для 'чистой' сделки с ЧВК."
+    },
+    {
+      "npc_id": "CL10_LEADER",
+      "name": "Патриарх Чен",
+      "faction": "CL10",
+      "role": "Глава клана «Кровавый Лотос»",
+      "location": "Пояс, Церера",
+      "importance": "high",
+      "personal_goals": [
+        "Расширить сеть контрабанды стимуляторов на новые станции"
+      ],
+      "knowledge": [
+        "Знает о коррумпированном чиновнике на Церере, покрывающем контрабанду"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_EARTH_UNDERGROUND_FIGHTER"
+      ],
+      "quest_hook": "Ищет 'дистрибьютора' для расширения сети на новую станцию."
+    },
+    {
+      "npc_id": "CL11_LEADER",
+      "name": "Д-р Алексей Романов",
+      "faction": "CL11",
+      "role": "Глава Лаборатории «Арес»",
+      "location": "Марс, военная база",
+      "importance": "medium",
+      "personal_goals": [
+        "Завершить разработку биомеханического снаряжения для военного контракта"
+      ],
+      "knowledge": [
+        "Знает о случаях отказа снаряжения на испытаниях, скрытых от заказчика"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет 'испытателя' для финальных полевых тестов снаряжения."
+    },
+    {
+      "npc_id": "CL12_LEADER",
+      "name": "CEO Илона Ю",
+      "faction": "CL12",
+      "role": "Глава Конгломерата «Нексус»",
+      "location": "Земля, финансовый центр",
+      "importance": "medium",
+      "personal_goals": [
+        "Скрыть финансовую пирамиду под видом инвестиционного фонда"
+      ],
+      "knowledge": [
+        "Знает точную дату, когда схема рухнет без нового капитала"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет 'крупного инвестора' чтобы продержаться ещё один квартал."
+    },
+    {
+      "npc_id": "CL13_LEADER",
+      "name": "Капитан Ли «Феникс» Чжан",
+      "faction": "CL13",
+      "role": "Глава клана «Феникс»",
+      "location": "Орбита Марса",
+      "importance": "medium",
+      "personal_goals": [
+        "Восстановить дроновый флот после потерь в бою с Кланом «Железные Крылья»"
+      ],
+      "knowledge": [
+        "Знает слабое место в протоколах связи дронов соперника"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет техника для взлома протоколов вражеских дронов."
+    },
+    {
+      "npc_id": "CL14_LEADER",
+      "name": "Д-р Наоми Кавана",
+      "faction": "CL14",
+      "role": "Глава Лаборатории «Иксайо»",
+      "location": "Ганимед, биотех-центр",
+      "importance": "low",
+      "personal_goals": [
+        "Продать нанопрепарат без прохождения полной сертификации"
+      ],
+      "knowledge": [
+        "Знает о побочных эффектах, зафиксированных на тестовой группе"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет клинику, готовую 'неофициально' испытать препарат."
+    },
+    {
+      "npc_id": "CL15_LEADER",
+      "name": "Проф. Роджер Тессер",
+      "faction": "CL15",
+      "role": "Глава Конгломерата «Тессера»",
+      "location": "Луна, хранилище данных",
+      "importance": "low",
+      "personal_goals": [
+        "Завершить теоретическую работу над временными протоколами"
+      ],
+      "knowledge": [
+        "Знает, что часть исследований основана на украденных у CL32 данных"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет способ 'легализовать' украденные исследования как собственные."
+    },
+    {
+      "npc_id": "CL16_LEADER",
+      "name": "Вождь Салих аль-Рахим",
+      "faction": "CL16",
+      "role": "Глава клана «Песчаная Буря»",
+      "location": "Каналы Марса",
+      "importance": "medium",
+      "personal_goals": [
+        "Защитить караванные маршруты от конкурирующих кланов"
+      ],
+      "knowledge": [
+        "Знает безопасный обходной путь через опасную зону"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет охрану для караванного маршрута под угрозой нападения."
+    },
+    {
+      "npc_id": "CL17_LEADER",
+      "name": "Д-р Элиза Вон Штейнер",
+      "faction": "CL17",
+      "role": "Глава Лаборатории «Виртуум»",
+      "location": "Ганимед-Технохаб",
+      "importance": "low",
+      "personal_goals": [
+        "Продать военным симуляции с элементами реального ИИ без разрешения"
+      ],
+      "knowledge": [
+        "Знает, что симуляции используют незарегистрированный ИИ-код"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет 'тестера' для демонстрации возможностей ИИ без огласки."
+    },
+    {
+      "npc_id": "CL18_LEADER",
+      "name": "CEO Томас Грей",
+      "faction": "CL18",
+      "role": "Глава Конгломерата «Орбис»",
+      "location": "Орбита Земли",
+      "importance": "low",
+      "personal_goals": [
+        "Получить контроль над орбитальными слотами конкурентов"
+      ],
+      "knowledge": [
+        "Знает о лазейке в законе об орбитальном праве"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет юриста для использования лазейки прежде, чем её закроют."
+    },
+    {
+      "npc_id": "CL19_LEADER",
+      "name": "Коммандер Ольга Новикова",
+      "faction": "CL19",
+      "role": "Глава клана «Лунный Дозор»",
+      "location": "Лунная поверхность",
+      "importance": "medium",
+      "personal_goals": [
+        "Расследовать серию нападений на патрули"
+      ],
+      "knowledge": [
+        "Подозревает, что нападения организует один из её же людей"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает тайно расследовать собственных подчинённых."
+    },
+    {
+      "npc_id": "CL20_LEADER",
+      "name": "Д-р Хавьер Мартинез",
+      "faction": "CL20",
+      "role": "Глава Лаборатории «Энтропия»",
+      "location": "Церера, химпорт",
+      "importance": "low",
+      "personal_goals": [
+        "Разработать реагент для военного заказчика до дедлайна"
+      ],
+      "knowledge": [
+        "Знает о токсичности реагента, скрытой от заказчика"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет 'независимую' лабораторию для благоприятного теста безопасности."
+    },
+    {
+      "npc_id": "CL21_LEADER",
+      "name": "CTO Нико Вектор",
+      "faction": "CL21",
+      "role": "Глава Конгломерата «Вектра»",
+      "location": "Марс, медцентр",
+      "importance": "low",
+      "personal_goals": [
+        "Довести нейроинтерфейс до массового рынка раньше NeoCyber Systems"
+      ],
+      "knowledge": [
+        "Знает о случаях нейродеградации у ранних пользователей"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет способ 'урегулировать' с пострадавшими без судебного иска."
+    },
+    {
+      "npc_id": "CL22_LEADER",
+      "name": "Полковник Саймон Бэкли",
+      "faction": "CL22",
+      "role": "Глава клана «Железные Крылья»",
+      "location": "Орбита Марса",
+      "importance": "medium",
+      "personal_goals": [
+        "Восстановить производство дронов после атаки Клана «Феникс»"
+      ],
+      "knowledge": [
+        "Знает, кто предоставил Клану «Феникс» разведданные для атаки"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет доказательства предательства внутри своей же организации."
+    },
+    {
+      "npc_id": "CL23_LEADER",
+      "name": "Д-р Лея Аурелиус",
+      "faction": "CL23",
+      "role": "Глава Лаборатории «Аурелиус»",
+      "location": "Церера, шахты",
+      "importance": "low",
+      "personal_goals": [
+        "Обеспечить эксклюзивные права на очистку драгметаллов"
+      ],
+      "knowledge": [
+        "Знает о нелегальной шахте, которую использует для обхода квот"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет 'инспектора' готового не заметить нелегальную шахту."
+    },
+    {
+      "npc_id": "CL24_LEADER",
+      "name": "Директор Зайн Морган",
+      "faction": "CL24",
+      "role": "Глава Конгломерата «Небула»",
+      "location": "Венера, орбита",
+      "importance": "low",
+      "personal_goals": [
+        "Продать навигационные данные военным и торговцам одновременно"
+      ],
+      "knowledge": [
+        "Знает, что часть навигационных данных устарела и опасна"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет 'проверяющего' для тихого обновления карт без признания ошибки."
+    },
+    {
+      "npc_id": "CL25_LEADER",
+      "name": "Вождь Инголф «Коготь» Юхансон",
+      "faction": "CL25",
+      "role": "Глава клана «Холодный Коготь»",
+      "location": "Пояс, Церера",
+      "importance": "medium",
+      "personal_goals": [
+        "Расширить контрабанду хладагента на новые станции"
+      ],
+      "knowledge": [
+        "Знает о конкуренте, готовящемся перехватить его маршрут"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет 'решение' проблемы с конкурентом до того, как он ударит первым."
+    },
+    {
+      "npc_id": "CL26_LEADER",
+      "name": "Д-р Натан Гелиах",
+      "faction": "CL26",
+      "role": "Глава Лаборатории «Гелиарх»",
+      "location": "Луна, энергопорт",
+      "importance": "low",
+      "personal_goals": [
+        "Завершить проект высоковольтных систем без превышения бюджета"
+      ],
+      "knowledge": [
+        "Знает о краже компонентов со своего же склада"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет расследователя внутренней кражи оборудования."
+    },
+    {
+      "npc_id": "CL27_LEADER",
+      "name": "CEO Шанталь Вей",
+      "faction": "CL27",
+      "role": "Глава Конгломерата «Кристалл»",
+      "location": "Венера, магма-станции",
+      "importance": "low",
+      "personal_goals": [
+        "Довести жаропрочные материалы до серийного производства"
+      ],
+      "knowledge": [
+        "Знает о нестабильности материала при длительной эксплуатации"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет способ скрыть дефект перед крупной поставкой."
+    },
+    {
+      "npc_id": "CL28_LEADER",
+      "name": "Адмирал «Череп» Моррис",
+      "faction": "CL28",
+      "role": "Глава клана «Череп»",
+      "location": "Пояс, Паллада",
+      "importance": "high",
+      "personal_goals": [
+        "Захватить крупный караван прежде, чем его перехватят конкуренты"
+      ],
+      "knowledge": [
+        "Знает точный маршрут и охрану целевого караван��"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_BELT_PIRATE_PRINCE"
+      ],
+      "quest_hook": "Ищет 'наводчика' для информации об охране целевого судна."
+    },
+    {
+      "npc_id": "CL29_LEADER",
+      "name": "Д-р Хлоя Оннек",
+      "faction": "CL29",
+      "role": "Глава Лаборатории «Оникс»",
+      "location": "Марс, металлургия",
+      "importance": "low",
+      "personal_goals": [
+        "Разработать сверхпрочный сплав для военного заказа"
+      ],
+      "knowledge": [
+        "Знает о недостаче редких металлов для завершения проекта"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет поставщика редких металлов вне обычных каналов."
+    },
+    {
+      "npc_id": "CL30_LEADER",
+      "name": "Директор Ли Кван",
+      "faction": "CL30",
+      "role": "Глава Конгломерата «Фотон»",
+      "location": "Луна, солнечные модули",
+      "importance": "low",
+      "personal_goals": [
+        "Победить в тендере на фотоэлектрические системы для новых куполов"
+      ],
+      "knowledge": [
+        "Знает о заниженной цене конкурента, скрывающей брак в материалах"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет доказательства брака в продукции конкурента для тендерной комиссии."
+    },
+    {
+      "npc_id": "CL31_LEADER",
+      "name": "Вождь Рагнар «Ледяной» Вольфсон",
+      "faction": "CL31",
+      "role": "Глава клана «Стальные Волки»",
+      "location": "Европа, подледные базы",
+      "importance": "medium",
+      "personal_goals": [
+        "Защитить подледные базы от посягательств Конгломерата «Аквариус»"
+      ],
+      "knowledge": [
+        "Знает слабое место в системах обороны соперника"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет диверсанта для скрытной операции против соперника."
+    },
+    {
+      "npc_id": "CL32_LEADER",
+      "name": "Д-р Эвелин Рид",
+      "faction": "CL32",
+      "role": "Глава Лаборатории «Хронос»",
+      "location": "Титан, скрытый комплекс",
+      "importance": "medium",
+      "personal_goals": [
+        "Скрыть существование лаборатории от Solar Council"
+      ],
+      "knowledge": [
+        "Знает о теоретическом прорыве, который может изменить понимание времени"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет 'курьера', который доставит образцы данных без привлечения внимания."
+    },
+    {
+      "npc_id": "CL33_LEADER",
+      "name": "CEO Жан-Поль Дюмон",
+      "faction": "CL33",
+      "role": "Глава Конгломерата «АгроМарс»",
+      "location": "Марс, агрокупола",
+      "importance": "low",
+      "personal_goals": [
+        "Расширить сельхозпроизводство на новые купола"
+      ],
+      "knowledge": [
+        "Знает о конкуренте (Martian AgroCo), готовом к слиянию под давлением"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет способ вынудить конкурента продать бизнес."
+    },
+    {
+      "npc_id": "CL34_LEADER",
+      "name": "Капитанша «Вдова» Моргана",
+      "faction": "CL34",
+      "role": "Глава клана «Черные Паруса»",
+      "location": "Атмосфера Венеры",
+      "importance": "high",
+      "personal_goals": [
+        "Захватить ценный груз, который перевозят через атмосферу Венеры"
+      ],
+      "knowledge": [
+        "Знает уникальный маршрут через штормовые зоны, недоступный для патрулей"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_BELT_PIRATE_PRINCE"
+      ],
+      "quest_hook": "Ищет пилота, способного провести корабль через смертельно опасный шторм."
+    },
+    {
+      "npc_id": "CL35_LEADER",
+      "name": "Д-р Ария Чен",
+      "faction": "CL35",
+      "role": "Глава Лаборатории «Прометей»",
+      "location": "Скрытая база в Поясе",
+      "importance": "critical",
+      "personal_goals": [
+        "Завершить исследования протомолекулы прежде, чем базу обнаружат"
+      ],
+      "knowledge": [
+        "Знает то, что известно только избранным о происхождении протомолекулы"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Крупный сюжетный хук — утечка информации о базе может привлечь Protogen (NF2)."
+    },
+    {
+      "npc_id": "CL36_LEADER",
+      "name": "Адмирал Талия Восс",
+      "faction": "CL36",
+      "role": "Глава Конгломерата «Аквариус»",
+      "location": "Европа",
+      "importance": "medium",
+      "personal_goals": [
+        "Обеспечить контроль над распределением воды Европы"
+      ],
+      "knowledge": [
+        "Знает о конфликте с Кланом «Стальные Волки» за подледные ресурсы"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет посредника для переговоров о разделе ресурсов Европы."
+    },
+    {
+      "npc_id": "CL37_LEADER",
+      "name": "Мастер-утилизатор 'Ржавый' Джек",
+      "faction": "CL37",
+      "role": "Глава клана «Ржавые Ястребы»",
+      "location": "Орбитальные свалки Земли и Марса",
+      "importance": "low",
+      "personal_goals": [
+        "Найти ценный груз среди орбитального мусора прежде конкурентов"
+      ],
+      "knowledge": [
+        "Знает о заброшенном военном судне с ценным оборудованием"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Предлагает долю в находке за помощь в разборке опасного объекта."
+    },
+    {
+      "npc_id": "CL38_LEADER",
+      "name": "Д-р Морфеус",
+      "faction": "CL38",
+      "role": "Глава Лаборатории «Сомнус»",
+      "location": "Нео-Киото, Луна",
+      "importance": "medium",
+      "personal_goals": [
+        "Расширить нейрохимический бизнес на чёрном рынке"
+      ],
+      "knowledge": [
+        "Знает формулу препарата, вызывающего опасную зависимость — продаёт несмотря на риск"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет дистрибьютора для нового, более сильного препарата."
+    },
+    {
+      "npc_id": "CL39_LEADER",
+      "name": "Инженер Кай Олафсон",
+      "faction": "CL39",
+      "role": "Глава Конгломерата «Титан Индастриз»",
+      "location": "Титан",
+      "importance": "low",
+      "personal_goals": [
+        "Модернизировать тяжёлую промышленность несмотря на нехватку рабочих рук"
+      ],
+      "knowledge": [
+        "Знает о нелегальном найме рабочих без документов"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет способ легализовать рабочую силу без проверки со стороны властей."
+    },
+    {
+      "npc_id": "CL40_LEADER",
+      "name": "Старейшина Илара",
+      "faction": "CL40",
+      "role": "Глава клана «Космические Кочевники»",
+      "location": "Кочующий флот",
+      "importance": "medium",
+      "personal_goals": [
+        "Защитить флот кочевников от притязаний государств на 'незаконное' присутствие"
+      ],
+      "knowledge": [
+        "Хранит информационную сеть о движениях всех крупных фракций"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Готова продать ценную информацию о движении фракций за защиту флота."
+    },
+    {
+      "npc_id": "CL41_LEADER",
+      "name": "Д-р Лена Хаксли",
+      "faction": "CL41",
+      "role": "Глава Лаборатории «Гея»",
+      "location": "Земля, изолированные зоны",
+      "importance": "low",
+      "personal_goals": [
+        "Восстановить экосистему изолированной зоны без государственного финансирования"
+      ],
+      "knowledge": [
+        "Знает об источнике загрязнения, который скрывает виновная корпорация"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет доказательства против корпорации-загрязнителя."
+    },
+    {
+      "npc_id": "CL42_LEADER",
+      "name": "CEO Рекс Тернер",
+      "faction": "CL42",
+      "role": "Глава Конгломерата «МедиаСфера»",
+      "location": "Вся система, сеть ретрансляторов",
+      "importance": "high",
+      "personal_goals": [
+        "Контролировать нарратив о конфликте OPA и мегакорпораций"
+      ],
+      "knowledge": [
+        "Знает, какие новости заказаны конкретными корпорациями"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_EARTH_JOURNALIST"
+      ],
+      "quest_hook": "Ищет 'источник' для сенсации, которая отвлечёт внимание от скандала клиента."
+    },
+    {
+      "npc_id": "CL43_LEADER",
+      "name": "Капитан София 'Ястреб' Петрова",
+      "faction": "CL43",
+      "role": "Глава клана «Солнечные Ястребы»",
+      "location": "Марс, Венера",
+      "importance": "medium",
+      "personal_goals": [
+        "Получить контракт на сопровождение от мегакорпорации"
+      ],
+      "knowledge": [
+        "Знает о засаде, готовящейся против одного из караванов, которые охраняет"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет дополнительную огневую поддержку для отражения готовящейся засады."
+    },
+    {
+      "npc_id": "CL44_LEADER",
+      "name": "Д-р Сантос",
+      "faction": "CL44",
+      "role": "Глава Лаборатории «Морфей»",
+      "location": "Орбита Сатурна",
+      "importance": "low",
+      "personal_goals": [
+        "Довести криогенику до безопасного уровня для долгосрочных миссий"
+      ],
+      "knowledge": [
+        "Знает о случаях повреждения мозга у ранних испытуемых"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет добровольца для финального испытания перед официальным запуском."
+    },
+    {
+      "npc_id": "CL45_LEADER",
+      "name": "CEO Маркус Шилд",
+      "faction": "CL45",
+      "role": "Глава Конгломерата «Щит»",
+      "location": "Земля, промышленные зоны",
+      "importance": "low",
+      "personal_goals": [
+        "Продать защитное снаряжение всем сторонам локальных конфликтов"
+      ],
+      "knowledge": [
+        "Знает, что часть снаряжения не проходит собственные тесты качества"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет способ скрыть провал тестов перед крупным военным заказом."
+    },
+    {
+      "npc_id": "CL46_LEADER",
+      "name": "Пророк 'Пустой'",
+      "faction": "CL46",
+      "role": "Глава клана «Дети Пустоты»",
+      "location": "Отдалённые и безлюдные сектора",
+      "importance": "medium",
+      "personal_goals": [
+        "Обратить как можно больше отчаявшихся в культ 'Пустоты'"
+      ],
+      "knowledge": [
+        "Знает, что 'откровения' культа — тщательно сконструированная манипуляция, не мистика"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает 'проповедника' — на деле вербовщика новых членов среди уязвимых людей."
+    },
+    {
+      "npc_id": "CL47_LEADER",
+      "name": "Д-р Ева Моро",
+      "faction": "CL47",
+      "role": "Глава Лаборатории «Генезис 2.0»",
+      "location": "Секретная станция в Поясе",
+      "importance": "high",
+      "personal_goals": [
+        "Завершить радикальные биоинженерные эксперименты прежде обнаружения"
+      ],
+      "knowledge": [
+        "Знает о неудачных экспериментах, результаты которых 'утилизированы' негласно"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_MARS_GENETIC_EXPERIMENT"
+      ],
+      "quest_hook": "Ищет 'материал' для экспериментов — эвфемизм, скрывающий неэтичный набор."
+    },
+    {
+      "npc_id": "CL48_LEADER",
+      "name": "Главный архитектор Сорен",
+      "faction": "CL48",
+      "role": "Глава Конгломерата «ИнфоЩит»",
+      "location": "Земля, Луна",
+      "importance": "medium",
+      "personal_goals": [
+        "Продать систему кибербезопасности как мегакорпорациям, так и их противникам"
+      ],
+      "knowledge": [
+        "Знает уязвимость собственной системы, которую держит в секрете"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет 'тестировщика' для скрытной проверки уязвимости до того, как её найдёт кто-то другой."
+    },
+    {
+      "npc_id": "CL49_LEADER",
+      "name": "Патриарх-Машина",
+      "faction": "CL49",
+      "role": "Глава клана «Сыны Прометея»",
+      "location": "Промышленные пустоши Марса",
+      "importance": "high",
+      "personal_goals": [
+        "Распространить техно-культовую философию через нелегальные импланты"
+      ],
+      "knowledge": [
+        "Знает происхождение легендарного 'первого импланта', вокруг которого строится культ"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_MARS_GENETIC_EXPERIMENT"
+      ],
+      "quest_hook": "Ищет 'обращённого', готового пройти опасный ритуал имплантации."
+    },
+    {
+      "npc_id": "CL50_LEADER",
+      "name": "Профессор Ава Лин",
+      "faction": "CL50",
+      "role": "Глава Лаборатории «Последний Рубеж»",
+      "location": "Пояс Койпера, станция 'Терминус'",
+      "importance": "medium",
+      "personal_goals": [
+        "Завершить исследования SETI прежде истощения финансирования"
+      ],
+      "knowledge": [
+        "Знает о сигнале, который получила станция, но не раскрыла публично"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Крупный сюжетный хук — таинственный сигнал может стать поводом для большой экспедиции."
+    },
+    {
+      "npc_id": "PMC1_LEADER",
+      "name": "Генерал Алексей «Чёрное Солнце» Иванов",
+      "faction": "PMC1",
+      "role": "Глава BlackSun Mercenaries",
+      "location": "Орбита Марса",
+      "importance": "high",
+      "personal_goals": [
+        "Выиграть крупный контракт на охрану конвоев у Red Dagger PMC"
+      ],
+      "knowledge": [
+        "Знает о слабых сторонах в тактике конкурирующего ЧВК"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_MARS_MILITARY"
+      ],
+      "quest_hook": "Ищет наёмников для показательной операции, которая должна впечатлить потенциального заказчика."
+    },
+    {
+      "npc_id": "PMC2_LEADER",
+      "name": "Полковник Сара «Кинжал» Льюис",
+      "faction": "PMC2",
+      "role": "Глава Red Dagger PMC",
+      "location": "Пояс астероидов",
+      "importance": "high",
+      "personal_goals": [
+        "Уничтожить крупную пиратскую банду для укрепления репутации"
+      ],
+      "knowledge": [
+        "Знает точное расположение базы Belt Raiders"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает разведчиков для подготовки штурма пиратской базы."
+    },
+    {
+      "npc_id": "PMC3_LEADER",
+      "name": "Директор Рами «Железный Обруч» Хан",
+      "faction": "PMC3",
+      "role": "Глава IronHalo Security",
+      "location": "Пояс, Паллада",
+      "importance": "medium",
+      "personal_goals": [
+        "Провести корпоративный шпионаж против конкурента клиента"
+      ],
+      "knowledge": [
+        "Знает слабое место в охране целевой корпорации"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет специалиста для тихого проникновения на объект конкурента."
+    },
+    {
+      "npc_id": "PMC4_LEADER",
+      "name": "Коммандер Лоран «Призрак» Моро",
+      "faction": "PMC4",
+      "role": "Глава SpecterOps Consortium",
+      "location": "Земля, Силиконовый Круг",
+      "importance": "high",
+      "personal_goals": [
+        "Выявить и нейтрализовать крота внутри собственной организации"
+      ],
+      "knowledge": [
+        "Подозревает конкретного офицера в утечке данных заказчику-конкуренту"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает внешнего специалиста для расследования, которому доверяет больше, чем своим."
+    },
+    {
+      "npc_id": "PMC5_LEADER",
+      "name": "Мажордом Виктор «Спираль» Гарднер",
+      "faction": "PMC5",
+      "role": "Глава HelixGuard Inc.",
+      "location": "Марс, Форт-Марс",
+      "importance": "medium",
+      "personal_goals": [
+        "Модернизировать противовоздушную оборону клиента до истечения контракта"
+      ],
+      "knowledge": [
+        "Знает об устаревшем оборудовании, которое выдаёт за современное"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет техника для 'аварийной' модернизации без огласки истинного состояния систем."
+    },
+    {
+      "npc_id": "PMC6_LEADER",
+      "name": "Абдаллах «Ледокол» Хасан",
+      "faction": "PMC6",
+      "role": "Глава Blackwater Cartel",
+      "location": "Энцелад → Титан",
+      "importance": "high",
+      "personal_goals": [
+        "Организовать крупную операцию по контрабанде ресурсов через кольца Сатурна"
+      ],
+      "knowledge": [
+        "Знает о слабом патрулировании конкретного участка маршрута"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет пилота для рискованной контрабандной операции."
+    },
+    {
+      "npc_id": "PMC7_LEADER",
+      "name": "Маркус «Феникс»",
+      "faction": "PMC7",
+      "role": "Глава Red Phoenix Legion",
+      "location": "Глубокий космос",
+      "importance": "medium",
+      "personal_goals": [
+        "Найти пропавшую разведгруппу в глубоком космосе"
+      ],
+      "knowledge": [
+        "Знает последние координаты разведгруппы перед потерей связи"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает спасательную экспедицию к последним известным координатам."
+    },
+    {
+      "npc_id": "PMC8_LEADER",
+      "name": "Гранд-Мастер Элин «Щит» Хо",
+      "faction": "PMC8",
+      "role": "Глава Vanguard Sentinels",
+      "location": "Земля, Нью-Токио",
+      "importance": "medium",
+      "personal_goals": [
+        "Обеспечить безопасность VIP-клиента во время публичного визита"
+      ],
+      "knowledge": [
+        "Знает о конкретной угрозе покушения на клиента"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет дополнительную охрану на время критически важного визита."
+    },
+    {
+      "npc_id": "PMC9_LEADER",
+      "name": "Капитан Ния «Спектр» Патель",
+      "faction": "PMC9",
+      "role": "Глава Spectral Hawks",
+      "location": "Пояс и внешние луны",
+      "importance": "medium",
+      "personal_goals": [
+        "Провести разведку territoрии перед военной операцией заказчика"
+      ],
+      "knowledge": [
+        "Знает о скрытой обороне на целевой территории"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает разведчиков для сбора данных перед крупной операцией."
+    },
+    {
+      "npc_id": "PMC10_LEADER",
+      "name": "Д-р Ханна «Двойная Сталь» Эрнандес",
+      "faction": "PMC10",
+      "role": "Глава IronShield Dynamics",
+      "location": "Марс, служба безопасности",
+      "importance": "low",
+      "personal_goals": [
+        "Разработать оборонные системы нового поколения раньше Omega Defense Systems"
+      ],
+      "knowledge": [
+        "Знает о технологической утечке в сторону конкурента"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет источник утечки технологий внутри собственной организации."
+    },
+    {
+      "npc_id": "PMC11_LEADER",
+      "name": "Коммандер Зак «Пустота» Хант",
+      "faction": "PMC11",
+      "role": "Глава VoidGuard",
+      "location": "Глубокий космос",
+      "importance": "medium",
+      "personal_goals": [
+        "Защитить исследовательскую станцию от неизвестной угрозы"
+      ],
+      "knowledge": [
+        "Знает о странных сигналах, зафиксированных вблизи станции"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает расследовать источник тревожных сигналов рядом со станцией."
+    },
+    {
+      "npc_id": "PMC12_LEADER",
+      "name": "Адмиралы Дрейк, Барден, Найт",
+      "faction": "PMC12",
+      "role": "Триумвират Cerberus Elite",
+      "location": "Юпитер, орбита",
+      "importance": "medium",
+      "personal_goals": [
+        "Разрешить внутренний конфликт между тремя командующими о стратегии"
+      ],
+      "knowledge": [
+        "Каждый адмирал знает часть плана, невыгодную для двух других"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает посредника для разрешения внутреннего конфликта командования."
+    },
+    {
+      "npc_id": "PMC13_LEADER",
+      "name": "Полковник Юн «Тень» Ким",
+      "faction": "PMC13",
+      "role": "Глава Shadow Legion",
+      "location": "Земля и Луна",
+      "importance": "high",
+      "personal_goals": [
+        "Выявить сеть шпионов конкурирующей структуры на Земле"
+      ],
+      "knowledge": [
+        "Знает о конкретной ячейке шпионов, работающей под прикрытием"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает внедриться в подозрительную ячейку для сбора доказательств."
+    },
+    {
+      "npc_id": "PMC14_LEADER",
+      "name": "Генерал Дрейер «Кулак» Мизрахи",
+      "faction": "PMC14",
+      "role": "Глава IronFist Security",
+      "location": "Марс, орбита",
+      "importance": "medium",
+      "personal_goals": [
+        "Захватить и удержать спорную орбитальную позицию"
+      ],
+      "knowledge": [
+        "Знает о слабом месте в обороне позиции, которую нужно захватить"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает штурмовую группу для захвата спорной позиции."
+    },
+    {
+      "npc_id": "PMC15_LEADER",
+      "name": "Лейтенант Викрам «Призрак» Сингх",
+      "faction": "PMC15",
+      "role": "Глава SpecterGuard",
+      "location": "Марс и Церера",
+      "importance": "low",
+      "personal_goals": [
+        "Защитить группу учёных от похищения конкурирующей корпорацией"
+      ],
+      "knowledge": [
+        "Знает о готовящейся попытке похищения ключевого учёного"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает усилить охрану учёного под угрозой похищения."
+    },
+    {
+      "npc_id": "PMC16_LEADER",
+      "name": "Капитан Айша «Пламя» Соланж",
+      "faction": "PMC16",
+      "role": "Глава Phoenix Reborn",
+      "location": "Венера, орбита",
+      "importance": "low",
+      "personal_goals": [
+        "Провести спасательную операцию после катастрофы на станции"
+      ],
+      "knowledge": [
+        "Знает о причине катастрофы, которую скрывает владелец станции"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет команду для рискованной спасательной операции на аварийной станции."
+    },
+    {
+      "npc_id": "PMC17_LEADER",
+      "name": "Коммандер Лукас «Авангард» Стоун",
+      "faction": "PMC17",
+      "role": "Глава IronVanguard",
+      "location": "Сатурн, кольца",
+      "importance": "low",
+      "personal_goals": [
+        "Обеспечить военно-промышленную охрану добывающих станций"
+      ],
+      "knowledge": [
+        "Знает о попытках саботажа станций конкурирующей группировкой"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает расследовать серию саботажей на добывающих станциях."
+    },
+    {
+      "npc_id": "PMC18_LEADER",
+      "name": "Глава Уайлд «Призрак» Брукс",
+      "faction": "PMC18",
+      "role": "Глава GhostOps",
+      "location": "Земля, тайные базы",
+      "importance": "medium",
+      "personal_goals": [
+        "Провести секретную операцию, о которой не должны знать заказчики"
+      ],
+      "knowledge": [
+        "Знает истинную цель операции, скрытую даже от собственных оперативников"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает оперативников для операции 'без вопросов', раскрывая только часть правды."
+    },
+    {
+      "npc_id": "PMC19_LEADER",
+      "name": "Король-Генерал Виктор «Корона» Крэй",
+      "faction": "PMC19",
+      "role": "Глава IronCrown Corps",
+      "location": "Марс, военные базы",
+      "importance": "medium",
+      "personal_goals": [
+        "Обеспечить абсолютную охрану высшего командования Mars Republic"
+      ],
+      "knowledge": [
+        "Знает о внутренней угрозе командованию, о которой не сообщил открыто"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает тайно расследовать угрозу командованию изнутри."
+    },
+    {
+      "npc_id": "PMC20_LEADER",
+      "name": "Полковник Мария «ВанХельс» Ван Хельсинг",
+      "faction": "PMC20",
+      "role": "Глава Spectral Vanguard",
+      "location": "Пояс астероидов",
+      "importance": "low",
+      "personal_goals": [
+        "Провести операцию по спасению заложников у пиратов"
+      ],
+      "knowledge": [
+        "Знает точное расположение заложников и охраны"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает команду для рискованной операции извлечения заложников."
+    },
+    {
+      "npc_id": "PMC21_LEADER",
+      "name": "Полковник без имени (позывной «Штиль»)",
+      "faction": "PMC21",
+      "role": "Глава «Стая Молчаливых»",
+      "location": "Внешняя система",
+      "importance": "medium",
+      "personal_goals": [
+        "Сохранить полную анонимность операций отряда"
+      ],
+      "knowledge": [
+        "Знает о заказчике настолько влиятельном, что его имя нельзя произносить"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает через посредников — прямого контакта с 'Штилем' не бывает."
+    },
+    {
+      "npc_id": "PMC22_LEADER",
+      "name": "Актуарий Первого Круга",
+      "faction": "PMC22",
+      "role": "Глава «Кобальтовый Протокол»",
+      "location": "Вся система",
+      "importance": "medium",
+      "personal_goals": [
+        "Продать 'страхование силой' как альтернативу традиционным ЧВК"
+      ],
+      "knowledge": [
+        "Знает, что 'страховые выплаты' на деле означают возмездие нанятой силой"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Предлагает 'страховой полис' — по сути, заказ на месть, если клиента обидят."
+    },
+    {
+      "npc_id": "NF1_LEADER",
+      "name": "«Тень-1» / «Архитектор» (личности неизвестны)",
+      "faction": "NF1",
+      "role": "Анонимное руководство Shadow Consortium",
+      "location": "Все системы, теневая сеть",
+      "importance": "critical",
+      "personal_goals": [
+        "Сохранить полную анонимность, несмотря на растущий интерес спецслужб"
+      ],
+      "knowledge": [
+        "Владеет компроматом на десятки фигур во всех крупных фракциях"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Игрок никогда не встречает их лично — только через посредников с кодовыми фразами."
+    },
+    {
+      "npc_id": "NF2_LEADER",
+      "name": "Др. Юлиан Стресса",
+      "faction": "NF2",
+      "role": "Глава исследовательского совета Protogen",
+      "location": "Пояс астероидов, секретные лаборатории",
+      "importance": "critical",
+      "personal_goals": [
+        "Завершить биологические военные исследования прежде разоблачения"
+      ],
+      "knowledge": [
+        "Знает о связи исследований с находкой протомолекулы"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Канон-сюжетная линия — не переписывать основу, только добавлять локальные хуки."
+    },
+    {
+      "npc_id": "NF3_LEADER",
+      "name": "«Серебряная Королева» (личность неизвестна)",
+      "faction": "NF3",
+      "role": "Глава Silver Serpents",
+      "location": "Марс, нижние уровни куполов",
+      "importance": "high",
+      "personal_goals": [
+        "Удержать контроль над рэкетом нижних уровней Марса"
+      ],
+      "knowledge": [
+        "Знает личности всех информаторов среди марсианской полиции"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_MARS_TUNNEL_RAT"
+      ],
+      "quest_hook": "Встречи только через посредников — раскрытие личности станет крупным сюжетным событием."
+    },
+    {
+      "npc_id": "NF4_LEADER",
+      "name": "Адмирал Танака Рей, Генерал Бобби Драпер",
+      "faction": "NF4",
+      "role": "Командование Mars Fleet",
+      "location": "Орбита Марса, военные базы",
+      "importance": "critical",
+      "personal_goals": [
+        "Обеспечить военное превосходство Марса в текущем конфликте с Земным UN"
+      ],
+      "knowledge": [
+        "Знают о секретных военных разработках, скрытых от гражданского правительства"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_MARS_MILITARY"
+      ],
+      "quest_hook": "Канон-фракция — использовать как фон для крупных военных сюжетных линий."
+    },
+    {
+      "npc_id": "NF5_LEADER",
+      "name": "Директор Шаддид",
+      "faction": "NF5",
+      "role": "Глава Star Helix Dynamics",
+      "location": "Церера, станции Пояса",
+      "importance": "high",
+      "personal_goals": [
+        "Удержать контракт на охрану станций Пояса под давлением OPA"
+      ],
+      "knowledge": [
+        "Знает о коррупции в собственных рядах охраны"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает расследовать коррупцию среди своих же офицеров тихо, без огласки."
+    },
+    {
+      "npc_id": "NF6_LEADER",
+      "name": "Генеральный секретарь Авасарала",
+      "faction": "NF6",
+      "role": "Глава ESA-Earth",
+      "location": "Земля, орбитальные станции",
+      "importance": "critical",
+      "personal_goals": [
+        "Удержать баланс сил между Землёй, Марсом и Поясом от полномасштабной войны"
+      ],
+      "knowledge": [
+        "Знает о готовящихся провокациях с обеих сторон конфликта"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Канон-фигура — крупные дипломатические сюжетные линии, использовать бережно."
+    },
+    {
+      "npc_id": "NF7_LEADER",
+      "name": "Совет Старейшин (12 глав кланов)",
+      "faction": "NF7",
+      "role": "Коллективное руководство Ceres Mining Consortium",
+      "location": "Церера, ближний Пояс",
+      "importance": "high",
+      "personal_goals": [
+        "Сохранить единство совета перед лицом экспансии мегакорпораций"
+      ],
+      "knowledge": [
+        "Знают, что минимум двое из 12 старейшин тайно ведут переговоры с MC-корпорациями"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_BELT_MINER"
+      ],
+      "quest_hook": "Ищет расследование предательства внутри собственного совета."
+    },
+    {
+      "npc_id": "NF8_LEADER",
+      "name": "Фред Джонсон «Мясник Андерсона»",
+      "faction": "NF8",
+      "role": "Глава OPA",
+      "location": "Пояс астероидов, внешние станции",
+      "importance": "critical",
+      "personal_goals": [
+        "Удержать OPA от распада на радикальные фракции"
+      ],
+      "knowledge": [
+        "Знает о готовящемся расколе среди ячеек OPA"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_BELT_TRADER"
+      ],
+      "quest_hook": "Канон-фигура — центральная политическая линия Пояса, использовать бережно."
+    },
+    {
+      "npc_id": "NF9_LEADER",
+      "name": "Командир «Коготь» (Виктор Рашид)",
+      "faction": "NF9",
+      "role": "Глава Crimson Talons",
+      "location": "Внешний Пояс, заброшенные станции",
+      "importance": "medium",
+      "personal_goals": [
+        "Расширить работорговлю на новые заброшенные станции"
+      ],
+      "knowledge": [
+        "Знает о заброшенной станции, идеальной для новой базы"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Тёмный квестовый хук — спасение пленников с захваченной станции."
+    },
+    {
+      "npc_id": "NF10_LEADER",
+      "name": "Разные капитаны (нет единого лидера)",
+      "faction": "NF10",
+      "role": "Децентрализованное командование Belt Raiders",
+      "location": "Весь Пояс астероидов",
+      "importance": "medium",
+      "personal_goals": [
+        "Каждый капитан преследует собственные краткосрочные цели"
+      ],
+      "knowledge": [
+        "Коллективно знают о множестве слабозащищённых маршрутов"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нет единого сюжетного антагониста — угроза приходит от случайных банд."
+    },
+    {
+      "npc_id": "NF11_LEADER",
+      "name": "Др. Лиана Грин",
+      "faction": "NF11",
+      "role": "Глава EcoSphere Technologies",
+      "location": "Марс, Титан, лунные колонии",
+      "importance": "medium",
+      "personal_goals": [
+        "Довести проект экосистем до самодостаточности без корпоративного финансирования"
+      ],
+      "knowledge": [
+        "Знает об угрозе срыва проекта из-за долгового давления инвесторов"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_MARS_TERRAFORMER"
+      ],
+      "quest_hook": "Ищет способ найти альтернативное финансирование без потери независимости проекта."
+    },
+    {
+      "npc_id": "NF12_LEADER",
+      "name": "«Ржавый Ястреб» (Кен Мурата)",
+      "faction": "NF12",
+      "role": "Глава Rust Hawks",
+      "location": "Пояс астероидов, поля обломков",
+      "importance": "low",
+      "personal_goals": [
+        "Найти ценный груз в обломках прежде конкурентов"
+      ],
+      "knowledge": [
+        "Знает о свежем крушении с ценным неучтённым грузом"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Предлагает долю в находке за помощь в разборке опасных обломков."
+    },
+    {
+      "npc_id": "NF13_LEADER",
+      "name": "Мастер Чен (Чен Вэй)",
+      "faction": "NF13",
+      "role": "Глава Black Lotus Triad",
+      "location": "Земля, Марс, крупные станции",
+      "importance": "high",
+      "personal_goals": [
+        "Расширить сеть азартных игр и наркоторговли на новые станции"
+      ],
+      "knowledge": [
+        "Знает о коррумпированных чиновниках, покрывающих деятельность триады"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_EARTH_UNDERGROUND_FIGHTER"
+      ],
+      "quest_hook": "Ищет 'решателя проблем' для устранения конкурента на новой территории."
+    },
+    {
+      "npc_id": "NF14_LEADER",
+      "name": "Жюль-Пьер Мао",
+      "faction": "NF14",
+      "role": "Глава Mao-Kwikowski",
+      "location": "Вся солнечная система",
+      "importance": "critical",
+      "personal_goals": [
+        "Скрыть связь корпорации с незаконными военными разработками"
+      ],
+      "knowledge": [
+        "Знает истинное происхождение технологии, лежащей в основе крупного скандала"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Канон-фигура — крупнейшая теневая сюжетная линия мегакорпораций."
+    },
+    {
+      "npc_id": "NF15_LEADER",
+      "name": "«Серый Кардинал» (Иван Грейсон)",
+      "faction": "NF15",
+      "role": "Глава Mars Grey Syndicate",
+      "location": "Марс, все купола",
+      "importance": "high",
+      "personal_goals": [
+        "Контролировать подпольные бои и теневую экономику всех куполов Марса"
+      ],
+      "knowledge": [
+        "Знает о коррумпированных офицерах Mars Fleet, работающих на синдикат"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет 'бойца' для престижного подпольного турнира с крупными ставками."
+    },
+    {
+      "npc_id": "NF16_LEADER",
+      "name": "Канцлер Хельга Фрост",
+      "faction": "NF16",
+      "role": "Глава United Saturn Block",
+      "location": "Система Сатурна",
+      "importance": "high",
+      "personal_goals": [
+        "Добиться политической независимости системы Сатурна от Solar Council"
+      ],
+      "knowledge": [
+        "Знает о секретных переговорах с SaturnGas Solutions о разделе ресурсов"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет дипломата для тайных переговоров о статусе независимости."
+    },
+    {
+      "npc_id": "NF17_LEADER",
+      "name": "Генеральный секретарь",
+      "faction": "NF17",
+      "role": "Глава Earth UN",
+      "location": "Земля, Луна, орбитальные станции",
+      "importance": "critical",
+      "personal_goals": [
+        "Удержать легитимность правительства перед лицом растущего влияния OPA и Марса"
+      ],
+      "knowledge": [
+        "Знает о секретных военных приготовлениях, скрытых от парламента"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Канон-фигура — центральная политическая линия Земли."
+    },
+    {
+      "npc_id": "NF18_LEADER",
+      "name": "Директор Кларисса Нгуен",
+      "faction": "NF18",
+      "role": "Глава Earth UN Investigations",
+      "location": "Вся солнечная система",
+      "importance": "high",
+      "personal_goals": [
+        "Разоблачить сеть коррупции внутри собственного правительства"
+      ],
+      "knowledge": [
+        "Знает имена высокопоставленных чиновников, вовлечённых в коррупцию"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает 'независимого' расследователя, не связанного с правительством."
+    },
+    {
+      "npc_id": "NF19_LEADER",
+      "name": "Премьер-министр Садавир Эррингхайт",
+      "faction": "NF19",
+      "role": "Глава Mars Republic",
+      "location": "Марс, орбитальные станции",
+      "importance": "critical",
+      "personal_goals": [
+        "Обеспечить военное и технологическое превосходство Марса"
+      ],
+      "knowledge": [
+        "Знает о секретной программе терраформирования с непредсказуемыми рисками"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Канон-фигура — центральная политическая линия Марса."
+    },
+    {
+      "npc_id": "NF20_LEADER",
+      "name": "Капитан «Фантом»",
+      "faction": "NF20",
+      "role": "Глава Shadow Corsairs",
+      "location": "Торговые маршруты, внешний Пояс",
+      "importance": "medium",
+      "personal_goals": [
+        "Провести элитную операцию шпионажа против крупной торговой компании"
+      ],
+      "knowledge": [
+        "Знает о ценном грузе, идущем по незащищённому маршруту"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет специалиста для скрытной операции против торгового конвоя."
+    },
+    {
+      "npc_id": "NF21_LEADER",
+      "name": "Директор Олаф Бьорнсон",
+      "faction": "NF21",
+      "role": "Глава IceHarbor",
+      "location": "Кольца Сатурна, Энцелад",
+      "importance": "low",
+      "personal_goals": [
+        "Обеспечить стабильные поставки воды несмотря на конкуренцию United Saturn Block"
+      ],
+      "knowledge": [
+        "Знает об угрозе поглощения бизнеса более крупным игроком"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет способ защитить независимость бизнеса от поглощения."
+    },
+    {
+      "npc_id": "NF22_LEADER",
+      "name": "Неизвестны (только псевдонимы)",
+      "faction": "NF22",
+      "role": "Анонимное руководство Ghost Merchants",
+      "location": "Вся система, цифровая сеть",
+      "importance": "medium",
+      "personal_goals": [
+        "Сохранить анонимность информационной торговли"
+      ],
+      "knowledge": [
+        "Владеют информацией, ценной для десятков конфликтующих сторон"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Контакт только через зашифрованные каналы, личность не раскрывается."
+    },
+    {
+      "npc_id": "NF23_LEADER",
+      "name": "«Пустотный Король»",
+      "faction": "NF23",
+      "role": "Глава Void Reavers",
+      "location": "Внешняя система, за орбитой Сатурна",
+      "importance": "high",
+      "personal_goals": [
+        "Расширить культ Пустоты и рейдерские операции на новые территории"
+      ],
+      "knowledge": [
+        "Знает о заброшенных станциях, идеальных для новых баз культа"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Тёмный квестовый хук — таинственная угроза с окраин системы."
+    },
+    {
+      "npc_id": "NF24_LEADER",
+      "name": "Командор «Красный»",
+      "faction": "NF24",
+      "role": "Глава Red Corsairs",
+      "location": "Марс-Пояс маршруты",
+      "importance": "medium",
+      "personal_goals": [
+        "Удержать контроль над маршрутами Марс-Пояс от конкурирующих банд"
+      ],
+      "knowledge": [
+        "Знает о слабом патрулировании конкретного участка маршрута"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Предлагает 'защиту' караванов на маршруте — по сути, рэкет."
+    },
+    {
+      "npc_id": "NF25_LEADER",
+      "name": "Менеджер Харуки Сато",
+      "faction": "NF25",
+      "role": "Глава BeltFreight Ltd.",
+      "location": "Пояс астероидов, торговые маршруты",
+      "importance": "low",
+      "personal_goals": [
+        "Обеспечить надёжность грузоперевозок несмотря на пиратскую угрозу"
+      ],
+      "knowledge": [
+        "Знает о взятках, которые платит некоторым пиратским группам за 'проход'"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет альтернативу постоянным выплатам пиратам за безопасный проход."
+    },
+    {
+      "npc_id": "NF26_LEADER",
+      "name": "Др. Рэй Курцвайл-мл.",
+      "faction": "NF26",
+      "role": "Глава NeoCyber Systems",
+      "location": "Земля, Марс, крупные станции",
+      "importance": "medium",
+      "personal_goals": [
+        "Обогнать Конгломерат «Вектра» в разработке нейроинтерфейсов"
+      ],
+      "knowledge": [
+        "Знает о рискованных побочных эффектах, которые скрывает от рынка"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет 'независимого' тестировщика для скрытной проверки нового интерфейса."
+    },
+    {
+      "npc_id": "NF27_LEADER",
+      "name": "«Доктор Нож» (Сэм Ортега)",
+      "faction": "NF27",
+      "role": "Глава CyberMedix",
+      "location": "Станции Пояса, нижние уровни городов",
+      "importance": "medium",
+      "personal_goals": [
+        "Расширить нелегальную практику имплантов на новые станции"
+      ],
+      "knowledge": [
+        "Знает о случаях смерти клиентов от некачественных имплантов"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет 'подмастерье' для расширения нелегальной практики — этично сомнительно."
+    },
+    {
+      "npc_id": "NF28_LEADER",
+      "name": "Др. Ана Солис",
+      "faction": "NF28",
+      "role": "Глава FusionSpark",
+      "location": "Марс, исследовательские станции",
+      "importance": "low",
+      "personal_goals": [
+        "Завершить термоядерные исследования до истечения гранта"
+      ],
+      "knowledge": [
+        "Знает о нестабильности экспериментального реактора"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет техника для стабилизации реактора перед демонстрацией спонсорам."
+    },
+    {
+      "npc_id": "NF29_LEADER",
+      "name": "Главред Марко Инес",
+      "faction": "NF29",
+      "role": "Глава AstroVision",
+      "location": "Вся солнечная система",
+      "importance": "medium",
+      "personal_goals": [
+        "Обеспечить эксклюзивный репортаж о крупном политическом событии"
+      ],
+      "knowledge": [
+        "Знает инсайдерскую информацию о готовящемся событии до его начала"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_EARTH_JOURNALIST"
+      ],
+      "quest_hook": "Ищет источник внутри крупной фракции для эксклюзивного репортажа."
+    },
+    {
+      "npc_id": "NF30_LEADER",
+      "name": "Директор Клаус Вебер",
+      "faction": "NF30",
+      "role": "Глава ArmorWorks",
+      "location": "Земля, Марс, военные базы",
+      "importance": "low",
+      "personal_goals": [
+        "Выиграть военный контракт против Конгломерата «Щит»"
+      ],
+      "knowledge": [
+        "Знает о преимуществе собственной защитной технологии, которое держит в секрете"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет способ продемонстрировать преимущество технологии без раскрытия деталей конкурентам."
+    },
+    {
+      "npc_id": "NF31_LEADER",
+      "name": "Директор Юрий Лунин",
+      "faction": "NF31",
+      "role": "Глава AgroLuna",
+      "location": "Луна, орбита Земли",
+      "importance": "low",
+      "personal_goals": [
+        "Расширить гидропонное производство на новые лунные купола"
+      ],
+      "knowledge": [
+        "Знает о нехватке воды, которую скрывает от партнёров"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет альтернативный источник воды без огласки текущего дефицита."
+    },
+    {
+      "npc_id": "NF32_LEADER",
+      "name": "CEO Мириам Чанг",
+      "faction": "NF32",
+      "role": "Глава OrbitalTransit Co.",
+      "location": "Внутренняя система, основные маршруты",
+      "importance": "low",
+      "personal_goals": [
+        "Обеспечить безопасность пассажирских перевозок после серии инцидентов"
+      ],
+      "knowledge": [
+        "Знает о технической неполадке, вызвавшей инциденты, которую скрывает"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет способ скрыть техническую неполадку перед проверкой регулятора."
+    },
+    {
+      "npc_id": "NF33_LEADER",
+      "name": "Др. Кейко Танабе",
+      "faction": "NF33",
+      "role": "Глава NanoFabricators",
+      "location": "Марс, исследовательские станции",
+      "importance": "low",
+      "personal_goals": [
+        "Завершить разработку нанопроизводства прежде истечения патента"
+      ],
+      "knowledge": [
+        "Знает о конкуренте, готовящемся оспорить патент в суде"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет юридическую защиту патента от готовящегося судебного иска."
+    },
+    {
+      "npc_id": "NF34_LEADER",
+      "name": "Верховный жрец «Звёздный Оракул»",
+      "faction": "NF34",
+      "role": "Глава Mystic Order",
+      "location": "Станции по всей системе, храмы",
+      "importance": "medium",
+      "personal_goals": [
+        "Расширить влияние ордена через новые храмы на дальних станциях"
+      ],
+      "knowledge": [
+        "Знает секреты, которые прихожане доверяют ордену на исповеди"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Использует доверенные секреты прихожан для политического влияния — этично сомнительно."
+    },
+    {
+      "npc_id": "NF35_LEADER",
+      "name": "Председатель Совета Др. Елена Ковалёва",
+      "faction": "NF35",
+      "role": "Глава Scientific Assembly",
+      "location": "Вся система, научные станции",
+      "importance": "high",
+      "personal_goals": [
+        "Защитить научную независимость от давления военных и корпораций"
+      ],
+      "knowledge": [
+        "Знает об утечке данных Ассамблеи, которая питает 'пророчества' культов (см. SC29)"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет источник утечки научных данных, используемых культами."
+    },
+    {
+      "npc_id": "NF36_LEADER",
+      "name": "«Лунный Волк»",
+      "faction": "NF36",
+      "role": "Глава LunarRaiders",
+      "location": "Луна, тёмная сторона",
+      "importance": "low",
+      "personal_goals": [
+        "Найти новую цель для рейда после провала последней операции"
+      ],
+      "knowledge": [
+        "Знает о слабо охраняемом складе ресурсов на тёмной стороне Луны"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Тёмный квестовый хук — защита склада от готовящегося рейда."
+    },
+    {
+      "npc_id": "NF37_LEADER",
+      "name": "Полковник «Тигр» (Амара Диалло)",
+      "faction": "NF37",
+      "role": "Глава Bronze Tigers",
+      "location": "Земля, Марс, крупные станции",
+      "importance": "medium",
+      "personal_goals": [
+        "Обеспечить VIP-охрану крупного корпоративного мероприятия"
+      ],
+      "knowledge": [
+        "Знает о конкретной угрозе мероприятию от конкурирующего ЧВК"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Нанимает дополнительную охрану под угрозой саботажа мероприятия."
+    },
+    {
+      "npc_id": "SC51_LEADER",
+      "name": "Мастер Ключей Дарий Вонг",
+      "faction": "SC51",
+      "role": "Глава Гильдии Тихой Воды",
+      "location": "Пояс астероидов, Церера",
+      "importance": "high",
+      "personal_goals": [
+        "Удержать монополию на чёрный рынок воды от посягательств Ceres Mining Consortium"
+      ],
+      "knowledge": [
+        "Знает о скрытых водных хранилищах, не учтённых официальным реестром"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет 'ключника' — доверенного посредника для новой водной сделки в тени."
+    },
+    {
+      "npc_id": "CL51_LEADER",
+      "name": "Настоятель Икар Мельник",
+      "faction": "CL51",
+      "role": "Глава Детей Второго Солнца",
+      "location": "Юпитерианская система",
+      "importance": "medium",
+      "personal_goals": [
+        "Совмещать реакторное обслуживание с тайным сбором разведданных для продажи"
+      ],
+      "knowledge": [
+        "Знает технические секреты реакторов клиентов, которые продаёт конкурентам"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет техника, готового 'обслуживать' реактор клиента, попутно копируя данные."
+    },
+    {
+      "npc_id": "MC16_LEADER",
+      "name": "Прима-балерина Ада Ли",
+      "faction": "MC16",
+      "role": "Глава Хора Нуль-Гравитации",
+      "location": "Земля, Нью-Токио",
+      "importance": "high",
+      "personal_goals": [
+        "Провести корпоративные переговоры под видом балетного представления — эксклюзивная тактика фирмы"
+      ],
+      "knowledge": [
+        "Знает секретные условия сделок, заключённых 'между актами' на её представлениях"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Приглашает на представление, где реальная сделка идёт за кулисами — нужен 'зритель', умеющий читать между строк."
+    },
+    {
+      "npc_id": "LAB23_LEADER",
+      "name": "Директор Лань Сяо",
+      "faction": "LAB23",
+      "role": "Глава Обсерватории «Тихий Пульс»",
+      "location": "Луна, обратная сторона",
+      "importance": "medium",
+      "personal_goals": [
+        "Скрыть аномальный астрофизический сигнал от военных, желающих его милитаризировать"
+      ],
+      "knowledge": [
+        "Знает точные координаты источника сигнала — держит в секрете от Solar Council"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет 'независимого' курьера для тайной доставки данных о сигнале нейтральной стороне."
+    },
+    {
+      "npc_id": "SME52_LEADER",
+      "name": "Доктор Ева Ржаная",
+      "faction": "SME52",
+      "role": "Глава Аптеки «Последний Шанс»",
+      "location": "Марс, трущобные сектора",
+      "importance": "medium",
+      "personal_goals": [
+        "Продолжать бесплатную экстренную медицину несмотря на давление NanoClinic/Nexus Pharmaceuticals"
+      ],
+      "knowledge": [
+        "Знает, что крупные фарм-корпорации саботируют её поставки лекарств"
+      ],
+      "lifepath_connections": [
+        "ORIGIN_EARTH_SLUMS"
+      ],
+      "quest_hook": "Ищет способ обойти саботаж поставок — контрабанда медикаментов в трущобы."
+    },
+    {
+      "npc_id": "CL52_LEADER",
+      "name": "Караванщица Мара Дуст",
+      "faction": "CL52",
+      "role": "Глава «Соль и Пепел»",
+      "location": "Ио, солевые равнины",
+      "importance": "medium",
+      "personal_goals": [
+        "Провести караван через мёртвые зоны Ио без потери людей и техники"
+      ],
+      "knowledge": [
+        "Знает безопасные (но секретные) проходы через ядовитые солевые равнины"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет охрану для каравана через опасные мёртвые зоны — плата натурой, не кредитами."
+    },
+    {
+      "npc_id": "CONG49_LEADER",
+      "name": "Архивариус Ноль",
+      "faction": "CONG49",
+      "role": "Глава Реестра Теней",
+      "location": "Земля, орбитальные офисы",
+      "importance": "high",
+      "personal_goals": [
+        "Стирать компрометирующие данные о клиентах за плату, оставаясь невидимым для властей"
+      ],
+      "knowledge": [
+        "Знает, чьи данные стёрты и почему — крупнейший архив секретов системы"
+      ],
+      "lifepath_connections": [],
+      "quest_hook": "Ищет 'чистильщика' для операции по стиранию данных, слишком чувствительных для обычных сотрудников."
+    }
+  ],
+  "notes": {
+    "total": 166,
+    "placeholders_removed": [
+      "PMC21B_LEADER",
+      "PMC22B_NOTE"
+    ],
+    "kendrick_merge": "MC12_LEADER смёржена в NPC_001 (legacy полная версия канонична; новые поля faction/importance/role_note добавлены, quest_hook — ссылка)"
+  },
+  "version": "1.0"
+}

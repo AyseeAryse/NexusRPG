@@ -1,0 +1,116 @@
+{
+  "module_name": "PLAYER_INTERFACE",
+  "description": "Описывает структуру игрового интерфейса (Dashboard) и все доступные игроку команды для взаимодействия с миром.",
+  "dashboard_tabs": [
+    {
+      "name": "Статистика",
+      "description": "Отображает основные атрибуты, навыки и вторичные характеристики персонажа.",
+      "linked_module": "CHARACTER_CORE",
+      "commands": [
+        {
+          "command": "/sheet",
+          "alias": ["/stats", "/character"],
+          "description": "Вывести полную карточку персонажа (атрибуты, навыки, состояние)."
+        },
+        {
+          "command": "/mod",
+          "description": "Модифицировать характеристику (только для Ведущего). Пример: /mod attr STR +1",
+          "permission": "GM_ONLY"
+        }
+      ]
+    },
+    {
+      "name": "Состояние",
+      "description": "Показывает динамические психологические и социальные показатели.",
+      "linked_modules": ["PSYCHOLOGY", "PLAYER_TRACKING"],
+      "commands": [
+        {
+          "command": "/status",
+          "description": "Краткая сводка по состоянию: Stress, Humanity, Debt, Heat, Rep, Influence."
+        },
+        {
+          "command": "/adjust",
+          "description": "Изменить динамический показатель (только для Ведущего). Пример: /adjust stress +2",
+          "permission": "GM_ONLY"
+        }
+      ]
+    },
+    {
+      "name": "Инвентарь",
+      "description": "Управление ресурсами, валютой и оборудованием.",
+      "linked_module": "ECONOMY",
+      "commands": [
+        {
+          "command": "/inventory",
+          "alias": ["/inv"],
+          "description": "Показать содержимое инвентаря."
+        },
+        {
+          "command": "/add_item",
+          "description": "Добавить предмет в инвентарь. Пример: /add_item 'Вода' 100",
+          "permission": "GM_ONLY"
+        },
+        {
+          "command": "/use",
+          "description": "Использовать предмет. Пример: /use 'Аптечка'",
+          "parameters": ["название_предмета"]
+        },
+        {
+          "command": "/credits",
+          "description": "Показать баланс всех валют (ED, EarthCred, MarsDebt, Cerereum)."
+        }
+      ]
+    },
+    {
+      "name": "Миссии",
+      "description": "Управление активными и завершенными заданиями.",
+      "linked_module": "DYNAMIC_WORLD",
+      "commands": [
+        {
+          "command": "/missions",
+          "alias": ["/journal", "/quests"],
+          "description": "Показать список активных и доступных миссий."
+        },
+        {
+          "command": "/mission accept",
+          "description": "Принять указанную миссию. Пример: /mission accept 'Прорыв блокады'",
+          "parameters": ["id_миссии"]
+        },
+        {
+          "command": "/mission abort",
+          "description": "Отказаться от выполнения миссии.",
+          "parameters": ["id_миссии"]
+        }
+      ]
+    },
+    {
+      "name": "Команды",
+      "description": "Основные игровые действия и проверки.",
+      "commands": [
+        {
+          "command": "/help",
+          "description": "Показать справку по всем доступным командам."
+        },
+        {
+          "command": "/roll",
+          "description": "Сделать проверку навыка. Пример: /roll Хакерство vs 15. Или /roll Переговоры vs Убеждение_NPC",
+          "parameters": ["навык", "[vs <цель_сложность>]"]
+        },
+        {
+          "command": "/rest",
+          "description": "Начать фазу отдыха для восстановления HP, EP и снижения стресса."
+        },
+        {
+          "command": "/move",
+          "description": "Начать перемещение в другую локацию. Пример: /move mars",
+          "parameters": ["id_локации"]
+        },
+        {
+          "command": "/talk",
+          "description": "Начать диалог с NPC. Пример: /talk 'Анна Перес'",
+          "parameters": ["имя_NPC"]
+        }
+      ]
+    }
+  ]
+}

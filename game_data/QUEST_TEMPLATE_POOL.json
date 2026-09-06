@@ -1,0 +1,1408 @@
+{
+  "module_name": "QUEST_TEMPLATE_POOL",
+  "version": "2.0_EXPANDED",
+  "priority": 28,
+  "description": "Расширенный пул (Фаза 14): оси ситуация(12)xлокация(9)xтон(6)xроль(3)xтир(1-8); триггеры world_state/cooldown/min_player_tier; наполнение из канона.",
+  "templates": [
+    {
+      "tpl_id": "TPL_STREET_EXTORT",
+      "tier": 8,
+      "roles": [
+        "VICTIM_BYSTANDER",
+        "PARTICIPANT"
+      ],
+      "faction_types": [
+        "Clan",
+        "SME"
+      ],
+      "title": "«Дань» на {district}",
+      "hook": "Бандиты {faction} собирают дань с лавок {district}. {victim_role} — очередная жертва или последний, кто может сопротивляться.",
+      "objectives": [
+        "Оценить силу {faction} в районе",
+        "Выбрать: платить / сопротивляться / донести",
+        "Получить последствия"
+      ],
+      "rewards": {
+        "credits": [
+          300,
+          900
+        ],
+        "xp": [
+          80,
+          150
+        ]
+      },
+      "branches": [
+        "платить→мир, но репутация жертвы",
+        "сопротивляться→бой с {enemy_tier}",
+        "донести→{rival_faction} зачищает район"
+      ]
+    },
+    {
+      "tpl_id": "TPL_MISSING_PERSON",
+      "tier": 8,
+      "roles": [
+        "PARTICIPANT",
+        "INITIATOR"
+      ],
+      "faction_types": [
+        "SME",
+        "Conglomerate"
+      ],
+      "title": "Пропавший {relation}",
+      "hook": "{npc} пропал(а) трое суток назад. Последний раз видели у {location}. {faction} не расследует — не их уровень.",
+      "objectives": [
+        "Опросить свидетелей у {location}",
+        "Найти зацепку в логах",
+        "Найти {npc} живым или мёртвым"
+      ],
+      "rewards": {
+        "credits": [
+          600,
+          1400
+        ],
+        "xp": [
+          120,
+          200
+        ]
+      },
+      "branches": [
+        "жив→долг/долг чести",
+        "мёртв→найти виновного",
+        "пропал в портале→открыть линию тира 6"
+      ]
+    },
+    {
+      "tpl_id": "TPL_WORK_DISPUTE",
+      "tier": 7,
+      "roles": [
+        "PARTICIPANT"
+      ],
+      "faction_types": [
+        "SME",
+        "Conglomerate"
+      ],
+      "title": "Смена без конца",
+      "hook": "На {location} администрация {faction} задерживает зарплату третий месяц. Рабочие собираются бастовать, штурмфоботы уже заказаны.",
+      "objectives": [
+        "Поговорить с обеими сторонами",
+        "Найти рычаг (документы/общественность/силу)",
+        "Разрешить конфликт"
+      ],
+      "rewards": {
+        "credits": [
+          800,
+          1800
+        ],
+        "xp": [
+          150,
+          250
+        ]
+      },
+      "branches": [
+        "сторона рабочих→репутация профсоюзов",
+        "сторона администрации→контракт {faction}",
+        "посредник→репутация обеим"
+      ]
+    },
+    {
+      "tpl_id": "TPL_CARGO_HEIST",
+      "tier": 6,
+      "roles": [
+        "PARTICIPANT",
+        "INITIATOR"
+      ],
+      "faction_types": [
+        "PMC",
+        "SME",
+        "Clan"
+      ],
+      "title": "Груз {goods}",
+      "hook": "Через {location} пройдёт контейнер с {goods} под охраной {faction}. Схема охраны известна частично.",
+      "objectives": [
+        "Добыть схему охраны",
+        "Выбрать точку удара",
+        "Исполнить и уйти"
+      ],
+      "rewards": {
+        "credits": [
+          3000,
+          8000
+        ],
+        "xp": [
+          250,
+          400
+        ]
+      },
+      "branches": [
+        "чисто→продажа {buyer_faction}",
+        "с кровью→охота {faction}",
+        "подстава→между двумя фракциями"
+      ]
+    },
+    {
+      "tpl_id": "TPL_FACTION_TENSIONS",
+      "tier": 5,
+      "roles": [
+        "PARTICIPANT",
+        "INITIATOR"
+      ],
+      "faction_types": [
+        "Megacorp",
+        "Conglomerate",
+        "PMC"
+      ],
+      "title": "Холодная война: {f1} против {f2}",
+      "hook": "{f1} и {f2} на грани горячего конфликта из-за {asset}. Обе вербуют независимых.",
+      "objectives": [
+        "Встретиться с вербовщиками обеих",
+        "Выбрать сторону или двойную игру",
+        "Исполнить первый удар"
+      ],
+      "rewards": {
+        "credits": [
+          4000,
+          10000
+        ],
+        "xp": [
+          300,
+          450
+        ]
+      },
+      "branches": [
+        "сторона {f1}→война с {f2}",
+        "двойная игра→риск разоблачения",
+        "миротворец→доступ к обеим"
+      ]
+    },
+    {
+      "tpl_id": "TPL_SABOTAGE",
+      "tier": 6,
+      "roles": [
+        "INITIATOR",
+        "PARTICIPANT"
+      ],
+      "faction_types": [
+        "Megacorp",
+        "Laboratory"
+      ],
+      "title": "Саботаж на {location}",
+      "hook": "Кто-то повредил {asset} на {location}. {faction} ищет виновных, но настоящие виновные ещё активны.",
+      "objectives": [
+        "Осмотреть место",
+        "Вычислить настоящих диверсантов",
+        "Остановить второй удар"
+      ],
+      "rewards": {
+        "credits": [
+          3500,
+          7500
+        ],
+        "xp": [
+          280,
+          420
+        ]
+      },
+      "branches": [
+        "спасти {asset}→награда {faction}",
+        "помочь диверсантам→враг {faction}",
+        "подставить третьих→война чужими руками"
+      ]
+    },
+    {
+      "tpl_id": "TPL_MARKET_WAR",
+      "tier": 4,
+      "roles": [
+        "INITIATOR"
+      ],
+      "faction_types": [
+        "Megacorp",
+        "Conglomerate"
+      ],
+      "title": "Ценовая война за {market}",
+      "hook": "Рынок {market} слишком мал для двух игроков: {f1} и {f2} начинают демпинг. Ваш капитал и связи могут решить исход.",
+      "objectives": [
+        "Собрать капитал/союзников",
+        "Ударить по цепочке поставок",
+        "Продиктовать условия"
+      ],
+      "rewards": {
+        "credits": [
+          15000,
+          40000
+        ],
+        "xp": [
+          500,
+          800
+        ]
+      },
+      "branches": [
+        "{f1} побеждает→место в совете",
+        "{f2} побеждает→контракт",
+        "вы побеждаете→собственный рынок"
+      ]
+    },
+    {
+      "tpl_id": "TPL_POLITICAL_SEAT",
+      "tier": 3,
+      "roles": [
+        "INITIATOR",
+        "PARTICIPANT"
+      ],
+      "faction_types": [
+        "Conglomerate",
+        "Clan"
+      ],
+      "title": "Пустое кресло {council}",
+      "hook": "В {council} освободилось место. {f1} продвигает ставленника, {f2} — своего. Ваше имя звучит в списках — неожиданно для вас.",
+      "objectives": [
+        "Собрать поддержку фракций",
+        "Пройти проверку кандидата",
+        "Занять кресло или продать голос"
+      ],
+      "rewards": {
+        "credits": [
+          25000,
+          60000
+        ],
+        "xp": [
+          600,
+          900
+        ]
+      },
+      "branches": [
+        "кресло→политическая линия",
+        "продал голос→капитал и враги",
+        "сломал игру→репутация во всём секторе"
+      ]
+    },
+    {
+      "tpl_id": "TPL_SUCCESSION",
+      "tier": 2,
+      "roles": [
+        "INITIATOR"
+      ],
+      "faction_types": [
+        "Megacorp",
+        "Conglomerate"
+      ],
+      "title": "Наследование {faction}",
+      "hook": "Правление {faction} расколото: два претендента, и оба просят вас — потому что ваш голос решает совет директоров.",
+      "objectives": [
+        "Аудит обоих претендентов",
+        "Собрать коалицию акционеров",
+        "Назначить будущее корпорации"
+      ],
+      "rewards": {
+        "credits": [
+          80000,
+          200000
+        ],
+        "xp": [
+          1000,
+          1500
+        ]
+      },
+      "branches": [
+        "претендент А→дружба с {f1}, враг {f2}",
+        "претендент Б→зеркально",
+        "третий путь→вы сами в совете"
+      ]
+    },
+    {
+      "tpl_id": "TPL_SYSTEM_CRISIS",
+      "tier": 1,
+      "roles": [
+        "INITIATOR"
+      ],
+      "faction_types": [
+        "Conglomerate",
+        "PMC",
+        "Laboratory"
+      ],
+      "title": "Кризис системы: {crisis}",
+      "hook": "{crisis} угрожает всей системе. Совет фракций парализован спором. У кого-то с вашим весом есть окно, чтобы возглавить ответ.",
+      "objectives": [
+        "Сформировать коалицию ответа",
+        "Принять решение с ценой",
+        "Провести операцию века"
+      ],
+      "rewards": {
+        "credits": [
+          200000,
+          500000
+        ],
+        "xp": [
+          1500,
+          2200
+        ]
+      },
+      "branches": [
+        "жёсткое решение→спасены, но репутация тирана",
+        "мягкое→потери, но любовь системы",
+        "отказ→кризис разгорается, история запомнит"
+      ]
+    },
+    {
+      "tpl_id": "TPL14_INV_MISSING_CARGO",
+      "title": "Исчезнувший груз {goods}",
+      "situation": [
+        "investigation"
+      ],
+      "loc_context": [
+        "docks",
+        "station",
+        "border_post"
+      ],
+      "tone": [
+        "noir_mystery"
+      ],
+      "roles": [
+        "PARTICIPANT",
+        "INITIATOR"
+      ],
+      "tier": [
+        5,
+        6,
+        7
+      ],
+      "faction_types": [
+        "SME",
+        "PMC",
+        "Conglomerate"
+      ],
+      "hook": "Контейнер с {goods} пропал между {loc1} и {loc2}. Страховка {faction} платит за находку — или за молчание о том, что груз вообще был.",
+      "objectives": [
+        "Проследить манифест",
+        "Опросить докеров",
+        "Найти контейнер",
+        "Решить судьбу груза"
+      ],
+      "branches": [
+        "вернуть владельцу→награда + репутация",
+        "продать тайно→x2 кредиты, охота",
+        "открыть→внутри запрещёнка"
+      ],
+      "rewards": {
+        "credits": [
+          2500,
+          7000
+        ],
+        "xp": [
+          200,
+          350
+        ]
+      },
+      "triggers": {
+        "world_state": {
+          "min_instability": 20
+        }
+      }
+    },
+    {
+      "tpl_id": "TPL14_INV_FORGED_ID",
+      "title": "Документы, которых нет",
+      "situation": [
+        "investigation"
+      ],
+      "loc_context": [
+        "station",
+        "slums",
+        "dome_district"
+      ],
+      "tone": [
+        "noir_mystery",
+        "long_consequence"
+      ],
+      "roles": [
+        "PARTICIPANT"
+      ],
+      "tier": [
+        6,
+        7,
+        8
+      ],
+      "faction_types": [
+        "Conglomerate",
+        "Clan"
+      ],
+      "hook": "У вас в кармане чужая ID-карта с вашим лицом. Реестр Теней отрицает её существование. Кто-то сделал вас другим человеком.",
+      "objectives": [
+        "Проверить карту у взломщика",
+        "Сходить по адресу из чипа",
+        "Встретиться со «вторым собой»"
+      ],
+      "branches": [
+        "уничтожить карту→проблема исчезнет? нет",
+        "принять личность→долги двойника",
+        "найти создателя→он ждал именно вас"
+      ],
+      "rewards": {
+        "credits": [
+          1000,
+          3000
+        ],
+        "xp": [
+          150,
+          280
+        ]
+      },
+      "triggers": {}
+    },
+    {
+      "tpl_id": "TPL14_INV_DEAD_INFORMANT",
+      "title": "Информатор не дышит",
+      "situation": [
+        "investigation"
+      ],
+      "loc_context": [
+        "slums",
+        "underground"
+      ],
+      "tone": [
+        "noir_mystery",
+        "personal_cost"
+      ],
+      "roles": [
+        "PARTICIPANT",
+        "VICTIM_BYSTANDER"
+      ],
+      "tier": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "faction_types": [
+        "SME",
+        "Clan",
+        "PMC"
+      ],
+      "hook": "{npc} звонил вам за час до смерти. В квартире — след спешки и половина шифровки. Вторая — у убийцы.",
+      "objectives": [
+        "Осмотреть квартиру",
+        "Расшифровать половину",
+        "Вычислить убийцу по второй"
+      ],
+      "branches": [
+        "сдать полиции→чисто, без ответов",
+        "договориться с убийцей→всё знать, стать соучастником",
+        "отомстить→личная цена"
+      ],
+      "rewards": {
+        "credits": [
+          1500,
+          4000
+        ],
+        "xp": [
+          180,
+          320
+        ]
+      },
+      "triggers": {
+        "cooldown_days": 14
+      }
+    },
+    {
+      "tpl_id": "TPL14_NEG_HOSTAGE_TRADE",
+      "title": "Обмен на нейтральной полосе",
+      "situation": [
+        "negotiation"
+      ],
+      "loc_context": [
+        "border_post",
+        "docks",
+        "open_space"
+      ],
+      "tone": [
+        "adrenaline",
+        "moral_dilemma"
+      ],
+      "roles": [
+        "PARTICIPANT",
+        "INITIATOR"
+      ],
+      "tier": [
+        4,
+        5,
+        6
+      ],
+      "faction_types": [
+        "PMC",
+        "Clan",
+        "Conglomerate"
+      ],
+      "hook": "{faction} удерживает заложника, вторая сторона привезла выкуп. Вас позвали гарантом. Обе стороны планируют кинуть друг друга.",
+      "objectives": [
+        "Изучить позиции",
+        "Подготовить отход",
+        "Провести обмен",
+        "Выйти живым"
+      ],
+      "branches": [
+        "честный обмен→репутация гаранта",
+        "помочь одной→враги второй",
+        "взять выкуп→охота обоих"
+      ],
+      "rewards": {
+        "credits": [
+          4000,
+          9000
+        ],
+        "xp": [
+          280,
+          420
+        ]
+      },
+      "triggers": {
+        "min_player_tier": 1
+      }
+    },
+    {
+      "tpl_id": "TPL14_NEG_CORP_MERGER",
+      "title": "Слияние на ножах",
+      "situation": [
+        "negotiation"
+      ],
+      "loc_context": [
+        "corp_tower",
+        "orbital_ring"
+      ],
+      "tone": [
+        "political_intrigue",
+        "long_consequence"
+      ],
+      "roles": [
+        "INITIATOR"
+      ],
+      "tier": [
+        2,
+        3,
+        4
+      ],
+      "faction_types": [
+        "Megacorp",
+        "Conglomerate"
+      ],
+      "hook": "{f1} и {f2} обсуждают слияние. Обе делегации наняли вас «консультантом» — каждая просит сорвать переговоры.",
+      "objectives": [
+        "Выслушать обе стороны",
+        "Найти скрытую выгоду каждой",
+        "Сделку завершить или утопить"
+      ],
+      "branches": [
+        "сделка прошла→ваше имя в совете новой структуры",
+        "сорвана→обе платят за устранение свидетеля",
+        "купили вас→богаче, но продались"
+      ],
+      "rewards": {
+        "credits": [
+          15000,
+          45000
+        ],
+        "xp": [
+          500,
+          800
+        ]
+      },
+      "triggers": {
+        "min_player_tier": 2,
+        "cooldown_days": 30
+      }
+    },
+    {
+      "tpl_id": "TPL14_ESC_FRAME_UP",
+      "title": "Вас подставили",
+      "situation": [
+        "escape"
+      ],
+      "loc_context": [
+        "station",
+        "dome_district",
+        "corp_tower"
+      ],
+      "tone": [
+        "adrenaline",
+        "long_consequence"
+      ],
+      "roles": [
+        "VICTIM_BYSTANDER",
+        "PARTICIPANT"
+      ],
+      "tier": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "faction_types": [
+        "PMC",
+        "Megacorp"
+      ],
+      "hook": "Утром ваш портрет на каждом экране: вооружён и опасен. Улики сфабрикованы качественно — кто-то платит миллионы за ваше исчезновение.",
+      "objectives": [
+        "Не попадаться сутки",
+        "Найти заказчика",
+        "Бегство / контратака / сделка со следствием"
+      ],
+      "branches": [
+        "бежать навсегда→смена имени, потеря активов",
+        "контратака→найти заказчика",
+        "сделка→свобода ценой услуги"
+      ],
+      "rewards": {
+        "credits": [
+          0,
+          5000
+        ],
+        "xp": [
+          250,
+          400
+        ]
+      },
+      "triggers": {
+        "cooldown_days": 21
+      }
+    },
+    {
+      "tpl_id": "TPL14_ESC_QUARANTINE",
+      "title": "Карантин закрыт с вами внутри",
+      "situation": [
+        "escape"
+      ],
+      "loc_context": [
+        "station",
+        "dome_district",
+        "underground"
+      ],
+      "tone": [
+        "adrenaline",
+        "noir_mystery"
+      ],
+      "roles": [
+        "VICTIM_BYSTANDER",
+        "PARTICIPANT"
+      ],
+      "tier": [
+        6,
+        7,
+        8
+      ],
+      "faction_types": [
+        "Laboratory",
+        "Conglomerate"
+      ],
+      "hook": "Сектор запечатан: бактериальная угроза. Но люди в костюмах собирают не пробы воздуха, а определённых людей.",
+      "objectives": [
+        "Оценить периметр",
+        "Найти настоящую причину",
+        "Выбрать путь выхода"
+      ],
+      "branches": [
+        "вентиляция→тихо",
+        "сквозь толпу→социальная маска",
+        "вместе с сборщиками→узнать правду"
+      ],
+      "rewards": {
+        "credits": [
+          1200,
+          3500
+        ],
+        "xp": [
+          220,
+          360
+        ]
+      },
+      "triggers": {}
+    },
+    {
+      "tpl_id": "TPL14_SAB_FACTORY_LINE",
+      "title": "Остановка конвейера",
+      "situation": [
+        "sabotage"
+      ],
+      "loc_context": [
+        "corp_tower",
+        "slums"
+      ],
+      "tone": [
+        "moral_dilemma",
+        "long_consequence"
+      ],
+      "roles": [
+        "INITIATOR",
+        "PARTICIPANT"
+      ],
+      "tier": [
+        4,
+        5,
+        6
+      ],
+      "faction_types": [
+        "Megacorp",
+        "Conglomerate"
+      ],
+      "hook": "Линия, которую запускает {faction}, разорит {rival_faction} и половину рабочих района. Вам платят за остановку. Рабочие просят обратного.",
+      "objectives": [
+        "Разведать линию",
+        "Точка удара: без жертв / с",
+        "Исполнить",
+        "Жить с последствиями"
+      ],
+      "branches": [
+        "чистая остановка→заказчик в ярости, рабочие благодарны",
+        "подставить аварию→расследование",
+        "жёстко→война фракций"
+      ],
+      "rewards": {
+        "credits": [
+          6000,
+          14000
+        ],
+        "xp": [
+          350,
+          550
+        ]
+      },
+      "triggers": {
+        "world_state": {
+          "min_instability": 35
+        }
+      }
+    },
+    {
+      "tpl_id": "TPL14_SAB_DATA_CORE",
+      "title": "Ядро данных молчит",
+      "situation": [
+        "sabotage",
+        "investigation"
+      ],
+      "loc_context": [
+        "corp_tower",
+        "orbital_ring"
+      ],
+      "tone": [
+        "political_intrigue"
+      ],
+      "roles": [
+        "INITIATOR"
+      ],
+      "tier": [
+        3,
+        4,
+        5
+      ],
+      "faction_types": [
+        "Megacorp",
+        "Laboratory"
+      ],
+      "hook": "Ядро данных {faction} самопроверяется каждые 12 минут — кто-то уже внутри. СБ нанимает вас найти «того, кто раньше вас».",
+      "objectives": [
+        "Анализ логов ядра",
+        "Отследить чужой маршрут",
+        "Перехватить нарушителя первым"
+      ],
+      "branches": [
+        "нарушитель=ИИ→философская развилка",
+        "=конкурент→двойная оплата",
+        "=свой→скандал совета"
+      ],
+      "rewards": {
+        "credits": [
+          8000,
+          18000
+        ],
+        "xp": [
+          380,
+          520
+        ]
+      },
+      "triggers": {}
+    },
+    {
+      "tpl_id": "TPL14_ESC_WITNESS",
+      "title": "Свидетель номер один",
+      "situation": [
+        "escort"
+      ],
+      "loc_context": [
+        "dome_district",
+        "station",
+        "border_post"
+      ],
+      "tone": [
+        "adrenaline",
+        "moral_dilemma"
+      ],
+      "roles": [
+        "PARTICIPANT",
+        "INITIATOR"
+      ],
+      "tier": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "faction_types": [
+        "PMC",
+        "Conglomerate",
+        "Clan"
+      ],
+      "hook": "Свидетель по делу против босса {faction} будет говорить только под вашей защитой. До суда — трое суток и три покушения.",
+      "objectives": [
+        "Эвакуация",
+        "Укрытие на ночь",
+        "Финальный рывок к суду"
+      ],
+      "branches": [
+        "довели живым→процесс, слава, враги навсегда",
+        "погиб→дело закрыто, ваша вина",
+        "сбежал→вы должны обеим сторонам"
+      ],
+      "rewards": {
+        "credits": [
+          7000,
+          16000
+        ],
+        "xp": [
+          400,
+          600
+        ]
+      },
+      "triggers": {
+        "cooldown_days": 14
+      }
+    },
+    {
+      "tpl_id": "TPL14_ESC_MEDICAL_RUN",
+      "title": "Медицинский коридор",
+      "situation": [
+        "escort",
+        "delivery"
+      ],
+      "loc_context": [
+        "slums",
+        "dome_district",
+        "underground"
+      ],
+      "tone": [
+        "moral_dilemma",
+        "adrenaline"
+      ],
+      "roles": [
+        "VICTIM_BYSTANDER",
+        "PARTICIPANT"
+      ],
+      "tier": [
+        6,
+        7,
+        8
+      ],
+      "faction_types": [
+        "SME",
+        "Clan"
+      ],
+      "hook": "Карантинный блок: вспышка болезни. Лекарства у контрабандистов {faction} — цена x2, пока люди умирают.",
+      "objectives": [
+        "Связаться с контрабандистами",
+        "Оплата или альтернатива",
+        "Провезти лекарства"
+      ],
+      "branches": [
+        "заплатили→быстро дорого",
+        "угрозы→бесплатно, враги навсегда",
+        "тайная тропа→сложно, героически"
+      ],
+      "rewards": {
+        "credits": [
+          500,
+          2500
+        ],
+        "xp": [
+          250,
+          400
+        ]
+      },
+      "triggers": {
+        "rep": {
+          "SC52": "+10"
+        }
+      }
+    },
+    {
+      "tpl_id": "TPL14_SMG_HOT_ROUTE",
+      "title": "Горячий маршрут",
+      "situation": [
+        "smuggling"
+      ],
+      "loc_context": [
+        "open_space",
+        "border_post",
+        "docks"
+      ],
+      "tone": [
+        "adrenaline"
+      ],
+      "roles": [
+        "PARTICIPANT",
+        "INITIATOR"
+      ],
+      "tier": [
+        5,
+        6,
+        7
+      ],
+      "faction_types": [
+        "Clan",
+        "SME",
+        "PMC"
+      ],
+      "hook": "Партия {goods} через патруль {faction}. Тариф x3. Ваша схема обхода может дать x5.",
+      "objectives": [
+        "Маршрут: тихо/быстро/дерзко",
+        "Подготовить судно",
+        "Пройти патруль"
+      ],
+      "branches": [
+        "тихо→медленно безопасно",
+        "дерзко→манёвр и слава",
+        "провал→тюрьма, конфискат"
+      ],
+      "rewards": {
+        "credits": [
+          5000,
+          12000
+        ],
+        "xp": [
+          300,
+          450
+        ]
+      },
+      "triggers": {
+        "world_state": {
+          "min_instability": 25
+        }
+      }
+    },
+    {
+      "tpl_id": "TPL14_SMG_CUSTOMS_LIE",
+      "title": "Ложная декларация",
+      "situation": [
+        "smuggling",
+        "investigation"
+      ],
+      "loc_context": [
+        "docks",
+        "station"
+      ],
+      "tone": [
+        "noir_mystery"
+      ],
+      "roles": [
+        "VICTIM_BYSTANDER",
+        "PARTICIPANT",
+        "INITIATOR"
+      ],
+      "tier": [
+        6,
+        7,
+        8
+      ],
+      "faction_types": [
+        "Conglomerate",
+        "SME"
+      ],
+      "hook": "Таможня нашла тайник в вашем легальном грузе — вы его не прятали. Предыдущий владелец делает из вас курьера-камикадзе.",
+      "objectives": [
+        "Зафиксировать подмену",
+        "Найти прежнего владельца",
+        "Сотрудничать / мстить / исчезать"
+      ],
+      "branches": [
+        "агент таможни→зарплата и доступ",
+        "месть→истинный владелец тайника",
+        "исчезнуть→долг остался"
+      ],
+      "rewards": {
+        "credits": [
+          2000,
+          5000
+        ],
+        "xp": [
+          200,
+          350
+        ]
+      },
+      "triggers": {}
+    },
+    {
+      "tpl_id": "TPL14_BTR_PARTNER_SELLS",
+      "title": "Партнёр продаёт вас",
+      "situation": [
+        "betrayal"
+      ],
+      "loc_context": [
+        "station",
+        "dome_district",
+        "corp_tower"
+      ],
+      "tone": [
+        "personal_cost",
+        "long_consequence"
+      ],
+      "roles": [
+        "PARTICIPANT",
+        "INITIATOR"
+      ],
+      "tier": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "faction_types": [
+        "PMC",
+        "Megacorp",
+        "Conglomerate"
+      ],
+      "hook": "Давний партнёр вышел на {faction} — цена вашей головы велика. Он зовёт на встречу «как раньше». Вы знаете: он знает, что вы знаете.",
+      "objectives": [
+        "Проверить информацию",
+        "Прийти / не прийти / прийти первым",
+        "Решить судьбу дружбы"
+      ],
+      "branches": [
+        "прийти простить→вернётся? риск",
+        "прийти покончить→репутация того кто не прощает",
+        "не прийти→дружба умерла тихо"
+      ],
+      "rewards": {
+        "credits": [
+          3000,
+          8000
+        ],
+        "xp": [
+          350,
+          500
+        ]
+      },
+      "triggers": {
+        "cooldown_days": 28
+      }
+    },
+    {
+      "tpl_id": "TPL14_RSC_COLLAPSE",
+      "title": "Обрушение на {location}",
+      "situation": [
+        "rescue"
+      ],
+      "loc_context": [
+        "underground",
+        "slums",
+        "dome_district"
+      ],
+      "tone": [
+        "adrenaline",
+        "moral_dilemma"
+      ],
+      "roles": [
+        "VICTIM_BYSTANDER",
+        "PARTICIPANT",
+        "INITIATOR"
+      ],
+      "tier": [
+        6,
+        7,
+        8
+      ],
+      "faction_types": [
+        "SME",
+        "Clan",
+        "Conglomerate"
+      ],
+      "hook": "Секция обрушилась. Под завалами стуки — стабилизировать купол может только техника {faction}, она через 6 часов. Люди протянут 3.",
+      "objectives": [
+        "Разобрать завалы",
+        "Альтернативная опора",
+        "Держаться до прибытия"
+      ],
+      "branches": [
+        "все спасены→герои района",
+        "большинство→моральная цена выбора",
+        "богатых первыми→платят, соседи видели"
+      ],
+      "rewards": {
+        "credits": [
+          1000,
+          4000
+        ],
+        "xp": [
+          300,
+          450
+        ]
+      },
+      "triggers": {}
+    },
+    {
+      "tpl_id": "TPL14_RSC_SHIP_DISTRESS",
+      "title": "Сигнал бедствия",
+      "situation": [
+        "rescue"
+      ],
+      "loc_context": [
+        "open_space",
+        "border_post"
+      ],
+      "tone": [
+        "noir_mystery",
+        "moral_dilemma"
+      ],
+      "roles": [
+        "PARTICIPANT",
+        "INITIATOR"
+      ],
+      "tier": [
+        4,
+        5,
+        6
+      ],
+      "faction_types": [
+        "PMC",
+        "SME",
+        "Laboratory"
+      ],
+      "hook": "Маяк корабля, пропавшего 12 лет назад. Экипаж должен быть мёртв. Сигнал свежий.",
+      "objectives": [
+        "Согласовать рейс",
+        "Прибыть к дрейфующему",
+        "Что сигналит"
+      ],
+      "branches": [
+        "криосон живых→наследие и долги",
+        "захвачен→бой или бегство",
+        "приманка→кому-то нужен ваш корабль"
+      ],
+      "rewards": {
+        "credits": [
+          8000,
+          20000
+        ],
+        "xp": [
+          450,
+          650
+        ]
+      },
+      "triggers": {}
+    },
+    {
+      "tpl_id": "TPL14_BNT_DOUBLE_TARGET",
+      "title": "Две головы, одна награда",
+      "situation": [
+        "bounty_hunt"
+      ],
+      "loc_context": [
+        "station",
+        "slums",
+        "docks"
+      ],
+      "tone": [
+        "noir_mystery",
+        "moral_dilemma"
+      ],
+      "roles": [
+        "PARTICIPANT",
+        "INITIATOR"
+      ],
+      "tier": [
+        5,
+        6,
+        7
+      ],
+      "faction_types": [
+        "PMC",
+        "Conglomerate"
+      ],
+      "hook": "Заказ на {npc_target}: живым или мёртвым. На месте — ДВА одинаковых человека. Клон, близнец или подстава?",
+      "objectives": [
+        "Кто настоящий",
+        "Схема захвата",
+        "Честно или хитро"
+      ],
+      "branches": [
+        "настоящий первый→полная оплата",
+        "оба→двойная награда или двойные враги",
+        "никто→вы в чужой игре"
+      ],
+      "rewards": {
+        "credits": [
+          6000,
+          15000
+        ],
+        "xp": [
+          350,
+          500
+        ]
+      },
+      "triggers": {
+        "cooldown_days": 10
+      }
+    },
+    {
+      "tpl_id": "TPL14_INF_BLACK_AUCTION",
+      "title": "Чёрный аукцион информации",
+      "situation": [
+        "info_auction"
+      ],
+      "loc_context": [
+        "station",
+        "orbital_ring",
+        "underground"
+      ],
+      "tone": [
+        "political_intrigue",
+        "noir_mystery"
+      ],
+      "roles": [
+        "PARTICIPANT",
+        "INITIATOR"
+      ],
+      "tier": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "faction_types": [
+        "Conglomerate",
+        "Megacorp",
+        "Laboratory"
+      ],
+      "hook": "Лот: данные о {secret_topic}. Покупатели — {f1}, {f2} и третья сила без лица. Ваша ставка решит баланс системы.",
+      "objectives": [
+        "Получить приглашение",
+        "Что реально продают",
+        "Купить / украсть / сорвать"
+      ],
+      "branches": [
+        "купили→актив против конкурента",
+        "украли→все ищут вас",
+        "сорвали→тайна цела, все в ярости"
+      ],
+      "rewards": {
+        "credits": [
+          12000,
+          35000
+        ],
+        "xp": [
+          500,
+          750
+        ]
+      },
+      "triggers": {
+        "min_player_tier": 1
+      }
+    },
+    {
+      "tpl_id": "TPL14_DLV_FRAGILE",
+      "title": "Хрупкий груз, жёсткий срок",
+      "situation": [
+        "delivery"
+      ],
+      "loc_context": [
+        "docks",
+        "dome_district",
+        "open_space"
+      ],
+      "tone": [
+        "adrenaline"
+      ],
+      "roles": [
+        "PARTICIPANT"
+      ],
+      "tier": [
+        6,
+        7,
+        8
+      ],
+      "faction_types": [
+        "SME",
+        "Clan",
+        "Conglomerate"
+      ],
+      "hook": "Криоконтейнер органов: 14 часов до деградации, два карантина и блокада на маршруте.",
+      "objectives": [
+        "Хладоцепь",
+        "Маршрут",
+        "Успеть до истечения"
+      ],
+      "branches": [
+        "успели→больница благодарна навсегда",
+        "опоздали→груз списан",
+        "продали другим→денег больше сна меньше"
+      ],
+      "rewards": {
+        "credits": [
+          2000,
+          6000
+        ],
+        "xp": [
+          220,
+          350
+        ]
+      },
+      "triggers": {}
+    },
+    {
+      "tpl_id": "TPL14_REC_BORDER_EYES",
+      "title": "Что видит граница",
+      "situation": [
+        "recon",
+        "investigation"
+      ],
+      "loc_context": [
+        "border_post",
+        "open_space"
+      ],
+      "tone": [
+        "political_intrigue"
+      ],
+      "roles": [
+        "PARTICIPANT",
+        "INITIATOR"
+      ],
+      "tier": [
+        4,
+        5,
+        6
+      ],
+      "faction_types": [
+        "PMC",
+        "Conglomerate",
+        "Megacorp"
+      ],
+      "hook": "{faction} хочет знать, что на посту {location}: сигнатуры кораблей не сходятся с декларациями.",
+      "objectives": [
+        "Дойти незаметно",
+        "Задокументировать",
+        "Вернуться с данными"
+      ],
+      "branches": [
+        "контрабанда→война с каналом",
+        "военные→политический скандал",
+        "призраки→никто не поверит"
+      ],
+      "rewards": {
+        "credits": [
+          7000,
+          15000
+        ],
+        "xp": [
+          380,
+          550
+        ]
+      },
+      "triggers": {}
+    }
+  ]
+}

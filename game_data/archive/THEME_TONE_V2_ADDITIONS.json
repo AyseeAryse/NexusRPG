@@ -1,0 +1,198 @@
+{
+  "module_name": "THEME_TONE_V2_ADDITIONS",
+  "version": "2.0_MASSIVE_EXPANSION_ADDITIONS",
+  "description": "Дополнения к THEME_TONE для новых 29 origins и 25 специализаций",
+  "extends": "THEME_TONE.json (сохраняется как база)",
+  "size_target": "8,000+ дополнительных символов",
+  "new_origins_tone_profiles": {
+    "ORIGIN_EARTH_TECH_MOGUL": {
+      "tone_modifiers": {
+        "cynicism": 3,
+        "sophistication": 8,
+        "violence": 2,
+        "hope": 9
+      },
+      "preferred_genres": [
+        "technological_singularity",
+        "corporate_empire",
+        "innovation_drama"
+      ],
+      "narrative_voice": "Confident, visionary, technology-focused",
+      "dialogue_style": "Authoritative, forward-thinking, solution-oriented"
+    },
+    "ORIGIN_MARS_GENETIC_EXPERIMENT": {
+      "tone_modifiers": {
+        "cynicism": 8,
+        "sophistication": 7,
+        "violence": 4,
+        "hope": 3
+      },
+      "preferred_genres": [
+        "body_horror",
+        "scientific_thriller",
+        "identity_crisis"
+      ],
+      "narrative_voice": "Uncertain, scientifically curious, existentially troubled",
+      "dialogue_style": "Analytical, questioning, somewhat detached"
+    },
+    "ORIGIN_BELT_PIRATE_PRINCE": {
+      "tone_modifiers": {
+        "cynicism": 6,
+        "sophistication": 5,
+        "violence": 8,
+        "hope": 6
+      },
+      "preferred_genres": [
+        "space_opera",
+        "adventure_thriller",
+        "political_intrigue"
+      ],
+      "narrative_voice": "Bold, charismatic, danger-seeking",
+      "dialogue_style": "Commanding, theatrical, romantically adventurous"
+    },
+    "ORIGIN_PLUTO_RESEARCH_STATION": {
+      "tone_modifiers": {
+        "cynicism": 5,
+        "sophistication": 9,
+        "violence": 2,
+        "hope": 6
+      },
+      "preferred_genres": [
+        "hard_science_fiction",
+        "isolation_thriller",
+        "discovery_drama"
+      ],
+      "narrative_voice": "Methodical, contemplative, isolation-adapted",
+      "dialogue_style": "Precise, thoughtful, occasionally philosophical"
+    }
+  },
+  "new_specializations_tone_profiles": {
+    "SPEC_QUANTUM_HACKER": {
+      "tone_modifiers": {
+        "cynicism": 6,
+        "sophistication": 8,
+        "violence": 3,
+        "hope": 5
+      },
+      "preferred_genres": [
+        "quantum_thriller",
+        "digital_mystery",
+        "reality_bending"
+      ],
+      "narrative_voice": "Technically brilliant, reality-questioning, digitally native",
+      "unique_elements": [
+        "Quantum probability descriptions",
+        "Multi-dimensional thinking",
+        "Digital-physical boundary confusion"
+      ]
+    },
+    "SPEC_MEMORY_THIEF": {
+      "tone_modifiers": {
+        "cynicism": 8,
+        "sophistication": 7,
+        "violence": 5,
+        "hope": 3
+      },
+      "preferred_genres": [
+        "psychological_thriller",
+        "identity_horror",
+        "mind_crime"
+      ],
+      "narrative_voice": "Invasive, psychologically aware, morally complex",
+      "unique_elements": [
+        "Memory-focused descriptions",
+        "Identity confusion themes",
+        "Psychological manipulation techniques"
+      ]
+    },
+    "SPEC_VOID_PRIEST": {
+      "tone_modifiers": {
+        "cynicism": 3,
+        "sophistication": 7,
+        "violence": 4,
+        "hope": 7
+      },
+      "preferred_genres": [
+        "mystical_space_opera",
+        "spiritual_journey",
+        "cosmic_horror"
+      ],
+      "narrative_voice": "Spiritually guided, cosmically aware, philosophically deep",
+      "unique_elements": [
+        "Spiritual metaphors",
+        "Cosmic perspective",
+        "Faith-based decision making"
+      ]
+    },
+    "SPEC_REALITY_HACKER": {
+      "tone_modifiers": {
+        "cynicism": 5,
+        "sophistication": 9,
+        "violence": 4,
+        "hope": 6
+      },
+      "preferred_genres": [
+        "reality_bending",
+        "physics_manipulation",
+        "god_mode_sci_fi"
+      ],
+      "narrative_voice": "Reality-manipulating, physics-defying, god-like perspective",
+      "unique_elements": [
+        "Physics violation descriptions",
+        "Reality distortion effects",
+        "Dimensional perspective shifts"
+      ]
+    }
+  },
+  "dynamic_tone_evolution": {
+    "major_life_events": {
+      "first_kill": {
+        "cynicism": 2,
+        "violence": 1,
+        "hope": -1
+      },
+      "betrayal_by_ally": {
+        "cynicism": 3,
+        "hope": -2,
+        "sophistication": 1
+      },
+      "saving_innocent_lives": {
+        "hope": 2,
+        "cynicism": -1,
+        "sophistication": 1
+      },
+      "discovering_conspiracy": {
+        "cynicism": 2,
+        "sophistication": 2,
+        "hope": -1
+      },
+      "falling_in_love": {
+        "hope": 2,
+        "cynicism": -1,
+        "violence": -1
+      }
+    },
+    "career_progression": {
+      "corporate_success": {
+        "sophistication": 1,
+        "cynicism": 1,
+        "hope": 1
+      },
+      "criminal_descent": {
+        "cynicism": 2,
+        "violence": 2,
+        "sophistication": -1
+      },
+      "scientific_breakthrough": {
+        "hope": 2,
+        "sophistication": 2,
+        "cynicism": -1
+      },
+      "political_power": {
+        "sophistication": 2,
+        "cynicism": 1,
+        "violence": 1
+      }
+    }
+  }
+}

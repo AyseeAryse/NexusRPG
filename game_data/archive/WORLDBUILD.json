@@ -1,0 +1,423 @@
+{
+  "module_name": "WORLDBUILD",
+  "description": "Интегрированная и расширенная база локаций для всей системы: планета → город → район → заведение с полной детализацией, маршрутами и событиями.",
+  "locations": [
+    {
+      "id": "earth",
+      "name": "Земля",
+      "type": "planet",
+      "overview": {
+        "population": 12000000000,
+        "governance": "ООН Земли",
+        "primary_resources": ["вода", "пища", "энергия"],
+        "economy": "Мировой центр торговли и финансов",
+        "security": "Международные военные альянсы"
+      },
+      "gravity": 1.0,
+      "atmosphere": {"N2": 78, "O2": 21, "Ar": 0.93},
+      "resources": ["вода","металлы","пища"],
+      "infrastructure": {
+        "major_cities": ["Нью-Токио","Нью-Йорк","Генеральная Асамблея ООН"],
+        "population_distribution": {"Нью-Токио":500000000,"Нью-Йорк":350000000}
+      },
+      "faction_control": {"ООН Земли":80,"Корпорации":15,"OPA":5},
+      "cities": [
+        {
+          "id": "newtokyo",
+          "name": "Нью-Токио",
+          "population": 500000000,
+          "districts": [
+            {
+              "id": "tokyo_gov_core",
+              "name": "Правительственный сектор",
+              "type": "Political",
+              "description": "Расположен на бывших линиях метро, превращённых в правительственные башни.",
+              "security_level": "Maximum",
+              "average_income": "High",
+              "dominant_factions": ["ООН Земли"],
+              "establishments": [
+                {
+                  "id": "un_assembly_hall",
+                  "name": "Зал Генеральной Ассамблеи ООН",
+                  "type": "Government",
+                  "services": ["Дипломатические встречи","Голосования по резолюциям"],
+                  "risks": ["Протесты активистов","Террористические угрозы"],
+                  "plot_hooks": [
+                    "Проникновение шпионов в штаб ООН",
+                    "Утечка компромата на голову Генсека"
+                  ]
+                },
+                {
+                  "id": "newshanghai",
+                  "name": "Квартал «Новая Шанхай»",
+                  "type": "Residential/Commercial",
+                  "services": ["Корпоративные офисы","Роскошные апартаменты"],
+                  "risks": ["Корпоративный шпионаж","Угрозы рейдерских захватов"],
+                  "plot_hooks": [
+                    "Корпоративный саботаж во время IPO",
+                    "Диверсия в жилом небоскрёбе"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "tokyo_industrial_corridor",
+              "name": "Индустриальный коридор",
+              "type": "Industrial",
+              "description": "Точка сборки и производства дронов и космических модулей.",
+              "security_level": "Medium",
+              "average_income": "Medium",
+              "establishments": [
+                {
+                  "id": "mechforge",
+                  "name": "Завод MechForge",
+                  "type": "Industrial",
+                  "services": ["Производство дронов","Мехатронные разработки"],
+                  "risks": ["Промышленные аварии","Кражи прототипов"],
+                  "plot_hooks": [
+                    "Кража экспериментального дрона",
+                    "Сбой в системе безопасности цеха"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "newyork",
+          "name": "Нью-Йорк",
+          "population": 350000000,
+          "districts": [
+            {
+              "id": "finance_hub",
+              "name": "Финансовый узел",
+              "type": "Financial",
+              "description": "Центр глобальной экономики, штаб-квартиры крупнейших банков.",
+              "security_level": "High",
+              "average_income": "Very High",
+              "establishments": [
+                {
+                  "id": "dome_wallstreet",
+                  "name": "Купол WallStreet",
+                  "type": "Financial",
+                  "services": ["Межпланетные валютные обмены","Криптовалютные аукционы"],
+                  "risks": ["Биржевые крахи","Корпоративные войны"],
+                  "plot_hooks": [
+                    "Падение курса EarthCred",
+                    "Взлом центрального бота трейдинга"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "routes": [
+        {"to":"mars","delta_v_kms":5.5,"time_h":72,"risk":"low"},
+        {"to":"ganymede","delta_v_kms":9.0,"time_h":180,"risk":"medium"},
+        {"to":"luna","delta_v_kms":3.2,"time_h":3,"risk":"low"},
+        {"to":"ceres","delta_v_kms":9.5,"time_h":200,"risk":"medium"}
+      ]
+    },
+    {
+      "id": "mars",
+      "name": "Марс",
+      "type": "planet",
+      "overview": {
+        "population": 800000000,
+        "governance": "Марсианская Республика",
+        "primary_resources": ["гелий-3","металлы"],
+        "economy": "Горнодобыча, терраформирование",
+        "security": "Марсианский флот"
+      },
+      "gravity": 0.38,
+      "atmosphere": {"CO2":95,"N2":3,"Ar":1.6},
+      "resources": ["вода","металлы","пища"],
+      "infrastructure": {
+        "major_cities": ["Новый Бостон"],
+        "population_distribution": {"Новый Бостон":200000000}
+      },
+      "faction_control": {"Марсианская Республика":60,"Earth UN":20,"OPA":10,"Corporates":10},
+      "cities": [
+        {
+          "id": "newboston",
+          "name": "Новый Бостон",
+          "population": 200000000,
+          "districts": [
+            {
+              "id": "terraform_projects",
+              "name": "Терраформенные проекты",
+              "type": "Agricultural",
+              "description": "Купольные фермы и научные станции.",
+              "security_level": "High",
+              "average_income": "High",
+              "establishments": [
+                {
+                  "id": "renaissance_biodome",
+                  "name": "Био-купол «Ренессанс»",
+                  "type": "Research",
+                  "services": ["Генетические исследования флоры","Тестовые экосистемы"],
+                  "risks": ["Вспышки болезни растений","Саботаж экотеррористов"],
+                  "plot_hooks": [
+                    "Вирус в биокуполе",
+                    "Контрабанда растений"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "orbital_ring",
+              "name": "Окружное кольцо",
+              "type": "Logistics",
+              "description": "Торговая станция и порт для грузовых судов.",
+              "security_level": "Medium",
+              "average_income": "Medium",
+              "establishments": [
+                {
+                  "id": "marsgate_terminal",
+                  "name": "МарсГейт Терминал",
+                  "type": "Logistics",
+                  "services": ["Перевозка грузов","Таможенное оформление"],
+                  "risks": ["Пиратские нападения","Задержки поставок"],
+                  "plot_hooks": [
+                    "Пиратская засада у терминала",
+                    "Коррупция на таможне"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "routes": [
+        {"to":"earth","delta_v_kms":5.5,"time_h":72,"risk":"low"},
+        {"to":"ceres","delta_v_kms":6.8,"time_h":120,"risk":"medium"}
+      ]
+    },
+    {
+      "id": "ganymede",
+      "name": "Ганимед",
+      "type": "moon",
+      "overview": {
+        "population": 200000000,
+        "governance": "ESA-Earth",
+        "primary_resources": ["вода","биотехнологии"],
+        "economy": "Научные исследования, гидропонные фермы",
+        "security": "Частные военные компании"
+      },
+      "gravity": 0.146,
+      "atmosphere": null,
+      "resources": ["вода","аммиак","редкие металлы"],
+      "infrastructure": {
+        "major_cities": ["Технохаб"],
+        "population_distribution": {"Технохаб":50000000}
+      },
+      "faction_control": {"ESA-Earth":50,"Corporates":30,"OPA":20},
+      "cities": [
+        {
+          "id": "technohub",
+          "name": "Технохаб",
+          "population": 50000000,
+          "districts": [
+            {
+              "id": "bioethical_center",
+              "name": "Биоэтический центр",
+              "type": "Corporate",
+              "description": "Лаборатории и клиники для испытаний генетических технологий.",
+              "security_level": "High",
+              "average_income": "High",
+              "establishments": [
+                {
+                  "id": "genesis_hq",
+                  "name": "Genesis Bioworks HQ",
+                  "type": "Corporate",
+                  "services": ["Этические эксперименты","Регенеративные протезы"],
+                  "risks": ["Этические протесты","Шпионаж конкурентов"],
+                  "plot_hooks": [
+                    "Утечка экспериментальных образцов",
+                    "Протез с побочными эффектами"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "hydroponic_farms",
+              "name": "Ганимедские фермы",
+              "type": "Agricultural",
+              "description": "Гидропонные комплексы, снабжающие систему едой.",
+              "security_level": "Medium",
+              "average_income": "Medium",
+              "establishments": [
+                {
+                  "id": "redsand_farm",
+                  "name": "Ферма RedSand",
+                  "type": "Agricultural",
+                  "services": ["Гидропонная еда","Семена ген-улучшенного зерна"],
+                  "risks": ["Продовольственный кризис","Вирусы сельхозкультур"],
+                  "plot_hooks": [
+                    "Контрабанда семян",
+                    "Вспышка грибковой инфекции"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "routes": [
+        {"to":"earth","delta_v_kms":9.0,"time_h":180,"risk":"medium"},
+        {"to":"mars","delta_v_kms":9.0,"time_h":180,"risk":"medium"}
+      ]
+    },
+    {
+      "id": "luna",
+      "name": "Луна",
+      "type": "moon",
+      "overview": {
+        "population": 150000000,
+        "governance": "ООН Земли / Марсианская Республика",
+        "primary_resources": ["гелий-3","минералы"],
+        "economy": "Добыча ресурсов, исследовательские базы",
+        "security": "Лунный флот ООН"
+      },
+      "gravity": 0.165,
+      "atmosphere": null,
+      "resources": ["гелий-3","металлы"],
+      "infrastructure": {
+        "major_cities": ["Армстронг-Сити"],
+        "population_distribution": {"Армстронг-Сити":60000000}
+      },
+      "faction_control": {"ООН Земли":60,"MarsRep":40},
+      "cities": [
+        {
+          "id": "armstrong_city",
+          "name": "Армстронг-Сити",
+          "population": 60000000,
+          "districts": [
+            {
+              "id": "alpha_labs",
+              "name": "Лаборатории Alpha",
+              "type": "Research",
+              "description": "Секретные исследовательские комплексы Protogen.",
+              "security_level": "Maximum",
+              "average_income": "High",
+              "establishments": [
+                {
+                  "id": "protogen_alpha",
+                  "name": "Protogen Alpha Labs",
+                  "type": "Research",
+                  "services": ["Эксперименты с протомолекулой","Создание ИИ-организмов"],
+                  "risks": ["Утечки биооружия","Корпоративные диверсии"],
+                  "plot_hooks": [
+                    "Побег генетически модифицированного образца",
+                    "Шпион в штате учёных"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "novo_peking",
+              "name": "Ново-Пекин",
+              "type": "Commercial",
+              "description": "Коммерческий и жилой центр Nexus Pharmaceuticals.",
+              "security_level": "High",
+              "average_income": "Very High",
+              "establishments": [
+                {
+                  "id": "nexus_tower",
+                  "name": "Nexus Pharma Tower",
+                  "type": "Corporate",
+                  "services": ["Медицинские препараты","Нейростабилизация"],
+                  "risks": ["Черный рынок лекарств","Корпоративный шантаж"],
+                  "plot_hooks": [
+                    "Разоблачение нелегальных испытаний",
+                    "Кража данных пациентов"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "routes": [
+        {"to":"earth","delta_v_kms":3.2,"time_h":3,"risk":"low"},
+        {"to":"mars","delta_v_kms":4.0,"time_h":5,"risk":"low"}
+      ]
+    },
+    {
+      "id": "ceres",
+      "name": "Церера",
+      "type": "ast_hub",
+      "overview": {
+        "population": 100000000,
+        "governance": "OPA",
+        "primary_resources": ["редкие металлы","пища"],
+        "economy": "Горнодобыча, контрабанда",
+        "security": "Уличные банды"
+      },
+      "gravity": 0.028,
+      "atmosphere": null,
+      "resources": ["вода","аммиак","редкие металлы"],
+      "infrastructure": {
+        "major_cities": ["Глубины"],
+        "population_distribution": {"Глубины":40000000}
+      },
+      "faction_control": {"OPA":70,"Corporate":20,"Earth UN":5,"MarsRep":5},
+      "cities": [
+        {
+          "id": "deep",
+          "name": "Глубины",
+          "population": 40000000,
+          "districts": [
+            {
+              "id": "miners_quarter",
+              "name": "Шахтёрский квартал",
+              "type": "Residential",
+              "description": "Кольцеобразная структура туннелей под поверхностью.",
+              "security_level": "Low",
+              "average_income": "Low",
+              "establishments": [
+                {
+                  "id": "the_pit_bar",
+                  "name": "Бар «Забой»",
+                  "type": "Entertainment",
+                  "services": ["Нелегальные бои","Черный рынок оружия"],
+                  "risks": ["Уличные драки","Полицейские рейды"],
+                  "plot_hooks": [
+                    "Организация нелегального турнира",
+                    "Засада охранников шахты"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "industrial_zone",
+              "name": "Производственная зона",
+              "type": "Industrial",
+              "description": "Фабрики по переработке металлов и топлива.",
+              "security_level": "Medium",
+              "average_income": "Medium",
+              "establishments": [
+                {
+                  "id": "ceres_metal",
+                  "name": "Церера-Металл",
+                  "type": "Industrial",
+                  "services": ["Переработка редкоземельных металлов","Контракты на экспорт"],
+                  "risks": ["Профсоюзные протесты","Экологические аварии"],
+                  "plot_hooks": [
+                    "Забастовка рабочих",
+                    "Выброс токсичных отходов"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "routes": [
+        {"to":"mars","delta_v_kms":6.8,"time_h":120,"risk":"medium"},
+        {"to":"earth","delta_v_kms":9.5,"time_h":200,"risk":"medium"}
+      ]
+    }
+  ]
+}

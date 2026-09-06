@@ -1,0 +1,23 @@
+{
+  "A_skill-creator": {
+    "status": 200,
+    "bytes": 33168,
+    "chars": 32987,
+    "path": "D:\\NexusRPG-main\\scripts\\_tmp_skills_raw\\A_skill-creator.md"
+  },
+  "B_code-review": {
+    "error": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "C_code-refactoring": {
+    "error": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "D_webapp-testing": {
+    "status": 200,
+    "bytes": 3913,
+    "chars": 3861,
+    "path": "D:\\NexusRPG-main\\scripts\\_tmp_skills_raw\\D_webapp-testing.md"
+  },
+  "E_coding-plan": {
+    "error": "HTTPError: HTTP Error 404: Not Found"
+  }
+}

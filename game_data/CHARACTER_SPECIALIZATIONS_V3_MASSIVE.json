@@ -1,0 +1,1718 @@
+{
+  "module_name": "CHARACTER_SPECIALIZATIONS_V3_MASSIVE",
+  "version": "3.0_35_SPECIALIZATIONS",
+  "description": "35 специализаций для определения роли персонажа с THEME_TONE интеграцией",
+  "specializations_expansion": {
+    "total_count": 35,
+    "existing_count": 10,
+    "new_count": 25,
+    "new_specializations": {
+      "SPEC_CORPORATE_ASSASSIN": {
+        "title": "Корпоративный убийца",
+        "description": "Профессиональный киллер на службе мегакорпораций",
+        "effects": {
+          "stealth": 3,
+          "combat": 2,
+          "technology": 1
+        },
+        "starting_equipment": [
+          "Silenced weapon",
+          "Corporate credentials",
+          "Poison kit"
+        ],
+        "tone_modifiers": {
+          "cynicism": 8,
+          "sophistication": 6,
+          "violence": 9,
+          "hope": 2
+        },
+        "context_tags": [
+          "Corporate",
+          "Violence",
+          "Stealth",
+          "Professional"
+        ]
+      },
+      "SPEC_VOID_PRIEST": {
+        "title": "Жрец Пустоты",
+        "description": "Духовный лидер космических культов и мистических сект",
+        "effects": {
+          "protomolecule_theory": 2,
+          "streetwise": 2
+        },
+        "starting_equipment": [
+          "Religious artifacts",
+          "Ceremonial robes",
+          "Meditation drugs"
+        ],
+        "tone_modifiers": {
+          "cynicism": 3,
+          "sophistication": 7,
+          "violence": 4,
+          "hope": 7
+        },
+        "context_tags": [
+          "Religion",
+          "Leadership",
+          "Mysticism",
+          "Influence"
+        ]
+      },
+      "SPEC_GENE_SCULPTOR": {
+        "title": "Генный скульптор",
+        "description": "Мастер генетических модификаций и биологического дизайна",
+        "effects": {
+          "medicine": 3,
+          "technology": 2,
+          "research_method": 2
+        },
+        "starting_equipment": [
+          "Genetic scanner",
+          "Bio-modification lab",
+          "Gene samples"
+        ],
+        "tone_modifiers": {
+          "cynicism": 5,
+          "sophistication": 9,
+          "violence": 3,
+          "hope": 6
+        },
+        "context_tags": [
+          "Science",
+          "Biology",
+          "Modification",
+          "Future"
+        ]
+      },
+      "SPEC_QUANTUM_HACKER": {
+        "title": "Квантовый хакер",
+        "description": "Специалист по квантовым компьютерам и криптографии",
+        "effects": {
+          "hacking": 4,
+          "technology": 3,
+          "research_method": 1
+        },
+        "starting_equipment": [
+          "Quantum computer",
+          "Encryption keys",
+          "Neural interface"
+        ],
+        "tone_modifiers": {
+          "cynicism": 6,
+          "sophistication": 8,
+          "violence": 3,
+          "hope": 5
+        },
+        "context_tags": [
+          "Technology",
+          "Quantum",
+          "Digital",
+          "Advanced"
+        ]
+      },
+      "SPEC_MEMORY_THIEF": {
+        "title": "Похититель воспоминаний",
+        "description": "Эксперт по извлечению и изменению человеческих воспоминаний",
+        "effects": {
+          "technology": 2,
+          "medicine": 2,
+          "empathy_read": 3
+        },
+        "starting_equipment": [
+          "Memory extractor",
+          "Neural drugs",
+          "Mind scanner"
+        ],
+        "tone_modifiers": {
+          "cynicism": 8,
+          "sophistication": 7,
+          "violence": 5,
+          "hope": 3
+        },
+        "context_tags": [
+          "Psychology",
+          "Memory",
+          "Manipulation",
+          "Dark"
+        ]
+      },
+      "SPEC_ASTEROID_WRANGLER": {
+        "title": "Укротитель астероидов",
+        "description": "Специалист по захвату и перемещению астероидов",
+        "effects": {
+          "piloting": 3,
+          "engineering": 2,
+          "physics": 2
+        },
+        "starting_equipment": [
+          "Mining ship",
+          "Gravity manipulator",
+          "Asteroid scanner"
+        ],
+        "tone_modifiers": {
+          "cynicism": 5,
+          "sophistication": 6,
+          "violence": 4,
+          "hope": 7
+        },
+        "context_tags": [
+          "Space",
+          "Engineering",
+          "Asteroids",
+          "Adventure"
+        ]
+      },
+      "SPEC_BIOWEAPON_DESIGNER": {
+        "title": "Конструктор биооружия",
+        "description": "Создатель смертоносных биологических агентов",
+        "effects": {
+          "medicine": 3,
+          "chemistry": 2,
+          "research_method": 3
+        },
+        "starting_equipment": [
+          "Bio lab",
+          "Pathogen samples",
+          "Containment suits"
+        ],
+        "tone_modifiers": {
+          "cynicism": 9,
+          "sophistication": 8,
+          "violence": 7,
+          "hope": 2
+        },
+        "context_tags": [
+          "Science",
+          "Weapons",
+          "Biology",
+          "Dangerous"
+        ]
+      },
+      "SPEC_SOCIAL_ENGINEER": {
+        "title": "Социальный инженер",
+        "description": "Мастер манипуляций и психологического влияния",
+        "effects": {
+          "negotiation": 3,
+          "streetwise": 3
+        },
+        "starting_equipment": [
+          "Identity documents",
+          "Social network access",
+          "Psychological profiles"
+        ],
+        "tone_modifiers": {
+          "cynicism": 7,
+          "sophistication": 8,
+          "violence": 2,
+          "hope": 4
+        },
+        "context_tags": [
+          "Psychology",
+          "Manipulation",
+          "Social",
+          "Influence"
+        ]
+      },
+      "SPEC_VOID_WALKER": {
+        "title": "Путешественник Пустоты",
+        "description": "Исследователь межзвездного пространства и темной материи",
+        "effects": {
+          "survival": 3,
+          "piloting": 2,
+          "physics": 2
+        },
+        "starting_equipment": [
+          "Deep space suit",
+          "Long-range scanner",
+          "Exotic matter detector"
+        ],
+        "tone_modifiers": {
+          "cynicism": 4,
+          "sophistication": 7,
+          "violence": 3,
+          "hope": 8
+        },
+        "context_tags": [
+          "Space",
+          "Exploration",
+          "Science",
+          "Discovery"
+        ]
+      },
+      "SPEC_EMOTION_DEALER": {
+        "title": "Торговец эмоциями",
+        "description": "Поставщик синтетических эмоций и переживаний",
+        "effects": {
+          "negotiation": 2,
+          "chemistry": 2,
+          "streetwise": 2
+        },
+        "starting_equipment": [
+          "Emotion synthesizer",
+          "Mood drugs",
+          "Neural interfaces"
+        ],
+        "tone_modifiers": {
+          "cynicism": 6,
+          "sophistication": 6,
+          "violence": 3,
+          "hope": 5
+        },
+        "context_tags": [
+          "Psychology",
+          "Drugs",
+          "Emotions",
+          "Trade"
+        ]
+      },
+      "SPEC_GRAVITY_DANCER": {
+        "title": "Танцор гравитации",
+        "description": "Артист, выступающий с гравитационными полями",
+        "effects": {
+          "physics": 1,
+          "performance": 3
+        },
+        "starting_equipment": [
+          "Gravity manipulator",
+          "Performance costume",
+          "Anti-grav boots"
+        ],
+        "tone_modifiers": {
+          "cynicism": 3,
+          "sophistication": 9,
+          "violence": 1,
+          "hope": 8
+        },
+        "context_tags": [
+          "Art",
+          "Performance",
+          "Gravity",
+          "Beauty"
+        ]
+      },
+      "SPEC_DREAM_ARCHITECT": {
+        "title": "Архитектор снов",
+        "description": "Дизайнер виртуальных реальностей и осознанных сновидений",
+        "effects": {
+          "technology": 3,
+          "art_design": 3,
+          "empathy_read": 2
+        },
+        "starting_equipment": [
+          "VR design suite",
+          "Neural headsets",
+          "Dream recorder"
+        ],
+        "tone_modifiers": {
+          "cynicism": 4,
+          "sophistication": 8,
+          "violence": 2,
+          "hope": 7
+        },
+        "context_tags": [
+          "Technology",
+          "Dreams",
+          "Virtual",
+          "Creativity"
+        ]
+      },
+      "SPEC_CORPORATE_SAMURAI": {
+        "title": "Корпоративный самурай",
+        "description": "Элитный телохранитель высшего руководства корпораций",
+        "effects": {
+          "combat": 4
+        },
+        "starting_equipment": [
+          "Ceremonial sword",
+          "Combat armor",
+          "Honor code"
+        ],
+        "tone_modifiers": {
+          "cynicism": 4,
+          "sophistication": 7,
+          "violence": 6,
+          "hope": 6,
+          "_loyalty_code": 3,
+          "_honor_code": 2
+        },
+        "context_tags": [
+          "Combat",
+          "Honor",
+          "Corporate",
+          "Elite"
+        ]
+      },
+      "SPEC_PSYCHIC_INVESTIGATOR": {
+        "title": "Экстрасенсорный детектив",
+        "description": "Следователь, использующий психические способности",
+        "effects": {
+          "tracking": 3,
+          "protomolecule_theory": 3,
+          "empathy_read": 2
+        },
+        "starting_equipment": [
+          "Psychic amplifier",
+          "Evidence scanner",
+          "Mental shields"
+        ],
+        "tone_modifiers": {
+          "cynicism": 7,
+          "sophistication": 6,
+          "violence": 4,
+          "hope": 5
+        },
+        "context_tags": [
+          "Investigation",
+          "Psychic",
+          "Mystery",
+          "Supernatural"
+        ]
+      },
+      "SPEC_NANO_SURGEON": {
+        "title": "Нанохирург",
+        "description": "Врач, использующий нанотехнологии для лечения",
+        "effects": {
+          "medicine": 4,
+          "technology": 3,
+          "first_aid_combat": 2
+        },
+        "starting_equipment": [
+          "Nano-medical kit",
+          "Microscopic robots",
+          "Surgical AI"
+        ],
+        "tone_modifiers": {
+          "cynicism": 3,
+          "sophistication": 9,
+          "violence": 2,
+          "hope": 8
+        },
+        "context_tags": [
+          "Medicine",
+          "Technology",
+          "Healing",
+          "Precision"
+        ]
+      },
+      "SPEC_REALITY_HACKER": {
+        "title": "Хакер реальности",
+        "description": "Манипулятор физических законов через квантовые поля",
+        "effects": {
+          "hacking": 3,
+          "pain_tolerance": 3
+        },
+        "starting_equipment": [
+          "Reality modifier",
+          "Quantum field generator",
+          "Physics scanner"
+        ],
+        "tone_modifiers": {
+          "cynicism": 5,
+          "sophistication": 9,
+          "violence": 4,
+          "hope": 6
+        },
+        "context_tags": [
+          "Physics",
+          "Reality",
+          "Quantum",
+          "Power"
+        ]
+      },
+      "SPEC_EMOTION_SCULPTOR": {
+        "title": "Скульптор эмоций",
+        "description": "Художник, создающий эмоциональные переживания",
+        "effects": {
+          "performance": 2,
+          "empathy_read": 3,
+          "deception": 3
+        },
+        "starting_equipment": [
+          "Emotion projector",
+          "Feeling synthesizer",
+          "Empathy amplifier"
+        ],
+        "tone_modifiers": {
+          "cynicism": 2,
+          "sophistication": 8,
+          "violence": 1,
+          "hope": 9
+        },
+        "context_tags": [
+          "Art",
+          "Emotions",
+          "Psychology",
+          "Beauty"
+        ]
+      },
+      "SPEC_VOID_MERCHANT": {
+        "title": "Торговец Пустоты",
+        "description": "Коммерсант, торгующий экзотическими товарами из глубокого космоса",
+        "effects": {
+          "negotiation": 3,
+          "piloting": 2,
+          "accounting_finance": 3
+        },
+        "starting_equipment": [
+          "Trading ship",
+          "Exotic goods",
+          "Market analyzer"
+        ],
+        "tone_modifiers": {
+          "cynicism": 5,
+          "sophistication": 7,
+          "violence": 3,
+          "hope": 6
+        },
+        "context_tags": [
+          "Trade",
+          "Space",
+          "Exotic",
+          "Adventure"
+        ]
+      },
+      "SPEC_DIGITAL_GHOST": {
+        "title": "Цифровой призрак",
+        "description": "Хакер, существующий только в цифровом пространстве",
+        "effects": {
+          "hacking": 4,
+          "stealth": 3,
+          "technology": 2
+        },
+        "starting_equipment": [
+          "Quantum computer",
+          "Digital hideout",
+          "Virtual identity"
+        ],
+        "tone_modifiers": {
+          "cynicism": 8,
+          "sophistication": 7,
+          "violence": 4,
+          "hope": 3
+        },
+        "context_tags": [
+          "Digital",
+          "Stealth",
+          "Technology",
+          "Invisible"
+        ]
+      },
+      "SPEC_GRAVITY_ENGINEER": {
+        "title": "Гравитационный инженер",
+        "description": "Специалист по созданию и управлению гравитационными полями",
+        "effects": {
+          "engineering": 4,
+          "physics": 3,
+          "pain_tolerance": 2
+        },
+        "starting_equipment": [
+          "Gravity generator",
+          "Field manipulator",
+          "Physics scanner"
+        ],
+        "tone_modifiers": {
+          "cynicism": 4,
+          "sophistication": 9,
+          "violence": 3,
+          "hope": 7
+        },
+        "context_tags": [
+          "Engineering",
+          "Gravity",
+          "Physics",
+          "Advanced"
+        ]
+      },
+      "SPEC_MIND_ARCHAEOLOGIST": {
+        "title": "Археолог сознания",
+        "description": "Исследователь древних воспоминаний и забытых знаний",
+        "effects": {
+          "tracking": 2,
+          "archaeology": 3,
+          "empathy_read": 3
+        },
+        "starting_equipment": [
+          "Memory scanner",
+          "Ancient data",
+          "Consciousness mapper"
+        ],
+        "tone_modifiers": {
+          "cynicism": 5,
+          "sophistication": 8,
+          "violence": 2,
+          "hope": 6
+        },
+        "context_tags": [
+          "Psychology",
+          "History",
+          "Memory",
+          "Discovery"
+        ]
+      },
+      "SPEC_QUANTUM_ASSASSIN": {
+        "title": "Квантовый убийца",
+        "description": "Киллер, использующий квантовые эффекты для невидимости",
+        "effects": {
+          "combat": 3,
+          "physics": 3,
+          "stealth": 3
+        },
+        "starting_equipment": [
+          "Quantum cloak",
+          "Phase weapon",
+          "Probability manipulator"
+        ],
+        "tone_modifiers": {
+          "cynicism": 9,
+          "sophistication": 8,
+          "violence": 9,
+          "hope": 1
+        },
+        "context_tags": [
+          "Combat",
+          "Quantum",
+          "Stealth",
+          "Deadly"
+        ]
+      },
+      "SPEC_CONSCIOUSNESS_TRADER": {
+        "title": "Торговец сознанием",
+        "description": "Коммерсант, покупающий и продающий человеческие сознания",
+        "effects": {
+          "negotiation": 3,
+          "technology": 2,
+          "streetwise": 3
+        },
+        "starting_equipment": [
+          "Consciousness extractor",
+          "Mind storage",
+          "Neural marketplace"
+        ],
+        "tone_modifiers": {
+          "cynicism": 9,
+          "sophistication": 6,
+          "violence": 5,
+          "hope": 2
+        },
+        "context_tags": [
+          "Trade",
+          "Consciousness",
+          "Dark",
+          "Controversial"
+        ]
+      },
+      "SPEC_TIME_DILATOR": {
+        "title": "Дилататор времени",
+        "description": "Специалист по манипуляциям временными потоками",
+        "effects": {
+          "physics": 4,
+          "technology": 3,
+          "sensor_operations": 2
+        },
+        "starting_equipment": [
+          "Time dilation field",
+          "Temporal scanner",
+          "Chronometer"
+        ],
+        "tone_modifiers": {
+          "cynicism": 6,
+          "sophistication": 9,
+          "violence": 3,
+          "hope": 5
+        },
+        "context_tags": [
+          "Time",
+          "Physics",
+          "Technology",
+          "Advanced"
+        ]
+      },
+      "SPEC_DIMENSIONAL_SCOUT": {
+        "title": "Разведчик измерений",
+        "description": "Исследователь параллельных реальностей и альтернативных измерений",
+        "effects": {
+          "survival": 3,
+          "physics": 3,
+          "pain_tolerance": 3
+        },
+        "starting_equipment": [
+          "Dimensional scanner",
+          "Reality anchor",
+          "Multiverse map"
+        ],
+        "tone_modifiers": {
+          "cynicism": 4,
+          "sophistication": 8,
+          "violence": 4,
+          "hope": 7
+        },
+        "context_tags": [
+          "Dimensions",
+          "Exploration",
+          "Physics",
+          "Discovery"
+        ]
+      },
+      "SPEC_DRONE_OPERATOR": {
+        "title": "Оператор дронов",
+        "description": "Управление роем боевых и грузовых дронов на расстоянии",
+        "effects": {
+          "drones": 3,
+          "combat": 2,
+          "sensor_operations": 1
+        },
+        "starting_equipment": [
+          "Пульт роя",
+          "Запасные батареи",
+          "Ремонтный набор"
+        ],
+        "tone_modifiers": {
+          "precision": 6,
+          "detachment": 5
+        },
+        "group": "Технические",
+        "_phase": "20c"
+      },
+      "SPEC_AI_WHISPERER": {
+        "title": "Шепчущий ИИ",
+        "description": "Договориться с ограниченным ИИ там, где люди бессильны",
+        "effects": {
+          "ai_interface": 3,
+          "hacking": 2,
+          "negotiation": 1
+        },
+        "starting_equipment": [
+          "Квантовый терминал",
+          "Нейроинтерфейс",
+          "Библиотека промптов"
+        ],
+        "tone_modifiers": {
+          "curiosity": 7,
+          "patience": 4
+        },
+        "group": "Технические",
+        "_phase": "20c"
+      },
+      "SPEC_FABRICATOR": {
+        "title": "Фабрикатор",
+        "description": "Печатает что угодно из чего угодно — почти",
+        "effects": {
+          "fabrication_3d": 3,
+          "weapon_smithing": 2,
+          "accounting_finance": 1
+        },
+        "starting_equipment": [
+          "Портативная фабрика",
+          "Каталог чертежей",
+          "Материалы"
+        ],
+        "tone_modifiers": {
+          "pragmatism": 6,
+          "ingenuity": 5
+        },
+        "group": "Технические",
+        "_phase": "20c"
+      },
+      "SPEC_SIGNAL_GHOST": {
+        "title": "Призрак эфира",
+        "description": "Перехватывает и глушит любую связь в радиусе",
+        "effects": {
+          "comms_jamming": 3,
+          "crypto_analysis": 2,
+          "stealth": 1
+        },
+        "starting_equipment": [
+          "Перехватчик",
+          "Антенна-зонт",
+          "Глушилка"
+        ],
+        "tone_modifiers": {
+          "secrecy": 7,
+          "focus": 4
+        },
+        "group": "Технические",
+        "_phase": "20c"
+      },
+      "SPEC_ROBOTICS_SURGEON": {
+        "title": "Хирург роботов",
+        "description": "Чинит то, что чинить нельзя — и улучшает",
+        "effects": {
+          "robotics": 3,
+          "electronics_repair": 2,
+          "implant_surgery_calibration": 1
+        },
+        "starting_equipment": [
+          "Микроманипуляторы",
+          "Диагностический модуль",
+          "Запчасти"
+        ],
+        "tone_modifiers": {
+          "meticulousness": 7,
+          "calm": 5
+        },
+        "group": "Технические",
+        "_phase": "20c"
+      },
+      "SPEC_SHIP_ENGINEER": {
+        "title": "Корабельный инженер",
+        "description": "Корабль — его тело: системы, пробеги, перегрузки",
+        "effects": {
+          "ship_systems": 3,
+          "vehicle_maintenance": 2,
+          "engineering": 1
+        },
+        "starting_equipment": [
+          "Инструментальный пояс",
+          "Схемы кораблей",
+          "Запас деталей"
+        ],
+        "tone_modifiers": {
+          "reliability": 6,
+          "stubbornness": 5
+        },
+        "group": "Технические",
+        "_phase": "20c"
+      },
+      "SPEC_TECH_ARCHAEOLOGIST": {
+        "title": "Техноархеолог",
+        "description": "Оживляет технологии мёртвых эпох",
+        "effects": {
+          "archaeology": 3,
+          "electronics_repair": 2,
+          "tailoring_gear": 1
+        },
+        "starting_equipment": [
+          "Копалка артефактов",
+          "Анализатор сплавов",
+          "Каталог эпох"
+        ],
+        "tone_modifiers": {
+          "wonder": 6,
+          "caution": 5
+        },
+        "group": "Технические",
+        "_phase": "20c"
+      },
+      "SPEC_SNIPER_SPECIALIST": {
+        "title": "Снайпер-специалист",
+        "description": "Один выстрел — один контракт. Дистанция решает",
+        "effects": {
+          "sniping": 3,
+          "sensor_operations": 2,
+          "evasion": 1
+        },
+        "starting_equipment": [
+          "Снайперская винтовка",
+          "Дальномер",
+          "Маскировочная сеть"
+        ],
+        "tone_modifiers": {
+          "patience": 8,
+          "cold_blood": 6
+        },
+        "group": "Боевые",
+        "_phase": "20c"
+      },
+      "SPEC_CQB_MASTER": {
+        "title": "Мастер CQB",
+        "description": "Коридоры, шлюзы, теснота — его территория",
+        "effects": {
+          "close_quarters": 3,
+          "boarding_tactics": 2,
+          "first_aid_combat": 1
+        },
+        "starting_equipment": [
+          "Дробовик",
+          "Тактическая броня",
+          "Стробоскопы"
+        ],
+        "tone_modifiers": {
+          "aggression": 6,
+          "speed": 5
+        },
+        "group": "Боевые",
+        "_phase": "20c"
+      },
+      "SPEC_HEAVY_ORDNANCE": {
+        "title": "Специалист тяжёлых систем",
+        "description": "Тяжёлая броня, турели, ракеты — медленно и необратимо",
+        "effects": {
+          "heavy_weapons": 3,
+          "armor_operation": 2,
+          "turret_gunnery": 1
+        },
+        "starting_equipment": [
+          "Экзоскелет",
+          "Пусковая установка",
+          "Реактивная броня"
+        ],
+        "tone_modifiers": {
+          "immovability": 7,
+          "menace": 5
+        },
+        "group": "Боевые",
+        "_phase": "20c"
+      },
+      "SPEC_VOID_MARINE": {
+        "title": "Пустотный морпех",
+        "description": "Бой в вакууме и нуль-G без права на ошибку",
+        "effects": {
+          "zero_g_combat": 3,
+          "vacuum_ops": 2,
+          "heavy_weapons": 1
+        },
+        "starting_equipment": [
+          "Вакуумная броня",
+          "Магнитные ботинки",
+          "Импульсная винтовка"
+        ],
+        "tone_modifiers": {
+          "discipline": 7,
+          "endurance_mind": 5
+        },
+        "group": "Боевые",
+        "_phase": "20c"
+      },
+      "SPEC_FIELD_MEDIC_COMBAT": {
+        "title": "Боевой медик",
+        "description": "Держит пульс отряда буквально",
+        "effects": {
+          "first_aid_combat": 3,
+          "medicine": 2,
+          "evasion": 1
+        },
+        "starting_equipment": [
+          "Полевая аптечка",
+          "Гемостатик",
+          "Медсканер"
+        ],
+        "tone_modifiers": {
+          "loyalty": 7,
+          "stress_resist": 5
+        },
+        "group": "Боевые",
+        "_phase": "20c"
+      },
+      "SPEC_DEMO_EXPERT": {
+        "title": "Подрывник",
+        "description": "Знает, где тонко — разорвёт точно",
+        "effects": {
+          "demolition": 2,
+          "close_quarters": 1
+        },
+        "starting_equipment": [
+          "Детонаторы",
+          "Пластид",
+          "Дальнобойный пульт"
+        ],
+        "tone_modifiers": {
+          "math_mind": 6,
+          "nerves": 5
+        },
+        "group": "Боевые",
+        "_phase": "20c"
+      },
+      "SPEC_CON_ARTIST": {
+        "title": "Мошенник высшей лиги",
+        "description": "Продаёт мечты тем, кто не покупает дешёво",
+        "effects": {
+          "deception": 3,
+          "streetwise": 2,
+          "empathy_read": 1
+        },
+        "starting_equipment": [
+          "Набор личностей",
+          "Фальшивые креденциалы",
+          "Компакт-зеркало"
+        ],
+        "tone_modifiers": {
+          "charm": 7,
+          "cynicism": 6
+        },
+        "group": "Социальные",
+        "_phase": "20c"
+      },
+      "SPEC_BROADCASTER": {
+        "title": "Медийное лицо",
+        "description": "Его голос слушается чаще, чем законы",
+        "effects": {
+          "public_speaking": 3,
+          "writing_journalism": 2,
+          "rumor_network": 1
+        },
+        "starting_equipment": [
+          "Портативная студия",
+          "Подписной контур",
+          "Архив сюжетов"
+        ],
+        "tone_modifiers": {
+          "fame_hunger": 6,
+          "eloquence": 6
+        },
+        "group": "Социальные",
+        "_phase": "20c"
+      },
+      "SPEC_LABYRINTH_FIXER": {
+        "title": "Фиксер лабиринтов",
+        "description": "Знает, кто кому должен и кто кого боится",
+        "effects": {
+          "rumor_network": 3,
+          "streetwise": 2,
+          "law": 1
+        },
+        "starting_equipment": [
+          "Контактная книга",
+          "Шифрованный коммуникатор",
+          "Досье"
+        ],
+        "tone_modifiers": {
+          "networking": 7,
+          "opportunism": 5
+        },
+        "group": "Социальные",
+        "_phase": "20c"
+      },
+      "SPEC_INTERROGATOR_SOCIAL": {
+        "title": "Дипломат-дознаватель",
+        "description": "Вытягивает правду за бокалом вина",
+        "effects": {
+          "interrogation": 3,
+          "empathy_read": 2,
+          "etiquette": 1
+        },
+        "starting_equipment": [
+          "Дипломат-кейс",
+          "Регистратор микроэмоций",
+          "Хороший вкус"
+        ],
+        "tone_modifiers": {
+          "insight": 7,
+          "control": 5
+        },
+        "group": "Социальные",
+        "_phase": "20c"
+      },
+      "SPEC_STAGE_LEGEND": {
+        "title": "Легенда сцены",
+        "description": "Выступления как прикрытие операций",
+        "effects": {
+          "performance": 3,
+          "music_instrument": 2,
+          "art_design": 1
+        },
+        "starting_equipment": [
+          "Сценический грим",
+          "Инструмент",
+          "Фан-клуб"
+        ],
+        "tone_modifiers": {
+          "expressiveness": 7,
+          "vanity": 5
+        },
+        "group": "Социальные",
+        "_phase": "20c"
+      },
+      "SPEC_LEADER_COMMAND": {
+        "title": "Прирождённый командир",
+        "description": "Люди идут за ним даже в Пояс",
+        "effects": {
+          "leadership": 3,
+          "instruction": 2,
+          "logistics_planning": 1
+        },
+        "starting_equipment": [
+          "Командный интерфейс",
+          "Знаки различия",
+          "Устав в голове"
+        ],
+        "tone_modifiers": {
+          "authority": 7,
+          "responsibility": 6
+        },
+        "group": "Социальные",
+        "_phase": "20c"
+      },
+      "SPEC_ATMO_RACER": {
+        "title": "Гоночник атмосферы",
+        "description": "Штурмовики и гоночные корпуса — стихия",
+        "effects": {
+          "piloting_atmospheric": 3,
+          "piloting": 2,
+          "evasion": 1
+        },
+        "starting_equipment": [
+          "Гоночный шлем",
+          "Форсаж-модуль",
+          "Трофейный борт"
+        ],
+        "tone_modifiers": {
+          "adrenaline": 7,
+          "reflex_pride": 5
+        },
+        "group": "Пилоты",
+        "_phase": "20c"
+      },
+      "SPEC_ASTRO_NAVIGATOR": {
+        "title": "Астронавигатор",
+        "description": "Проложит маршрут через мусорную бурю",
+        "effects": {
+          "navigation_astrogation": 3,
+          "sensor_operations": 1,
+          "survival": 2
+        },
+        "starting_equipment": [
+          "Навигационный комплекс",
+          "Звёздные карты",
+          "Расчётный блок"
+        ],
+        "tone_modifiers": {
+          "spatial_thinking": 7,
+          "perfectionism": 4
+        },
+        "group": "Пилоты",
+        "_phase": "20c"
+      },
+      "SPEC_SMUGGLING_ACE": {
+        "title": "Ас контрабандных рейсов",
+        "description": "Тайники внутри тайников, маршруты вне карт",
+        "effects": {
+          "criminal": 3,
+          "navigation_astrogation": 2,
+          "evasion": 1
+        },
+        "starting_equipment": [
+          "Двойное дно",
+          "Сканер патрулей",
+          "Кодовые маячки"
+        ],
+        "tone_modifiers": {
+          "cool_head": 7,
+          "greed": 4
+        },
+        "group": "Пилоты",
+        "_phase": "20c"
+      },
+      "SPEC_RESCUE_PILOT": {
+        "title": "Спасательный пилот",
+        "description": "Летит туда, откуда все улетают",
+        "effects": {
+          "piloting": 3,
+          "vacuum_ops": 2,
+          "first_aid_combat": 1
+        },
+        "starting_equipment": [
+          "Спасательный борт",
+          "Медкапсула",
+          "Тросовая система"
+        ],
+        "tone_modifiers": {
+          "altruism": 7,
+          "fearlessness": 5
+        },
+        "group": "Пилоты",
+        "_phase": "20c"
+      },
+      "SPEC_CARAVAN_CAPTAIN": {
+        "title": "Капитан каравана",
+        "description": "Ведёт колонны через мёртвые зоны",
+        "effects": {
+          "logistics_planning": 3,
+          "navigation_astrogation": 2,
+          "leadership": 1
+        },
+        "starting_equipment": [
+          "Флагманский модуль",
+          "Караванные протоколы",
+          "Охранное крыло"
+        ],
+        "tone_modifiers": {
+          "command": 6,
+          "persistence": 5
+        },
+        "group": "Пилоты",
+        "_phase": "20c"
+      },
+      "SPEC_PHARMA_BROKER": {
+        "title": "Фармаброкер",
+        "description": "Достанет препарат, которого «не существует»",
+        "effects": {
+          "pharmacology": 3,
+          "negotiation": 2,
+          "bureaucracy": 1
+        },
+        "starting_equipment": [
+          "Каталог веществ",
+          "Связи в логистике",
+          "Скрытый склад"
+        ],
+        "tone_modifiers": {
+          "profit_sense": 6,
+          "ethics_flex": 5
+        },
+        "group": "Медицинские",
+        "_phase": "20c"
+      },
+      "SPEC_XENO_VET": {
+        "title": "Ксенобиолог-практик",
+        "description": "Лечит то, что не описано в учебниках",
+        "effects": {
+          "xenobiology": 3,
+          "medicine": 1,
+          "streetwise": 2
+        },
+        "starting_equipment": [
+          "Полевой ксенолаб",
+          "Седатики широкого спектра",
+          "Образцы"
+        ],
+        "tone_modifiers": {
+          "openness": 6,
+          "bravery": 5
+        },
+        "group": "Медицинские",
+        "_phase": "20c"
+      },
+      "SPEC_GENETIC_TAILOR": {
+        "title": "Генетический портной",
+        "description": "Подгоняет геном под заказ клиента",
+        "effects": {
+          "genetics": 3,
+          "pharmacology": 2,
+          "deception": 1
+        },
+        "starting_equipment": [
+          "Геном-редактор",
+          "Банк образцов",
+          "Этический обход"
+        ],
+        "tone_modifiers": {
+          "ambition": 6,
+          "taboo_comfort": 5
+        },
+        "group": "Медицинские",
+        "_phase": "20c"
+      },
+      "SPEC_TRAUMA_SURGEON_FIELD": {
+        "title": "Хирург полевых госпиталей",
+        "description": "Оперирует при свете аварийных ламп",
+        "effects": {
+          "medicine": 3,
+          "first_aid_combat": 2,
+          "pain_tolerance": 1
+        },
+        "starting_equipment": [
+          "Полевой оперблок",
+          "Плазма-заменитель",
+          "Стальные нервы"
+        ],
+        "tone_modifiers": {
+          "steadiness": 7,
+          "compassion": 4
+        },
+        "group": "Медицинские",
+        "_phase": "20c"
+      },
+      "SPEC_CRYPTO_HUNTER": {
+        "title": "Охотник за шифрами",
+        "description": "Взламывает не системы — смыслы",
+        "effects": {
+          "crypto_analysis": 3,
+          "comms_jamming": 2,
+          "hacking": 1
+        },
+        "starting_equipment": [
+          "Криптоблок",
+          "Перехваченные архивы",
+          "Терпение"
+        ],
+        "tone_modifiers": {
+          "pattern_eye": 7,
+          "obsession": 5
+        },
+        "group": "Разведка",
+        "_phase": "20c"
+      },
+      "SPEC_TRACKER_BELT": {
+        "title": "Следопыт Пояса",
+        "description": "Читает обломки как газету",
+        "effects": {
+          "tracking": 3,
+          "salvage_ops": 2,
+          "climbing": 1
+        },
+        "starting_equipment": [
+          "Спектральный сканер",
+          "Гарпун-коуш",
+          "Журнал находок"
+        ],
+        "tone_modifiers": {
+          "tenacity": 6,
+          "intuition": 5
+        },
+        "group": "Разведка",
+        "_phase": "20c"
+      },
+      "SPEC_DEEP_INTERROGATOR": {
+        "title": "Глубокий дознаватель",
+        "description": "Сломает легенду любого агента",
+        "effects": {
+          "interrogation": 3,
+          "empathy_read": 2,
+          "law": 1
+        },
+        "starting_equipment": [
+          "Протоколы давления",
+          "Юридические дыры",
+          "Тихая камера"
+        ],
+        "tone_modifiers": {
+          "ruthlessness": 6,
+          "method": 5
+        },
+        "group": "Разведка",
+        "_phase": "20c"
+      },
+      "SPEC_SURVEILLANCE_NET": {
+        "title": "Оператор сетей наблюдения",
+        "description": "Город смотрит его глазами",
+        "effects": {
+          "sensor_operations": 3,
+          "drones": 2,
+          "comms_jamming": 1
+        },
+        "starting_equipment": [
+          "Сеть камер",
+          "Аналитический ИИ",
+          "Список слепых зон"
+        ],
+        "tone_modifiers": {
+          "omniscience_craving": 6,
+          "paranoia": 5
+        },
+        "group": "Разведка",
+        "_phase": "20c"
+      },
+      "SPEC_INFILTRATION_SCOUT": {
+        "title": "Скаут-инфильтратор",
+        "description": "Первый входит, последний выходит, никто не видел",
+        "effects": {
+          "stealth": 3,
+          "evasion": 2,
+          "tracking": 1
+        },
+        "starting_equipment": [
+          "Хамелеон-костюм",
+          "Граффити-метки",
+          "Тихий шаг"
+        ],
+        "tone_modifiers": {
+          "ghost_nature": 7,
+          "discipline": 4
+        },
+        "group": "Разведка",
+        "_phase": "20c"
+      },
+      "SPEC_EVA_SPECIALIST": {
+        "title": "Специалист EVA",
+        "description": "Вакуум — дом, трос — umbilical",
+        "effects": {
+          "vacuum_ops": 3,
+          "zero_g_combat": 2,
+          "radiation_handling": 1
+        },
+        "starting_equipment": [
+          "Скафандр повышенной автономии",
+          "Йо-йо трос",
+          "Дозиметр"
+        ],
+        "tone_modifiers": {
+          "void_calm": 7,
+          "self_reliance": 5
+        },
+        "group": "Выживание",
+        "_phase": "20c"
+      },
+      "SPEC_RAD_SURVIVOR": {
+        "title": "Радиационный сталкер",
+        "description": "Ходит там, где счетчик орёт хором",
+        "effects": {
+          "radiation_handling": 3,
+          "medicine": 2,
+          "survival": 1
+        },
+        "starting_equipment": [
+          "Свинцовый плащ",
+          "Стабилизаторы",
+          "Карта горячих точек"
+        ],
+        "tone_modifiers": {
+          "fatalism": 6,
+          "calculation": 5
+        },
+        "group": "Выживание",
+        "_phase": "20c"
+      },
+      "SPEC_ICE_WANDERER": {
+        "title": "Скиталец льдов",
+        "description": "Европа/Энцелад: холод — просто погода",
+        "effects": {
+          "cold_survival": 3,
+          "survival": 2,
+          "climbing": 1
+        },
+        "starting_equipment": [
+          "Термокостюм",
+          "Ледовые якоря",
+          "Метановая горелка"
+        ],
+        "tone_modifiers": {
+          "stoicism": 6,
+          "wanderlust": 5
+        },
+        "group": "Выживание",
+        "_phase": "20c"
+      },
+      "SPEC_DUST_RUNNER": {
+        "title": "Бегущий по пыли",
+        "description": "Марсианские бури — расписание, не катастрофа",
+        "effects": {
+          "heat_survival": 3,
+          "survival": 2,
+          "navigation_astrogation": 1
+        },
+        "starting_equipment": [
+          "Пыленепробиваемый плащ",
+          "Резерв воды",
+          "Компас бури"
+        ],
+        "tone_modifiers": {
+          "hardened": 6,
+          "route_memory": 5
+        },
+        "group": "Выживание",
+        "_phase": "20c"
+      },
+      "SPEC_FORAGE_MASTER": {
+        "title": "Мастер подножного корма",
+        "description": "Накормит отряд на мёртвой планете",
+        "effects": {
+          "foraging": 3,
+          "chemistry": 2,
+          "biology": 1
+        },
+        "starting_equipment": [
+          "Анализатор биомассы",
+          "Семенной банк",
+          "Рецепты выживания"
+        ],
+        "tone_modifiers": {
+          "resourcefulness": 6,
+          "gastronomy_love": 4
+        },
+        "group": "Выживание",
+        "_phase": "20c"
+      },
+      "SPEC_PRESSURE_DIVER": {
+        "title": "Дайвер глубоких давлений",
+        "description": "Европейский океан подо льдом — его офис",
+        "effects": {
+          "swimming_diving": 3,
+          "cold_survival": 2,
+          "vacuum_ops": 1
+        },
+        "starting_equipment": [
+          "Глубоководный костюм",
+          "Сонарь",
+          "Аварийный пузырь"
+        ],
+        "tone_modifiers": {
+          "depth_calm": 6,
+          "pressure_love": 4
+        },
+        "group": "Выживание",
+        "_phase": "20c"
+      },
+      "SPEC_PROTO_THEORIST": {
+        "title": "Теоретик Протомолекулы",
+        "description": "Понимает её лучше, чем она понимает нас",
+        "effects": {
+          "protomolecule_theory": 3,
+          "pain_tolerance": 2,
+          "research_method": 1
+        },
+        "starting_equipment": [
+          "Закрытые архивы",
+          "Изолиния-лаб",
+          "Красная папка"
+        ],
+        "tone_modifiers": {
+          "obsession_depth": 8,
+          "isolation": 5
+        },
+        "group": "Уникальные",
+        "_phase": "20c"
+      },
+      "SPEC_QUANTUM_RITUALIST": {
+        "title": "Квантовый ритуалист",
+        "description": "Наука на грани мистики — или наоборот",
+        "effects": {
+          "quantum_theory": 3,
+          "technology": 2,
+          "performance": 1
+        },
+        "starting_equipment": [
+          "Когерентный коллайдер",
+          "Ритуальные схемы",
+          "Успокоительное"
+        ],
+        "tone_modifiers": {
+          "mystic_mind": 7,
+          "rigor": 4
+        },
+        "group": "Уникальные",
+        "_phase": "20c"
+      },
+      "SPEC_CULT_STRATEGIST": {
+        "title": "Стратег культов",
+        "description": "Вера как инструмент, паства как сеть",
+        "effects": {
+          "public_speaking": 3,
+          "rumor_network": 2,
+          "etiquette": 1
+        },
+        "starting_equipment": [
+          "Священные тексты",
+          "Сеть проповедников",
+          "Казна культа"
+        ],
+        "tone_modifiers": {
+          "charismatic_dark": 8,
+          "manipulation": 6
+        },
+        "group": "Уникальные",
+        "_phase": "20c"
+      },
+      "SPEC_ANOMALY_HUNTER": {
+        "title": "Охотник за аномалиями",
+        "description": "Ищет то, что меняет физику вокруг себя",
+        "effects": {
+          "sensor_operations": 3,
+          "quantum_theory": 2,
+          "piloting_atmospheric": 1
+        },
+        "starting_equipment": [
+          "Аномалия-детектор",
+          "Изоляционные контейнеры",
+          "Журнал совпадений"
+        ],
+        "tone_modifiers": {
+          "curiosity_fatal": 7,
+          "luck": 5
+        },
+        "group": "Уникальные",
+        "_phase": "20c"
+      },
+      "SPEC_MEMORY_LIBRARIAN": {
+        "title": "Библиотекарь памяти",
+        "description": "Хранит чужие воспоминания как книги",
+        "effects": {
+          "ai_interface": 3,
+          "empathy_read": 2,
+          "music_instrument": 1
+        },
+        "starting_equipment": [
+          "Мнемо-архив",
+          "Кристаллы записи",
+          "Каталог личностей"
+        ],
+        "tone_modifiers": {
+          "archival_mind": 7,
+          "burden": 5
+        },
+        "group": "Уникальные",
+        "_phase": "20c"
+      },
+      "SPEC_SOLAR_PROPHET": {
+        "title": "Солнечный пророк",
+        "description": "Предсказывает вспышки — и политические бури",
+        "effects": {
+          "astrophysics": 3,
+          "public_speaking": 2,
+          "instruction": 1
+        },
+        "starting_equipment": [
+          "Обсерватория-маячок",
+          "Гелиосейсмограф",
+          "Паства"
+        ],
+        "tone_modifiers": {
+          "vision": 7,
+          "showmanship": 5
+        },
+        "group": "Уникальные",
+        "_phase": "20c"
+      },
+      "SPEC_GATE_SCOUT": {
+        "title": "Скаут врат",
+        "description": "Видит двери там, где другие видят стену",
+        "effects": {
+          "navigation_astrogation": 3,
+          "quantum_theory": 2,
+          "evasion": 1
+        },
+        "starting_equipment": [
+          "Фазовый компас",
+          "Маркерные буи",
+          "Легенда о возвращении"
+        ],
+        "tone_modifiers": {
+          "frontier_spirit": 7,
+          "restlessness": 5
+        },
+        "group": "Уникальные",
+        "_phase": "20c"
+      },
+      "SPEC_SYMBIONT_ENGINEER": {
+        "title": "Инженер симбионтов",
+        "description": "Строит машины, которые хотят жить",
+        "effects": {
+          "robotics": 3,
+          "genetics": 2,
+          "ai_interface": 1
+        },
+        "starting_equipment": [
+          "Био-силиконовый каркас",
+          "Нейро-скелет",
+          "Контракт symbiosis"
+        ],
+        "tone_modifiers": {
+          "bio_dream": 7,
+          "ethics_gray": 5
+        },
+        "group": "Уникальные",
+        "_phase": "20c"
+      },
+      "SPEC_FORGERY_MASTER": {
+        "title": "Мастер подделок",
+        "description": "Документы, подписи, происхождения — всё нарисует",
+        "effects": {
+          "forgery_docs": 3,
+          "bureaucracy": 2,
+          "deception": 1
+        },
+        "starting_equipment": [
+          "Набор фальсификатора",
+          "Бланки всех миров",
+          "Печати"
+        ],
+        "tone_modifiers": {
+          "artisan_crime": 7,
+          "detail_obsession": 5
+        },
+        "group": "Криминал",
+        "_phase": "20c"
+      },
+      "SPEC_BLACK_MARKET_BARON": {
+        "title": "Барон чёрного рынка",
+        "description": "Если это запрещено — он это продаёт",
+        "effects": {
+          "streetwise": 3,
+          "negotiation": 2,
+          "logistics_planning": 1
+        },
+        "starting_equipment": [
+          "Склад-призрак",
+          "Сеть наводчиков",
+          "Взяточный фонд"
+        ],
+        "tone_modifiers": {
+          "empire_vision": 7,
+          "merciless": 5
+        },
+        "group": "Криминал",
+        "_phase": "20c"
+      },
+      "SPEC_SALVAGE_PIRATE": {
+        "title": "Салваж-пират",
+        "description": "Чужие крушения — его доходная статья",
+        "effects": {
+          "salvage_ops": 3,
+          "mining": 2,
+          "criminal": 1
+        },
+        "starting_equipment": [
+          "Резак корпусов",
+          "Тральщик",
+          "Фальшивый SOS"
+        ],
+        "tone_modifiers": {
+          "scavenger_code": 6,
+          "boldness": 5
+        },
+        "group": "Криминал",
+        "_phase": "20c"
+      },
+      "SPEC_DATA_FENCER": {
+        "title": "Скупщик данных",
+        "description": "Купит компромат, продаст дважды",
+        "effects": {
+          "crypto_analysis": 3,
+          "rumor_network": 2,
+          "accounting_finance": 1
+        },
+        "starting_equipment": [
+          "Холодный кошелёк",
+          "Аукционный лист",
+          "Проверка подлинности"
+        ],
+        "tone_modifiers": {
+          "valuation_eye": 7,
+          "trust_none": 6
+        },
+        "group": "Криминал",
+        "_phase": "20c"
+      },
+      "SPEC_SMUGGLER_ROUTE_SMITH": {
+        "title": "Кузнец контрабандных путей",
+        "description": "Проектирует маршруты, которых нет на картах",
+        "effects": {
+          "navigation_astrogation": 3,
+          "comms_jamming": 2,
+          "bureaucracy": 1
+        },
+        "starting_equipment": [
+          "Тайниковый чертёж",
+          "Взятые патрули",
+          "Тихий транспондер"
+        ],
+        "tone_modifiers": {
+          "route_genius": 7,
+          "quiet_greed": 5
+        },
+        "group": "Криминал",
+        "_phase": "20c"
+      },
+      "SPEC_ENFORGER_CONTRACT": {
+        "title": "Исполнитель контрактов",
+        "description": "Долг вернётся. С процентами. Он вернёт.",
+        "effects": {
+          "intimidation": 3,
+          "close_quarters": 2,
+          "law": 1
+        },
+        "starting_equipment": [
+          "Контрактный планшет",
+          "Внушительный калибр",
+          "Список должников"
+        ],
+        "tone_modifiers": {
+          "fear_brand": 7,
+          "code_honor": 4
+        },
+        "group": "Криминал",
+        "_phase": "20c"
+      }
+    }
+  },
+  "priority": 15
+}

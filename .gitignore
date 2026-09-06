@@ -1,0 +1,67 @@
+_internal/
+# Test and coverage reports
+.coverage
+htmlcov/
+.coverage.*
+.pytest_cache/
+.cache/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Logs
+*.log
+server_errors.log
+
+# Coverage
+coverage/
+
+# Audit scratch (scripts, not game data)
+_audit/
+
+# Local runtime artifacts
+database/
+
+# Virtual environments
+venv/
+.venv/
+
+# Player saves (personal test data, not fixtures — tests create/delete their own)
+saves/
+
+# OS artifacts
+Thumbs.db
+Desktop.ini
+
+# Hermes agent local profile (environment, skills)
+.hermes/

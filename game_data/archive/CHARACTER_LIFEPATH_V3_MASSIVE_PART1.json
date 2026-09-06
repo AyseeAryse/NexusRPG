@@ -1,0 +1,1312 @@
+{
+  "module_name": "CHARACTER_LIFEPATH_V3_MASSIVE",
+  "version": "3.0_MASSIVE_EXPANSION",
+  "description": "Массивное расширение системы создания персонажа с динамическим THEME_TONE",
+  "extends": "CHARACTER_LIFEPATH.json (сохраняется как база)",
+  "integration": "THEME_TONE.json для динамического изменения тона",
+  "theme_tone_integration": {
+    "description": "Динамическое изменение тона и режима от выбора персонажа",
+    "mechanics": {
+      "character_creation_influence": "Каждый выбор влияет на cynicism, sophistication, violence, hope",
+      "dynamic_evolution": "Тон меняется в процессе игры от действий персонажа",
+      "genre_adaptation": "Жанр автоматически адаптируется под развитие персонажа"
+    },
+    "tone_modifiers": {
+      "cynicism": {
+        "range": [
+          1,
+          10
+        ],
+        "description": "Циничность и недоверие к миру"
+      },
+      "sophistication": {
+        "range": [
+          1,
+          10
+        ],
+        "description": "Культурность и образованность"
+      },
+      "violence": {
+        "range": [
+          1,
+          10
+        ],
+        "description": "Склонность к силовым решениям"
+      },
+      "hope": {
+        "range": [
+          1,
+          10
+        ],
+        "description": "Оптимизм и вера в будущее"
+      }
+    }
+  },
+  "origins_massive_expansion": {
+    "total_count": 50,
+    "existing_count": 21,
+    "new_count": 29,
+    "new_origins": {
+      "ORIGIN_EARTH_DIPLOMAT": {
+        "title": "Дипломат Земли",
+        "description": "Представитель Объединенного Правительства Земли в межпланетных отношениях",
+        "rarity": "uncommon",
+        "attributes": {
+          "charisma": 3,
+          "intelligence": 2,
+          "willpower": 1
+        },
+        "skills": {
+          "negotiation": 3,
+          "law": 2,
+          "protocol": 2
+        },
+        "starting_values": {
+          "credits": 80000,
+          "influence": 15
+        },
+        "tone_modifiers": {
+          "cynicism": 5,
+          "sophistication": 9,
+          "violence": 2,
+          "hope": 6
+        },
+        "context_tags": [
+          "Earth",
+          "Government",
+          "Diplomacy",
+          "Peace"
+        ]
+      },
+      "ORIGIN_EARTH_HACKER_COLLECTIVE": {
+        "title": "Хакер-коллективист Земли",
+        "description": "Член подпольной группы кибер-активистов, борющихся с корпоративным контролем",
+        "rarity": "rare",
+        "attributes": {
+          "intelligence": 3,
+          "tech_empathy": 2,
+          "endurance": -1
+        },
+        "skills": {
+          "hacking": 3,
+          "technology": 2,
+          "criminal": 1
+        },
+        "starting_values": {
+          "credits": 5000,
+          "heat": 3
+        },
+        "tone_modifiers": {
+          "cynicism": 8,
+          "sophistication": 6,
+          "violence": 4,
+          "hope": 7
+        },
+        "context_tags": [
+          "Earth",
+          "Hacking",
+          "Rebellion",
+          "Digital"
+        ]
+      },
+      "ORIGIN_EARTH_REFUGEE_CAMP": {
+        "title": "Беженец из лагеря",
+        "description": "Выросли в лагере для климатических беженцев после экологической катастрофы",
+        "rarity": "common",
+        "attributes": {
+          "endurance": 3,
+          "willpower": 2,
+          "charisma": -1
+        },
+        "skills": {
+          "survival": 3,
+          "medicine": 1,
+          "stealth": 1
+        },
+        "starting_values": {
+          "credits": 500,
+          "heat": 0
+        },
+        "tone_modifiers": {
+          "cynicism": 7,
+          "sophistication": 2,
+          "violence": 5,
+          "hope": 3
+        },
+        "context_tags": [
+          "Earth",
+          "Refugee",
+          "Survival",
+          "Hardship"
+        ]
+      },
+      "ORIGIN_EARTH_CELEBRITY": {
+        "title": "Знаменитость Земли",
+        "description": "Известная медиа-личность с миллионами подписчиков",
+        "rarity": "rare",
+        "attributes": {
+          "charisma": 3,
+          "intelligence": 1,
+          "tech_empathy": 1
+        },
+        "skills": {
+          "entertainment": 3,
+          "negotiation": 2,
+          "media": 2
+        },
+        "starting_values": {
+          "credits": 200000,
+          "influence": 25
+        },
+        "tone_modifiers": {
+          "cynicism": 4,
+          "sophistication": 7,
+          "violence": 2,
+          "hope": 8
+        },
+        "context_tags": [
+          "Earth",
+          "Fame",
+          "Media",
+          "Influence"
+        ]
+      },
+      "ORIGIN_EARTH_UNDERGROUND_FIGHTER": {
+        "title": "Подпольный боец",
+        "description": "Участник нелегальных боев без правил в трущобах мегаполисов",
+        "rarity": "uncommon",
+        "attributes": {
+          "strength": 3,
+          "endurance": 2,
+          "intelligence": -1
+        },
+        "skills": {
+          "combat": 3,
+          "stealth": 1,
+          "criminal": 2
+        },
+        "starting_values": {
+          "credits": 8000,
+          "heat": 2
+        },
+        "tone_modifiers": {
+          "cynicism": 8,
+          "sophistication": 3,
+          "violence": 9,
+          "hope": 4
+        },
+        "context_tags": [
+          "Earth",
+          "Combat",
+          "Underground",
+          "Crime"
+        ]
+      },
+      "ORIGIN_EARTH_TECH_MOGUL": {
+        "title": "Технологический магнат",
+        "description": "Молодой миллиардер, создавший революционную технологию",
+        "rarity": "legendary",
+        "attributes": {
+          "intelligence": 3,
+          "charisma": 2,
+          "tech_empathy": 3
+        },
+        "skills": {
+          "technology": 3,
+          "negotiation": 2,
+          "entrepreneurship": 3
+        },
+        "starting_values": {
+          "credits": 500000,
+          "influence": 30
+        },
+        "tone_modifiers": {
+          "cynicism": 3,
+          "sophistication": 8,
+          "violence": 2,
+          "hope": 9
+        },
+        "context_tags": [
+          "Earth",
+          "Technology",
+          "Wealth",
+          "Innovation"
+        ]
+      },
+      "ORIGIN_EARTH_CULT_SURVIVOR": {
+        "title": "Выживший из секты",
+        "description": "Бежали из религиозного культа, контролировавшего вашу жизнь",
+        "rarity": "uncommon",
+        "attributes": {
+          "willpower": 3,
+          "intelligence": 1,
+          "charisma": -1
+        },
+        "skills": {
+          "psychology": 2,
+          "survival": 2,
+          "stealth": 1
+        },
+        "starting_values": {
+          "credits": 2000,
+          "heat": 1
+        },
+        "tone_modifiers": {
+          "cynicism": 9,
+          "sophistication": 4,
+          "violence": 3,
+          "hope": 2
+        },
+        "context_tags": [
+          "Earth",
+          "Cult",
+          "Survivor",
+          "Trauma"
+        ]
+      },
+      "ORIGIN_EARTH_SPACE_ELEVATOR_WORKER": {
+        "title": "Рабочий космического лифта",
+        "description": "Техник космического лифта, обслуживающий связь Земли с орбитой",
+        "rarity": "common",
+        "attributes": {
+          "endurance": 2,
+          "tech_empathy": 2,
+          "strength": 1
+        },
+        "skills": {
+          "engineering": 2,
+          "technology": 2,
+          "survival": 1
+        },
+        "starting_values": {
+          "credits": 45000,
+          "influence": 5
+        },
+        "tone_modifiers": {
+          "cynicism": 6,
+          "sophistication": 5,
+          "violence": 4,
+          "hope": 6
+        },
+        "context_tags": [
+          "Earth",
+          "Space",
+          "Technology",
+          "Infrastructure"
+        ]
+      },
+      "ORIGIN_MARS_DOME_ARCHITECT": {
+        "title": "Архитектор куполов Марса",
+        "description": "Проектировщик жилых куполов и атмосферных систем",
+        "rarity": "rare",
+        "attributes": {
+          "intelligence": 3,
+          "tech_empathy": 2,
+          "charisma": 1
+        },
+        "skills": {
+          "engineering": 3,
+          "technology": 2,
+          "negotiation": 1
+        },
+        "starting_values": {
+          "credits": 120000,
+          "influence": 10
+        },
+        "tone_modifiers": {
+          "cynicism": 4,
+          "sophistication": 8,
+          "violence": 2,
+          "hope": 7
+        },
+        "context_tags": [
+          "Mars",
+          "Architecture",
+          "Engineering",
+          "Future"
+        ]
+      },
+      "ORIGIN_MARS_DUST_STORM_SURVIVOR": {
+        "title": "Выживший в пыльной буре",
+        "description": "Провели месяцы в изоляции во время великой пыльной бури 2274 года",
+        "rarity": "uncommon",
+        "attributes": {
+          "endurance": 3,
+          "willpower": 3,
+          "charisma": -2
+        },
+        "skills": {
+          "survival": 3,
+          "psychology": 2,
+          "engineering": 1
+        },
+        "starting_values": {
+          "credits": 25000,
+          "influence": 0
+        },
+        "tone_modifiers": {
+          "cynicism": 6,
+          "sophistication": 5,
+          "violence": 5,
+          "hope": 4
+        },
+        "context_tags": [
+          "Mars",
+          "Survival",
+          "Isolation",
+          "Trauma"
+        ]
+      },
+      "ORIGIN_MARS_WATER_THIEF": {
+        "title": "Похититель воды",
+        "description": "Промышляли кражей воды во время дефицита в отдаленных поселениях",
+        "rarity": "uncommon",
+        "attributes": {
+          "dexterity": 3,
+          "intelligence": 2,
+          "charisma": -1
+        },
+        "skills": {
+          "stealth": 3,
+          "technology": 2,
+          "criminal": 2
+        },
+        "starting_values": {
+          "credits": 12000,
+          "heat": 3
+        },
+        "tone_modifiers": {
+          "cynicism": 8,
+          "sophistication": 4,
+          "violence": 6,
+          "hope": 3
+        },
+        "context_tags": [
+          "Mars",
+          "Crime",
+          "Survival",
+          "Resource"
+        ]
+      },
+      "ORIGIN_MARS_INDEPENDENCE_CELL": {
+        "title": "Ячейка независимости",
+        "description": "Участник подпольной организации за независимость Марса от Земли",
+        "rarity": "rare",
+        "attributes": {
+          "willpower": 3,
+          "charisma": 2,
+          "intelligence": 1
+        },
+        "skills": {
+          "stealth": 2,
+          "combat": 2,
+          "negotiation": 2
+        },
+        "starting_values": {
+          "credits": 15000,
+          "heat": 4
+        },
+        "tone_modifiers": {
+          "cynicism": 7,
+          "sophistication": 6,
+          "violence": 7,
+          "hope": 8
+        },
+        "context_tags": [
+          "Mars",
+          "Politics",
+          "Revolution",
+          "Independence"
+        ]
+      },
+      "ORIGIN_MARS_GENETIC_EXPERIMENT": {
+        "title": "Генетический эксперимент",
+        "description": "Родились в результате нелегальных генетических экспериментов",
+        "rarity": "legendary",
+        "attributes": {
+          "intelligence": 2,
+          "endurance": 2,
+          "tech_empathy": 2,
+          "special": 1
+        },
+        "skills": {
+          "medicine": 2,
+          "technology": 2,
+          "psychology": 1
+        },
+        "starting_values": {
+          "credits": 30000,
+          "heat": 2
+        },
+        "tone_modifiers": {
+          "cynicism": 8,
+          "sophistication": 7,
+          "violence": 4,
+          "hope": 3
+        },
+        "context_tags": [
+          "Mars",
+          "Genetic",
+          "Science",
+          "Unique"
+        ]
+      },
+      "ORIGIN_MARS_TUNNEL_RAT": {
+        "title": "Туннельный крысеныш",
+        "description": "Выросли в подземных туннелях марсианского мегаполиса",
+        "rarity": "common",
+        "attributes": {
+          "dexterity": 2,
+          "endurance": 2,
+          "intelligence": -1
+        },
+        "skills": {
+          "stealth": 3,
+          "survival": 2,
+          "criminal": 1
+        },
+        "starting_values": {
+          "credits": 3000,
+          "heat": 1
+        },
+        "tone_modifiers": {
+          "cynicism": 9,
+          "sophistication": 2,
+          "violence": 7,
+          "hope": 3
+        },
+        "context_tags": [
+          "Mars",
+          "Underground",
+          "Crime",
+          "Survival"
+        ]
+      },
+      "ORIGIN_MARS_ATMOSPHERIC_ENGINEER": {
+        "title": "Инженер атмосферы",
+        "description": "Специалист по терраформированию, работающий над атмосферой Марса",
+        "rarity": "rare",
+        "attributes": {
+          "intelligence": 3,
+          "tech_empathy": 3,
+          "willpower": 1
+        },
+        "skills": {
+          "engineering": 3,
+          "technology": 2,
+          "science": 2
+        },
+        "starting_values": {
+          "credits": 100000,
+          "influence": 8
+        },
+        "tone_modifiers": {
+          "cynicism": 4,
+          "sophistication": 9,
+          "violence": 2,
+          "hope": 8
+        },
+        "context_tags": [
+          "Mars",
+          "Science",
+          "Terraforming",
+          "Future"
+        ]
+      },
+      "ORIGIN_BELT_PIRATE_PRINCE": {
+        "title": "Принц пиратов",
+        "description": "Наследник влиятельного пиратского клана в Поясе астероидов",
+        "rarity": "legendary",
+        "attributes": {
+          "charisma": 3,
+          "dexterity": 2,
+          "willpower": 2
+        },
+        "skills": {
+          "piloting": 3,
+          "combat": 2,
+          "negotiation": 2
+        },
+        "starting_values": {
+          "credits": 80000,
+          "heat": 5,
+          "influence": 15
+        },
+        "tone_modifiers": {
+          "cynicism": 6,
+          "sophistication": 5,
+          "violence": 8,
+          "hope": 6
+        },
+        "context_tags": [
+          "Belt",
+          "Piracy",
+          "Leadership",
+          "Nobility"
+        ]
+      },
+      "ORIGIN_BELT_VOID_SHAMAN": {
+        "title": "Шаман Пустоты",
+        "description": "Мистик-одиночка, проводящий ритуалы в глубоком космосе",
+        "rarity": "rare",
+        "attributes": {
+          "willpower": 3,
+          "intelligence": 2,
+          "charisma": -1
+        },
+        "skills": {
+          "survival": 3,
+          "psychology": 2,
+          "occult": 2
+        },
+        "starting_values": {
+          "credits": 5000,
+          "influence": 0
+        },
+        "tone_modifiers": {
+          "cynicism": 5,
+          "sophistication": 7,
+          "violence": 3,
+          "hope": 5
+        },
+        "context_tags": [
+          "Belt",
+          "Mysticism",
+          "Solitude",
+          "Cosmic"
+        ]
+      },
+      "ORIGIN_BELT_SALVAGE_QUEEN": {
+        "title": "Королева утилизации",
+        "description": "Глава крупнейшей утилизаторской операции в Поясе",
+        "rarity": "rare",
+        "attributes": {
+          "intelligence": 3,
+          "charisma": 2,
+          "tech_empathy": 2
+        },
+        "skills": {
+          "engineering": 3,
+          "negotiation": 2,
+          "piloting": 1
+        },
+        "starting_values": {
+          "credits": 150000,
+          "influence": 20
+        },
+        "tone_modifiers": {
+          "cynicism": 7,
+          "sophistication": 6,
+          "violence": 5,
+          "hope": 6
+        },
+        "context_tags": [
+          "Belt",
+          "Business",
+          "Salvage",
+          "Leadership"
+        ]
+      },
+      "ORIGIN_BELT_ZERO_G_DANCER": {
+        "title": "Танцор невесомости",
+        "description": "Артист, исполняющий невесомостные танцы на космических станциях",
+        "rarity": "uncommon",
+        "attributes": {
+          "dexterity": 3,
+          "charisma": 2,
+          "endurance": 1
+        },
+        "skills": {
+          "entertainment": 3,
+          "acrobatics": 2,
+          "negotiation": 1
+        },
+        "starting_values": {
+          "credits": 25000,
+          "influence": 10
+        },
+        "tone_modifiers": {
+          "cynicism": 4,
+          "sophistication": 8,
+          "violence": 2,
+          "hope": 7
+        },
+        "context_tags": [
+          "Belt",
+          "Art",
+          "Performance",
+          "Beauty"
+        ]
+      },
+      "ORIGIN_BELT_ASTEROID_HERMIT": {
+        "title": "Отшельник астероида",
+        "description": "Жили в одиночестве на частном астероиде, избегая цивилизации",
+        "rarity": "uncommon",
+        "attributes": {
+          "endurance": 3,
+          "willpower": 3,
+          "charisma": -2
+        },
+        "skills": {
+          "survival": 3,
+          "engineering": 2,
+          "piloting": 1
+        },
+        "starting_values": {
+          "credits": 40000,
+          "influence": 0
+        },
+        "tone_modifiers": {
+          "cynicism": 8,
+          "sophistication": 3,
+          "violence": 4,
+          "hope": 2
+        },
+        "context_tags": [
+          "Belt",
+          "Solitude",
+          "Independence",
+          "Survival"
+        ]
+      },
+      "ORIGIN_BELT_ICE_HAULER": {
+        "title": "Ледовый грузчик",
+        "description": "Пилот, доставляющий лед с дальних астероидов к станциям Пояса",
+        "rarity": "common",
+        "attributes": {
+          "endurance": 2,
+          "dexterity": 2,
+          "strength": 1
+        },
+        "skills": {
+          "piloting": 3,
+          "navigation": 2,
+          "survival": 1
+        },
+        "starting_values": {
+          "credits": 35000,
+          "influence": 5
+        },
+        "tone_modifiers": {
+          "cynicism": 6,
+          "sophistication": 4,
+          "violence": 5,
+          "hope": 5
+        },
+        "context_tags": [
+          "Belt",
+          "Transport",
+          "Resources",
+          "Labor"
+        ]
+      },
+      "ORIGIN_EUROPA_DEEP_DIVER": {
+        "title": "Глубоководный дайвер Европы",
+        "description": "Исследователь океанских глубин под ледяной корой Европы",
+        "rarity": "rare",
+        "attributes": {
+          "endurance": 3,
+          "willpower": 2,
+          "intelligence": 1
+        },
+        "skills": {
+          "survival": 3,
+          "science": 2,
+          "diving": 3
+        },
+        "starting_values": {
+          "credits": 60000,
+          "influence": 5
+        },
+        "tone_modifiers": {
+          "cynicism": 5,
+          "sophistication": 7,
+          "violence": 3,
+          "hope": 6
+        },
+        "context_tags": [
+          "Europa",
+          "Ocean",
+          "Exploration",
+          "Science"
+        ]
+      },
+      "ORIGIN_TITAN_METHANE_BARON": {
+        "title": "Метановый барон Титана",
+        "description": "Владелец крупнейших метановых ферм на Титане",
+        "rarity": "legendary",
+        "attributes": {
+          "charisma": 3,
+          "intelligence": 2,
+          "willpower": 2
+        },
+        "skills": {
+          "negotiation": 3,
+          "technology": 2,
+          "entrepreneurship": 2
+        },
+        "starting_values": {
+          "credits": 800000,
+          "influence": 25
+        },
+        "tone_modifiers": {
+          "cynicism": 6,
+          "sophistication": 8,
+          "violence": 4,
+          "hope": 7
+        },
+        "context_tags": [
+          "Titan",
+          "Industry",
+          "Wealth",
+          "Chemicals"
+        ]
+      },
+      "ORIGIN_GANYMEDE_BIOLAB_REFUGEE": {
+        "title": "Беженец биолаборатории Ганимеда",
+        "description": "Сбежали после катастрофы в секретной биологической лаборатории",
+        "rarity": "rare",
+        "attributes": {
+          "intelligence": 2,
+          "endurance": 2,
+          "willpower": 1
+        },
+        "skills": {
+          "medicine": 2,
+          "technology": 2,
+          "stealth": 2
+        },
+        "starting_values": {
+          "credits": 20000,
+          "heat": 3
+        },
+        "tone_modifiers": {
+          "cynicism": 9,
+          "sophistication": 6,
+          "violence": 5,
+          "hope": 2
+        },
+        "context_tags": [
+          "Ganymede",
+          "Science",
+          "Refugee",
+          "Conspiracy"
+        ]
+      },
+      "ORIGIN_IO_SULFUR_MINER": {
+        "title": "Серный шахтер Ио",
+        "description": "Добытчик серных соединений на вулканических равнинах Ио",
+        "rarity": "common",
+        "attributes": {
+          "strength": 2,
+          "endurance": 3,
+          "intelligence": -1
+        },
+        "skills": {
+          "mining": 3,
+          "survival": 2,
+          "engineering": 1
+        },
+        "starting_values": {
+          "credits": 30000,
+          "influence": 0
+        },
+        "tone_modifiers": {
+          "cynicism": 7,
+          "sophistication": 3,
+          "violence": 6,
+          "hope": 4
+        },
+        "context_tags": [
+          "Io",
+          "Mining",
+          "Volcanic",
+          "Labor"
+        ]
+      },
+      "ORIGIN_CALLISTO_PRISON_GUARD": {
+        "title": "Надзиратель тюрьмы Каллисто",
+        "description": "Охранник в печально известной тюрьме максимальной безопасности",
+        "rarity": "uncommon",
+        "attributes": {
+          "strength": 2,
+          "willpower": 2,
+          "endurance": 2
+        },
+        "skills": {
+          "combat": 2,
+          "psychology": 2,
+          "law": 1
+        },
+        "starting_values": {
+          "credits": 50000,
+          "influence": 5
+        },
+        "tone_modifiers": {
+          "cynicism": 8,
+          "sophistication": 4,
+          "violence": 7,
+          "hope": 3
+        },
+        "context_tags": [
+          "Callisto",
+          "Prison",
+          "Authority",
+          "Hardline"
+        ]
+      },
+      "ORIGIN_ENCELADUS_THERMAL_ENGINEER": {
+        "title": "Геотермальный инженер Энцелада",
+        "description": "Специалист по геотермальным электростанциям на гейзерах Энцелада",
+        "rarity": "uncommon",
+        "attributes": {
+          "intelligence": 3,
+          "tech_empathy": 2,
+          "endurance": 1
+        },
+        "skills": {
+          "engineering": 3,
+          "technology": 2,
+          "science": 1
+        },
+        "starting_values": {
+          "credits": 85000,
+          "influence": 8
+        },
+        "tone_modifiers": {
+          "cynicism": 4,
+          "sophistication": 8,
+          "violence": 2,
+          "hope": 7
+        },
+        "context_tags": [
+          "Enceladus",
+          "Energy",
+          "Engineering",
+          "Geothermal"
+        ]
+      },
+      "ORIGIN_TRITON_NITROGEN_HARVESTER": {
+        "title": "Азотный комбайнер Тритона",
+        "description": "Оператор азотных комбайнов на ледяных равнинах Тритона",
+        "rarity": "common",
+        "attributes": {
+          "endurance": 3,
+          "tech_empathy": 1,
+          "strength": 1
+        },
+        "skills": {
+          "piloting": 2,
+          "survival": 2,
+          "engineering": 1
+        },
+        "starting_values": {
+          "credits": 40000,
+          "influence": 3
+        },
+        "tone_modifiers": {
+          "cynicism": 6,
+          "sophistication": 4,
+          "violence": 4,
+          "hope": 5
+        },
+        "context_tags": [
+          "Triton",
+          "Harvesting",
+          "Nitrogen",
+          "Remote"
+        ]
+      },
+      "ORIGIN_PLUTO_RESEARCH_STATION": {
+        "title": "Исследователь станции Плутона",
+        "description": "Ученый на самой отдаленной исследовательской станции системы",
+        "rarity": "legendary",
+        "attributes": {
+          "intelligence": 3,
+          "willpower": 3,
+          "endurance": 1
+        },
+        "skills": {
+          "science": 3,
+          "technology": 2,
+          "survival": 2
+        },
+        "starting_values": {
+          "credits": 90000,
+          "influence": 12
+        },
+        "tone_modifiers": {
+          "cynicism": 5,
+          "sophistication": 9,
+          "violence": 2,
+          "hope": 6
+        },
+        "context_tags": [
+          "Pluto",
+          "Research",
+          "Isolation",
+          "Discovery"
+        ]
+      }
+    }
+  },
+  "formative_years_expansion": {
+    "total_count": 30,
+    "existing_count": 13,
+    "new_count": 17,
+    "new_formative_years": {
+      "FY_LOVE_TRIANGLE": {
+        "event": "Любовный треугольник",
+        "description": "Оказались в центре сложных романтических отношений",
+        "rarity": "common",
+        "effects": {
+          "charisma": 2,
+          "willpower": 1,
+          "psychology_skill": 1
+        },
+        "tone_adjustment": {
+          "sophistication": 1,
+          "cynicism": 1,
+          "hope": -1
+        },
+        "context_tags": [
+          "Romance",
+          "Drama",
+          "Emotional"
+        ]
+      },
+      "FY_FAMILY_BANKRUPTCY": {
+        "event": "Банкротство семьи",
+        "description": "Семья потеряла все состояние из-за экономического кризиса",
+        "rarity": "uncommon",
+        "effects": {
+          "endurance": 2,
+          "survival_skill": 2,
+          "credits": -50000
+        },
+        "tone_adjustment": {
+          "cynicism": 3,
+          "hope": -2,
+          "violence": 1
+        },
+        "context_tags": [
+          "Economics",
+          "Family",
+          "Hardship"
+        ]
+      },
+      "FY_ALIEN_CONTACT": {
+        "event": "Контакт с пришельцами",
+        "description": "Стали свидетелем или участником первого контакта с внеземной жизнью",
+        "rarity": "legendary",
+        "effects": {
+          "intelligence": 3,
+          "willpower": 2,
+          "occult_skill": 3
+        },
+        "tone_adjustment": {
+          "sophistication": 3,
+          "hope": 2,
+          "cynicism": -1
+        },
+        "context_tags": [
+          "Aliens",
+          "Discovery",
+          "Cosmic",
+          "Secret"
+        ]
+      },
+      "FY_CORPORATE_HEIR_TRAINING": {
+        "event": "Обучение наследника",
+        "description": "Проходили интенсивную подготовку для управления корпорацией",
+        "rarity": "rare",
+        "effects": {
+          "charisma": 2,
+          "intelligence": 2,
+          "negotiation_skill": 2
+        },
+        "tone_adjustment": {
+          "sophistication": 3,
+          "cynicism": 2
+        },
+        "context_tags": [
+          "Corporate",
+          "Elite",
+          "Training",
+          "Leadership"
+        ]
+      },
+      "FY_UNDERGROUND_RACING": {
+        "event": "Подпольные гонки",
+        "description": "Участвовали в нелегальных космических гонках",
+        "rarity": "uncommon",
+        "effects": {
+          "dexterity": 2,
+          "piloting_skill": 3,
+          "heat": 2
+        },
+        "tone_adjustment": {
+          "violence": 2,
+          "hope": 1,
+          "cynicism": 1
+        },
+        "context_tags": [
+          "Racing",
+          "Crime",
+          "Speed",
+          "Danger"
+        ]
+      },
+      "FY_RELIGIOUS_AWAKENING": {
+        "event": "Религиозное пробуждение",
+        "description": "Пережили мощный духовный опыт и нашли веру",
+        "rarity": "uncommon",
+        "effects": {
+          "willpower": 3,
+          "charisma": 1,
+          "psychology_skill": 2
+        },
+        "tone_adjustment": {
+          "hope": 3,
+          "cynicism": -2,
+          "sophistication": 1
+        },
+        "context_tags": [
+          "Religion",
+          "Spirituality",
+          "Faith",
+          "Transformation"
+        ]
+      },
+      "FY_MEMORY_WIPE": {
+        "event": "Стирание памяти",
+        "description": "Часть ваших воспоминаний была стерта - по какой-то причине",
+        "rarity": "rare",
+        "effects": {
+          "intelligence": -1,
+          "willpower": 2,
+          "mystery_bonus": 3
+        },
+        "tone_adjustment": {
+          "cynicism": 3,
+          "sophistication": -1,
+          "violence": 1
+        },
+        "context_tags": [
+          "Mystery",
+          "Memory",
+          "Conspiracy",
+          "Loss"
+        ]
+      },
+      "FY_GENIUS_DISCOVERY": {
+        "event": "Гениальное открытие",
+        "description": "Сделали важное научное открытие в подростковом возрасте",
+        "rarity": "legendary",
+        "effects": {
+          "intelligence": 3,
+          "tech_empathy": 2,
+          "science_skill": 3
+        },
+        "tone_adjustment": {
+          "sophistication": 3,
+          "hope": 2
+        },
+        "context_tags": [
+          "Science",
+          "Genius",
+          "Discovery",
+          "Fame"
+        ]
+      },
+      "FY_GANG_INITIATION": {
+        "event": "Посвящение в банду",
+        "description": "Прошли жестокий ритуал посвящения в преступную группировку",
+        "rarity": "uncommon",
+        "effects": {
+          "combat_skill": 2,
+          "criminal_skill": 2,
+          "heat": 3
+        },
+        "tone_adjustment": {
+          "violence": 3,
+          "cynicism": 2,
+          "hope": -2
+        },
+        "context_tags": [
+          "Gang",
+          "Crime",
+          "Violence",
+          "Loyalty"
+        ]
+      },
+      "FY_ARTISTIC_PRODIGY": {
+        "event": "Художественная одаренность",
+        "description": "Проявили выдающийся талант в искусстве или музыке",
+        "rarity": "rare",
+        "effects": {
+          "charisma": 3,
+          "intelligence": 1,
+          "entertainment_skill": 3
+        },
+        "tone_adjustment": {
+          "sophistication": 3,
+          "hope": 2
+        },
+        "context_tags": [
+          "Art",
+          "Talent",
+          "Beauty",
+          "Expression"
+        ]
+      },
+      "FY_SURVIVAL_TRAINING": {
+        "event": "Экстремальное выживание",
+        "description": "Прошли суровые курсы выживания в космосе",
+        "rarity": "common",
+        "effects": {
+          "endurance": 3,
+          "survival_skill": 3,
+          "willpower": 1
+        },
+        "tone_adjustment": {
+          "cynicism": 1,
+          "violence": 1,
+          "hope": 1
+        },
+        "context_tags": [
+          "Survival",
+          "Training",
+          "Endurance",
+          "Preparation"
+        ]
+      },
+      "FY_FIRST_KILL": {
+        "event": "Первое убийство",
+        "description": "Впервые убили человека - в бою, по неосторожности или умышленно",
+        "rarity": "rare",
+        "effects": {
+          "combat_skill": 2,
+          "willpower": 1,
+          "humanity": -2
+        },
+        "tone_adjustment": {
+          "violence": 3,
+          "cynicism": 2,
+          "hope": -2
+        },
+        "context_tags": [
+          "Violence",
+          "Death",
+          "Trauma",
+          "Guilt"
+        ]
+      },
+      "FY_MENTOR_DEATH": {
+        "event": "Смерть наставника",
+        "description": "Потеряли важного учителя или ментора при трагических обстоятельствах",
+        "rarity": "uncommon",
+        "effects": {
+          "willpower": 2,
+          "one_chosen_skill": 2,
+          "stress": 2
+        },
+        "tone_adjustment": {
+          "cynicism": 2,
+          "hope": -1,
+          "sophistication": 1
+        },
+        "context_tags": [
+          "Loss",
+          "Mentor",
+          "Death",
+          "Growth"
+        ]
+      },
+      "FY_HACKER_PRODIGY_ADVANCED": {
+        "event": "Хакер-гений",
+        "description": "Взломали защищенную корпоративную систему и раскрыли заговор",
+        "rarity": "legendary",
+        "effects": {
+          "intelligence": 3,
+          "hacking_skill": 4,
+          "heat": 4
+        },
+        "tone_adjustment": {
+          "sophistication": 2,
+          "cynicism": 3,
+          "hope": 1
+        },
+        "context_tags": [
+          "Hacking",
+          "Genius",
+          "Conspiracy",
+          "Digital"
+        ]
+      },
+      "FY_POLITICAL_ASSASSINATION": {
+        "event": "Политическое покушение",
+        "description": "Стали свидетелем или участником политического убийства",
+        "rarity": "rare",
+        "effects": {
+          "stealth_skill": 2,
+          "law_skill": 1,
+          "heat": 3
+        },
+        "tone_adjustment": {
+          "violence": 2,
+          "cynicism": 3,
+          "sophistication": 1
+        },
+        "context_tags": [
+          "Politics",
+          "Violence",
+          "Conspiracy",
+          "Power"
+        ]
+      },
+      "FY_SPACE_MADNESS": {
+        "event": "Космическое безумие",
+        "description": "Пережили психический эпизод во время длительного космического полета",
+        "rarity": "uncommon",
+        "effects": {
+          "willpower": 3,
+          "psychology_skill": 2,
+          "humanity": -1
+        },
+        "tone_adjustment": {
+          "cynicism": 2,
+          "violence": 1,
+          "sophistication": -1
+        },
+        "context_tags": [
+          "Space",
+          "Madness",
+          "Psychology",
+          "Isolation"
+        ]
+      },
+      "FY_GENETIC_ENHANCEMENT": {
+        "event": "Генетическое улучшение",
+        "description": "Подверглись экспериментальной генетической модификации",
+        "rarity": "legendary",
+        "effects": {
+          "choose_attribute": 2,
+          "medicine_skill": 2,
+          "heat": 2
+        },
+        "tone_adjustment": {
+          "sophistication": 2,
+          "hope": 1,
+          "cynicism": 1
+        },
+        "context_tags": [
+          "Genetic",
+          "Enhancement",
+          "Science",
+          "Unique"
+        ]
+      }
+    }
+  }
+}

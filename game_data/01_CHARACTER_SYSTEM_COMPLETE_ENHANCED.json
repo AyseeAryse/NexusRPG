@@ -1,0 +1,97 @@
+{
+  "module_name": "01_CHARACTER_SYSTEM_COMPLETE_ENHANCED",
+  "module_id": "01",
+  "priority": 30,
+  "version": "2.1_WITH_DICE_MANDATE",
+  "description": "Полная система персонажей с обязательной системой бросков кубиков",
+  "source_files": [
+    "PROGRESSION.json (23,645 символов)",
+    "CHARACTER_LIFEPATH.json (42,187 символов)",
+    "PROGRESSION_V2.json (2,082 символа)",
+    "REPUTATION_MASTER.json (4,502 символа)",
+    "balanced_character_presets.json (7,380 символов)",
+    "CHARACTER_CREATION_V2.json (5,077 символов)",
+    "CHARACTER_CORE.json (11,047 символов)",
+    "CHARACTER_SPECIALIZATIONS_V3_MASSIVE.json (16,848 символов)",
+    "CHARACTER_LIFEPATH_V3_MASSIVE_PART1.json (33,286 символов)",
+    "DICE_SYSTEM_INTEGRATION (NEW) - система обязательных бросков кубиков"
+  ],
+  "total_size": "150,000+ символов с расширениями",
+  "integration_status": "ENHANCED_WITH_DICE",
+  "dependencies": [
+    "AI_GM_CORE",
+    "FACTIONS_MASTER",
+    "PSYCHOLOGY",
+    "THEME_TONE",
+    "NPC_RELATIONS"
+  ],
+  "character_creation_comprehensive": {
+    "creation_workflow": {
+      "step_1": "Выбор имени и возраста (ОБЯЗАТЕЛЬНО)",
+      "step_2": "Выбор происхождения из 50 вариантов",
+      "step_3": "Выбор формирующих событий",
+      "step_4": "Выбор специализации из 35 вариантов",
+      "step_5": "Применение автоматических модификаторов",
+      "step_6": "Расчет финальных характеристик"
+    },
+    "mandatory_fields": {
+      "character_name": {
+        "required": true,
+        "prompt": "Как зовут вашего персонажа?",
+        "validation": "Не менее 2 символов, без цифр"
+      },
+      "character_age": {
+        "required": true,
+        "prompt": "Сколько лет вашему персонажу?",
+        "range": [
+          16,
+          80
+        ]
+      }
+    }
+  },
+  "dice_system_integration": {
+    "module_name": "DICE_SYSTEM_MANDATORY",
+    "version": "1.0_PYTHON_ENFORCED",
+    "description": "Система ОБЯЗАТЕЛЬНЫХ бросков кубиков через Python для всех действий",
+    "CRITICAL_DIRECTIVE": {
+      "priority": "ABSOLUTE_MAXIMUM",
+      "rule": "КАЖДОЕ действие персонажа ДОЛЖНО сопровождаться броском кубиков через Python",
+      "enforcement": "Если бросок не выполнен - это КРИТИЧЕСКАЯ ОШИБКА СИСТЕМЫ"
+    },
+    "integration_rules": {
+      "mandatory_skill_checks": [
+        "Hacking - требует бросок Intelligence + Hacking",
+        "Combat - требует бросок соответствующего боевого навыка",
+        "Negotiation - требует бросок Charisma + Negotiation",
+        "Stealth - требует бросок Dexterity + Stealth",
+        "Piloting - требует бросок Reflexes + Piloting",
+        "Engineering - требует бросок Intelligence + Engineering",
+        "Medicine - требует бросок Intelligence + Medicine"
+      ],
+      "automatic_difficulty_scaling": {
+        "character_level_1_3": "Базовые сложности по таблице",
+        "character_level_4_7": "+2 к базовой сложности всех задач",
+        "character_level_8_10": "+4 к базовой сложности всех задач"
+      },
+      "lifepath_modifiers": {
+        "ORIGIN_MARS_MILITARY": {
+          "combat_bonus": 2,
+          "discipline_bonus": 1,
+          "authority_bonus": 1
+        },
+        "ORIGIN_EARTH_ELITE": {
+          "negotiation_bonus": 2,
+          "education_bonus": 2,
+          "influence_bonus": 3
+        },
+        "ORIGIN_GANYMEDE_SCIENTIST": {
+          "technology_bonus": 3,
+          "research_bonus": 2,
+          "analysis_bonus": 2
+        }
+      }
+    }
+  },
+  "dice_code_note": "Исполняемый Python-код DiceSystem удалён при консолидации (Фаза 8): реализация живёт в src/core/engine.py (класс DiceRoller). Мандат обязательных бросков сохранён."
+}

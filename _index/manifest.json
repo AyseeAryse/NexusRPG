@@ -1,0 +1,523 @@
+{
+  "generated_at": "2026-08-22T20:11:16",
+  "generator": "KnowledgeBase.list_files()",
+  "contract": "schemas/module_contract.schema.json",
+  "validator": "python schemas/validate_contract.py",
+  "counts": {
+    "loaded_files": 73,
+    "categories": 13
+  },
+  "modules": [
+    {
+      "filename": "AI_RPG_CORE_V2_ENHANCED.json",
+      "category": "AI",
+      "module_name": "AI_RPG_CORE_V2",
+      "version": "2.0_INTEGRATED_ARCHITECTURE",
+      "description": "Расширенная архитектура ИИ-ГМ с полной интеграцией всех 61+ модулей"
+    },
+    {
+      "filename": "META_ENGINE.json",
+      "category": "AI",
+      "module_name": "META_ENGINE",
+      "version": "1.0",
+      "description": "Мета-надстройка, объединяющая системную логику, философию и эмоциональные принципы мира для создания"
+    },
+    {
+      "filename": "CHARACTER_ATTRIBUTES.json",
+      "category": "CHARACTER",
+      "module_name": "CHARACTER_ATTRIBUTES",
+      "version": "1.0",
+      "description": "Библиотека базовых атрибутов персонажа и производных характеристик"
+    },
+    {
+      "filename": "CHARACTER_CORE.json",
+      "category": "CHARACTER",
+      "module_name": "CHARACTER_CORE",
+      "version": "2.0_OPTIMIZED_FULL",
+      "description": "Базовые определения персонажа для текстовой РПГ с ИИ-ГМ. Содержит основные атрибуты, навыки, системы"
+    },
+    {
+      "filename": "CHARACTER_CREATION_V2.json",
+      "category": "CHARACTER",
+      "module_name": "CHARACTER_CREATION_V2",
+      "version": "2.0_EXPANDED",
+      "description": "Расширенная система создания персонажа с именем, возрастом и профессиями"
+    },
+    {
+      "filename": "CHARACTER_LIFEPATH.json",
+      "category": "CHARACTER",
+      "module_name": "CHARACTER_LIFEPATH",
+      "version": "3.0_MASSIVE_UNIFIED",
+      "description": "Оптимизированный модуль жизненного пути с модификаторами для вашей текстовой РПГ с ИИ-ГМ. Устранены "
+    },
+    {
+      "filename": "CHARACTER_PERKS.json",
+      "category": "CHARACTER",
+      "module_name": "CHARACTER_PERKS",
+      "version": "1.0",
+      "description": "Библиотека перков по навыкам и уникальных перков по жизненному пути"
+    },
+    {
+      "filename": "CHARACTER_SKILLS.json",
+      "category": "CHARACTER",
+      "module_name": "CHARACTER_SKILLS",
+      "version": "1.0",
+      "description": "Библиотека базовых навыков персонажа с XP и методами прокачки"
+    },
+    {
+      "filename": "CHARACTER_SPECIALIZATIONS_V3_MASSIVE.json",
+      "category": "CHARACTER",
+      "module_name": "CHARACTER_SPECIALIZATIONS_V3_MASSIVE",
+      "version": "3.0_35_SPECIALIZATIONS",
+      "description": "35 специализаций для определения роли персонажа с THEME_TONE интеграцией"
+    },
+    {
+      "filename": "PROGRESSION.json",
+      "category": "CHARACTER",
+      "module_name": "PROGRESSION",
+      "version": "1.0",
+      "description": "Формализация развития персонажа: навыки, атрибуты, перки, спец.умения и пассивные черты с учётом лор"
+    },
+    {
+      "filename": "PSYCHOLOGY.json",
+      "category": "CHARACTER",
+      "module_name": "PSYCHOLOGY_OPTIMIZED_WITH_REPUTATION",
+      "version": "3.0_OPTIMIZED_REPUTATION_INTEGRATED",
+      "description": "Оптимизированный модуль психологии с интеграцией репутационной системы и вынесенными справочниками. "
+    },
+    {
+      "filename": "PSYCHOLOGY_ORIGINS_REFERENCE.json",
+      "category": "CHARACTER",
+      "module_name": "PSYCHOLOGY_ORIGINS_REFERENCE",
+      "version": "1.0_REFERENCE",
+      "description": "Справочник психологических профилей по происхождениям персонажей. Вынесен из основного PSYCHOLOGY мо"
+    },
+    {
+      "filename": "PSYCHOLOGY_THERAPY_REFERENCE.json",
+      "category": "CHARACTER",
+      "module_name": "PSYCHOLOGY_THERAPY_REFERENCE",
+      "version": "1.0_REFERENCE",
+      "description": "Справочник терапевтических методов восстановления психологического состояния. Вынесен из основного P"
+    },
+    {
+      "filename": "04_MEGA_COMBAT_TECH_SYSTEM_COMPLETE.json",
+      "category": "COMBAT",
+      "module_name": "04_MEGA_COMBAT_TECH_SYSTEM_COMPLETE",
+      "version": "1.0_UNIFIED_COMPREHENSIVE",
+      "description": "Полная боевая и техническая система - объединение 8 файлов без потерь"
+    },
+    {
+      "filename": "COMBAT.json",
+      "category": "COMBAT",
+      "module_name": "COMBAT_COMPREHENSIVE",
+      "version": "3.0_INTEGRATED",
+      "description": "Полная система боевых действий от личных стычек до масштабных флотских операций. Объединяет тактичес"
+    },
+    {
+      "filename": "HACKING_V2_QUANTUM_AGE.json",
+      "category": "COMBAT",
+      "module_name": "HACKING_V2",
+      "version": "2.0_QUANTUM_AGE_HACKING",
+      "description": "Комплексная система взлома для эры квантовых технологий"
+    },
+    {
+      "filename": "MODIFICATION_V2_QUANTUM_BIOTECH.json",
+      "category": "COMBAT",
+      "module_name": "MODIFICATION_V2",
+      "version": "2.0_QUANTUM_BIOTECH_ERA",
+      "description": "Комплексная система модификаций от кибернетики до квантовых улучшений"
+    },
+    {
+      "filename": "TECH_EQUIPMENT.json",
+      "category": "COMBAT",
+      "module_name": "TECH_EQUIPMENT_OPTIMIZED",
+      "version": "2.1_ID_DECONFLICTED",
+      "description": "Максимально детальная база данных технического снаряжения с ПОЛНОЙ интеграцией CHARACTER_LIFEPATH. К"
+    },
+    {
+      "filename": "06_MEGA_ECONOMY_CRAFTING_ENHANCED.json",
+      "category": "ECONOMY",
+      "module_name": "06_MEGA_ECONOMY_CRAFTING_ENHANCED",
+      "version": "2.2_ECONOMY_CLASSIC",
+      "description": "Экономические механики-указатели и классическое экономическое ядро (classic_core_economy). География"
+    },
+    {
+      "filename": "CRAFTING_BLUEPRINTS.json",
+      "category": "ECONOMY",
+      "module_name": "CRAFTING_BLUEPRINTS_COMPLETE_OPTIMIZED",
+      "version": "2.0_COMPLETE_OPTIMIZED",
+      "description": "Полная система создания и модификации предметов с детальными чертежами, ресурсами, механиками и инте"
+    },
+    {
+      "filename": "ECONOMY.json",
+      "category": "ECONOMY",
+      "module_name": "ECONOMY",
+      "version": "2.0_COMPREHENSIVE",
+      "description": "Полная экономическая система колонизированной солнечной системы. Включает детальные механики произво"
+    },
+    {
+      "filename": "MARKET_EVENT_GENERATOR.json",
+      "category": "ECONOMY",
+      "module_name": "MARKET_EVENT_GENERATOR",
+      "version": "1.0_DYNAMIC_ECONOMY",
+      "description": "Генератор торговых возможностей и рыночных событий"
+    },
+    {
+      "filename": "TRADE_ROUTES_MASTER.json",
+      "category": "ECONOMY",
+      "module_name": "TRADE_ROUTES_MASTER",
+      "version": "1.0",
+      "description": "Мастер-модуль торговых маршрутов с динамической системой расчета времени, стоимости и рисков, учитыв"
+    },
+    {
+      "filename": "PLAYER_INTERFACE_V2_ENHANCED.json",
+      "category": "INTERFACE",
+      "module_name": "PLAYER_INTERFACE_V2_ENHANCED",
+      "version": "2.1_TIME_INTEGRATED",
+      "description": "Улучшенный интерфейс игрока с отображением времени"
+    },
+    {
+      "filename": "PLAYER_VIEW_ADAPTER.json",
+      "category": "INTERFACE",
+      "module_name": "PLAYER_VIEW_ADAPTER",
+      "version": "1.0",
+      "description": ""
+    },
+    {
+      "filename": "TIME_DISPLAY_SYSTEM.json",
+      "category": "INTERFACE",
+      "module_name": "TIME_DISPLAY_SYSTEM",
+      "version": "1.0_CHAT_INTEGRATION",
+      "description": "Система отображения игрового времени в чате"
+    },
+    {
+      "filename": "AUTOMATION_V2_COMPREHENSIVE.json",
+      "category": "MECHANICS",
+      "module_name": "AUTOMATION_V2",
+      "version": "2.0_COMPREHENSIVE_AUTOMATION",
+      "description": "Комплексная система автоматизации для ИИ-ГМ с полной интеграцией модулей"
+    },
+    {
+      "filename": "GM_TOOLKIT_V2_COMPREHENSIVE.json",
+      "category": "MECHANICS",
+      "module_name": "GM_TOOLKIT_V2",
+      "version": "2.0_COMPREHENSIVE_TOOLKIT",
+      "description": "Полный инструментарий ГМ с интеграцией всех систем и готовыми таблицами"
+    },
+    {
+      "filename": "MECHANICS_V2_INTEGRATED_SYSTEMS.json",
+      "category": "MECHANICS",
+      "module_name": "MECHANICS_V2",
+      "version": "2.0_INTEGRATED_SYSTEMS",
+      "description": "Расширенные игровые механики с интеграцией всех систем"
+    },
+    {
+      "filename": "RULEBOOK.json",
+      "category": "MECHANICS",
+      "module_name": "RULEBOOK",
+      "version": "1.0",
+      "description": "Единая справочная база правил, механик и процедур для ИИ и игроков."
+    },
+    {
+      "filename": "NARRATIVE_INTERFACE_V2_ADAPTIVE.json",
+      "category": "NARRATIVE",
+      "module_name": "NARRATIVE_INTERFACE_V2",
+      "version": "2.0_ADAPTIVE_STORYTELLING",
+      "description": "Адаптивный интерфейс нарратива с динамической интеграцией THEME_TONE"
+    },
+    {
+      "filename": "THEME_TONE.json",
+      "category": "NARRATIVE",
+      "module_name": "THEME_TONE",
+      "version": "2.1_UNIFIED_BASE_PLUS_ADDITIONS",
+      "description": "Система жанров, тональностей и тематик для создания целостного игрового опыта с возможностью динамич"
+    },
+    {
+      "filename": "VISUALS_ENGINE.json",
+      "category": "NARRATIVE",
+      "module_name": "VISUALS_ENGINE",
+      "version": "1.0",
+      "description": "Управляет генерацией визуального контента. Приоритет отдан созданию атмосферных артов, а генерация п"
+    },
+    {
+      "filename": "01_CHARACTER_SYSTEM_COMPLETE.json",
+      "category": "OTHER",
+      "module_name": "01_CHARACTER_SYSTEM_COMPLETE",
+      "version": "1.0_UNIFIED_COMPREHENSIVE",
+      "description": "Полная система персонажей - объединение 9 файлов без потерь"
+    },
+    {
+      "filename": "01_CHARACTER_SYSTEM_COMPLETE_ENHANCED.json",
+      "category": "OTHER",
+      "module_name": "01_CHARACTER_SYSTEM_COMPLETE_ENHANCED",
+      "version": "2.1_WITH_DICE_MANDATE",
+      "description": "Полная система персонажей с обязательной системой бросков кубиков"
+    },
+    {
+      "filename": "05_MEGA_AI_GM_CORE_COMPLETE.json",
+      "category": "OTHER",
+      "module_name": "05_MEGA_AI_GM_CORE_COMPLETE",
+      "version": "1.0_UNIFIED_COMPREHENSIVE",
+      "description": "Полная система ИИ-Мастера игры - объединение всех управляющих и нарративных компонентов"
+    },
+    {
+      "filename": "09_MEGA_NARRATIVE_THEMES_COMPLETE.json",
+      "category": "OTHER",
+      "module_name": "09_MEGA_NARRATIVE_THEMES_COMPLETE",
+      "version": "2.0_UNIFIED_NARRATIVE_SOCIAL",
+      "description": "Полная система нарративных тем и тональности - объединение жанровой системы, генераторов событий, но"
+    },
+    {
+      "filename": "13_MEGA_TIME_SYSTEM_COMPLETE.json",
+      "category": "OTHER",
+      "module_name": "13_MEGA_TIME_SYSTEM_COMPLETE",
+      "version": "1.0_UNIFIED_COMPREHENSIVE",
+      "description": "Полная система управления временем - объединение мирового времени, логирования сессий и отображения "
+    },
+    {
+      "filename": "14_MEGA_PROCEDURAL_GENERATORS_COMPLETE.json",
+      "category": "OTHER",
+      "module_name": "14_MEGA_PROCEDURAL_GENERATORS_COMPLETE",
+      "version": "1.1_GENERATORS_ONLY",
+      "description": "Полная система процедурной генерации - объединение генератора имен NPC, координатора процедурной ген"
+    },
+    {
+      "filename": "CHARACTER_ORIGINS.json",
+      "category": "OTHER",
+      "module_name": "CHARACTER_ORIGINS",
+      "version": "1.0",
+      "description": "Библиотека происхождений персонажей (Origins) с бонусами, атрибутами, навыками и стартовыми значения"
+    },
+    {
+      "filename": "ENHANCED_EVENT_GENERATOR_V2.json",
+      "category": "OTHER",
+      "module_name": "ENHANCED_EVENT_GENERATOR_V2",
+      "version": "2.0_ALL_LOCATIONS",
+      "description": "Расширение ENHANCED_EVENT_GENERATOR для всех 20+ локаций из WORLDBUILD"
+    },
+    {
+      "filename": "MANDATORY_FILE_CHECK_SYSTEM_FINAL.json",
+      "category": "OTHER",
+      "module_name": "MANDATORY_FILE_CHECK_SYSTEM",
+      "version": "1.0_FINAL_ENFORCEMENT",
+      "description": "ПОЛНАЯ система принудительной проверки файлов с автокоррекцией и живой экономикой"
+    },
+    {
+      "filename": "MODULE_COORDINATOR.json",
+      "category": "OTHER",
+      "module_name": "MODULE_COORDINATOR",
+      "version": "1.0_CONFLICT_PREVENTION",
+      "description": "Координатор предотвращающий конфликты между модулями"
+    },
+    {
+      "filename": "NEWS_AND_RUMORS_GENERATOR.json",
+      "category": "OTHER",
+      "module_name": "NEWS_AND_RUMORS_GENERATOR",
+      "version": "1.0_MEDIA_SIMULATION",
+      "description": "Процедурная генерация новостей, слухов и медиа-контента"
+    },
+    {
+      "filename": "PROCEDURAL_COORDINATOR.json",
+      "category": "OTHER",
+      "module_name": "PROCEDURAL_COORDINATOR",
+      "version": "1.0_INFINITE_RPG",
+      "description": "Центральный координатор всех систем процедурной генерации, синхронизированный с мировым временем"
+    },
+    {
+      "filename": "REPUTATION_MASTER.json",
+      "category": "OTHER",
+      "module_name": "REPUTATION_MASTER",
+      "version": "3.0_REPUTATION_MASTER",
+      "description": "Стандартизированная репутационная система для всех модулей"
+    },
+    {
+      "filename": "SESSION_LOG.json",
+      "category": "OTHER",
+      "module_name": "SESSION_LOG",
+      "version": "1.0",
+      "description": "Архитектура и правила ведения логов игровой сессии для обеспечения целостности и необратимости истор"
+    },
+    {
+      "filename": "STARTGAME_PROTOCOL_UNIFIED.json",
+      "category": "OTHER",
+      "module_name": "STARTGAME_PROTOCOL_UNIFIED",
+      "version": "1.0",
+      "description": ""
+    },
+    {
+      "filename": "TECHNOLOGY.json",
+      "category": "OTHER",
+      "module_name": "TECHNOLOGY",
+      "version": "1.0",
+      "description": "Модуль, описывающий научный прогресс, дерево технологий, разработку прототипов и связанные с этим иг"
+    },
+    {
+      "filename": "TECH_MALFUNCTION_GENERATOR.json",
+      "category": "OTHER",
+      "module_name": "TECH_MALFUNCTION_GENERATOR",
+      "version": "1.0_PROCEDURAL_TECH",
+      "description": "Система случайных поломок и модификаций технологий"
+    },
+    {
+      "filename": "WORLD_TIME_SYSTEM.json",
+      "category": "OTHER",
+      "module_name": "WORLD_TIME_SYSTEM",
+      "version": "1.0_INFINITE_RPG",
+      "description": "Централизованная система времени для синхронизации всех модулей и процедурной генерации"
+    },
+    {
+      "filename": "balanced_character_presets.json",
+      "category": "OTHER",
+      "module_name": "BALANCED_CHARACTER_PRESETS",
+      "version": "1.0",
+      "description": ""
+    },
+    {
+      "filename": "lore_chronology.json",
+      "category": "OTHER",
+      "module_name": "LORE_CHRONOLOGY",
+      "version": "1.0",
+      "description": ""
+    },
+    {
+      "filename": "11_MEGA_POLITICS_STRATEGY_COMPLETE.json",
+      "category": "POLITICS",
+      "module_name": "11_MEGA_POLITICS_STRATEGY_COMPLETE",
+      "version": "1.0_UNIFIED_COMPREHENSIVE",
+      "description": "Полная система политики и стратегического командования - объединение политических механик, стратегич"
+    },
+    {
+      "filename": "POLITICS.json",
+      "category": "POLITICS",
+      "module_name": "POLITICS",
+      "version": "2.1_RICH_MERGED",
+      "description": "Полное описание модуля политических систем и пропаганды, включающее правила, глоссарий, структуры пр"
+    },
+    {
+      "filename": "STRATEGIC_COMMAND.json",
+      "category": "POLITICS",
+      "module_name": "STRATEGIC_COMMAND",
+      "version": "1.0",
+      "description": "Система управления флотами и ведения масштабных стратегических операций."
+    },
+    {
+      "filename": "08_MEGA_QUEST_INVESTIGATION_COMPLETE.json",
+      "category": "QUEST",
+      "module_name": "08_MEGA_QUEST_INVESTIGATION_COMPLETE",
+      "version": "1.0_UNIFIED_COMPREHENSIVE",
+      "description": "Полная система квестов и расследований - объединение процедурной генерации заданий, стартовых квесто"
+    },
+    {
+      "filename": "INVESTIGATION_V2_GALACTIC_DETECTIVE.json",
+      "category": "QUEST",
+      "module_name": "INVESTIGATION_V2",
+      "version": "2.0_GALACTIC_DETECTIVE",
+      "description": "Комплексная система расследований с интеграцией 160 фракций и космических заговоров"
+    },
+    {
+      "filename": "QUEST_SYSTEM_INFINITE.json",
+      "category": "QUEST",
+      "module_name": "QUEST_SYSTEM_INFINITE",
+      "version": "1.0_INFINITE",
+      "description": "Процедурная система генерации бесконечных квестов для поддержания постоянной активности в песочнице."
+    },
+    {
+      "filename": "SPACE_ENCOUNTER_GENERATOR.json",
+      "category": "QUEST",
+      "module_name": "SPACE_ENCOUNTER_GENERATOR",
+      "version": "1.0_INFINITE_TRAVEL",
+      "description": "Случайные встречи во время космических путешествий"
+    },
+    {
+      "filename": "STARTING_QUESTS_COMPLETE.json",
+      "category": "QUEST",
+      "module_name": "STARTING_QUESTS_COMPLETE",
+      "version": "2.1_UNIFIED_QUESTS",
+      "description": "Полный набор стартовых квестов для всех origins и specializations. Каждый персонаж получает 2-3 квес"
+    },
+    {
+      "filename": "DIALOGUE_INTEGRATED_WITH_LIFEPATH.json",
+      "category": "SOCIAL",
+      "module_name": "DIALOGUE_INTEGRATED_WITH_LIFEPATH",
+      "version": "4.0_LIFEPATH_STYLED",
+      "description": "Полная, многоуровневая система коммуникации с глубокой интеграцией жизненного пути персонажа. Объеди"
+    },
+    {
+      "filename": "NPC_ARCHETYPES.json",
+      "category": "SOCIAL",
+      "module_name": "NPC_ARCHETYPES",
+      "version": "1.0",
+      "description": "База данных из 200 архетипов NPC для создания психологически и социально достоверных персонажей с ун"
+    },
+    {
+      "filename": "NPC_NAME_GENERATOR.json",
+      "category": "SOCIAL",
+      "module_name": "NPC_NAME_GENERATOR",
+      "version": "1.0_PROCEDURAL",
+      "description": "Генератор имен и внешности для процедурных NPC"
+    },
+    {
+      "filename": "NPC_RELATIONS.json",
+      "category": "SOCIAL",
+      "module_name": "NPC_RELATIONS",
+      "version": "2.0_LIFEPATH_INTEGRATED_REPUTATION_EXTERNAL",
+      "description": "Модуль отслеживания и управления ключевыми NPC с полной интеграцией CHARACTER_LIFEPATH и использован"
+    },
+    {
+      "filename": "NPC_RELATIONS_REPUTATION_STANDARDIZED_FINAL.json",
+      "category": "SOCIAL",
+      "module_name": "NPC_RELATIONS_REPUTATION_STANDARDIZED",
+      "version": "3.0_REPUTATION_STANDARDIZED",
+      "description": "Модуль отслеживания ключевых NPC со СТАНДАРТИЗИРОВАННОЙ РЕПУТАЦИОННОЙ СИСТЕМОЙ и интеграцией CHARACT"
+    },
+    {
+      "filename": "VEHICLES.json",
+      "category": "VEHICLES",
+      "module_name": "VEHICLES_COMPREHENSIVE",
+      "version": "2.0_COMPREHENSIVE",
+      "description": "Полная система транспорта и техники: от персональных ховербайков до межзвездных супертанкеров. Охват"
+    },
+    {
+      "filename": "07_MEGA_WORLD_SIMULATION_COMPLETE.json",
+      "category": "WORLD",
+      "module_name": "07_MEGA_WORLD_SIMULATION_COMPLETE",
+      "version": "2.0_WORLD_PLUS_EXPANDED",
+      "description": "Полная симуляция живой вселенной - объединение построения мира, выживания, динамических событий и вр"
+    },
+    {
+      "filename": "DYNAMIC_WORLD.json",
+      "category": "WORLD",
+      "module_name": "DYNAMIC_WORLD",
+      "version": "1.0",
+      "description": "Система динамических изменений мира, генератор глобальных событий и механики реагирования фракций и "
+    },
+    {
+      "filename": "ENVIRONMENT_SURVIVAL.json",
+      "category": "WORLD",
+      "module_name": "ENVIRONMENT_SURVIVAL",
+      "version": "1.0",
+      "description": "Моделирование влияния экстремальных условий на персонажей, включая классификацию сред, основные угро"
+    },
+    {
+      "filename": "FACTIONS_LIFEPATH_SYSTEM.json",
+      "category": "WORLD",
+      "module_name": "FACTIONS_LIFEPATH_SYSTEM",
+      "version": "1.0",
+      "description": "Автоматическая система определения отношений между 140+ фракциями и жизненными путями персонажей чер"
+    },
+    {
+      "filename": "FACTIONS_MASTER.json",
+      "category": "WORLD",
+      "module_name": "FACTIONS_MASTER",
+      "version": "1.0_RECOVERED",
+      "description": "Полная база данных фракций NEXUS — 135 фракций 6 типов"
+    },
+    {
+      "filename": "WORLD_SIM_V2_LIVING_UNIVERSE.json",
+      "category": "WORLD",
+      "module_name": "WORLD_SIM_V2",
+      "version": "2.0_LIVING_UNIVERSE",
+      "description": "Живая симуляция вселенной с полной интеграцией времени и межпланетных отношений"
+    }
+  ]
+}
