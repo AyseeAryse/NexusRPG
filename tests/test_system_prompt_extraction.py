@@ -11,6 +11,7 @@ gameplay.py вызывает без правок), сервис не импор�
 """
 import ast
 import inspect
+import re
 import random
 import subprocess
 import sys
@@ -38,10 +39,11 @@ ROOT = Path(__file__).resolve().parent.parent
 # BASELINE_COMMIT — коммит, где эталонное ТЕЛО промпт-метода последний раз
 # содержало полную логику сборки ('parts = [...]'). После Phase 30 шаг 2 тело
 # живёт в src/ai/system_prompt_service.py (engine.py — делегат), поэтому
-# эталон сравнивается с СЕРВИСОМ, а BASELINE_COMMIT пиннится к шагу 2.
-# Легитимные изменения ТЕКСТА промпта (Phase 31 H3: строка place в [STATE]-шаблоне)
-# нормализуются в _norm_prompt_text ниже; изменение ЛОГИКИ тест ловит автоматически.
-BASELINE_COMMIT = "e88250c"
+# эталон сравнивается с СЕРВИСОМ, а BASELINE_COMMIT пиннится к коммиту с
+# последним документированным изменением текста промпта.
+# История пинов: e88250c (шаг 2) → c20160c (микрошаг 2a: Karmic Dice +
+# Director's Notes перенесены в Service — ожидаемое документированное изменение).
+BASELINE_COMMIT = "c20160c"
 SERVICE_FILE = ROOT / "src" / "ai" / "system_prompt_service.py"
 
 
@@ -98,12 +100,11 @@ def _git_baseline_service_source() -> str:
 
 def _norm_prompt_text(text: str) -> str:
     """Нормализация легитимных документированных правок текста промпта.
-    Phase 31 H3: строка place-инструкции в [STATE]-шаблоне добавлена
-    осознанно — вырезаем её на обеих сторонах сравнения."""
-    marker = "place:"
-    lines = [l for l in text.split("\n")
-             if not (marker in l and "название заведения" in l)]
-    return "\n".join(lines)
+    С BASELINE_COMMIT=c20160c (микрошаг 2a) активных нормализаций нет:
+    baseline содержит и H3 place-строку, и новые секции Karmic Dice /
+    Director's Notes. Функция сохранена как точка расширения для будущих
+    документированных правок текста."""
+    return text
 
 
 def _extract_method_body(source: str, method_name: str,
@@ -136,7 +137,11 @@ def _make_reference_method(engine):
     from src.systems.companions import get_companion_by_id
     from src.content.v5_legacy import UNIQUE_NPCS
     from src.systems import PsychologySystem
+    import random as _random
+    from src.ai.prompt_builder import KARMIC_DICE_OUTCOMES as _KDO
     ns.update({
+        "random": _random,  # Service.build использует random в Karmic Dice fallback
+        "KARMIC_DICE_OUTCOMES": _KDO,  # микрошаг 2a: секция Karmic Dice в baseline
         "get_chain_stage": get_chain_stage,
         "get_companion_by_id": get_companion_by_id,
         "UNIQUE_NPCS": UNIQUE_NPCS,
@@ -186,6 +191,8 @@ def test_system_prompt_output_identical_to_baseline_body(engine):
         mech_result=None,
         subsystem_result=None,
     )
+    # karmic_roll фиксирован (2a: fallback random при None дал бы разные броски)
+    engine.state.last_karmic_roll = 5
     out_delegate = engine._build_system_prompt(**args)
     out_reference = reference(
         **args,
@@ -206,6 +213,9 @@ def test_system_prompt_service_direct_call_matches_delegate(engine):
     args = dict(action="Проверяю консистентность сервиса",
                 dice_result=None, mech_result=None, subsystem_result=None)
 
+    # karmic_roll фиксирован: с 2a Service.build роллит при None — без фиксации
+    # два вызова дали бы разные броски (легитимно, но идентичность не проверить)
+    engine.state.last_karmic_roll = 3
     out_delegate = engine._build_system_prompt(**args)
     out_service = svc.build(
         **args,
@@ -213,6 +223,58 @@ def test_system_prompt_service_direct_call_matches_delegate(engine):
         active_companions=engine.active_companions,
     )
     assert out_delegate == out_service
+
+
+# ═══════════════════════════════════════════════════════════════
+# 2b. Микрошаг 2a: фиксация состава/текста новых секций промпта
+# ═══════════════════════════════════════════════════════════════
+
+def test_karmic_dice_section_content_pinned(engine):
+    """Микрошаг 2a: фиксирую ТОЧНЫЙ текст Karmic Dice-секции в промпте.
+    Не просто 'секция есть', а её состав: заголовок, формат строки броска,
+    инструкция скрытности, диапазон 1-6."""
+    import re
+    sp = engine._build_system_prompt("Осматриваюсь в баре")
+    assert "СЕКЦИЯ 3: СКРЫТЫЕ БРОСКИ (Karmic Dice 1d6)" in sp
+    m = re.search(r"Бросок \(1d6\): (\d+) → ([^\n]+)", sp)
+    assert m, "строка броска не соответствует формату 'Бросок (1d6): N → <исход>'"
+    roll = int(m.group(1))
+    assert 1 <= roll <= 6
+    assert m.group(2).strip(), "исход броска пуст"
+    assert ("Используй этот скрытый маркер для тонкой детали в сцене, "
+            "не объясняя игроку.") in sp
+
+
+def test_director_notes_section_content_pinned(engine):
+    """Микрошаг 2a: фиксирую структуру Director's Notes: заголовок секции,
+    содержимое из to_director_notes(), fallback-строка при пустом профиле."""
+    sp = engine._build_system_prompt("Осматриваюсь в баре")
+    tp = engine.state.tone_profile
+    assert "СЕКЦИЯ 2: РЕЖИССЁРСКИЙ БРИФ (тон, голос, атмосфера)" in sp
+    notes = tp.to_director_notes()
+    assert notes and notes in sp, "to_director_notes() не вошёл в промпт дословно"
+    # Порядок секций: Identity → Director's Notes → Karmic Dice → [STATE]
+    order = [sp.find(x) for x in ("# ТЫ — ИИ ГМ", "РЕЖИССЁРСКИЙ БРИФ",
+                                   "СКРЫТЫЕ БРОСКИ", "[STATE] БЛОК")]
+    assert all(x >= 0 for x in order), f"секция не найдена: {order}"
+    assert order == sorted(order), f"порядок секций нарушен: {order}"
+
+
+def test_karmic_dice_source_is_state_last_roll(engine):
+    """Источник karmic_roll = state.last_karmic_roll (тот же, что кладёт
+    build_action_meta), fallback random 1d6 — тот же контракт, что был
+    в prompt_builder.build."""
+    import random as _r
+    eng = engine
+    eng.state.last_karmic_roll = 4
+    sp = eng._build_system_prompt("act")
+    assert "Бросок (1d6): 4 →" in sp
+    # fallback при None
+    eng.state.last_karmic_roll = None
+    _r.seed(7)
+    sp2 = eng._build_system_prompt("act")
+    m = re.search(r"Бросок \(1d6\): (\d+)", sp2)
+    assert m and 1 <= int(m.group(1)) <= 6
 
 
 # ═══════════════════════════════════════════════════════════════
