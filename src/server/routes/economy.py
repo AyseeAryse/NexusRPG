@@ -425,6 +425,31 @@ def _load_vehicles_catalog() -> list:
         print(f"[WARN] VEHICLES.json not loaded: {e}")
         return []
     subtypes = (data.get("transportation_types", {}).get("spacecraft", {}) or {}).get("subtypes", {})
+    # Phase 31 H4: переводы сырых EN-значений каталога на русский.
+    SUBTYPE_RU = {
+        "personal_spacecraft": "личный транспорт",
+        "commercial_spacecraft": "коммерческий транспорт",
+        "industrial_spacecraft": "промышленный транспорт",
+        "exploration": "исследовательский",
+        "exploration_craft": "исследовательский",
+        "military_spacecraft": "военный корабль",
+    }
+    CATEGORY_RU = {
+        "civilian": "гражданский",
+        "commercial": "коммерческий",
+        "industrial": "промышленный",
+        "military": "военный",
+        "luxury": "люкс",
+        "utility": "утилитарный",
+    }
+    def _ru(value: str, mapping: dict) -> str:
+        if not value or not isinstance(value, str):
+            return value or ""
+        v = value.strip().lower()
+        for key, ru in mapping.items():
+            if key in v:
+                return ru
+        return value
     result = []
     for st, models in subtypes.items():
         if not isinstance(models, list):
@@ -434,8 +459,8 @@ def _load_vehicles_catalog() -> list:
                 continue
             result.append({
                 "name": m.get("name", "?"),
-                "ship_class": m.get("class", st),
-                "category": m.get("category", st),
+                "ship_class": _ru(m.get("class", st), SUBTYPE_RU),
+                "category": _ru(m.get("category", st), CATEGORY_RU),
                 "price": m.get("price", 0),
                 "engine": m.get("power_source", ""),
                 "range": m.get("range", m.get("operation_range", "")),

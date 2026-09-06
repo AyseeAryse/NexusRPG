@@ -276,6 +276,7 @@ class SystemPromptService:
             '"combat_started":false,"combat_ended":false,"time_minutes":15,"xp_gained":0}[/STATE]',
             "hp_change: урон отрицат./лечение полож. | credits_change: +получил/-потратил",
             'location: {"planet":"X","city":"Y","district":"Z"} если перешёл, null если нет',
+            'place: "название заведения" если игрок вошёл в конкретное место района (магазин, бар, таможня), иначе null. Пример: {"planet":"Ганимед","city":"Станция Юпитер-Прайм","district":"Торговые палубы","place":"Таможенный пост"}',
             'add_items: [{"name":"X","qty":1}] | remove_items: ["X"] | npc_met: "Имя" | time: 5-120мин | xp: 0-50',
         ]
 

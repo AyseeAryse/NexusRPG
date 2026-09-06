@@ -407,6 +407,15 @@ class GameEngine:
             origin_id=preset.get("lifepath", {}).get("origin", ""),
         )
         self._set_starting_location(preset.get("lifepath", {}).get("origin", ""))
+        # Phase 31 H1: preset-путь не строил ToneProfile (в отличие от
+        # create_custom_character) → state.tone_profile оставался None →
+        # start_game → apply_scene_context(None) падал с
+        # "'NoneType' object has no attribute 'scale_level'". Строим здесь.
+        try:
+            self.state.tone_profile = self.tone_engine.build_character_tone(self.state.character)
+        except Exception as e:
+            print(f"[Engine] ToneEngine build_character_tone failed: {e}")
+            self.state.tone_profile = None
         return self.state.character
 
     # Phase 28 F2: архетипные стартовые наборы. Ключи — маркеры в id специализации
@@ -1243,6 +1252,25 @@ class GameEngine:
                                   .get("districts", {}).keys())
             if city_districts:
                 fixed["district"] = fix(fixed.get("district"), city_districts)
+        # Phase 31 H3: place (заведение) канонизируем против establishments района.
+        # Модель может прислать place из [STATE].location — если он совпадает с
+        # известным заведением района (fuzzy), канонизируем; неизвестное место
+        # обнуляем (нельзя «войти» в заведение не из текущего района через текст).
+        if "place" in fixed and fixed.get("place"):
+            gm = getattr(self, "galaxy_map", None)
+            if gm is not None:
+                try:
+                    ests = gm.list_establishments(
+                        fixed.get("planet", self.state.current_location.get("planet", "")),
+                        fixed.get("city", self.state.current_location.get("city", "")),
+                        fixed.get("district", self.state.current_location.get("district", "")),
+                    ) or []
+                except Exception:
+                    ests = []
+                names = [est.get("name") if isinstance(est, dict) else str(est) for est in ests]
+                fixed["place"] = fix(fixed.get("place"), names)
+                if fixed["place"] not in names:
+                    fixed["place"] = ""  # несуществующее заведение — сброс
         return fixed
 
     # Regex телеметрии: [HP: +5], [HEAT: -2], [TIME: +3ч], [CREDITS: ±N],
@@ -1262,8 +1290,7 @@ class GameEngine:
         r"^\s*(?:#+\s*)?\*{0,2}\d\s*[).—-]\s*"
         r"(?:НАРРАТИВ|МЕХАНИЧЕСКИЕ\s+ИЗМЕНЕНИЯ|ЗАГОЛОВОК\s+ВЫБОРА|ПРОНУМЕРОВАННЫХ\s+ВАРИАНТОВ"
         r"|ВАРИАНТЫ\s+ДЕЙСТВИЙ|SВОБОдНЫЙ\s+ВВОД|СВОБОДНЫЙ\s+ВВОД|7-Й\s+ВАРИАНТ"
-        r"|СТРУКТУРА\s+ОТВЕТА)"
-        r"\*{0,2}\s*[:—-]?\s*$",
+        r"|СТРУКТУРА\s+ОТВЕТА)\b[^\n]*$",
         re.MULTILINE | re.IGNORECASE,
     )
     # Phase 28 F1: сырые markdown-блоки ```json ... ``` и ``` ... ```

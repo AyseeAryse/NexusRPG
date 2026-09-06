@@ -1511,6 +1511,17 @@ function renderCharacterPanel(container) {
     html += '<div class="char-info-block">';
     if (c.origin_name) html += `<div class="char-info-row"><span class="char-info-label">Происхождение</span><span class="char-info-val">${c.origin_name}</span></div>`;
     if (c.specialization_name || c.class) html += `<div class="char-info-row"><span class="char-info-label">Специализация</span><span class="char-info-val">${c.specialization_name || c.class}</span></div>`;
+    // Phase 31 H5: принадлежность — фракция с максимальной репутацией или «независимый агент»
+    const _rels = (gameState && gameState.faction_relations) || [];
+    if (_rels.length) {
+        const best = _rels.reduce((a, b) => (b.standing > a.standing ? b : a));
+        const affil = best.standing >= 15
+            ? `${best.name} (репутация ${best.standing > 0 ? '+' : ''}${best.standing})`
+            : `Независимый агент (лучшая репутация: ${best.name} ${best.standing > 0 ? '+' : ''}${best.standing})`;
+        html += `<div class="char-info-row"><span class="char-info-label">Принадлежность</span><span class="char-info-val">${affil}</span></div>`;
+    } else {
+        html += `<div class="char-info-row"><span class="char-info-label">Принадлежность</span><span class="char-info-val">Независимый агент</span></div>`;
+    }
     if (c.age) html += `<div class="char-info-row"><span class="char-info-label">Возраст</span><span class="char-info-val">${c.age}</span></div>`;
     html += `<div class="char-info-row"><span class="char-info-label">Уровень</span><span class="char-info-val">${c.level || 1}</span></div>`;
     // Phase 28 F5: прогресс уровня + кнопка прокачки при накопленных очках
@@ -1572,15 +1583,23 @@ function renderCharacterPanel(container) {
 
     // Phase 28 F5: показываем ВСЕ навыки мира — нулевые приглушённо (ветки развития видны)
     html += '<div class="panel-section-title">НАВЫКИ</div><div class="skill-list">';
+    // Phase 31 H6: прокачка навыков существует (кнопка «⬆ Повысить» при свободных очках,
+    // механика spendSkillPoint + endpoint). Строки навыков теперь кликабельны — открывают
+    // панель прокачки, чтобы механизм был обнаружим в UI.
     const skillEntries = Object.entries(c.skills || {}).sort((a, b) => b[1] - a[1]);
+    const canLevelUpHint = (c.unspent_skill_points || 0) > 0 || (c.unspent_attribute_points || 0) > 0;
     for (const [k, v] of skillEntries) {
+        const title = canLevelUpHint
+            ? 'title="Есть свободные очки — нажмите, чтобы распределить"'
+            : 'title="Очки навыков появляются при росте уровня"';
         if (v > 0) {
-            html += `<div class="skill-item"><span class="skill-name">${skillLabel(k)}</span><span class="skill-val">${v}</span></div>`;
+            html += `<div class="skill-item" style="cursor:pointer" ${title} onclick="openLevelUpPanel()"><span class="skill-name">${skillLabel(k)}</span><span class="skill-val">${v}</span></div>`;
         } else {
-            html += `<div class="skill-item skill-zero"><span class="skill-name">${skillLabel(k)}</span><span class="skill-val">0</span></div>`;
+            html += `<div class="skill-item skill-zero" style="cursor:pointer" ${title} onclick="openLevelUpPanel()"><span class="skill-name">${skillLabel(k)}</span><span class="skill-val">0</span></div>`;
         }
     }
     html += '</div>';
+    html += `<div style="font-size:0.75em;color:var(--text2);margin:4px 0 8px">Нажмите на навык, чтобы открыть панель прокачки${canLevelUpHint ? ' — есть свободные очки!' : ''}.</div>`;
 
     // Extras: psychology, skill points, perks
     html += renderCharacterPanelExtras();
@@ -1632,6 +1651,11 @@ async function renderInventoryPanel(container) {
                     actionBtns = it.equipped
                         ? `<button class="btn-sell" style="background:#5a4a2a" onclick="equipItem('${nm}', 'unequip')">Снять</button>`
                         : `<button class="btn-sell" style="background:#2a4a5a" onclick="equipItem('${nm}', 'equip')">Экипировать</button>`;
+                } else {
+                    // Phase 31 H8: tool-предметы (лабораторный набор, анализатор, журнал) —
+                    // scene-items по дизайну: применяются автоматически в сценах сканирования/
+                    // расследования. Показываем пояснение вместо «мёртвой» кнопочной зоны.
+                    actionBtns = `<span style="font-size:0.72em;color:var(--text2);max-width:150px;text-align:right" title="Этот инструмент применяется автоматически в подходящих сценах (сканирование, расследование, взлом)">инструмент для сцен</span>`;
                 }
                 html += `<div class="shop-item">
                     <div class="shop-item-info">
@@ -3319,6 +3343,29 @@ function closeModal() {
 }
 
 // Datasheet корабля: полные ТТХ + покупка
+// Phase 31 H4: подписи единиц для ТТХ корабля.
+// Скорость «0.08c» — доля скорости света; добавляем человекочитаемую подпись.
+function fmtShipSpeed(v) {
+    if (v === null || v === undefined || v === '') return '?';
+    const s = String(v);
+    const m = s.match(/^([\d.]+)\s*c$/i);
+    if (m) {
+        const frac = parseFloat(m[1]);
+        if (!isNaN(frac) && frac > 0) {
+            // оценочное время перелёта Земля → Проксима (4.24 св. года) при постоянной скорости
+            const years = 4.24 / frac;
+            const note = years >= 1 ? `≈${years.toFixed(1)} св. лет от Земли до Проксимы` : 'околосветовая';
+            return `${s} c (${frac * 100}% скорости света; до Проксимы ${note})`;
+        }
+        return `${s} (доля скорости света)`;
+    }
+    return s;
+}
+// Трюм: единый стандарт системы корабля — «ед. груза» (внутренние слоты груза, как в cargo/load).
+function fmtShipCargo(v) {
+    if (v === null || v === undefined || v === '') return '?';
+    return `${v} ед. груза`;
+}
 function showShipDatasheet(index) {
     const s = (window._shipCatalog || [])[index];
     if (!s) { showToast('Данные корабля недоступны', 'error'); return; }
@@ -3329,11 +3376,11 @@ function showShipDatasheet(index) {
         ${row('Класс', s.ship_class)}
         ${row('Двигатель', s.engine)}
         ${row('Дальность прыжка', s.range)}
-        ${row('Макс. скорость', s.max_speed)}
+        ${row('Макс. скорость', fmtShipSpeed(s.max_speed))}
         ${row('Корпус', s.hull)}
         ${row('Броня', s.armor)}
         ${row('Щиты', s.shields)}
-        ${row('Трюм', s.cargo_capacity || s.capacity)}
+        ${row('Трюм', fmtShipCargo(s.cargo_capacity || s.capacity))}
         ${row('Экипаж', s.crew)}
         ${s.features?.length ? `<div style="margin-top:10px"><b>Особенности:</b><ul style="margin:4px 0 0 18px;padding:0">${s.features.map(f => `<li>${f}</li>`).join('')}</ul></div>` : ''}
         <div style="margin-top:12px;font-size:1.15em;color:var(--accent,#0ff)">₡${(s.price || 0).toLocaleString('ru-RU')}</div>`;

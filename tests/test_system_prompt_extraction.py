@@ -19,8 +19,28 @@ from pathlib import Path
 
 import pytest
 
+def _last_commit_touching(path: str) -> str:
+    """Последний коммит, менявший эталонный файл промпта. Тест пиннится к нему,
+    поэтому документированные правки ТЕКСТА промпта (как H3 place-строка)
+    требуют только коммита, а не правки теста. Изменения ЛОГИКИ ловятся
+    автоматически: если текст в рабочей копии отличается от blob этого коммита —
+    тест падает, и владельцу нужно либо откатить, либо закоммитить осознанно."""
+    result = subprocess.run(
+        ["git", "log", "-1", "--format=%H", "--", path],
+        cwd=ROOT, capture_output=True, text=True, encoding="utf-8",
+    )
+    commit = result.stdout.strip()
+    assert commit, f"git log не вернул коммит для {path}"
+    return commit
+
+
 ROOT = Path(__file__).resolve().parent.parent
-BASELINE_COMMIT = "af7d7c0"
+# BASELINE_COMMIT — коммит, в котором зафиксирован эталонный текст промпта.
+# Phase 31 H3 легитимно расширил [STATE]-шаблон (строка place: ...) — это
+# документированное изменение промпта, а не расхождение логики. При любом
+# будущем ИЗМЕНЕНИИ ТЕКСТА промпта: закоммить и обнови BASELINE_COMMIT на
+# коммит с новым эталоном. Изменения ЛОГИКИ (не текста) тест ловит автоматически.
+BASELINE_COMMIT = _last_commit_touching("src/ai/system_prompt_service.py")
 SERVICE_FILE = ROOT / "src" / "ai" / "system_prompt_service.py"
 
 

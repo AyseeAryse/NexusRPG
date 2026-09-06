@@ -259,6 +259,8 @@ class WorldSimulator:
         self.instability: int = 30  # 0-100, higher = more events
         self.turn_count: int = 0
         self.last_notable_turn: int = -10  # backlog#5: кулдаун форс-упоминаний
+        self._atmosphere_cache: str = ""  # Phase 31 H7: атмосфера обновляется раз в ~10 тиков
+        self._atmosphere_turn: int = -999  # тик последней генерации атмосферы
 
     def tick(self, game_time: Dict, location: Dict, tier: int,
              notable_factions: Optional[List[str]] = None,
@@ -268,8 +270,19 @@ class WorldSimulator:
         backlog#5: notable_factions — фракции игрока с rep>=40; новость может
         принудительно упомянуть одну из них (шанс 33%, кулдаун 10 ходов)."""
         self.turn_count += 1
+        # Phase 31 H7: атмосфера — периодическая фоновая деталь, а не ежеходовая.
+        # Регенерируем раз в 10 тиков (или при смене локации, кэш пуст); между
+        # обновлениями возвращаем сохранённый текст.
+        location_key = f"{location.get('planet','')}|{location.get('city','')}|{location.get('district','')}"
+        if not hasattr(self, "_atmosphere_loc_key"):
+            self._atmosphere_loc_key = location_key
+        location_changed = location_key != self._atmosphere_loc_key
+        if (self.turn_count - self._atmosphere_turn) >= 10 or location_changed or not self._atmosphere_cache:
+            self._atmosphere_cache = self._generate_atmosphere(game_time, location)
+            self._atmosphere_turn = self.turn_count
+            self._atmosphere_loc_key = location_key
         result = {
-            "atmosphere": self._generate_atmosphere(game_time, location),
+            "atmosphere": self._atmosphere_cache,
             "background_npcs": self._generate_background(location),
             "news": [],
             "rumors": [],
