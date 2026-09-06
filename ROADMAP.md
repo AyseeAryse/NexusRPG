@@ -1,16 +1,18 @@
 # NexusRPG Roadmap
 
-## Статус проекта (снимок на 2026-09-05, после Phase 30 шаг 1 — вынос _world_tick)
-- Pytest: **198 passed, 1 skipped** (вкл. 7 регрессионных Phase 29 + 5 тестов выноса _world_tick)
-- `engine.py` — 2681 строк, `world_tick_service.py` — 126 строк (новый сервис)
+## Статус проекта (снимок на 2026-09-05, после Phase 30 шаг 2 — вынос _build_system_prompt)
+- Pytest: **206 passed, 1 skipped** (вкл. 7 регрессионных Phase 29 + 5 выноса _world_tick + 4 git-history + 4 выноса _build_system_prompt)
+- `engine.py` — 2484 строк (с 2740 в pre-Phase30: −197 шаг 2, −256 суммарно), `world_tick_service.py` — 126 строк, `system_prompt_service.py` — 282 строки (новый)
 - Playwright E2E (live, headless Chromium): **14/14 asserts, 0 console errors, 0 bad API**
 - Контракт game_data: **76 файлов, 0 нарушений**
-- Горячие точки (через `wc -l`):
-  1. `static/js/app.js` — 3318 lines (клиентский монолит)
-  2. `src/core/engine.py` — **2740 lines** (центральный движок)
+- Горячие точки (через `wc -l`, актуальные на коммит `e88250c`):
+  1. `static/js/app.js` — **3345 lines** (без изменений с `af7d7c0`, проверено `git log --all -- static/js/app.js` — единственный коммит; диск == git = 3345)
+  2. `src/core/engine.py` — **2484 lines** (центральный движок)
   3. `src/systems/combat.py` — 1086 lines (боевая система)
   4. `src/content/v4_legacy.py` — 836 lines (legacy-контент)
   5. `src/server/app.py` — 184 lines (фабрика Flask)
+
+> **Правило синхронизации**: `ROADMAP.md` — обязательная часть определения «готово» для любой задачи (правка `wc -l`, статуса проекта, журнала изменений и при необходимости реестра долгов должна быть в коммите, а не отдельным шагом «по запросу»). Сверка `wc -l` против `git show <commit>:<file> | wc -l` — обязательный шаг перед отчётом.
 
 ### Phase 27 R-fix (2026-09-05) — 7 исправлений UX и разрыва механик ✅ DONE
 1. **R1 — Мгновенное использование расходников**: `POST /api/inventory/use` (item_name/item_id) — детерминированная механика БЕЗ LLM: лечение по формуле каталога (2d6+2 для стимпака), списание, `{
@@ -73,6 +75,15 @@ Zero-Bloat Rule соблюдён: весь новый код — в изолир
 - **Осознанный архитектурный компромисс**: `get_player_tier` передаётся **колбэком** (bound-метод `GameEngine.get_player_influence_tier`) — сервис сохраняет транзитивную зависимость от property/ship через этот колбэк. Сервис НЕ полностью изолирован от движка; полное устранение требует выноса `compute_player_tier`-логики в отдельный сервис — **принятое решение**, не забытый долг.
 - **Сопутствующее изменение вне исходного scope**: `tests/test_backlog5_news_fame.py::eng_like` — стаб собирает движок через `GameEngine.__new__` (мимо `__init__`), после выноса ему потребовался `world_tick_service`; стаб дополнен созданием сервиса с теми же заглушками. Вызвано необходимостью, не самовольным расширением.
 - **Верификация**: pytest **198 passed, 1 skipped** (+5); E2E Playwright 14/14; routes/*.py не потребовали правок (подтверждено grep-обходом и E2E).
+- **Закрытие аудита Phase 30 шаг 1 (коммит `98bcf25`)**: ручная копия `_legacy_world_tick` заменена в тестах на РЕАЛЬНОЕ извлечение тела метода из `git show af7d7c0:src/core/engine.py` (AST-извлечение тела, AST-сравнение с известными легитимными нормализациями: `engine`→`self`, `get_player_influence_tier`↔`_get_player_tier` → `<tier_callback>`, вырезание импортов на любой глубине дерева, docstring не логика). Новый файл `tests/test_git_history_extraction.py` (244 строки, 4 теста): (1) `test_baseline_world_tick_body_is_delegate` — baseline-тело _world_tick ровно `return self.world_tick_service.tick()`; (2) `test_service_tick_body_identical_to_baseline` — тело сервиса побайтово = тело в baseline; (3) `test_legacy_copy_matches_service_logic_ast` — _legacy_world_tick (ручная копия) ↔ WorldTickService.tick() по AST-дампам; (4) `test_legacy_copy_matches_documented_reconstruction` — _legacy_world_tick ⊆ `docs/world_tick_reconstruction.py.txt`. **Архивация**: `_audit/engine_inventory.md` (490 строк) и `_audit/world_tick_body_pre_phase30_reconstructed.py.txt` (80 строк) перенесены в `docs/engine_inventory.md` и `docs/world_tick_reconstruction.py.txt` (`.gitignore: _audit/` остался, но `docs/` не игнорируется). Зафиксировано в коммите `98bcf25` (3 файла: 2 документа + 1 тест, 814 insertions).
+
+### Phase 30 шаг 2 (2026-09-05) — вынос _build_system_prompt в SystemPromptService ✅ DONE
+- **Новый файл**: `src/ai/system_prompt_service.py` (282 строки). Положен в `src/ai/` рядом с `prompt_builder.py` (не дублирует `SystemPromptBuilder` — builder строит мета-инструкции формата, service собирает полный системный промпт). Класс `SystemPromptService` получает через конструктор: state, kb, combat_engine, galaxy_map, hacking, investigation, companions, ship, property, world_effects (10 подсистем) + 2 колбэка: `get_player_tier` (bound-метод `GameEngine.get_player_influence_tier`) и `format_game_time` (bound-метод `GameEngine._format_game_time`); `active_chain` / `active_companions` (engine-поля, не подсистемы) — read-only аргументы `build()` при каждом вызове. DI-паттерн с колбэками — осознанный компромисс, зафиксирован ещё в шаге 1; новых транзитивных зависимостей не вводится.
+- **engine.py**: 2681 → **2484 строк** (−197 в этом шаге, −256 суммарно с шага 1); `_build_system_prompt` стал тонким делегатом (11 строк), `system_prompt_service` создаётся в `__init__` после `world_tick_service`. Сигнатура `(self, action: str, dice_result: Optional[Dict] = None, mech_result: Optional[Dict] = None, subsystem_result: Optional[Dict] = None) -> str` НЕ изменилась; **routes/gameplay.py НЕ тронут** — гейт по сигнатуре не сработал, файлов в diff 3, не 4.
+- **Красная линия соблюдена**: сервис не импортирует `src.server.*` (AST-проверка в тесте); единственные модульные импорты — `src.systems.quests.get_chain_stage`, `src.systems.companions.get_companion_by_id`, `src.content.v5_legacy.UNIQUE_NPCS`, `src.systems.PsychologySystem`.
+- **Тест идентичности (без ручной перепечатки)**: `test_system_prompt_output_identical_to_baseline_body` исполняет РЕАЛЬНОЕ тело метода из `git show af7d7c0:src/core/engine.py` через AST-извлечение тела + `exec` в контролируемом namespace (module-level зависимости инжектируются явно); сравнение **посимвольное** (`assert out_delegate == out_reference`, Python `str.__eq__`) на фиксированном тестовом состоянии (персонаж HACKER-архетипа, репутация Genesis Bioworks 55, инвентарь с оружием, активный квест, action="Осматриваюсь в баре").
+- **Тесты**: `tests/test_system_prompt_extraction.py` (191 строка, 4 теста): сигнатура, посимвольная идентичность с baseline-телом, прямой `service.build()` ↔ делегат, нет `src.server.*` импортов.
+- **Верификация**: pytest **206 passed, 1 skipped** (+4 git-history из шага 1 закрытия, +4 system-prompt из шага 2); live-проверка сервера после перезапуска на финальном коде коммита `e88250c` → HTTP 200.
 
 ## Фазы
 
@@ -161,7 +172,8 @@ Zero-Bloat Rule соблюдён: весь новый код — в изолир
 
 ## Журнал изменений
 
-- **2026-09-05 — Phase 30 шаг 1**: `_world_tick` (78 строк, 8 подсистем) вынесен в `src/world/world_tick_service.py` (DI, 126 строк); `engine.py` 2740 → 2681; делегат с неизменной сигнатурой `() -> Dict`; 5 тестов (сигнатура/делегирование/идентичность с pre-refactor телом/verbatim-возврат/нет src.server-импортов); компромисс: `get_player_tier` колбэком. pytest 198 passed; E2E 14/14. Попутно закрыт регресс questContact/questAbandon (R2-splice удалил функции при живом onclick) + E2E-ассерт 5.9.
+- **2026-09-05 — Phase 30 шаг 2**: `_build_system_prompt` (227 строк, 10 подсистем) вынесен в `src/ai/system_prompt_service.py` (DI, 282 строки; 10 subsystem + 2 колбэка); `engine.py` 2681 → 2484 (−197), сигнатура делегата `(self, action, dice_result, mech_result, subsystem_result) -> str` неизменна, `routes/gameplay.py` не тронут. 4 теста в `tests/test_system_prompt_extraction.py`, включая **посимвольную** идентичность с baseline-телом из `git show af7d7c0` (AST-извлечение + exec, без ручной перепечатки). pytest 206 passed (+4).
+- **2026-09-05 — Phase 30 шаг 1**: `_world_tick` (78 строк, 8 подсистем) вынесен в `src/world/world_tick_service.py` (DI, 126 строк); `engine.py` 2740 → 2681; делегат с неизменной сигнатурой `() -> Dict`; 5 тестов (сигнатура/делегирование/идентичность с pre-refactor телом/verbatim-возврат/нет src.server-импортов); компромисс: `get_player_tier` колбэком. pytest 198 passed; E2E 14/14. Попутно закрыт регресс questContact/questAbandon (R2-splice удалил функции при живом onclick) + E2E-ассерт 5.9. **Закрытие аудита (коммит `98bcf25`)**: ручная копия `_legacy_world_tick` заменена в тестах на реальное извлечение тела из `git show`; инвентаризация и реконструкция заархивированы в `docs/` (4 новых теста в `tests/test_git_history_extraction.py`; коммит `98bcf25`: 2 doc + 1 test).
 - **2026-09-05 — Phase 29 G-fix**: слот-классификация по магазинному каталогу + Экипировать/Снять; [STATE]-срез больше не убивает варианты выбора; ассортимент магазина по заведениям (needs_place_selection); visitPlace → /api/map/enter с фиксацией места и реакцией окружения; слухи по профессии/локации, SCIENTIFIC → Genesis Bioworks; тултипы тулбара. 193 passed (+7 регрессионных); E2E 14/14.
 - **2026-09-05 — Phase 28 F-fix**: 6 исправлений живого плейтеста — зачистка ```json и инструкций промпта, стартовые наборы всех архетипов (фикс SPEC_-префикса), город Станция Юпитер-Прайм + фоллбэк радара, локализация времени суток, все навыки в листе + level-up кнопка, нарративная обёртка кубов с тумблером 🎲. 186 passed; E2E 14/14.
 - **2026-09-05 — Phase 4 — Киберпанк-HUD**: терминальный UI (CRT/палитры/ASCII), доска контрактов с Dual-Path и циклом взять/сдать, SVG-радар района. Модули: terminal_hud.css, hud_terminal.js, contracts_board.js, district_map.js; app.js +5 строк. E2E 14/14; pytest 186 passed.
