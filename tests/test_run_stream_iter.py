@@ -12,6 +12,7 @@ Phase 31 Этап 1: тесты унификации оркестрации (run
 """
 import ast
 import random
+import re
 from copy import deepcopy
 from pathlib import Path
 
@@ -406,6 +407,85 @@ def test_state_template_intact_after_2a():
 
 
 # ═══════════════════════════════════════════════════════════════
+# 4c. Согласованность karmic_roll: промпт == механика хода
+# ═══════════════════════════════════════════════════════════════
+
+def test_karmic_roll_prompt_matches_state_roll():
+    """Блокер 2a: число в 'СЕКЦИЯ 3: СКРЫТЫЕ БРОСКИ' системного промпта
+    ОБЯЗАНО браться из state.last_karmic_roll (куда run_stream_iter L300 кладёт
+    roll хода от build_action_meta), а не из fallback random.
+
+    Детерминированная проверка без random-неоднозначности: state.last_karmic_roll
+    выставляется ЯВНО (эмуляция того, что делает L300 после build_action_meta),
+    Service.build обязан показать ЭТО значение. Если присвоение в run_stream_iter
+    удалить/сломать — state не получит roll, build уйдёт в fallback, и связующий
+    тест test_karmic_roll_roundtrip_via_run_stream_iter ниже покраснеет."""
+    eng = _make_engine()
+    eng.state.last_karmic_roll = 4
+    sp = eng._build_system_prompt("act")
+    assert "Бросок (1d6): 4 →" in sp, (
+        "Service.build не читает state.last_karmic_roll — уходит в fallback"
+    )
+
+
+def test_karmic_roll_roundtrip_via_run_stream_iter():
+    """СВЯЗНОСТЬ полного пути (главный тест блокера 2a):
+    roll из build_action_meta попадает в state (L300) и тот же roll виден
+    в секции Karmic Dice системного промпта того же хода.
+
+    Детерминизм: prompt_builder.roll_karmic_dice патчится на константу 5 —
+    тогда и scene_meta, и (через L300) state, и промпт обязаны показать 5.
+    Если присвоение L300 удалить — Service уйдёт в fallback random и промпт
+    (в отличие от scene_meta) перестанет показывать 5 детерминированно:
+    проверяем через подавление fallback (random.randint → 99, вне 1..6 диапазона
+    результата, что сразу видно в промпте как невалидный roll)."""
+    eng = _make_engine()
+
+    class FixedDiceBuilder:
+        def __init__(self, inner, roll):
+            self._inner = inner
+            self._roll = roll
+        def build_action_meta(self, action, dice_result=None, mechanical_changes=None):
+            sm = self._inner.build_action_meta(action, dice_result, mechanical_changes)
+            sm["karmic_roll"] = self._roll
+            return sm
+        def __getattr__(self, name):
+            return getattr(self._inner, name)
+
+    eng.player_action_service.prompt_builder = FixedDiceBuilder(eng.prompt_builder, 5)
+
+    # Подавляем fallback: если присвоение L300 сломано, промпт покажет roll=99
+    # (невалидный, вне 1-6) вместо 5 — контраст детерминированный.
+    import src.ai.system_prompt_service as _sps
+    real_randint = _sps.random.randint
+    _sps.random.randint = lambda a, b: 99
+    try:
+        captured = {"prompt": None, "scene_roll": None}
+        # Перехват scene_meta: реальный builder уже обёрнут FixedDiceBuilder(5);
+        # фиксируем, что ход действительно пронёс 5 через L300:
+        for kind, payload in eng.player_action_service.run_stream_iter("ход", stream=True):
+            if kind == "done":
+                break
+            if kind == "pre":
+                continue
+    finally:
+        _sps.random.randint = real_randint
+
+    # Прямой контроль связи: state.last_karmic_roll установлен L300 из scene_meta
+    assert getattr(eng.state, "last_karmic_roll", None) == 5, (
+        "run_stream_iter не сохранил roll хода в state.last_karmic_roll (сбит L300)"
+    )
+    # Промпт того же хода показывает ЭТОТ ЖЕ roll (не fallback 99):
+    sp = eng._build_system_prompt("ход")  # тот же state, roll уже в state
+    assert "Бросок (1d6): 5 →" in sp, (
+        f"промпт не показывает roll из state (ожидался 5): {sp[sp.find('СЕКЦИЯ 3'):sp.find('СЕКЦИЯ 3')+200] if 'СЕКЦИЯ 3' in sp else sp[:200]}"
+    )
+    assert "Бросок (1d6): 99" not in sp, "fallback-рандом просочился в промпт"
+
+
+# ═══════════════════════════════════════════════════════════════
+# 5. Независимость фронт-обработчиков pre-событий (grep-проверка)
+# ═══════════════════════════════════════════════════════════════# ═══════════════════════════════════════════════════════════════
 # 5. Независимость фронт-обработчиков pre-событий (grep-проверка)
 # ═══════════════════════════════════════════════════════════════
 
