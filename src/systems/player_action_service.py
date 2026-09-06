@@ -319,12 +319,22 @@ class PlayerActionService:
         # ═══ LLM-фаза: единственное ветвление — источник полного текста ═══
         if stream:
             buf = []
-            for token in self.ai.generate_stream(
+            gen = self.ai.generate_stream(
                 system_prompt=system_prompt,
                 messages=self.state.conversation_history[-12:],
-            ):
-                buf.append(token)
-                yield ("token", token)
+            )
+            try:
+                for token in gen:
+                    buf.append(token)
+                    # GeneratorExit здесь приходит при обрыве клиента (close SSE-
+                    # генератора в routes). finally ниже корректно закрывает
+                    # внутренний AI-генератор — без этого CPython печатает
+                    # "RuntimeError: generator ignored GeneratorExit".
+                    yield ("token", token)
+            finally:
+                # Закрыть внутренний генератор явно: abort стрима не должен
+                # оставлять LLM-коннектор в подвешенном состоянии.
+                gen.close()
             ai_response = "".join(buf)
         else:
             ai_response = self.ai.generate(

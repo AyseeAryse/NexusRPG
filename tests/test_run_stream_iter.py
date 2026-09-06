@@ -233,6 +233,84 @@ def test_ability_early_done_stream_matches_sync():
 
 
 # ═══════════════════════════════════════════════════════════════
+# 3b. Обрыв клиента: GeneratorExit корректно закрывает AI-генератор
+# ═══════════════════════════════════════════════════════════════
+
+class CloseTrackingAI(FakeAI):
+    """FakeAI со счётчиком закрытий внутреннего генератора."""
+    def __init__(self):
+        super().__init__()
+        self.gen_closed = 0
+
+    def generate_stream(self, **kw):
+        try:
+            for tok in ["a", "b", "c", "d", "e"]:
+                yield tok
+        finally:
+            self.gen_closed += 1
+
+
+def test_client_disconnect_closes_inner_generator_cleanly():
+    """Регресс Этапа 1 (блокер-хвост): обрыв клиента (close SSE-генератора)
+    вбрасывает GeneratorExit в run_stream_iter на внешнем yield. Без
+    gen.close() в finally CPython печатает
+    "RuntimeError: generator ignored GeneratorExit".
+    Проверка: close() проходит без исключения И внутренний mock-генератор
+    реально получил close (счётчик == 1), а не осталось предположением."""
+    eng = _make_engine()
+    fake = CloseTrackingAI()
+    eng.ai = fake
+
+    it = eng.player_action_service.run_stream_iter("ход", stream=True)
+    # Прогрев до LLM-фазы: pre-события, затем первый token
+    kinds = []
+    while True:
+        kind, payload = next(it)
+        kinds.append(kind)
+        if kind == "token":
+            break
+    assert "token" in kinds
+    # Симуляция обрыва клиента:
+    it.close()  # без RuntimeError — сам факт отсутствия исключения = половина проверки
+    # Внутренний AI-генератор обязан быть закрыт ровно один раз:
+    assert fake.gen_closed == 1, (
+        f"внутренний generate_stream не закрыт при обрыве (closed={fake.gen_closed})"
+    )
+
+
+def test_client_disconnect_before_llm_no_error_no_close():
+    """Обрыв ДО LLM-фазы (на pre-событии): close() чистый, внутренний генератор
+    ещё не создан — счётчик закрытий 0 (генератор не должен закрываться,
+    которого не было)."""
+    eng = _make_engine()
+    fake = CloseTrackingAI()
+    eng.ai = fake
+    it = eng.player_action_service.run_stream_iter("ход", stream=True)
+    kind, payload = next(it)
+    assert kind == "pre"  # world_event/dice до LLM
+    it.close()
+    assert fake.gen_closed == 0
+
+
+def test_full_stream_still_works_after_fix():
+    """Негативная проверка фикса: нормальный полный ход не сломан —
+    все токены доходят, done последний, внутренний генератор исчерпан
+    естественно (close в finally после исчерпания не даёт побочек)."""
+    eng = _make_engine()
+    fake = CloseTrackingAI()
+    eng.ai = fake
+    kinds, tokens, done = [], [], None
+    for kind, payload in eng.player_action_service.run_stream_iter("ход", stream=True):
+        kinds.append(kind)
+        if kind == "token":
+            tokens.append(payload)
+        elif kind == "done":
+            done = payload
+    assert kinds[-1] == "done" and done is not None
+    assert "".join(tokens) == "abcde"
+
+
+# ═══════════════════════════════════════════════════════════════
 # 4. Combat early-return в stream-режиме (done без токенов)
 # ═══════════════════════════════════════════════════════════════
 
