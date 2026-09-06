@@ -37,6 +37,42 @@ def test_h1_preset_creates_tone_profile():
     assert hasattr(eng.state.tone_profile, "scale_level")
 
 
+def test_h1_blocker1_build_failure_raises_not_swallows():
+    """Блокер 1 (Вариант А): если build_character_tone падает — исключение
+    ОБЯЗАНО проброситься наверх из create_character_from_preset (прецедент
+    Phase 2.1 «демонтаж маскировки»), а не тонуть в print с tone_profile=None."""
+
+    class BoomToneEngine:
+        def build_character_tone(self, character):
+            raise RuntimeError("tone engine boom (test)")
+
+    eng = _make_engine()
+    eng.tone_engine = BoomToneEngine()
+    with pytest.raises(RuntimeError, match="tone engine boom"):
+        eng.create_character_from_preset("research_scientist")
+
+
+def test_h1_blocker1_start_game_rebuilds_none_profile():
+    """Блокер 1: битый старый сейв (tone_profile=None после from_dict-fallback)
+    не крашит start_game — профиль детерминированно пересобирается из персонажа
+    перед apply_scene_context."""
+    eng = _make_engine()
+    eng.create_custom_character({
+        "name": "OldSave", "origin": "ORIGIN_EARTH_SLUMS",
+        "formative_years": "FY_SLUMS_GANGWAR",
+        "specialization": "SPEC_HACKER", "age": 25,
+    })
+    eng.state.tone_profile = None  # имитация fallback-ветки load_game
+    # start_game без auth — вызываем только tone-часть? start_game требует phase;
+    # проверяем инвариант напрямую: None → пересборка → apply_scene_context не падает
+    assert eng.state.tone_profile is None
+    # фикс: строка "if self.state.tone_profile is None: rebuild" в start_game;
+    # эмулируем её вызов через сам start_game (пройдёт до apply_scene_context):
+    eng.start_game("OldSave")
+    assert eng.state.tone_profile is not None
+    assert hasattr(eng.state.tone_profile, "scale_level")
+
+
 def test_h1_apply_scene_context_no_crash():
     """Прямой вызов apply_scene_context после preset-создания не падает
     и заполняет scale_level."""

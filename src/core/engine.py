@@ -407,15 +407,11 @@ class GameEngine:
             origin_id=preset.get("lifepath", {}).get("origin", ""),
         )
         self._set_starting_location(preset.get("lifepath", {}).get("origin", ""))
-        # Phase 31 H1: preset-путь не строил ToneProfile (в отличие от
-        # create_custom_character) → state.tone_profile оставался None →
-        # start_game → apply_scene_context(None) падал с
-        # "'NoneType' object has no attribute 'scale_level'". Строим здесь.
-        try:
-            self.state.tone_profile = self.tone_engine.build_character_tone(self.state.character)
-        except Exception as e:
-            print(f"[Engine] ToneEngine build_character_tone failed: {e}")
-            self.state.tone_profile = None
+        # Phase 31 H1 + H1-блокер1: preset-путь строит ToneProfile. Без try/except:
+        # если build_character_tone падает — пусть падает с трейсбеком здесь
+        # (прецедент Phase 2.1 «демонтаж маскировки»), а не молча оставляет
+        # tone_profile=None для скрытого краша apply_scene_context в другом месте.
+        self.state.tone_profile = self.tone_engine.build_character_tone(self.state.character)
         return self.state.character
 
     # Phase 28 F2: архетипные стартовые наборы. Ключи — маркеры в id специализации
@@ -661,12 +657,11 @@ class GameEngine:
         if fy_data and fy_data.get("heat_mods"):
             self.state.character["heat"] = self.state.character.get("heat", 0) + fy_data["heat_mods"]
         self._enforce_skill_caps()
-        # Phase 26: build ToneProfile (Step 4 интеграции)
-        try:
-            self.state.tone_profile = self.tone_engine.build_character_tone(self.state.character)
-        except Exception as e:
-            print(f"[Engine] ToneEngine build_character_tone failed: {e}")
-            self.state.tone_profile = None
+        # Phase 26: build ToneProfile. Phase 31 H1-блокер1: маскирующий try/except
+        # снят (прецедент Phase 2.1 «демонтаж маскировки») — сбой build_character_tone
+        # обязан падать с трейсбеком здесь, а не оставлять tone_profile=None для
+        # отложенного скрытого краша apply_scene_context.
+        self.state.tone_profile = self.tone_engine.build_character_tone(self.state.character)
         return self.state.character
 
     def _compute_derived_stats(self, attrs: Dict, skills: Dict) -> Dict:
@@ -1665,15 +1660,17 @@ class GameEngine:
             titles = [q["title"] for q in self.state.active_quests[:3]]
             quest_hints = f"Активные квесты персонажа: {', '.join(titles)}. Намекни на первый из них в сцене. "
 
-        # Phase 26: применяем scene_context к tone_profile (локация + tier)
+        # Phase 26: применяем scene_context к tone_profile (локация + tier).
+        # Phase 31 H1-блокер1: print-маскировка снята — сбой здесь тонул молча
+        # (именно так H1 жил 5+ фаз). Если tone_profile None (битый старый сейв) —
+        # детерминированно пересобираем из персонажа вместо отложенного краша.
         location = self.state.current_location
-        try:
-            tier_info = self.get_player_influence_tier() if hasattr(self, "get_player_influence_tier") else None
-            self.tone_engine.apply_scene_context(
-                self.state.tone_profile, location=location, tier_info=tier_info
-            )
-        except Exception as e:
-            print(f"[Engine] apply_scene_context failed: {e}")
+        if self.state.tone_profile is None:
+            self.state.tone_profile = self.tone_engine.build_character_tone(self.state.character)
+        tier_info = self.get_player_influence_tier() if hasattr(self, "get_player_influence_tier") else None
+        self.tone_engine.apply_scene_context(
+            self.state.tone_profile, location=location, tier_info=tier_info
+        )
 
         # Phase 26: используем prompt_builder для intro-action (Phase 2.1)
         intro_prompt = self.prompt_builder.build_intro_action(
