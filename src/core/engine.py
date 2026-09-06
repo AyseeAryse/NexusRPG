@@ -306,6 +306,7 @@ class GameEngine:
             planet_hook_factions=self._planet_hook_factions,
             get_active_chain=lambda: self.active_chain,
             get_completed_chains=lambda: self.completed_chains,
+            build_system_prompt=self._build_system_prompt,
         )
         print(f"[Engine] Init. Data: {len(self.kb.files)} files.")
 

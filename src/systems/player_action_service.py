@@ -43,7 +43,8 @@ class PlayerActionService:
                  planet_hook_factions,
                  # callback-поля engine (read/write через callable — сохраняют
                  # хранение на движке, см. property_active_chain/completed_chains):
-                 get_active_chain, get_completed_chains):
+                 get_active_chain, get_completed_chains,
+                 build_system_prompt):
         """
         Args:
             state: GameState.
@@ -68,6 +69,9 @@ class PlayerActionService:
             planet_hook_factions: callable(planet) -> list[dict].
             get_active_chain: callable() -> dict|None. Возвращает engine.active_chain.
             get_completed_chains: callable() -> list. Возвращает engine.completed_chains.
+            build_system_prompt: callable(action, dice_result, mech_result, subsystem_result) -> str.
+                Делегат engine._build_system_prompt (SystemPromptService, шаг 2);
+                используется stream-веткой run_stream_iter (ВРЕМЕННО до микрошага 2a).
 
         Cooldown-state (_last_chain_offer_h / _last_quest_gen_h) — атрибуты
         сервиса: в baseline они тоже `self.X` на том же self, что и весь метод,
@@ -113,6 +117,10 @@ class PlayerActionService:
         # ЭКСПОНИРУЕТ эти имена как property, делегирующие на engine.
         self._get_active_chain = get_active_chain
         self._get_completed_chains = get_completed_chains
+        # Phase 31 Этап 1: сборщик системного промпта stream-ветки.
+        # Через DI-callback (не статический захват ai-стиля): в движке это
+        # делегат _build_system_prompt → SystemPromptService (шаг 2).
+        self._build_system_prompt = build_system_prompt
 
     @property
     def active_chain(self):
@@ -130,15 +138,46 @@ class PlayerActionService:
         return self._get_ai()
 
     def run(self, action: str) -> Dict:
-        """Оркестрация одного хода игрока. Семантика 1:1 с
-        GameEngine.process_player_action до выноса."""
+        """Оркестрация одного хода игрока (sync-режим). Семантика 1:1 с
+        GameEngine.process_player_action до выноса.
+
+        Phase 31 Этап 1: run() — тонкий потребитель run_stream_iter(stream=False):
+        pre- и post-LLM логика существует РОВНО В ОДНОМ экземпляре. Все
+        промежуточные кортежи (("pre", ...), ("token", ...)) молча потребляются,
+        возвращается payload последнего ("done", result).
+        """
+        result = None
+        for kind, payload in self.run_stream_iter(action, stream=False):
+            if kind == "done":
+                result = payload
+        return result
+
+    def run_stream_iter(self, action: str, *, stream: bool = True):
+        """Оркестрация одного хода игрока как генератор событий.
+
+        Единственная реализация pre-LLM и post-LLM логики (Phase 31 Этап 1 —
+        унификация api_action_stream). Порядок кортежей:
+          ("pre", {"type": "dice"|"mechanical"|"subsystem"|"world_event", "data": ...})
+          ("token", str)                          — только в stream-режиме
+          ("done", <финальный Dict>)              — ВСЕГДА последний кортеж
+
+        Ранние выходы (combat / ability / subsystem combat_started) отдают
+        ("done", <результат раннего возврата>) и завершают генератор —
+        routes-адаптер конвертирует это в jsonify без открытия SSE.
+
+        stream=True → ai.generate_stream() с yield-ом токенов;
+        stream=False → ai.generate() синхронно, без token-событий.
+        Полный текст ответа в обоих режимах идёт в один и тот же
+        _parse_ai_response.
+        """
         import random
 
         self.state.conversation_history.append({"role": "user", "content": action})
 
         # === V7: COMBAT ROUTING — if in combat, handle combat turn ===
         if self.combat_engine.in_combat:
-            return self._process_combat_turn(action)
+            yield ("done", self._process_combat_turn(action))
+            return
 
         # === ФАЗА 20d: активные способности семейств профессий ===
         ability_id = self.profession_abilities.detect(action)
@@ -149,9 +188,10 @@ class PlayerActionService:
                    "in_combat": self.combat_engine.in_combat}
             ability_result = self.profession_abilities.execute(self, ability_id, ctx)
             if ability_result and not ability_result.get("not_applicable"):
-                return {"narrative": ability_result.get("text", ""),
-                        "ability_result": ability_result,
-                        "in_combat": self.state.in_combat}
+                yield ("done", {"narrative": ability_result.get("text", ""),
+                                "ability_result": ability_result,
+                                "in_combat": self.state.in_combat})
+                return
 
         # === V7: SUBSYSTEM TRIGGER — detect hacking/investigation/crafting/combat ===
         subsystem = detect_subsystem_trigger(action)
@@ -160,7 +200,8 @@ class PlayerActionService:
             subsystem_result = self._handle_subsystem_trigger(subsystem, action)
             # If combat was started, route to combat
             if subsystem_result and subsystem_result.get("combat_started"):
-                return subsystem_result
+                yield ("done", subsystem_result)
+                return
 
         mechanical_result = self._check_mechanical_action(action)
 
@@ -175,6 +216,12 @@ class PlayerActionService:
 
         # === WORLD SIMULATION TICK (А2: единый метод, вызывается и фоново) ===
         self.state.world_context = self.world_tick_service.tick()
+
+        # Phase 31 Этап 1: world_event (news/rumors/economic) — pre-событие SSE,
+        # как в прежнем stream-пути (routes L152-154). Только если есть что показать.
+        _wc = self.state.world_context
+        if _wc.get("news") or _wc.get("rumors") or _wc.get("economic_event"):
+            yield ("pre", {"type": "world_event", "data": _wc})
 
         # === V5: AUTO-REPUTATION — analyze action for faction impact ===
         rep_changes = calculate_auto_reputation(action, self.state.faction_reputation)
@@ -252,14 +299,40 @@ class PlayerActionService:
         # Сохраняем последний karmic roll для отладки/тестов
         self.state.last_karmic_roll = scene_meta.get("karmic_roll")
 
-        # Phase 26: генерируем system_prompt через prompt_builder.
-        # Фаза 3: маскировка убрана — сбой сборки промпта обязан падать с трейсбеком,
-        # а не тихо откатываться на legacy _build_system_prompt.
-        system_prompt = self.prompt_builder.build(
-            tone_profile=self.state.tone_profile,
-            scene_meta=scene_meta,
-        )
-        ai_response = self.ai.generate(system_prompt=system_prompt, messages=self.state.conversation_history[-12:])
+        # Системный промпт. ВРЕМЕННО до микрошага 2a — см. ROADMAP:
+        # sync-путь = prompt_builder.build (с Karmic Dice, как в Phase 2.1),
+        # stream-путь = engine._build_system_prompt → SystemPromptService
+        # (с [STATE]-шаблоном и place). После 2a обе ветки будут на одном билдере.
+        if not stream:
+            system_prompt = self.prompt_builder.build(
+                tone_profile=self.state.tone_profile,
+                scene_meta=scene_meta,
+            )
+        else:
+            system_prompt = self._build_system_prompt(
+                action,
+                dice_result=mechanical_result,
+                mech_result=mech_action_result,
+                subsystem_result=subsystem_result,
+            )
+
+        # ═══ LLM-фаза: единственное ветвление — источник полного текста ═══
+        if stream:
+            buf = []
+            for token in self.ai.generate_stream(
+                system_prompt=system_prompt,
+                messages=self.state.conversation_history[-12:],
+            ):
+                buf.append(token)
+                yield ("token", token)
+            ai_response = "".join(buf)
+        else:
+            ai_response = self.ai.generate(
+                system_prompt=system_prompt,
+                messages=self.state.conversation_history[-12:],
+            )
+
+        # ═══ POST-LLM фаза (одна копия) ═══
         parsed = self._parse_ai_response(ai_response)
         self.state.conversation_history.append({"role": "assistant", "content": parsed["narrative"]})
         self.state.session_events.append({
@@ -284,7 +357,7 @@ class PlayerActionService:
                 self.state.game_time, self.state.current_location
             )
 
-        return {
+        yield ("done", {
             "narrative": parsed["narrative"],
             "dice_results": mechanical_result,
             "state_changes": parsed.get("state_changes", {}),
@@ -299,4 +372,4 @@ class PlayerActionService:
             "defeat": defeat_result,
             "level_up": level_up_info,
             "subsystem": subsystem_result,
-        }
+        })

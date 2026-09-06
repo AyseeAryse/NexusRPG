@@ -26,193 +26,64 @@ def api_action():
 
 @gameplay.route("/api/action/stream", methods=["POST"])
 def api_action_stream():
-    # Phase 26 fix: bind local 'engine' alias so subsequent code uses
-    # the same GameEngine singleton instead of calling get_engine()
-    # repeatedly. Without this, NameError fires on lines that reference
-    # bare 'engine' (e.g. hasattr(engine, '_last_chain_offer_h')).
+    """Phase 31 Этап 1: тонкий SSE-адаптер над PlayerActionService.run_stream_iter.
+
+    Оркестрация хода (pre/post-LLM мутации, тик мира, квесты, property income)
+    теперь существует в ОДНОМ экземпляре — в сервисе. Здесь только SSE-обвязка:
+      ("pre", ev)   → yield {"type": "dice"|"mechanical"|"subsystem"|"world_event", "data": ev}
+      ("token", t)  → yield {"type": "token", "data": t}
+      ("done", res) → ранний выход без токенов (combat/ability/subsystem-combat)
+                      конвертируется в jsonify(result) БЕЗ открытия SSE — фронт-ветка
+                      L964 (resp.json()) читает его, как и раньше; обычный ход —
+                      {"type": "done", "data": res} последним SSE-событием.
+    SSE-контракт клиента (app.js L924-953) не изменён.
+
+    Механика peek: первый кортеж достаётся из генератора ДО выбора формата ответа.
+    Если это сразу ("done", ...) — ход завершился без LLM (combat/ability/
+    subsystem-combat): возвращаем jsonify, как делал старый код. Иначе — SSE.
+    """
     engine = get_engine()
     data = request.json
     action = data.get("action", "")
     if not action:
         return jsonify({"error": "Действие не указано"}), 400
 
-    engine.state.conversation_history.append({"role": "user", "content": action})
+    service = engine.player_action_service
+    it = service.run_stream_iter(action, stream=True)
 
-    # === V7: COMBAT ROUTING — no AI streaming needed for combat ===
-    if engine.combat_engine.in_combat:
-        result = engine._process_combat_turn(action)
-        return jsonify(result)
+    def sse(obj) -> str:
+        return f"data: {json.dumps(obj, ensure_ascii=False)}\n\n"
 
-    # === V7: SUBSYSTEM TRIGGER (hacking/investigation/crafting/combat) ===
-    from src.systems.combat import detect_subsystem_trigger
-    subsystem = detect_subsystem_trigger(action)
-    subsystem_result = None
-    if subsystem:
-        subsystem_result = engine._handle_subsystem_trigger(subsystem, action)
-        if subsystem_result and subsystem_result.get("combat_started"):
-            return jsonify(subsystem_result)
+    first = next(it, None)
+    if first is None:
+        # Теоретически недостижимо: run_stream_iter всегда отдаёт done.
+        return jsonify({"error": "Пустой ход"}), 500
+    kind, payload = first
 
-    # === V6: MECHANICAL ACTIONS (buy/sell/travel) ===
-    from src.systems.mechanics import detect_mechanical_action
-    mech_action = detect_mechanical_action(action)
-    mech_action_result = None
-    if mech_action:
-        mech_action_result = engine._handle_mechanical_action(mech_action)
+    if kind == "done":
+        # Ранний выход без LLM: combat / ability / subsystem-combat.
+        # Формат ответа идентичен прежнему jsonify(result) — фронт-ветка L964.
+        return jsonify(payload)
 
-    # === DICE CHECK ===
-    dice_result = engine._check_mechanical_action(action)
-
-    # === CONVERSATION MANAGEMENT ===
-    from src.systems.mechanics import ConversationManager
-    ConversationManager.manage_history(engine.state.conversation_history)
-
-    # === WORLD SIMULATION TICK ===
-    tier = engine.get_player_influence_tier()["tier"]
-    engine.state.world_context = engine.state.world_sim.tick(
-        engine.state.game_time, engine.state.current_location, tier
-    )
-
-    # === WORLD TICKER — major events ===
-    world_events = engine.world_ticker.tick(engine.state)
-    if world_events:
-        engine.state.world_context["world_events"] = world_events
-        from src.content.v4_legacy import _game_time_to_hours
-        current_h = _game_time_to_hours(engine.state.game_time)
-        for we in world_events:
-            engine.world_effects.apply_event_effects(we, current_h)
-
-    # === CONSEQUENCES ===
-    turn = engine.state.world_sim.turn_count
-    triggered_consequences = engine.consequences.check_consequences(turn)
-    if triggered_consequences:
-        engine.state.world_context["consequences"] = triggered_consequences
-
-    # === V5: AUTO-REPUTATION ===
-    from src.content.v5_legacy import calculate_auto_reputation, apply_reputation_changes, get_reputation_summary
-    rep_changes = calculate_auto_reputation(action, engine.state.faction_reputation)
-    if rep_changes:
-        apply_reputation_changes(engine.state.faction_reputation, rep_changes)
-        engine.state.world_context["rep_changes"] = get_reputation_summary(rep_changes)
-
-    # === V5: WORLD EFFECTS ===
-    from src.content.v4_legacy import _game_time_to_hours as _gth
-    active_fx = engine.world_effects.get_active_effects_summary(_gth(engine.state.game_time))
-    if active_fx:
-        engine.state.world_context["active_world_effects"] = active_fx
-
-    # === V5: QUEST CHAIN OFFER ===
-    from src.content.v4_legacy import _game_time_to_hours as _gth2
-    current_hours = _gth2(engine.state.game_time)
-    if not hasattr(engine, '_last_chain_offer_h'):
-        engine._last_chain_offer_h = current_hours - random.randint(100, 200)
-    chain_cooldown = random.randint(120, 240)
-    if not engine.active_chain and (current_hours - engine._last_chain_offer_h) >= chain_cooldown:
-        from src.systems.quests import get_available_chains
-        available = get_available_chains(
-            engine.state.character.get("level", 1),
-            engine.state.character.get("credits", 0),
-            engine.state.faction_reputation)
-        available = [c for c in available if c["id"] not in engine.completed_chains]
-        if available:
-            engine.state.world_context["chain_offer"] = random.choice(available)
-            engine._last_chain_offer_h = current_hours
-
-    # === PROCEDURAL QUEST GEN ===
-    if not hasattr(engine, '_last_quest_gen_h'):
-        engine._last_quest_gen_h = current_hours - random.randint(30, 80)
-    quest_cooldown_h = random.randint(48, 120)
-    if (current_hours - engine._last_quest_gen_h) >= quest_cooldown_h and len(engine.state.active_quests) < 5:
-        pq = engine.quest_generator.generate_quest(
-            player_level=engine.state.character.get("level", 1),
-            location=engine.state.current_location,
-            faction_standings=engine.state.faction_reputation)
-        engine.state.active_quests.append(pq)
-        engine._last_quest_gen_h = current_hours
-        engine.state.world_context["new_quest"] = pq
-
-    # === V6: PROPERTY INCOME ===
-    income_result = engine.property_income.tick(current_hours, engine.property, engine.state.character)
-    if income_result:
-        engine.state.world_context["property_income"] = income_result
-
-    # === BUILD SYSTEM PROMPT WITH ALL CONTEXT ===
-    system_prompt = engine._build_system_prompt(action, dice_result, mech_action_result, subsystem_result)
-
-    def generate():
-        full_response = []
-
-        # Send pre-AI events to UI
-        if dice_result:
-            yield f"data: {json.dumps({'type': 'dice', 'data': dice_result}, ensure_ascii=False)}\n\n"
-        if mech_action_result:
-            yield f"data: {json.dumps({'type': 'mechanical', 'data': mech_action_result}, ensure_ascii=False)}\n\n"
-        if subsystem_result:
-            yield f"data: {json.dumps({'type': 'subsystem', 'data': subsystem_result}, ensure_ascii=False)}\n\n"
-
-        wc = engine.state.world_context
-        if wc.get("news") or wc.get("rumors") or wc.get("economic_event"):
-            yield f"data: {json.dumps({'type': 'world_event', 'data': wc}, ensure_ascii=False)}\n\n"
-
-        # Stream AI response
-        for token in engine.ai.generate_stream(
-            system_prompt=system_prompt,
-            messages=engine.state.conversation_history[-10:],
-        ):
-            full_response.append(token)
-            yield f"data: {json.dumps({'type': 'token', 'data': token}, ensure_ascii=False)}\n\n"
-
-        # === POST-AI: Parse [STATE] block and apply changes ===
-        raw_response = "".join(full_response)
-        parsed = engine._parse_ai_response(raw_response)
-        narrative = parsed["narrative"]
-
-        engine.state.conversation_history.append({"role": "assistant", "content": narrative})
-        engine.state.session_events.append({
-            "time": dict(engine.state.game_time),
-            "action": action[:100], "result": narrative[:100],
-        })
-
-        # Time advance (AI-determined or random)
-        time_mins = parsed.get("state_changes", {}).get("_custom_time", random.randint(5, 30))
-        engine._advance_time(minutes=time_mins)
-
-        # === V7: XP → LEVEL UP ===
-        from src.systems.combat import process_xp_gain
-        xp_to_add = parsed.get("state_changes", {}).get("_xp_to_add", 0)
-        level_up_info = None
-        if xp_to_add and xp_to_add > 0:
-            level_up_info = process_xp_gain(engine.state.character, xp_to_add)
-
-        # === V7: HP=0 DEFEAT (fail-forward) ===
-        from src.systems.combat import apply_defeat
-        defeat_result = None
-        if engine.state.character.get("current_hp", 1) <= 0:
-            defeat_result = apply_defeat(
-                engine.state.character, engine.state.inventory,
-                engine.state.game_time, engine.state.current_location)
-
-        # === Send final state with ALL info ===
-        done_data = {
-            "game_state": engine._get_client_state(),
-            "state_changes": parsed.get("state_changes", {}),
-            "defeat": defeat_result,
-            "level_up": level_up_info,
-            "rep_changes": engine.state.world_context.get("rep_changes", ""),
-            "new_quest": engine.state.world_context.get("new_quest"),
-            "chain_offer": engine.state.world_context.get("chain_offer"),
-            "mechanical_action": mech_action_result,
-            "subsystem": subsystem_result,
-            "property_income": income_result,
-        }
-        yield f"data: {json.dumps({'type': 'done', 'data': done_data}, ensure_ascii=False)}\n\n"
+    def stream_from(first_kind, first_payload, rest):
+        if first_kind == "pre":
+            yield sse({"type": first_payload["type"], "data": first_payload["data"]})
+        elif first_kind == "token":
+            yield sse({"type": "token", "data": first_payload})
+        for kind, payload in rest:
+            if kind == "pre":
+                yield sse({"type": payload["type"], "data": payload["data"]})
+            elif kind == "token":
+                yield sse({"type": "token", "data": payload})
+            elif kind == "done":
+                yield sse({"type": "done", "data": payload})
+                return
 
     return Response(
-        stream_with_context(generate()),
+        stream_with_context(stream_from(kind, payload, it)),
         mimetype="text/event-stream",
         headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"}
     )
-
-
 
 
 @gameplay.route("/api/consequence/log", methods=["POST"])
