@@ -328,6 +328,84 @@ def test_combat_early_done_in_stream():
 
 
 # ═══════════════════════════════════════════════════════════════
+# 4b. Микрошаг 2a: Karmic Dice в стриминговом промпте
+# ═══════════════════════════════════════════════════════════════
+
+def test_karmic_dice_in_stream_prompt():
+    """Микрошаг 2a — ЦЕЛЬ унификации: Karmic Dice-секция присутствует в
+    системном промпте СТРИМИНГОВОГО пути (раньше была только в sync).
+    Захват через generate_stream (единственная LLM-точка стрима)."""
+    eng = _make_engine()
+
+    captured = {"prompts": []}
+
+    def fake_stream(**kw):
+        captured["prompts"].append(kw.get("system_prompt", ""))
+        yield "токен один "
+        yield "токен два"
+
+    def fake_generate(**kw):
+        captured["prompts"].append(kw.get("system_prompt", ""))
+        return "sync text"
+
+    eng.ai = type("S", (), {"generate_stream": staticmethod(fake_stream),
+                            "generate": staticmethod(fake_generate)})()
+    for kind, payload in eng.player_action_service.run_stream_iter("ход", stream=True):
+        if kind == "done":
+            break
+    sp = captured["prompts"][0]
+    assert "Karmic Dice" in sp, "В stream-промпте нет секции Karmic Dice"
+    assert "Бросок (1d6):" in sp
+    import re
+    m = re.search(r"Бросок \(1d6\): (\d+)", sp)
+    assert m and 1 <= int(m.group(1)) <= 6
+
+
+def test_director_notes_in_stream_prompt():
+    """Микрошаг 2a: Director's Notes (tone_profile) в stream-промпте."""
+    eng = _make_engine()
+    captured = {"prompts": []}
+
+    def fake_stream(**kw):
+        captured["prompts"].append(kw.get("system_prompt", ""))
+        yield "tok"
+
+    eng.ai = type("S", (), {"generate_stream": staticmethod(fake_stream),
+                            "generate": staticmethod(lambda **kw: "x")})()
+    for kind, payload in eng.player_action_service.run_stream_iter("ход", stream=True):
+        if kind == "done":
+            break
+    sp = captured["prompts"][0]
+    assert "РЕЖИССЁРСКИЙ БРИФ" in sp, "Director's Notes-секции нет в stream-промпте"
+    assert "ТОНАЛЬНОСТЬ ПЕРСОНАЖА" in sp
+
+
+def test_state_template_intact_after_2a():
+    """Roundtrip-гарантия: [STATE]-JSON-шаблон не пострадал от вставки секций
+    выше по промпту — place/location/hp_change-инструкции на месте, и
+    STATE-блок идёт ПОСЛЕ вариантов выбора (порядок не изменился)."""
+    eng = _make_engine()
+    captured = {"prompts": []}
+
+    def fake_stream(**kw):
+        captured["prompts"].append(kw.get("system_prompt", ""))
+        yield "tok"
+
+    eng.ai = type("S", (), {"generate_stream": staticmethod(fake_stream),
+                            "generate": staticmethod(lambda **kw: "x")})()
+    for kind, payload in eng.player_action_service.run_stream_iter("ход", stream=True):
+        if kind == "done":
+            break
+    sp = captured["prompts"][0]
+    assert '[STATE]{"hp_change":0' in sp
+    assert '"location":null' in sp
+    assert 'place: "название заведения"' in sp
+    assert '"npc_met":null' in sp
+    # Порядок: STATE-инструкции ПОСЛЕ вариантов выбора
+    assert sp.find("Что будешь делать?") < sp.find("[STATE] БЛОК")
+
+
+# ═══════════════════════════════════════════════════════════════
 # 5. Независимость фронт-обработчиков pre-событий (grep-проверка)
 # ═══════════════════════════════════════════════════════════════
 

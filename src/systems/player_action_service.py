@@ -71,7 +71,7 @@ class PlayerActionService:
             get_completed_chains: callable() -> list. Возвращает engine.completed_chains.
             build_system_prompt: callable(action, dice_result, mech_result, subsystem_result) -> str.
                 Делегат engine._build_system_prompt (SystemPromptService, шаг 2);
-                используется stream-веткой run_stream_iter (ВРЕМЕННО до микрошага 2a).
+                с микрошага 2a — ЕДИНСТВЕННЫЙ канонический промпт для обоих режимов.
 
         Cooldown-state (_last_chain_offer_h / _last_quest_gen_h) — атрибуты
         сервиса: в baseline они тоже `self.X` на том же self, что и весь метод,
@@ -299,22 +299,15 @@ class PlayerActionService:
         # Сохраняем последний karmic roll для отладки/тестов
         self.state.last_karmic_roll = scene_meta.get("karmic_roll")
 
-        # Системный промпт. ВРЕМЕННО до микрошага 2a — см. ROADMAP:
-        # sync-путь = prompt_builder.build (с Karmic Dice, как в Phase 2.1),
-        # stream-путь = engine._build_system_prompt → SystemPromptService
-        # (с [STATE]-шаблоном и place). После 2a обе ветки будут на одном билдере.
-        if not stream:
-            system_prompt = self.prompt_builder.build(
-                tone_profile=self.state.tone_profile,
-                scene_meta=scene_meta,
-            )
-        else:
-            system_prompt = self._build_system_prompt(
-                action,
-                dice_result=mechanical_result,
-                mech_result=mech_action_result,
-                subsystem_result=subsystem_result,
-            )
+        # Phase 31 микрошаг 2a: канонический промпт един для обоих режимов —
+        # SystemPromptService (через делегат движка) с Karmic Dice и
+        # Director's Notes (перенесены из prompt_builder.build).
+        system_prompt = self._build_system_prompt(
+            action,
+            dice_result=mechanical_result,
+            mech_result=mech_action_result,
+            subsystem_result=subsystem_result,
+        )
 
         # ═══ LLM-фаза: единственное ветвление — источник полного текста ═══
         if stream:

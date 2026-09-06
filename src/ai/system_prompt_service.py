@@ -17,6 +17,8 @@ from src.systems.quests import get_chain_stage
 from src.systems.companions import get_companion_by_id
 from src.content.v5_legacy import UNIQUE_NPCS
 from src.systems import PsychologySystem
+from src.ai.prompt_builder import KARMIC_DICE_OUTCOMES
+import random
 
 
 class SystemPromptService:
@@ -79,6 +81,31 @@ class SystemPromptService:
             "ЗАПРЕЩЕНО: короткие ответы менее 3 абзацев, сухие описания, безымянные NPC, мысли/чувства игрока, повтор вариантов.",
             "",
         ]
+
+        # ─── DIRECTOR'S NOTES (Phase 31 микрошаг 2a: тон/голос из tone_profile) ───
+        tone_profile = self.state.tone_profile
+        if tone_profile:
+            parts.append("=" * 60)
+            parts.append("СЕКЦИЯ 2: РЕЖИССЁРСКИЙ БРИФ (тон, голос, атмосфера)")
+            parts.append("=" * 60)
+            parts.append(tone_profile.to_director_notes())
+        else:
+            parts.append("(нейтральный тон, generic GM)")
+        parts.append("")
+
+        # ─── KARMIC DICE (Phase 31 микрошаг 2a: скрытый бросок 1d6) ───
+        # Источник как в prompt_builder.build: scene_meta["karmic_roll"], который
+        # run_stream_iter сохраняет в state.last_karmic_roll; fallback random 1d6.
+        parts.append("=" * 60)
+        parts.append("СЕКЦИЯ 3: СКРЫТЫЕ БРОСКИ (Karmic Dice 1d6)")
+        parts.append("=" * 60)
+        karmic_roll = getattr(self.state, "last_karmic_roll", None)
+        if karmic_roll is None:
+            karmic_roll = random.randint(1, 6)
+        outcome = KARMIC_DICE_OUTCOMES.get(karmic_roll, "")
+        parts.append(f"Бросок (1d6): {karmic_roll} → {outcome}")
+        parts.append("Используй этот скрытый маркер для тонкой детали в сцене, не объясняя игроку.")
+        parts.append("")
 
         # ─── WORLD CONTEXT (conditional, ~200 chars) ───
         if wc:

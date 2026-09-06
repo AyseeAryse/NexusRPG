@@ -138,23 +138,12 @@ def test_start_game_uses_prompt_builder(fresh_engine, mock_ai, monkeypatch):
 # ========== Test 2: process_player_action формирует промпт с Director's Notes ==========
 
 def test_action_prompt_contains_director_notes(fresh_engine, mock_ai, monkeypatch):
-    """Phase 2.1: system_prompt, формируемый в process_player_action, должен
-    содержать Director's Notes из tone_profile (не пустую строку)."""
-    captured = {}
-
-    def fake_build(tone_profile, scene_meta=None):
-        captured["tone_profile"] = tone_profile
-        captured["scene_meta"] = scene_meta
-        return "SYSTEM_PROMPT_WITH_DIRECTOR_NOTES"
-
-    monkeypatch.setattr(fresh_engine.prompt_builder, "build", fake_build)
-
-    # Вызываем process_player_action (mock_ai заглушит LLM)
-    fresh_engine.process_player_action("тестовое действие")
-
-    # Проверяем что build был вызван с реальным tone_profile
-    tp = captured.get("tone_profile")
-    assert tp is not None, "prompt_builder.build вызван с None tone_profile"
+    """Phase 2.1 + микрошаг 2a: system_prompt, формируемый в process_player_action,
+    должен содержать Director's Notes из tone_profile. С 2a промпт собирает
+    SystemPromptService, читая state.tone_profile напрямую (механизм тот же)."""
+    # tone_profile обязан существовать до хода
+    tp = fresh_engine.state.tone_profile
+    assert tp is not None, "state.tone_profile is None — Director's Notes не из чего собрать"
     assert hasattr(tp, "to_director_notes"), "tone_profile не имеет to_director_notes"
 
     director_notes = tp.to_director_notes()
@@ -162,8 +151,26 @@ def test_action_prompt_contains_director_notes(fresh_engine, mock_ai, monkeypatc
     assert "ТОНАЛЬНОСТЬ ПЕРСОНАЖА" in director_notes
     assert "Жанровый бленд" in director_notes
 
-    # Проверяем scene_meta содержит обязательные поля
-    sm = captured.get("scene_meta", {})
+    # Захват финального system_prompt через AI-коннектор (единая точка для обоих режимов)
+    captured_prompt = {}
+
+    real_generate = fresh_engine.ai.generate
+
+    def capture_ai(system_prompt=None, messages=None, **kwargs):
+        captured_prompt["system_prompt"] = system_prompt
+        return "NARRATIVE: ok\nOPTIONS:\n1. action"
+
+    monkeypatch.setattr(fresh_engine.ai, "generate", capture_ai)
+    fresh_engine.process_player_action("тестовое действие")
+
+    sp = captured_prompt.get("system_prompt", "")
+    # Director's Notes дошли до финального промпта (через SystemPromptService)
+    assert "РЕЖИССЁРСКИЙ БРИФ" in sp, "Director's Notes-секция отсутствует в финальном промпте"
+    assert "ТОНАЛЬНОСТЬ ПЕРСОНАЖА" in sp, "тоны не дошли до финального промпта"
+    assert "Жанровый бленд" in sp
+
+    # scene_meta (build_action_meta) по-прежнему готовит karmic_roll
+    sm = fresh_engine.prompt_builder.build_action_meta("тестовое действие")
     assert "karmic_roll" in sm, "scene_meta не содержит karmic_roll"
     assert 1 <= sm["karmic_roll"] <= 6, f"karmic_roll вне диапазона 1-6: {sm['karmic_roll']}"
     assert sm.get("current_action") == "тестовое действие"
