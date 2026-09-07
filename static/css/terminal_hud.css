@@ -213,3 +213,59 @@ html.crt-on .narrative-scroll {
              border-radius: 4px; cursor: pointer; font-weight: 700; font-family: var(--font-display, sans-serif);
              font-size: 0.75em; letter-spacing: 1px; }
 .cb-accept:hover { filter: brightness(1.2); box-shadow: 0 0 12px var(--accent, var(--cyan)); }
+
+/* ── Phase 4.1: Имплант-менеджер (терминальный стиль, .ti-*) ── */
+.ti-panel { font-family: var(--font-mono, monospace); }
+.ti-header { border: 1px solid var(--accent, var(--cyan)); padding: 8px 10px; margin: 6px 0 10px;
+             font-size: 0.82em; color: var(--text2); background: rgba(0, 240, 255, 0.03); }
+.ti-header b { color: var(--accent, var(--cyan)); }
+.ti-header-line { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.ti-clinic-ok { color: var(--green, #33ff66); }
+.ti-clinic-no { color: var(--gold, #ffd700); }
+.ti-humanity-bar { font-family: var(--font-mono, monospace); font-size: 0.78em; color: var(--text2);
+                   margin: 8px 0 12px; white-space: pre; overflow: hidden; }
+.ti-section-title { font-size: 0.72em; letter-spacing: 2px; color: var(--accent, var(--cyan));
+                    margin: 14px 0 6px; padding-bottom: 3px;
+                    border-bottom: 1px dashed rgba(0, 240, 255, 0.25); }
+.ti-card { border: 1px solid var(--border, #333); border-left: 3px solid var(--accent, var(--cyan));
+           padding: 8px 10px; margin: 6px 0; font-family: var(--font-mono, monospace);
+           display: flex; justify-content: space-between; align-items: center; gap: 8px;
+           background: rgba(255, 255, 255, 0.02); }
+.ti-card.installed { border-left-color: var(--magenta, #ff00aa); }
+.ti-card.available { border-left-color: var(--gold, #ffd700); }
+.ti-name { font-weight: 700; font-size: 0.85em; color: var(--text); }
+.ti-name.rarity-rare { color: var(--magenta, #ff00aa); }
+.ti-name.rarity-uncommon { color: var(--green, #33ff66); }
+.ti-name.rarity-common { color: var(--text2); }
+.ti-stats { font-size: 0.75em; color: var(--text2); margin-top: 2px; }
+.ti-bonuses { font-size: 0.75em; color: var(--magenta, #ff00aa); margin-top: 2px; }
+.ti-meta { font-size: 0.7em; color: var(--text2); margin-top: 3px; }
+.ti-btn { background: transparent; border: 1px solid var(--accent, var(--cyan));
+          color: var(--accent, var(--cyan)); padding: 5px 10px; cursor: pointer;
+          font-family: var(--font-mono, monospace); font-size: 0.72em; letter-spacing: 1px;
+          white-space: nowrap; transition: all 0.15s; }
+.ti-btn:hover { background: rgba(0, 240, 255, 0.12); box-shadow: 0 0 8px rgba(0, 240, 255, 0.35); }
+.ti-btn:disabled { opacity: 0.3; cursor: not-allowed; box-shadow: none; }
+.ti-btn.ti-btn-remove { border-color: var(--red, #ff4466); color: var(--red, #ff4466); }
+.ti-btn.ti-btn-remove:hover { background: rgba(255, 68, 102, 0.12); box-shadow: 0 0 8px rgba(255, 68, 102, 0.35); }
+.ti-btn.ti-btn-install { border-color: var(--magenta, #ff00aa); color: var(--magenta, #ff00aa); }
+.ti-btn.ti-btn-install:hover { background: rgba(255, 0, 170, 0.12); box-shadow: 0 0 8px rgba(255, 0, 170, 0.35); }
+.ti-empty { font-family: var(--font-mono, monospace); font-size: 0.78em; color: var(--text2);
+            padding: 6px 4px; }
+
+/* ── Phase 4.1: Хакерский мини-HUD (бейдж активного хака в topbar) ── */
+.thud-hack-badge { display: none; align-items: center; gap: 5px;
+                   font-family: var(--font-mono, monospace); font-size: 0.72em;
+                   letter-spacing: 1px; color: var(--green, #33ff66);
+                   border: 1px solid var(--green, #33ff66); padding: 2px 8px;
+                   background: rgba(51, 255, 102, 0.06); }
+.thud-hack-badge.visible { display: inline-flex; }
+.thud-hack-badge .thud-hack-dot { width: 7px; height: 7px; background: var(--green, #33ff66);
+                                  border-radius: 50%; animation: thud-hack-pulse 1s infinite; }
+.thud-hack-badge .thud-hack-target { color: var(--text); max-width: 160px;
+                                     overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@keyframes thud-hack-pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 6px var(--green, #33ff66); }
+    50%      { opacity: 0.35; box-shadow: none; }
+}
+.thud-hack-badge { cursor: pointer; }

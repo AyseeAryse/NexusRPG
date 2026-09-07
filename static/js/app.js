@@ -1150,6 +1150,22 @@ function handleSubsystemResult(result) {
 // UI UPDATES
 // ============================================================
 
+
+// Phase 4.1: синхронизация мини-HUD бейджа с engine_hackState (без ожидания game_state)
+function updateHackBadge() {
+    const badge = document.getElementById('hack-badge');
+    if (!badge) return;
+    if (engine_hackState && engine_hackState.status === 'active') {
+        badge.classList.add('visible');
+        const targetEl = document.getElementById('hack-badge-target');
+        if (targetEl) targetEl.textContent = engine_hackState.target ? ' · ' + engine_hackState.target : '';
+    } else if (gameState && gameState.active_hack) {
+        badge.classList.add('visible');
+    } else {
+        badge.classList.remove('visible');
+    }
+}
+
 function updateGameUI(state) {
     if (!state) return;
     const c = state.character || {};
@@ -1175,6 +1191,20 @@ function updateGameUI(state) {
     setText('san-text', `${c.sanity || 0}/${c.sanity_max || 0}`);
     setText('xp-text', `${c.xp || 0}/${c.xp_next || 1000}`);
     setText('credits-text', formatNum(c.credits || 0));
+
+    // Phase 4.1: хакерский мини-HUD — булев индикатор активного хака (client_state.active_hack).
+    // Детали (target/alert/turns) доступны только из engine_hackState текущей сессии;
+    // если вкладка ХАКИНГ не открывалась (или после F5) — показываем только статус HACK.
+    const badge = document.getElementById('hack-badge');
+    if (badge) {
+        if (state.active_hack) {
+            badge.classList.add('visible');
+            const targetEl = document.getElementById('hack-badge-target');
+            if (targetEl) targetEl.textContent = engine_hackState?.target ? ' · ' + engine_hackState.target : '';
+        } else {
+            badge.classList.remove('visible');
+        }
+    }
 }
 
 function addNarrativeMessage(text, type) {
@@ -1811,22 +1841,27 @@ async function renderImplantPanel(container) {
         const slots = data.max_implant_slots || 6;
         const usedSlots = data.used_slots || 0;
 
-        let html = `<div class="implant-header">
-            <div class="implant-humanity">🧠 Человечность: <b>${humanity}/100</b></div>
-            <div class="implant-slots">🔩 Слоты: <b>${usedSlots}/${slots}</b></div>
-            <div class="implant-clinic">${nearClinic
-                ? '🏥 <span style="color:var(--green)">Клиника рядом</span> (₡' + fee.toLocaleString() + ')'
-                : '⚠️ <span style="color:var(--gold)">Нет клиники</span> — самоустановка (DC+4)'}</div>
-        </div>`;
+        // Phase 4.1: терминальный стиль (Ascii.bar + .ti-*; см. terminal_hud.css)
+        const humBar = window.Ascii ? Ascii.bar(humanity, 100, 20) : '[' + '#'.repeat(Math.round(humanity/5)).padEnd(20, '·') + ']';
+        const humColor = humanity > 60 ? 'var(--green, #33ff66)' : humanity > 30 ? 'var(--gold, #ffd700)' : 'var(--red, #ff4466)';
+        const clinic = nearClinic
+            ? `<span class="ti-clinic-ok">[КЛИНИКА РЯДОМ · ₡${fee.toLocaleString()}]</span>`
+            : `<span class="ti-clinic-no">[КЛИНИКИ НЕТ · САМОУСТАНОВКА DC+4]</span>`;
 
-        // Humanity bar
-        const humColor = humanity > 60 ? 'var(--green)' : humanity > 30 ? 'var(--gold)' : 'var(--red)';
-        html += `<div class="implant-bar"><div class="implant-bar-fill" style="width:${humanity}%;background:${humColor}"></div></div>`;
+        let html = '<div class="ti-panel">';
+        html += `<div class="ti-header">
+            <div class="ti-header-line">
+                <span>ЧЕЛОВЕЧНОСТЬ: <b style="color:${humColor}">${humanity}/100</b></span>
+                <span>СЛОТЫ: <b>${usedSlots}/${slots}</b></span>
+            </div>
+            <div class="ti-header-line"><span>${clinic}</span></div>
+        </div>`;
+        html += `<div class="ti-humanity-bar">HUM ${humBar}</div>`;
 
         // Installed
-        html += '<div class="implant-section-title">✅ УСТАНОВЛЕНЫ</div>';
+        html += '<div class="ti-section-title">// УСТАНОВЛЕНЫ</div>';
         if (installed.length === 0) {
-            html += '<div class="empty-state" style="padding:8px">Нет установленных имплантов</div>';
+            html += '<div class="ti-empty">— нет установленных имплантов —</div>';
         } else {
             installed.forEach(imp => {
                 const bonuses = [];
@@ -1836,38 +1871,39 @@ async function renderImplantPanel(container) {
                 for (const [a, v] of Object.entries(imp.attr_bonuses || {})) {
                     bonuses.push(`${attrLabel(a)} ${v > 0 ? '+' : ''}${v}`);
                 }
-                html += `<div class="implant-card installed">
+                html += `<div class="ti-card installed">
                     <div class="implant-info">
-                        <div class="implant-name rarity-${imp.rarity || 'common'}">${imp.name}</div>
-                        <div class="implant-stats">${imp.stats || ''}</div>
-                        ${bonuses.length ? '<div class="implant-bonuses">' + bonuses.join(', ') + '</div>' : ''}
+                        <div class="ti-name rarity-${imp.rarity || 'common'}">■ ${imp.name}</div>
+                        <div class="ti-stats">${imp.stats || ''}</div>
+                        ${bonuses.length ? '<div class="ti-bonuses">↑ ' + bonuses.join(' · ') + '</div>' : ''}
                     </div>
-                    <button class="btn-remove-implant" onclick="removeImplant(${imp.inv_index})">✖ Удалить</button>
+                    <button class="ti-btn ti-btn-remove" onclick="removeImplant(${imp.inv_index})">[ СНЯТЬ ]</button>
                 </div>`;
             });
         }
 
         // Available for install
-        html += '<div class="implant-section-title">📦 В ИНВЕНТАРЕ (можно установить)</div>';
+        html += '<div class="ti-section-title">// В ИНВЕНТАРЕ — ДОСТУПНО К УСТАНОВКЕ</div>';
         if (available.length === 0) {
-            html += '<div class="empty-state" style="padding:8px">Нет имплантов в инвентаре. Купите в магазине.</div>';
+            html += '<div class="ti-empty">— имплантов в инвентаре нет (магазин: категория ИМПЛАНТЫ) —</div>';
         } else {
             available.forEach(imp => {
                 const dc = imp.surgery_dc + (nearClinic ? 0 : 4);
                 const humCost = imp.humanity_cost || 0;
-                html += `<div class="implant-card available">
+                html += `<div class="ti-card available">
                     <div class="implant-info">
-                        <div class="implant-name rarity-${imp.rarity || 'common'}">${imp.name}</div>
-                        <div class="implant-stats">${imp.stats || ''}</div>
-                        <div class="implant-meta">DC ${dc} │ 🧠 −${humCost} человечность${nearClinic ? ' │ ₡' + fee.toLocaleString() : ''}</div>
+                        <div class="ti-name rarity-${imp.rarity || 'common'}">□ ${imp.name}</div>
+                        <div class="ti-stats">${imp.stats || ''}</div>
+                        <div class="ti-meta">DC ${dc} · ЧЕЛОВЕЧНОСТЬ −${humCost}${nearClinic ? ' · ₡' + fee.toLocaleString() : ''}</div>
                     </div>
-                    <button class="btn-install-implant" onclick="installImplant(${imp.inv_index})"
+                    <button class="ti-btn ti-btn-install" onclick="installImplant(${imp.inv_index})"
                         ${usedSlots >= slots ? 'disabled title="Нет свободных слотов"' : ''}>
-                        🔩 Установить
+                        [ УСТАНОВИТЬ ]
                     </button>
                 </div>`;
             });
         }
+        html += '</div>';
 
         container.innerHTML = html;
     } catch(e) {
@@ -3028,6 +3064,7 @@ async function startHack(targetType) {
         showToast('💻 Подключение установлено!', 'info');
         addNarrativeMessage(`💻 Хакинг: подключение к "${targetType}"...`, 'system');
         renderHackingPanel(document.getElementById('side-panel-content'));
+        updateHackBadge();
     } else { showToast(resp.error || resp.narrative || 'Ошибка подключения', 'error'); }
 }
 
@@ -3039,6 +3076,7 @@ async function doHackAction(action) {
     if (resp.narrative) addNarrativeMessage(`💻 ${resp.narrative}`, 'system');
     if (resp.status === 'completed' || resp.status === 'detected' || resp.status === 'disconnected') {
         engine_hackState = null;
+        updateHackBadge();
         if (resp.loot) {
             // D4a (H1): loot — строка лута; credits_gained уже применены бэком к персонажу
             showToast(`💻 Взлом завершён! Добыча: ${resp.loot}${resp.credits_gained ? ` (+${resp.credits_gained}₡)` : ''}`, 'success', 5000);

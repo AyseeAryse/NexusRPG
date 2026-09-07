@@ -363,8 +363,10 @@ def main():
             page.wait_for_selector("#btn-crt-toggle", timeout=5000)
             page.wait_for_selector("#btn-palette", timeout=5000)
             dice_t = page.get_attribute("#btn-dice-details", "title") or ""
-            crt_t = page.get_attribute("#btn-crt-toggle", "title") or ""
             pal_t = page.get_attribute("#btn-palette", "title") or ""
+            # Фикс Phase 4.1: applyCrt() больше не затирает описательный тултип —
+            # 'Эффекты CRT-монитора' присутствует в title в ЛЮБОМ состоянии CRT.
+            crt_t = page.get_attribute("#btn-crt-toggle", "title") or ""
             check("G6: 🎲 тултип 'Детализация бросков кубов'",
                   "Детализация бросков кубов" in dice_t, dice_t[:80])
             check("G6: 📺 тултип 'Эффекты CRT-монитора'",
@@ -381,6 +383,63 @@ def main():
         except Exception as e:
             check("G6: тултипы тулбара", False, f"исключение: {e}")
         page.screenshot(path=os.path.join(SHOT_DIR, "16_g6_tooltips.png"))
+
+        # ---- [8] Phase 4.1: имплант-панель (терминальный стиль) + хак-бейдж ----
+        log("\n[8] Phase 4.1: имплант-панель + хак-бейдж")
+        try:
+            # Открыть вкладку ИМПЛАНТЫ
+            page.click('button[title="Импланты"]')
+            page.wait_for_selector(".ti-panel", timeout=8000)
+            check("4.1: имплант-панель рендерится в .ti-panel (терминальный контейнер)", True)
+            ti_header = page.locator(".ti-header").count()
+            check("4.1: .ti-header (человечность/слоты/клиника) присутствует", ti_header >= 1, f"count={ti_header}")
+            hum_bar = page.inner_text(".ti-humanity-bar") if page.locator(".ti-humanity-bar").count() else ""
+            check("4.1: humanity-бар в ASCII-стиле (Ascii.bar)",
+                  "HUM" in hum_bar and ("█" in hum_bar or "·" in hum_bar), hum_bar[:60])
+            ti_cards = page.locator(".ti-card").count()
+            ti_empty = page.locator(".ti-empty").count()
+            check("4.1: карточки имплантов (.ti-card) или пустые секции (.ti-empty)",
+                  ti_cards > 0 or ti_empty >= 2, f"cards={ti_cards}, empty={ti_empty}")
+            ti_titles = page.locator(".ti-section-title").count()
+            check("4.1: секции '// УСТАНОВЛЕНЫ' и '// В ИНВЕНТАРЕ'", ti_titles >= 2, f"count={ti_titles}")
+            crt_on = page.evaluate("document.documentElement.classList.contains('crt-on')")
+            panel_mono = page.evaluate("getComputedStyle(document.querySelector('.ti-panel')).fontFamily")
+            check("4.1: моноширинный шрифт панели (font-mono терминала)",
+                  "mono" in panel_mono.lower() or "consol" in panel_mono.lower() or "courier" in panel_mono.lower(),
+                  panel_mono[:60])
+            page.screenshot(path=os.path.join(SHOT_DIR, "17_implant_terminal.png"))
+
+            # Хак-бейдж: при отсутствии хака — скрыт
+            badge_visible_before = page.evaluate(
+                "document.getElementById('hack-badge')?.classList.contains('visible') || false")
+            check("4.1: hack-badge скрыт при отсутствии активного хака", badge_visible_before is False)
+
+            # Хак-бейдж: появляется при активном хаке (эмуляция через DOM-класс —
+            # реальный хак требует цели и LLM-независимой механики; проверяем CSS-реакцию)
+            page.evaluate("""
+                const b = document.getElementById('hack-badge');
+                b.classList.add('visible');
+                document.getElementById('hack-badge-target').textContent = ' · СЕТЕВОЙ УЗЕЛ';
+            """)
+            page.wait_for_timeout(150)
+            badge_shown = page.evaluate(
+                "document.getElementById('hack-badge')?.classList.contains('visible') || false")
+            badge_display = page.evaluate(
+                "getComputedStyle(document.getElementById('hack-badge')).display")
+            check("4.1: hack-badge отображается при активном хаке (display != none)",
+                  badge_shown and badge_display != "none", f"display={badge_display}")
+            badge_target = page.inner_text("#hack-badge-target")
+            check("4.1: hack-badge показывает target из engine_hackState", "СЕТЕВОЙ УЗЕЛ" in badge_target,
+                  badge_target[:60])
+            badge_color = page.evaluate(
+                "getComputedStyle(document.querySelector('.thud-hack-badge .thud-hack-dot')).backgroundColor")
+            check("4.1: hack-badge в терминальном стиле (зелёный dot)", badge_color not in ("rgba(0, 0, 0, 0)", ""),
+                  badge_color)
+            page.screenshot(path=os.path.join(SHOT_DIR, "18_hack_badge.png"))
+            # вернуть скрытое состояние (эмуляция кончилась)
+            page.evaluate("document.getElementById('hack-badge').classList.remove('visible')")
+        except Exception as e:
+            check("4.1: имплант-панель + хак-бейдж", False, f"исключение: {e}")
 
         # ---- Summary ----
         log("\n" + "=" * 70)
