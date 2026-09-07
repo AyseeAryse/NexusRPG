@@ -356,6 +356,32 @@ def main():
         check("H2: в нарративе нет служебных заголовков после живого хода", h2_clean)
         page.screenshot(path=os.path.join(SHOT_DIR, "15_narrative_h2.png"))
 
+        # ---- [7] Phase 29 G6: тултипы тулбара (HudTerminal.init) ----
+        log("\n[7] Phase 29 G6: тултипы тулбара")
+        try:
+            page.wait_for_selector("#btn-dice-details", timeout=10000)
+            page.wait_for_selector("#btn-crt-toggle", timeout=5000)
+            page.wait_for_selector("#btn-palette", timeout=5000)
+            dice_t = page.get_attribute("#btn-dice-details", "title") or ""
+            crt_t = page.get_attribute("#btn-crt-toggle", "title") or ""
+            pal_t = page.get_attribute("#btn-palette", "title") or ""
+            check("G6: 🎲 тултип 'Детализация бросков кубов'",
+                  "Детализация бросков кубов" in dice_t, dice_t[:80])
+            check("G6: 📺 тултип 'Эффекты CRT-монитора'",
+                  "Эффекты CRT-монитора" in crt_t, crt_t[:80])
+            check("G6: 🎨 тултип 'Цветовая палитра терминала'",
+                  "Цветовая палитра терминала" in pal_t, pal_t[:80])
+            # Переключение CRT меняет title
+            page.click("#btn-crt-toggle")
+            page.wait_for_timeout(200)
+            crt_t2 = page.get_attribute("#btn-crt-toggle", "title") or ""
+            check("G6: переключение CRT меняет title", crt_t2 != crt_t, f"{crt_t[:40]} -> {crt_t2[:40]}")
+            page.click("#btn-crt-toggle")  # вернуть состояние
+            page.wait_for_timeout(200)
+        except Exception as e:
+            check("G6: тултипы тулбара", False, f"исключение: {e}")
+        page.screenshot(path=os.path.join(SHOT_DIR, "16_g6_tooltips.png"))
+
         # ---- Summary ----
         log("\n" + "=" * 70)
         log("ИТОГИ")

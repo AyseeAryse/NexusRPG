@@ -253,35 +253,11 @@ def test_g5_genesis_bioworks_in_corps_pool():
 
 
 # ═══════════════════════════════════════════════════════════════
-# G6: тултипы тулбара (Playwright E2E — фронтенд)
+# G6: тултипы тулбара — вынесен в scripts/test_live_browser.py
+# (E2E-раннер проекта, вне pytest tests/ -q; корневая причина: фикстуры
+# page/live_server требуют pytest-playwright, который не входит в
+# тестовое окружение — pytest давал ERROR вместо skip/зелёного)
 # ═══════════════════════════════════════════════════════════════
-
-@pytest.mark.playwright
-def test_g6_toolbar_tooltips_present(page, live_server):
-    """G6: после HudTerminal.init() в тулбаре есть кнопки с title:
-    🎲 «Детализация бросков кубов...»
-    📺 «Эффекты CRT-монитора...»
-    🎨 «Цветовая палитра терминала...»
-    """
-    page.goto(live_server)
-    # Ждём загрузки приложения и HudTerminal.init()
-    page.wait_for_selector("#btn-dice-details", timeout=10000)
-    page.wait_for_selector("#btn-crt-toggle", timeout=5000)
-    page.wait_for_selector("#btn-palette", timeout=5000)
-
-    dice_btn = page.locator("#btn-dice-details")
-    crt_btn = page.locator("#btn-crt-toggle")
-    palette_btn = page.locator("#btn-palette")
-
-    assert "Детализация бросков кубов" in dice_btn.get_attribute("title")
-    assert "Эффекты CRT-монитора" in crt_btn.get_attribute("title")
-    assert "Цветовая палитра терминала" in palette_btn.get_attribute("title")
-
-    # Доп. проверка: переключение CRT меняет title
-    crt_btn.click()
-    page.wait_for_timeout(100)
-    assert "ВЫКЛ" in crt_btn.get_attribute("title") or "ВКЛ" in crt_btn.get_attribute("title")
-
 
 # ═══════════════════════════════════════════════════════════════
 # Регресс-тесты: документация того, что падает на pre-Phase29 (af7d7c0)
