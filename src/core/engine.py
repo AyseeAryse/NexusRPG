@@ -296,6 +296,7 @@ class GameEngine:
             property=self.property,
             world_effects=self.world_effects,
             world_tick_service=self.world_tick_service,
+            system_prompt_service=self.system_prompt_service,
             process_combat_turn=self._process_combat_turn,
             handle_subsystem_trigger=self._handle_subsystem_trigger,
             check_mechanical_action=self._check_mechanical_action,
@@ -305,8 +306,8 @@ class GameEngine:
             advance_time=self._advance_time,
             planet_hook_factions=self._planet_hook_factions,
             get_active_chain=lambda: self.active_chain,
+            get_active_companions=lambda: self.active_companions,
             get_completed_chains=lambda: self.completed_chains,
-            build_system_prompt=self._build_system_prompt,
         )
         print(f"[Engine] Init. Data: {len(self.kb.files)} files.")
 

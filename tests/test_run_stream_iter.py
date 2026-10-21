@@ -555,3 +555,93 @@ def test_service_is_single_orchestration_source():
                    'calculate_auto_reputation', 'get_available_chains',
                    'quest_generator.generate_quest', 'process_xp_gain', 'apply_defeat'):
         assert legacy not in src, f"дубль оркестрации остался в routes: {legacy!r}"
+
+
+# ═══════════════════════════════════════════════════════════════
+# 7. Рез callback-рефакторинга: build_system_prompt → прямой вызов SPS
+# ═══════════════════════════════════════════════════════════════
+
+def test_prompt_identical_direct_vs_delegate_path():
+    """Рез callback-рефакторинга: PAS передаёт в system_prompt_service.build
+    РОВНО те же аргументы, что передавал делегат движка engine._build_system_prompt
+    (action, dice_result, mech_result, subsystem_result, active_chain,
+    active_companions). SPS.build детерминирован от (state, args) — при том же
+    state промпт идентичен. Karmic Dice + Director's Notes (микрошаг 2a)
+    обязаны присутствовать в захваченном промпте."""
+    eng = _make_engine()
+
+    # Spy на SPS.build: захват kwargs прямого пути
+    calls = []
+    orig_build = eng.player_action_service.system_prompt_service.build
+
+    def spy(**kw):
+        calls.append(kw)
+        return orig_build(**kw)
+
+    eng.player_action_service.system_prompt_service.build = spy
+
+    captured = {"prompts": []}
+
+    def fake_stream(**kw):
+        captured["prompts"].append(kw.get("system_prompt", ""))
+        yield "tok"
+
+    eng.ai = type("S", (), {"generate_stream": staticmethod(fake_stream),
+                            "generate": staticmethod(lambda **kw: "x")})()
+    for kind, payload in eng.player_action_service.run_stream_iter("ход", stream=True):
+        if kind == "done":
+            break
+
+    direct_kwargs = calls[0]
+    direct_prompt = captured["prompts"][0]
+
+    # Делегат движка (старый путь) с теми же аргументами — сравнить kwargs
+    calls.clear()
+    eng._build_system_prompt(
+        direct_kwargs["action"],
+        dice_result=direct_kwargs["dice_result"],
+        mech_result=direct_kwargs["mech_result"],
+        subsystem_result=direct_kwargs["subsystem_result"],
+    )
+    delegate_kwargs = calls[0]
+
+    # PAS передаёт те же аргументы, что и делегат (включая active_chain/active_companions)
+    assert direct_kwargs == delegate_kwargs, (
+        "PAS передал в SPS.build аргументы, отличные от делегата: "
+        f"direct={direct_kwargs} delegate={delegate_kwargs}"
+    )
+    # Karmic Dice + Director's Notes на месте (микрошаг 2a); roll из state
+    assert "Karmic Dice" in direct_prompt
+    import re as _re
+    m = _re.search(r"Бросок \(1d6\): (\d+)", direct_prompt)
+    assert m and 1 <= int(m.group(1)) <= 6, "roll вне 1..6 в промпте"
+    assert int(m.group(1)) == eng.state.last_karmic_roll, (
+        "roll в промпте != state.last_karmic_roll (сбит источник)"
+    )
+    assert "РЕЖИССЁРСКИЙ БРИФ" in direct_prompt
+
+def test_build_system_prompt_callback_removed():
+    """Рез callback-рефакторинга: колбэк build_system_prompt больше НЕ
+    передаётся в конструктор PlayerActionService (движок передаёт
+    system_prompt_service напрямую), и сервис не хранит _build_system_prompt."""
+    eng = _make_engine()
+    pas = eng.player_action_service
+    # Сервис получил SPS через DI
+    assert hasattr(pas, "system_prompt_service")
+    # Старый колбэк-путь отсутствует
+    assert not hasattr(pas, "_build_system_prompt"), (
+        "PAS всё ещё хранит колбэк _build_system_prompt — рез не выполнен"
+    )
+    # Движок больше не передаёт build_system_prompt= в конструктор
+    eng_src = (ROOT / "src" / "core" / "engine.py").read_text(encoding="utf-8")
+    assert "build_system_prompt=self._build_system_prompt" not in eng_src, (
+        "engine.py всё ещё передаёт колбэк build_system_prompt в PAS"
+    )
+    # PAS вызывает SPS.build напрямую (grep по call site)
+    pas_src = (ROOT / "src" / "systems" / "player_action_service.py").read_text(encoding="utf-8")
+    assert "self.system_prompt_service.build(" in pas_src, (
+        "PAS не вызывает system_prompt_service.build напрямую"
+    )
+    assert "self._build_system_prompt(" not in pas_src, (
+        "PAS всё ещё вызывает старый колбэк-путь"
+    )

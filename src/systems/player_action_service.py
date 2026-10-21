@@ -36,6 +36,7 @@ class PlayerActionService:
     def __init__(self, state, get_ai, prompt_builder, combat_engine,
                  profession_abilities, quest_generator, property_income,
                  property, world_effects, world_tick_service,
+                 system_prompt_service,
                  # callback-методы engine (не выносятся в этом шаге — долг):
                  process_combat_turn, handle_subsystem_trigger,
                  check_mechanical_action, handle_mechanical_action,
@@ -43,8 +44,7 @@ class PlayerActionService:
                  planet_hook_factions,
                  # callback-поля engine (read/write через callable — сохраняют
                  # хранение на движке, см. property_active_chain/completed_chains):
-                 get_active_chain, get_completed_chains,
-                 build_system_prompt):
+                 get_active_chain, get_active_companions, get_completed_chains):
         """
         Args:
             state: GameState.
@@ -59,6 +59,9 @@ class PlayerActionService:
             property: PropertySystem.
             world_effects: WorldEffectsManager (get_active_effects_summary).
             world_tick_service: WorldTickService (tick) — уже вынесен в Phase 30 шаг 1.
+            system_prompt_service: SystemPromptService (build). ПРЯМОЙ вызов — колбэк
+                build_system_prompt убран (рез callback-рефакторинга);
+                active_chain/active_companions — read-only колбэки ниже.
             process_combat_turn: callable(action) -> Dict.
             handle_subsystem_trigger: callable(subsystem, action) -> Dict|None.
             check_mechanical_action: callable(action) -> Dict|None.
@@ -68,10 +71,8 @@ class PlayerActionService:
             advance_time: callable(minutes) -> None.
             planet_hook_factions: callable(planet) -> list[dict].
             get_active_chain: callable() -> dict|None. Возвращает engine.active_chain.
+            get_active_companions: callable() -> list[dict]. Возвращает engine.active_companions.
             get_completed_chains: callable() -> list. Возвращает engine.completed_chains.
-            build_system_prompt: callable(action, dice_result, mech_result, subsystem_result) -> str.
-                Делегат engine._build_system_prompt (SystemPromptService, шаг 2);
-                с микрошага 2a — ЕДИНСТВЕННЫЙ канонический промпт для обоих режимов.
 
         Cooldown-state (_last_chain_offer_h / _last_quest_gen_h) — атрибуты
         сервиса: в baseline они тоже `self.X` на том же self, что и весь метод,
@@ -103,6 +104,7 @@ class PlayerActionService:
         self.property = property
         self.world_effects = world_effects
         self.world_tick_service = world_tick_service
+        self.system_prompt_service = system_prompt_service
 
         self._process_combat_turn = process_combat_turn
         self._handle_subsystem_trigger = handle_subsystem_trigger
@@ -116,11 +118,8 @@ class PlayerActionService:
         # с self=сервис не должно упасть на self.active_chain — поэтому сервис
         # ЭКСПОНИРУЕТ эти имена как property, делегирующие на engine.
         self._get_active_chain = get_active_chain
+        self._get_active_companions = get_active_companions
         self._get_completed_chains = get_completed_chains
-        # Phase 31 Этап 1: сборщик системного промпта stream-ветки.
-        # Через DI-callback (не статический захват ai-стиля): в движке это
-        # делегат _build_system_prompt → SystemPromptService (шаг 2).
-        self._build_system_prompt = build_system_prompt
 
     @property
     def active_chain(self):
@@ -299,14 +298,16 @@ class PlayerActionService:
         # Сохраняем последний karmic roll для отладки/тестов
         self.state.last_karmic_roll = scene_meta.get("karmic_roll")
 
-        # Phase 31 микрошаг 2a: канонический промпт един для обоих режимов —
-        # SystemPromptService (через делегат движка) с Karmic Dice и
-        # Director's Notes (перенесены из prompt_builder.build).
-        system_prompt = self._build_system_prompt(
-            action,
+        # Рез callback-рефакторинга: ПРЯМОЙ вызов SystemPromptService.build
+        # (колбэк build_system_prompt убран; active_chain/active_companions —
+        # read-only колбэки — промпт идентичен делегатному пути движка).
+        system_prompt = self.system_prompt_service.build(
+            action=action,
             dice_result=mechanical_result,
             mech_result=mech_action_result,
             subsystem_result=subsystem_result,
+            active_chain=self._get_active_chain(),
+            active_companions=self._get_active_companions(),
         )
 
         # ═══ LLM-фаза: единственное ветвление — источник полного текста ═══
